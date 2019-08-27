@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<meta name="author" content="Digitech">
+<title>Mise en place du SSO pour le produit AIRS Dossier</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
+/* Remove the comments around the @import statement below when using this as a custom stylesheet */
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block
+}
+
+audio, canvas, video {
+    display: inline-block
+}
+
+audio:not([controls]) {
+    display: none;
+    height: 0
+}
+
+[hidden], template {
+    display: none
+}
+
+script {
+    display: none !important
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+a {
+    background: transparent
+}
+
+a:focus {
+    outline: thin dotted
+}
+
+a:active, a:hover {
+    outline: 0
+}
+
+h1 {
+    font-size: 2em;
+    margin: .67em 0
+}
+
+abbr[title] {
+    border-bottom: 1px dotted
+}
+
+b, strong {
+    font-weight: bold
+}
+
+dfn {
+    font-style: italic
+}
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0
+}
+
+mark {
+    background: #ff0;
+    color: #000
+}
+
+code, kbd, pre, samp {
+    font-family: monospace;
+    font-size: 1em
+}
+
+pre {
+    white-space: pre-wrap
+}
+
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019"
+}
+
+small {
+    font-size: 80%
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline
+}
+
+sup {
+    top: -.5em
+}
+
+sub {
+    bottom: -.25em
+}
+
+img {
+    border: 0
+}
+
+svg:not(:root) {
+    overflow: hidden
+}
+
+figure {
+    margin: 0
+}
+
+fieldset {
+    border: 1px solid silver;
+    margin: 0 2px;
+    padding: .35em .625em .75em
+}
+
+legend {
+    border: 0;
+    padding: 0
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0
+}
+
+button, input {
+    line-height: normal
+}
+
+button, select {
+    text-transform: none
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer
+}
+
+button[disabled], html input[disabled] {
+    cursor: default
+}
+
+input[type="checkbox"], input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0
+}
+
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+    border: 0;
+    padding: 0
+}
+
+textarea {
+    overflow: auto;
+    vertical-align: top
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+html, body {
+    font-size: 100%
+}
+
+body {
+    background: #fff;
+    color: rgba(0, 0, 0, .8);
+    padding: 0;
+    margin: 0;
+    font-family: "Noto Serif", "DejaVu Serif", serif;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1;
+    position: relative;
+    cursor: auto
+}
+
+a:hover {
+    cursor: pointer
+}
+
+img, object, embed {
+    max-width: 100%;
+    height: auto
+}
+
+object, embed {
+    height: 100%
+}
+
+img {
+    -ms-interpolation-mode: bicubic
+}
+
+#map_canvas img, #map_canvas embed, #map_canvas object, .map_canvas img, .map_canvas embed, .map_canvas object {
+    max-width: none !important
+}
+
+.left {
+    float: left !important
+}
+
+.right {
+    float: right !important
+}
+
+.text-left {
+    text-align: left !important
+}
+
+.text-right {
+    text-align: right !important
+}
+
+.text-center {
+    text-align: center !important
+}
+
+.text-justify {
+    text-align: justify !important
+}
+
+.hide {
+    display: none
+}
+
+.antialiased, body {
+    -webkit-font-smoothing: antialiased
+}
+
+img {
+    display: inline-block;
+    vertical-align: middle
+}
+
+textarea {
+    height: auto;
+    min-height: 50px
+}
+
+select {
+    width: 100%
+}
+
+p.lead, .paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p {
+    font-size: 1.21875em;
+    line-height: 1.6
+}
+
+.subheader, .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
+    line-height: 1.45;
+    color: #7a2518;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: .25em
+}
+
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6, pre, form, p, blockquote, th, td {
+    margin: 0;
+    padding: 0;
+    direction: ltr
+}
+
+a {
+    color: #2156a5;
+    text-decoration: underline;
+    line-height: inherit
+}
+
+a:hover, a:focus {
+    color: #1d4b8f
+}
+
+a img {
+    border: none
+}
+
+p {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    text-rendering: optimizeLegibility
+}
+
+p aside {
+    font-size: .875em;
+    line-height: 1.35;
+    font-style: italic
+}
+
+h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 {
+    font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    color: #ba3925;
+    text-rendering: optimizeLegibility;
+    margin-top: 1em;
+    margin-bottom: .5em;
+    line-height: 1.0125em
+}
+
+h1 small, h2 small, h3 small, #toctitle small, .sidebarblock > .content > .title small, h4 small, h5 small, h6 small {
+    font-size: 60%;
+    color: #e99b8f;
+    line-height: 0
+}
+
+h1 {
+    font-size: 2.125em
+}
+
+h2 {
+    font-size: 1.6875em
+}
+
+h3, #toctitle, .sidebarblock > .content > .title {
+    font-size: 1.375em
+}
+
+h4, h5 {
+    font-size: 1.125em
+}
+
+h6 {
+    font-size: 1em
+}
+
+hr {
+    border: solid #ddddd8;
+    border-width: 1px 0 0;
+    clear: both;
+    margin: 1.25em 0 1.1875em;
+    height: 0
+}
+
+em, i {
+    font-style: italic;
+    line-height: inherit
+}
+
+strong, b {
+    font-weight: bold;
+    line-height: inherit
+}
+
+small {
+    font-size: 60%;
+    line-height: inherit
+}
+
+code {
+    font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    font-weight: 400;
+    color: rgba(0, 0, 0, .9)
+}
+
+ul, ol, dl {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 1.25em;
+    list-style-position: outside;
+    font-family: inherit
+}
+
+ul, ol, ul.no-bullet, ol.no-bullet {
+    margin-left: 1.5em
+}
+
+ul li ul, ul li ol {
+    margin-left: 1.25em;
+    margin-bottom: 0;
+    font-size: 1em
+}
+
+ul.square li ul, ul.circle li ul, ul.disc li ul {
+    list-style: inherit
+}
+
+ul.square {
+    list-style-type: square
+}
+
+ul.circle {
+    list-style-type: circle
+}
+
+ul.disc {
+    list-style-type: disc
+}
+
+ul.no-bullet {
+    list-style: none
+}
+
+ol li ul, ol li ol {
+    margin-left: 1.25em;
+    margin-bottom: 0
+}
+
+dl dt {
+    margin-bottom: .3125em;
+    font-weight: bold
+}
+
+dl dd {
+    margin-bottom: 1.25em
+}
+
+abbr, acronym {
+    text-transform: uppercase;
+    font-size: 90%;
+    color: rgba(0, 0, 0, .8);
+    border-bottom: 1px dotted #ddd;
+    cursor: help
+}
+
+abbr {
+    text-transform: none
+}
+
+blockquote {
+    margin: 0 0 1.25em;
+    padding: .5625em 1.25em 0 1.1875em;
+    border-left: 1px solid #ddd
+}
+
+blockquote cite {
+    display: block;
+    font-size: .9375em;
+    color: rgba(0, 0, 0, .6)
+}
+
+blockquote cite:before {
+    content: "\2014 \0020"
+}
+
+blockquote cite a, blockquote cite a:visited {
+    color: rgba(0, 0, 0, .6)
+}
+
+blockquote, blockquote p {
+    line-height: 1.6;
+    color: rgba(0, 0, 0, .85)
+}
+
+@media only screen and (min-width: 768px) {
+    h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 {
+        line-height: 1.2
+    }
+
+    h1 {
+        font-size: 2.75em
+    }
+
+    h2 {
+        font-size: 2.3125em
+    }
+
+    h3, #toctitle, .sidebarblock > .content > .title {
+        font-size: 1.6875em
+    }
+
+    h4 {
+        font-size: 1.4375em
+    }
+}
+
+table {
+    background: #fff;
+    margin-bottom: 1.25em;
+    border: solid 1px #dedede
+}
+
+table thead, table tfoot {
+    background: #f7f8f7;
+    font-weight: bold
+}
+
+table thead tr th, table thead tr td, table tfoot tr th, table tfoot tr td {
+    padding: .5em .625em .625em;
+    font-size: inherit;
+    color: rgba(0, 0, 0, .8);
+    text-align: left
+}
+
+table tr th, table tr td {
+    padding: .5625em .625em;
+    font-size: inherit;
+    color: rgba(0, 0, 0, .8)
+}
+
+table tr.even, table tr.alt, table tr:nth-of-type(even) {
+    background: #f8f8f7
+}
+
+table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td {
+    display: table-cell;
+    line-height: 1.6
+}
+
+h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 {
+    line-height: 1.2;
+    word-spacing: -.05em
+}
+
+h1 strong, h2 strong, h3 strong, #toctitle strong, .sidebarblock > .content > .title strong, h4 strong, h5 strong, h6 strong {
+    font-weight: 400
+}
+
+.clearfix:before, .clearfix:after, .float-group:before, .float-group:after {
+    content: " ";
+    display: table
+}
+
+.clearfix:after, .float-group:after {
+    clear: both
+}
+
+*:not(pre) > code {
+    font-size: .9375em;
+    font-style: normal !important;
+    letter-spacing: 0;
+    padding: .1em .5ex;
+    word-spacing: -.15em;
+    background-color: #f7f7f8;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    line-height: 1.45;
+    text-rendering: optimizeSpeed
+}
+
+pre, pre > code {
+    line-height: 1.45;
+    color: rgba(0, 0, 0, .9);
+    font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    font-weight: 400;
+    text-rendering: optimizeSpeed
+}
+
+.keyseq {
+    color: rgba(51, 51, 51, .8)
+}
+
+kbd {
+    display: inline-block;
+    color: rgba(0, 0, 0, .8);
+    font-size: .75em;
+    line-height: 1.4;
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 0 .1em white inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .2), 0 0 0 .1em #fff inset;
+    margin: -.15em .15em 0 .15em;
+    padding: .2em .6em .2em .5em;
+    vertical-align: middle;
+    white-space: nowrap
+}
+
+.keyseq kbd:first-child {
+    margin-left: 0
+}
+
+.keyseq kbd:last-child {
+    margin-right: 0
+}
+
+.menuseq, .menu {
+    color: rgba(0, 0, 0, .8)
+}
+
+b.button:before, b.button:after {
+    position: relative;
+    top: -1px;
+    font-weight: 400
+}
+
+b.button:before {
+    content: "[";
+    padding: 0 3px 0 2px
+}
+
+b.button:after {
+    content: "]";
+    padding: 0 2px 0 3px
+}
+
+p a > code:hover {
+    color: rgba(0, 0, 0, .9)
+}
+
+#header, #content, #footnotes, #footer {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    max-width: 62.5em;
+    *zoom: 1;
+    position: relative;
+    padding-left: .9375em;
+    padding-right: .9375em
+}
+
+#header:before, #header:after, #content:before, #content:after, #footnotes:before, #footnotes:after, #footer:before, #footer:after {
+    content: " ";
+    display: table
+}
+
+#header:after, #content:after, #footnotes:after, #footer:after {
+    clear: both
+}
+
+#content {
+    margin-top: 1.25em
+}
+
+#content:before {
+    content: none
+}
+
+#header > h1:first-child {
+    color: rgba(0, 0, 0, .85);
+    margin-top: 2.25rem;
+    margin-bottom: 0
+}
+
+#header > h1:first-child + #toc {
+    margin-top: 8px;
+    border-top: 1px solid #ddddd8
+}
+
+#header > h1:only-child, body.toc2 #header > h1:nth-last-child(2) {
+    border-bottom: 1px solid #ddddd8;
+    padding-bottom: 8px
+}
+
+#header .details {
+    border-bottom: 1px solid #ddddd8;
+    line-height: 1.45;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    padding-left: .25em;
+    color: rgba(0, 0, 0, .6);
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap
+}
+
+#header .details span:first-child {
+    margin-left: -.125em
+}
+
+#header .details span.email a {
+    color: rgba(0, 0, 0, .85)
+}
+
+#header .details br {
+    display: none
+}
+
+#header .details br + span:before {
+    content: "\00a0\2013\00a0"
+}
+
+#header .details br + span.author:before {
+    content: "\00a0\22c5\00a0";
+    color: rgba(0, 0, 0, .85)
+}
+
+#header .details br + span#revremark:before {
+    content: "\00a0|\00a0"
+}
+
+#header #revnumber {
+    text-transform: capitalize
+}
+
+#header #revnumber:after {
+    content: "\00a0"
+}
+
+#content > h1:first-child:not([class]) {
+    color: rgba(0, 0, 0, .85);
+    border-bottom: 1px solid #ddddd8;
+    padding-bottom: 8px;
+    margin-top: 0;
+    padding-top: 1rem;
+    margin-bottom: 1.25rem
+}
+
+#toc {
+    border-bottom: 1px solid #efefed;
+    padding-bottom: .5em
+}
+
+#toc > ul {
+    margin-left: .125em
+}
+
+#toc ul.sectlevel0 > li > a {
+    font-style: italic
+}
+
+#toc ul.sectlevel0 ul.sectlevel1 {
+    margin: .5em 0
+}
+
+#toc ul {
+    font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    list-style-type: none
+}
+
+#toc a {
+    text-decoration: none
+}
+
+#toc a:active {
+    text-decoration: underline
+}
+
+#toctitle {
+    color: #7a2518;
+    font-size: 1.2em
+}
+
+@media only screen and (min-width: 768px) {
+    #toctitle {
+        font-size: 1.375em
+    }
+
+    body.toc2 {
+        padding-left: 15em;
+        padding-right: 0
+    }
+
+    #toc.toc2 {
+        margin-top: 0 !important;
+        background-color: #f8f8f7;
+        position: fixed;
+        width: 15em;
+        left: 0;
+        top: 0;
+        border-right: 1px solid #efefed;
+        border-top-width: 0 !important;
+        border-bottom-width: 0 !important;
+        z-index: 1000;
+        padding: 1.25em 1em;
+        height: 100%;
+        overflow: auto
+    }
+
+    #toc.toc2 #toctitle {
+        margin-top: 0;
+        font-size: 1.2em
+    }
+
+    #toc.toc2 > ul {
+        font-size: .9em;
+        margin-bottom: 0
+    }
+
+    #toc.toc2 ul ul {
+        margin-left: 0;
+        padding-left: 1em
+    }
+
+    #toc.toc2 ul.sectlevel0 ul.sectlevel1 {
+        padding-left: 0;
+        margin-top: .5em;
+        margin-bottom: .5em
+    }
+
+    body.toc2.toc-right {
+        padding-left: 0;
+        padding-right: 15em
+    }
+
+    body.toc2.toc-right #toc.toc2 {
+        border-right-width: 0;
+        border-left: 1px solid #efefed;
+        left: auto;
+        right: 0
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    body.toc2 {
+        padding-left: 20em;
+        padding-right: 0
+    }
+
+    #toc.toc2 {
+        width: 20em
+    }
+
+    #toc.toc2 #toctitle {
+        font-size: 1.375em
+    }
+
+    #toc.toc2 > ul {
+        font-size: .95em
+    }
+
+    #toc.toc2 ul ul {
+        padding-left: 1.25em
+    }
+
+    body.toc2.toc-right {
+        padding-left: 0;
+        padding-right: 20em
+    }
+}
+
+#content #toc {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e0e0dc;
+    margin-bottom: 1.25em;
+    padding: 1.25em;
+    background: #f8f8f7;
+    -webkit-border-radius: 4px;
+    border-radius: 4px
+}
+
+#content #toc > :first-child {
+    margin-top: 0
+}
+
+#content #toc > :last-child {
+    margin-bottom: 0
+}
+
+#footer {
+    max-width: 100%;
+    background-color: rgba(0, 0, 0, .8);
+    padding: 1.25em
+}
+
+#footer-text {
+    color: rgba(255, 255, 255, .8);
+    line-height: 1.44
+}
+
+.sect1 {
+    padding-bottom: .625em
+}
+
+@media only screen and (min-width: 768px) {
+    .sect1 {
+        padding-bottom: 1.25em
+    }
+}
+
+.sect1 + .sect1 {
+    border-top: 1px solid #efefed
+}
+
+#content h1 > a.anchor, h2 > a.anchor, h3 > a.anchor, #toctitle > a.anchor, .sidebarblock > .content > .title > a.anchor, h4 > a.anchor, h5 > a.anchor, h6 > a.anchor {
+    position: absolute;
+    z-index: 1001;
+    width: 1.5ex;
+    margin-left: -1.5ex;
+    display: block;
+    text-decoration: none !important;
+    visibility: hidden;
+    text-align: center;
+    font-weight: 400
+}
+
+#content h1 > a.anchor:before, h2 > a.anchor:before, h3 > a.anchor:before, #toctitle > a.anchor:before, .sidebarblock > .content > .title > a.anchor:before, h4 > a.anchor:before, h5 > a.anchor:before, h6 > a.anchor:before {
+    content: "\00A7";
+    font-size: .85em;
+    display: block;
+    padding-top: .1em
+}
+
+#content h1:hover > a.anchor, #content h1 > a.anchor:hover, h2:hover > a.anchor, h2 > a.anchor:hover, h3:hover > a.anchor, #toctitle:hover > a.anchor, .sidebarblock > .content > .title:hover > a.anchor, h3 > a.anchor:hover, #toctitle > a.anchor:hover, .sidebarblock > .content > .title > a.anchor:hover, h4:hover > a.anchor, h4 > a.anchor:hover, h5:hover > a.anchor, h5 > a.anchor:hover, h6:hover > a.anchor, h6 > a.anchor:hover {
+    visibility: visible
+}
+
+#content h1 > a.link, h2 > a.link, h3 > a.link, #toctitle > a.link, .sidebarblock > .content > .title > a.link, h4 > a.link, h5 > a.link, h6 > a.link {
+    color: #ba3925;
+    text-decoration: none
+}
+
+#content h1 > a.link:hover, h2 > a.link:hover, h3 > a.link:hover, #toctitle > a.link:hover, .sidebarblock > .content > .title > a.link:hover, h4 > a.link:hover, h5 > a.link:hover, h6 > a.link:hover {
+    color: #a53221
+}
+
+.audioblock, .imageblock, .literalblock, .listingblock, .stemblock, .videoblock {
+    margin-bottom: 1.25em
+}
+
+.admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
+    text-rendering: optimizeLegibility;
+    text-align: left;
+    font-family: "Noto Serif", "DejaVu Serif", serif;
+    font-size: 1rem;
+    font-style: italic
+}
+
+table.tableblock > caption.title {
+    white-space: nowrap;
+    overflow: visible;
+    max-width: 0
+}
+
+.paragraph.lead > p, #preamble > .sectionbody > .paragraph:first-of-type p {
+    color: rgba(0, 0, 0, .85)
+}
+
+table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p {
+    font-size: inherit
+}
+
+.admonitionblock > table {
+    border-collapse: separate;
+    border: 0;
+    background: none;
+    width: 100%
+}
+
+.admonitionblock > table td.icon {
+    text-align: center;
+    width: 80px
+}
+
+.admonitionblock > table td.icon img {
+    max-width: none
+}
+
+.admonitionblock > table td.icon .title {
+    font-weight: bold;
+    font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    text-transform: uppercase
+}
+
+.admonitionblock > table td.content {
+    padding-left: 1.125em;
+    padding-right: 1.25em;
+    border-left: 1px solid #ddddd8;
+    color: rgba(0, 0, 0, .6)
+}
+
+.admonitionblock > table td.content > :last-child > :last-child {
+    margin-bottom: 0
+}
+
+.exampleblock > .content {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6e6e6;
+    margin-bottom: 1.25em;
+    padding: 1.25em;
+    background: #fff;
+    -webkit-border-radius: 4px;
+    border-radius: 4px
+}
+
+.exampleblock > .content > :first-child {
+    margin-top: 0
+}
+
+.exampleblock > .content > :last-child {
+    margin-bottom: 0
+}
+
+.sidebarblock {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e0e0dc;
+    margin-bottom: 1.25em;
+    padding: 1.25em;
+    background: #f8f8f7;
+    -webkit-border-radius: 4px;
+    border-radius: 4px
+}
+
+.sidebarblock > :first-child {
+    margin-top: 0
+}
+
+.sidebarblock > :last-child {
+    margin-bottom: 0
+}
+
+.sidebarblock > .content > .title {
+    color: #7a2518;
+    margin-top: 0;
+    text-align: center
+}
+
+.exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child {
+    margin-bottom: 0
+}
+
+.literalblock pre, .listingblock pre:not(.highlight), .listingblock pre[class="highlight"], .listingblock pre[class^="highlight "], .listingblock pre.CodeRay, .listingblock pre.prettyprint {
+    background: #f7f7f8
+}
+
+.sidebarblock .literalblock pre, .sidebarblock .listingblock pre:not(.highlight), .sidebarblock .listingblock pre[class="highlight"], .sidebarblock .listingblock pre[class^="highlight "], .sidebarblock .listingblock pre.CodeRay, .sidebarblock .listingblock pre.prettyprint {
+    background: #f2f1f1
+}
+
+.literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] {
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    word-wrap: break-word;
+    padding: 1em;
+    font-size: .8125em
+}
+
+.literalblock pre.nowrap, .literalblock pre[class].nowrap, .listingblock pre.nowrap, .listingblock pre[class].nowrap {
+    overflow-x: auto;
+    white-space: pre;
+    word-wrap: normal
+}
+
+@media only screen and (min-width: 768px) {
+    .literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] {
+        font-size: .90625em
+    }
+}
+
+@media only screen and (min-width: 1280px) {
+    .literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] {
+        font-size: 1em
+    }
+}
+
+.literalblock.output pre {
+    color: #f7f7f8;
+    background-color: rgba(0, 0, 0, .9)
+}
+
+.listingblock pre.highlightjs {
+    padding: 0
+}
+
+.listingblock pre.highlightjs > code {
+    padding: 1em;
+    -webkit-border-radius: 4px;
+    border-radius: 4px
+}
+
+.listingblock pre.prettyprint {
+    border-width: 0
+}
+
+.listingblock > .content {
+    position: relative
+}
+
+.listingblock code[data-lang]:before {
+    display: none;
+    content: attr(data-lang);
+    position: absolute;
+    font-size: .75em;
+    top: .425rem;
+    right: .5rem;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #999
+}
+
+.listingblock:hover code[data-lang]:before {
+    display: block
+}
+
+.listingblock.terminal pre .command:before {
+    content: attr(data-prompt);
+    padding-right: .5em;
+    color: #999
+}
+
+.listingblock.terminal pre .command:not([data-prompt]):before {
+    content: "$"
+}
+
+table.pyhltable {
+    border-collapse: separate;
+    border: 0;
+    margin-bottom: 0;
+    background: none
+}
+
+table.pyhltable td {
+    vertical-align: top;
+    padding-top: 0;
+    padding-bottom: 0
+}
+
+table.pyhltable td.code {
+    padding-left: .75em;
+    padding-right: 0
+}
+
+pre.pygments .lineno, table.pyhltable td:not(.code) {
+    color: #999;
+    padding-left: 0;
+    padding-right: .5em;
+    border-right: 1px solid #ddddd8
+}
+
+pre.pygments .lineno {
+    display: inline-block;
+    margin-right: .25em
+}
+
+table.pyhltable .linenodiv {
+    background: none !important;
+    padding-right: 0 !important
+}
+
+.quoteblock {
+    margin: 0 1em 1.25em 1.5em;
+    display: table
+}
+
+.quoteblock > .title {
+    margin-left: -1.5em;
+    margin-bottom: .75em
+}
+
+.quoteblock blockquote, .quoteblock blockquote p {
+    color: rgba(0, 0, 0, .85);
+    font-size: 1.15rem;
+    line-height: 1.75;
+    word-spacing: .1em;
+    letter-spacing: 0;
+    font-style: italic;
+    text-align: justify
+}
+
+.quoteblock blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0
+}
+
+.quoteblock blockquote:before {
+    content: "\201c";
+    float: left;
+    font-size: 2.75em;
+    font-weight: bold;
+    line-height: .6em;
+    margin-left: -.6em;
+    color: #7a2518;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .1)
+}
+
+.quoteblock blockquote > .paragraph:last-child p {
+    margin-bottom: 0
+}
+
+.quoteblock .attribution {
+    margin-top: .5em;
+    margin-right: .5ex;
+    text-align: right
+}
+
+.quoteblock .quoteblock {
+    margin-left: 0;
+    margin-right: 0;
+    padding: .5em 0;
+    border-left: 3px solid rgba(0, 0, 0, .6)
+}
+
+.quoteblock .quoteblock blockquote {
+    padding: 0 0 0 .75em
+}
+
+.quoteblock .quoteblock blockquote:before {
+    display: none
+}
+
+.verseblock {
+    margin: 0 1em 1.25em 1em
+}
+
+.verseblock pre {
+    font-family: "Open Sans", "DejaVu Sans", sans;
+    font-size: 1.15rem;
+    color: rgba(0, 0, 0, .85);
+    font-weight: 300;
+    text-rendering: optimizeLegibility
+}
+
+.verseblock pre strong {
+    font-weight: 400
+}
+
+.verseblock .attribution {
+    margin-top: 1.25rem;
+    margin-left: .5ex
+}
+
+.quoteblock .attribution, .verseblock .attribution {
+    font-size: .9375em;
+    line-height: 1.45;
+    font-style: italic
+}
+
+.quoteblock .attribution br, .verseblock .attribution br {
+    display: none
+}
+
+.quoteblock .attribution cite, .verseblock .attribution cite {
+    display: block;
+    letter-spacing: -.05em;
+    color: rgba(0, 0, 0, .6)
+}
+
+.quoteblock.abstract {
+    margin: 0 0 1.25em 0;
+    display: block
+}
+
+.quoteblock.abstract blockquote, .quoteblock.abstract blockquote p {
+    text-align: left;
+    word-spacing: 0
+}
+
+.quoteblock.abstract blockquote:before, .quoteblock.abstract blockquote p:first-of-type:before {
+    display: none
+}
+
+table.tableblock {
+    max-width: 100%;
+    border-collapse: separate
+}
+
+table.tableblock td > .paragraph:last-child p > p:last-child, table.tableblock th > p:last-child, table.tableblock td > p:last-child {
+    margin-bottom: 0
+}
+
+table.spread {
+    width: 100%
+}
+
+table.tableblock, th.tableblock, td.tableblock {
+    border: 0 solid #dedede
+}
+
+table.grid-all th.tableblock, table.grid-all td.tableblock {
+    border-width: 0 1px 1px 0
+}
+
+table.grid-all tfoot > tr > th.tableblock, table.grid-all tfoot > tr > td.tableblock {
+    border-width: 1px 1px 0 0
+}
+
+table.grid-cols th.tableblock, table.grid-cols td.tableblock {
+    border-width: 0 1px 0 0
+}
+
+table.grid-all * > tr > .tableblock:last-child, table.grid-cols * > tr > .tableblock:last-child {
+    border-right-width: 0
+}
+
+table.grid-rows th.tableblock, table.grid-rows td.tableblock {
+    border-width: 0 0 1px 0
+}
+
+table.grid-all tbody > tr:last-child > th.tableblock, table.grid-all tbody > tr:last-child > td.tableblock, table.grid-all thead:last-child > tr > th.tableblock, table.grid-rows tbody > tr:last-child > th.tableblock, table.grid-rows tbody > tr:last-child > td.tableblock, table.grid-rows thead:last-child > tr > th.tableblock {
+    border-bottom-width: 0
+}
+
+table.grid-rows tfoot > tr > th.tableblock, table.grid-rows tfoot > tr > td.tableblock {
+    border-width: 1px 0 0 0
+}
+
+table.frame-all {
+    border-width: 1px
+}
+
+table.frame-sides {
+    border-width: 0 1px
+}
+
+table.frame-topbot {
+    border-width: 1px 0
+}
+
+th.halign-left, td.halign-left {
+    text-align: left
+}
+
+th.halign-right, td.halign-right {
+    text-align: right
+}
+
+th.halign-center, td.halign-center {
+    text-align: center
+}
+
+th.valign-top, td.valign-top {
+    vertical-align: top
+}
+
+th.valign-bottom, td.valign-bottom {
+    vertical-align: bottom
+}
+
+th.valign-middle, td.valign-middle {
+    vertical-align: middle
+}
+
+table thead th, table tfoot th {
+    font-weight: bold
+}
+
+tbody tr th {
+    display: table-cell;
+    line-height: 1.6;
+    background: #f7f8f7
+}
+
+tbody tr th, tbody tr th p, tfoot tr th, tfoot tr th p {
+    color: rgba(0, 0, 0, .8);
+    font-weight: bold
+}
+
+p.tableblock > code:only-child {
+    background: none;
+    padding: 0
+}
+
+p.tableblock {
+    font-size: 1em
+}
+
+td > div.verse {
+    white-space: pre
+}
+
+ol {
+    margin-left: 1.75em
+}
+
+ul li ol {
+    margin-left: 1.5em
+}
+
+dl dd {
+    margin-left: 1.125em
+}
+
+dl dd:last-child, dl dd:last-child > :last-child {
+    margin-bottom: 0
+}
+
+ol > li p, ul > li p, ul dd, ol dd, .olist .olist, .ulist .ulist, .ulist .olist, .olist .ulist {
+    margin-bottom: .625em
+}
+
+ul.unstyled, ol.unnumbered, ul.checklist, ul.none {
+    list-style-type: none
+}
+
+ul.unstyled, ol.unnumbered, ul.checklist {
+    margin-left: .625em
+}
+
+ul.checklist li > p:first-child > .fa-square-o:first-child, ul.checklist li > p:first-child > .fa-check-square-o:first-child {
+    width: 1em;
+    font-size: .85em
+}
+
+ul.checklist li > p:first-child > input[type="checkbox"]:first-child {
+    width: 1em;
+    position: relative;
+    top: 1px
+}
+
+ul.inline {
+    margin: 0 auto .625em auto;
+    margin-left: -1.375em;
+    margin-right: 0;
+    padding: 0;
+    list-style: none;
+    overflow: hidden
+}
+
+ul.inline > li {
+    list-style: none;
+    float: left;
+    margin-left: 1.375em;
+    display: block
+}
+
+ul.inline > li > * {
+    display: block
+}
+
+.unstyled dl dt {
+    font-weight: 400;
+    font-style: normal
+}
+
+ol.arabic {
+    list-style-type: decimal
+}
+
+ol.decimal {
+    list-style-type: decimal-leading-zero
+}
+
+ol.loweralpha {
+    list-style-type: lower-alpha
+}
+
+ol.upperalpha {
+    list-style-type: upper-alpha
+}
+
+ol.lowerroman {
+    list-style-type: lower-roman
+}
+
+ol.upperroman {
+    list-style-type: upper-roman
+}
+
+ol.lowergreek {
+    list-style-type: lower-greek
+}
+
+.hdlist > table, .colist > table {
+    border: 0;
+    background: none
+}
+
+.hdlist > table > tbody > tr, .colist > table > tbody > tr {
+    background: none
+}
+
+td.hdlist1 {
+    padding-right: .75em;
+    font-weight: bold
+}
+
+td.hdlist1, td.hdlist2 {
+    vertical-align: top
+}
+
+.literalblock + .colist, .listingblock + .colist {
+    margin-top: -.5em
+}
+
+.colist > table tr > td:first-of-type {
+    padding: 0 .75em;
+    line-height: 1
+}
+
+.colist > table tr > td:last-of-type {
+    padding: .25em 0
+}
+
+.thumb, .th {
+    line-height: 0;
+    display: inline-block;
+    border: solid 4px #fff;
+    -webkit-box-shadow: 0 0 0 1px #ddd;
+    box-shadow: 0 0 0 1px #ddd
+}
+
+.imageblock.left, .imageblock[style*="float: left"] {
+    margin: .25em .625em 1.25em 0
+}
+
+.imageblock.right, .imageblock[style*="float: right"] {
+    margin: .25em 0 1.25em .625em
+}
+
+.imageblock > .title {
+    margin-bottom: 0
+}
+
+.imageblock.thumb, .imageblock.th {
+    border-width: 6px
+}
+
+.imageblock.thumb > .title, .imageblock.th > .title {
+    padding: 0 .125em
+}
+
+.image.left, .image.right {
+    margin-top: .25em;
+    margin-bottom: .25em;
+    display: inline-block;
+    line-height: 0
+}
+
+.image.left {
+    margin-right: .625em
+}
+
+.image.right {
+    margin-left: .625em
+}
+
+a.image {
+    text-decoration: none
+}
+
+span.footnote, span.footnoteref {
+    vertical-align: super;
+    font-size: .875em
+}
+
+span.footnote a, span.footnoteref a {
+    text-decoration: none
+}
+
+span.footnote a:active, span.footnoteref a:active {
+    text-decoration: underline
+}
+
+#footnotes {
+    padding-top: .75em;
+    padding-bottom: .75em;
+    margin-bottom: .625em
+}
+
+#footnotes hr {
+    width: 20%;
+    min-width: 6.25em;
+    margin: -.25em 0 .75em 0;
+    border-width: 1px 0 0 0
+}
+
+#footnotes .footnote {
+    padding: 0 .375em;
+    line-height: 1.3;
+    font-size: .875em;
+    margin-left: 1.2em;
+    text-indent: -1.2em;
+    margin-bottom: .2em
+}
+
+#footnotes .footnote a:first-of-type {
+    font-weight: bold;
+    text-decoration: none
+}
+
+#footnotes .footnote:last-of-type {
+    margin-bottom: 0
+}
+
+#content #footnotes {
+    margin-top: -.625em;
+    margin-bottom: 0;
+    padding: .75em 0
+}
+
+.gist .file-data > table {
+    border: 0;
+    background: #fff;
+    width: 100%;
+    margin-bottom: 0
+}
+
+.gist .file-data > table td.line-data {
+    width: 99%
+}
+
+div.unbreakable {
+    page-break-inside: avoid
+}
+
+.big {
+    font-size: larger
+}
+
+.small {
+    font-size: smaller
+}
+
+.underline {
+    text-decoration: underline
+}
+
+.overline {
+    text-decoration: overline
+}
+
+.line-through {
+    text-decoration: line-through
+}
+
+.aqua {
+    color: #00bfbf
+}
+
+.aqua-background {
+    background-color: #00fafa
+}
+
+.black {
+    color: #000
+}
+
+.black-background {
+    background-color: #000
+}
+
+.blue {
+    color: #0000bf
+}
+
+.blue-background {
+    background-color: #0000fa
+}
+
+.fuchsia {
+    color: #bf00bf
+}
+
+.fuchsia-background {
+    background-color: #fa00fa
+}
+
+.gray {
+    color: #606060
+}
+
+.gray-background {
+    background-color: #7d7d7d
+}
+
+.green {
+    color: #006000
+}
+
+.green-background {
+    background-color: #007d00
+}
+
+.lime {
+    color: #00bf00
+}
+
+.lime-background {
+    background-color: #00fa00
+}
+
+.maroon {
+    color: #600000
+}
+
+.maroon-background {
+    background-color: #7d0000
+}
+
+.navy {
+    color: #000060
+}
+
+.navy-background {
+    background-color: #00007d
+}
+
+.olive {
+    color: #606000
+}
+
+.olive-background {
+    background-color: #7d7d00
+}
+
+.purple {
+    color: #600060
+}
+
+.purple-background {
+    background-color: #7d007d
+}
+
+.red {
+    color: #bf0000
+}
+
+.red-background {
+    background-color: #fa0000
+}
+
+.silver {
+    color: #909090
+}
+
+.silver-background {
+    background-color: #bcbcbc
+}
+
+.teal {
+    color: #006060
+}
+
+.teal-background {
+    background-color: #007d7d
+}
+
+.white {
+    color: #bfbfbf
+}
+
+.white-background {
+    background-color: #fafafa
+}
+
+.yellow {
+    color: #bfbf00
+}
+
+.yellow-background {
+    background-color: #fafa00
+}
+
+span.icon > .fa {
+    cursor: default
+}
+
+.admonitionblock td.icon [class^="fa icon-"] {
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    cursor: default
+}
+
+.admonitionblock td.icon .icon-note:before {
+    content: "\f05a";
+    color: #19407c
+}
+
+.admonitionblock td.icon .icon-tip:before {
+    content: "\f0eb";
+    text-shadow: 1px 1px 2px rgba(155, 155, 0, .8);
+    color: #111
+}
+
+.admonitionblock td.icon .icon-warning:before {
+    content: "\f071";
+    color: #bf6900
+}
+
+.admonitionblock td.icon .icon-caution:before {
+    content: "\f06d";
+    color: #bf3400
+}
+
+.admonitionblock td.icon .icon-important:before {
+    content: "\f06a";
+    color: #bf0000
+}
+
+.conum[data-value] {
+    display: inline-block;
+    color: #fff !important;
+    background-color: rgba(0, 0, 0, .8);
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    text-align: center;
+    font-size: .75em;
+    width: 1.67em;
+    height: 1.67em;
+    line-height: 1.67em;
+    font-family: "Open Sans", "DejaVu Sans", sans-serif;
+    font-style: normal;
+    font-weight: bold
+}
+
+.conum[data-value] * {
+    color: #fff !important
+}
+
+.conum[data-value] + b {
+    display: none
+}
+
+.conum[data-value]:after {
+    content: attr(data-value)
+}
+
+pre .conum[data-value] {
+    position: relative;
+    top: -.125em
+}
+
+b.conum * {
+    color: inherit !important
+}
+
+.conum:not([data-value]):empty {
+    display: none
+}
+
+h1, h2 {
+    letter-spacing: -.01em
+}
+
+dt, th.tableblock, td.content {
+    text-rendering: optimizeLegibility
+}
+
+p, td.content {
+    letter-spacing: -.01em
+}
+
+p strong, td.content strong {
+    letter-spacing: -.005em
+}
+
+p, blockquote, dt, td.content {
+    font-size: 1.0625rem
+}
+
+p {
+    margin-bottom: 1.25rem
+}
+
+.sidebarblock p, .sidebarblock dt, .sidebarblock td.content, p.tableblock {
+    font-size: 1em
+}
+
+.exampleblock > .content {
+    background-color: #fffef7;
+    border-color: #e0e0dc;
+    -webkit-box-shadow: 0 1px 4px #e0e0dc;
+    box-shadow: 0 1px 4px #e0e0dc
+}
+
+.print-only {
+    display: none !important
+}
+
+@media print {
+    @page {
+        margin: 1.25cm .75cm
+    }
+
+    * {
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        text-shadow: none !important
+    }
+
+    a {
+        color: inherit !important;
+        text-decoration: underline !important
+    }
+
+    a.bare, a[href^="#"], a[href^="mailto:"] {
+        text-decoration: none !important
+    }
+
+    a[href^="http:"]:not(.bare):after, a[href^="https:"]:not(.bare):after {
+        content: "(" attr(href) ")";
+        display: inline-block;
+        font-size: .875em;
+        padding-left: .25em
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")"
+    }
+
+    pre, blockquote, tr, img {
+        page-break-inside: avoid
+    }
+
+    thead {
+        display: table-header-group
+    }
+
+    img {
+        max-width: 100% !important
+    }
+
+    p, blockquote, dt, td.content {
+        font-size: 1em;
+        orphans: 3;
+        widows: 3
+    }
+
+    h2, h3, #toctitle, .sidebarblock > .content > .title {
+        page-break-after: avoid
+    }
+
+    #toc, .sidebarblock, .exampleblock > .content {
+        background: none !important
+    }
+
+    #toc {
+        border-bottom: 1px solid #ddddd8 !important;
+        padding-bottom: 0 !important
+    }
+
+    .sect1 {
+        padding-bottom: 0 !important
+    }
+
+    .sect1 + .sect1 {
+        border: 0 !important
+    }
+
+    #header > h1:first-child {
+        margin-top: 1.25rem
+    }
+
+    body.book #header {
+        text-align: center
+    }
+
+    body.book #header > h1:first-child {
+        border: 0 !important;
+        margin: 2.5em 0 1em 0
+    }
+
+    body.book #header .details {
+        border: 0 !important;
+        display: block;
+        padding: 0 !important
+    }
+
+    body.book #header .details span:first-child {
+        margin-left: 0 !important
+    }
+
+    body.book #header .details br {
+        display: block
+    }
+
+    body.book #header .details br + span:before {
+        content: none !important
+    }
+
+    body.book #toc {
+        border: 0 !important;
+        text-align: left !important;
+        padding: 0 !important;
+        margin: 0 !important
+    }
+
+    body.book #toc, body.book #preamble, body.book h1.sect0, body.book .sect1 > h2 {
+        page-break-before: always
+    }
+
+    .listingblock code[data-lang]:before {
+        display: block
+    }
+
+    #footer {
+        background: none !important;
+        padding: 0 .9375em
+    }
+
+    #footer-text {
+        color: rgba(0, 0, 0, .6) !important;
+        font-size: .9em
+    }
+
+    .hide-on-print {
+        display: none !important
+    }
+
+    .print-only {
+        display: block !important
+    }
+
+    .hide-for-print {
+        display: none !important
+    }
+
+    .show-for-print {
+        display: inherit !important
+    }
+}
+
+/* Digitech */
+#header, #content, #footnotes, #footer {
+    max-width: 80em;
+}
+
+td p {
+    margin-bottom: 0.5rem;
+}
+
+#footer {
+    display: none;
+}
+
+table tr td {
+    padding: 0.256em 0.625em;
+}
+
+.sectionbody .tableblock .toc {
+    display: none;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="Dossier-sso" class="book toc2 toc-left">
+<div id="header">
+<h1>Mise en place du SSO pour le produit <strong>AIRS Dossier</strong></h1>
+<div class="details">
+<span id="author" class="author">Digitech</span><br>
+<span id="revnumber">version 2.0,</span>
+<span id="revdate">01/08/2019</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Sommaire</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_administration_réseau">2. Administration réseau</a></li>
+<li><a href="#_paramétrage_et_mise_en_œuvre_pour_dossier">3. Paramétrage et mise en œuvre pour Dossier</a>
+<ul class="sectlevel2">
+<li><a href="#_activation_du_filtre_de_servlet_spnego">3.1. Activation du filtre de servlet SPNEGO</a></li>
+<li><a href="#_vérification_de_la_version_java">3.2. Vérification de la version <strong><span style="color: #F24E52">JAVA</span></strong>.</a></li>
+<li><a href="#_nouvelle_installation">3.3. Nouvelle installation</a></li>
+<li><a href="#_mise_à_jour_dune_installation">3.4. Mise à jour d’une installation</a></li>
+<li><a href="#_java_cryptography_extension_jce">3.5. Java Cryptography Extension (JCE)</a></li>
+<li><a href="#_fichiers_de_configuration_que_ce_soit_dans_le_cadre_dune_nouvelle_installation_ou_de_la_mise_à_jour_dune_installation_existante_lopération_à_réaliser_doit_être_la_même">3.6. Fichiers de configuration Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.</a></li>
+<li><a href="#_copie_de_fichiers">3.7. Copie de fichiers</a></li>
+<li><a href="#_configuration_de_fichiers">3.8. Configuration de fichiers</a>
+<ul class="sectlevel3">
+<li><a href="#_params_xml">3.8.1. <strong>params.xml</strong></a></li>
+<li><a href="#_sso_properties">3.8.2. <strong>sso.properties</strong></a></li>
+<li><a href="#_krb5_conf">3.8.3. <strong>krb5.conf</strong></a></li>
+<li><a href="#_login_conf">3.8.4. <strong>Login.conf</strong></a></li>
+<li><a href="#_config_propertie">3.8.5. <strong>Config.propertie</strong></a></li>
+</ul>
+</li>
+<li><a href="#_activation_kerberos_dans_le_navigateur_des_utilisateurs">3.9. Activation Kerberos dans le navigateur des utilisateurs</a>
+<ul class="sectlevel3">
+<li><a href="#_internet_explorer">3.9.1. Internet Explorer</a></li>
+<li><a href="#_firefox">3.9.2. Firefox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_annexe_authenfication_auprès_dun_serveur_linux_kerberos_mit">4. Annexe Authenfication auprès d’un serveur Linux Kerberos MIT</a>
+<ul class="sectlevel2">
+<li><a href="#_sur_le_serveur">4.1. Sur le serveur</a></li>
+<li><a href="#_sur_le_poste_client">4.2. Sur le poste client</a></li>
+</ul>
+</li>
+<li><a href="#_erreurs_courantes_failure_unspecified_at_gss_api_level_mechanism_level">5. Erreurs courantes Failure unspecified at GSS-API level (Mechanism level:</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all fit-content">
+<caption class="title">Table 1. Notes de suivi</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Etat</th>
+<th class="tableblock halign-left valign-top">Objet</th>
+<th class="tableblock halign-left valign-top">Rédacteur</th>
+<th class="tableblock halign-left valign-top">Validateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02/11/2011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Régis Krawezyk</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01/08/2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">En cours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modification du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L&#8217;authentification unique (en anglais <strong>S</strong>ingle <strong>S</strong>ign-<strong>O</strong>n ou <span style="color: #F27E36">SSO</span>) permet à un utilisateur de ne procéder qu&#8217;à une seule authentification pour accéder à son poste de travail ainsi qu’aux applications.</p>
+</div>
+<div class="paragraph">
+<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <span style="color: #D4CE28">Dossier</span>, l’utilisateur doit d’abord entrer ses <strong>login</strong> et <strong>mot de passe</strong>, que l’application utilise pour ouvrir une session <span style="color: #D4CE28">Dossier</span>.<br>
+Avec <span style="color: #F27E36">SSO</span>, le navigateur transmet automatiquement à l&#8217;application le nom que l&#8217;utilisateur a saisi pour s&#8217;authentifier lors de l&#8217;ouverture de sa session
+<span style="color: #F25937">Windows</span>.
+Dès lors,l&#8217;application réceptionne le nom et vérifie sa validité auprès du serveur d’authentification,avant de l’autoriser ou non à accéder à l&#8217;application.</p>
+</div>
+<div class="paragraph">
+<p>Ce document décrit le paramétrage nécessaire pour intégrer <span style="color: #D4CE28">Dossier</span> au sein d’un domaine géré par <span style="color: #167EF2">Active Directory</span>
+(<span style="color: #F27E36">SSO</span> de type <span style="color: #167EF2">Kerberos</span>).
+En annexe est décrite la même procédure avec une authentification réalisée par un serveur <span style="color: #167EF2">Kerberos</span> sous <span style="color: #F25937">Linux</span>.</p>
+</div>
+<div class="paragraph">
+<p>Ce document se découpe en deux parties qui sont liées à deux types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de fonctionnement.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Prise en compte dans l’administration réseau</p>
+</li>
+<li>
+<p>Paramétrage et mise en œuvre sous <span style="color: #D4CE28">Dossier</span></p>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_administration_réseau">2. Administration réseau</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cette mise en œuvre nécessite la création par l’administrateur du réseau d’un compte utilisateur spécifique à l’application <span style="color: #D4CE28">Dossier</span>, <span class="underline">sans expiration du mot de passe</span>.
+Ici, nous appellerons ce service <strong>$USER_AD_DOSSIER</strong> (<em>dossier</em> par exemple).</p>
+</div>
+<div class="paragraph">
+<p>Ensuite, il faut que ce compte <strong>$USER_AD_DOSSIER</strong> soit autorisé à se pré-authentifier auprès du serveur <span style="color: #167EF2">Active Directory</span> pour vérifier la validité des tickets qui lui sont présentés.
+Pour cela, il est possible d’utilise l’utilitaire setspn (présent dans les supports tools de <span style="color: #F25937">Microsoft</span>) pour affecter à ce compte le statut de service principal name :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>setspn.exe -A HTTP/$APP_SERVEUR $USER_AD_DOSSIER
+setspn.exe -A HTTP/$APP_SERVEUR.$DOMAINE $USER_AD_DOSSIER</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ajouter tous les autres alias possibles pour ce service, c’est-à-dire les différents noms du serveur hébergeant l’application <span style="color: #D4CE28">Dossier</span> au sein du domaine.
+Il faut remplacer bien sûr :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><span class="purple">$APP_SERVEUR</span></strong>: par le <span class="underline">nom du serveur qui contient le serveur d’applications Web</span> au sein duquel est déployé l’application <span style="color: #D4CE28">Dossier</span></p>
+</li>
+<li>
+<p><strong><span class="purple">$DOMAINE</span></strong>: par le nom de <span class="underline">votre domaine</span>.</p>
+</li>
+<li>
+<p><strong><span class="purple">$USER_AD_Dossier</span></strong>: par le nom du <span class="underline">service choisi</span>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pour la vérification des alias enregistrés, il suffit d’exécuter la commande :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>setspn.exe -L dossier</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Suite à cette opération, les URL du type ci-dessous pourront être protégées par le filtre d’authentification <span style="color: #167EF2">Kerberos</span> de l’application <em>Web</em> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>http://$APP_SERVEUR:9090
+http://$APP_SERVEUR:9090/dossier
+http://$APP_SERVEUR.$DOMAINE:9090/</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_paramétrage_et_mise_en_œuvre_pour_dossier">3. Paramétrage et mise en œuvre pour Dossier</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Cette opération comporte plusieurs étapes qui peuvent être différentes selon que cette mise en œuvre concerne :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Une nouvelle installation</p>
+</li>
+<li>
+<p>La modification d’une installation existante</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour le chapitre précédent sinon de bonnes connaissances des fichiers et paramètres de l’application <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+<div class="sect2">
+<h3 id="_activation_du_filtre_de_servlet_spnego">3.1. Activation du filtre de servlet SPNEGO</h3>
+<div class="paragraph">
+<p><span style="color: #167EF2">SPNEGO</span> est un filtre de <em>servlet</em> appelé par <em>apache-Tomcat</em> chaque fois que l&#8217;utilisateur tente d&#8217;accéder à une ressource protégée.
+Il utilise <span style="color: #9867F2">JAAS</span> (<strong>J</strong>ava <strong>A</strong>uthentication and <strong>A</strong>uthorization <strong>S</strong>ervice) et <span style="color:
+#9867F2">Java GSS</span> (<strong>G</strong>eneric <strong>S</strong>ecurity <strong>S</strong>ervices) pour la gestion du protocole <span style="color: #167EF2">Kerberos</span>, et accepte ou rejette la requête suivant la validité du ticket <span style="color: #167EF2">Kerberos</span> présenté par le navigateur.</p>
+</div>
+<div class="paragraph">
+<p>Pour activer ce filtre, il faut :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>S’assurer de l’utilisation de la version <strong>1.8</strong> de <strong><span style="color: #F24E52">JAVA</span></strong> compatible avec ce principe d’utilisation</p>
+</li>
+<li>
+<p>Copier et paramétrer des fichiers au sein de l’application <span style="color: #D4CE28">Dossier</span> déployée</p>
+</li>
+<li>
+<p>Activer l’utilisation du principe <span style="color: #F27E36">SSO</span> au sein du navigateur</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vérification_de_la_version_java">3.2. Vérification de la version <strong><span style="color: #F24E52">JAVA</span></strong>.</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il suffit d’exécuter la commande suivante au sein d’une fenêtre de console ou d&#8217;un terminal.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>java –version</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Il est aussi possible de vérifier la présence d’une variable globale <code>JAVA_HOME</code> pointant vers le bon répertoire d’installation de Java (<span class="menuseq"><b class="menu">clic droit sur le poste de travail</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">onglet Avancé</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Variables d’environnement</b></span>).</p>
+</div>
+<div class="paragraph">
+<p>Deux cas de figure se présentent selon que :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Cette mise en place soit effectuée lors de la première installation du produit</p>
+</li>
+<li>
+<p>Cette mise en place soit réalisée dans le cadre d’une mise à jour d’un environnement existant</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nouvelle_installation">3.3. Nouvelle installation</h3>
+<div class="paragraph">
+<p>Concernant ce cas de mise en œuvre, il suffit de suivre la description d’installation du produit tout en s’assurant d’utiliser une version <strong>7</strong> de <strong><span style="color: #F24E52">JAVA</span></strong>.
+Cette version de <strong><span style="color: #F24E52">JAVA</span></strong> est présente au sein du package d’installation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mise_à_jour_dune_installation">3.4. Mise à jour d’une installation</h3>
+<div class="paragraph">
+<p>Ce cas de mise en œuvre est différent dans la mesure où les installations sont classiquement basées sur d&#8217;une version de <strong><span style="color: #F24E52">JAVA</span></strong> inférièure à 1.8.</p>
+</div>
+<div class="paragraph">
+<p>Généralement, une installation du produit <span style="color: #D4CE28">Dossier</span> comprend les composants suivants :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Serveur <em><span style="color: #D4CE28">Airs</span></em></p>
+</li>
+<li>
+<p>Serveur <em><span style="color: #D4CE28">Full-Text</span></em></p>
+</li>
+<li>
+<p>Serveur <em><span style="color: #D4CE28">Flowmind-WB2E</span></em></p>
+</li>
+<li>
+<p>Serveur apache <em><span style="color: #D4CE28">Tomcat</span></em></p>
+</li>
+<li>
+<p>Application Web <span style="color: #D4CE28">Dossier</span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Plusieurs fichiers de configuration doivent être modifiés, comportant la référence au dossier d’installation de <strong><span style="color: #F24E52">JAVA</span></strong>.
+En outre, les services <span style="color: #F25937">Windows</span> utilisant <strong><span style="color: #F24E52">JAVA</span></strong> (ce qui concernent les serveurs <em><span style="color: #D4CE28">Full-Text</span></em>, <em><span style="color:
+#D4CE28">Flowmind-WB2E</span></em> et apache <em><span style="color: #D4CE28">Tomcat</span></em>) doivent être supprimés puis recréés après modification de leurs fichiers de configuration respectifs.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Serveur <strong><span style="color: #D4CE28">FTServeur</span></strong>:
+Les deux fichiers de démarrage et d’arrêt proposés par défaut pour ce serveur contiennent les références au répertoire d’installation de <strong><span style="color: #F24E52">JAVA</span></strong>.
+Il faut donc modifier ces dernières au sein de ces deux fichiers <strong>startFtServer.bat</strong> (ou <strong>startFtServer.sh</strong>), <strong>shutDown.bat</strong> (ou <strong>shutDown.sh</strong>).
+A noter que, spécifiquement aux environnements <span style="color: #F25937">Windows</span>, le fichier <strong>wrapper.conf</strong> contient la référence au répertoire d’installation de <strong><span style="color: #F24E52">JAVA</span></strong>.
+Il faut donc aussi modifier ce fichier dans les cas où :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>le fichier <strong>FTserveur.bat</strong> est utilisé pour le démarrage de ce serveur</p>
+</li>
+<li>
+<p>ce serveur est démarré via le service <strong>NT</strong></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Serveur <strong><span style="color: #D4CE28">Flowmind-WB2E</span></strong>:
+la modification de la référence à <strong><span style="color: #F24E52">JAVA</span></strong> pour cette composante nécessite la modification des valeurs associées:</p>
+</li>
+<li>
+<p>à la variable <strong>fm_java_bin</strong> pour le fichier <strong>profile.conf</strong> présent au sein du sous-dossier <strong>conf/</strong> du répertoire d’installation de l’instance de processus</p>
+</li>
+<li>
+<p>à la variable <strong>FM_JAVA_BIN</strong> pour le fichier <strong>fmconfigure.bat</strong> (ou <strong>fmconfigure</strong> selon le type de plate-forme).
+Ces deux modifications ayant été effectuées, il est alors nécessaire d’exécuter le script <strong>fmconfigure</strong>, puis de recréer le <strong>service NT</strong> dans le cadre de l’utilisation de ce service.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si les scripts de suppression et de re-création du <em>service NT</em> n’existent pas, il est possible de modifier directement dans la base de registre le paramètre <strong>JVM Library</strong> de l’entrée Parameters du <strong>service NT</strong> (à rechercher par le nom du service).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Serveur apache <strong><span style="color: #D4CE28">Tomcat</span></strong>:
+non présent par défaut au sein du fichier <strong>catalina.bat</strong> (ou <strong>catalina.sh</strong>), assurez-vous bien que si la variable d’environnement est redéfinie au sein de ce fichier, elle soit bien associée au répertoire d’installation de la version 1.8 de <strong><span style="color: #F24E52">JAVA</span></strong>.
+Supprimez (paramètre <em>uninstall</em>) et recréez (paramètre <em>install</em>) le <strong>service NT</strong> via le script <strong>service.bat</strong> du répertoire <em>bin</em> (en lui passant l&#8217;agument).</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_java_cryptography_extension_jce">3.5. Java Cryptography Extension (JCE)</h3>
+<div class="paragraph">
+<p>Bien que présent par défaut dans les <strong>jre</strong> depuis la version <strong>1.4</strong>, il est toutefois possible de récupérer manuellement ce package.
+L’installation de la JCE consiste à déposer les fichiers <strong>local_policy.jar</strong> et <strong>US_export_policy.jar</strong> dans le répertoire <a href="/jre/lib/security">/jre/lib/security</a> de la <strong>jdk</strong>.
+Il faut bien sur faire coïncider la version de la <strong>JCE</strong> avec celle de la <strong>JDK</strong> (<strong>jce8</strong> pour <strong><span style="color: #F24E52">JAVA</span></strong> <em>jdk</em> en version <strong>8</strong>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fichiers_de_configuration_que_ce_soit_dans_le_cadre_dune_nouvelle_installation_ou_de_la_mise_à_jour_dune_installation_existante_lopération_à_réaliser_doit_être_la_même">3.6. Fichiers de configuration Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.</h3>
+<div class="paragraph">
+<p>Elle consiste en :
+* L’ajout de nouveau fichier de configuration
+* La modification de fichiers de configuration existants</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_copie_de_fichiers">3.7. Copie de fichiers</h3>
+<div class="paragraph">
+<p>Il est nécessaire de copier les trois fichiers de configuration <strong>login.conf</strong>, <strong>krb5.conf</strong> et <strong>sso.properties</strong> dans le sous-répertoire <strong>xml/</strong> du répertoire de déploiement de l’application Web <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_de_fichiers">3.8. Configuration de fichiers</h3>
+<div class="paragraph">
+<p>Cette étape de configuration concerne les fichiers suivants, tous présents dans le répertoire <strong>xml/</strong> (sous-répertoire de déploiement de l’application Web
+<span style="color: #D4CE28">Dossier</span>) :</p>
+</div>
+<div class="sect3">
+<h4 id="_params_xml">3.8.1. <strong>params.xml</strong></h4>
+<div class="paragraph">
+<p>Une nouvelle balise est présente dans le fichier.
+Cette balise permet d’activer ou de désactiver le mécanisme utiliser pour la connection sso.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml" data-lang="xml">&lt;!--  activation --&gt;
+&lt;ssoActivated&gt;true&lt;/ssoActivated&gt;
+&lt;!--  désactivation --&gt;
+&lt;ssoActivated&gt;false&lt;/ssoActivated&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_sso_properties">3.8.2. <strong>sso.properties</strong></h4>
+<div class="paragraph">
+<p>Seuls les paramètres susceptibles d’être modifiés apparaissent au sein du tableau ci-dessous.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. sso.properties</caption>
+<colgroup>
+<col style="width: 100%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Variable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valeur</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>spnego.allow.basic</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Permet une authentification <strong>HTTP</strong> basique si le navigateur ne gère pas le protocole <span style="color: #167EF2">Kerberos</span>. Par défaut, nous affectons cette valeur
+à <span style="color: 50F250">true</span>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>spnego.allow.localhost</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Permet ou non une demande d’authentification provenant de localhost. Par défaut, nous affectons cette valeur à <span style="color: 50F250">true</span>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>spnego.allow.unsecure.basic</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Combinée à l’option allowBasic, permet l’authentification <strong>HTTP</strong> basique même en l’absence du protocole <strong>HTTPS</strong>. Par défaut,
+nous affectons cette valeur à <span style="color: 50F250">true</span>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>spnego.preauth.password</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mot de passe utilisé par apache <em><span style="color: #D4CE28">Tomcat</span></em> pour consulter le serveur d&#8217;authentification (cf. compte <strong>$USER_AD_DOSSIER</strong> créé précédemment)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>spnego.prompt.ntlm</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Permet une authentification <strong>HTTP</strong> basique lorsque le navigateur essaie de s’authentifier au moyen du protocole de <strong>NTLM</strong> (ce dernier
+n’étant pas géré par le filtre de servlet). Par défaut, nous affectons cette valeur à <span style="color: 50F250">true</span>.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>spnego.preauth.username</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Login utilisé par apache <em><span style="color: #D4CE28">Tomcat</span></em> pour consulter le serveur d&#8217;authentification (cf.
+compte <strong>$USER_AD_DOSSIER</strong> créé précédemment)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Généralement, seuls les paramètres <strong>password</strong> et <strong>username</strong> sont modifiés.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_krb5_conf">3.8.3. <strong>krb5.conf</strong></h4>
+<div class="paragraph">
+<p>Placé au sein du sous-répertoire <strong>xml/</strong> du répertoire de déploiement de l’application Web <span style="color: #D4CE28">Dossier</span>, ce fichier contient les paramètres du serveur <span style="color: #167EF2">Kerberos</span>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-properties" data-lang="properties">[libdefaults]
+default_realm = LOCALDOMAIN \
+  default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc \
+  default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 \
+  des-cbc-crc permitted_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+
+[realms]
+LOCALDOMAIN = { kdc = $KER_SERVEUR.$DOMAINE default_domain = $DOMAINE }
+
+[domain_realm]
+. $DOMAINE = LOCALDOMAIN</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Il suffit de remplacer les paramètres <strong>$DOMAINE</strong> et <strong>$KER_SERVEUR</strong> respectivement par le nom du domaine et le nom complet du serveur <span style="color: #167EF2">Kerberos</span> au sein du <strong><em>domaine</em></strong>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_login_conf">3.8.4. <strong>Login.conf</strong></h4>
+<div class="paragraph">
+<p><em>sans objet</em></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_config_propertie">3.8.5. <strong>Config.propertie</strong></h4>
+<div class="paragraph">
+<p>Activer ou ajouter la clé sso.type comme suis :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-properties" data-lang="properties">sso.type=SPNEGO</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_activation_kerberos_dans_le_navigateur_des_utilisateurs">3.9. Activation Kerberos dans le navigateur des utilisateurs</h3>
+<div class="paragraph">
+<p>Reste ensuite à autoriser l’utilisation de ce mode de fonctionnement au sein des divers navigateurs du client.
+En fonction de la version du navigateur, des sites déjà référencés, ce paramétrage peut ne pas être nécessaire.
+Il convient de réaliser un test sans avant de les ajouter.</p>
+</div>
+<div class="sect3">
+<h4 id="_internet_explorer">3.9.1. Internet Explorer</h4>
+<div class="paragraph">
+<p>Aller dans <span class="menuseq"><b class="menu">Outils</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Options Internet</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Sécurité</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Intranet local</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Sites&#8230;&#8203;</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Avancé..</b></span> et indiquer le domaine <strong><a href="http://$DOMAINE" class="bare">http://$DOMAINE</a></strong> comme étant dans l&#8217;intranet.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_firefox">3.9.2. Firefox</h4>
+<div class="paragraph">
+<p>L’authentification Kerberos est activée par défaut pour les versions récentes de <strong>Firefox</strong>.
+Entrer <kbd>about:config</kbd> dans la barre d’adresse, et restreindre la liste des options en entrant <strong>negotiate</strong> dans le filtre de recherche rapide.
+Double-cliquer sur l’entrée <strong>network.negotiate-auth.trusted-uris</strong>, puis entrer <strong>.$DOMAINE</strong> pour limiter l’authentification <span style="color: #167EF2">Kerberos</span> à ce <em>domaine</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cette entrée peut être laissée vide pour une autorisation sans restriction (non recommandée)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_annexe_authenfication_auprès_dun_serveur_linux_kerberos_mit">4. Annexe Authenfication auprès d’un serveur Linux Kerberos MIT</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_sur_le_serveur">4.1. Sur le serveur</h3>
+<div class="paragraph">
+<p>Installer les packages <code>krb5-libs</code>, <code>krb5-server</code> et <code>krb5-workstation</code>.</p>
+</div>
+<div class="paragraph">
+<p>Editer les fichiers de configuration <a href="/etc/krb5.conf">/etc/krb5.conf</a> et <a href="/var/kerberos/krb5kdc/kdc.conf">/var/kerberos/krb5kdc/kdc.conf</a> afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer <strong>EXAMPLE.COM</strong> et <strong>example.com</strong> en respectant la casse et de remplacer <strong>kerberos.example.com</strong> par le nom du serveur
+<span style="color: #167EF2">Kerberos</span>).</p>
+</div>
+<div class="paragraph">
+<p>Créer la base de données au moyen de la commande :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/usr/kerberos/sbin/kdb5_util create –s</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Editer le fichier <a href="/var/kerberos/krb5kdc/kadm5.acl">/var/kerberos/krb5kdc/kadm5.acl</a>.
+Ce fichier est utilise par <code>kadmind</code> pour déterminer les personnes qui ont le droit d’administrer la base de données <span style="color: #167EF2">Kerberos</span> et leur niveau d’accès.
+On peut se contenter de laisser une ligne unique (remplacer <strong>EXAMPLE.COM</strong>) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>*/admin@EXAMPLE.COM*</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Créer le premier utilisateur par la commande (remplacer <strong>username</strong>) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/usr/kerberos/sbin/kadmin.local -q "addprinc username/admin"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Lancer les services suivants par la commande :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/sbin/service krb5kdc start
+/sbin/service kadmin start</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ajouter un par un chaque poste de travail du réseau (remplacer <strong>pc-sso.digitech.lan</strong> par le nom du poste au sein du réseau) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer <strong>L.LOGIN</strong> par le login de l’utilisateur) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ajouter de la même manière un compte de pré-authentification pour l’application <span style="color: #D4CE28">Dossier</span>, dont nous reporterons les login et mot de passe dans le fichier <strong>sso .properties</strong> (cf. référence plus haut).</p>
+</div>
+<div class="paragraph">
+<p>Editer le fichier <a href="/etc/krb5.conf">/etc/krb5.conf</a> qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier <strong>krb5.conf</strong> nécessaire au paramétrage de <span style="color: #9867F2">JAAS</span>).
+Cette étape n’est pas nécessaire si les postes de travail sont situés sur le même domaine que le serveur.</p>
+</div>
+<div class="paragraph">
+<p>Redémarrer <span style="color: #167EF2">Kerberos</span>.</p>
+</div>
+<div class="paragraph">
+<p>Vous trouverez des explications plus complètes à <a href="http://docs.fedoraproject
+.org/security-guide/f11/en-US/sect-Security_Guide-Kerberos-Configuring_a_Kerberos_5_Server.html">l&#8217;adresse suivante</a></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="_sur_le_poste_client">4.2. Sur le poste client</h3>
+<div class="paragraph">
+<p>Configurer <span style="color: #167EF2">Kerberos</span> par les commandes suivantes au moyen de l’utilitaire <code>ksetup</code> qui fait partie lui-aussi des supports tools de <span style="color: #F25937">Windows</span>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il faut remplacer respectivement <strong>$DOMAINE</strong>, <strong>$KER_SERVEUR</strong> et <strong>$PASSWORD</strong> au sein de l’exemple ci-dessous par:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>le nom du domaine</p>
+</li>
+<li>
+<p>le nom du serveur <span style="color: #167EF2">Kerberos</span></p>
+</li>
+<li>
+<p>le mot de passe utilisé par apache {tomcat} pour consulter le serveur d&#8217;authentification (cf. compte dossier créé précédemment)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">ksetup /setdomain $DOMAINE
+ksetup /addkdc $DOMAINE $KER_SERVEUR.$DOMAINE
+ksetup /setcomputerpassword $PASSWORD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>rebooter</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">ksetup /mapuser * *</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les <span class="menuseq"><b class="menu">propriétés du poste de travail</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Nom de l’ordinateur</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Modifier</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Autres</b></span>.</p>
+</div>
+<div class="paragraph">
+<p>Décocher également l’option <strong>Modifier le suffixe DNS principal</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur <span style="color: #F25937">Linux</span>.
+A partir de maintenant, l’utilisateur devrait être en mesure de s’authentifier en sélectionnant le bon domaine dans la liste déroulante lors de la prochaine ouverture de session <span style="color: #F25937">Windows</span>.</p>
+</div>
+<div class="paragraph">
+<p>Vous trouverez des explications plus complètes à <a href="http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html">l&#8217;adresse suivante</a></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_erreurs_courantes_failure_unspecified_at_gss_api_level_mechanism_level">5. Erreurs courantes Failure unspecified at GSS-API level (Mechanism level:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled.</p>
+</div>
+<div class="paragraph">
+<p>La configuration par défaut prévoit une clé aes de 128 (aes128-cts) il apparait ici un défaut de configuration car la clé du client est aes sur 256 bits . Il est donc nécessaire ici de faire évoluer la configuration de Dossier est de modifier dans le fichier krb5.conf présent dans le répertoire xml :</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Configuration par défaut</div>
+<div class="content">
+<pre class="highlight"><code class="language-properies" data-lang="properies">[libdefaults]
+default_realm = &lt;CLIENT_REALM&gt;
+  default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5
+  des-cbc-crc permitted_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Nouvelle configuration</div>
+<div class="content">
+<pre class="highlight"><code class="language-properies" data-lang="properies">[libdefaults]
+default_realm = &lt;CLIENT_REALM&gt;
+  default_tkt_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes256-cts aes128-cts rc4-hmac
+  des3-cbc-sha1 des-cbc-md5 des-cbc-crc permitted_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 2.0<br>
+</div>
+</div>
+</body>
+</html>
