@@ -2065,7 +2065,7 @@ table tr td {
 <li><a href="#_nouvelle_installation">3.3. Nouvelle installation</a></li>
 <li><a href="#_mise_à_jour_dune_installation">3.4. Mise à jour d’une installation</a></li>
 <li><a href="#_java_cryptography_extension_jce">3.5. Java Cryptography Extension (JCE)</a></li>
-<li><a href="#_fichiers_de_configuration_que_ce_soit_dans_le_cadre_dune_nouvelle_installation_ou_de_la_mise_à_jour_dune_installation_existante_lopération_à_réaliser_doit_être_la_même">3.6. Fichiers de configuration Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.</a></li>
+<li><a href="#_fichiers_de_configuration">3.6. Fichiers de configuration</a></li>
 <li><a href="#_copie_de_fichiers">3.7. Copie de fichiers</a></li>
 <li><a href="#_configuration_de_fichiers">3.8. Configuration de fichiers</a>
 <ul class="sectlevel3">
@@ -2090,7 +2090,11 @@ table tr td {
 <li><a href="#_sur_le_poste_client">4.2. Sur le poste client</a></li>
 </ul>
 </li>
-<li><a href="#_erreurs_courantes_failure_unspecified_at_gss_api_level_mechanism_level">5. Erreurs courantes Failure unspecified at GSS-API level (Mechanism level:</a></li>
+<li><a href="#_erreurs_courantes">5. Erreurs courantes</a>
+<ul class="sectlevel2">
+<li><a href="#_failure_unspecified_at_gss_api_level">5.1. Failure unspecified at GSS-API level</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -2412,7 +2416,10 @@ Il faut bien sur faire coïncider la version de la <strong>JCE</strong> avec cel
 </div>
 </div>
 <div class="sect2">
-<h3 id="_fichiers_de_configuration_que_ce_soit_dans_le_cadre_dune_nouvelle_installation_ou_de_la_mise_à_jour_dune_installation_existante_lopération_à_réaliser_doit_être_la_même">3.6. Fichiers de configuration Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.</h3>
+<h3 id="_fichiers_de_configuration">3.6. Fichiers de configuration</h3>
+<div class="paragraph">
+<p>Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.</p>
+</div>
 <div class="paragraph">
 <p>Elle consiste en :
 * L’ajout de nouveau fichier de configuration
@@ -2448,93 +2455,74 @@ Cette balise permet d’activer ou de désactiver le mécanisme utiliser pour la
 </div>
 <div class="sect3">
 <h4 id="_sso_properties">3.8.2. <strong>sso.properties</strong></h4>
-<div class="paragraph">
-<p>Seuls les paramètres susceptibles d’être modifiés apparaissent au sein du tableau ci-dessous.</p>
-</div>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 2. sso.properties</caption>
 <colgroup>
-<col style="width: 100%;">
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Variable</th>
+<th class="tableblock halign-left valign-top">Valeur</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spnego.preauth.username</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Valeur</p>
+<p>Login utilisé par apache <em><span style="color: #D4CE28">Tomcat</span></em> pour consulter le serveur d&#8217;authentification (cf.
+compte <strong>$USER_AD_DOSSIER</strong> créé précédemment)</p>
 </div></div></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spnego.preauth.password</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>spnego.allow.basic</strong></p>
+<p>Mot de passe utilisé par apache <em><span style="color: #D4CE28">Tomcat</span></em> pour consulter le serveur d&#8217;authentification (cf. compte <strong>$USER_AD_DOSSIER</strong> créé précédemment)</p>
 </div></div></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spnego.allow.basic</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Permet une authentification <strong>HTTP</strong> basique si le navigateur ne gère pas le protocole <span style="color: #167EF2">Kerberos</span>. Par défaut, nous affectons cette valeur
-à <span style="color: 50F250">true</span>.</p>
+<p>Permet une authentification <strong>HTTP</strong> basique si le navigateur ne gère pas le protocole <span style="color: #167EF2">Kerberos</span>. Par défaut, nous affectons cette
+valeur à <span style="color: 50F250">true</span>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>spnego.allow.localhost</strong></p>
-</div></div></td>
-</tr>
-<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spnego.allow.localhost</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Permet ou non une demande d’authentification provenant de localhost. Par défaut, nous affectons cette valeur à <span style="color: 50F250">true</span>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>spnego.allow.unsecure.basic</strong></p>
-</div></div></td>
-</tr>
-<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spnego.allow.unsecure.basic</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Combinée à l’option allowBasic, permet l’authentification <strong>HTTP</strong> basique même en l’absence du protocole <strong>HTTPS</strong>. Par défaut,
 nous affectons cette valeur à <span style="color: 50F250">true</span>.</p>
 </div></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>spnego.preauth.password</strong></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Mot de passe utilisé par apache <em><span style="color: #D4CE28">Tomcat</span></em> pour consulter le serveur d&#8217;authentification (cf. compte <strong>$USER_AD_DOSSIER</strong> créé précédemment)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>spnego.prompt.ntlm</strong></p>
-</div></div></td>
-</tr>
-<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>spnego.prompt.ntlm</strong></p></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Permet une authentification <strong>HTTP</strong> basique lorsque le navigateur essaie de s’authentifier au moyen du protocole de <strong>NTLM</strong> (ce dernier
 n’étant pas géré par le filtre de servlet). Par défaut, nous affectons cette valeur à <span style="color: 50F250">true</span>.</p>
 </div></div></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>spnego.preauth.username</strong></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Login utilisé par apache <em><span style="color: #D4CE28">Tomcat</span></em> pour consulter le serveur d&#8217;authentification (cf.
-compte <strong>$USER_AD_DOSSIER</strong> créé précédemment)</p>
-</div></div></td>
-</tr>
 </tbody>
 </table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Généralement, seuls les paramètres <strong>password</strong> et <strong>username</strong> sont modifiés.</p>
+<p>Seuls les paramètres susceptibles d’être modifiés apparaissent au sein du tableau ci-dessus.<br>
+Généralement, les paramètres <strong>spnego.preauth.username</strong> et <strong>spnego.preauth.password</strong> sont les seuls modifiés.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -2623,15 +2611,19 @@ Double-cliquer sur l’entrée <strong>network.negotiate-auth.trusted-uris</stro
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_sur_le_serveur">4.1. Sur le serveur</h3>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Installer les packages <code>krb5-libs</code>, <code>krb5-server</code> et <code>krb5-workstation</code>.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Editer les fichiers de configuration <a href="/etc/krb5.conf">/etc/krb5.conf</a> et <a href="/var/kerberos/krb5kdc/kdc.conf">/var/kerberos/krb5kdc/kdc.conf</a> afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer <strong>EXAMPLE.COM</strong> et <strong>example.com</strong> en respectant la casse et de remplacer <strong>kerberos.example.com</strong> par le nom du serveur
 <span style="color: #167EF2">Kerberos</span>).</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Créer la base de données au moyen de la commande :</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2648,16 +2640,24 @@ On peut se contenter de laisser une ligne unique (remplacer <strong>EXAMPLE.COM<
 <pre class="highlight"><code>*/admin@EXAMPLE.COM*</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
 <p>Créer le premier utilisateur par la commande (remplacer <strong>username</strong>) :</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>/usr/kerberos/sbin/kadmin.local -q "addprinc username/admin"</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
 <p>Lancer les services suivants par la commande :</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2665,42 +2665,59 @@ On peut se contenter de laisser une ligne unique (remplacer <strong>EXAMPLE.COM<
 /sbin/service kadmin start</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="6">
+<li>
 <p>Ajouter un par un chaque poste de travail du réseau (remplacer <strong>pc-sso.digitech.lan</strong> par le nom du poste au sein du réseau) :</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="7">
+<li>
 <p>Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer <strong>L.LOGIN</strong> par le login de l’utilisateur) :</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="8">
+<li>
 <p>Ajouter de la même manière un compte de pré-authentification pour l’application <span style="color: #D4CE28">Dossier</span>, dont nous reporterons les login et mot de passe dans le fichier <strong>sso .properties</strong> (cf. référence plus haut).</p>
-</div>
-<div class="paragraph">
-<p>Editer le fichier <a href="/etc/krb5.conf">/etc/krb5.conf</a> qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier <strong>krb5.conf</strong> nécessaire au paramétrage de <span style="color: #9867F2">JAAS</span>).
+</li>
+<li>
+<p>Editer le fichier <a href="/etc/krb5.conf">/etc/krb5.conf</a> qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier <strong>krb5.conf</strong>
+nécessaire au paramétrage de <span style="color: #9867F2">JAAS</span>).
 Cette étape n’est pas nécessaire si les postes de travail sont situés sur le même domaine que le serveur.</p>
+</li>
+<li>
+<p><strong>Redémarrer</strong> <span style="color: #167EF2">Kerberos</span>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Redémarrer <span style="color: #167EF2">Kerberos</span>.</p>
-</div>
-<div class="paragraph">
-<p>Vous trouverez des explications plus complètes à <a href="http://docs.fedoraproject
+<p>Vous trouverez des explications complètes de cette procédure à <a href="http://docs.fedoraproject
 .org/security-guide/f11/en-US/sect-Security_Guide-Kerberos-Configuring_a_Kerberos_5_Server.html">l&#8217;adresse suivante</a></p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
 <h3 id="_sur_le_poste_client">4.2. Sur le poste client</h3>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Configurer <span style="color: #167EF2">Kerberos</span> par les commandes suivantes au moyen de l’utilitaire <code>ksetup</code> qui fait partie lui-aussi des supports tools de <span style="color: #F25937">Windows</span>.</p>
+</li>
+</ol>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2736,36 +2753,55 @@ ksetup /addkdc $DOMAINE $KER_SERVEUR.$DOMAINE
 ksetup /setcomputerpassword $PASSWORD</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
 <p><strong>rebooter</strong></p>
+</li>
+<li>
+<p>Exécuter la commander suivante</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-sh" data-lang="sh">ksetup /mapuser * *</code></pre>
 </div>
 </div>
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
 <p>Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les <span class="menuseq"><b class="menu">propriétés du poste de travail</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Nom de l’ordinateur</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Modifier</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Autres</b></span>.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Décocher également l’option <strong>Modifier le suffixe DNS principal</strong>.</p>
-</div>
-<div class="paragraph">
+</li>
+<li>
 <p>Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur <span style="color: #F25937">Linux</span>.
 A partir de maintenant, l’utilisateur devrait être en mesure de s’authentifier en sélectionnant le bon domaine dans la liste déroulante lors de la prochaine ouverture de session <span style="color: #F25937">Windows</span>.</p>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p>Vous trouverez des explications plus complètes à <a href="http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html">l&#8217;adresse suivante</a></p>
+<p>Vous trouverez des explications complètes sur cette procédure à <a href="http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html">l&#8217;adresse
+suivante</a></p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_erreurs_courantes_failure_unspecified_at_gss_api_level_mechanism_level">5. Erreurs courantes Failure unspecified at GSS-API level (Mechanism level:</h2>
+<h2 id="_erreurs_courantes">5. Erreurs courantes</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_failure_unspecified_at_gss_api_level">5.1. Failure unspecified at GSS-API level</h3>
 <div class="paragraph">
-<p>Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled.</p>
+<p><em>Suite du message</em>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Mechanism level: Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled)</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>La configuration par défaut prévoit une clé aes de 128 (aes128-cts) il apparait ici un défaut de configuration car la clé du client est aes sur 256 bits . Il est donc nécessaire ici de faire évoluer la configuration de Dossier est de modifier dans le fichier krb5.conf présent dans le répertoire xml :</p>
@@ -2788,6 +2824,7 @@ default_realm = &lt;CLIENT_REALM&gt;
   default_tkt_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
   default_tgs_enctypes = aes256-cts aes128-cts rc4-hmac
   des3-cbc-sha1 des-cbc-md5 des-cbc-crc permitted_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc</code></pre>
+</div>
 </div>
 </div>
 </div>
