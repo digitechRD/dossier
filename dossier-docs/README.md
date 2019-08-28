@@ -3,5 +3,5 @@
 Ce projet regroupe les documentations de _Dossier_.
 
 Les documentations disponibles sont:
-* sso: 
-* 
+* [installation sso](src/adoc/administration/installation-sso.adoc) 
+* ... à suivre 

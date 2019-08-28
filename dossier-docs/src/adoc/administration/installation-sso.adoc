@@ -19,14 +19,13 @@ v2.0, 01/08/2019
 ifdef::backend-pdf[]
 :img-prio-width: 10
 :pdf-page-size: A4
-:title-logo-image: image:dossier_cover.png[align=center]
+:title-logo-image: image:dossier-cover.png[align=center]
 endif::[]
 ifndef::backend-pdf[]
 :toc: left
 :img-prio-width: 18
 endif::[]
 ifdef::env-github[]
-//:imagesdir: https://github.com/digitechRD/dossier/tree/master/dossier-docs/src/adoc/administration/images/
 :imagesdir: images
 :toc-placement!:
 :tip-caption: :bulb:
@@ -53,8 +52,8 @@ endif::[]
 :kerberos:  pass:quotes[<span style="color: #167EF2">Kerberos</span>]
 :spnego:  pass:quotes[<span style="color: #167EF2">SPNEGO</span>]
 
-ifdef::env-github[]
-image::dossier_cover.png[]
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
 endif::[]
 
 [options="header,autowidth"]
