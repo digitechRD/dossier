@@ -52,7 +52,9 @@ endif::[]
 :kerberos:  pass:quotes[<span style="color: #167EF2">Kerberos</span>]
 :spnego:  pass:quotes[<span style="color: #167EF2">SPNEGO</span>]
 
+ifdef::env-github[]
 image::dossier_cover.png[]
+endif::[]
 
 [options="header,autowidth"]
 .Notes de suivi
@@ -62,7 +64,9 @@ image::dossier_cover.png[]
 |01/08/2019|2.0|En cours|Modification du document|Nicolas Félix|
 |===
 
+ifdef::env-github[]
 toc::[]
+endif::[]
 
 <<<
 
@@ -215,7 +219,9 @@ Bien que présent par défaut dans les *jre* depuis la version *1.4*, il est tou
 L’installation de la JCE consiste à déposer les fichiers *local_policy.jar* et *US_export_policy.jar* dans le répertoire link:/jre/lib/security[/jre/lib/security] de la *jdk*.
 Il faut bien sur faire coïncider la version de la *JCE* avec celle de la *JDK* (*jce8* pour {java} _jdk_ en version *8*).
 
-=== Fichiers de configuration Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.
+=== Fichiers de configuration
+
+Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.
 
 Elle consiste en :
 * L’ajout de nouveau fichier de configuration
@@ -245,25 +251,26 @@ Cette balise permet d’activer ou de désactiver le mécanisme utiliser pour la
 
 ==== *sso.properties*
 
-Seuls les paramètres susceptibles d’être modifiés apparaissent au sein du tableau ci-dessous.
-
-[cols="1^,2a",options="header"]
-.sso.properties
+[cols=",2a",options="header"]
 |===
 |Variable|Valeur
-|*spnego.allow.basic*|Permet une authentification *HTTP* basique si le navigateur ne gère pas le protocole {kerberos}. Par défaut, nous affectons cette valeur
-à +++<span style="color: 50F250">true</span>+++.
+|*spnego.preauth.username*|Login utilisé par apache _+++<span style="color: #D4CE28">Tomcat</span>+++_ pour consulter le serveur d'authentification (cf.
+compte *$USER_AD_DOSSIER* créé précédemment)
+|*spnego.preauth.password*|Mot de passe utilisé par apache _+++<span style="color: #D4CE28">Tomcat</span>+++_ pour consulter le serveur d'authentification (cf. compte *$USER_AD_DOSSIER* créé précédemment)
+|*spnego.allow.basic*|Permet une authentification *HTTP* basique si le navigateur ne gère pas le protocole {kerberos}. Par défaut, nous affectons cette
+valeur à +++<span style="color: 50F250">true</span>+++.
 |*spnego.allow.localhost*|Permet ou non une demande d’authentification provenant de localhost. Par défaut, nous affectons cette valeur à +++<span style="color: 50F250">true</span>+++.
 |*spnego.allow.unsecure.basic*|Combinée à l’option allowBasic, permet l’authentification *HTTP* basique même en l’absence du protocole *HTTPS*. Par défaut,
 nous affectons cette valeur à +++<span style="color: 50F250">true</span>+++.
-|*spnego.preauth.password*|Mot de passe utilisé par apache _+++<span style="color: #D4CE28">Tomcat</span>+++_ pour consulter le serveur d'authentification (cf. compte *$USER_AD_DOSSIER* créé précédemment)
 |*spnego.prompt.ntlm*|Permet une authentification *HTTP* basique lorsque le navigateur essaie de s’authentifier au moyen du protocole de *NTLM* (ce dernier
 n’étant pas géré par le filtre de servlet). Par défaut, nous affectons cette valeur à +++<span style="color: 50F250">true</span>+++.
-|*spnego.preauth.username*|Login utilisé par apache _+++<span style="color: #D4CE28">Tomcat</span>+++_ pour consulter le serveur d'authentification (cf.
-compte *$USER_AD_DOSSIER* créé précédemment)
 |===
 
-Généralement, seuls les paramètres *password* et *username* sont modifiés.
+[NOTE]
+====
+Seuls les paramètres susceptibles d’être modifiés apparaissent au sein du tableau ci-dessus. +
+Généralement, les paramètres *spnego.preauth.username* et *spnego.preauth.password* sont les seuls modifiés.
+====
 
 ==== *krb5.conf*
 
@@ -324,12 +331,12 @@ Cette entrée peut être laissée vide pour une autorisation sans restriction (n
 
 === Sur le serveur
 
-Installer les packages `krb5-libs`, `krb5-server` et `krb5-workstation`.
+. Installer les packages `krb5-libs`, `krb5-server` et `krb5-workstation`.
 
-Editer les fichiers de configuration link:/etc/krb5.conf[/etc/krb5.conf] et link:/var/kerberos/krb5kdc/kdc.conf[/var/kerberos/krb5kdc/kdc.conf] afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer *EXAMPLE.COM* et *example.com* en respectant la casse et de remplacer *kerberos.example.com* par le nom du serveur
+. Editer les fichiers de configuration link:/etc/krb5.conf[/etc/krb5.conf] et link:/var/kerberos/krb5kdc/kdc.conf[/var/kerberos/krb5kdc/kdc.conf] afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer *EXAMPLE.COM* et *example.com* en respectant la casse et de remplacer *kerberos.example.com* par le nom du serveur
 {kerberos}).
 
-Créer la base de données au moyen de la commande :
+. Créer la base de données au moyen de la commande :
 
 [source]
 /usr/kerberos/sbin/kdb5_util create –s
@@ -341,42 +348,48 @@ On peut se contenter de laisser une ligne unique (remplacer *EXAMPLE.COM*) :
 [source]
 */admin@EXAMPLE.COM*
 
-Créer le premier utilisateur par la commande (remplacer *username*) :
+[start=4]
+. Créer le premier utilisateur par la commande (remplacer *username*) :
 
 [source]
 /usr/kerberos/sbin/kadmin.local -q "addprinc username/admin"
 
-Lancer les services suivants par la commande :
+[start=5]
+. Lancer les services suivants par la commande :
 
 [source]
 /sbin/service krb5kdc start
 /sbin/service kadmin start
 
-Ajouter un par un chaque poste de travail du réseau (remplacer *pc-sso.digitech.lan* par le nom du poste au sein du réseau) :
+[start=6]
+. Ajouter un par un chaque poste de travail du réseau (remplacer *pc-sso.digitech.lan* par le nom du poste au sein du réseau) :
 
 [source]
 addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan
 
-Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer *L.LOGIN* par le login de l’utilisateur) :
+[start=7]
+. Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer *L.LOGIN* par le login de l’utilisateur) :
 
 [source]
 addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN
 
-Ajouter de la même manière un compte de pré-authentification pour l’application {dossier}, dont nous reporterons les login et mot de passe dans le fichier *sso .properties* (cf. référence plus haut).
+[start=8]
+. Ajouter de la même manière un compte de pré-authentification pour l’application {dossier}, dont nous reporterons les login et mot de passe dans le fichier *sso .properties* (cf. référence plus haut).
 
-Editer le fichier link:/etc/krb5.conf[/etc/krb5.conf] qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier *krb5.conf* nécessaire au paramétrage de +++<span style="color: #9867F2">JAAS</span>+++).
+. Editer le fichier link:/etc/krb5.conf[/etc/krb5.conf] qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier *krb5.conf*
+nécessaire au paramétrage de +++<span style="color: #9867F2">JAAS</span>+++).
 Cette étape n’est pas nécessaire si les postes de travail sont situés sur le même domaine que le serveur.
 
-Redémarrer {kerberos}.
+. *Redémarrer* {kerberos}.
 
-Vous trouverez des explications plus complètes à link:++http://docs.fedoraproject
+Vous trouverez des explications complètes de cette procédure à link:++http://docs.fedoraproject
 .org/security-guide/f11/en-US/sect-Security_Guide-Kerberos-Configuring_a_Kerberos_5_Server.html++[l'adresse suivante]
 
 <<<
 
 === Sur le poste client
 
-Configurer {kerberos} par les commandes suivantes au moyen de l’utilitaire `ksetup` qui fait partie lui-aussi des supports tools de {windows}.
+. Configurer {kerberos} par les commandes suivantes au moyen de l’utilitaire `ksetup` qui fait partie lui-aussi des supports tools de {windows}.
 
 [NOTE]
 ====
@@ -392,25 +405,35 @@ ksetup /setdomain $DOMAINE
 ksetup /addkdc $DOMAINE $KER_SERVEUR.$DOMAINE
 ksetup /setcomputerpassword $PASSWORD
 
-*rebooter*
+[start=2]
+. *rebooter*
+
+. Exécuter la commander suivante
 
 [source,sh]
 ksetup /mapuser * *
 
-Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les menu:propriétés{sp}du{sp}poste{sp}de{sp}travail[Nom de l’ordinateur,Modifier,Autres].
+[start=4]
+. Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les menu:propriétés{sp}du{sp}poste{sp}de{sp}travail[Nom de l’ordinateur,Modifier,Autres].
 
-Décocher également l’option *Modifier le suffixe DNS principal*.
+. Décocher également l’option *Modifier le suffixe DNS principal*.
 
-Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur {linux}.
+. Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur {linux}.
 A partir de maintenant, l’utilisateur devrait être en mesure de s’authentifier en sélectionnant le bon domaine dans la liste déroulante lors de la prochaine ouverture de session {windows}.
 
-Vous trouverez des explications plus complètes à link:++http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html++[l'adresse suivante]
+Vous trouverez des explications complètes sur cette procédure à link:++http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html++[l'adresse
+suivante]
 
 <<<
 
 == Erreurs courantes 
 
-=== Failure unspecified at GSS-API level (Mechanism level: Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled)
+=== Failure unspecified at GSS-API level
+
+_Suite du message_:
+----
+Mechanism level: Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled)
+----
 
 La configuration par défaut prévoit une clé aes de 128 (aes128-cts) il apparait ici un défaut de configuration car la clé du client est aes sur 256 bits . Il est donc nécessaire ici de faire évoluer la configuration de Dossier est de modifier dans le fichier krb5.conf présent dans le répertoire xml :
 
