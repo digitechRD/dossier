@@ -1,16 +1,21 @@
-![Digitech Logo](/src/main/resources/images/digitech-logo.png)
+<p align="center">
+  <img src="/src/main/resources/images/digitech-logo.png" width="400px" alt="Digitech Logo" />
+</p>
 
 # AIRS Dossier
 
-![Dossier Logo](/src/main/resources/images/dossier-cover.png)
+<p align="center">
+  <img src="/src/main/resources/images/dossier-cover.png" width="300px" alt="Dossier Logo" />
+</p>
 
-La GED A.I.R.S. Dossier, est une solution de Gestion Electronique de Documents multiflux 
+La _GED_ **A.I.R.S. Dossier**, est une solution de **G**estion **É**lectronique de **D**ocuments multi-flux 
 qui permet la structuration, le classement et le partage dynamique des informations 
 entre les services d'une organisation, centralisée ou multi-sites, à partir d'une interface unique.
 
-Vous trouverez plus d'information sur notre produit sur notre site 
-[Digitech.fr](https://digitech.fr/digitech/cms/7147-7525/A.I.R.S.GED%20Dossier-gestion%20electronique%20documents%20dynamique%20multiflux.dhtml),
-n'hésitez pas à nous contacter ! :thumbsup:
+Vous trouverez plus d'informations sur notre produit sur notre site 
+[Digitech.fr](https://digitech.fr/digitech/cms/7147-7525/A.I.R.S.GED%20Dossier-gestion%20electronique%20documents%20dynamique%20multiflux.dhtml).
+
+N'hésitez pas à nous contacter ! :thumbsup:
 
 ## Dossier-docs
 
