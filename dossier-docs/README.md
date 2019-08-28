@@ -13,7 +13,9 @@ Les documentations disponibles sont:
 Si besoin, les documentations peuvent être regénérées.
 La commande [maven](https://maven.apache.org/) à utiliser est la suivante
 
+```console
 mvn generate-resources -P<profiles.docs>
+```
 
 La clé **profiles.docs** peut contenir plusieurs profils _maven_  (séparés par une **,**) parmi les valeurs suivantes
 * **docs-sso**
