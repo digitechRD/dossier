@@ -5,7 +5,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.digitech.ged.dossier</groupId>
   <artifactId>dossier.gh</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
 
   <modules>
     <module>dossier-docs</module>
@@ -27,4 +28,36 @@
       <organizationUrl>www.digitech.fr</organizationUrl>
     </developer>
   </developers>
+
+  <properties>
+    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>
+    <!-- version 17 et 18: bug landscape et page cover logo -->
+    <!--  <asciidoctorj-pdf.version>1.5.0-alpha.16</asciidoctorj-pdf.version>-->
+    <asciidoctorj-pdf.version>1.5.0-beta.7</asciidoctorj-pdf.version>
+    <jruby-complete.version>9.2.8.0</jruby-complete.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+      <groupId>org.asciidoctor</groupId>
+      <artifactId>asciidoctor-maven-plugin</artifactId>
+      <version>${asciidoctor-maven-plugin.version}</version>
+      <dependencies>
+        <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+        <dependency>
+          <groupId>org.jruby</groupId>
+          <artifactId>jruby-complete</artifactId>
+          <version>${jruby-complete.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctorj-pdf</artifactId>
+          <version>${asciidoctorj-pdf.version}</version>
+        </dependency>
+      </dependencies>
+      </plugin>
+    </plugins>
+  </build>
 </project>
