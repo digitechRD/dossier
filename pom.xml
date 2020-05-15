@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>fr.digitech.ged.dossier</groupId>
-  <artifactId>dossier.gh</artifactId>
+  <artifactId>dossier.documentation.gh</artifactId>
   <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
@@ -30,33 +30,87 @@
   </developers>
 
   <properties>
-    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>
+<!--    <download-maven-plugin.version>1.4.2</download-maven-plugin.version>-->
+<!--    <gem-maven-plugin.version>1.1.8</gem-maven-plugin.version>-->
+<!--    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>-->
+    <asciidoctor-maven-plugin.version>2.0.0-RC.1</asciidoctor-maven-plugin.version>
+
     <!-- version 17 et 18: bug landscape et page cover logo -->
     <!--  <asciidoctorj-pdf.version>1.5.0-alpha.16</asciidoctorj-pdf.version>-->
-    <asciidoctorj-pdf.version>1.5.0-beta.7</asciidoctorj-pdf.version>
-    <jruby-complete.version>9.2.8.0</jruby-complete.version>
+    <asciidoctorj-pdf.version>1.5.3</asciidoctorj-pdf.version>
+    <jruby-complete.version>9.2.11.1</jruby-complete.version>
+    <!-- <asciidoctor-revealjs.version>1.0.4</asciidoctor-revealjs.version>-->
+<!--    <revealjs.version>3.8.0</revealjs.version>-->
+
+    <asciidoctorj.version>2.3.0</asciidoctorj.version>
+    <!-- Use 'master' as version and remove the 'v' prefixing the download url to use the current snapshot version  -->
+    <asciidoctor-revealjs.version>2.0.0</asciidoctor-revealjs.version>
+<!--    <asciidoctor-revealjs.version>1.1.3</asciidoctor-revealjs.version>-->
+
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
+
+  <dependencies>
+<!--    <dependency>-->
+<!--      <groupId>rubygems</groupId>-->
+<!--      <artifactId>asciidoctor-revealjs</artifactId>-->
+<!--      <version>${asciidoctor-revealjs.version}</version>-->
+<!--      <type>gem</type>-->
+<!--      &lt;!&ndash; Avoid downloading gems included in AsciidoctorJ &ndash;&gt;-->
+<!--      <exclusions>-->
+<!--        <exclusion>-->
+<!--          <groupId>rubygems</groupId>-->
+<!--          <artifactId>asciidoctor</artifactId>-->
+<!--        </exclusion>-->
+<!--        <exclusion>-->
+<!--          <groupId>rubygems</groupId>-->
+<!--          <artifactId>thread_safe</artifactId>-->
+<!--        </exclusion>-->
+<!--        <exclusion>-->
+<!--          <groupId>rubygems</groupId>-->
+<!--          <artifactId>concurrent-ruby</artifactId>-->
+<!--        </exclusion>-->
+<!--      </exclusions>-->
+<!--    </dependency>-->
+  </dependencies>
+
   <build>
     <plugins>
+<!--      <plugin>-->
+<!--        <groupId>com.googlecode.maven-download-plugin</groupId>-->
+<!--        <artifactId>download-maven-plugin</artifactId>-->
+<!--        <version>${download-maven-plugin.version}</version>-->
+<!--      </plugin>-->
+<!--      <plugin>-->
+<!--        <groupId>de.saumya.mojo</groupId>-->
+<!--        <artifactId>gem-maven-plugin</artifactId>-->
+<!--        <version>${gem-maven-plugin.version}</version>-->
+<!--      </plugin>-->
       <plugin>
-      <groupId>org.asciidoctor</groupId>
-      <artifactId>asciidoctor-maven-plugin</artifactId>
-      <version>${asciidoctor-maven-plugin.version}</version>
-      <dependencies>
-        <!-- Comment this section to use the default jruby artifact provided by the plugin -->
-        <dependency>
-          <groupId>org.jruby</groupId>
-          <artifactId>jruby-complete</artifactId>
-          <version>${jruby-complete.version}</version>
-        </dependency>
-        <dependency>
-          <groupId>org.asciidoctor</groupId>
-          <artifactId>asciidoctorj-pdf</artifactId>
-          <version>${asciidoctorj-pdf.version}</version>
-        </dependency>
-      </dependencies>
+        <groupId>org.asciidoctor</groupId>
+        <artifactId>asciidoctor-maven-plugin</artifactId>
+        <version>${asciidoctor-maven-plugin.version}</version>
+        <dependencies>
+          <!-- Comment this section to use the default jruby artifact provided by the plugin -->
+          <dependency>
+            <groupId>org.jruby</groupId>
+            <artifactId>jruby-complete</artifactId>
+            <version>${jruby-complete.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctorj-pdf</artifactId>
+            <version>${asciidoctorj-pdf.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctorj</artifactId>
+            <version>${asciidoctorj.version}</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </build>

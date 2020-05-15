@@ -1,0 +1,460 @@
+[[Dossier-sso]]
+= Mise en place du SSO pour le produit *AIRS Dossier*
+v2.0, 01/08/2019
+:revnumber: 2.0
+:revdate: 01/08/2019
+:author: Digitech
+:organization: Digitech
+:doctype: book
+:reproducible:
+:experimental:
+:compact:
+:icons: font
+:toc-title: Sommaire
+:chapter-label: 
+:listing-caption: Listing
+:sectnums:
+:toc:
+:toclevels: 3
+ifdef::backend-pdf[]
+:img-prio-width: 10
+:pdf-page-size: A4
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+:toc: left
+:img-prio-width: 18
+endif::[]
+ifdef::env-github[]
+:imagesdir: images
+:toc-placement!:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+ifndef::env-github[]
+:imagesDir: images
+endif::[]
+:img_blocking: image:icons/blocking.png["Bloquant"]
+:img_urgent: image:icons/urgent.png["Urgent"]
+:img_high: image:icons/high.png["Haute"]
+:img_normal: image:icons/normal.png["Normal"]
+:img_low: image:icons/low.png["Bas"]
+// substition/alias
+:dossier:  pass:quotes[<span style="color: #D4CE28">Dossier</span>]
+:java:  pass:quotes[*<span style="color: #F24E52">JAVA</span>*]
+:sso:  pass:quotes[<span style="color: #F27E36">SSO</span>]
+:windows:  pass:quotes[<span style="color: #F25937">Windows</span>]
+:microsoft:  pass:quotes[<span style="color: #F25937">Microsoft</span>]
+:linux:  pass:quotes[<span style="color: #F25937">Linux</span>]
+:kerberos:  pass:quotes[<span style="color: #167EF2">Kerberos</span>]
+:spnego:  pass:quotes[<span style="color: #167EF2">SPNEGO</span>]
+
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+[options="header,autowidth"]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|02/11/2011|1.0|Validé|Création du document|Régis Krawezyk|
+|01/08/2019|2.0|Validé|Modification du document|Nicolas Félix|
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+<<<
+
+== Introduction
+
+L'authentification unique (en anglais **S**ingle **S**ign-**O**n ou {sso}) permet à un utilisateur de ne procéder qu'à une seule authentification pour accéder à son poste de travail ainsi qu’aux applications.
+
+Sans {sso}, à chaque accès à la page d’accueil de {dossier}, l’utilisateur doit d’abord entrer ses *login* et *mot de passe*, que l’application utilise pour ouvrir une session {dossier}. +
+Avec {sso}, le navigateur transmet automatiquement à l'application le nom que l'utilisateur a saisi pour s'authentifier lors de l'ouverture de sa session
+{windows}.
+Dès lors,l'application réceptionne le nom et vérifie sa validité auprès du serveur d’authentification,avant de l’autoriser ou non à accéder à l'application.
+
+Ce document décrit le paramétrage nécessaire pour intégrer {dossier} au sein d’un domaine géré par +++<span style="color: #167EF2">Active Directory</span>+++
+({sso} de type {kerberos}).
+En annexe est décrite la même procédure avec une authentification réalisée par un serveur {kerberos} sous {linux}.
+
+Ce document se découpe en deux parties qui sont liées à deux types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de fonctionnement.
+
+* Prise en compte dans l’administration réseau
+* Paramétrage et mise en œuvre sous {dossier}
+
+<<<
+
+== Administration réseau
+
+Cette mise en œuvre nécessite la création par l’administrateur du réseau d’un compte utilisateur spécifique à l’application {dossier}, [underline]#sans expiration du mot de passe#.
+Ici, nous appellerons ce service *$USER_AD_DOSSIER* (_dossier_ par exemple).
+
+Ensuite, il faut que ce compte *$USER_AD_DOSSIER* soit autorisé à se pré-authentifier auprès du serveur +++<span style="color: #167EF2">Active Directory</span>+++ pour vérifier la validité des tickets qui lui sont présentés.
+Pour cela, il est possible d’utilise l’utilitaire setspn (présent dans les supports tools de {microsoft}) pour affecter à ce compte le statut de service principal name :
+
+[source]
+----
+setspn.exe -A HTTP/$APP_SERVEUR $USER_AD_DOSSIER
+setspn.exe -A HTTP/$APP_SERVEUR.$DOMAINE $USER_AD_DOSSIER
+----
+
+Ajouter tous les autres alias possibles pour ce service, c’est-à-dire les différents noms du serveur hébergeant l’application {dossier} au sein du domaine.
+Il faut remplacer bien sûr :
+
+* *[purple]#$APP_SERVEUR#*: par le [underline]#nom du serveur qui contient le serveur d’applications Web# au sein duquel est déployé l’application {dossier}
+* *[purple]#$DOMAINE#*: par le nom de [underline]#votre domaine#.
+* *[purple]#$USER_AD_Dossier#*: par le nom du [underline]#service choisi#.
+
+Pour la vérification des alias enregistrés, il suffit d’exécuter la commande :
+
+[source]
+----
+setspn.exe -L dossier
+----
+
+Suite à cette opération, les URL du type ci-dessous pourront être protégées par le filtre d’authentification {kerberos} de l’application _Web_ :
+
+[source]
+----
+http://$APP_SERVEUR:9090
+http://$APP_SERVEUR:9090/dossier
+http://$APP_SERVEUR.$DOMAINE:9090/
+----
+
+<<<
+
+== Paramétrage et mise en œuvre pour Dossier
+
+Cette opération comporte plusieurs étapes qui peuvent être différentes selon que cette mise en œuvre concerne :
+
+* Une nouvelle installation
+* La modification d’une installation existante
+
+Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour le chapitre précédent sinon de bonnes connaissances des fichiers et paramètres de l’application {dossier}.
+
+=== Activation du filtre de servlet SPNEGO
+
+{spnego} est un filtre de _servlet_ appelé par _apache-Tomcat_ chaque fois que l'utilisateur tente d'accéder à une ressource protégée.
+Il utilise +++<span style="color: #9867F2">JAAS</span>+++ (**J**ava **A**uthentication and **A**uthorization **S**ervice) et +++<span style="color:
+#9867F2">Java GSS</span>+++ (**G**eneric **S**ecurity **S**ervices) pour la gestion du protocole {kerberos}, et accepte ou rejette la requête suivant la validité du ticket {kerberos} présenté par le navigateur.
+
+Pour activer ce filtre, il faut :
+
+* S’assurer de l’utilisation de la version *1.8* de {java} compatible avec ce principe d’utilisation
+* Copier et paramétrer des fichiers au sein de l’application {dossier} déployée
+* Activer l’utilisation du principe {sso} au sein du navigateur
+
+=== Vérification de la version {java}.
+
+[NOTE]
+====
+Il suffit d’exécuter la commande suivante au sein d’une fenêtre de console ou d'un terminal.
+
+[source]
+----
+java –version
+----
+====
+
+Il est aussi possible de vérifier la présence d’une variable globale `JAVA_HOME` pointant vers le bon répertoire d’installation de Java (menu:clic{sp}droit{sp}sur{sp}le{sp}poste{sp}de{sp}travail[onglet Avancé,Variables d’environnement]).
+
+Deux cas de figure se présentent selon que :
+
+* Cette mise en place soit effectuée lors de la première installation du produit
+* Cette mise en place soit réalisée dans le cadre d’une mise à jour d’un environnement existant
+
+=== Nouvelle installation
+
+Concernant ce cas de mise en œuvre, il suffit de suivre la description d’installation du produit tout en s’assurant d’utiliser une version *7* de {java}.
+Cette version de {java} est présente au sein du package d’installation.
+
+=== Mise à jour d’une installation
+
+Ce cas de mise en œuvre est différent dans la mesure où les installations sont classiquement basées sur d'une version de {java} inférièure à 1.8.
+
+Généralement, une installation du produit {dossier} comprend les composants suivants :
+
+* Serveur _+++<span style="color: #D4CE28">Airs</span>+++_
+* Serveur _+++<span style="color: #D4CE28">Full-Text</span>+++_
+* Serveur _+++<span style="color: #D4CE28">Flowmind-WB2E</span>+++_
+* Serveur apache _+++<span style="color: #D4CE28">Tomcat</span>+++_
+* Application Web {dossier}
+
+Plusieurs fichiers de configuration doivent être modifiés, comportant la référence au dossier d’installation de {java}.
+En outre, les services {windows} utilisant {java} (ce qui concernent les serveurs _+++<span style="color: #D4CE28">Full-Text</span>+++_, _+++<span style="color:
+#D4CE28">Flowmind-WB2E</span>+++_ et apache _+++<span style="color: #D4CE28">Tomcat</span>+++_) doivent être supprimés puis recréés après modification de leurs fichiers de configuration respectifs.
+
+* Serveur *+++<span style="color: #D4CE28">FTServeur</span>+++*:
+Les deux fichiers de démarrage et d’arrêt proposés par défaut pour ce serveur contiennent les références au répertoire d’installation de {java}.
+Il faut donc modifier ces dernières au sein de ces deux fichiers *startFtServer.bat* (ou *startFtServer.sh*), *shutDown.bat* (ou *shutDown.sh*).
+A noter que, spécifiquement aux environnements {windows}, le fichier *wrapper.conf* contient la référence au répertoire d’installation de {java}.
+Il faut donc aussi modifier ce fichier dans les cas où :
+** le fichier *FTserveur.bat* est utilisé pour le démarrage de ce serveur
+** ce serveur est démarré via le service *NT*
+
+* Serveur *+++<span style="color: #D4CE28">Flowmind-WB2E</span>+++*:
+la modification de la référence à {java} pour cette composante nécessite la modification des valeurs associées:
+* à la variable *fm_java_bin* pour le fichier *profile.conf* présent au sein du sous-dossier *conf/* du répertoire d’installation de l’instance de processus
+* à la variable *FM_JAVA_BIN* pour le fichier *fmconfigure.bat* (ou *fmconfigure* selon le type de plate-forme).
+Ces deux modifications ayant été effectuées, il est alors nécessaire d’exécuter le script *fmconfigure*, puis de recréer le *service NT* dans le cadre de l’utilisation de ce service.
+
+[NOTE]
+====
+Si les scripts de suppression et de re-création du _service NT_ n’existent pas, il est possible de modifier directement dans la base de registre le paramètre *JVM Library* de l’entrée Parameters du *service NT* (à rechercher par le nom du service).
+====
+
+* Serveur apache *+++<span style="color: #D4CE28">Tomcat</span>+++*:
+non présent par défaut au sein du fichier *catalina.bat* (ou *catalina.sh*), assurez-vous bien que si la variable d’environnement est redéfinie au sein de ce fichier, elle soit bien associée au répertoire d’installation de la version 1.8 de {java}.
+Supprimez (paramètre _uninstall_) et recréez (paramètre _install_) le *service NT* via le script *service.bat* du répertoire _bin_ (en lui passant l'agument).
+
+=== Java Cryptography Extension (JCE)
+
+Bien que présent par défaut dans les *jre* depuis la version *1.4*, il est toutefois possible de récupérer manuellement ce package.
+L’installation de la JCE consiste à déposer les fichiers *local_policy.jar* et *US_export_policy.jar* dans le répertoire link:/jre/lib/security[/jre/lib/security] de la *jdk*.
+Il faut bien sur faire coïncider la version de la *JCE* avec celle de la *JDK* (*jce8* pour {java} _jdk_ en version *8*).
+
+=== Fichiers de configuration
+
+Que ce soit dans le cadre d’une nouvelle installation ou de la mise à jour d’une installation existante, l’opération à réaliser doit être la même.
+
+Elle consiste en :
+* L’ajout de nouveau fichier de configuration
+* La modification de fichiers de configuration existants
+
+=== Copie de fichiers
+
+Il est nécessaire de copier les trois fichiers de configuration *login.conf*, *krb5.conf* et *sso.properties* dans le sous-répertoire *xml/* du répertoire de déploiement de l’application Web {dossier}.
+
+=== Configuration de fichiers
+
+Cette étape de configuration concerne les fichiers suivants, tous présents dans le répertoire *xml/* (sous-répertoire de déploiement de l’application Web
+{dossier}) :
+
+==== *params.xml*
+
+Une nouvelle balise est présente dans le fichier.
+Cette balise permet d’activer ou de désactiver le mécanisme utiliser pour la connection sso.
+
+[source,xml]
+----
+<!--  activation -->
+<ssoActivated>true</ssoActivated>
+<!--  désactivation -->
+<ssoActivated>false</ssoActivated>
+----
+
+==== *sso.properties*
+
+[cols=",2a",options="header"]
+|===
+|Variable|Valeur
+|*spnego.preauth.username*|Login utilisé par apache _+++<span style="color: #D4CE28">Tomcat</span>+++_ pour consulter le serveur d'authentification (cf.
+compte *$USER_AD_DOSSIER* créé précédemment)
+|*spnego.preauth.password*|Mot de passe utilisé par apache _+++<span style="color: #D4CE28">Tomcat</span>+++_ pour consulter le serveur d'authentification (cf. compte *$USER_AD_DOSSIER* créé précédemment)
+|*spnego.allow.basic*|Permet une authentification *HTTP* basique si le navigateur ne gère pas le protocole {kerberos}. Par défaut, nous affectons cette
+valeur à +++<span style="color: 50F250">true</span>+++.
+|*spnego.allow.localhost*|Permet ou non une demande d’authentification provenant de localhost. Par défaut, nous affectons cette valeur à +++<span style="color: 50F250">true</span>+++.
+|*spnego.allow.unsecure.basic*|Combinée à l’option allowBasic, permet l’authentification *HTTP* basique même en l’absence du protocole *HTTPS*. Par défaut,
+nous affectons cette valeur à +++<span style="color: 50F250">true</span>+++.
+|*spnego.prompt.ntlm*|Permet une authentification *HTTP* basique lorsque le navigateur essaie de s’authentifier au moyen du protocole de *NTLM* (ce dernier
+n’étant pas géré par le filtre de servlet). Par défaut, nous affectons cette valeur à +++<span style="color: 50F250">true</span>+++.
+|===
+
+[NOTE]
+====
+Seuls les paramètres susceptibles d’être modifiés apparaissent au sein du tableau ci-dessus. +
+Généralement, les paramètres *spnego.preauth.username* et *spnego.preauth.password* sont les seuls modifiés.
+====
+
+==== *krb5.conf*
+
+Placé au sein du sous-répertoire *xml/* du répertoire de déploiement de l’application Web {dossier}, ce fichier contient les paramètres du serveur {kerberos}.
+
+[source,properties]
+----
+[libdefaults]
+default_realm = LOCALDOMAIN \
+  default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc \
+  default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 \
+  des-cbc-crc permitted_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+
+[realms]
+  LOCALDOMAIN = { kdc = $KER_SERVEUR.$DOMAINE default_domain = $DOMAINE }
+
+[domain_realm]
+  .$DOMAINE = LOCALDOMAIN
+----
+
+Il suffit de remplacer les paramètres *$DOMAINE* et *$KER_SERVEUR* respectivement par le nom du domaine et le nom complet du serveur {kerberos} au sein du *_domaine_*.
+
+==== *Login.conf*
+
+_sans objet_
+
+==== *Config.propertie*
+
+Activer ou ajouter la clé sso.type comme suis :
+
+[source,properties]
+sso.type=SPNEGO
+
+<<<
+
+=== Activation Kerberos dans le navigateur des utilisateurs
+
+Reste ensuite à autoriser l’utilisation de ce mode de fonctionnement au sein des divers navigateurs du client.
+En fonction de la version du navigateur, des sites déjà référencés, ce paramétrage peut ne pas être nécessaire.
+Il convient de réaliser un test sans avant de les ajouter.
+
+==== Internet Explorer
+
+Aller dans menu:Outils[Options Internet,Sécurité,Intranet local,Sites...,Avancé..] et indiquer le domaine *http://$DOMAINE* comme étant dans l'intranet.
+
+==== Firefox
+
+L’authentification Kerberos est activée par défaut pour les versions récentes de *Firefox*.
+Entrer kbd:[about:config] dans la barre d’adresse, et restreindre la liste des options en entrant *negotiate* dans le filtre de recherche rapide.
+Double-cliquer sur l’entrée *network.negotiate-auth.trusted-uris*, puis entrer *.$DOMAINE* pour limiter l’authentification {kerberos} à ce _domaine_.
+
+[NOTE]
+====
+Cette entrée peut être laissée vide pour une autorisation sans restriction (non recommandée)
+====
+
+<<<
+
+== Annexe Authenfication auprès d’un serveur Linux Kerberos MIT
+
+=== Sur le serveur
+
+. Installer les packages `krb5-libs`, `krb5-server` et `krb5-workstation`.
+
+. Editer les fichiers de configuration link:/etc/krb5.conf[/etc/krb5.conf] et link:/var/kerberos/krb5kdc/kdc.conf[/var/kerberos/krb5kdc/kdc.conf] afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer *EXAMPLE.COM* et *example.com* en respectant la casse et de remplacer *kerberos.example.com* par le nom du serveur
+{kerberos}).
+
+. Créer la base de données au moyen de la commande :
+
+[source]
+/usr/kerberos/sbin/kdb5_util create –s
+
+Editer le fichier link:/var/kerberos/krb5kdc/kadm5.acl[/var/kerberos/krb5kdc/kadm5.acl].
+Ce fichier est utilise par `kadmind` pour déterminer les personnes qui ont le droit d’administrer la base de données {kerberos} et leur niveau d’accès.
+On peut se contenter de laisser une ligne unique (remplacer *EXAMPLE.COM*) :
+
+[source]
+*/admin@EXAMPLE.COM*
+
+[start=4]
+. Créer le premier utilisateur par la commande (remplacer *username*) :
+
+[source]
+/usr/kerberos/sbin/kadmin.local -q "addprinc username/admin"
+
+[start=5]
+. Lancer les services suivants par la commande :
+
+[source]
+/sbin/service krb5kdc start
+/sbin/service kadmin start
+
+[start=6]
+. Ajouter un par un chaque poste de travail du réseau (remplacer *pc-sso.digitech.lan* par le nom du poste au sein du réseau) :
+
+[source]
+addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan
+
+[start=7]
+. Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer *L.LOGIN* par le login de l’utilisateur) :
+
+[source]
+addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN
+
+[start=8]
+. Ajouter de la même manière un compte de pré-authentification pour l’application {dossier}, dont nous reporterons les login et mot de passe dans le fichier *sso .properties* (cf. référence plus haut).
+
+. Editer le fichier link:/etc/krb5.conf[/etc/krb5.conf] qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier *krb5.conf*
+nécessaire au paramétrage de +++<span style="color: #9867F2">JAAS</span>+++).
+Cette étape n’est pas nécessaire si les postes de travail sont situés sur le même domaine que le serveur.
+
+. *Redémarrer* {kerberos}.
+
+Vous trouverez des explications complètes de cette procédure à link:++http://docs.fedoraproject
+.org/security-guide/f11/en-US/sect-Security_Guide-Kerberos-Configuring_a_Kerberos_5_Server.html++[l'adresse suivante]
+
+<<<
+
+=== Sur le poste client
+
+. Configurer {kerberos} par les commandes suivantes au moyen de l’utilitaire `ksetup` qui fait partie lui-aussi des supports tools de {windows}.
+
+[NOTE]
+====
+Il faut remplacer respectivement *$DOMAINE*, *$KER_SERVEUR* et *$PASSWORD* au sein de l’exemple ci-dessous par:
+
+* le nom du domaine
+* le nom du serveur {kerberos}
+* le mot de passe utilisé par apache {tomcat} pour consulter le serveur d'authentification (cf. compte dossier créé précédemment)
+====
+
+[source,sh]
+ksetup /setdomain $DOMAINE
+ksetup /addkdc $DOMAINE $KER_SERVEUR.$DOMAINE
+ksetup /setcomputerpassword $PASSWORD
+
+[start=2]
+. *rebooter*
+
+. Exécuter la commander suivante
+
+[source,sh]
+ksetup /mapuser * *
+
+[start=4]
+. Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les menu:propriétés{sp}du{sp}poste{sp}de{sp}travail[Nom de l’ordinateur,Modifier,Autres].
+
+. Décocher également l’option *Modifier le suffixe DNS principal*.
+
+. Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur {linux}.
+A partir de maintenant, l’utilisateur devrait être en mesure de s’authentifier en sélectionnant le bon domaine dans la liste déroulante lors de la prochaine ouverture de session {windows}.
+
+Vous trouverez des explications complètes sur cette procédure à link:++http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html++[l'adresse
+suivante]
+
+<<<
+
+== Erreurs courantes 
+
+=== Failure unspecified at GSS-API level
+
+_Suite du message_:
+----
+Mechanism level: Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled)
+----
+
+La configuration par défaut prévoit une clé aes de 128 (aes128-cts) il apparait ici un défaut de configuration car la clé du client est aes sur 256 bits . Il est donc nécessaire ici de faire évoluer la configuration de Dossier est de modifier dans le fichier krb5.conf présent dans le répertoire xml :
+
+[source,properies]
+.Configuration par défaut
+----
+[libdefaults]
+default_realm = <CLIENT_REALM>
+  default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5
+  des-cbc-crc permitted_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+----
+
+[source,properies]
+.Nouvelle configuration
+----
+[libdefaults]
+default_realm = <CLIENT_REALM>
+  default_tkt_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes256-cts aes128-cts rc4-hmac
+  des3-cbc-sha1 des-cbc-md5 des-cbc-crc permitted_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+----

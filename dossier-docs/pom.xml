@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <parent>
     <groupId>fr.digitech.ged.dossier</groupId>
-    <artifactId>dossier.gh</artifactId>
+    <artifactId>dossier.documentation.gh</artifactId>
     <version>1.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
@@ -14,6 +14,69 @@
   <description>Dossier asciidoc documentation</description>
 
   <profiles>
+<!--    <profile>-->
+<!--      <id>revealjs-download</id>-->
+<!--      <activation>-->
+<!--        <activeByDefault>false</activeByDefault>-->
+<!--      </activation>-->
+<!--      <build>-->
+<!--        <defaultGoal>process-resources</defaultGoal>-->
+<!--        <plugins>-->
+<!--          <plugin>-->
+<!--            <groupId>com.googlecode.maven-download-plugin</groupId>-->
+<!--            <artifactId>download-maven-plugin</artifactId>-->
+<!--            <executions>-->
+<!--              <execution>-->
+<!--                <id>install-asciidoctor-revealjs</id>-->
+<!--                <phase>generate-resources</phase>-->
+<!--                <goals>-->
+<!--                  <goal>wget</goal>-->
+<!--                </goals>-->
+<!--                <configuration>-->
+<!--                  <url> https://github.com/asciidoctor/asciidoctor-reveal.js/archive/v${asciidoctor-revealjs.version}.zip</url>-->
+<!--                  <unpack>true</unpack>-->
+<!--                  <outputFileName>asciidoctor-reveal.js-${asciidoctor-revealjs.version}.zip</outputFileName>-->
+<!--                  <outputDirectory>${slides.directory}</outputDirectory>-->
+<!--                </configuration>-->
+<!--              </execution>-->
+<!--              <execution>-->
+<!--                <id>install-revealjs</id>-->
+<!--                <phase>generate-resources</phase>-->
+<!--                <goals>-->
+<!--                  <goal>wget</goal>-->
+<!--                </goals>-->
+<!--                <configuration>-->
+<!--                  <url>https://github.com/hakimel/reveal.js/archive/${revealjs.version}.zip</url>-->
+<!--                  <unpack>true</unpack>-->
+<!--                  <outputFileName>reveal.js-${revealjs.version}.zip</outputFileName>-->
+<!--                  <outputDirectory>${project.slides.directory}</outputDirectory>-->
+<!--                </configuration>-->
+<!--              </execution>-->
+<!--            </executions>-->
+<!--          </plugin>-->
+
+<!--&lt;!&ndash;          <plugin>&ndash;&gt;-->
+<!--&lt;!&ndash;            <groupId>de.saumya.mojo</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <artifactId>gem-maven-plugin</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;              <jrubyVersion>${jruby-complete.version}</jrubyVersion>&ndash;&gt;-->
+<!--&lt;!&ndash;              <gemHome>${project.build.directory}/gems</gemHome>&ndash;&gt;-->
+<!--&lt;!&ndash;              <gemPath>${project.build.directory}/gems</gemPath>&ndash;&gt;-->
+<!--&lt;!&ndash;            </configuration>&ndash;&gt;-->
+<!--&lt;!&ndash;            <executions>&ndash;&gt;-->
+<!--&lt;!&ndash;              &lt;!&ndash; Install required gems in target directory &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;              <execution>&ndash;&gt;-->
+<!--&lt;!&ndash;                <id>install-gems</id>&ndash;&gt;-->
+<!--&lt;!&ndash;                <goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                  <goal>initialize</goal>&ndash;&gt;-->
+<!--&lt;!&ndash;                </goals>&ndash;&gt;-->
+<!--&lt;!&ndash;                <phase>initialize</phase>&ndash;&gt;-->
+<!--&lt;!&ndash;              </execution>&ndash;&gt;-->
+<!--&lt;!&ndash;            </executions>&ndash;&gt;-->
+<!--&lt;!&ndash;          </plugin>&ndash;&gt;-->
+<!--        </plugins>-->
+<!--      </build>-->
+<!--    </profile>-->
     <!-- sso -->
     <profile>
       <id>docs-sso</id>
@@ -37,9 +100,9 @@
                 <productVersion>${project.version}</productVersion>
                 <productReleaseDate>${maven.build.timestamp}</productReleaseDate>
               </attributes>
-              <sourceDirectory>${basedir}/src/adoc/administration</sourceDirectory>
+              <sourceDirectory>src/adoc/sso</sourceDirectory>
               <sourceDocumentName>installation-sso.adoc</sourceDocumentName>
-              <outputDirectory>${basedir}/src/main/resources/docs/administration</outputDirectory>
+              <outputDirectory>${basedir}/src/main/resources/docs/sso</outputDirectory>
             </configuration>
             <executions>
               <execution>
@@ -49,7 +112,6 @@
                   <goal>process-asciidoc</goal>
                 </goals>
                 <configuration>
-                  
                   <sourceHighlighter>rouge</sourceHighlighter>
                   <backend>pdf</backend>
                 </configuration>
@@ -74,6 +136,164 @@
         </plugins>
       </build>
     </profile>
+    <!-- cmis -->
+    <profile>
+      <id>docs-cmis</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>docs-cmis</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <configuration>
+              <attributes>
+                <!--                    <pdf-stylesdir>${project.basedir}/src/adoc/administration</pdf-stylesdir>&ndash;&gt;-->
+                <!--                    <pdf-style>digitech</pdf-style>-->
+                <product.version>${project.version}</product.version>
+                <productVersion>${project.version}</productVersion>
+                <productReleaseDate>${maven.build.timestamp}</productReleaseDate>
+              </attributes>
+              <sourceDirectory>${basedir}/src/adoc/cmis</sourceDirectory>
+              <sourceDocumentName>cmis.adoc</sourceDocumentName>
+              <outputDirectory>${basedir}/src/main/resources/docs/cmis</outputDirectory>
+            </configuration>
+            <executions>
+              <execution>
+                <id>generate-pdf-cmis</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <sourceHighlighter>rouge</sourceHighlighter>
+                  <backend>pdf</backend>
+                </configuration>
+              </execution>
+              <execution>
+                <id>generate-html5-cmis</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <backend>html5</backend>
+                  <embedAssets>true</embedAssets>
+                  <attributes>
+                    <stylesheet>css/digitech.css</stylesheet>
+                    <toc>left</toc>
+                  </attributes>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- groovy -->
+    <profile>
+      <id>docs-groovy</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>docs-groovy</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <configuration>
+              <attributes>
+                <product.version>${project.version}</product.version>
+                <productVersion>${project.version}</productVersion>
+                <productReleaseDate>${maven.build.timestamp}</productReleaseDate>
+              </attributes>
+              <sourceDirectory>${basedir}/src/adoc/groovy</sourceDirectory>
+              <sourceDocumentName>dossier-groovy.adoc</sourceDocumentName>
+              <outputDirectory>${basedir}/src/main/resources/docs/groovy</outputDirectory>
+            </configuration>
+            <executions>
+              <execution>
+                <id>generate-pdf-groovy</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                  <sourceHighlighter>rouge</sourceHighlighter>
+                  <backend>pdf</backend>
+                </configuration>
+              </execution>
+              <execution>
+                <id>generate-html5-groovy</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                  <backend>html5</backend>
+                  <embedAssets>true</embedAssets>
+                  <attributes>
+                    <stylesheet>css/digitech.css</stylesheet>
+                    <toc>left</toc>
+                  </attributes>
+                </configuration>
+              </execution>
+              <execution>
+                <id>generate-slides-groovy</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <backend>revealjs</backend>
+                  <sourceHighlighter>rouge</sourceHighlighter>
+<!--                  <backend>revealjs</backend>-->
+<!--                  <embedAssets>true</embedAssets>-->
+<!--                  <attributes>-->
+<!--                    <stylesheet>css/digitech.css</stylesheet>-->
+<!--                    <toc>left</toc>-->
+<!--                  </attributes>-->
+<!--                  &lt;!&ndash; include the asciidoctor-revealjs gem &ndash;&gt;-->
+<!--                  <gemPath>${project.build.directory}/gems</gemPath>-->
+<!--                  <requires>-->
+<!--                    <require>asciidoctor-revealjs</require>-->
+<!--                  </requires>-->
+<!--                  <outputDirectory>${project.slides.directory}</outputDirectory>-->
+<!--                  <backend>revealjs</backend>-->
+<!--                  <sourceHighlighter>rouge</sourceHighlighter>-->
+                  <attributes>
+                    <!--
+                        As we are downloading reveal.js in runtime, it sits in a nonstandard folder `reveal.js-${revealjs.version}`
+                    -->
+<!--                    <revealjsdir>${basedir}/src/main/resources/docs/groovy</revealjsdir>-->
+                    <revealjsdir>reveal.js-${revealjs.version}</revealjsdir>
+                    <!-- put here the reveal.js specific attributes -->
+<!--                    <revealjs_theme>black</revealjs_theme>-->
+                    <revealjs_transition>linear</revealjs_transition>
+                    <project-version>${project.version}</project-version>
+                    <!-- can use any pygments/rouge css here -->
+                    <rouge-css>class</rouge-css>
+<!--                    <customcss>styles/monokai.css</customcss>-->
+                  </attributes>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
 
     <!-- sample officiel -->
     <profile>
@@ -90,20 +310,6 @@
           <plugin>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
-            <version>${asciidoctor-maven-plugin.version}</version>
-            <dependencies>
-              <!-- Comment this section to use the default jruby artifact provided by the plugin -->
-              <dependency>
-                <groupId>org.jruby</groupId>
-                <artifactId>jruby-complete</artifactId>
-                <version>${jruby-complete.version}</version>
-              </dependency>
-              <dependency>
-                <groupId>org.asciidoctor</groupId>
-                <artifactId>asciidoctorj-pdf</artifactId>
-                <version>${asciidoctorj-pdf.version}</version>
-              </dependency>
-            </dependencies>
             <executions>
               <execution>
                 <id>generate-pdf-asciidoc-sample</id>
@@ -128,7 +334,10 @@
         </plugins>
       </build>
     </profile>
-
   </profiles>
+
+  <properties>
+    <slides.directory>${project.build.directory}/generated-slides</slides.directory>
+  </properties>
 
 </project>
