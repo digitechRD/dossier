@@ -1,0 +1,33 @@
+extends:
+  default
+
+header:
+  height: 0.4in
+  line-height: 1
+  padding: [3, 3, 3, 3]
+  sectlevels: 0
+  image-vertical-align: middle
+  columns: "<50% =0% >50%"
+  recto: &shared_header
+    left:
+      content: image:digitech-header-logo.png[]
+    right:
+      content: '{document-title}'
+  verso: *shared_header
+
+footer:
+  columns: "<50% =0% >50%"
+  recto: &shared_footer
+    left:
+      content: '{section-or-chapter-title}'
+    right:
+      content: '{page-number}'
+  verso: *shared_footer # avoid duplicated declaration
+
+table:
+  caption-max-width: none
+  head:
+    background-color: #F2C6AB
+
+#image:
+#  align: center

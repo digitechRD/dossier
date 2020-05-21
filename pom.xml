@@ -30,65 +30,31 @@
   </developers>
 
   <properties>
-<!--    <download-maven-plugin.version>1.4.2</download-maven-plugin.version>-->
-<!--    <gem-maven-plugin.version>1.1.8</gem-maven-plugin.version>-->
-<!--    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>-->
+    <!--    <asciidoctor-maven-plugin.version>1.6.0</asciidoctor-maven-plugin.version>-->
     <asciidoctor-maven-plugin.version>2.0.0-RC.1</asciidoctor-maven-plugin.version>
 
     <!-- version 17 et 18: bug landscape et page cover logo -->
     <!--  <asciidoctorj-pdf.version>1.5.0-alpha.16</asciidoctorj-pdf.version>-->
     <asciidoctorj-pdf.version>1.5.3</asciidoctorj-pdf.version>
     <jruby-complete.version>9.2.11.1</jruby-complete.version>
-    <!-- <asciidoctor-revealjs.version>1.0.4</asciidoctor-revealjs.version>-->
-<!--    <revealjs.version>3.8.0</revealjs.version>-->
 
     <asciidoctorj.version>2.3.0</asciidoctorj.version>
-    <!-- Use 'master' as version and remove the 'v' prefixing the download url to use the current snapshot version  -->
-    <asciidoctor-revealjs.version>2.0.0</asciidoctor-revealjs.version>
-<!--    <asciidoctor-revealjs.version>1.1.3</asciidoctor-revealjs.version>-->
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <build-helper-maven-plugin.version>3.1.0</build-helper-maven-plugin.version>
+    <maven.build.timestamp.format>dd/MM/yyyy HH:mm:ss</maven.build.timestamp.format>
+
+    <id-key>fake</id-key>
+    <skipPdf>false</skipPdf>
+    <skipHtml>false</skipHtml>
   </properties>
 
-
-  <dependencies>
-<!--    <dependency>-->
-<!--      <groupId>rubygems</groupId>-->
-<!--      <artifactId>asciidoctor-revealjs</artifactId>-->
-<!--      <version>${asciidoctor-revealjs.version}</version>-->
-<!--      <type>gem</type>-->
-<!--      &lt;!&ndash; Avoid downloading gems included in AsciidoctorJ &ndash;&gt;-->
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId>rubygems</groupId>-->
-<!--          <artifactId>asciidoctor</artifactId>-->
-<!--        </exclusion>-->
-<!--        <exclusion>-->
-<!--          <groupId>rubygems</groupId>-->
-<!--          <artifactId>thread_safe</artifactId>-->
-<!--        </exclusion>-->
-<!--        <exclusion>-->
-<!--          <groupId>rubygems</groupId>-->
-<!--          <artifactId>concurrent-ruby</artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
-<!--    </dependency>-->
-  </dependencies>
-
   <build>
+    <!-- plugins' definition -->
     <plugins>
-<!--      <plugin>-->
-<!--        <groupId>com.googlecode.maven-download-plugin</groupId>-->
-<!--        <artifactId>download-maven-plugin</artifactId>-->
-<!--        <version>${download-maven-plugin.version}</version>-->
-<!--      </plugin>-->
-<!--      <plugin>-->
-<!--        <groupId>de.saumya.mojo</groupId>-->
-<!--        <artifactId>gem-maven-plugin</artifactId>-->
-<!--        <version>${gem-maven-plugin.version}</version>-->
-<!--      </plugin>-->
       <plugin>
         <groupId>org.asciidoctor</groupId>
         <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -112,6 +78,118 @@
           </dependency>
         </dependencies>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>${build-helper-maven-plugin.version}</version>
+      </plugin>
     </plugins>
+
+    <!-- plugin managment -->
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>${build-helper-maven-plugin.version}</version>
+          <executions>
+            <execution>
+              <id>localdate-property</id>
+              <goals>
+                <goal>timestamp-property</goal>
+              </goals>
+              <configuration>
+                <!-- ${generatedDate} will be associated to *productReleaseDate* property, then used into adoc file -->
+                <name>generatedDate</name>
+                <pattern>dd/MM/yyyy HH:mm:ss</pattern>
+                <timeZone>Europe/Paris</timeZone>
+                <locale>fr_FR</locale>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.asciidoctor</groupId>
+          <artifactId>asciidoctor-maven-plugin</artifactId>
+          <version>${asciidoctor-maven-plugin.version}</version>
+          <configuration>
+            <attributes>
+              <product.version>${project.version}</product.version>
+              <productVersion>${project.version}</productVersion>
+              <productReleaseDate>${generatedDate}</productReleaseDate>
+            </attributes>
+            <sourceHighlighter>coderay</sourceHighlighter>
+            <sourceDirectory>${basedir}/src/adoc/${id-key}</sourceDirectory>
+            <sourceDocumentName>dossier-${id-key}.adoc</sourceDocumentName>
+            <outputDirectory>${basedir}/src/main/resources/docs/${id-key}</outputDirectory>
+          </configuration>
+          <executions>
+            <execution>
+              <id>pdf-${id-key}</id>
+              <phase>generate-resources</phase>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <configuration>
+                <skip>${skipPdf}</skip>
+                <sourceHighlighter>rouge</sourceHighlighter>
+                <backend>pdf</backend>
+                <attributes>
+                  <pdf-stylesdir>${project.parent.basedir}/src/main/resources/themes</pdf-stylesdir>
+                  <pdf-style>digitech</pdf-style>
+                </attributes>
+              </configuration>
+            </execution>
+            <execution>
+              <id>html5-${id-key}</id>
+              <phase>generate-resources</phase>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <configuration>
+                <skip>${skipHtml}</skip>
+                <backend>html5</backend>
+                <embedAssets>true</embedAssets>
+                <attributes>
+                  <!-- <stylesheet>css/digitech.css</stylesheet>-->
+                  <toc>left</toc>
+                </attributes>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
+
+  <profiles>
+    <!-- small profile to skip PDF generation -->
+    <profile>
+      <id>skipPDFGeneration</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>skipPDFGeneration</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <properties>
+        <skipPdf>true</skipPdf>
+      </properties>
+    </profile>
+    <!-- small profile to skip HTML generation -->
+    <profile>
+      <id>skipHTMLGeneration</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>skipHTMLGeneration</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <properties>
+        <skipHtml>true</skipHtml>
+      </properties>
+    </profile>
+  </profiles>
 </project>

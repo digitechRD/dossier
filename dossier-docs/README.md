@@ -6,7 +6,7 @@
 Ce projet regroupe les documentations du produit _Dossier_.
 
 Les documentations disponibles sont:
-* [installation sso](src/adoc/sso/installation-sso.adoc) (version *PDF* [ici](src/main/resources/docs/sso/installation-sso.pdf)) 
+* [installation sso](src/adoc/sso/dossier-sso.adoc) (version *PDF* [ici](src/main/resources/docs/sso/dossier-sso.pdf)) 
 * <span style="color: #FF0000;">... à suivre</span> 
 
 # Génération des documentations

@@ -2,28 +2,36 @@
 = CMIS *AIRS Dossier*
 v1.0, 01/05/2020
 :revnumber: 1.0
-:revdate: 01/05/2020
+:revdate: {productReleaseDate}
 :author: Digitech
 :organization: Digitech
 :doctype: book
 :reproducible:
 :experimental:
+:stem:
 :compact:
 :icons: font
+:icon-set: far
 :toc-title: Sommaire
-:chapter-label: 
+:chapter-label:
 :listing-caption: Listing
 :sectnums:
 :toc:
 :toclevels: 3
+//:sectnumlevels: 3
+:xrefstyle: full
 ifdef::backend-pdf[]
 :img-prio-width: 10
 :pdf-page-size: A4
 :title-logo-image: image:dossier-cover.png[align=center]
+:smile: icon:smile[role="yellow"]
+:hand-peace: icon:hand-peace[role="yellow"]
 endif::[]
 ifndef::backend-pdf[]
 :toc: left
 :img-prio-width: 18
+:smile: icon:smile-o[role="yellow"]
+:hand-peace: icon:hand-peace-o[role="yellow"]
 endif::[]
 ifdef::env-github[]
 :imagesdir: images
@@ -43,13 +51,24 @@ endif::[]
 :img_normal: image:icons/normal.png["Normal"]
 :img_low: image:icons/low.png["Bas"]
 // substition/alias
-:dossier:  pass:quotes[<span style="color: #D4CE28">Dossier</span>]
-:java:  pass:quotes[*<span style="color: #F24E52">JAVA</span>*]
-:kerberos:  pass:quotes[<span style="color: #167EF2">CMIS</span>]
+:digitech: pass:quotes[`<span style="color: #EF2547">Digitech</span>`]
+:dossier: pass:quotes[`<span style="color: #D4CE28">Dossier</span>`]
+:java: pass:quotes[`<span style="color: #F24E52">JAVA</span>`]
+:cmis: pass:quotes[`<span style="color: #167EF2">CMIS</span>`]
 
 ifndef::backend-pdf[]
 image::dossier-cover.png[]
 endif::[]
+
+`Digitech SA` +
+_ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
+13322 Marseille Cedex 16_
+
+'''
+
+Copyright (c) 2020 `Digitech SA`, tous droits réservés.
+
+'''
 
 [options="header,autowidth"]
 .Notes de suivi
@@ -62,12 +81,4 @@ ifdef::env-github[]
 toc::[]
 endif::[]
 
-<<<
-
-== Introduction
-
-CMIS is the OASIS specification for content management interoperability.
-It allows client and servers to talk together in HTTP (REST with JSON or AtomPub) using a unified domain model.
-The latest published version is CMIS 1.1.
-
-<<<
+include::chapters/_introduction.adoc[]
