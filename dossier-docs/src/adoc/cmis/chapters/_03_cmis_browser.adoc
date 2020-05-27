@@ -1,0 +1,192 @@
+<<<
+
+[[cmis_browser]]
+== Browser Binding
+
+[NOTE]
+====
+Les informations indiquées dans ce chapitre sont succinctes, veuillez vous référer à la http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html[documentation officielle^] pour plus d'informations+
+Il est préconisé d'employer un client, disponible par exemple http://chemistry.apache.org/opencmis-client-api.html[ici^] pour abstraire et masquer la complexité des échanges.
+====
+
+[IMPORTANT]
+====
+En utilisant un simple appel *HTTP* de type *GET* et quelques paramètres additionnels, le contenu d'un {repository} peut être récupéré/interrogé. +
+====
+
+[[cmis_browser_parameters]]
+=== Paramètres additionnels communs
+
+Les requêtes d'interrogation peuvent avoir des paramètres additionnels (optionnels)
+
+.Liste des paramètres _http optionnels_
+[cols="1a,1a,5a",options="header"]
+|===
+|Nom|Valeur par défaut|Description
+|filter|*|Liste des propriétés attendues en réponse (*queryname* au sens {cmis}), séparées par une virgule
+|includeAllowableActions|false|Si [green]*true*, la réponse doit indiquer également la liste des actions disponibles
+|includeRelationships|IncludeRelationships.NONE|La réponse doit indiquer également les relations avec ce noeud. +
+valeurs possibles:
+
+* NONE
+* SOURCE
+* TARGET
+* BOTH
+|renditionFilter|cmis:none|Liste des _renditions_ attendues en réponse
+|includePolicyIds|false|Si [green]*true*, la réponse doit indiquer également la liste des _policies_ disponibles
+|includeAcl|false|Si [green]*true*, la réponse doit indiquer également les `ACL` (**A**ccess **C**ontrol **L**ists) pour ce noeud
+|===
+
+[[cmis_browser_repo]]
+=== Interrogation d'un {repository}
+
+Afin d'obtenir des informations sur le {repository}, le paramètre *callback* devra être précisé.
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser?callback=showRepositoryInfo
+----
+
+dont la réponse sera similaire à ce qui suit :
+
+[source, json]
+----
+showRepositoryInfo(
+ { "Dossier-3":
+   {"repositoryId":"Dossier-3",
+    "repositoryName":"Dossier-2AC",
+    "repositoryDescription":"2AC",
+    "vendorName":"Digitech",
+    "productName":"Dossier",
+...
+----
+
+[[cmis_browser_retreive]]
+=== Récupération d'éléments
+
+La récupération d'un objet s'effectue simplement en spécifiant l' *ID* de l'objet souhaité.
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root?objectId=ZmxvdzpDUg%3D%3D
+----
+
+.Réponse (mode _succinct_)
+[source,json]
+----
+include::../files/flow_get_response.json[]
+----
+
+Dans le but de récupérer les [underline]#*enfants*# d'une entité, il faudra préciser ici le paramètre suivant :
+
+[source]
+----
+cmisselector=children
+----
+
+Ce qui donne, pour obtenir les [underline]#*enfants*# de l'objet d'ID *ZmxvdzpDUg==* dans le {repository} *Dossier-2*
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?objectId=ZmxvdzpDUg%3D%3D&cmisselector=children&succinct=true
+----
+
+La réponse obtenue sera alors un _json_
+[source, json]
+----
+include::../files/flow_children_response.json[]
+----
+
+D'autres paramètres (que ceux indiqués dans le chapitre <<cmis_browser_parameters>>) sont disponibles
+
+.paramètres __additionnels___
+[cols="1a,1a,5a",options="header"]
+|===
+|Nom|Valeur par défaut|Description
+|orderBy|*|Liste des *queryname* (suivis de *ASC* ou *DESC*), séparées par une virgules, définissant le tri souhaité.
+|includePathSegments|false|Si [green]*true*, la réponse contiendra pour chaque enfant lle _path_ relatif.
+|maxItems||Nombre maximum d'éléments retournés
+|SkipCount||Nombre d'éléments _passés_ (et donc non renvoyés en réponse). A utiliser en combinaison avec *maxItems*
+|===
+
+[[cmis_browser_crud]]
+=== Opération Création/Mise à jour/Suppression
+
+Les opérations de crétion, de mise à jour ou de suppression sont effectuées via une commande *HTTP* de type *POST*.
+
+Le paramètre additionnel précisant le type d'opération est `cmisaction`, par xemple, pour une création
+
+[source]
+----
+cmisaction=createDocument
+----
+
+[yellow-background]*TODO Exemples à ajouter*
+
+[[cmis_browser_query]]
+=== Recherche
+
+Dans le but de lancer une recherche ({query}), les paramètres suivants doivent être précisés :
+
+[source]
+----
+cmisselector=query
+q=<CRITERES DE RECHERCHE>
+----
+
+par exemple :
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT+cmis:objectId,dc:title+FROM+cmis:folder+WHERE+dc:title+=+'Workspaces'"
+----
+
+
+[[cmis_browser_content]]
+=== Récupération du contenu d'un document
+
+La récupération du contenu d'un document s'effectue en précisant les paramètres
+
+
+[source]
+----
+cmisselector=content
+objectId=<IDENTIFIANT DU DOCUMENT>
+----
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?objectId=YXR0YWNobWVudDpDUiNEZXJuaWVycyBjb21wdGUgcmVuZHVzIzQ2MzMjNDI1Mg%3D%3D&cmisselector=content
+----
+
+Le corps (*body*) de la réponse sera alors le document _streamé_.
+
+[[cmis_browser_tips]]
+=== Bonnes pratiques
+
+. Réponses '_succinctes_'
+
+Les réponses, au format _JSON_, peuvent être verbeuses (i.e. représentant un important volume de données).
+
+Ces réponses peuvent être abrégées/réduites en précisant le paramètre *succinct=true*.
+
+En reprentant l'exemple du chapitre <<cmis_browser_retreive>>
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root/ZmxvdzpDUg%3D%3D?cmisselector=children&succinct=true
+----
+
+la réponse sera alors :
+
+[source,JSON]
+----
+include::../files/succinct_sample.json[]
+----
+
+
+
+
+
+
+
