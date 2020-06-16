@@ -444,7 +444,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">16/06/2020 16:49:39</span>
+<span id="revdate">16/06/2020 21:06:44</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -1434,7 +1434,7 @@ valeurs possibles:</p>
 <td class="content">
 <div class="paragraph">
 <p>L&#8217;application <code><span style="color: #D4CE28">Dossier</span></code> offre la possibilité d&#8217;effectuer des <code><span style="color: #D35400">queries</span></code> <code><span style="color: #167EF2">CMIS</span></code> avec quelques limitations
-car les mots <strong>JOIN</strong>, <strong>IN_FOLDER</strong> et <strong>IN_TREE</strong> ne sont pas traités/implémentés en version <strong>7.1</strong>.</p>
+car les opérateurs <strong>JOIN</strong>, <strong>IN_FOLDER</strong> et <strong>IN_TREE</strong> ne sont pas traités/implémentés en version <strong>7.1</strong>.</p>
 </div>
 </td>
 </tr>
@@ -1478,6 +1478,21 @@ http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?c
 <pre class="CodeRay highlight"><code>q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%' AND cmis:creationDate &gt;= '28/03/2020'
 
 http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'%20AND%20cmis:creationDate%20&gt;=%20'28/03/2020'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>q=SELECT * FROM cm:document:cr WHERE cmis:creationDate IN ('04/05/2020', '07/05/2020')
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20IN%20
+('04/05/2020',%20'07/05/2020')</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>q=SELECT * FROM cm:document:cr WHERE cmis:creationDate NOT IN ('04/05/2020', '07/05/2020') ORDER BY cmis:creationDate DESC
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20NOT%20IN%20('04/05/2020',%20'07/05/2020')%20ORDER%20BY%20cmis:creationDate%20DESC</code></pre>
 </div>
 </div>
 </div>
@@ -1634,7 +1649,7 @@ c&#8217;est-à-dire que le couple <strong>identifiant</strong>/<strong>mot de pa
 <div class="ulist">
 <ul>
 <li>
-<p><strong>IN</strong> et <strong>ANY</strong></p>
+<p><strong>JOIN</strong></p>
 </li>
 <li>
 <p><strong>IN_FOLDER</strong> et <strong>IN_TREE</strong></p>
