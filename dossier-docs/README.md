@@ -21,7 +21,7 @@ la commande [maven](https://maven.apache.org/) suivante doit être exécutée :
 mvn generate-resources -P<profiles.docs>
 ```
 
-La clé **profiles.docs** peut contenir plusieurs profils _maven_  (séparés par une **,**) parmi les valeurs suivantes
+La clé **profiles.docs** peut contenir plusieurs profils _maven_ (séparés par une **,**) parmi les valeurs suivantes
 * **docs-sso**
 * **docs-cmis**
 * ...

@@ -52,8 +52,8 @@ dont la réponse sera similaire à ce qui suit :
 [source, json]
 ----
 showRepositoryInfo(
- { "Dossier-3":
-   {"repositoryId":"Dossier-3",
+ { "Dossier-2":
+   {"repositoryId":"Dossier-2",
     "repositoryName":"Dossier-2AC",
     "repositoryDescription":"2AC",
     "vendorName":"Digitech",
@@ -61,10 +61,20 @@ showRepositoryInfo(
 ...
 ----
 
+[IMPORTANT]
+====
+l'attribut *repositoryId* est important car permet d'accéder aux données du référentiel ciblé.
+====
+
 [[cmis_browser_retreive]]
 === Récupération d'éléments
 
-La récupération d'un objet s'effectue simplement en spécifiant l' *ID* de l'objet souhaité.
+[NOTE]
+====
+Dans les exemples ci-après, *Dossier-2* correspond au *repositoryId* ciblé.
+====
+
+La récupération d'un objet s'effectue simplement en spécifiant l' *ID* de l'objet souhaité. +
 
 [source]
 ----
@@ -88,7 +98,7 @@ Ce qui donne, pour obtenir les [underline]#*enfants*# de l'objet d'ID *ZmxvdzpDU
 
 [source]
 ----
-http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?objectId=ZmxvdzpDUg%3D%3D&cmisselector=children&succinct=true
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root?objectId=ZmxvdzpDUg%3D%3D&cmisselector=children&succinct=true
 ----
 
 La réponse obtenue sera alors un _json_
@@ -112,7 +122,7 @@ D'autres paramètres (que ceux indiqués dans le chapitre <<cmis_browser_paramet
 [[cmis_browser_crud]]
 === Opération Création/Mise à jour/Suppression
 
-Les opérations de crétion, de mise à jour ou de suppression sont effectuées via une commande *HTTP* de type *POST*.
+Les opérations de création, de mise à jour ou de suppression sont effectuées via une commande *HTTP* de type *POST*.
 
 Le paramètre additionnel précisant le type d'opération est `cmisaction`, par xemple, pour une création
 
@@ -126,6 +136,12 @@ cmisaction=createDocument
 [[cmis_browser_query]]
 === Recherche
 
+[CAUTION]
+====
+L'application {dossier} offre la possibilité d'effectuer des {queries} {cmis} avec quelques limitations
+car les mots *JOIN*, *IN_FOLDER* et *IN_TREE* ne sont pas traités/implémentés en version *7.1*.
+====
+
 Dans le but de lancer une recherche ({query}), les paramètres suivants doivent être précisés :
 
 [source]
@@ -134,11 +150,34 @@ cmisselector=query
 q=<CRITERES DE RECHERCHE>
 ----
 
-par exemple :
+Quelques exemples :
 
 [source]
 ----
-http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT+cmis:objectId,dc:title+FROM+cmis:folder+WHERE+dc:title+=+'Workspaces'"
+q=SELECT * FROM cm:document:cr WHERE cmis:creationDate >= '28/03/2020'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20>=%20'28/03/2020'
+----
+
+[source]
+----
+q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes = 'Désignation'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20=%20'Désignation'
+----
+
+[source]
+----
+q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'
+----
+
+[source]
+----
+q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%' AND cmis:creationDate >= '28/03/2020'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'%20AND%20cmis:creationDate%20>=%20'28/03/2020'
 ----
 
 
@@ -156,7 +195,7 @@ objectId=<IDENTIFIANT DU DOCUMENT>
 
 [source]
 ----
-http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?objectId=YXR0YWNobWVudDpDUiNEZXJuaWVycyBjb21wdGUgcmVuZHVzIzQ2MzMjNDI1Mg%3D%3D&cmisselector=content
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root?objectId=YXR0YWNobWVudDpDUiNEZXJuaWVycyBjb21wdGUgcmVuZHVzIzQ2MzMjNDI1Mg%3D%3D&cmisselector=content
 ----
 
 Le corps (*body*) de la réponse sera alors le document _streamé_.
