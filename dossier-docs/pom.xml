@@ -64,6 +64,31 @@
       </build>
     </profile>
 
+    <!-- ws-soap -->
+    <profile>
+      <id>docs-ws-soap</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>docs-ws-soap</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>ws-soap</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <!-- groovy -->
     <profile>
       <id>docs-groovy</id>

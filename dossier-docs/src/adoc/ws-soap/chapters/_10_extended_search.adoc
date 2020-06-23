@@ -1,0 +1,181 @@
+<<<
+
+[[extended_search]]
+== ExtendSearch
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *7.2* de {dossier}
+====
+
+La *wsdl* est accessible à l'adresse suivante:
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/extendSearch?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+
+=== Client
+
+La classe `com.digitech.dossier.ws.IExtendSearchWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+[TIP]
+====
+Comme indiqué précédemment, la *wsdl* est accesible. +
+
+* La plupart des trchnologies orienté-objet ({java}, C#, ...) supporte  la génération de l'ensemble des structures des requêtes / réponses en se basant sur ce
+fichier. La génération de ces _"stubs"_)_ facilite votre dévelopement mais reste optionelle.
+* Cette documentation est également optionnelle car le fichier _WSDL_, par définition, suffit pour connaître la structure d'entrée / sortie exacte d'un
+{webservice}.
+====
+
+=== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+=== Méthodes
+
+search4FieldsAndAttachments::
+
+Cette méthode permet à partir d'une requête {airs} de récupérer
+
+* des documents
+* leurs _metadata_ (champs)
+* et les informations sur les pièces jointes de chaque document
+
+[cols="1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*airsRequest*|Requête {airs}|[red]*Oui*|D_CREAT >= 28/03/2020
+|*ctyCodes*|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|Code du flux dans lequel la recherche est effectuée. +
+Si Vide, celui-ci sera déduit de la liste des types de contenu|[red]*Oui*|CR
+|*continuationToken*|Clé de _continuation_. +
+Le nombre de résultats reçus est limité à *20* (par défaut, côté {dossier}. +
+Si vous souhaitez plus de résultats, le {webservice} doit être rappelé en ajoutant cette clé.|[green]*Non*
+|OTU4ODQ0ZTFhM
+DllODViYTNjN2
+JiNThkOWM5YjQ
+wNDAjIzE1OTI5
+MTc3MTM2MDYjI
+zQ1ODYjIzIw
+|===
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:search4FieldsAndAttachments>
+         <web:airsRequest>D_CREAT >= 28/03/2020</web:airsRequest>
+         <!--1 or more repetitions:-->
+         <web:ctyCodes>CR</web:ctyCodes>
+         <web:ctyCodes>PRO_CLIENT</web:ctyCodes>
+         <!--Optional:-->
+         <web:flowCode></web:flowCode>
+         <!--Optional:-->
+         <web:continuationToken></web:continuationToken>
+      </web:search4FieldsAndAttachments>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+La réponse est retournée sous forme de chaîne de caractères.
+
+[source,xml]
+.Réponse
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <dos:search4FieldsAndAttachmentsResponse
+          xmlns:type="http://type.webservices.dossier.digitech.com"
+          xmlns:dos="http://webservices.dossier.digitech.com">
+      <dos:search4FieldsAndAttachments>
+        <dos:resultNumber>35</dos:resultNumber>
+        <dos:documents>
+          <dos:document>
+            <dos:refAirs>4539</dos:refAirs>
+            <dos:secretLevel>10</dos:secretLevel>
+            <dos:contentType>CR</dos:contentType>
+            <dos:fields>
+              <type:field>
+                <code>D_MODIF</code>
+                <label>Date de modification</label>
+                <value>22/06/2020 15:38:10</value>
+              </type:field>
+              <type:field>
+                <code>CR_THEME</code>
+                <label>Thématique</label>
+                <value>Réunion Transverse</value>
+                <refValue>172</refValue>
+              </type:field>
+              ...
+            </dos:fields>
+            <dos:attachments>
+              <type:attachment>
+                <id>4254</id>
+                <label>20_euros</label>
+                <fileName>20_euros.PDF</fileName>
+                <airsType>ORIGINAL</airsType>
+              </type:attachment>
+              <type:attachment>
+                <id>4257</id>
+                <label>test_compat</label>
+                <fileName>test_compat-1.odt</fileName>
+                <airsType>ORIGINAL</airsType>
+                <type:versions>
+                  <type:version>
+                    <id>4255</id>
+                    <label>test_compat</label>
+                    <fileName>test_compat.odt</fileName>
+                    <version>1</version>
+                    <date>22/08/2022 15:32:05</date>
+                  </type:version>
+                  ...
+                </type:versions>
+              </type:attachment>
+              ...
+            </dos:attachments>
+          </dos:document>
+            ...
+        </dos:documents>
+      </dos:search4FieldsAndAttachments>
+    </dos:search4FieldsAndAttachmentsResponse>
+  </soap:Body>
+</soap:Envelope>
+----
+
+Celle-ci contient les informations suivantes :
+
+[cols="1a,3a,4a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*resultNumber*|Nombre total de résultats||_string_
+4+|*documents > document*
+|*refAirs*|Référence {airs} du document||_integer_
+|*secretLevel*|Niveau de secret||_integer_
+|*contentType*|Type de contenu||_string_
+|*continuationToken*|Clé de _continuation_|Absent si l'intégralité des documents a été retourné|_string_
+4+|*documents > document > fields > field*
+|*code*|Code du champ||_string_
+|*label*|Libellé du champ||_string_
+|*value*|Valeur du champ||_string_
+|*refValue*|Identifiant du champ *référence* {airs}|Nœud absent si le champ n'est pas un champ _référence_|_string_
+4+|*documents > document > attachments > attachment*
+|*id*|Référence {airs} de la pièce jointe||_integer_
+|*label*|Libellé de la pièce jointe||_string_
+|*fileName*|Nom de la pièce jointe||_string_
+|*airsType*|Type de pièce jointe||_string_
+4+|*documents > document > attachments > attachment > versions > version*
+|*id*|Référence {airs} de la `version` de la pièce jointe||_integer_
+|*label*|Libellé de la `version` de la pièce jointe||_string_
+|*fileName*|Nom de la `version` de la pièce jointe||_string_
+|*version*|Référence {airs} de la `version` de la pièce jointe||_integer_
+|*date*|Date de création de cette `version` de la pièce jointe|Date au format *dd/MM/yyyy H:mm:ss*|_string_ / _date_
+|===
