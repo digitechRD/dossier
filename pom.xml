@@ -117,8 +117,8 @@
               <product.version>${project.version}</product.version>
               <productVersion>${project.version}</productVersion>
               <productReleaseDate>${generatedDate}</productReleaseDate>
+              <source-highlighter>coderay</source-highlighter>
             </attributes>
-            <sourceHighlighter>coderay</sourceHighlighter>
             <sourceDirectory>${basedir}/src/adoc/${id-key}</sourceDirectory>
             <sourceDocumentName>dossier-${id-key}.adoc</sourceDocumentName>
             <outputDirectory>${basedir}/src/main/resources/docs/${id-key}</outputDirectory>
@@ -132,9 +132,9 @@
               </goals>
               <configuration>
                 <skip>${skipPdf}</skip>
-                <sourceHighlighter>rouge</sourceHighlighter>
                 <backend>pdf</backend>
                 <attributes>
+                  <source-highlighter>rouge</source-highlighter>
                   <pdf-stylesdir>${project.parent.basedir}/src/main/resources/themes</pdf-stylesdir>
                   <pdf-style>digitech</pdf-style>
                 </attributes>
