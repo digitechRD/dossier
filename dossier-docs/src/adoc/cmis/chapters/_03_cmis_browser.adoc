@@ -152,43 +152,42 @@ q=<CRITERES DE RECHERCHE>
 
 Quelques exemples :
 
-[source]
+[source,sql]
 ----
 q=SELECT * FROM cm:document:cr WHERE cmis:creationDate >= '28/03/2020'
 
 http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20>=%20'28/03/2020'
 ----
 
-[source]
+[source,sql]
 ----
 q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes = 'Désignation'
 
 http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20=%20'Désignation'
 ----
 
-[source]
+[source,sql]
 ----
 q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%'
 
 http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'
 ----
 
-[source]
+[source,sql]
 ----
 q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%' AND cmis:creationDate >= '28/03/2020'
 
 http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'%20AND%20cmis:creationDate%20>=%20'28/03/2020'
 ----
 
-[source]
+[source,sql]
 ----
 q=SELECT * FROM cm:document:cr WHERE cmis:creationDate IN ('04/05/2020', '07/05/2020')
 
-http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20IN%20
-('04/05/2020',%20'07/05/2020')
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20IN%20('04/05/2020',%20'07/05/2020')
 ----
 
-[source]
+[source,sql]
 ----
 q=SELECT * FROM cm:document:cr WHERE cmis:creationDate NOT IN ('04/05/2020', '07/05/2020') ORDER BY cmis:creationDate DESC
 
