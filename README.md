@@ -7,7 +7,7 @@
 <p align="center">
   <img src="/src/main/resources/images/dossier-cover.png" width="300px" alt="Dossier Logo" />
 </p>
-                           qsqs
+
 La _GED_ **A.I.R.S. Dossier**, est une solution de **G**estion **É**lectronique de **D**ocuments multi-flux 
 qui permet la structuration, le classement et le partage dynamique des informations 
 entre les services d'une organisation, centralisée ou multi-sites, à partir d'une interface unique.
