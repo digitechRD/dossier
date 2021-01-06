@@ -8,7 +8,7 @@ Ce projet regroupe les documentations du produit _Dossier_.
 Les documentations disponibles sont:
 * [installation sso](src/adoc/sso/dossier-sso.adoc) (version *PDF* [ici](src/main/resources/docs/sso/dossier-sso.pdf)) 
 * [cmis](src/adoc/cmis/dossier-cmis.adoc) (version *PDF* [ici](src/main/resources/docs/cmis/dossier-cmis.pdf))
-* [parapheur](src/adoc/cmis/dossier-signature-book.adoc) (version *PDF* [ici](src/main/resources/docs/signature-book/dossier-signature-book.pdf))
+* [parapheur](src/adoc/signature-book/dossier-signature-book.adoc) (version *PDF* [ici](src/main/resources/docs/signature-book/dossier-signature-book.pdf))
 * <span style="color: #FF0000;">... à suivre</span> 
 
 # Génération des documentations
