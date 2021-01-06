@@ -1,0 +1,75 @@
+[[Dossier-signature-book]]
+= Mise œuvre d'un `Parapheur` dans l'application `Dossier`
+v1.0, 02/11/2019
+:revnumber: 1.0
+:revdate: 06/01/2021
+:author: Digitech
+:organization: Digitech
+:doctype: book
+:reproducible:
+:experimental:
+:compact:
+:icons: font
+:toc-title: Sommaire
+:chapter-label: 
+:listing-caption: Listing
+:sectnums:
+:toc:
+:toclevels: 3
+ifdef::backend-pdf[]
+:img-prio-width: 10
+:pdf-page-size: A4
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+:toc: left
+:img-prio-width: 18
+endif::[]
+ifdef::env-github[]
+:imagesdir: images
+:toc-placement!:
+:tip-caption: :bulb:
+:note-caption: :information_source:
+:important-caption: :heavy_exclamation_mark:
+:caution-caption: :fire:
+:warning-caption: :warning:
+endif::[]
+ifndef::env-github[]
+:imagesDir: images
+endif::[]
+:img_blocking: image:icons/blocking.png["Bloquant"]
+:img_urgent: image:icons/urgent.png["Urgent"]
+:img_high: image:icons/high.png["Haute"]
+:img_normal: image:icons/normal.png["Normal"]
+:img_low: image:icons/low.png["Bas"]
+// substition/alias
+:digitech: pass:quotes[`<span style="color: #EF2547">Digitech</span>`]
+:dossier: pass:quotes[`<span style="color: #D4CE28">Dossier</span>`]
+:java: pass:quotes[`*<span style="color: #F24E52">JAVA</span>*`]
+:signbook: pass:quotes[`<span style="color: #82E0AA">Parapheur</span>`]
+:ga: pass:quotes[`<span style="color: #F25937">AdminAirs</span>`]
+
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+[options="header"]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|06/01/2021|1.0|Validé|Document|Frédéric Gadaut|Nicolas Félix
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+<<<
+
+include::chapters/_01_introduction.adoc[]
+
+include::chapters/_02_interface_admin.adoc[]
+
+include::chapters/_03_sb_groovy.adoc[]
+
+include::chapters/_04_sb_workflow.adoc[]

@@ -114,6 +114,31 @@
       </build>
     </profile>
 
+    <!-- groovy -->
+    <profile>
+      <id>docs-signature-book</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>docs-signature-book</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>signature-book</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
 
     <!-- sample officiel -->
     <profile>
