@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>fr.digitech.ged.dossier</groupId>
+    <artifactId>dossier.documentation.gh</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>dossier-bdd-doc</artifactId>
+  <packaging>jar</packaging>
+  <name>Dossier Database Docs</name>
+  <version>1.0.0-SNAPSHOT</version>
+  <description>Dossier asciidoc documentation</description>
+
+  <properties>
+    <maven-schemaspy-plugin.version>5.1.0</maven-schemaspy-plugin.version>
+    <oracle19.connector.version>19.7.0.0</oracle19.connector.version>
+  </properties>
+
+  <profiles>
+    <!-- automatically generated database -->
+    <profile>
+      <id>airs-bdd</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>airs-bdd</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>sso</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>nl.geodienstencentrum.maven</groupId>
+            <artifactId>schemaspy-maven-plugin</artifactId>
+            <version>${maven-schemaspy-plugin.version}</version>
+            <!-- <dependencies>
+               <dependency>
+                 <groupId>com.oracle.database.jdbc</groupId>
+                 <artifactId>ojdbc8</artifactId>
+                 <version>${oracle19.connector.version}</version>
+               </dependency>
+             </dependencies>-->
+            <configuration>
+              <databaseType>orathin</databaseType>
+              <database>PFADOS</database>
+              <jdbcUrl>jdbc:oracle:thin:@srv-ged-08-new:1521:pfados</jdbcUrl>
+              <host>srv-ged-08-new</host>
+              <port>1521</port>
+              <user>DINTERNE_AIRS_71</user>
+              <password>DINTERNE_AIRS_71</password>
+              <!--              <schema>public</schema>-->
+              <outputDirectory>target/site</outputDirectory>
+              <!--              <pathToDrivers>[path to]/postgresql-42.2.16.jar</pathToDrivers>-->
+              <pathToDrivers>${basedir}/src/main/resources/jdbc/ojdbc8-19.7.0.0.jar</pathToDrivers>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+  </profiles>
+
+</project>
