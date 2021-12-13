@@ -13,7 +13,7 @@ qui permet la structuration, le classement et le partage dynamique des informati
 entre les services d'une organisation, centralisée ou multi-sites, à partir d'une interface unique.
 
 Vous trouverez plus d'informations sur notre produit sur notre site 
-[Digitech.fr](https://digitech.fr/digitech/cms/7147-7525/A.I.R.S.GED%20Dossier-gestion%20electronique%20documents%20dynamique%20multiflux.dhtml).
+[Digitech.fr](https://www.digitech.fr/).
 
 N'hésitez pas à nous contacter ! :thumbsup:
 
