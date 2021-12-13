@@ -1,0 +1,17 @@
+<style>
+  #tocbot a.toc-link.node-name--H1 { font-style: italic }
+  @media screen {
+    #tocbot > ul.toc-list { margin-bottom: 0.5em; margin-left: 0.125em }
+    #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul { padding-left: 0 }
+    #tocbot li { line-height: 1.3334; }
+    #tocbot .toc-link { transition: all 0.5s; }
+    #tocbot a.toc-link { width: 100%; height: 100%; display: block; }
+    .is-collapsible { max-height: 3000px; overflow: hidden; }
+    .is-collapsed { max-height: 0 }
+    .is-active-link { font-weight: 700; }
+    li.is-active-li > a { background-color: #1d4b8f; color: white; border-radius: 4px; padding: 0.4rem 0.6rem; }
+  }
+  @media print {
+    #tocbot a.toc-link.node-name--H4 { display: none }
+  }
+</style>

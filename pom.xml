@@ -87,6 +87,8 @@
     <!-- plugin managment -->
     <pluginManagement>
       <plugins>
+
+        <!-- 1. Generate build key (generation date) -->
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
@@ -107,6 +109,32 @@
             </execution>
           </executions>
         </plugin>
+
+        <!-- 2. Copy custom javascript files to output folder -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>copy-asciidoc-resources</id>
+              <phase>generate-resources</phase>
+              <goals>
+                <goal>copy-resources</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${basedir}/src/main/resources/docs/${id-key}</outputDirectory>
+                <resources>
+                  <resource>
+                    <directory>${project.basedir}/src/main/resources/js</directory>
+                    <filtering>false</filtering>
+                  </resource>
+                </resources>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+        <!-- 3. Finally, generate documentations from asciidoc files -->
         <plugin>
           <groupId>org.asciidoctor</groupId>
           <artifactId>asciidoctor-maven-plugin</artifactId>
@@ -150,7 +178,10 @@
                 <backend>html5</backend>
                 <embedAssets>true</embedAssets>
                 <attributes>
-                  <!-- <stylesheet>css/digitech.css</stylesheet>-->
+                  <!-- these attributes are required to use the doc resources -->
+                  <docinfo>shared</docinfo>
+                  <docinfodir>${project.basedir}/src/main/resources</docinfodir>
+                  <scriptsdir>${project.basedir}/src/main/resources/js</scriptsdir>
                   <toc>left</toc>
                 </attributes>
               </configuration>

@@ -1,0 +1,49 @@
+<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script>
+  /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
+
+  try {
+    tocbot.init({
+      contentSelector: '#content',
+      headingSelector: 'h1, h2, h3, h4',
+      smoothScroll: true,
+      headingsOffset: 40,
+      scrollSmoothOffset: -40,
+      orderedList: false
+    });
+
+    let oldtoc = document.getElementById('toctitle').nextElementSibling;
+    const newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+    
+    const handleTocOnResize = function () {
+      const width = window.innerWidth
+          || document.documentElement.clientWidth
+          || document.body.clientWidth;
+      if (width < 768) {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4',
+          collapseDepth: 6,
+          activeLinkClass: 'ignoreactive',
+          throttleTimeout: 1000,
+          smoothScroll: false
+        });
+      } else {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4',
+          smoothScroll:  true,
+          headingsOffset: 40,
+          scrollSmoothOffset: -40,
+          orderedList: false
+        });
+      }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+  }
+  catch(err) {}
+</script>
