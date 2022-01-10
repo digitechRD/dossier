@@ -42,7 +42,7 @@
     <maven.compiler.target>1.8</maven.compiler.target>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
+    <build-helper-maven-plugin.version>3.3.0</build-helper-maven-plugin.version>
     <maven.build.timestamp.format>dd/MM/yyyy HH:mm:ss</maven.build.timestamp.format>
     <maven-resources-plugin.version>3.2.0</maven-resources-plugin.version>
 
@@ -50,6 +50,7 @@
     <embedAssets>false</embedAssets>
     <skipPdf>false</skipPdf>
     <skipHtml>false</skipHtml>
+    <skipDocbook>true</skipDocbook>
     <outputFile>dossier-${id-key}</outputFile>
     <dossier.stylesheet>digitech</dossier.stylesheet>
 <!--    <dossier.stylesheet>digitech-dark</dossier.stylesheet>-->
@@ -201,6 +202,28 @@
                   <stylesheet>${dossier.stylesheet}.css</stylesheet>
                   <toc>left</toc>
                 </attributes>
+              </configuration>
+            </execution>
+
+            <!-- optional docbook conversion
+            <![CDATA[
+            docbook conversion might be useful, to make a docx version
+            In that cas, conversion should be done in 2 passes .adoc > .dbk > docx
+            using pandora application
+            pandoc ++from docbook ++to docx ++output res.docx document.dbk (replace ++ with moins moins ^^)
+            see https://rmoff.net/2020/04/16/converting-from-asciidoc-to-google-docs-and-ms-word/
+            ]]>
+            -->
+            <execution>
+              <id>docbook-${id-key}</id>
+              <phase>generate-resources</phase>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <configuration>
+                <skip>${skipDocbook}</skip>
+                <backend>docbook</backend>
+                <outputFile>${outputFile}.dbk</outputFile>
               </configuration>
             </execution>
           </executions>
