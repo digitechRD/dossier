@@ -1,8 +1,8 @@
-[[Dossier-ws-soap]]
-= WebServices SOAP *AIRS Dossier*
-v1.1, 12/05/2021
-:revnumber: 1.1
-:revdate: 12/05/2021
+[[Dossier-ws]]
+= WebServices *AIRS Dossier*
+v1.2, 14/09/2022
+:revnumber: 1.2
+:revdate: 14/09/2022
 :author: Digitech
 :organization: Digitech
 :doctype: book
@@ -17,7 +17,7 @@ v1.1, 12/05/2021
 :icon-set: far
 :nofooter:
 :toc-title: Sommaire
-:chapter-label: 
+:chapter-signifier:
 :listing-caption: Listing
 :sectnums:
 :toc:
@@ -58,7 +58,13 @@ endif::[]
 :webservices: pass:quotes[*<span style="color: #0099ff">Web Services</span>*]
 :webservice: pass:quotes[*<span style="color: #0099ff">Web Service</span>*]
 :soap: pass:quotes[*<span style="color: #6666ff">soap</span>*]
-:dossier-stub-version: 1.1.0
+:rest: pass:quotes[*<span style="color: #73A12E">rest</span>*]
+:xml: pass:quotes[*<span style="color: #BF00FF">XML</span>*]
+:json: pass:quotes[*<span style="color: #FF7C29">json</span>*]
+:query: pass:quotes[*<span style="color: #4defe9">query</span>*]
+:path: pass:quotes[*<span style="color: #36D74F">path</span>*]
+:dossier-stub-version: 1.2.1
+:dossier-rest-client-version: 1.0.0
 
 ifndef::backend-pdf[]
 image::dossier-cover.png[]
@@ -70,12 +76,18 @@ endif::[]
 |Date|Version|Etat|Objet|Rédacteur|Validateur
 |22/06/2020|1.0|Validé|Création du document|Nicolas Félix|
 |12/05/2021|1.1|Validé|Modification du document, ajout compatibilité *7.1*|Nicolas Félix|
+|12/05/2021|1.1|Validé|Modification du document, ajout compatibilité *7.1*|Nicolas Félix|
 |===
 
 ifdef::env-github[]
 toc::[]
 endif::[]
 
+
 include::chapters/_01_introduction.adoc[]
 
-include::chapters/_10_extended_search.adoc[]
+include::chapters/_a_rest.adoc[]
+
+include::chapters/_b_soap.adoc[]
+
+include::chapters/_c_annexes.adoc[]

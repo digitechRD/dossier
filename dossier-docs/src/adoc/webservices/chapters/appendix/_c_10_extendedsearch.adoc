@@ -1,0 +1,35 @@
+[[appendix_extendsearch]]
+=== ExtendedSearch modèles
+
+La réponse est retournée sous forme de chaîne de caractères,
+au format {xml} ({soap}) ou {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*resultNumber*|Nombre total de résultats||_string_
+4+|*documents > document*
+|*refAirs*|Référence {airs} du document||_integer_
+|*secretLevel*|Niveau de secret||_integer_
+|*contentType*|Type de contenu||_string_
+|*continuationToken*|Clé de _continuation_|Absent si l'intégralité des documents a été retourné|_string_
+4+|*documents > document > fields > field*
+|*code*|Code du champ||_string_
+|*label*|Libellé du champ||_string_
+|*value*|Valeur du champ||_string_
+|*refValue*|Identifiant du champ *référence* {airs}|Nœud absent si le champ n'est pas un champ _référence_|_string_
+4+|*documents > document > attachments > attachment*
+|*id*|Référence {airs} de la pièce jointe||_integer_
+|*label*|Libellé de la pièce jointe||_string_
+|*fileName*|Nom de la pièce jointe||_string_
+|*airsType*|Type de pièce jointe||_string_
+4+|*documents > document > attachments > attachment > versions > version*
+|*id*|Référence {airs} de la `version` de la pièce jointe||_integer_
+|*label*|Libellé de la `version` de la pièce jointe||_string_
+|*fileName*|Nom de la `version` de la pièce jointe||_string_
+|*version*|Référence {airs} de la `version` de la pièce jointe||_integer_
+|*date*|Date de création de cette `version` de la pièce jointe|Date, au format *dd/MM/yyyy H:mm:ss*|_string_ / _date_
+|===
