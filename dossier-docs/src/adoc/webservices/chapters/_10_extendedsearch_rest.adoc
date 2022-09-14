@@ -63,7 +63,7 @@ http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?air
 .Réponses
 |===
 |Code Http|Description
-|[green]*200*|Opération réussie. Struture de retour <<extendedearchjson_response>>
+|[lime]*200*|Opération réussie. Struture de retour <<extendedearchjson_response>>
 |[red]*401*|Authentification non fournie
 |[red]*500*|Erreur interne au serveur/service
 |===
@@ -73,40 +73,42 @@ http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?air
 .Réponse {json}
 ----
 {
-  "resultNumber": 0,
-  "continuationToken": "string",
-  "documents": [
-    {
-      "refAirs": 0,
-      "secretLevel": 0,
-      "contentType": "string",
-      "fields": [
+  "WSExtendSearchResult": {
+      "resultNumber": 0,
+      "continuationToken": "string",
+      "documents": [
         {
-          "code": "string",
-          "label": "string",
-          "value": "string",
-          "refValue": "string"
-        }
-      ],
-      "attachments": [
-        {
-          "id": 0,
-          "label": "string",
-          "fileName": "string",
-          "airsType": "string",
-          "versions": [
+          "refAirs": 0,
+          "secretLevel": 0,
+          "contentType": "string",
+          "fields": [
+            {
+              "code": "string",
+              "label": "string",
+              "value": "string",
+              "refValue": "string"
+            }
+          ],
+          "attachments": [
             {
               "id": 0,
               "label": "string",
               "fileName": "string",
-              "version": 0,
-              "date": "string"
+              "airsType": "string",
+              "versions": [
+                {
+                  "id": 0,
+                  "label": "string",
+                  "fileName": "string",
+                  "version": 0,
+                  "date": "string"
+                }
+              ]
             }
           ]
         }
       ]
     }
-  ]
 }
 ----
 
