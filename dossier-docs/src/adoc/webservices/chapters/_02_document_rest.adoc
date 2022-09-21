@@ -25,7 +25,7 @@ Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentificati
 
 ==== Méthodes
 
-POST /document::
+{POST} /document::
 
 Cette méthode permet de créer un document
 
@@ -95,19 +95,19 @@ http://<host>:<port>/<context>/rest/document
 .Réponses
 |===
 |Code Http|Description
-|[lime]*200*|Opération réussie. Structure de retour <<integer>>
+|[lime]*200*|Opération réussie (cf. <<document_rest_response>>)
 |[red]*401*|Authentification non fournie
 |[red]*500*|Erreur interne au serveur/service
 |===
 
-[[integer]]
+[[document_rest_response]]
 [source,text]
-.integer
+.Retour, Identifiant du document
 ----
 6733
 ----
 
-GET /document/{docId}::
+{GET} /document/{docId}::
 
 Cette méthode permet de récupérer les métadonnées d'un document à partir de son identifiant
 
@@ -137,7 +137,7 @@ http://<host>:<port>/<context>/rest/document/4959
 .Réponses
 |===
 |Code Http|Description
-|[lime]*200*|Opération réussie. Structure de retour <<documentgetjson_response>>
+|[lime]*200*|Opération réussie (cf. <<documentgetjson_response>>)
 |[red]*401*|Authentification non fournie
 |[red]*404*|Document non trouvé
 |[red]*500*|Erreur interne au serveur/service
@@ -145,7 +145,7 @@ http://<host>:<port>/<context>/rest/document/4959
 
 [[documentgetjson_response]]
 [source,json]
-.{json}
+.Structure de retour
 ----
 {
   "WSDocumentType": {
@@ -187,7 +187,7 @@ http://<host>:<port>/<context>/rest/document/4959
 
 cf le chapitre <<appendix_document>> pour une description de la structure de retour.
 
-PATCH /document/{docId}::
+{PATCH} /document/{docId}::
 
 Cette méthode permet de mettre à jour les métadonnées d'un document
 
@@ -241,7 +241,7 @@ http://<host>:<port>/<context>/rest/document/4959
 .Réponses
 |===
 |Code Http|Description
-|[lime]*200*|Opération réussie. Structure de retour <<documentupdatejson_response>>
+|[lime]*200*|Opération réussie (cf. <<documentupdatejson_response>>)
 |[red]*401*|Authentification non fournie
 |[red]*404*|Document non trouvé
 |[red]*500*|Erreur interne au serveur/service
@@ -249,12 +249,12 @@ http://<host>:<port>/<context>/rest/document/4959
 
 [[documentupdatejson_response]]
 [source,text]
-.{integer}
+.Exemple de retour
 ----
 4959
 ----
 
-DELETE /document/{docId}::
+{DELETE} /document/{docId}::
 
 Cette méthode permet de supprimer logiquement un document.
 [NOTE]
@@ -287,7 +287,7 @@ http://<host>:<port>/<context>/rest/document/4959
 .Réponses
 |===
 |Code Http|Description
-|[lime]*200*|Opération réussie. Structure de retour <<documentdeletejson_response>> (liste d'identifiants des documents supprimés)
+|[lime]*200*|Opération réussie (cf. <<documentdeletejson_response>>)
 |[red]*401*|Authentification non fournie
 |[red]*404*|Document non trouvé
 |[red]*500*|Erreur interne au serveur/service
@@ -295,11 +295,12 @@ http://<host>:<port>/<context>/rest/document/4959
 
 [[documentdeletejson_response]]
 [source,text]
-.{integer[]}
+.Liste d'identifiants des documents supprimés
 ----
 [4959, 2845]
 ----
-DELETE /document/remove/{docId}::
+
+{DELETE} /document/remove/{docId}::
 
 Cette méthode permet de supprimer physiquement un document.
 [NOTE]
@@ -332,7 +333,7 @@ http://<host>:<port>/<context>/rest/document/remove/4959
 .Réponses
 |===
 |Code Http|Description
-|[lime]*200*|Opération réussie. Structure de retour <<documentremovejson_response>> (liste d'identifiants des documents supprimés)
+|[lime]*200*|Opération réussie (cf. <<documentremovejson_response>>)
 |[red]*401*|Authentification non fournie
 |[red]*404*|Document non trouvé
 |[red]*500*|Erreur interne au serveur/service
@@ -340,7 +341,7 @@ http://<host>:<port>/<context>/rest/document/remove/4959
 
 [[documentremovejson_response]]
 [source,text]
-.{integer[]}
+.Liste d'identifiants des documents supprimés
 ----
 [4959, 2845]
 ----

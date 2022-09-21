@@ -23,7 +23,7 @@ Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentificati
 
 ==== Méthodes
 
-search4FieldsAndAttachments::
+{GET} search4FieldsAndAttachments::
 
 Cette méthode permet à partir d'une requête {airs} de récupérer
 
@@ -74,14 +74,14 @@ La valeur _D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22_ correspond à *D_CREAT >= "0
 .Réponses
 |===
 |Code Http|Description
-|[lime]*200*|Opération réussie. Structure de retour <<extendedearchjson_response>>
+|[lime]*200*|Opération réussie (cf. <<extendedearchjson_response>>)
 |[red]*401*|Authentification non fournie
 |[red]*500*|Erreur interne au serveur/service
 |===
 
 [[extendedearchjson_response]]
 [source,json]
-.Réponse {json}
+.Structure de retour
 ----
 {
   "WSExtendSearchResult": {

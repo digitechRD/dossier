@@ -162,23 +162,7 @@
             <outputDirectory>${basedir}/src/main/resources/docs/${id-key}</outputDirectory>
           </configuration>
           <executions>
-            <execution>
-              <id>pdf-${id-key}</id>
-              <phase>generate-resources</phase>
-              <goals>
-                <goal>process-asciidoc</goal>
-              </goals>
-              <configuration>
-                <skip>${skipPdf}</skip>
-                <backend>pdf</backend>
-                <outputFile>${outputFile}.pdf</outputFile>
-                <attributes>
-                  <source-highlighter>rouge</source-highlighter>
-                  <pdf-stylesdir>${project.parent.basedir}/src/main/resources/themes</pdf-stylesdir>
-                  <pdf-style>digitech</pdf-style>
-                </attributes>
-              </configuration>
-            </execution>
+            <!-- html output -->
             <execution>
               <id>html5-${id-key}</id>
               <phase>generate-resources</phase>
@@ -199,6 +183,25 @@
                   <stylesdir>css</stylesdir>
                   <stylesheet>${dossier.stylesheet}.css</stylesheet>
                   <toc>left</toc>
+                </attributes>
+              </configuration>
+            </execution>
+
+            <!-- pdf output -->
+            <execution>
+              <id>pdf-${id-key}</id>
+              <phase>generate-resources</phase>
+              <goals>
+                <goal>process-asciidoc</goal>
+              </goals>
+              <configuration>
+                <skip>${skipPdf}</skip>
+                <backend>pdf</backend>
+                <outputFile>${outputFile}.pdf</outputFile>
+                <attributes>
+                  <source-highlighter>rouge</source-highlighter>
+                  <pdf-themesdir>${project.parent.basedir}/src/main/resources/themes</pdf-themesdir>
+                  <pdf-theme>digitech</pdf-theme>
                 </attributes>
               </configuration>
             </execution>
