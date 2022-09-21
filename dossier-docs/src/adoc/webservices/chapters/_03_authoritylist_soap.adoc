@@ -21,10 +21,16 @@ getAuthorityListCodes::
 
 Cette méthode récupérer tous les codes de liste d'autorité disponibles. Ces codes peuvent ensuite être utilisés au sein de la methode suivante afin de
 récupérer les différents termes d'une liste d'autorité.
+
 ==== Authentification
-[NOTE]
+
+[IMPORTANT]
 ====
-Aucun paramètre d'entrée n'est requis pour l'utilisation de cette méthode. Une https://tools.ietf.org/html/rfc7617[*authentification basique*^] est cependant nécessaire.
+Aucun paramètre d'entrée n'est requis pour l'utilisation de cette méthode.
+
+Une https://tools.ietf.org/html/rfc7617[*authentification basique*^] est cependant nécessaire.
+
+L'utilisateur connecté doit également posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
 ====
 
 [source,xml]

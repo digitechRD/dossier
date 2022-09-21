@@ -29,9 +29,9 @@ GET /authorityList::
 Cette méthode récupérer tous les codes de liste d'autorité disponibles. Ces codes peuvent ensuite être utilisés au sein de la methode suivante afin de
 récupérer les différents termes d'une liste d'autorité.
 
-[NOTE]
+[IMPORTANT]
 ====
-Aucun paramètre d'entrée n'est requis pour l'utilisation de ce service.
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
 ====
 
 [source]
@@ -53,6 +53,8 @@ http://<host>:<port>/<context>/rest/authorityList
 |===
 |Code Http|Description
 |[lime]*200*|Opération réussie. Structure de retour <<authoritylist_getcodejson_response>>
+|[red]*401*|Authentification non fournie
+|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
 |[red]*500*|Erreur interne au serveur/service
 |===
 
