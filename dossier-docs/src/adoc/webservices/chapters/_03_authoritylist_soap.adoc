@@ -64,18 +64,22 @@ getTerms::
 
 Cette méthode permet de récupérer les termes d'une liste d'autorité à partir de son code (fieldCode)
 
-[cols="1a,4a,1a,2a",options="header"]
+[cols="1a,2a,1a,4a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Description|Requis|Exemple
-|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|<web:connectionData>
-<type:login>login</type:login>
-<type:password>password</type:password>
+|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
 </web:connectionData>
+----
 |*fieldCode*|Code identifiant la liste d'autorité|[red]*Oui*|AL_DOC_LINK
 |===
 
-cf le chapitre <<appendix_authoritylist>> pour une description de la structure connectionData.
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
 
 [source,xml]
 .exemple de requête soap

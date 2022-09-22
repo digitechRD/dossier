@@ -6,13 +6,6 @@
 Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
 ====
 
-La définition de l'API - via une interface _Swagger_, est disponible à l'adresse suivante :
-[source]
-----
-rest/
-http://<hostname>:<port>/<context>/rest/api-docs
-----
-
 ==== Client
 
 La classe `com.digitech.dossier.rest.ws.IDocumentClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
@@ -29,21 +22,25 @@ Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentificati
 
 Cette méthode permet de créer un document
 
-[cols="1a,1a,4a,1a,2a",options="header"]
+[cols="1a,1a,2a,1a,4a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*documentData*|{body}|Ensemble de données du document|[red]*Oui*|
+[source,json]
+----
 {
-    "contentType": "CR",
-    "secretLevel": 0,"fields": [{
-        "code": "CR",
-        "field": "Title"}],
-        "data": ["CR"],
-        "filename": "test",
-        "flowCode": "CR",
-        "scriptCode": "test"
+  "contentType": "CR",
+  "secretLevel": 0,
+  "fields": [{
+    "code": "CR",
+    "field": "Title"}],
+  "data": ["CR"],
+  "filename": "test",
+  "flowCode": "CR",
+  "scriptCode": "test"
 }
+----
 |===
 
 [source]
@@ -191,22 +188,25 @@ cf le chapitre <<appendix_document>> pour une description de la structure de ret
 
 Cette méthode permet de mettre à jour les métadonnées d'un document
 
-[cols="1a,1a,4a,1a,2a",options="header"]
+[cols="1a,1a,2a,1a,4a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*docId*|{path}|Identifiant du document|[red]*Oui*|4959
 |*documentData*|{body}|Ensemble de données du document|[red]*Oui*|
+[source,json]
+----
 {
-"contentType": "CR",
-"secretLevel": 0,"fields": [{
-"code": "CR",
-"field": "Title"}],
-"data": ["CR"],
-"filename": "test",
-"flowCode": "CR",
-"scriptCode": "test"
+  "contentType": "CR",
+  "secretLevel": 0,"fields": [{
+    "code": "CR",
+    "field": "Title"}],
+  "data": ["CR"],
+  "filename": "test",
+  "flowCode": "CR",
+  "scriptCode": "test"
 }
+----
 |===
 cf le chapitre <<appendix_document>> pour une description de la structure documentData.
 
