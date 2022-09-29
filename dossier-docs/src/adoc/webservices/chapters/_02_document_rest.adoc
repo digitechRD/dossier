@@ -18,7 +18,7 @@ Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentificati
 
 ==== Méthodes
 
-{POST} /document::
+===== {POST} /document
 
 Cette méthode permet de créer un document
 
@@ -104,7 +104,7 @@ http://<host>:<port>/<context>/rest/document
 6733
 ----
 
-{GET} /document/{docId}::
+===== {GET} /document/{docId}
 
 Cette méthode permet de récupérer les métadonnées d'un document à partir de son identifiant
 
@@ -184,7 +184,7 @@ http://<host>:<port>/<context>/rest/document/4959
 
 cf le chapitre <<appendix_document>> pour une description de la structure de retour.
 
-{PATCH} /document/{docId}::
+===== {PATCH} /document/{docId}
 
 Cette méthode permet de mettre à jour les métadonnées d'un document
 
@@ -254,7 +254,7 @@ http://<host>:<port>/<context>/rest/document/4959
 4959
 ----
 
-{DELETE} /document/{docId}::
+===== {DELETE} /document/{docId}
 
 Cette méthode permet de supprimer logiquement un document.
 [NOTE]
@@ -300,7 +300,7 @@ http://<host>:<port>/<context>/rest/document/4959
 [4959, 2845]
 ----
 
-{DELETE} /document/remove/{docId}::
+===== {DELETE} /document/remove/{docId}
 
 Cette méthode permet de supprimer physiquement un document.
 [NOTE]
