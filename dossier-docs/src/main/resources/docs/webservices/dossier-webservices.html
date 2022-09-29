@@ -106,7 +106,15 @@
 <ul class="sectlevel3">
 <li><a href="#_client">2.1.1. Client</a></li>
 <li><a href="#_authentification">2.1.2. Authentification</a></li>
-<li><a href="#_méthodes">2.1.3. Méthodes</a></li>
+<li><a href="#_méthodes">2.1.3. Méthodes</a>
+<ul class="sectlevel4">
+<li><a href="#_post_document">2.1.3.1. <strong class="post">POST</strong> /document</a></li>
+<li><a href="#_get_documentdocid">2.1.3.2. <strong class="get">GET</strong> /document/{docId}</a></li>
+<li><a href="#_patch_documentdocid">2.1.3.3. <strong class="patch">PATCH</strong> /document/{docId}</a></li>
+<li><a href="#_delete_documentdocid">2.1.3.4. <strong class="delete">DELETE</strong> /document/{docId}</a></li>
+<li><a href="#_delete_documentremovedocid">2.1.3.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#authority_list_rest">2.2. AuthorityList</a>
@@ -153,7 +161,11 @@
 <ul class="sectlevel3">
 <li><a href="#_client_5">2.5.1. Client</a></li>
 <li><a href="#_authentification_5">2.5.2. Authentification</a></li>
-<li><a href="#_méthodes_5">2.5.3. Méthodes</a></li>
+<li><a href="#_méthodes_5">2.5.3. Méthodes</a>
+<ul class="sectlevel4">
+<li><a href="#_get_search4fieldsandattachments">2.5.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -397,13 +409,10 @@ de cette <strong>API</strong>.</p>
 </div>
 <div class="sect3">
 <h4 id="_méthodes">2.1.3. Méthodes</h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong class="post">POST</strong> /document</dt>
-<dd>
+<div class="sect4">
+<h5 id="_post_document">2.1.3.1. <strong class="post">POST</strong> /document</h5>
+<div class="paragraph">
 <p>Cette méthode permet de créer un document</p>
-</dd>
-</dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 2. Paramètres en entrée</caption>
@@ -545,13 +554,11 @@ de cette <strong>API</strong>.</p>
 <pre class="CodeRay highlight"><code data-lang="text">6733</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong class="get">GET</strong> /document/{docId}</dt>
-<dd>
+</div>
+<div class="sect4">
+<h5 id="_get_documentdocid">2.1.3.2. <strong class="get">GET</strong> /document/{docId}</h5>
+<div class="paragraph">
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
-</dd>
-</dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 4. Paramètres en entrée</caption>
@@ -696,13 +703,11 @@ de cette <strong>API</strong>.</p>
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_document">Section 4.2, &#8220;Document modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong class="patch">PATCH</strong> /document/{docId}</dt>
-<dd>
+</div>
+<div class="sect4">
+<h5 id="_patch_documentdocid">2.1.3.3. <strong class="patch">PATCH</strong> /document/{docId}</h5>
+<div class="paragraph">
 <p>Cette méthode permet de mettre à jour les métadonnées d&#8217;un document</p>
-</dd>
-</dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 6. Paramètres en entrée</caption>
@@ -853,13 +858,11 @@ de cette <strong>API</strong>.</p>
 <pre class="CodeRay highlight"><code data-lang="text">4959</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong class="delete">DELETE</strong> /document/{docId}</dt>
-<dd>
+</div>
+<div class="sect4">
+<h5 id="_delete_documentdocid">2.1.3.4. <strong class="delete">DELETE</strong> /document/{docId}</h5>
+<div class="paragraph">
 <p>Cette méthode permet de supprimer logiquement un document.</p>
-</dd>
-</dl>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -980,13 +983,11 @@ de cette <strong>API</strong>.</p>
 <pre class="CodeRay highlight"><code data-lang="text">[4959, 2845]</code></pre>
 </div>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong class="delete">DELETE</strong> /document/remove/{docId}</dt>
-<dd>
+</div>
+<div class="sect4">
+<h5 id="_delete_documentremovedocid">2.1.3.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</h5>
+<div class="paragraph">
 <p>Cette méthode permet de supprimer physiquement un document.</p>
-</dd>
-</dl>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1105,6 +1106,7 @@ de cette <strong>API</strong>.</p>
 <div class="title">Listing 17. Liste d&#8217;identifiants des documents supprimés</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="text">[4959, 2845]</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -2638,11 +2640,11 @@ de cette <strong>API</strong>.</p>
 </div>
 <div class="sect3">
 <h4 id="_méthodes_5">2.5.3. Méthodes</h4>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><strong class="get">GET</strong> search4FieldsAndAttachments</dt>
-<dd>
+<div class="sect4">
+<h5 id="_get_search4fieldsandattachments">2.5.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</h5>
+<div class="paragraph">
 <p>Cette méthode permet à partir d&#8217;une requête <span style="color: #F25937">AIRS</span> de récupérer</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -2655,9 +2657,6 @@ de cette <strong>API</strong>.</p>
 <p>et les informations sur les pièces jointes de chaque document</p>
 </li>
 </ul>
-</div>
-</dd>
-</dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 30. Paramètres en entrée</caption>
@@ -2871,6 +2870,7 @@ http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4Fields
 <p>cf le chapitre <a href="#appendix_extendsearch">Section 4.5, &#8220;ExtendedSearch modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
 <div style="page-break-after: always;"></div>
+</div>
 </div>
 </div>
 </div>
