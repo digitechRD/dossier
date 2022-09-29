@@ -1,0 +1,259 @@
+[[baskets_rest]]
+=== Baskets
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IBasketsClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {GET} /baskets
+
+Récupère la liste des noms des bannettes paramétrées pour l'application.
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/baskets' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/baskets
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<baskets_getbasketListjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[baskets_getbasketListjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "Documents charte officielle",
+    "Documents du service intégration",
+    "Mes projets au SCLI",
+    "Mes projets dirigés",
+    "xml_configuration_basket_global_documents",
+    "Derniers compte rendus",
+    "Mes projets en cours"
+  ]
+}
+----
+
+===== {GET} /baskets/orgId/{orgId}
+
+Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un identifiant d'organisation (*orgId*).
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*orgId*|{path}|Identifiant de l'organisation|[red]*Oui*|24
+|*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<baskets_getbasketListOrgjson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Organisation non trouvée
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[baskets_getbasketListOrgjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "Mes projets au SCLI",
+    "Mes projets dirigés",
+    "Mes projets en cours"
+  ]
+}
+----
+
+===== {GET} /baskets/flowCode/{flowCode}
+
+Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un code identifiant de flux (*flowCode*).
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*flowcode*|{path}|Code du flux|[red]*Oui*|PRO
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/baskets/flowCode/PRO' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/baskets/flowCode/PRO
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<baskets_getbasketListFlowjson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Flux non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[baskets_getbasketListFlowjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "Mes projets au SCLI",
+    "Mes projets dirigés",
+    "Mes projets en cours"
+  ]
+}
+----
+
+===== {GET} /baskets/docCount/{basketName}
+
+Cette méthode permet d'obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (*basketName*).
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*basketName*|{path}|Nom de la bannette|[red]*Oui*|Mes projets dirigés
+|*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
+|*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<baskets_geDocCountNamejson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Bannette non trouvée
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[baskets_geDocCountNamejson_response]]
+[source,text]
+.Integer
+----
+415
+----
+
+===== {GET} /baskets/docLink/{basketName}
+
+Cette méthode permet d'obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (*basketName*)
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*basketName*|{path}|Nom de la bannette|[red]*Oui*|Mes projets dirigés
+|*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
+|*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<baskets_geDocLinkNamejson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Bannette non trouvée
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[baskets_geDocLinkNamejson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "faces/redirect.jsp?authentication=HPa4o3rdP3jo%2FTvySbkDVZMK%2FYuCpRx%2BjOSv5Tp0t9z%2BdIpmSlbBGpgF4ZT9SjaaM5yiNjYtgZ4kuNmMit%2F2LyaaTta6zfYjRsEnfVqCIaXfQqrdxfjVXQNcpILl0f2I1L%2F%2Bovj2AsDD9r3x127k36wMF8MTOW3K8NMG5ouxH8k%3D&outcome=gotoDocumentUnitaire&docId=6868&flowCode=CR",
+    "faces/redirect.jsp?authentication=qJoexW7AAhobyxEaEGCpYq77hjkdaayibx%2B5CiCHmX3JD5PbX%2FNtkSQG%2B38CNrNezmUjKGQc7uBjazIzQZwMAeQcgv7dhrpeJH64jAtkBbM37j279eWg2lcQltrqWGF2wqPXrsIejkUGwMqa4S3AQR1CSGHitW9owSwqmuFWXwM%3D&outcome=gotoDocumentUnitaire&docId=6867&flowCode=CR",
+    ...
+    ]
+}
+----
+
+[IMPORTANT]
+====
+Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+====

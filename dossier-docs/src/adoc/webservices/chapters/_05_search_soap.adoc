@@ -1,0 +1,286 @@
+[[search_soap]]
+=== Search
+
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/WSSearch?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.ISearchWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Méthodes
+
+getResultNumberFromAirsRequest::
+
+Cette méthode renvoie le nombre de documents remontés par la requête AIRS
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*ctyCodeList*|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getResultNumberFromAirsRequest>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:airsRequest>D_CREAT>01/01/2018</web:airsRequest>
+         <!--1 or more repetitions:-->
+         <web:ctyCodeList>CR</web:ctyCodeList>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+      </web:getResultNumberFromAirsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getResultNumberFromAirsRequestResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getResultNumberFromAirsRequestReturn>551</getResultNumberFromAirsRequestReturn>
+      </getResultNumberFromAirsRequestResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getResultLinkFromAirsRequest::
+
+Cette méthode permet d'obtenir les liens URL vers les documents renvoyés par la requête AIRS.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*ctyCodeList*|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getResultLinkFromAirsRequest>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:airsRequest>D_CREAT>25/09/2022</web:airsRequest>
+         <!--1 or more repetitions:-->
+         <web:ctyCodeList>CR</web:ctyCodeList>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+      </web:getResultLinkFromAirsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getResultLinkFromAirsRequestResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=Wzm9BmKpzJAWIielKVgwQG9CGhop%2B2VmFOvoqMivhi6PTudpEPzs7ko2A9Dk5h%2Fs5ewfb7%2F5PI8pD38NdbZpuJELzD%2Ff2UmwWuG6ooYlgS9PPIXK1rcMlMLBh23HO2Nf1CsQ5m7Y0qqpZHJraYoEz%2BkhHhb7VxFat3Mh6Tvv%2FZg%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6874&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=cQtFv9no87E6GGU8KUvhQU3uLmHErCQroaKB%2BlNLt%2FKRlYn2Zo7P0OCuaCcyMXJkXAYBLxz6POaQig6us1m9CQZhApFbSkSFucoueVeLL9lIxIUk3upII1qLrRL4uyccZWO3LkyJ3SQEQpgr4Cc3Z7rqSVzU9BsLCdlB4qDLZLM%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6875&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=CEZ%2BMPIGhqn3lyVj2eyJY17JLxBI2W5b3AY6HaShREaZGrj22Mhu%2FJ4yfappK38m0ezA3%2BhST2sJl32lc6Fpu%2FElEd1Vizw%2Fj4CohEn3sImzxZvcpHzN4LFBPuGkxThc%2BLADPjdfWDiJuO6WbbKEUnKPgVrGj%2BqQAjjDIpUyYQI%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6876&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=oiJI5WnyFI4J52ilix4nHIbdg6HkWkzLx6f14ZOb1y5mvCMd8jXxsfs98cgwFgdkWufxFSJIjRfgGEzJ6BsX%2FDIt0ij0lhMlj2kG9uiJPgAvelj%2BJaQE8xRj8KrfvDe%2FjpnDVXIbmWDe52BjTwBsBG8TNWBXuSnKaCdMEpqaeHo%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6877&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=RJJBFKvToNh6m2Tlfp5w6UK4yea7qJDYCfGcHQxNgpFMb5kU0qc0aqjnruKFnTbhoJd07gw8mIUmd40ASRbyXQn2PoFm%2F7Nhx%2FrjuaDABKoxiFvlbrntfRSwCdihWvmLgIsEsEynsawS%2FUcfk0guLCMV9LZOEXgm4ez5jsf0lKI%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6878&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=aZ13IimjBYgwJHUFe%2FLSlymH7%2FsnsPnjKYdxD55MYB0h77ZGRDoaqod0KpcC38ipIjFvlg3lnCVLS8i5FTdz9gCI%2BWZcOGIHRostjyAYmAYyA9kXeBHNWd8aebrt8oKgL4xXfcCPe2efuctL53dlLDJfg8rBWQDSNpxrNIHcbmU%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6879&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+         <getResultLinkFromAirsRequestReturn>faces/redirect.jsp?authentication=FIW%2B6z1f6RDxy2GPmWnvs7FtuA6rMaTImS2L%2BHt1d7k2QGWIpsM3cMQiTxFd2k27acB7cE%2Bb2qYrNQS7ZyP5kSweOOOXtxlQm4Dvp8iSzmE3BaXNJscwo0iNcTXLO%2B%2BX2LqltAiCWNh%2FpfqGtMruu%2FyjQecEQZnBpQrFu3htoXk%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6880&amp;flowCode=CR</getResultLinkFromAirsRequestReturn>
+      </getResultLinkFromAirsRequestResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+[IMPORTANT]
+====
+Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+====
+getResultsFromAirsRequest::
+
+Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un code identifiant de flux (flowCode).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*ctyCodeList*|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getResultsFromAirsRequest>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:airsRequest>D_CREAT>25/09/2022</web:airsRequest>
+         <web:ctyCode>CR</web:ctyCode>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+      </web:getResultsFromAirsRequest>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getResultsFromAirsRequestResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getResultsFromAirsRequest>
+            <refAirsId>6874</refAirsId>
+            <fields>
+               <code>D_MODIF</code>
+               <field>27/09/2022 7:26:57</field>
+            </fields>
+            <fields>
+               <code>CR_THEME</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>D_CREAT</code>
+               <field>27/09/2022 7:26:57</field>
+            </fields>
+            <fields>
+               <code>CR_DES</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>CR_REDACTEUR</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>CR_DATE</code>
+               <field>27/09/2022 0:00:00</field>
+            </fields>
+            <fields>
+               <code>CR_RESUME</code>
+               <field>file1 (UnitTest: 2022-09-27T07:27:36)</field>
+            </fields>
+            <fields>
+               <code>T_PRIOR</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>MULTI</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>CORRES</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>MASQUE_NUM</code>
+               <field/>
+            </fields>
+         </getResultsFromAirsRequest>
+         <getResultsFromAirsRequest>
+            <refAirsId>6875</refAirsId>
+            <fields>
+               <code>D_MODIF</code>
+               <field>27/09/2022 7:27:01</field>
+            </fields>
+            <fields>
+               <code>CR_THEME</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>D_CREAT</code>
+               <field>27/09/2022 7:27:01</field>
+            </fields>
+            <fields>
+               <code>CR_DES</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>CR_REDACTEUR</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>CR_DATE</code>
+               <field>27/09/2022 0:00:00</field>
+            </fields>
+            <fields>
+               <code>CR_RESUME</code>
+               <field>file2 (UnitTest: 2022-09-27T07:27:36)</field>
+            </fields>
+            <fields>
+               <code>T_PRIOR</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>MULTI</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>CORRES</code>
+               <field/>
+            </fields>
+            <fields>
+               <code>MASQUE_NUM</code>
+               <field/>
+            </fields>
+         </getResultsFromAirsRequest>
+      </getResultsFromAirsRequestResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+cf le chapitre <<appendix_search>> pour une description de la structure de retour.

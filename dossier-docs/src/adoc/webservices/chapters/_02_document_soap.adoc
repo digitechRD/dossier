@@ -25,7 +25,7 @@ Cette méthode permet de créer un document
 .Paramètres en entrée
 |===
 |Paramètre|Description|Requis|Exemple
-|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
 [source,xml]
 ----
 <web:connectionData>
@@ -115,7 +115,7 @@ Cette méthode permet de récupérer les métadonnées d'un document à partir d
 .Paramètres en entrée
 |===
 |Paramètre|Description|Requis|Exemple
-|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
 [source, xml]
 ----
 <web:connectionData>
@@ -136,8 +136,8 @@ cf le chapitre <<appendix_general>> pour une description de la structure connect
    <soapenv:Body>
       <web:get>
          <web:connectionData>
-            <type:login>?</type:login>
-            <type:password>?</type:password>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
          </web:connectionData>
          <web:docId>4959</web:docId>
       </web:get>
@@ -201,7 +201,7 @@ Cette méthode permet de mettre à jour les métadonnées d'un document
 .Paramètres en entrée
 |===
 |Paramètre|Description|Requis|Exemple
-|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
 [source,xml]
 ----
 <web:connectionData>
@@ -244,8 +244,8 @@ cf le chapitre <<appendix_general>> pour une description de la structure connect
    <soapenv:Body>
       <web:update>
          <web:connectionData>
-            <type:login>?</type:login>
-            <type:password>?</type:password>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
          </web:connectionData>
          <web:docId>6734</web:docId>
          <web:documentData>
@@ -282,7 +282,7 @@ Cette méthode permet de supprimer logiquement un document.
 .Paramètres en entrée
 |===
 |Paramètre|Description|Requis|Exemple
-|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
 [source, xml]
 ----
 <web:connectionData>
@@ -303,8 +303,8 @@ cf le chapitre <<appendix_general>> pour une description de la structure connect
    <soapenv:Body>
       <web:delete>
          <web:connectionData>
-            <type:login>?</type:login>
-            <type:password>?</type:password>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
          </web:connectionData>
          <web:docId>6734</web:docId>
       </web:delete>
@@ -332,7 +332,7 @@ Cette méthode permet de supprimer physiquement un document.
 .Paramètres en entrée
 |===
 |Paramètre|Description|Requis|Exemple
-|*connectionData*|objet contenant les informations de connexion|[red]*Oui*|
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
 [source, xml]
 ----
 <web:connectionData>
@@ -353,8 +353,8 @@ cf le chapitre <<appendix_general>> pour une description de la structure connect
    <soapenv:Body>
       <web:remove>
          <web:connectionData>
-            <type:login>?</type:login>
-            <type:password>?</type:password>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
          </web:connectionData>
          <web:docId>6734</web:docId>
       </web:remove>
