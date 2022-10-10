@@ -1,0 +1,195 @@
+[[dossierContext_rest]]
+=== DossierContext
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IDossierContextClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {GET} /dossierContext/flows
+
+Cette méthode renvoie la liste des flux paramétrés au sein de l'application.
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/dossierContext/flows' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/dossierContext/flows
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<dossiercontext_getflowsjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[dossiercontext_getflowsjson_response]]
+[source,json]
+.Liste des flux
+----
+{
+  "ArrayList": [
+    {
+      "code": "DOCUMENTATION",
+      "label": "Flow created in simplified mode"
+    },
+    {
+      "code": "REF",
+      "label": "Flow created in simplified mode"
+    },
+    {
+      "code": "CPA",
+      "label": "Flow created in simplified mode"
+    },
+    {
+      "code": "PRO",
+      "label": "Flux Projet"
+    },
+    {
+      "code": "CR",
+      "label": "Flow created in simplified mode"
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_dossiercontext>> pour une description de la structure de retour.
+
+===== {GET} /dossierContext/contentType/{ctyCode}
+
+Cette méthode permet de récupérer la liste des informations d'un type de contenu.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*ctyCode*|{path}|Code du type de contenu|[red]*Oui*|DOC_CATEGORIE
+|*flowCode*|{query}|Code du flux dans lequel le type de contenu est paramétré|[green]*Non*|DOCUMENTATION
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flowCode=DOCUMENTATION' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flowCode=DOCUMENTATION
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<dossiercontext_getcontenttypejson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Type de contenu non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[dossiercontext_getcontenttypejson_response]]
+[source,json]
+.WSContentTypeInfosType
+----
+{
+  "WSContentTypeInfosType": {
+    "code": "DOC_CATEGORIE",
+    "id": 15,
+    "description": "Catégorie",
+    "linksInfosList": [
+      {
+        "childContentType": {
+          "code": "DOC_DOCUMENT",
+          "id": 16,
+          "description": "Document",
+          "linksInfosList": []
+        },
+        "linkedFieldInfos": [
+          {
+            "fieldChildcode": "DOC_CAT_CODE",
+            "fieldFathercode": "DOC_CAT_CODE"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+cf le chapitre <<appendix_dossiercontext>> pour une description de la structure de retour.
+
+===== {GET} /dossierContext/mandatoryFields/{ctyCode}
+
+Cette méthode permet de récupérer la liste des champs obligatoires d'un type de contenu.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*ctyCode*|{path}|Code du type de contenu|[red]*Oui*|DOC_CATEGORIE
+|*flowCode*|{query}|Code du flux dans lequel le type de contenu est paramétré|[green]*Non*|DOCUMENTATION
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/dossierContext/mandatoryFields/CR?flowCode=CR' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/dossierContext/mandatoryFields/CR?flowCode=CR
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<dossiercontext_getmandatoryfieldsjson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Type de contenu non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[dossiercontext_getmandatoryfieldsjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "CR_THEME",
+    "CR_DES",
+    "CR_REDACTEUR",
+    "CR_DATE"
+  ]
+}
+----
