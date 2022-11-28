@@ -8,9 +8,7 @@ Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
 
 ==== Client
 
-La classe `com.digitech.dossier.rest.ws.IExte,dDocumentClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
-l'utilisation
-de cette *API*.
+La classe `com.digitech.dossier.rest.ws.IExte,dDocumentClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait l'utilisation de cette *API*.
 
 ==== Authentification
 
@@ -192,6 +190,7 @@ http://<host>:<port>/<context>/rest/extendDocument/5028
 }
 
 ----
+
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour.
 
 ===== {POST} /extendDocument
@@ -202,24 +201,31 @@ Cette méthode permet créer des documents par lot.
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
-|*documents*|{body}|Liste de WSInsertDocumentType|[red]*Oui*|
+|*documentsData*|{multipart}|Liste de WSInsertDocumentType|[red]*Oui*|
 voir <<appendix_extenddocument_sample_post_output, structure de sortie ici>>.
-
-Plus globalement, le chapitre <<appendix_extenddocument>> décrit la structure *WSInsertDocumentType*.
+|*filesData*|{multipart}|Liste de fichiers|[green]*Non*|
 |===
+
+[NOTE]
+====
+Il est possible d'ajouter plusieurs fichiers par documents.
+Le paramètre *filesData* doit contenir toutes les pièces jointes devant être ajoutées pour l'ensemble des documents.
+Il suffit ensuite d'indiquer au sein de la structure *documentsData* via le paramètre *filesIndex* les index des pièces jointes qui devront être ajoutés pour le document.
+Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
+*filesIndex*=[0,1].
+====
 
 [source]
 .appel _curl_
 ----
-curl -X 'POST' \
-  'http://<host>:<port>/<context>/rest/extendDocument' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '[
-  {
+curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocument' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=38558D0584562F70C045F65639F98D3E' \
+--form 'documentsData="{
     "currentDocument": {
     "contentType": "CR",
     "secretLevel": 10,
+     "filesIndex":[0,1],
     "fields": [
       {
         "code": "D_MODIF",
@@ -231,7 +237,7 @@ curl -X 'POST' \
       },
       {
         "code": "CR_DES",
-        "field": "Test JMU1"
+        "field": "Test 1"
       },
       {
         "code": "CR_REDACTEUR",
@@ -243,16 +249,17 @@ curl -X 'POST' \
       },
       {
         "code": "CR_RESUME",
-        "field": "TEST JMU1"
+        "field": "TEST 1"
       }
     ]
   },
     "doUpdateParent": false
-  },
-{
+  }";type=application/json' \
+--form 'documentsData="{
     "currentDocument": {
     "contentType": "CR",
     "secretLevel": 10,
+     "filesIndex":[1,0],
     "fields": [
       {
         "code": "D_MODIF",
@@ -264,7 +271,7 @@ curl -X 'POST' \
       },
       {
         "code": "CR_DES",
-        "field": "Test JMU2"
+        "field": "Test 2"
       },
       {
         "code": "CR_REDACTEUR",
@@ -276,13 +283,14 @@ curl -X 'POST' \
       },
       {
         "code": "CR_RESUME",
-        "field": "TEST JMU2"
+        "field": "TEST 2"
       }
     ]
   },
     "doUpdateParent": false
-  }
-]
+  }";type=application/json' \
+--form 'filesData=@"/C:/1.pdf"' \
+--form 'filesData=@"/C:/2.pdf"'
 ----
 
 [source]
@@ -321,6 +329,7 @@ http://<host>:<port>/<context>/rest/extendDocument
   ]
 }
 ----
+
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSInsertReportItemType.
 
 ===== {PATCH} /extendDocument
@@ -331,43 +340,53 @@ Cette méthode permet de mettre à jour des documents par lot.
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
-|*documents*|{body}|Liste de WSExtendDocumentType|[red]*Oui*|
+|*documentsData*|{multipart}|Liste de WSExtendDocumentType|[red]*Oui*|
 voir <<appendix_extenddocument_sample_patch_output, structure de sortie ici>>.
+|*filesData*|{multipart}|Liste de fichiers|[green]*Non*|
+|===
+
+[NOTE]
+====
+Il est possible d'ajouter plusieurs fichiers par documents.
+Le paramètre *filesData* doit contenir toutes les pièces jointes devant être ajoutées pour l'ensemble des documents.
+Il suffit ensuite d'indiquer au sein de la structure *documentsData* via le paramètre *filesIndex* les index des pièces jointes qui devront être ajoutés pour le document.
+Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
+*filesIndex*=[0,1].
+====
 
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSExtendDocumentType.
-|===
 
 [source]
 .appel _curl_
 ----
-curl -X 'PATCH' \
-  'http://<host>:<port>/<context>/rest/extendDocument' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '[
-  {
+curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocument' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=9AF46F86AAE176E787C1BCF0F1B6FDFB' \
+--form 'documentsData="{
     "contentType": "CR",
+    "filesIndex":[0],
     "fields": [
       {
         "code": "CR_RESUME",
-        "field": "TEST JMU 4"
+        "field": "TEST 4"
       }
     ],
     "flowCode": "CR",
-    "docId": 6935
-  },
-  {
+    "docId": 7363
+  }";type=application/json' \
+--form 'documentsData="{
     "contentType": "CR",
+    "filesIndex":[0],
     "fields": [
       {
         "code": "CR_RESUME",
-        "field": "TEST JMU 5"
+        "field": "TEST 5"
       }
     ],
     "flowCode": "CR",
-    "docId": 6936
-  }
-]'
+    "docId": 7362
+  }";type=application/json' \
+--form 'filesData=@"/C:/DIGITECH_20220214.pdf"'
 ----
 
 [source]
@@ -404,4 +423,5 @@ http://<host>:<port>/<context>/rest/extendDocument
   ]
 }
 ----
+
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSUpdateReportItemType.

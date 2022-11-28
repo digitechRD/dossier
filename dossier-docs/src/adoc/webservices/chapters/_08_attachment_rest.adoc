@@ -1,0 +1,254 @@
+[[attachment_rest]]
+=== Document
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IAttachmentClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {POST} /attachment/{docId}
+
+Cette méthode permet d'ajouter ou de mettre à jour une pièce jointe
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*attachmentData*|{multipart}|Ensemble de données de la pièce jointe|[red]*Oui*|
+[source,json]
+----
+{
+ "airsType": "ORIGINAL",
+  "label": "Test PJ"
+}
+----
+|*fileData*|{multipart}|fichier de la pièce jointe|[red]*Oui*|
+|===
+cf le chapitre <<appendix_attachment>> pour une description de la structure attachmentData (Se réferer à WSCommonAttachmentUpdateType).
+[NOTE]
+====
+Le type de contenu du corps de la requête doit être "multipart/form-data".
+====
+[source]
+.appel _curl_
+----
+curl --location --request POST '<host>:<port>/<context>/rest/attachment/5072' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=6528D38B0114048987669D4EF48BF9F1' \
+--form 'attachmentData="{
+  "label": "PJ de test"}"
+;type=application/json' \
+--form 'fileData=@"/C:/PJ.pdf"'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/attachment/5072
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<attachment_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[attachment_rest_response]]
+[source,text]
+.Retour, Identifiant de la pièce jointe créée
+----
+6733
+----
+
+===== {GET} /attachment/{docId}
+
+Cette méthode permet de récupérer la liste des informations des des pièces jointes d'un document AIRS.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document AIRS|[red]*Oui*|
+4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/attachment/5072' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/attachment/5072
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<attachmentlistgetjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[attachmentlistgetjson_response]]
+[source,json]
+.Liste de WSAttachmentType
+----
+{
+  "ArrayList": [
+    {
+      "id": 5220,
+      "airsType": "ORIGINAL",
+      "label": "viroflay7àé.pdf",
+      "fileName": "viroflay7àé.pdf"
+    },
+    {
+      "id": 6703,
+      "airsType": "ORIGINAL",
+      "label": "PJ de test",
+      "fileName": "PJ.pdf"
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_document>> pour une description de la structure de retour.
+
+===== {GET} /attachment/{docId}/{attachmentId}
+
+Cette méthode permet de récupérer un une pièce jointe ainsi que son document AIRS.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*attachmentId*|{path}|Identifiant de la pièce jointe|[red]*Oui*|6325
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/attachment/5072/6703' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/attachment/5072/6703
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<attachmentgetjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[attachmentgetjson_response]]
+[source,json]
+.WSDocumentType
+----
+{
+  "WSDocumentType": {
+    "data": "JVBERi0xLjUNCiW1tbW...",
+    "filename": "PJ.pdf",
+    "contentType": "CR",
+    "secretLevel": 10,
+    "fields": [
+      {
+        "code": "D_MODIF",
+        "field": "14/11/2022 11:33:29"
+      },
+      {
+        "code": "D_CREAT",
+        "field": "21/10/2021 15:52:21"
+      },
+      {
+        "code": "CR_DATE",
+        "field": "14/11/2022 0:00:00"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "new CR updated (UnitTest: 2022-11-14T11:33:00)"
+      }
+    ]
+  }
+}
+----
+
+cf le chapitre <<appendix_document>> pour une description de la structure de retour.
+
+===== {DELETE} /attachment/{docId}
+
+Cette méthode permet de supprimer une pièce jointe d'un document AIRS.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*attachmentId*|{path}|Identifiant de la pièce jointe|[red]*Oui*|6325
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/attachment/5072/6703' \
+  -H 'accept: application/json'' \
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/attachment/5072/6703
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<attachmentdeletejson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[attachmentdeletejson_response]]
+[source,text]
+.Liste d'identifiants des pièces jointes supprimées
+[source,json]
+----
+{
+  "ArrayList": [
+    6703
+  ]
+}
+----

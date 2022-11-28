@@ -26,7 +26,7 @@ Cette méthode permet de créer un document
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
-|*documentData*|{body}|Ensemble de données du document|[red]*Oui*|
+|*documentData*|{multipart}|Ensemble de données du document|[red]*Oui*|
 [source,json]
 ----
 {
@@ -41,45 +41,47 @@ Cette méthode permet de créer un document
   "scriptCode": "test"
 }
 ----
+|*fileData*|{multipart}|Liste de fichiers|[green]*Non*|
 |===
+cf le chapitre <<appendix_document>> pour une description de la structure documentData (Se réferer à WSCommonDocumentType).
 
+[NOTE]
+====
+Le type de contenu du corps de la requête doit être "multipart/form-data".
+Pour ajouter plusieurs fichiers au document, il suffit d'envoyer plusieurs fois le paramètre fileData dans le corps de la requête.
+====
 [source]
 .appel _curl_
 ----
-curl -X 'POST' \
-  '<host>:<port>/<context>/rest/document' \
-  -H 'accept: text/plain' \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "contentType": "CR",
-    "secretLevel": 10,
-    "fields": [
+curl --location --request POST '<host>:<port>/<context>/rest/document' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ='  \
+--form 'documentData="{
+    \"contentType\": \"CR\",
+    \"fields\": [
       {
-        "code": "D_MODIF",
-        "field": "04/02/2021 16:58:35"
+        \"code\": \"D_MODIF\",
+        \"field\": \"04/02/2021 16:58:35\"
       },
       {
-        "code": "D_CREAT",
-        "field": "04/04/2019 18:40:22"
+        \"code\": \"CR_DES\",
+        \"field\": \"Test DOC\"
       },
       {
-        "code": "CR_DES",
-        "field": "Test DOC"
+        \"code\": \"CR_REDACTEUR\",
+        \"field\": \"1\"
       },
       {
-        "code": "CR_REDACTEUR",
-        "field": "1"
+        \"code\": \"CR_DATE\",
+        \"field\": \"01/01/2022 0:00:00\"
       },
       {
-        "code": "CR_DATE",
-        "field": "01/01/2022 0:00:00"
-      },
-      {
-        "code": "CR_RESUME",
-        "field": "TEST DOC"
+        \"code\": \"CR_RESUME\",
+        \"field\": \"TEST DOC\"
       }
     ]
-  }'
+  }";type=application/json' \
+--form 'fileData=@"/C:/TEST1.pdf"' \
+--form 'fileData=@"/C:/TEST2.pdf"'
 ----
 
 [source]
@@ -193,7 +195,7 @@ Cette méthode permet de mettre à jour les métadonnées d'un document
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*docId*|{path}|Identifiant du document|[red]*Oui*|4959
-|*documentData*|{body}|Ensemble de données du document|[red]*Oui*|
+|*documentData*|{multipart}|Ensemble de données du document|[red]*Oui*|
 [source,json]
 ----
 {
@@ -207,9 +209,14 @@ Cette méthode permet de mettre à jour les métadonnées d'un document
   "scriptCode": "test"
 }
 ----
+|*fileData*|{multipart}|Liste de fichiers|[green]*Non*|
 |===
 cf le chapitre <<appendix_document>> pour une description de la structure documentData.
-
+[NOTE]
+====
+Le type de contenu du corps de la requête doit être "multipart/form-data".
+Pour ajouter plusieurs fichiers au document, il suffit d'envoyer plusieurs fois le paramètre fileData dans le corps de la requête.
+====
 [source]
 .appel _curl_
 ----

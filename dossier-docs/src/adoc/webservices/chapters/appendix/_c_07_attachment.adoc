@@ -1,0 +1,40 @@
+[[appendix_attachment]]
+=== Attachment modèles
+
+La réponse est retournée sous forme de chaîne de caractères,
+au format {xml} ({soap}) ou {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+WSAttachmentType
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*airsType*|Type de pièce jointe||_string_
+|*filename*|nom du fichier||_string_
+|*id*|identifiant de la pièce jointe||_integer_
+|*label*|titre de la pièce jointe||_string_
+|===
+
+attachmentData (SOAP)
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*airsType*|type de la pièce jointe||_string_
+|*id*|identifiant de la pièce jointe à mettre à jour||_integer_
+|*data*|données du document principal en bytes||_string_
+|*filename*|nom du fichier||_string_
+|*label*|label de la pièce jointe||_string_
+|*scriptCode*|code du script||_string_
+|===
+
+WSCommonAttachmentUpdateType (REST)
+|===
+|Paramètre|Description|Observations|Type
+|*airsType*|type de la pièce jointe||_string_
+|*id*|identifiant de la pièce jointe à mettre à jour||_integer_
+|*label*|label de la pièce jointe||_string_
+|*scriptCode*|code du script||_string_
+|===
