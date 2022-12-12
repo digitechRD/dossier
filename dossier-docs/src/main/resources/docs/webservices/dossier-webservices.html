@@ -3606,9 +3606,11 @@ DOC_REMOVE_TYPE_FORCE</p>
 <div class="paragraph">
 <p>Il est possible d&#8217;ajouter plusieurs fichiers par documents.
 Le paramètre <strong>filesData</strong> doit contenir toutes les pièces jointes devant être ajoutées pour l&#8217;ensemble des documents.
-Il suffit ensuite d&#8217;indiquer au sein de la structure <strong>documentsData</strong> via le paramètre <strong>filesIndex</strong> les index des pièces jointes qui devront être ajoutés pour le document.
+Il suffit ensuite d&#8217;indiquer au sein de la structure <strong>documentsData</strong> via les paramètres <strong>filesIndex</strong> et <strong>filesName</strong> les index et les noms des pièces jointes
+qui devront être ajoutés
+pour le document.
 Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
-<strong>filesIndex</strong>=[0,1].</p>
+<strong>filesIndex</strong>=[0,1] et <strong>filesName</strong>=["A","B"]</p>
 </div>
 </td>
 </tr>
@@ -3659,6 +3661,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
     &quot;contentType&quot;: &quot;CR&quot;,
     &quot;secretLevel&quot;: 10,
      &quot;filesIndex&quot;:[1,0],
+     &quot;filesName&quot;:[&quot;2.pdf&quot;, &quot;1.pdf&quot;],
     &quot;fields&quot;: [
       {
         &quot;code&quot;: &quot;D_MODIF&quot;,
@@ -3830,9 +3833,11 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div class="paragraph">
 <p>Il est possible d&#8217;ajouter plusieurs fichiers par documents.
 Le paramètre <strong>filesData</strong> doit contenir toutes les pièces jointes devant être ajoutées pour l&#8217;ensemble des documents.
-Il suffit ensuite d&#8217;indiquer au sein de la structure <strong>documentsData</strong> via le paramètre <strong>filesIndex</strong> les index des pièces jointes qui devront être ajoutés pour le document.
+Il suffit ensuite d&#8217;indiquer au sein de la structure <strong>documentsData</strong> via les paramètres <strong>filesIndex</strong> et <strong>filesName</strong> les index et les noms des pièces jointes
+qui devront être ajoutés
+pour le document.
 Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
-<strong>filesIndex</strong>=[0,1].</p>
+<strong>filesIndex</strong>=[0,1] et <strong>filesName</strong>=["A","B"]</p>
 </div>
 </td>
 </tr>
@@ -3862,6 +3867,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 --form 'documentsData=&quot;{
     &quot;contentType&quot;: &quot;CR&quot;,
     &quot;filesIndex&quot;:[0],
+    &quot;filesName&quot;:[&quot;DIGITECH_20220214.pdf&quot;],
     &quot;fields&quot;: [
       {
         &quot;code&quot;: &quot;CR_RESUME&quot;,
@@ -4351,8 +4357,8 @@ de cette <strong>API</strong>.</p>
    <span class="tag">&lt;soapenv:Body&gt;</span>
       <span class="tag">&lt;web:create&gt;</span>
          <span class="tag">&lt;web:connectionData&gt;</span>
-            <span class="tag">&lt;type:login&gt;</span>?<span class="tag">&lt;/type:login&gt;</span>
-            <span class="tag">&lt;type:password&gt;</span>?<span class="tag">&lt;/type:password&gt;</span>
+            <span class="tag">&lt;type:login&gt;</span>login<span class="tag">&lt;/type:login&gt;</span>
+            <span class="tag">&lt;type:password&gt;</span>password<span class="tag">&lt;/type:password&gt;</span>
          <span class="tag">&lt;/web:connectionData&gt;</span>
          <span class="tag">&lt;web:documentData&gt;</span>
             <span class="tag">&lt;type:contentType&gt;</span>CR<span class="tag">&lt;/type:contentType&gt;</span>
@@ -8794,7 +8800,19 @@ au format <strong><span style="color: #BF00FF">XML</span></strong> (<strong><spa
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>integer[]</em></p>
+<p><em>Liste d&#8217;integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>filesName</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des noms de pièces jointes à ajouter. L&#8217;ordre doit être le même que dans la liste filesIndex</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>Liste de string</em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -8918,7 +8936,19 @@ au format <strong><span style="color: #BF00FF">XML</span></strong> (<strong><spa
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>integer[]</em></p>
+<p><em>Liste d&#8217;integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>filesName</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des noms de pièces jointes à ajouter. L&#8217;ordre doit être le même que dans la liste filesIndex</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>Liste de string</em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -9133,7 +9163,19 @@ au format <strong><span style="color: #BF00FF">XML</span></strong> (<strong><spa
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>integer[]</em></p>
+<p><em>Liste d&#8217;integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>filesName</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des noms de pièces jointes à ajouter. L&#8217;ordre doit être le même que dans la liste filesIndex</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>Liste de string</em></p>
 </div></div></td>
 </tr>
 <tr>
