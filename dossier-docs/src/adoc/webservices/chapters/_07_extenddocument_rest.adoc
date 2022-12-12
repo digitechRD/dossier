@@ -210,9 +210,11 @@ voir <<appendix_extenddocument_sample_post_output, structure de sortie ici>>.
 ====
 Il est possible d'ajouter plusieurs fichiers par documents.
 Le paramètre *filesData* doit contenir toutes les pièces jointes devant être ajoutées pour l'ensemble des documents.
-Il suffit ensuite d'indiquer au sein de la structure *documentsData* via le paramètre *filesIndex* les index des pièces jointes qui devront être ajoutés pour le document.
+Il suffit ensuite d'indiquer au sein de la structure *documentsData* via les paramètres *filesIndex* et *filesName* les index et les noms des pièces jointes
+qui devront être ajoutés
+pour le document.
 Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
-*filesIndex*=[0,1].
+*filesIndex*=[0,1] et *filesName*=["A","B"]
 ====
 
 [source]
@@ -260,6 +262,7 @@ curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocume
     "contentType": "CR",
     "secretLevel": 10,
      "filesIndex":[1,0],
+     "filesName":["2.pdf", "1.pdf"],
     "fields": [
       {
         "code": "D_MODIF",
@@ -349,9 +352,11 @@ voir <<appendix_extenddocument_sample_patch_output, structure de sortie ici>>.
 ====
 Il est possible d'ajouter plusieurs fichiers par documents.
 Le paramètre *filesData* doit contenir toutes les pièces jointes devant être ajoutées pour l'ensemble des documents.
-Il suffit ensuite d'indiquer au sein de la structure *documentsData* via le paramètre *filesIndex* les index des pièces jointes qui devront être ajoutés pour le document.
+Il suffit ensuite d'indiquer au sein de la structure *documentsData* via les paramètres *filesIndex* et *filesName* les index et les noms des pièces jointes
+qui devront être ajoutés
+pour le document.
 Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
-*filesIndex*=[0,1].
+*filesIndex*=[0,1] et *filesName*=["A","B"]
 ====
 
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSExtendDocumentType.
@@ -377,6 +382,7 @@ curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocum
 --form 'documentsData="{
     "contentType": "CR",
     "filesIndex":[0],
+    "filesName":["DIGITECH_20220214.pdf"],
     "fields": [
       {
         "code": "CR_RESUME",
