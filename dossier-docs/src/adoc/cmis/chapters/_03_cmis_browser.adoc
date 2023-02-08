@@ -124,15 +124,75 @@ D'autres paramètres (que ceux indiqués dans le chapitre <<cmis_browser_paramet
 
 Les opérations de création, de mise à jour ou de suppression sont effectuées via une commande *HTTP* de type *POST*.
 
-Le paramètre additionnel précisant le type d'opération est `cmisaction`, par xemple, pour une création
+Le paramètre additionnel précisant le type d'opération est `cmisaction`, par exemple, pour une création
 
 [source]
 ----
 cmisaction=createDocument
 ----
 
-[yellow-background]*TODO Exemples à ajouter*
+==== Suppression :
 
+L'application fournit 2 opérations de suppression en fonction du type d'objet que l'on souhaite supprimer : *delete* et *deleteTree*
+
+.Il existe 3 types d'objets qui sont supprimables via CMIS dans AIRS Dossier :
+* Les documents AIRS (*deleteTree*)
+* Les pièces jointes (*delete*)
+* Les commentaires (*delete*)
+
+[NOTE]
+====
+La suppression des documents est une suppression logique et non définitive. Il est donc possible de restaurer les documents directement depuis l'application.
+====
+
+La suppression nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=<delete OU deleteTree>
+objectId=<IDENTIFIANT DE L'OBJET>
+----
+
+Quelques exemples :
+
+Suppression d'un document
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=deleteTree&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDgw
+----
+Suppression d'une pièce jointe
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=delete&objectId=YXR0YWNobWVudDpDUjpEZXJuaWVycyBjb21wdGUgcmVuZHVzOjc0ODA6Njc4Nw==
+----
+
+==== Mise à jour des documents :
+
+La mise à jour des documents nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=update
+objectId=<IDENTIFIANT DE L'OBJET>
+propertyId[0]=<IDENTIFIANT DE LA PROPRIETE 0>
+propertyValue[0]=<VALEUR DE LA PROPRIETE 0>
+propertyId[1]=<IDENTIFIANT DE LA PROPRIETE 1>
+propertyValue[1]=<VALEUR DE LA PROPRIETE 1>
+...
+----
+
+Voici un exemple :
+
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=update&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2&propertyId[0]=cm:document:cr:crDes&propertyValue[0]=CHANGEMENT_DE_VALEUR
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document mis à jour.
+[source, json]
+----
+include::../files/update_properties_response.json[]
+----
 [[cmis_browser_query]]
 === Recherche
 

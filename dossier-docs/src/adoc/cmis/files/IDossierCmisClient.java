@@ -1,13 +1,18 @@
 package com.digitech.dossier.cmis.client;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.apache.chemistry.opencmis.client.api.*;
+import org.apache.chemistry.opencmis.commons.data.ContentStream;
 import org.apache.chemistry.opencmis.commons.data.RepositoryCapabilities;
 import org.apache.chemistry.opencmis.commons.data.RepositoryInfo;
 
 import com.digitech.dossier.cmis.client.exception.CmisClientException;
 import com.digitech.dossier.cmis.client.exception.InvalidArgumentException;
+import com.digitech.dossier.cmis.client.exception.ObjectNotFoundException;
 import com.digitech.dossier.cmis.client.typedef.CmisObjectWrapper;
 import com.digitech.dossier.cmis.client.typedef.CmisQueryResultWrapper;
 import com.digitech.dossier.cmis.client.typedef.CmisTypeDefinitionWrapper;
@@ -34,6 +39,7 @@ public interface IDossierCmisClient {
 
   /**
    * create CMIS session on 1st repository, using already set credentials
+   * If more than one repository exist, an exception will be thrown
    *
    * @return {@link Session}
    * @throws CmisClientException in case of any exception
@@ -52,7 +58,8 @@ public interface IDossierCmisClient {
       throws CmisClientException;
 
   /**
-   * create CMIS session
+   * create CMIS session on 1t repository
+   * If more than one repository exist, an exception will be thrown
    *
    * @param login login
    * @param pwd   password
@@ -63,7 +70,7 @@ public interface IDossierCmisClient {
       throws CmisClientException;
 
   /**
-   * create CMIS session
+   * create CMIS session on specific repository (id)
    *
    * @param repoId repository Id
    * @param login  login
@@ -75,7 +82,7 @@ public interface IDossierCmisClient {
       throws CmisClientException;
 
   /**
-   * create CMIS session
+   * create CMIS session  on specific repository (id)
    *
    * @param login    login
    * @param pwd      password
@@ -88,10 +95,30 @@ public interface IDossierCmisClient {
       throws CmisClientException;
 
   /**
-   * get cmis repository information
+   * get available repositories, using credentials already specified by previous *setCredentials* call
+   *
+   * @return {@link Repository}
+   * @throws CmisClientException in case of any exception
+   */
+  List<Repository> getRepositoriesCmisInfo()
+      throws CmisClientException;
+
+  /**
+   * get available repositories, using specific credentials
+   *
+   * @param login login
+   * @param pwd   password
+   * @return {@link RepositoryInfo}
+   * @throws CmisClientException in case of any exception
+   */
+  List<Repository> getRepositoriesCmisInfo(String login, String pwd)
+      throws CmisClientException;
+
+  /**
+   * get cmis repository information, related to the repository user is connected to
    *
    * @param session valid CMIS server session
-   * @return {@link RepositoryInfo}
+   * @return {@link Repository}
    * @throws InvalidArgumentException if input {@link Session} is invalid
    * @throws CmisClientException      in case of any exception
    */
@@ -113,7 +140,7 @@ public interface IDossierCmisClient {
    * check if current repository enabled Query
    *
    * @param session valid CMIS server session
-   * @return true if it spport
+   * @return true if it is supported
    * @throws InvalidArgumentException if input {@link Session} is invalid
    * @throws CmisClientException      in case of any exception
    */
@@ -126,8 +153,8 @@ public interface IDossierCmisClient {
    * @param session valid CMIS server session
    * @param typeId  type ID
    * @return {@link ObjectType}
-   * @throws CmisClientException if input {@link Session} is invalid
-   *                             * @throws CmisClientException      in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */
   ObjectType getCmisTypeDefinition(Session session, String typeId)
       throws CmisClientException, InvalidArgumentException;
@@ -137,8 +164,8 @@ public interface IDossierCmisClient {
    *
    * @param session valid CMIS server session
    * @return list of {@link ObjectType}
-   * @throws CmisClientException if input {@link Session} is invalid
-   * @throws CmisClientException in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */
   List<ObjectType> getCmisTypeDefinitions(Session session)
       throws CmisClientException, InvalidArgumentException;
@@ -149,8 +176,8 @@ public interface IDossierCmisClient {
    * @param session valid CMIS server session
    * @param typeId  type ID
    * @return {@link CmisTypeDefinitionWrapper}
-   * @throws CmisClientException if input {@link Session} is invalid
-   *                             * @throws CmisClientException      in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */
   CmisTypeDefinitionWrapper getWrappedTypeDefinition(Session session, String typeId)
       throws CmisClientException, InvalidArgumentException;
@@ -160,8 +187,8 @@ public interface IDossierCmisClient {
    *
    * @param session valid CMIS server session
    * @return list of {@link CmisTypeDefinitionWrapper}
-   * @throws CmisClientException if input {@link Session} is invalid
-   * @throws CmisClientException in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */
   List<CmisTypeDefinitionWrapper> getWrappedTypeDefinitions(Session session)
       throws CmisClientException, InvalidArgumentException;
@@ -178,14 +205,47 @@ public interface IDossierCmisClient {
       throws CmisClientException, InvalidArgumentException;
 
   /**
-   * get root folder
+   * get folder children, iterable result
+   *
+   * @param parent {@link Folder} to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid
+   */
+  ItemIterable<CmisObject> getChildren(Folder parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get folder children, iterable result
    *
    * @param parent folder to get children from
    * @return iterable children
    * @throws CmisClientException      in case of any exception
-   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws InvalidArgumentException if parent is not valid or not a {@link Folder}
    */
-  ItemIterable<CmisObject> getChildren(Folder parent)
+  ItemIterable<CmisObject> getChildren(CmisObject parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get all folder children
+   *
+   * @param parent {@link Folder} to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid
+   */
+  List<CmisObjectWrapper> getAllChildren(Folder parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get all folder children
+   *
+   * @param parent folder to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid or not a {@link Folder}
+   */
+  List<CmisObjectWrapper> getAllChildren(CmisObject parent)
       throws CmisClientException, InvalidArgumentException;
 
   /**
@@ -196,9 +256,10 @@ public interface IDossierCmisClient {
    * @return {@link CmisObjectWrapper}
    * @throws CmisClientException      in case of any exception
    * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
    */
   CmisObjectWrapper getObjectById(Session session, String id)
-      throws CmisClientException, InvalidArgumentException;
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
 
   /**
    * get object by its id
@@ -209,9 +270,10 @@ public interface IDossierCmisClient {
    * @return {@link CmisObjectWrapper}
    * @throws CmisClientException      in case of any exception
    * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
    */
   CmisObjectWrapper getObjectById(Session session, String id, Set<String> filteredMetadata)
-      throws CmisClientException, InvalidArgumentException;
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
 
   /**
    * get object by its path
@@ -263,7 +325,125 @@ public interface IDossierCmisClient {
   List<CmisQueryResultWrapper> queryObjects(Session session, String query, int pageSize)
       throws CmisClientException, InvalidArgumentException;
 
-  void downloadContentStream(Session session, String objectId)
+  /**
+   * query objects, and get IDs
+   *
+   * @param session valid CMIS server session
+   * @param query   SQL-92 compliant query
+   * @return list of objects ids
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  List<String> queryObjectIDs(Session session, String query)
       throws CmisClientException, InvalidArgumentException;
 
+  /**
+   * query objects, and get IDs
+   *
+   * @param session  valid CMIS server session
+   * @param query    SQL-92 compliant query
+   * @param pageSize page size
+   * @return list of objects ids
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  List<String> queryObjectIDs(Session session, String query, int pageSize)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return url
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  String getContentStreamUrl(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * get document content Stream.
+   * Careful, if using {@link ContentStream#getStream()}, you should take care of closing it
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return see {@link ContentStream}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  ContentStream getContentStream(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * download content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @param offset   offset (in bytes) to start document reading (first offset will then be skipped)
+   * @param length   byte number read
+   * @return see {@link ContentStream}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */
+  ContentStream getContentStream(Session session, String objectId, long offset, long length)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException, IOException;
+
+  /**
+   * download content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return full downloaded file path
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */
+  String downloadContentStream(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException, IOException;
+
+  /**
+   * download content URL
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @param targetFolder folder to download file to
+   * @return full downloaded file path
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */
+  String downloadContentStream(Session session, String objectId, Path targetFolder)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException, IOException;
+
+  /**
+   * delete an object
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  void deleteObject(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * update an object
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @param propertiesMap   properties to update (cmis property code, property value) {@link Map}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  void updateObject(Session session, String objectId, Map<String, ?> propertiesMap)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
 }

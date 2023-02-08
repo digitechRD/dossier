@@ -95,6 +95,43 @@ include::../files/cmis_dossier_getcontentstream.java[tag=getpartial]
 include::../files/cmis_dossier_queries.java[tag=simple]
 ----
 
+==== Suppression d'un document
+
+[source,java]
+----
+public void deleteObject(Session session, String objectId)
+    throws Exception{
+
+    try{
+      cmisClient.deleteObject(session, objectId);
+    }
+    catch(...){
+    }
+}
+----
+
+==== Mise à jour d'un document
+
+[source,java]
+----
+public void updateObject(Session session, String objectId)
+    throws Exception{
+    try{
+      String testString = "TEST UPDATE ";
+      Map<String, Object> properties = new HashMap<>();
+      properties.put("cm:document:cr:crDes", testString);
+      properties.put("cm:document:cr:crDate", new Date(531658800));
+      cmisClient.updateObject(session, objectId, properties);
+    }
+    catch(...){
+    }
+}
+----
+
+
+
+
+
 
 
 

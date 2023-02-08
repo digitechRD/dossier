@@ -32,7 +32,8 @@
   <properties>
     <asciidoctor-maven-plugin.version>2.2.2</asciidoctor-maven-plugin.version>
 
-    <asciidoctorj-pdf.version>2.3.3</asciidoctorj-pdf.version>
+    <asciidoctorj-pdf.version>2.3.4</asciidoctorj-pdf.version>
+    <!-- failed with upper version ;( -->
     <jruby-complete.version>9.3.4.0</jruby-complete.version>
 
     <asciidoctorj.version>2.5.7</asciidoctorj.version>
@@ -138,6 +139,10 @@
                   </resource>
                   <resource>
                     <directory>${project.basedir}/src/main/resources/css</directory>
+                    <filtering>false</filtering>
+                  </resource>
+                  <resource>
+                    <directory>${project.basedir}/src/main/resources/images</directory>
                     <filtering>false</filtering>
                   </resource>
                 </resources>
