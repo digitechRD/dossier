@@ -6,10 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Digitech">
-<link rel="icon" type="image/png" href="images/icons/logo_dossier_favicon_32.png">
 <title>WebServices AIRS Dossier</title>
 <link rel="stylesheet" href="css/digitech.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/coderay-asciidoctor.css">
 <style>
   #tocbot a.toc-link.node-name--H1 { font-style: italic }
@@ -98,156 +96,32 @@
 <span id="revdate">14/09/2022</span>
 </div>
 <div id="toc" class="toc2">
-<div id="toctitle">Sommaire</div>
+<div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#introduction"> 1. Introduction</a></li>
-<li><a href="#rest"> 2. REST</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#rest">2. REST</a>
 <ul class="sectlevel2">
-<li><a href="#document_rest">2.1. Document</a>
-<ul class="sectlevel3">
-<li><a href="#_client">2.1.1. Client</a></li>
-<li><a href="#_authentification">2.1.2. Authentification</a></li>
-<li><a href="#_méthodes">2.1.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_post_document">2.1.3.1. <strong class="post">POST</strong> /document</a></li>
-<li><a href="#_get_documentdocid">2.1.3.2. <strong class="get">GET</strong> /document/{docId}</a></li>
-<li><a href="#_patch_documentdocid">2.1.3.3. <strong class="patch">PATCH</strong> /document/{docId}</a></li>
-<li><a href="#_delete_documentdocid">2.1.3.4. <strong class="delete">DELETE</strong> /document/{docId}</a></li>
-<li><a href="#_delete_documentremovedocid">2.1.3.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</a></li>
+<li><a href="#document_rest">2.1. Document</a></li>
+<li><a href="#authority_list_rest">2.2. AuthorityList</a></li>
+<li><a href="#baskets_rest">2.3. Baskets</a></li>
+<li><a href="#search_rest">2.4. Search</a></li>
+<li><a href="#dossierContext_rest">2.5. DossierContext</a></li>
+<li><a href="#extenddocument_rest">2.6. ExtendDocument</a></li>
+<li><a href="#extended_search_rest">2.7. ExtendSearch</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a href="#authority_list_rest">2.2. AuthorityList</a>
-<ul class="sectlevel3">
-<li><a href="#_client_2">2.2.1. Client</a></li>
-<li><a href="#_authentification_2">2.2.2. Authentification</a></li>
-<li><a href="#_méthodes_2">2.2.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_get_authoritylist">2.2.3.1. <strong class="get">GET</strong> /authorityList</a></li>
-<li><a href="#_get_authoritylistfieldcode">2.2.3.2. <strong class="get">GET</strong> /authorityList/{fieldCode}</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#baskets_rest">2.3. Baskets</a>
-<ul class="sectlevel3">
-<li><a href="#_client_3">2.3.1. Client</a></li>
-<li><a href="#_authentification_3">2.3.2. Authentification</a></li>
-<li><a href="#_méthodes_3">2.3.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_get_baskets">2.3.3.1. <strong class="get">GET</strong> /baskets</a></li>
-<li><a href="#_get_basketsorgidorgid">2.3.3.2. <strong class="get">GET</strong> /baskets/orgId/{orgId}</a></li>
-<li><a href="#_get_basketsflowcodeflowcode">2.3.3.3. <strong class="get">GET</strong> /baskets/flowCode/{flowCode}</a></li>
-<li><a href="#_get_basketsdoccountbasketname">2.3.3.4. <strong class="get">GET</strong> /baskets/docCount/{basketName}</a></li>
-<li><a href="#_get_basketsdoclinkbasketname">2.3.3.5. <strong class="get">GET</strong> /baskets/docLink/{basketName}</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#search_rest">2.4. Search</a>
-<ul class="sectlevel3">
-<li><a href="#_client_4">2.4.1. Client</a></li>
-<li><a href="#_authentification_4">2.4.2. Authentification</a></li>
-<li><a href="#_méthodes_4">2.4.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_get_searchdoccount">2.4.3.1. <strong class="get">GET</strong> /search/docCount</a></li>
-<li><a href="#_get_searchdoclink">2.4.3.2. <strong class="get">GET</strong> /search/docLink</a></li>
-<li><a href="#_get_searchresults">2.4.3.3. <strong class="get">GET</strong> /search/results</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#dossierContext_rest">2.5. DossierContext</a>
-<ul class="sectlevel3">
-<li><a href="#_client_5">2.5.1. Client</a></li>
-<li><a href="#_authentification_5">2.5.2. Authentification</a></li>
-<li><a href="#_méthodes_5">2.5.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_get_dossiercontextflows">2.5.3.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
-<li><a href="#_get_dossiercontextcontenttypectycode">2.5.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
-<li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.5.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#extenddocument_rest">2.6. ExtendDocument</a>
-<ul class="sectlevel3">
-<li><a href="#_client_6">2.6.1. Client</a></li>
-<li><a href="#_authentification_6">2.6.2. Authentification</a></li>
-<li><a href="#_méthodes_6">2.6.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_delete_extenddocumentdeletedocuments">2.6.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</a></li>
-<li><a href="#_delete_deletedocumentstypedeletetype">2.6.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</a></li>
-<li><a href="#_get_extenddocumentdocid">2.6.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</a></li>
-<li><a href="#_post_extenddocument">2.6.3.4. <strong class="post">POST</strong> /extendDocument</a></li>
-<li><a href="#_patch_extenddocument">2.6.3.5. <strong class="patch">PATCH</strong> /extendDocument</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#extended_search_rest">2.7. ExtendSearch</a>
-<ul class="sectlevel3">
-<li><a href="#_client_7">2.7.1. Client</a></li>
-<li><a href="#_authentification_7">2.7.2. Authentification</a></li>
-<li><a href="#_méthodes_7">2.7.3. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_get_search4fieldsandattachments">2.7.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#soap"> 3. SOAP</a>
+<li><a href="#soap">3. SOAP</a>
 <ul class="sectlevel2">
-<li><a href="#document_soap">3.1. Document</a>
-<ul class="sectlevel3">
-<li><a href="#_client_8">3.1.1. Client</a></li>
-<li><a href="#_méthodes_8">3.1.2. Méthodes</a></li>
+<li><a href="#document_soap">3.1. Document</a></li>
+<li><a href="#autority_list_soap">3.2. AuthorityList</a></li>
+<li><a href="#baskets_soap">3.3. Baskets</a></li>
+<li><a href="#search_soap">3.4. Search</a></li>
+<li><a href="#dossierContext_soap">3.5. Search</a></li>
+<li><a href="#extenddocument_soap">3.6. ExtendDocument</a></li>
+<li><a href="#extended_search_soap">3.7. ExtendSearch</a></li>
 </ul>
 </li>
-<li><a href="#autority_list_soap">3.2. AuthorityList</a>
-<ul class="sectlevel3">
-<li><a href="#_client_9">3.2.1. Client</a></li>
-<li><a href="#_méthodes_9">3.2.2. Méthodes</a></li>
-<li><a href="#_authentification_8">3.2.3. Authentification</a></li>
-</ul>
-</li>
-<li><a href="#baskets_soap">3.3. Baskets</a>
-<ul class="sectlevel3">
-<li><a href="#_client_10">3.3.1. Client</a></li>
-<li><a href="#_méthodes_10">3.3.2. Méthodes</a></li>
-</ul>
-</li>
-<li><a href="#search_soap">3.4. Search</a>
-<ul class="sectlevel3">
-<li><a href="#_client_11">3.4.1. Client</a></li>
-<li><a href="#_méthodes_11">3.4.2. Méthodes</a></li>
-</ul>
-</li>
-<li><a href="#dossierContext_soap">3.5. Search</a>
-<ul class="sectlevel3">
-<li><a href="#_client_12">3.5.1. Client</a></li>
-<li><a href="#_méthodes_12">3.5.2. Méthodes</a></li>
-</ul>
-</li>
-<li><a href="#extenddocument_soap">3.6. ExtendDocument</a>
-<ul class="sectlevel3">
-<li><a href="#_client_13">3.6.1. Client</a></li>
-<li><a href="#_méthodes_13">3.6.2. Méthodes</a></li>
-</ul>
-</li>
-<li><a href="#extended_search_soap">3.7. ExtendSearch</a>
-<ul class="sectlevel3">
-<li><a href="#_client_14">3.7.1. Client</a></li>
-<li><a href="#_authentification_9">3.7.2. Authentification</a></li>
-<li><a href="#_méthodes_14">3.7.3. Méthodes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#appendixes"> 4. Annexes</a>
+<li><a href="#appendixes">4. Annexes</a>
 <ul class="sectlevel2">
 <li><a href="#appendix_general">4.1. modèles globaux</a></li>
 <li><a href="#appendix_document">4.2. Document modèles</a></li>
@@ -316,76 +190,6 @@
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <strong><span style="color: #0099ff">Web Service</span></strong> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <span style="color: #D4CE28">Dossier</span></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <strong><span style="color: #0099ff">Web Service</span></strong> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <span style="color: #D4CE28">Dossier</span></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <strong><span style="color: #0099ff">Web Service</span></strong> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <span style="color: #D4CE28">Dossier</span></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <strong><span style="color: #0099ff">Web Service</span></strong> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <span style="color: #D4CE28">Dossier</span></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <strong><span style="color: #0099ff">Web Service</span></strong> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <span style="color: #D4CE28">Dossier</span></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>

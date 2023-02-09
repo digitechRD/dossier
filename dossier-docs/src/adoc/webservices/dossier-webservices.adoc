@@ -11,7 +11,7 @@ v1.2, 14/09/2022
 :compact:
 :!webfonts:
 // use locale font-awesome icons
-:icons: font
+
 :iconfont-remote!:
 :iconfont-name: font-awesome.min
 :icon-set: far
@@ -26,12 +26,14 @@ v1.2, 14/09/2022
 :sectnumlevels: 4
 :xrefstyle: full
 ifdef::backend-pdf[]
+:icons: image
 :img-prio-width: 10
 :pdf-page-size: A4
 :title-logo-image: image:dossier-cover.png[align=center]
 :!nofooter:
 endif::[]
 ifndef::backend-pdf[]
+:icons: font
 :toc: left
 :img-prio-width: 18
 endif::[]
@@ -47,12 +49,13 @@ endif::[]
 ifndef::env-github[]
 :imagesDir: images
 endif::[]
+// substition/alias
+:favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
 :img_blocking: image:icons/blocking.png["Bloquant"]
 :img_urgent: image:icons/urgent.png["Urgent"]
 :img_high: image:icons/high.png["Haute"]
 :img_normal: image:icons/normal.png["Normal"]
 :img_low: image:icons/low.png["Bas"]
-// substition/alias
 :dossier: pass:quotes[<span style="color: #D4CE28">Dossier</span>]
 :airs: pass:quotes[<span style="color: #F25937">AIRS</span>]
 :java: pass:quotes[*<span style="color: #F24E52">JAVA</span>*]
@@ -89,7 +92,6 @@ endif::[]
 ifdef::env-github[]
 toc::[]
 endif::[]
-
 
 include::chapters/_01_introduction.adoc[]
 
