@@ -5,6 +5,9 @@
 @import url(asciidoctor-default.css);
 
 :root {
+  --white: #F2F2F2;
+  --black: #2b2b2b;
+
   --note-text-color: #306983;
   --note-bg-color: #f1f6fa;
   --note-color: #03a9f4;
@@ -115,7 +118,7 @@
 
 .admonitionblock td.icon .fa::before {
   content: attr(title) !important;
-  color: white;
+  color: var(--white);
   padding: 0 1em 0 1.5em;
 }
 
@@ -159,36 +162,42 @@
 
 
 .get, .post, .put, .patch, .delete,
-.action-get, .action-post, .action-put, .action-patch, .action-delete {
+.action-get, .action-post, .action-put, .action-patch, .action-delete,
+.res, .action-res {
   font-weight: 700;
-  min-width: 80px;
-  padding: 2px 0;
+  padding: 2px 8px;
   text-align: center;
   display: inline-block;
   border-radius: 3px;
 }
 
+.action-res, .res {
+  color: var(--white);
+  background-color: #30658f;
+  text-transform: uppercase;
+}
+
 .action-get, .get {
-  color: white;
+  color: var(--white);
   background-color: #61affe;
 }
 
 .action-post,.post {
-  color: white;
+  color: var(--white);
   background-color: #49cc90;
 }
 
 .action-put,.put {
-  color: white;
+  color: var(--white);
   background-color: #fca130;
 }
 
 .action-patch,.patch {
-  color: white;
+  color: var(--white);
   background-color: #50e3c2;
 }
 
 .action-delete,.delete {
-  color: white;
+  color: var(--white);
   background-color: #f93e3e;
 }
