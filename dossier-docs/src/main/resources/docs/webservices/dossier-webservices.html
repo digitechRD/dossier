@@ -11,83 +11,7 @@
 <link rel="stylesheet" href="css/digitech.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/coderay-asciidoctor.css">
-<style>
-  #tocbot a.toc-link.node-name--H1 { font-style: italic }
-  @media screen {
-    #tocbot > ul.toc-list { margin-bottom: 0.5em; margin-left: 0.125em }
-    #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul { padding-left: 0 }
-    #tocbot li { line-height: 1.3334; }
-    #tocbot .toc-link { transition: all 0.5s; }
-    #tocbot a.toc-link { width: 100%; height: 100%; display: block; }
-    .is-collapsible { max-height: 3000px; overflow: hidden; }
-    .is-collapsed { max-height: 0 }
-    .is-active-link { font-weight: 700; }
-    li.is-active-li > a { background-color: #1d4b8f; color: white; border-radius: 4px; padding: 0.4rem 0.6rem; }
-  }
-  @media print {
-    #tocbot a.toc-link.node-name--H4 { display: none }
-  }
-
-  /** adding table cell styles */
-  td.tableblock {
-    margin: 0;
-    padding: 0;
-  }
-  td.tableblock p {
-    padding: 0.5rem;
-  }
-  td.tableblock .bg-blue p {
-    background-color: #1266f1;
-    color: #FFFFFF;
-  }
-  td.tableblock .bg-orange p {
-    background-color: #ffa900;
-    color: #000000;
-  }
-  td.tableblock .bg-green p {
-    background-color: #00b74a;
-    color: #FFFFFF;
-  }
-  td.tableblock .bg-red p {
-    background-color: #f93154;
-    color: #000000;
-  }
-  td.tableblock .bold p {
-    font-weight: bold;
-  }
-
-  .blue-bg {
-    background-color: #1266f1;
-  }
-  .green-bg {
-    background-color: #00b74a;
-  }
-  .red-bg {
-    background-color: #f93154;
-  }
-  .orange-bg {
-    background-color: #ffa900;
-  }
-
-  .white-text {
-    color: #ffffff;
-  }
-  .black-text {
-    color: #000000;
-  }
-  .blue-text {
-    color: #1266f1;
-  }
-  .green-text {
-    color: #00b74a;
-  }
-  .red-text {
-    color: #f93154;
-  }
-  .orange-text {
-    color: #ffa900;
-  }
-</style>
+<link href="css/digitech.css" rel="stylesheet">
 </head>
 <body id="Dossier-ws" class="book toc2 toc-left">
 <div id="header">
@@ -9582,7 +9506,7 @@ au format <strong><span style="color: #BF00FF">XML</span></strong> (<strong><spa
     newtoc.setAttribute('id', 'tocbot');
     newtoc.setAttribute('class', 'js-toc');
     oldtoc.parentNode.replaceChild(newtoc, oldtoc);
-    //
+
     const handleTocOnResize = function () {
       const width = window.innerWidth
           || document.documentElement.clientWidth

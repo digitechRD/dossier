@@ -4,89 +4,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.17">
+<meta name="generator" content="Asciidoctor 2.0.18">
 <meta name="author" content="Digitech">
+<link rel="icon" type="image/png" href="images/icons/logo_dossier_favicon_32.png">
 <title>CMIS AIRS Dossier</title>
 <link rel="stylesheet" href="css/digitech.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/coderay-asciidoctor.css">
-<style>
-  #tocbot a.toc-link.node-name--H1 { font-style: italic }
-  @media screen {
-    #tocbot > ul.toc-list { margin-bottom: 0.5em; margin-left: 0.125em }
-    #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul { padding-left: 0 }
-    #tocbot li { line-height: 1.3334; }
-    #tocbot .toc-link { transition: all 0.5s; }
-    #tocbot a.toc-link { width: 100%; height: 100%; display: block; }
-    .is-collapsible { max-height: 3000px; overflow: hidden; }
-    .is-collapsed { max-height: 0 }
-    .is-active-link { font-weight: 700; }
-    li.is-active-li > a { background-color: #1d4b8f; color: white; border-radius: 4px; padding: 0.4rem 0.6rem; }
-  }
-  @media print {
-    #tocbot a.toc-link.node-name--H4 { display: none }
-  }
-
-  /** adding table cell styles */
-  td.tableblock {
-    margin: 0;
-    padding: 0;
-  }
-  td.tableblock p {
-    padding: 0.5rem;
-  }
-  td.tableblock .bg-blue p {
-    background-color: #1266f1;
-    color: #FFFFFF;
-  }
-  td.tableblock .bg-orange p {
-    background-color: #ffa900;
-    color: #000000;
-  }
-  td.tableblock .bg-green p {
-    background-color: #00b74a;
-    color: #FFFFFF;
-  }
-  td.tableblock .bg-red p {
-    background-color: #f93154;
-    color: #000000;
-  }
-  td.tableblock .bold p {
-    font-weight: bold;
-  }
-
-  .blue-bg {
-    background-color: #1266f1;
-  }
-  .green-bg {
-    background-color: #00b74a;
-  }
-  .red-bg {
-    background-color: #f93154;
-  }
-  .orange-bg {
-    background-color: #ffa900;
-  }
-
-  .white-text {
-    color: #ffffff;
-  }
-  .black-text {
-    color: #000000;
-  }
-  .blue-text {
-    color: #1266f1;
-  }
-  .green-text {
-    color: #00b74a;
-  }
-  .red-text {
-    color: #f93154;
-  }
-  .orange-text {
-    color: #ffa900;
-  }
-</style>
+<link href="css/digitech.css" rel="stylesheet">
 </head>
 <body id="Dossier-cmis" class="book toc2 toc-left">
 <div id="header">
@@ -94,7 +19,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">13/09/2022 15:52:14</span>
+<span id="revdate">17/02/2023 12:55:08</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -121,7 +46,12 @@
 <li><a href="#cmis_browser_parameters">3.1. Paramètres additionnels communs</a></li>
 <li><a href="#cmis_browser_repo">3.2. Interrogation d&#8217;un <code><span style="color: #FFBD33">repository</span></code></a></li>
 <li><a href="#cmis_browser_retreive">3.3. Récupération d&#8217;éléments</a></li>
-<li><a href="#cmis_browser_crud">3.4. Opération Création/Mise à jour/Suppression</a></li>
+<li><a href="#cmis_browser_crud">3.4. Opération Création/Mise à jour/Suppression</a>
+<ul class="sectlevel3">
+<li><a href="#_suppression">3.4.1. Suppression :</a></li>
+<li><a href="#_mise_à_jour_des_documents">3.4.2. Mise à jour des documents :</a></li>
+</ul>
+</li>
 <li><a href="#cmis_browser_query">3.5. Recherche</a></li>
 <li><a href="#cmis_browser_content">3.6. Récupération du contenu d&#8217;un document</a></li>
 <li><a href="#cmis_browser_tips">3.7. Bonnes pratiques</a></li>
@@ -145,6 +75,8 @@
 <li><a href="#_récupération_des_enfants_dun_objet">5.3.2. Récupération des enfants d&#8217;un objet</a></li>
 <li><a href="#_récupération_du_contenu_binaire_dun_document">5.3.3. Récupération du contenu binaire d&#8217;un document</a></li>
 <li><a href="#_queries">5.3.4. <code><span style="color: #D35400">queries</span></code></a></li>
+<li><a href="#_suppression_dun_document">5.3.5. Suppression d&#8217;un document</a></li>
+<li><a href="#_mise_à_jour_dun_document">5.3.6. Mise à jour d&#8217;un document</a></li>
 </ul>
 </li>
 </ul>
@@ -202,7 +134,7 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félixbbbbb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -1062,15 +994,315 @@ valeurs possibles:</p>
 <p>Les opérations de création, de mise à jour ou de suppression sont effectuées via une commande <strong>HTTP</strong> de type <strong>POST</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Le paramètre additionnel précisant le type d&#8217;opération est <code>cmisaction</code>, par xemple, pour une création</p>
+<p>Le paramètre additionnel précisant le type d&#8217;opération est <code>cmisaction</code>, par exemple, pour une création</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code>cmisaction=createDocument</code></pre>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_suppression">3.4.1. Suppression :</h4>
 <div class="paragraph">
-<p><strong class="yellow-background">TODO Exemples à ajouter</strong></p>
+<p>L&#8217;application fournit 2 opérations de suppression en fonction du type d&#8217;objet que l&#8217;on souhaite supprimer : <strong>delete</strong> et <strong>deleteTree</strong></p>
+</div>
+<div class="ulist">
+<div class="title">Il existe 3 types d&#8217;objets qui sont supprimables via CMIS dans AIRS Dossier :</div>
+<ul>
+<li>
+<p>Les documents AIRS (<strong>deleteTree</strong>)</p>
+</li>
+<li>
+<p>Les pièces jointes (<strong>delete</strong>)</p>
+</li>
+<li>
+<p>Les commentaires (<strong>delete</strong>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La suppression des documents est une suppression logique et non définitive. Il est donc possible de restaurer les documents directement depuis l&#8217;application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>La suppression nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>cmisaction=&lt;delete OU deleteTree&gt;
+objectId=&lt;IDENTIFIANT DE L'OBJET&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quelques exemples :</p>
+</div>
+<div class="paragraph">
+<p>Suppression d&#8217;un document</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=deleteTree&amp;objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDgw</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Suppression d&#8217;une pièce jointe</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=delete&amp;objectId=YXR0YWNobWVudDpDUjpEZXJuaWVycyBjb21wdGUgcmVuZHVzOjc0ODA6Njc4Nw==</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mise_à_jour_des_documents">3.4.2. Mise à jour des documents :</h4>
+<div class="paragraph">
+<p>La mise à jour des documents nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>cmisaction=update
+objectId=&lt;IDENTIFIANT DE L'OBJET&gt;
+propertyId[0]=&lt;IDENTIFIANT DE LA PROPRIETE 0&gt;
+propertyValue[0]=&lt;VALEUR DE LA PROPRIETE 0&gt;
+propertyId[1]=&lt;IDENTIFIANT DE LA PROPRIETE 1&gt;
+propertyValue[1]=&lt;VALEUR DE LA PROPRIETE 1&gt;
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voici un exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=update&amp;objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2&amp;propertyId[0]=cm:document:cr:crDes&amp;propertyValue[0]=CHANGEMENT_DE_VALEUR</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse obtenue sera alors un <em>json</em> reprenant l&#8217;ensemble des propriétés du document mis à jour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="json">{<span class="key"><span class="delimiter">&quot;</span><span class="content">properties</span><span class="delimiter">&quot;</span></span>: {
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:objectId</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:objectId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:objectId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:objectId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:objectTypeId</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:objectTypeId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:objectTypeId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:objectTypeId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:baseTypeId</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:baseTypeId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:baseTypeId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:baseTypeId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:folder</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:name</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:name</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:name</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:name</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CHANGEMENT_DE_VALEUR</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:description</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:description</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:description</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:description</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CHANGEMENT_DE_VALEUR</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:createdBy</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:createdBy</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:createdBy</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:createdBy</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dossier</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:creationDate</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:creationDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:creationDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:creationDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">datetime</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="integer">1670248188000</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:lastModifiedBy</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:lastModifiedBy</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:lastModifiedBy</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:lastModifiedBy</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">dossier</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:lastModificationDate</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:lastModificationDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:lastModificationDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:lastModificationDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">datetime</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="integer">1674660862000</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:changeToken</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:changeToken</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:changeToken</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:changeToken</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">MjUvMDEvMjAyMyAxNjozNDoyMg==</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:parentId</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:parentId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:parentId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:parentId</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">YmFza2V0OkNSOkRlcm5pZXJzIGNvbXB0ZSByZW5kdXM=</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:path</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:path</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:path</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:path</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">/orga:5/flow:CR/basket:CR:Derniers compte rendus/document:CR:Derniers compte rendus:7476</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cmis:allowedChildObjectTypeIds</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:allowedChildObjectTypeIds</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:allowedChildObjectTypeIds</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cmis:allowedChildObjectTypeIds</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">multi</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>:       [
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:attachment</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:comment</span><span class="delimiter">&quot;</span></span>,
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:event</span><span class="delimiter">&quot;</span></span>
+    ]
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crTheme</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crTheme</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crTheme</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Thématique</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crTheme</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dModif</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dModif</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dModif</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Date de modification</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dModif</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">datetime</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="integer">1674660862000</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dCreat</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dCreat</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dCreat</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Date de création</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:dCreat</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">datetime</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="integer">1670248188000</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crRedacteur</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crRedacteur</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crRedacteur</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Rédacteur</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crRedacteur</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDes</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDes</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDes</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Désignation</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDes</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">CHANGEMENT_DE_VALEUR</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crResume</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crResume</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crResume</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Résumé</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crResume</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">test creat</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDate</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">Date événement</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDate</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">datetime</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:tPrior</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:tPrior</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:tPrior</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">xml_priority_field_label</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:tPrior</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:multi</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:multi</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:multi</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">test champs multi</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:multi</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:corres</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:corres</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:corres</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">correspondent</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:corres</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">string</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
+  },
+  <span class="key"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:masqueNum</span><span class="delimiter">&quot;</span></span>:    {
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">id</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:masqueNum</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">localName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:masqueNum</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">displayName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">test masque</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">queryName</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:masqueNum</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">type</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">integer</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">cardinality</span><span class="delimiter">&quot;</span></span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">single</span><span class="delimiter">&quot;</span></span>,
+    <span class="key"><span class="delimiter">&quot;</span><span class="content">value</span><span class="delimiter">&quot;</span></span>: <span class="value">null</span>
+  }
+}}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1595,6 +1827,41 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_suppression_dun_document">5.3.5. Suppression d&#8217;un document</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> deleteObject(Session session, <span class="predefined-type">String</span> objectId)
+    <span class="directive">throws</span> <span class="exception">Exception</span>{
+
+    <span class="keyword">try</span>{
+      cmisClient.deleteObject(session, objectId);
+    }
+    <span class="keyword">catch</span>(...){
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mise_à_jour_dun_document">5.3.6. Mise à jour d&#8217;un document</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> updateObject(Session session, <span class="predefined-type">String</span> objectId)
+    <span class="directive">throws</span> <span class="exception">Exception</span>{
+    <span class="keyword">try</span>{
+      <span class="predefined-type">String</span> testString = <span class="string"><span class="delimiter">&quot;</span><span class="content">TEST UPDATE </span><span class="delimiter">&quot;</span></span>;
+      <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; properties = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;&gt;();
+      properties.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDes</span><span class="delimiter">&quot;</span></span>, testString);
+      properties.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">cm:document:cr:crDate</span><span class="delimiter">&quot;</span></span>, <span class="keyword">new</span> <span class="predefined-type">Date</span>(<span class="integer">531658800</span>));
+      cmisClient.updateObject(session, objectId, properties);
+    }
+    <span class="keyword">catch</span>(...){
+    }
+}</code></pre>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1610,14 +1877,19 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">package</span> <span class="namespace">com.digitech.dossier.cmis.client</span>;
 
+<span class="keyword">import</span> <span class="include">java.io.IOException</span>;
+<span class="keyword">import</span> <span class="include">java.nio.file.Path</span>;
 <span class="keyword">import</span> <span class="include">java.util.List</span>;
+<span class="keyword">import</span> <span class="include">java.util.Map</span>;
 <span class="keyword">import</span> <span class="include">java.util.Set</span>;
 <span class="keyword">import</span> <span class="include">org.apache.chemistry.opencmis.client.api</span>.*;
+<span class="keyword">import</span> <span class="include">org.apache.chemistry.opencmis.commons.data.ContentStream</span>;
 <span class="keyword">import</span> <span class="include">org.apache.chemistry.opencmis.commons.data.RepositoryCapabilities</span>;
 <span class="keyword">import</span> <span class="include">org.apache.chemistry.opencmis.commons.data.RepositoryInfo</span>;
 
 <span class="keyword">import</span> <span class="include">com.digitech.dossier.cmis.client.exception.CmisClientException</span>;
 <span class="keyword">import</span> <span class="include">com.digitech.dossier.cmis.client.exception.InvalidArgumentException</span>;
+<span class="keyword">import</span> <span class="include">com.digitech.dossier.cmis.client.exception.ObjectNotFoundException</span>;
 <span class="keyword">import</span> <span class="include">com.digitech.dossier.cmis.client.typedef.CmisObjectWrapper</span>;
 <span class="keyword">import</span> <span class="include">com.digitech.dossier.cmis.client.typedef.CmisQueryResultWrapper</span>;
 <span class="keyword">import</span> <span class="include">com.digitech.dossier.cmis.client.typedef.CmisTypeDefinitionWrapper</span>;
@@ -1644,6 +1916,7 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
 
   <span class="comment">/**
    * create CMIS session on 1st repository, using already set credentials
+   * If more than one repository exist, an exception will be thrown
    *
    * @return {@link Session}
    * @throws CmisClientException in case of any exception
@@ -1662,7 +1935,8 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
       <span class="directive">throws</span> CmisClientException;
 
   <span class="comment">/**
-   * create CMIS session
+   * create CMIS session on 1t repository
+   * If more than one repository exist, an exception will be thrown
    *
    * @param login login
    * @param pwd   password
@@ -1673,7 +1947,7 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
       <span class="directive">throws</span> CmisClientException;
 
   <span class="comment">/**
-   * create CMIS session
+   * create CMIS session on specific repository (id)
    *
    * @param repoId repository Id
    * @param login  login
@@ -1685,7 +1959,7 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
       <span class="directive">throws</span> CmisClientException;
 
   <span class="comment">/**
-   * create CMIS session
+   * create CMIS session  on specific repository (id)
    *
    * @param login    login
    * @param pwd      password
@@ -1698,10 +1972,30 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
       <span class="directive">throws</span> CmisClientException;
 
   <span class="comment">/**
-   * get cmis repository information
+   * get available repositories, using credentials already specified by previous *setCredentials* call
+   *
+   * @return {@link Repository}
+   * @throws CmisClientException in case of any exception
+   */</span>
+  <span class="predefined-type">List</span>&lt;Repository&gt; getRepositoriesCmisInfo()
+      <span class="directive">throws</span> CmisClientException;
+
+  <span class="comment">/**
+   * get available repositories, using specific credentials
+   *
+   * @param login login
+   * @param pwd   password
+   * @return {@link RepositoryInfo}
+   * @throws CmisClientException in case of any exception
+   */</span>
+  <span class="predefined-type">List</span>&lt;Repository&gt; getRepositoriesCmisInfo(<span class="predefined-type">String</span> login, <span class="predefined-type">String</span> pwd)
+      <span class="directive">throws</span> CmisClientException;
+
+  <span class="comment">/**
+   * get cmis repository information, related to the repository user is connected to
    *
    * @param session valid CMIS server session
-   * @return {@link RepositoryInfo}
+   * @return {@link Repository}
    * @throws InvalidArgumentException if input {@link Session} is invalid
    * @throws CmisClientException      in case of any exception
    */</span>
@@ -1723,7 +2017,7 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    * check if current repository enabled Query
    *
    * @param session valid CMIS server session
-   * @return true if it spport
+   * @return true if it is supported
    * @throws InvalidArgumentException if input {@link Session} is invalid
    * @throws CmisClientException      in case of any exception
    */</span>
@@ -1736,8 +2030,8 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    * @param session valid CMIS server session
    * @param typeId  type ID
    * @return {@link ObjectType}
-   * @throws CmisClientException if input {@link Session} is invalid
-   *                             * @throws CmisClientException      in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */</span>
   ObjectType getCmisTypeDefinition(Session session, <span class="predefined-type">String</span> typeId)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
@@ -1747,8 +2041,8 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    *
    * @param session valid CMIS server session
    * @return list of {@link ObjectType}
-   * @throws CmisClientException if input {@link Session} is invalid
-   * @throws CmisClientException in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */</span>
   <span class="predefined-type">List</span>&lt;ObjectType&gt; getCmisTypeDefinitions(Session session)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
@@ -1759,8 +2053,8 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    * @param session valid CMIS server session
    * @param typeId  type ID
    * @return {@link CmisTypeDefinitionWrapper}
-   * @throws CmisClientException if input {@link Session} is invalid
-   *                             * @throws CmisClientException      in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */</span>
   CmisTypeDefinitionWrapper getWrappedTypeDefinition(Session session, <span class="predefined-type">String</span> typeId)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
@@ -1770,8 +2064,8 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    *
    * @param session valid CMIS server session
    * @return list of {@link CmisTypeDefinitionWrapper}
-   * @throws CmisClientException if input {@link Session} is invalid
-   * @throws CmisClientException in case of any exception
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
    */</span>
   <span class="predefined-type">List</span>&lt;CmisTypeDefinitionWrapper&gt; getWrappedTypeDefinitions(Session session)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
@@ -1788,14 +2082,47 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
 
   <span class="comment">/**
-   * get root folder
+   * get folder children, iterable result
+   *
+   * @param parent {@link Folder} to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid
+   */</span>
+  ItemIterable&lt;CmisObject&gt; getChildren(Folder parent)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
+
+  <span class="comment">/**
+   * get folder children, iterable result
    *
    * @param parent folder to get children from
    * @return iterable children
    * @throws CmisClientException      in case of any exception
-   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws InvalidArgumentException if parent is not valid or not a {@link Folder}
    */</span>
-  ItemIterable&lt;CmisObject&gt; getChildren(Folder parent)
+  ItemIterable&lt;CmisObject&gt; getChildren(CmisObject parent)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
+
+  <span class="comment">/**
+   * get all folder children
+   *
+   * @param parent {@link Folder} to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid
+   */</span>
+  <span class="predefined-type">List</span>&lt;CmisObjectWrapper&gt; getAllChildren(Folder parent)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
+
+  <span class="comment">/**
+   * get all folder children
+   *
+   * @param parent folder to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid or not a {@link Folder}
+   */</span>
+  <span class="predefined-type">List</span>&lt;CmisObjectWrapper&gt; getAllChildren(CmisObject parent)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
 
   <span class="comment">/**
@@ -1806,9 +2133,10 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    * @return {@link CmisObjectWrapper}
    * @throws CmisClientException      in case of any exception
    * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
    */</span>
   CmisObjectWrapper getObjectById(Session session, <span class="predefined-type">String</span> id)
-      <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException;
 
   <span class="comment">/**
    * get object by its id
@@ -1819,9 +2147,10 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
    * @return {@link CmisObjectWrapper}
    * @throws CmisClientException      in case of any exception
    * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
    */</span>
   CmisObjectWrapper getObjectById(Session session, <span class="predefined-type">String</span> id, <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; filteredMetadata)
-      <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException;
 
   <span class="comment">/**
    * get object by its path
@@ -1873,9 +2202,127 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
   <span class="predefined-type">List</span>&lt;CmisQueryResultWrapper&gt; queryObjects(Session session, <span class="predefined-type">String</span> query, <span class="type">int</span> pageSize)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
 
-  <span class="type">void</span> downloadContentStream(Session session, <span class="predefined-type">String</span> objectId)
+  <span class="comment">/**
+   * query objects, and get IDs
+   *
+   * @param session valid CMIS server session
+   * @param query   SQL-92 compliant query
+   * @return list of objects ids
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */</span>
+  <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; queryObjectIDs(Session session, <span class="predefined-type">String</span> query)
       <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
 
+  <span class="comment">/**
+   * query objects, and get IDs
+   *
+   * @param session  valid CMIS server session
+   * @param query    SQL-92 compliant query
+   * @param pageSize page size
+   * @return list of objects ids
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */</span>
+  <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; queryObjectIDs(Session session, <span class="predefined-type">String</span> query, <span class="type">int</span> pageSize)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException;
+
+  <span class="comment">/**
+   * get content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return url
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */</span>
+  <span class="predefined-type">String</span> getContentStreamUrl(Session session, <span class="predefined-type">String</span> objectId)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  <span class="comment">/**
+   * get document content Stream.
+   * Careful, if using {@link ContentStream#getStream()}, you should take care of closing it
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return see {@link ContentStream}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */</span>
+  ContentStream getContentStream(Session session, <span class="predefined-type">String</span> objectId)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  <span class="comment">/**
+   * download content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @param offset   offset (in bytes) to start document reading (first offset will then be skipped)
+   * @param length   byte number read
+   * @return see {@link ContentStream}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */</span>
+  ContentStream getContentStream(Session session, <span class="predefined-type">String</span> objectId, <span class="type">long</span> offset, <span class="type">long</span> length)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException, <span class="exception">IOException</span>;
+
+  <span class="comment">/**
+   * download content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return full downloaded file path
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */</span>
+  <span class="predefined-type">String</span> downloadContentStream(Session session, <span class="predefined-type">String</span> objectId)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException, <span class="exception">IOException</span>;
+
+  <span class="comment">/**
+   * download content URL
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @param targetFolder folder to download file to
+   * @return full downloaded file path
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */</span>
+  <span class="predefined-type">String</span> downloadContentStream(Session session, <span class="predefined-type">String</span> objectId, Path targetFolder)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException, <span class="exception">IOException</span>;
+
+  <span class="comment">/**
+   * delete an object
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */</span>
+  <span class="type">void</span> deleteObject(Session session, <span class="predefined-type">String</span> objectId)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  <span class="comment">/**
+   * update an object
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @param propertiesMap   properties to update (cmis property code, property value) {@link Map}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */</span>
+  <span class="type">void</span> updateObject(Session session, <span class="predefined-type">String</span> objectId, <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, ?&gt; propertiesMap)
+      <span class="directive">throws</span> CmisClientException, InvalidArgumentException, ObjectNotFoundException;
 }</code></pre>
 </div>
 </div>
@@ -1922,7 +2369,7 @@ Veuillez nous contacter pour obtenir celle-ci.</p>
 </div>
 </div>
 </div>
-<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script type="text/javascript" src="tocbot/4.0.x/tocbot.min.js"></script>
 <script>
   /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
 
