@@ -1,81 +1,16 @@
 [[Dossier-ws]]
 = WebServices *AIRS Dossier*
-v1.2, 14/09/2022
-:revnumber: 1.2
+v2.0, 14/09/2022
+:revnumber: 2.0
+include::{sharedResource}/adoc/template.adoc[]
 :revdate: 14/09/2022
-:author: Digitech
-:organization: Digitech
-:doctype: book
-:reproducible:
-:experimental:
-:compact:
-:!webfonts:
-// use locale font-awesome icons
-:iconfont-remote!:
-:iconfont-name: font-awesome.min
-:icon-set: far
-:nofooter:
-:toc-title: Sommaire
-:chapter-signifier:
-:listing-caption: Listing
-:sectnums:
-:toc:
-:toclevels: 5
-:sectnumlevels: 4
-:xrefstyle: full
-:table-stripes: even
-ifdef::backend-pdf[]
-:icons: image
-:img-prio-width: 10
-:title-logo-image: image:dossier-cover.png[align=center]
-:!nofooter:
-endif::[]
-ifndef::backend-pdf[]
-:icons: font
-:toc: left
-:img-prio-width: 18
-endif::[]
-ifdef::env-github[]
-:imagesdir: images
-:toc-placement!:
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-ifndef::env-github[]
-:imagesDir: images
-endif::[]
-// substition/alias
 :favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
-:img_blocking: image:icons/blocking.png["Bloquant"]
-:img_urgent: image:icons/urgent.png["Urgent"]
-:img_high: image:icons/high.png["Haute"]
-:img_normal: image:icons/normal.png["Normal"]
-:img_low: image:icons/low.png["Bas"]
-:dossier: pass:quotes[<span style="color: #D4CE28">Dossier</span>]
-:airs: pass:quotes[<span style="color: #F25937">AIRS</span>]
-:java: pass:quotes[*<span style="color: #F24E52">JAVA</span>*]
-:webservices: pass:quotes[*<span style="color: #0099ff">Web Services</span>*]
-:webservice: pass:quotes[*<span style="color: #0099ff">Web Service</span>*]
-:soap: pass:quotes[*<span style="color: #6666ff">soap</span>*]
-:rest: pass:quotes[*<span style="color: #73A12E">rest</span>*]
-:xml: pass:quotes[*<span style="color: #BF00FF">XML</span>*]
-:json: pass:quotes[*<span style="color: #FF7C29">json</span>*]
-:query: pass:quotes[*<span style="color: #4defe9">query</span>*]
-:path: pass:quotes[*<span style="color: #36D74F">path</span>*]
-:body: pass:quotes[*<span style="color: #862929">body</span>*]
-:GET: pass:quotes[[get]*GET*]
-:POST: pass:quotes[[post]*POST*]
-:PUT: pass:quotes[[put]*PUT*]
-:PATCH: pass:quotes[[patch]*PATCH*]
-:DELETE: pass:quotes[[delete]*DELETE*]
-:NFE: pass:quotes[[res]*NFE*]
-:JMU: pass:quotes[[res]*JMU*]
 :dossier-stub-version: 1.2.1
 :dossier-rest-client-version: 1.0.0
 
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
 ifndef::backend-pdf[]
 image::dossier-cover.png[]
 endif::[]
@@ -83,10 +18,10 @@ endif::[]
 [options="header"]
 .Notes de suivi
 |===
-|Date|Version|Etat|Objet|Rédacteur|Validateur
+|Date|Version|Etat|Objet|Rédacteur|Validateur 
 |22/06/2020|1.0|Validé|Création du document|{NFE}|
 |12/05/2021|1.1|Validé|Modification du document, ajout compatibilité *7.1*|{NFE}|
-|12/09/2022|2.0|Validé|Ajout WS *v8.0*|{NFE} / {JMU}|{NFE}
+|14/09/2022|2.0|Validé|Ajout WS *v8.0*|{NFE} / {JMU}|{NFE}
 |===
 
 ifdef::env-github[]

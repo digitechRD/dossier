@@ -2,62 +2,9 @@
 = CMIS *AIRS Dossier*
 v1.0, 01/05/2020
 :revnumber: 1.0
-:revdate: {productReleaseDate}
-:author: Digitech
-:organization: Digitech
-:doctype: book
-:reproducible:
-:experimental:
-:compact:
-:!webfonts:
-// use locale font-awesome icons
-:icons: font
-:iconfont-remote!:
-:iconfont-name: font-awesome.min
-:icon-set: far
-:nofooter:
-:toc-title: Sommaire
-:chapter-signifier:
-:listing-caption: Listing
-:sectnums:
-:toc:
-:toclevels: 3
-:xrefstyle: full
-ifdef::backend-pdf[]
-:img-prio-width: 10
-:title-logo-image: image:dossier-cover.png[align=center]
-:smile: icon:smile[role="yellow"]
-:hand-peace: icon:hand-peace[role="yellow"]
-:!nofooter:
-endif::[]
-ifndef::backend-pdf[]
-:toc: left
-:img-prio-width: 18
-:smile: icon:smile-o[role="yellow"]
-:hand-peace: icon:hand-peace-o[role="yellow"]
-endif::[]
-ifdef::env-github[]
-:imagesdir: images
-:toc-placement!:
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-ifndef::env-github[]
-:imagesDir: images
-endif::[]
+include::{sharedResource}/adoc/template.adoc[]
 :favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
-:img_blocking: image:icons/blocking.png["Bloquant"]
-:img_urgent: image:icons/urgent.png["Urgent"]
-:img_high: image:icons/high.png["Haute"]
-:img_normal: image:icons/normal.png["Normal"]
-:img_low: image:icons/low.png["Bas"]
 // substition/alias
-:digitech: pass:quotes[`<span style="color: #EF2547">Digitech</span>`]
-:dossier: pass:quotes[`<span style="color: #D4CE28">Dossier</span>`]
-:java: pass:quotes[`<span style="color: #F24E52">JAVA</span>`]
 :cmis: pass:quotes[`<span style="color: #167EF2">CMIS</span>`]
 :repository: pass:quotes[`<span style="color: #FFBD33">repository</span>`]
 :repositories: pass:quotes[`<span style="color: #FFBD33">repositories</span>`]
@@ -74,6 +21,9 @@ endif::[]
 :rendition: pass:quotes[`<span style="color: #82E0AA">rendition</span>`]
 :dossier-client-version: 1.0.0
 
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
 ifndef::backend-pdf[]
 image::dossier-cover.png[]
 endif::[]

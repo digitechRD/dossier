@@ -1,10 +1,10 @@
-<p align="center">
+<p>
   <img src="/src/main/resources/images/digitech-logo.png" width="400px" alt="Digitech Logo" />
 </p>
 
 # AIRS Dossier
 
-<p align="center">
+<p>
   <img src="/src/main/resources/images/dossier-cover.png" width="300px" alt="Dossier Logo" />
 </p>
 
