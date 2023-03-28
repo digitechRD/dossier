@@ -130,7 +130,115 @@ Le paramètre additionnel précisant le type d'opération est `cmisaction`, par 
 ----
 cmisaction=createDocument
 ----
+==== Création :
+L'application fournit 3 opérations de création en fonction du type d'objet que l'on veut créer : *createItem*, *createFolder* et *createDocument*.
 
+.Il existe 3 types d'objets qui sont créables via CMIS dans AIRS Dossier :
+* Les documents AIRS (*createFolder*)
+* Les pièces jointes (*createDocument*)
+* Les commentaires (*createItem*)
+
+Création d'un commentaire (*createItem*)
+
+La création d'un commentaire nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=createItem
+objectId=<IDENTIFIANT DE L'OBJET PARENT>
+propertyId[0]=cmis:name
+propertyValue[0]=<TEXTE DU COMMENTAIRE>
+propertyId[1]=cmis:objectTypeId
+propertyValue[1]=cm:comment
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:item
+...
+----
+
+Voici un exemple :
+
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=createItem&propertyId[0]=cmis:name&propertyValue[0]=TEST COMMENT&propertyId[1]=cmis:objectTypeId&propertyValue[1]=cm:comment&propertyId[2]=cmis:baseTypeId&propertyValue[2]=cmis:item&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document mis à jour.
+[source, json]
+----
+include::../files/cmis_dossier_createItem_response.json[]
+----
+Création d'un document (*createFolder*)
+
+La création d'un document (AIRS) nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=createFolder
+objectId=<IDENTIFIANT DE L'OBJET PARENT>
+propertyId[0]=cmis:objectTypeId
+propertyValue[0]=<CODE CMIS DU TYPE DE CONTENU>
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:folder
+propertyId[2]=<IDENTIFIANT DE LA PROPRIETE 2>
+propertyValue[2]=<VALEUR DE LA PROPRIETE 2>
+...
+----
+[NOTE]
+====
+Le paramètre *objectId* doit contenir l'identifiant CMIS du flux Airs Dossier dans lequel le document doit être créé.
+====
+Voici un exemple :
+
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=createFolder&propertyId[0]=cm:document:cr:crDes&propertyValue[0]=TEST CREATE FOLDER&propertyId[1]=cmis:objectTypeId&propertyValue[1]=cm:document:cr&propertyId[2]=cmis:baseTypeId&propertyValue[2]=cmis:folder&objectId=ZmxvdzpDUg==
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document AIRS créé.
+[source, json]
+----
+include::../files/cmis_dossier_createFolder_response.json[]
+----
+Création d'une pièce jointe (*createAttachment*)
+
+La création d'une pièce jointe nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=createDocument
+objectId=<IDENTIFIANT DE L'OBJET PARENT>
+propertyId[0]=cmis:objectTypeId
+propertyValue[0]=cm:attachment
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:document
+propertyId[2]=cmis:contentStreamFileName
+propertyValue[2]=<NOM DU FICHIER>
+propertyId[2]=cmis:name
+propertyValue[2]=<LABEL DE l'ATTACHMENT>
+...
+----
+[NOTE]
+====
+Le content stream doit être ajouté via une enveloppe multipart.
+====
+Voici un exemple :
+
+[source,httprequest]
+----
+POST http://localhost:8080/dossierweb80/cmis/browser/Dossier-5/root?cmisaction=createDocument&propertyId[0]=cmis:contentStreamFileName&propertyValue[0]=test.pdf&propertyId[1]=cmis:objectTypeId&propertyValue[1]=cm:attachment&propertyId[2]=cmis:baseTypeId&propertyValue[2]=cmis:document&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NjQy&propertyId[3]=cmis:name&propertyValue[3]=test piece jointe
+HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: multipart/form-data; boundary="----=_Part_4_495007518.1679652147738"
+MIME-Version: 1.0
+Content-Length: 922418
+
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés de la pièce jointe créée.
+[source, json]
+----
+include::../files/cmis_dossier_createDocument_response.json[]
+----
 ==== Suppression :
 
 L'application fournit 2 opérations de suppression en fonction du type d'objet que l'on souhaite supprimer : *delete* et *deleteTree*
@@ -191,7 +299,7 @@ http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=upd
 La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document mis à jour.
 [source, json]
 ----
-include::../files/update_properties_response.json[]
+include::../files/cmis_dossier_updateProperties_response.json[]
 ----
 [[cmis_browser_query]]
 === Recherche
