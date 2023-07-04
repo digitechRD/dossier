@@ -1,11 +1,11 @@
 <p>
-  <img src="/src/main/resources/images/digitech-logo.png" width="400px" alt="Digitech Logo" />
+  <img src="/src/main/resources/images/digitech-logo.png" width="600" alt="Digitech Logo" />
 </p>
 
 # AIRS Dossier
 
 <p>
-  <img src="/src/main/resources/images/dossier-cover.png" width="300px" alt="Dossier Logo" />
+  <img src="/src/main/resources/images/dossier-cover.png" width="612" alt="Dossier Logo" />
 </p>
 
 La _GED_ **A.I.R.S. Dossier**, est une solution de **G**estion **É**lectronique de **D**ocuments multi-flux 
@@ -25,4 +25,6 @@ Veuillez-vous référer [à la page d'accueil de ce projet](dossier-docs/README.
 
 ## Contributeurs
 
-* @NicolasFelix
+
+
+* @NicolasFelix ~~~~~~

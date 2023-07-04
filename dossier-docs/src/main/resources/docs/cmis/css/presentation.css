@@ -1,0 +1,993 @@
+:root {
+  --main-bg-color: #f5f0e5;
+  --main-text-color: #F2F2F2;
+  --header-bg-color: #424242;
+  --header-text-color: #F2F2F2;
+  --footer-bg-color: #424242;
+  --footer-text-color: #F2F2F2;
+
+  --link-color: #33291f;
+  --link-hover-color: #e0d66d;
+  --link-decoration-color: #c5b6a9;
+
+  --table-header-bg-color: #ffdf7e;
+  --table-subheader-bg-color: #ffecb2;
+
+  --blue: #007bff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #dc3545;
+  --orange: #fd7e14;
+  --yellow: #ffc107;
+  --green: #28a745;
+  --teal: #20c997;
+  --cyan: #17a2b8;
+  --custom-white: #fff;
+  --gray: #6c757d;
+  --gray-dark: #343a40;
+  --gray-100: #f8f9fa;
+  --gray-200: #ebebeb;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #666;
+  --gray-700: #444;
+  --gray-800: #303030;
+  --gray-900: #222;
+  --primary: #007bff;
+  --secondary: #6c757d;
+  --success: #28a745;
+  --info: #17a2b8;
+  --warning: #ffc107;
+  --danger: #dc3545;
+  --light: #f8f9fa;
+  --dark: #343a40;
+
+
+  /** admonition */
+  --border-width: 5px;
+  --note-text-color: #306983;
+  --note-bg-color: #f1f6fa;
+  --note-color: #03a9f4;
+
+  --tip-text-color: #27625b;
+  --tip-bg-color: #f3fdfc;
+  --tip-color: #4db6ac;
+
+  --warning-text-color: #886a39;
+  --warning-bg-color: #fff8f2;
+  --warning-color: #f39c12;
+
+  --caution-text-color: #83432c;
+  --caution-bg-color: #fff7f5;
+  --caution-color: #bf3400;
+
+  --important-text-color: #b60038;
+  --important-bg-color: #ffedf2;
+  --important-color: #e40046;
+}
+
+/* ex: e7b68b */
+body {
+  background: var(--main-bg-color);
+  background: -moz-radial-gradient(center, circle cover, #fff 0%, var(--main-bg-color) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #fff), color-stop(100%, var(--main-bg-color)));
+  background: -webkit-radial-gradient(center, circle cover, #fff 0%, var(--main-bg-color) 100%);
+  background: -o-radial-gradient(center, circle cover, #fff 0%, var(--main-bg-color) 100%);
+  background: -ms-radial-gradient(center, circle cover, #fff 0%, var(--main-bg-color) 100%);
+  background: radial-gradient(center, circle cover, #fff 0%, var(--main-bg-color) 100%);
+  background-color: var(--main-bg-color);
+}
+
+/*.backgrounds { opacity: 0.6; }*/
+
+/** bas de slides */
+body:after {
+  content: ' ';
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+  width: 6em;
+  height: 8em;
+  background: url(../images/digitech_logo.svg);
+  background-size: 6em;
+  background-repeat: no-repeat;
+  background-position: 3% 96%;
+}
+
+body:before {
+  content: '©Digitech 2023';
+  position: fixed;
+  padding: 1rem 1rem 0.7rem;
+  width: 100%;
+  bottom: 0;
+  height: 1em;
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+section[data-state="hidden"] {
+  display: none;
+}
+
+/** haut de slides */
+.reveal:before {
+  content: 'Réunion de service R&D';
+  position: fixed;
+  padding: 0.45em 1em 1em;
+  width: 100%;
+  height: 1em;
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+  text-align: center;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.reveal .slide-number {
+  font-size: 0.8rem;
+  bottom: 5px;
+}
+
+.reveal .backgrounds {
+  height: calc(100% - 2em); /* hauteur du footer */
+  top: 1em;
+}
+
+.reveal .slide-number {
+  background-color: unset;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+}
+
+.reveal a {
+  color: var(--link-color);
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: var(--link-decoration-color);
+}
+
+.reveal section.white-text {
+  color: var(--custom-white);
+}
+
+.reveal a:hover {
+  text-decoration-style: solid;
+  color: var(--link-color);
+  text-decoration-color: var(--link-hover-color);
+  font-style: italic;
+}
+
+.reveal section.questions {
+  background: no-repeat center url(../images/question-mark.svg) !important;
+  background-size: 40% !important;
+  box-shadow: none !important;
+  height: 100%;
+  top: 0 !important;
+}
+
+.reveal section.tour_table {
+  background: no-repeat center url(../images/community_group.svg) !important;
+  background-size: 40% !important;
+  box-shadow: none !important;
+  height: 100%;
+  top: 0 !important;
+}
+
+.reveal section.demo {
+  background: no-repeat center url(../images/presentation.svg) !important;
+  background-size: 40% !important;
+  box-shadow: none !important;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.green {
+  color: var(--green);
+}
+
+.admonitionblock .icon .fa {
+  font-size: 52px;
+}
+
+.admonitionblock.note .icon {
+  color: var(--blue);
+}
+
+.admonitionblock.tip .icon {
+  color: var(--cyan);
+}
+
+.admonitionblock.important .icon {
+  color: var(--orange);
+}
+
+.admonitionblock.caution .icon {
+  color: var(--red);
+}
+
+.admonitionblock.warning .icon {
+  color: var(--danger);
+}
+
+.admonitionblock table {
+  width: 100%;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+section.main.title h1 {
+  color: #333;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.decent, .decent * {
+  color: #33291fa0;
+}
+
+.decent A {
+  text-decoration: underline;
+}
+
+SPAN.verydecent, SPAN.verydecent A, P span.verydecent * {
+  color: #33291f30;
+}
+
+
+SECTION.bonuscontent H2::before {
+  content: "BONUS: ";
+  color: #f00;
+}
+
+SECTION .title {
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  text-decoration: underline;
+  line-height: 1em;
+  margin-bottom: -.4rem;
+  margin-top: 1.2rem;
+  color: #33291fe0
+}
+
+
+/* condensed callouts */
+.reveal .colist {
+  font-size: 28px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.reveal .colist table td {
+  padding: 0.15em 0.5em;
+}
+
+/* .reveal h1 {  font-size: 3.77em; }
+.reveal h2 {  font-size: 2.11em;  }
+.reveal h3 {  font-size: 1.55em; }
+.reveal h4 {  font-size: 1em; } */
+
+/* ----------------- */
+
+
+/* Aufzählung nicht zentrieren, wenn sie in einem Shrinking Container stecken.*/
+.reveal .container ol, .reveal .container dl, .reveal .container ul {
+  display: table;
+}
+
+/* Shrinking DIV */
+.reveal DIV.container {
+  display: inline-block;
+}
+
+
+/* --- Layout Helper  --------------------------------------------------- */
+.reveal .left {
+  text-align: left;
+}
+
+.reveal .left PRE {
+  margin: 20px 0;
+  width: 100%;
+}
+
+.reveal .pc90 {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .pc80 {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .pc70 {
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* poor-mans 3col layout */
+.col3-l {
+  float: left;
+  width: 33%
+}
+
+.col3-lc {
+  float: left;
+  width: 66%
+}
+
+.col3-c {
+  width: 33%;
+  display: inline-block;
+}
+
+.col3-cr {
+  float: right;
+  width: 66%
+}
+
+.col3-r {
+  float: right;
+  width: 33%
+}
+
+.small p, .small li, p.small, div.small, span.small, .small code, .TABLE.small, .small TH {
+  font-size: 94% !important;
+}
+
+.x-small p, .x-small li, p.x-small, div.x-small, span.x-small, .x-small code, TABLE.x-small, .x-small TH {
+  font-size: 86% !important;
+}
+
+.reveal .x-small TH, .reveal .x-small TD, .x-small TD P {
+  padding: 0.1em 0.25em;
+  margin: 8px 0;
+}
+
+.xx-small p, .xx-small li, p.xx-small, div.xx-small, span.xx-small, .xx-small code, .xx-small TABLE, .xx-small TH {
+  font-size: 78% !important;
+}
+
+.small LI P {
+  margin: 12px 0;
+}
+
+.x-small LI P, .xx-small LI P {
+  margin: 6px 0;
+}
+
+
+/* --- Darstellung Tweaks ----------------------------------------------- */
+.reveal .emphasize {
+  color: #fa4242;
+}
+
+.reveal .emphasize A {
+  color: blue;
+  text-decoration: underline;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+.reveal img.plain {
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal img.flag {
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  height: 0.8em;
+}
+
+/* Left-Floating Icon. */
+.reveal img.floaticon {
+  max-width: 120px;
+  margin: .2em .7em .2em 0;
+  float: left;
+  clear: both;
+}
+
+/* Label für Floaticon */
+.reveal p.floaticon {
+  margin-left: 150px;
+}
+
+/* Top & bottom gaps */
+.tgap {
+  margin-top: 1.6em
+}
+
+.bgap {
+  margin-bottom: 1.6em
+}
+
+.reveal .glow {
+  text-shadow: 0 0 0.5em #ccc, 0 0 0.5em #ccc;
+  -webkit-filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 1));
+  filter: drop-shadow(0px 0px 30px rgba(255, 255, 255, 1));
+}
+
+/* Inline code */
+.reveal code {
+  border-radius: 5px;
+  padding: 1px 7px;
+  border: 1px solid rgba(255, 255, 255, .4);
+  background: #424242;
+  color: var(--main-text-color);
+  font-size: .8em;
+  white-space: nowrap;
+}
+
+.reveal pre code {
+  padding: 20px;
+  background: #fff8f1c0;
+  border: 1px solid #745d48;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  white-space: pre-wrap;
+}
+
+.reveal .lightbg {
+  background: #fff8f1d0;
+}
+
+.reveal .decentlightbg {
+  background: #fff8f130;
+}
+
+/* Absatzabstand */
+/* .reveal p {
+  margin: .4em 0 .2em 0; } */
+/* Text links*/
+/*.reveal .slides p {
+  text-align: left; }*/
+/* Listen: Größerer linker Einzug. */
+/* .reveal ol, .reveal dl, .reveal ul {
+  margin: 0 0 0 1.6em;
+}  */
+
+
+/* --------------------------------------------------------- Restylings */
+
+/* Less indenting: was 1em */
+.reveal ol, .reveal dl, .reveal ul {
+  margin: 0 0 0 0.4em;
+}
+
+.reveal section.degrade h2 {
+  text-transform: none;
+}
+
+/* other blockquote presentation */
+.reveal blockquote {
+  font-size: 48px;
+  box-shadow: none;
+  padding: 0 0.6em;
+  border-top: 5px solid #745d48;
+  border-bottom: 5px solid #745d48;
+  text-align: right;
+  color: #745d48;
+  background: #ffffffa0;
+}
+
+/* ------------------------------------------------------------*/
+.col2 {
+  width: 48% !important;
+  margin: 0 1% !important;
+  float: left;
+}
+
+/* Aufzählung nicht zentrieren im 2col layout.*/
+.reveal .col2 ol, .reveal .col2 dl, .reveal .col2 ul {
+  display: table;
+}
+
+
+.float-left {
+  float: left;
+}
+
+.reveal .clear {
+  clear: both;
+}
+
+/* --------------------------------------------------------- */
+/* a specially decent code ref */
+.c-ref {
+  font-weight: lighter !important;
+  font-size: 50% !important;
+  vertical-align: super !important;
+  margin: 0 8px !important;
+  opacity: 0.6 !important;
+}
+
+.c-ref > code {
+  border: 1px solid rgba(255, 255, 255, .6) !important;
+  background: darkblue !important;
+}
+
+A.c-ref > code {
+  color: whitesmoke !important;
+  text-decoration: underline !important;
+}
+
+/* ------ Version & Preview Bades, JEP links -- */
+.jep, .version, .preview {
+  font-size: 30%;
+  letter-spacing: 0.04em;
+  vertical-align: 2em;
+  margin: 0px;
+  border-radius: 5px;
+  padding: 0px 6px 1px;
+}
+
+.jep {
+  border: 2px solid #745d4880;
+  background-color: #745d48a0;
+}
+
+.jep:hover {
+  border: 2px solid #33291f;
+  background-color: #745d48;
+}
+
+.jep A {
+  color: white;
+  text-decoration: none;
+}
+
+.version {
+  border: 1px solid blue;
+  background: lightblue;
+  color: black;
+  font-weight: bold;
+}
+
+.preview {
+  border: 1px solid black;
+  background: deeppink;
+  color: white;
+}
+
+/* ------------------------------------------------------ The refs section */
+DIV.refs {
+  background-color: rgba(255, 255, 255, 0);
+  border-top: 1px solid rgba(0, 0, 0, .2);
+  padding: 2px 0 0 0;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: right;
+}
+
+DIV.refs P, DIV.refs P A {
+  color: rgba(0, 0, 0, .4);
+  margin: 0;
+}
+
+DIV.refs DIV.ulist {
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+  line-height: 0.9;
+
+}
+
+DIV.refs DIV.ulist UL {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+DIV.refs DIV.ulist UL LI {
+  width: 50%;
+  float: right;
+  text-align: center;
+}
+
+/* hovering effects */
+DIV.refs:hover {
+  background-color: #745d4860;
+  cursor: pointer;
+}
+
+DIV.refs:hover LI P {
+  color: black;
+}
+
+DIV.refs LI:hover P A {
+  text-decoration: underline;
+  color: blue;
+}
+
+/* --------------------------------------------------- special slides styles */
+SECTION SPAN.tldr {
+  font-size: 4em;
+}
+
+/** spécifique NFE admonition */
+.reveal .slides > section, .reveal .slides > section > section {
+  padding: 10px 0;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+  margin: 0 0 10px 0;
+}
+
+
+.note {
+  color: var(--note-color);
+}
+
+.emoji img {
+  vertical-align: sub;
+  border: 0 !important;
+}
+
+.reveal section img {
+  margin: 5px 0;
+}
+
+.admonitionblock {
+  margin: 1.4rem 0 0
+}
+
+.admonitionblock td.content > .title + *, .admonitionblock td.content > :not(.title):first-child {
+  margin-top: 0
+}
+
+.admonitionblock pre {
+  font-size: .83333rem
+}
+
+.admonitionblock > table {
+  table-layout: fixed;
+  position: relative;
+  width: 100%
+}
+
+.admonitionblock > table td.content {
+  padding: 1.5rem 1rem .5rem;
+  background: #fafafa;
+  width: 100%;
+  word-wrap: anywhere;
+  border-left: var(--border-width) solid;
+  border-right: var(--border-width) solid;
+}
+
+.admonitionblock.note td.content {
+  color: var(--note-text-color);
+  border-color: var(--note-color);
+  background-color: var(--note-bg-color);
+}
+
+.admonitionblock.tip td.content {
+  color: var(--tip-text-color);
+  border-color: var(--tip-color);
+  background-color: var(--tip-bg-color);
+}
+
+.admonitionblock.important td.content {
+  color: var(--important-text-color);
+  border-color: var(--important-color);
+  background-color: var(--important-bg-color);
+}
+
+.admonitionblock.warning td.content {
+  color: var(--warning-text-color);
+  border-color: var(--warning-color);
+  background-color: var(--warning-bg-color);
+}
+
+.admonitionblock.caution td.content {
+  color: var(--caution-text-color);
+  border-color: var(--caution-color);
+  background-color: var(--caution-bg-color);
+}
+
+.admonitionblock .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.5rem;
+  padding: 0.1rem 1rem 0.1rem 2.8rem;
+  height: 2rem;
+  line-height: 1;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: .45rem;
+  -webkit-transform: translate(-.5rem, -50%);
+  transform: translate(-.5rem, -50%)
+}
+
+.admonitionblock .icon .title {
+  margin-top: 0.3rem;
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+.admonitionblock td.icon [class^="fa icon-"] {
+  text-shadow: unset;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.admonitionblock td.icon .fa::before {
+  content: attr(title) !important;
+  color: white;
+  padding: 0 1em 0 1.5em;
+}
+
+.admonitionblock > table td.icon {
+  width: auto;
+}
+
+.admonitionblock .icon i {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%
+}
+
+.admonitionblock .icon {
+  border-radius: 2rem;
+}
+
+.admonitionblock.note .icon {
+  background: var(--note-color) url("../images/icons/note.svg") no-repeat;
+}
+
+.admonitionblock.tip .icon {
+  background: var(--tip-color) url("../images/icons/tip.svg") no-repeat;
+}
+
+.admonitionblock.important .icon {
+  background: var(--important-color) url("../images/icons/important.svg") no-repeat;
+}
+
+.admonitionblock.warning .icon {
+  background: var(--warning-color) url("../images/icons/warning.svg") no-repeat;
+}
+
+.admonitionblock.caution .icon {
+  background: var(--caution-color) url("../images/icons/caution.svg") no-repeat;
+}
+
+.admonitionblock .content .ulist {
+  margin-left: 25px;
+}
+
+.res, .action-res {
+  font-weight: 700;
+  min-width: 80px;
+  padding: 2px 0;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.action-res, .res {
+  color: white;
+  background-color: #30658f;
+  text-transform: uppercase;
+}
+
+.reveal table p {
+  line-height: 1em;
+  margin: 14px 0 0;
+}
+
+.get, .post, .put, .patch, .delete,
+.action-get, .action-post, .action-put, .action-patch, .action-delete,
+.res, .action-res, .path, .overlapped {
+  font-weight: 700;
+  padding: 2px 8px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.action-res, .res {
+  color: var(--custom-white);
+  background-color: #30658f;
+  text-transform: uppercase;
+}
+
+.action-get, .get {
+  color: var(--custom-white);
+  background-color: #61affe;
+}
+
+.action-post, .post {
+  color: var(--custom-white);
+  background-color: #49cc90;
+}
+
+.action-put, .put {
+  color: var(--custom-white);
+  background-color: #fca130;
+}
+
+.action-patch, .patch {
+  color: var(--custom-white);
+  background-color: #50e3c2;
+}
+
+.action-delete, .delete {
+  color: var(--custom-white);
+  background-color: #f93e3e;
+}
+
+.path {
+  color: var(--custom-white);
+  background-color: #16191a;
+  font-weight: 400;
+  font-size: .9375em;
+}
+
+.white-bg, .black-bg, .blue-bg, .green-bg, .red-bg, .orange-bg, .yellow-bg {
+  padding: 2px 4px;
+}
+
+table.tableblock td:has(span.white-td-bg),
+.white-bg {
+  background-color: var(--custom-white);
+}
+
+table.tableblock td:has(span.black-td-bg),
+.black-bg {
+  background-color: var(--custom-black);
+}
+
+table.tableblock td:has(span.blue-td-bg),
+.blue-bg {
+  background-color: var(--blue);
+  color: var(--custom-white);
+}
+
+table.tableblock td:has(span.green-td-bg),
+.green-bg {
+  background-color: var(--green);
+  color: var(--custom-white);
+}
+
+table.tableblock td:has(span.gray-td-bg),
+.gray-bg {
+  background-color: var(--gray-500);
+}
+
+table.tableblock td:has(span.red-td-bg),
+.red-bg {
+  background-color: var(--red);
+}
+
+table.tableblock td:has(span.orange-td-bg),
+.orange-bg {
+  background-color: var(--orange);
+}
+
+table.tableblock td:has(span.yellow-td-bg),
+.yellow-bg {
+  background-color: var(--yellow);
+}
+
+.white-text {
+  color: var(--custom-white);
+}
+
+.black-text {
+  color: var(--custom-black);
+}
+
+.blue-text {
+  color: var(--blue);
+}
+
+.green-text {
+  color: var(--green);
+}
+
+.red-text {
+  color: var(--red);
+}
+
+.orange-text {
+  color: var(--orange);
+}
+
+.yellow-text {
+  color: var(--yellow);
+}
+
+.reveal table.font-1-5x td *,
+.font-1-5x {
+  font-size: 1.5rem !important;
+}
+
+.font-2x {
+  font-size: 2rem !important;
+}
+
+.font-3x {
+  font-size: 3rem !important;
+}
+
+.font-4x {
+  font-size: 4rem !important;
+}
+
+.reveal table.text-xs td *,
+.text-xs {
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+}
+
+
+.text-sm {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+
+.reveal table.font-1-5x p,
+.reveal table.font-2x p,
+.reveal table.font-3x p,
+.reveal table.font-4x p,
+.reveal table.text-xs p,
+.reveal table.text-sm p {
+  margin: 2px 0;
+}
+
+.reveal table th, .reveal table td {
+  padding: 0.2em;
+}
+
+.line-through {
+  text-decoration-line: line-through;
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
+/** adding table cell styles */
+table.tableblock thead,
+table.tableblock tfoot {
+  background-color: var(--table-header-bg-color);
+  color: var(--table-header-text-color);
+}
+
+.reveal section img {
+  background: none;
+  box-shadow: none;
+  margin: 0;
+}
+.reveal section img.emoji {
+  border: 0;
+}
