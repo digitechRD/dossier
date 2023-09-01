@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="author" content="Digitech">
+<link rel="icon" type="image/png" href="images/icons/logo_digitech_favicon_32.png">
+<title>Mise en place du SSO pour le produit AIRS Dossier</title>
+<link rel="stylesheet" href="css/digitech.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/coderay-asciidoctor.css">
+<link href="css/digitech.css" rel="stylesheet">
+</head>
+<body id="Dossier-sso" class="book toc2 toc-left">
+<div id="header">
+<h1>Mise en place du SSO pour le produit <strong>AIRS Dossier</strong></h1>
+<div class="details">
+<span id="author" class="author">Digitech</span><br>
+<span id="revnumber">version 3.0,</span>
+<span id="revdate">05/04/2022</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Sommaire</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction"> 1. Introduction</a></li>
+<li><a href="#_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_dossier"> 2. Paramétrage et mise en œuvre <span style="color: #F27E36">SSO</span> <span style="color: #167EF2">Kerberos</span> pour <span style="color: #D4CE28">Dossier</span></a>
+<ul class="sectlevel2">
+<li><a href="#_création_dun_compte_kerberos">2.1. Création d’un compte Kerberos</a></li>
+<li><a href="#_association_du_compte_kerberos_à_un_spn">2.2. Association du compte <span style="color: #167EF2">Kerberos</span> à un SPN</a></li>
+<li><a href="#_contrôle_de_lexistence_des_associations">2.3. Contrôle de l’existence des associations</a></li>
+<li><a href="#_création_dune_association_ou_dun_service">2.4. Création d&#8217;une association (ou d’un service)</a></li>
+<li><a href="#_génération_du_keytab">2.5. Génération du <strong>"keytab"</strong></a></li>
+<li><a href="#_test_du_paramétrage">2.6. Test du paramétrage</a></li>
+<li><a href="#_association_avec_lapplication_dossier">2.7. Association avec l’application <span style="color: #D4CE28">Dossier</span></a></li>
+</ul>
+</li>
+<li><a href="#_activation_kerberos_dans_le_navigateur_des_utilisateurs"> 3. Activation <span style="color: #167EF2">Kerberos</span> dans le navigateur des utilisateurs</a>
+<ul class="sectlevel2">
+<li><a href="#_internet_explorer">3.1. Internet Explorer</a></li>
+<li><a href="#_firefox">3.2. Firefox</a></li>
+</ul>
+</li>
+<li><a href="#_annexes"> 4. Annexes</a>
+<ul class="sectlevel2">
+<li><a href="#_authenfication_auprès_dun_serveur_linux_kerberos_mit">4.1. Authenfication auprès d’un serveur Linux <span style="color: #167EF2">Kerberos</span> MIT</a>
+<ul class="sectlevel3">
+<li><a href="#_sur_le_serveur">4.1.1. Sur le serveur</a></li>
+<li><a href="#_sur_le_poste_client">4.1.2. Sur le poste client</a></li>
+</ul>
+</li>
+<li><a href="#_erreurs_courantes">4.2. Erreurs courantes</a>
+<ul class="sectlevel3">
+<li><a href="#_failure_unspecified_at_gss_api_level">4.2.1. Failure unspecified at GSS-API level</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/dossier-cover.png" alt="dossier cover">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even fit-content">
+<caption class="title">Table 1. Notes de suivi</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Etat</th>
+<th class="tableblock halign-left valign-top">Objet</th>
+<th class="tableblock halign-left valign-top">Rédacteur</th>
+<th class="tableblock halign-left valign-top">Validateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02/11/2011</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Régis Krawezyk</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01/08/2019</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modification du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">05/04/2022</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dossier <strong>8.0</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"> 1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L&#8217;authentification unique (en anglais <strong>S</strong>ingle <strong>S</strong>ign-<strong>O</strong>n ou <span style="color: #F27E36">SSO</span>) permet à un utilisateur de ne procéder qu&#8217;à une seule authentification pour accéder à son poste de travail ainsi qu’aux applications.</p>
+</div>
+<div class="paragraph">
+<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <span style="color: #D4CE28">Dossier</span>, l’utilisateur doit d’abord entrer ses <strong>login</strong> et <strong>mot de passe</strong>, que l’application utilise pour ouvrir une session <span style="color: #D4CE28">Dossier</span>.<br></p>
+</div>
+<div class="paragraph">
+<p>Avec <span style="color: #F27E36">SSO</span>, le navigateur transmet automatiquement à l&#8217;application le nom que l&#8217;utilisateur a saisi pour s&#8217;authentifier lors de l&#8217;ouverture de sa session
+<span style="color: #F25937">Windows</span>.
+Dès lors, l&#8217;application réceptionne le nom et vérifie sa validité auprès du serveur d’authentification,avant de l’autoriser ou non à accéder à l&#8217;application.</p>
+</div>
+<div class="paragraph">
+<p>Ce document décrit le paramétrage nécessaire pour intégrer <span style="color: #D4CE28">Dossier</span> au sein d’un domaine géré par <span style="color: #167EF2">Active Directory</span>
+(<span style="color: #F27E36">SSO</span> de type <span style="color: #167EF2">Kerberos</span>).
+En annexe est décrite la même procédure avec une authentification réalisée par un serveur <span style="color: #167EF2">Kerberos</span> sous <span style="color: #F25937">Linux</span>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_dossier"> 2. Paramétrage et mise en œuvre <span style="color: #F27E36">SSO</span> <span style="color: #167EF2">Kerberos</span> pour <span style="color: #D4CE28">Dossier</span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L&#8217;authentification unique (en anglais *S*ingle *S*ign-*O*n ou <span style="color: #F27E36">SSO</span>) permet
+à un utilisateur de ne procéder qu&#8217;à une seule authentification pour accéder
+à son poste de travail ainsi qu’aux applications.</p>
+</div>
+<div class="paragraph">
+<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <span style="color: #D4CE28">Dossier</span>, l’utilisateur doit
+d’abord entrer ses login et mot de passe, afin d’ouvrir une session <span style="color: #D4CE28">Dossier</span>.
+Avec <span style="color: #F27E36">SSO</span>, le navigateur transmet automatiquement à l&#8217;application le nom que
+l&#8217;utilisateur a saisi pour s&#8217;authentifier lors de l&#8217;ouverture de sa session <span style="color: #F25937">Windows</span>.
+Dès lors, l&#8217;application réceptionne le nom et vérifie sa validité auprès du
+serveur d’authentification, avant de l’autoriser ou non à accéder à l&#8217;application.</p>
+</div>
+<div class="paragraph">
+<p>Ce document décrit le paramétrage nécessaire pour intégrer <span style="color: #D4CE28">Dossier</span> au sein
+d’un domaine géré par Active Directory (<span style="color: #F27E36">SSO</span> de type <span style="color: #167EF2">Kerberos</span>).
+En annexe est décrite la même procédure avec une authentification
+réalisée par un serveur <span style="color: #167EF2">Kerberos</span> sous <span style="color: #F25937">Linux</span>.</p>
+</div>
+<div class="paragraph">
+<p>Ce chapitre se découpe en plusieurs parties qui sont liées à des
+types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de fonctionnement.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Définition d’un compte <span style="color: #167EF2">Kerberos</span> (Dans l’exemple ci-dessous, ce sera un compte AD)</p>
+</li>
+<li>
+<p>Association du compte <span style="color: #167EF2">Kerberos</span> à un SPN (Service Principal Name)</p>
+</li>
+<li>
+<p>Association du service avec l’application <span style="color: #D4CE28">Dossier</span></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_création_dun_compte_kerberos">2.1. Création d’un compte Kerberos</h3>
+<div class="paragraph">
+<p>Dans notre exemple, il s’agit d’ajouter un compte sur un <strong>AD</strong> :</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/windows-sso1.png" alt="windows sso1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/windows-sso2.png" alt="windows sso2">
+</div>
+</div>
+<div class="paragraph">
+<p>Dans cet exemple a été créé l’utilisateur <code>dcosso</code> au sein de l’<strong>Active Directory</strong>
+(association avec une machine et un domaine) et son ajout comme membre de <code>Groupe_Admin_Local</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_association_du_compte_kerberos_à_un_spn">2.2. Association du compte <span style="color: #167EF2">Kerberos</span> à un SPN</h3>
+<div class="paragraph">
+<p>Il est très déconseillé d’utiliser un compte <span style="color: #167EF2">Kerberos</span> déjà existant afin de l’utiliser, sur une même machine,
+pour mettre en place le principe de connexion <span style="color: #F27E36">SSO</span> sur une autre application telle que <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+<div class="paragraph">
+<p>Nous conseillons donc, soit de définir un nouveau compte, soit de supprimer les associations existantes.
+À savoir que les opérations de création et/ou modification des associations existantes ne peuvent être
+réalisées que par l’administrateur système au sein de l’organisation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_contrôle_de_lexistence_des_associations">2.3. Contrôle de l’existence des associations</h3>
+<div class="paragraph">
+<p>Afin de s’assurer que de telles associations n’existent pas,
+vous avez la possibilité de vérifier via la commande ci-dessous, qui ne nécessite pas le statut d’administrateur du système.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>setspn.exe -L $USER_AD_DOSSIER</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où $USER_AD_DOSSIER désigne votre compte Kerberos</p>
+</div>
+<div class="paragraph">
+<p>Si de telles associations existent sur une même machine, vous avez alors la possibilité de définir un autre compte Kerberos ou de supprimer toutes les références à ce compte sur cette machine en vous assurant qu’elles ne sont pas utilisées par d’autres configurations <span style="color: #F27E36">SSO</span>. Pour supprimer les références, il suffit d’exécuter, pour chacune des lignes où apparaît ce compte, la commande ci-dessous sachant qu’une telle action nécessite d’être administrateur du système :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>setspn.exe -D &lt;ligne&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Par exemple, si vous avez les deux lignes suivantes pour le compte dossier_app  (@setspn.exe –L dossier_app@) :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>HTTP/SRV_DOSSIER</p>
+</li>
+<li>
+<p>HTTP/SRV_DOSSIER.DOMAINE</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Il faudra alors exécuter les deux commandes :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>setspn.exe -D HTTP/SRV_DOSSIER dossier_app
+setspn.exe -D HTTP/SRV_DOSSIER.DOMAINE dossier_app</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_création_dune_association_ou_dun_service">2.4. Création d&#8217;une association (ou d’un service)</h3>
+<div class="paragraph">
+<p>Pour cela, il suffit d’utiliser l’utilitaire setspn qui nécessite de disposer des droits d’administration système :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>setspn.exe -A HTTP/$APP_SERVEUR.$DOMAINE $USER_AD_DOSSIER</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>$APP_SERVEUR</strong> par le nom du serveur qui contient le serveur d’applications Web au sein duquel est déployé l’application <span style="color: #D4CE28">Dossier</span></p>
+</li>
+<li>
+<p><strong>$DOMAINE</strong> par le nom de votre domaine, il doit correspondre avec le domaine auquel est associé le compte Kerberos</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Toutes ces informations doivent être renseignées en majuscule (serveur et domaine). Quant à l&#8217;utilisateur, simplement respecter la casse utilisée lors de sa création.</p>
+</div>
+<div class="paragraph">
+<p>Pour la vérification, vous pouvez exécuter la commande suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>setspn.exe -L $USER_AD_DOSSIER</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_génération_du_keytab">2.5. Génération du <strong>"keytab"</strong></h3>
+<div class="paragraph">
+<p>Il apparaît ensuite  indispensable de réinitialiser le mot de passe du compte $USER_AD_DOSSIER.</p>
+</div>
+<div class="paragraph">
+<p>Pour cela, vous devez générer un fichier <strong>keytab</strong> à l&#8217;aide de la commande suivante :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>ktpass -out fichier.keytab -princ HTTP/$APP_SERVEUR@$DOMAINE -mapuser $user_ad_dossier@$DOMAINE-pass password -crypto all -ptype KRB5_NT_PRINCIPAL</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le fichier <code>fichier.keytab</code> ainsi généré se trouve à la racine du répertoire de l&#8217;utilisateur connecté au serveur.
+Il sera utilisé afin de mettre en œuvre le mode <span style="color: #F27E36">SSO</span> pour l’utilisation du produit <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_test_du_paramétrage">2.6. Test du paramétrage</h3>
+<div class="paragraph">
+<p>Ce chapitre a pour but de tester depuis le serveur applicatif le bon fonctionnement du <span style="color: #F27E36">SSO</span>.
+Dans un premier temps (dans une ligne de commande) exécuter la ligne suivante (puis renseigner le mot de passe affecté au compte) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>kinit $USER_AD_DOSSIER</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse doit être du genre <strong><span class="underline">New ticket is stored in cache file C:\Users..."</span></strong>.</p>
+</div>
+<div class="paragraph">
+<p>Si cette étape est <strong>OK</strong>, se placer dans le répertoire <strong>\bin</strong> du <code>JDK</code>. Nous allons ici avoir besoin du fichier <strong>keytab</strong> généré ci-dessus.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>java -Dsun.security.krb5.debug=true sun.security.krb5.internal.tools.Kinit -k -t &lt;rep&gt;\fichier.keytab HTTP/$APP_SERVEUR@$DOMAINE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Où <strong>&lt;rep&gt;</strong> est le nom complet du dossier contenant le fichier <code>fichier.keytab</code> précédemment généré</p>
+</div>
+<div class="paragraph">
+<p>Cette commande ne doit pas présenter d&#8217;erreur et se terminer, elle aussi, par <strong><span class="underline">New ticket is stored in cache file C:\Users...</span></strong></p>
+</div>
+<div class="paragraph">
+<p>Suite à cette opération, les URL du type ci-dessous pourront être protégées par le filtre d’authentification <span style="color: #167EF2">Kerberos</span> de l’application Web :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>http://$APP_SERVEUR&lt;:port&gt;
+http://$APP_SERVEUR&lt;:port&gt;/dossier
+http://$APP_SERVEUR.$DOMAINE&lt;:port&gt;/dossier</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où &lt;:port&gt; est la donnée du port de communication paramétré pour le serveur apache-Tomcat.</p>
+</div>
+<div class="paragraph">
+<p>À ce stade, on peut considérer la connexion <span style="color: #F27E36">SSO</span> depuis le serveur applicatif comme valide et procéder désormais au paramétrage de l&#8217;application <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_association_avec_lapplication_dossier">2.7. Association avec l’application <span style="color: #D4CE28">Dossier</span></h3>
+<div class="paragraph">
+<p>Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application <span style="color: #D4CE28">Dossier</span>. Sera uniquement concerné le fichier config.xml présent au sein du sous-dossier Config/ des composants de l’application <span style="color: #D4CE28">Dossier</span> déployée.</p>
+</div>
+<div class="paragraph">
+<p>Il faut alors ajouter la balise spnego  entre les balises cfe (ou error si la balise cfe est absente) et la balise generation. Naturellement, ce paramétrage ne peut pas être ajouté ou combiné avec le paramétrage OpenId Keycloak (balise « IDP »).</p>
+</div>
+<div class="paragraph">
+<p>3 attributs peuvent être renseignés :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>debug</strong> (paramètre optionnel pour augmenter les traces : true ou false),</p>
+</li>
+<li>
+<p><strong>keyTabLocation</strong></p>
+</li>
+<li>
+<p><strong>servicePrincipal</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La casse est importante !</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_activation_kerberos_dans_le_navigateur_des_utilisateurs"> 3. Activation <span style="color: #167EF2">Kerberos</span> dans le navigateur des utilisateurs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Reste ensuite à autoriser l’utilisation de ce mode de fonctionnement au sein des divers navigateurs du client.
+En fonction de la version du navigateur, des sites déjà référencés, ce paramétrage peut ne pas être nécessaire.
+Il convient de réaliser un test sans avant de les ajouter.</p>
+</div>
+<div class="sect2">
+<h3 id="_internet_explorer">3.1. Internet Explorer</h3>
+<div class="paragraph">
+<p>Aller dans <span class="menuseq"><b class="menu">Outils</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Options Internet</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Sécurité</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Intranet local</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Sites&#8230;&#8203;</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Avancé..</b></span> et indiquer le domaine <strong><a href="http://$DOMAINE" class="bare">http://$DOMAINE</a></strong> comme étant dans l&#8217;intranet.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_firefox">3.2. Firefox</h3>
+<div class="paragraph">
+<p>L’authentification <span style="color: #167EF2">Kerberos</span> est activée par défaut pour les versions récentes de <strong>Firefox</strong>.
+Entrer <kbd>about:config</kbd> dans la barre d’adresse et restreindre la liste des options en entrant <strong>negotiate</strong> dans le filtre de recherche rapide.
+Double-cliquer sur l’entrée <strong>network.negotiate-auth.trusted-uris</strong>, puis entrer <strong>.$DOMAINE</strong> pour limiter l’authentification <span style="color: #167EF2">Kerberos</span> à ce <em>domaine</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cette entrée peut être laissée vide pour une autorisation sans restriction (non recommandée)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_annexes"> 4. Annexes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_authenfication_auprès_dun_serveur_linux_kerberos_mit">4.1. Authenfication auprès d’un serveur Linux <span style="color: #167EF2">Kerberos</span> MIT</h3>
+<div class="sect3">
+<h4 id="_sur_le_serveur">4.1.1. Sur le serveur</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Installer les packages <code>krb5-libs</code>, <code>krb5-server</code> et <code>krb5-workstation</code>.</p>
+</li>
+<li>
+<p>Editer les fichiers de configuration <a href="/etc/krb5.conf">/etc/krb5.conf</a> et <a href="/var/kerberos/krb5kdc/kdc.conf">/var/kerberos/krb5kdc/kdc.conf</a> afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer <strong>EXAMPLE.COM</strong> et <strong>example.com</strong> en respectant la casse et de remplacer <strong>kerberos.example.com</strong> par le nom du serveur
+<span style="color: #167EF2">Kerberos</span>).</p>
+</li>
+<li>
+<p>Créer la base de données au moyen de la commande :</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>/usr/kerberos/sbin/kdb5_util create –s</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Editer le fichier <a href="/var/kerberos/krb5kdc/kadm5.acl">/var/kerberos/krb5kdc/kadm5.acl</a>.
+Ce fichier est utilisé par <code>kadmind</code> pour déterminer les personnes qui ont le droit d’administrer la base de données <span style="color: #167EF2">Kerberos</span> et leur niveau d’accès.
+On peut se contenter de laisser une ligne unique (remplacer <strong>EXAMPLE.COM</strong>) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>*/admin@EXAMPLE.COM*</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Créer le premier utilisateur par la commande (remplacer <strong>username</strong>) :</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>/usr/kerberos/sbin/kadmin.local -q &quot;addprinc username/admin&quot;</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="5">
+<li>
+<p>Lancer les services suivants par la commande :</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>/sbin/service krb5kdc start
+/sbin/service kadmin start</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="6">
+<li>
+<p>Ajouter un par un chaque poste de travail du réseau (remplacer <strong>pc-sso.digitech.lan</strong> par le nom du poste au sein du réseau) :</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="7">
+<li>
+<p>Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer <strong>L.LOGIN</strong> par le login de l’utilisateur) :</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="8">
+<li>
+<p>Ajouter de la même manière un compte de pré-authentification pour l’application <span style="color: #D4CE28">Dossier</span>, dont nous reporterons les login et mot de passe dans le fichier <strong>sso .properties</strong> (cf. référence plus haut).</p>
+</li>
+<li>
+<p>Editer le fichier <a href="/etc/krb5.conf">/etc/krb5.conf</a> qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier <strong>krb5.conf</strong>
+nécessaire au paramétrage de <span style="color: #9867F2">JAAS</span>).
+Cette étape n’est pas nécessaire si les postes de travail sont situés sur le même domaine que le serveur.</p>
+</li>
+<li>
+<p><strong>Redémarrer</strong> <span style="color: #167EF2">Kerberos</span>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous trouverez des explications complètes de cette procédure à <a href="http://docs.fedoraproject
+.org/security-guide/f11/en-US/sect-Security_Guide-Kerberos-Configuring_a_Kerberos_5_Server.html">l&#8217;adresse suivante</a></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect3">
+<h4 id="_sur_le_poste_client">4.1.2. Sur le poste client</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Configurer <span style="color: #167EF2">Kerberos</span> par les commandes suivantes au moyen de l’utilitaire <code>ksetup</code> qui fait partie lui-aussi des supports tools de <span style="color: #F25937">Windows</span>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Il faut remplacer respectivement <strong>$DOMAINE</strong>, <strong>$KER_SERVEUR</strong> et <strong>$PASSWORD</strong> au sein de l’exemple ci-dessous par:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>le nom du domaine</p>
+</li>
+<li>
+<p>le nom du serveur <span style="color: #167EF2">Kerberos</span></p>
+</li>
+<li>
+<p>le mot de passe utilisé par apache <span style="color: #F24E52">Tomcat</span> pour consulter le serveur d&#8217;authentification (cf. compte dossier créé précédemment)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sh">ksetup /setdomain $DOMAINE
+ksetup /addkdc $DOMAINE $KER_SERVEUR.$DOMAINE
+ksetup /setcomputerpassword $PASSWORD</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p><strong>rebooter</strong></p>
+</li>
+<li>
+<p>Exécuter la commander suivante</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="sh">ksetup /mapuser * *</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="4">
+<li>
+<p>Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les <span class="menuseq"><b class="menu">propriétés du poste de travail</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Nom de l’ordinateur</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="submenu">Modifier</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Autres</b></span>.</p>
+</li>
+<li>
+<p>Décocher également l’option <strong>Modifier le suffixe DNS principal</strong>.</p>
+</li>
+<li>
+<p>Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur <span style="color: #F25937">Linux</span>.
+A partir de maintenant, l’utilisateur devrait être en mesure de s’authentifier en sélectionnant le bon domaine dans la liste déroulante lors de la prochaine ouverture de session <span style="color: #F25937">Windows</span>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous trouverez des explications complètes sur cette procédure à <a href="http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html">l&#8217;adresse
+suivante</a></p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_erreurs_courantes">4.2. Erreurs courantes</h3>
+<div class="sect3">
+<h4 id="_failure_unspecified_at_gss_api_level">4.2.1. Failure unspecified at GSS-API level</h4>
+<div class="paragraph">
+<p><em>Suite du message</em> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Mechanism level: Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La configuration par défaut prévoit une clé aes de 128 (aes128-cts) il apparait ici un défaut de configuration car la clé du client est aes sur 256 bits . Il est donc nécessaire ici de faire évoluer la configuration de Dossier est de modifier dans le fichier krb5.conf présent dans le répertoire xml :</p>
+</div>
+<div class="listingblock">
+<div class="title">Listing 1. Configuration par défaut</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="properies">[libdefaults]
+default_realm = &lt;CLIENT_REALM&gt;
+  default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5
+  des-cbc-crc permitted_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Listing 2. Nouvelle configuration</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="properies">[libdefaults]
+default_realm = &lt;CLIENT_REALM&gt;
+  default_tkt_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes256-cts aes128-cts rc4-hmac
+  des3-cbc-sha1 des-cbc-md5 des-cbc-crc permitted_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script>
+  /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
+
+  try {
+    tocbot.init({
+      contentSelector: '#content',
+      headingSelector: 'h1, h2, h3, h4',
+      smoothScroll: true,
+      headingsOffset: 40,
+      scrollSmoothOffset: -40,
+      orderedList: false
+    });
+
+    let oldtoc = document.getElementById('toctitle').nextElementSibling;
+    const newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+
+    const handleTocOnResize = function () {
+      const width = window.innerWidth
+          || document.documentElement.clientWidth
+          || document.body.clientWidth;
+      if (width < 768) {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4',
+          collapseDepth: 6,
+          activeLinkClass: 'ignoreactive',
+          throttleTimeout: 1000,
+          smoothScroll: false
+        });
+      } else {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4',
+          smoothScroll:  true,
+          headingsOffset: 40,
+          scrollSmoothOffset: -40,
+          orderedList: false
+        });
+      }
+    };
+    window.addEventListener('resize', handleTocOnResize);
+    handleTocOnResize();
+  }
+  catch(err) {}
+</script>
+</body>
+</html>

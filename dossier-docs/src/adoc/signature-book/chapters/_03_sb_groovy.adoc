@@ -1,0 +1,63 @@
+<<<
+
+[[sb_dossier]]
+== {dossier}
+
+[[sb_dossier_script]]
+=== Scripts Groovy
+
+[[sb_dossier_script_init]]
+==== Script d’initialisation
+
+Ce script est appelé avant l’envoi d’un document vers le {signbook}.
+
+[WARNING]
+====
+Le code de ce script doit [underline]#impérativement# être *SBRuleScript* et de type
+*ConnectorPropertiesInitializer*.
+====
+
+Les données disponibles en entrée sont :
+
+* *_scriptLogger*: le _logger_ (Classe `org.slf4j.Logger`)
+* *_userContext*: le _user context_ (Classe `com.digitech.dossier.common.model.backend.UserCoreContext`)
+* *_document*: le _document Airs_ qui contient la pièce jointe envoyée vers le {signbook}. (Class `com.digitech.dossier.common.model.backend.airs.IDocument`)
+* *_attachment*: la _pièce jointe_ envoyée vers le {signbook}. (Class `com.digitech.dossier.common.model.backend.airs.IAttachment`)
+* *_flowModel*: le _code du flux_ auquel appartient le document (Class `java.lang.String`)
+
+Dans ce script, deux _maps_ vont pouvoir être renseignées:
+
+* Une map de propriétés qui vont permettre de modifier les valeurs par défaut de certaines informations utilisées pour l’envoi vers le {signbook}.
+** *DEPTH_0*: Nom du modèle: niveau racine de l'arborescence du {signbook}. (cf 7.1)
+** *DEPTH_1*: circuit de validation dans le paraheur (cf 7.2)
+** *external_folder.title*: Titre de l’envoi
+** *external_folder.external_id*: Identifiant de l’envoi. Valeur par défaut si non renseigné: *[ID de la PJ]_[ID du document AIRS]_[SIREN]*. La valeur [SIREN]
+est renseignée si elle est trouvée dans les paramètres de l’interface
+** *ADD_MARK_TO_PDF*: Ajout des *marques* sur la pièce jointe.
+
+Les données renseignées peuvent être en dur, ou le nom d'un champ du document dans ce cas *MODEL_NAME=%[FIELD_CODE]%*
+
+[source,java]
+----
+resultValue.getPropertiesMap().put(DossierExternalFolderConstants.EXTERNALFOLDER_TITLE, "%N_CHRONO%")
+----
+
+* Et une map de *Metadatas*, ces informations sont transmises directement au {signbook}.
+
+[source,java]
+----
+resultValue.getMetadatasMap().put(MetadataConstant.OBJECT, "%C_OBJET%")
+----
+
+[[sb_dossier_script_action]]
+==== Scripts déclenchés sur une action
+
+Des scripts peuvent être appelés avant ou après une action liée au {signbook}. La configuration des appels se fait via le {adminAIRS}, dans la section *Gestion des
+actions déclenchables* de la configuration des vues.
+
+image:sb_ga_7.png[align=center]
+
+En mode _édition_, l’on peut paramétrer l’appel à un script avant et après l’envoi d’un document vers le {signbook}.
+
+Et en mode _consultation_, l’on peut paramétrer l’appel à un script après la réception de la validation ou le rejet du document dans le {signbook} et après 
+l’annulation de la demande

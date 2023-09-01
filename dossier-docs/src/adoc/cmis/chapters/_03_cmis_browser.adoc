@@ -1,0 +1,412 @@
+<<<
+
+[[cmis_browser]]
+== Browser Binding
+
+[NOTE]
+====
+Les informations indiquées dans ce chapitre sont succinctes, veuillez vous référer à la http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html[documentation officielle^] pour plus d'informations+
+Il est préconisé d'employer un client, disponible par exemple http://chemistry.apache.org/opencmis-client-api.html[ici^] pour abstraire et masquer la complexité des échanges.
+====
+
+[IMPORTANT]
+====
+En utilisant un simple appel *HTTP* de type *GET* et quelques paramètres additionnels, le contenu d'un {repository} peut être récupéré/interrogé. +
+====
+
+[[cmis_browser_parameters]]
+=== Paramètres additionnels communs
+
+Les requêtes d'interrogation peuvent avoir des paramètres additionnels (optionnels)
+
+.Liste des paramètres _http optionnels_
+[cols="1a,1a,5a",options="header"]
+|===
+|Nom|Valeur par défaut|Description
+|filter|*|Liste des propriétés attendues en réponse (*queryname* au sens {cmis}), séparées par une virgule
+|includeAllowableActions|false|Si [green]*true*, la réponse doit indiquer également la liste des actions disponibles
+|includeRelationships|IncludeRelationships.NONE|La réponse doit indiquer également les relations avec ce noeud. +
+valeurs possibles:
+
+* NONE
+* SOURCE
+* TARGET
+* BOTH
+|renditionFilter|cmis:none|Liste des _renditions_ attendues en réponse
+|includePolicyIds|false|Si [green]*true*, la réponse doit indiquer également la liste des _policies_ disponibles
+|includeAcl|false|Si [green]*true*, la réponse doit indiquer également les `ACL` (**A**ccess **C**ontrol **L**ists) pour ce noeud
+|===
+
+[[cmis_browser_repo]]
+=== Interrogation d'un {repository}
+
+Afin d'obtenir des informations sur le {repository}, le paramètre *callback* devra être précisé.
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser?callback=showRepositoryInfo
+----
+
+dont la réponse sera similaire à ce qui suit :
+
+[source, json]
+----
+showRepositoryInfo(
+ { "Dossier-2":
+   {"repositoryId":"Dossier-2",
+    "repositoryName":"Dossier-2AC",
+    "repositoryDescription":"2AC",
+    "vendorName":"Digitech",
+    "productName":"Dossier",
+...
+----
+
+[IMPORTANT]
+====
+l'attribut *repositoryId* est important car permet d'accéder aux données du référentiel ciblé.
+====
+
+[[cmis_browser_retreive]]
+=== Récupération d'éléments
+
+[NOTE]
+====
+Dans les exemples ci-après, *Dossier-2* correspond au *repositoryId* ciblé.
+====
+
+La récupération d'un objet s'effectue simplement en spécifiant l' *ID* de l'objet souhaité. +
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root?objectId=ZmxvdzpDUg%3D%3D
+----
+
+.Réponse (mode _succinct_)
+[source,json]
+----
+include::../files/flow_get_response.json[]
+----
+
+Dans le but de récupérer les [underline]#*enfants*# d'une entité, il faudra préciser ici le paramètre suivant :
+
+[source]
+----
+cmisselector=children
+----
+
+Ce qui donne, pour obtenir les [underline]#*enfants*# de l'objet d'ID *ZmxvdzpDUg==* dans le {repository} *Dossier-2*
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root?objectId=ZmxvdzpDUg%3D%3D&cmisselector=children&succinct=true
+----
+
+La réponse obtenue sera alors un _json_
+[source, json]
+----
+include::../files/flow_children_response.json[]
+----
+
+D'autres paramètres (que ceux indiqués dans le chapitre <<cmis_browser_parameters>>) sont disponibles
+
+.paramètres __additionnels___
+[cols="1a,1a,5a",options="header"]
+|===
+|Nom|Valeur par défaut|Description
+|orderBy|*|Liste des *queryname* (suivis de *ASC* ou *DESC*), séparées par une virgules, définissant le tri souhaité.
+|includePathSegments|false|Si [green]*true*, la réponse contiendra pour chaque enfant lle _path_ relatif.
+|maxItems||Nombre maximum d'éléments retournés
+|SkipCount||Nombre d'éléments _passés_ (et donc non renvoyés en réponse). A utiliser en combinaison avec *maxItems*
+|===
+
+[[cmis_browser_crud]]
+=== Opération Création/Mise à jour/Suppression
+
+Les opérations de création, de mise à jour ou de suppression sont effectuées via une commande *HTTP* de type *POST*.
+
+Le paramètre additionnel précisant le type d'opération est `cmisaction`, par exemple, pour une création
+
+[source]
+----
+cmisaction=createDocument
+----
+==== Création :
+L'application fournit 3 opérations de création en fonction du type d'objet que l'on veut créer : *createItem*, *createFolder* et *createDocument*.
+
+.Il existe 3 types d'objets qui sont créables via CMIS dans AIRS Dossier :
+* Les documents AIRS (*createFolder*)
+* Les pièces jointes (*createDocument*)
+* Les commentaires (*createItem*)
+
+Création d'un commentaire (*createItem*)
+
+La création d'un commentaire nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=createItem
+objectId=<IDENTIFIANT DE L'OBJET PARENT>
+propertyId[0]=cmis:name
+propertyValue[0]=<TEXTE DU COMMENTAIRE>
+propertyId[1]=cmis:objectTypeId
+propertyValue[1]=cm:comment
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:item
+...
+----
+
+Voici un exemple :
+
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=createItem&propertyId[0]=cmis:name&propertyValue[0]=TEST COMMENT&propertyId[1]=cmis:objectTypeId&propertyValue[1]=cm:comment&propertyId[2]=cmis:baseTypeId&propertyValue[2]=cmis:item&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document mis à jour.
+[source, json]
+----
+include::../files/cmis_dossier_createItem_response.json[]
+----
+Création d'un document (*createFolder*)
+
+La création d'un document (AIRS) nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=createFolder
+objectId=<IDENTIFIANT DE L'OBJET PARENT>
+propertyId[0]=cmis:objectTypeId
+propertyValue[0]=<CODE CMIS DU TYPE DE CONTENU>
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:folder
+propertyId[2]=<IDENTIFIANT DE LA PROPRIETE 2>
+propertyValue[2]=<VALEUR DE LA PROPRIETE 2>
+...
+----
+[NOTE]
+====
+Le paramètre *objectId* doit contenir l'identifiant CMIS du flux Airs Dossier dans lequel le document doit être créé.
+====
+Voici un exemple :
+
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=createFolder&propertyId[0]=cm:document:cr:crDes&propertyValue[0]=TEST CREATE FOLDER&propertyId[1]=cmis:objectTypeId&propertyValue[1]=cm:document:cr&propertyId[2]=cmis:baseTypeId&propertyValue[2]=cmis:folder&objectId=ZmxvdzpDUg==
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document AIRS créé.
+[source, json]
+----
+include::../files/cmis_dossier_createFolder_response.json[]
+----
+Création d'une pièce jointe (*createAttachment*)
+
+La création d'une pièce jointe nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=createDocument
+objectId=<IDENTIFIANT DE L'OBJET PARENT>
+propertyId[0]=cmis:objectTypeId
+propertyValue[0]=cm:attachment
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:document
+propertyId[2]=cmis:contentStreamFileName
+propertyValue[2]=<NOM DU FICHIER>
+propertyId[2]=cmis:name
+propertyValue[2]=<LABEL DE l'ATTACHMENT>
+...
+----
+[NOTE]
+====
+Le content stream doit être ajouté via une enveloppe multipart.
+====
+Voici un exemple :
+
+[source,httprequest]
+----
+POST http://localhost:8080/dossierweb80/cmis/browser/Dossier-5/root?cmisaction=createDocument&propertyId[0]=cmis:contentStreamFileName&propertyValue[0]=test.pdf&propertyId[1]=cmis:objectTypeId&propertyValue[1]=cm:attachment&propertyId[2]=cmis:baseTypeId&propertyValue[2]=cmis:document&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NjQy&propertyId[3]=cmis:name&propertyValue[3]=test piece jointe
+HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: multipart/form-data; boundary="----=_Part_4_495007518.1679652147738"
+MIME-Version: 1.0
+Content-Length: 922418
+
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés de la pièce jointe créée.
+[source, json]
+----
+include::../files/cmis_dossier_createDocument_response.json[]
+----
+==== Suppression :
+
+L'application fournit 2 opérations de suppression en fonction du type d'objet que l'on souhaite supprimer : *delete* et *deleteTree*
+
+.Il existe 3 types d'objets qui sont supprimables via CMIS dans AIRS Dossier :
+* Les documents AIRS (*deleteTree*)
+* Les pièces jointes (*delete*)
+* Les commentaires (*delete*)
+
+[NOTE]
+====
+La suppression des documents est une suppression logique et non définitive. Il est donc possible de restaurer les documents directement depuis l'application.
+====
+
+La suppression nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=<delete OU deleteTree>
+objectId=<IDENTIFIANT DE L'OBJET>
+----
+
+Quelques exemples :
+
+Suppression d'un document
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=deleteTree&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDgw
+----
+Suppression d'une pièce jointe
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=delete&objectId=YXR0YWNobWVudDpDUjpEZXJuaWVycyBjb21wdGUgcmVuZHVzOjc0ODA6Njc4Nw==
+----
+
+==== Mise à jour des documents :
+
+La mise à jour des documents nécessite les paramètres suivants :
+
+[source]
+----
+cmisaction=update
+objectId=<IDENTIFIANT DE L'OBJET>
+propertyId[0]=<IDENTIFIANT DE LA PROPRIETE 0>
+propertyValue[0]=<VALEUR DE LA PROPRIETE 0>
+propertyId[1]=<IDENTIFIANT DE LA PROPRIETE 1>
+propertyValue[1]=<VALEUR DE LA PROPRIETE 1>
+...
+----
+
+Voici un exemple :
+
+[source,httprequest]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-5/root?cmisaction=update&objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2&propertyId[0]=cm:document:cr:crDes&propertyValue[0]=CHANGEMENT_DE_VALEUR
+----
+
+La réponse obtenue sera alors un _json_ reprenant l'ensemble des propriétés du document mis à jour.
+[source, json]
+----
+include::../files/cmis_dossier_updateProperties_response.json[]
+----
+[[cmis_browser_query]]
+=== Recherche
+
+[CAUTION]
+====
+L'application {dossier} offre la possibilité d'effectuer des {queries} {cmis} avec quelques limitations
+car les opérateurs *JOIN*, *IN_FOLDER* et *IN_TREE* ne sont pas traités/implémentés en version *7.1*.
+====
+
+Dans le but de lancer une recherche ({query}), les paramètres suivants doivent être précisés :
+
+[source]
+----
+cmisselector=query
+q=<CRITERES DE RECHERCHE>
+----
+
+Quelques exemples :
+
+[source,sql]
+----
+q=SELECT * FROM cm:document:cr WHERE cmis:creationDate >= '28/03/2020'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20>=%20'28/03/2020'
+----
+
+[source,sql]
+----
+q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes = 'Désignation'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20=%20'Désignation'
+----
+
+[source,sql]
+----
+q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'
+----
+
+[source,sql]
+----
+q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%' AND cmis:creationDate >= '28/03/2020'
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'%20AND%20cmis:creationDate%20>=%20'28/03/2020'
+----
+
+[source,sql]
+----
+q=SELECT * FROM cm:document:cr WHERE cmis:creationDate IN ('04/05/2020', '07/05/2020')
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20IN%20('04/05/2020',%20'07/05/2020')
+----
+
+[source,sql]
+----
+q=SELECT * FROM cm:document:cr WHERE cmis:creationDate NOT IN ('04/05/2020', '07/05/2020') ORDER BY cmis:creationDate DESC
+
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2?cmisselector=query&succinct=true&q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20NOT%20IN%20('04/05/2020',%20'07/05/2020')%20ORDER%20BY%20cmis:creationDate%20DESC
+----
+
+[[cmis_browser_content]]
+=== Récupération du contenu d'un document
+
+La récupération du contenu d'un document s'effectue en précisant les paramètres
+
+
+[source]
+----
+cmisselector=content
+objectId=<IDENTIFIANT DU DOCUMENT>
+----
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root?objectId=YXR0YWNobWVudDpDUiNEZXJuaWVycyBjb21wdGUgcmVuZHVzIzQ2MzMjNDI1Mg%3D%3D&cmisselector=content
+----
+
+Le corps (*body*) de la réponse sera alors le document _streamé_.
+
+[[cmis_browser_tips]]
+=== Bonnes pratiques
+
+. Réponses '_succinctes_'
+
+Les réponses, au format _JSON_, peuvent être verbeuses (i.e. représentant un important volume de données).
+
+Ces réponses peuvent être abrégées/réduites en précisant le paramètre *succinct=true*.
+
+En reprentant l'exemple du chapitre <<cmis_browser_retreive>>
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser/Dossier-2/root/ZmxvdzpDUg%3D%3D?cmisselector=children&succinct=true
+----
+
+la réponse sera alors :
+
+[source,JSON]
+----
+include::../files/succinct_sample.json[]
+----
+
+
+
+
+
+
+

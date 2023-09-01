@@ -1,0 +1,490 @@
+[[baskets_soap]]
+=== Baskets
+
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/WSBaskets?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IBasketsWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Méthodes
+
+getBasketsList::
+
+Cette méthode permet de récupérer la liste des noms des bannettes paramétrées pour l'application.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getBasketsList>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+      </web:getBasketsList>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getBasketsListResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getBasketsListReturn>Documents charte officielle</getBasketsListReturn>
+         <getBasketsListReturn>Documents du service intégration</getBasketsListReturn>
+         <getBasketsListReturn>Mes projets au SCLI</getBasketsListReturn>
+         <getBasketsListReturn>Mes projets dirigés</getBasketsListReturn>
+         <getBasketsListReturn>xml_configuration_basket_global_documents</getBasketsListReturn>
+         <getBasketsListReturn>Derniers compte rendus</getBasketsListReturn>
+         <getBasketsListReturn>Mes projets en cours</getBasketsListReturn>
+      </getBasketsListResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getBasketsListForOrganization::
+
+Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un identifiant d'organisation (organizationId).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*organizationId*|Identifiant de l'organisation|[red]*Oui*|5
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getBasketsListForOrganization>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:organizationId>5</web:organizationId>
+         <!--Optional:-->
+         <web:flowCode>PRO</web:flowCode>
+      </web:getBasketsListForOrganization>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getBasketsListForOrganizationResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getBasketsListForOrganizationReturn>Mes projets au SCLI</getBasketsListForOrganizationReturn>
+         <getBasketsListForOrganizationReturn>Mes projets dirigés</getBasketsListForOrganizationReturn>
+         <getBasketsListForOrganizationReturn>Mes projets en cours</getBasketsListForOrganizationReturn>
+      </getBasketsListForOrganizationResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getBasketsListFromFlow::
+
+Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un code identifiant de flux (flowCode).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*flowCode*|Code du flux|[red]*Oui*|PRO
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getBasketsListFromFlow>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:flowCode>PRO</web:flowCode>
+      </web:getBasketsListFromFlow>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getBasketsListFromFlowResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getBasketsListFromFlowReturn>Mes projets au SCLI</getBasketsListFromFlowReturn>
+         <getBasketsListFromFlowReturn>Mes projets dirigés</getBasketsListFromFlowReturn>
+         <getBasketsListFromFlowReturn>Mes projets en cours</getBasketsListFromFlowReturn>
+      </getBasketsListFromFlowResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getDocLinkFromBasketName::
+
+Cette méthode permet d'obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (basketName).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*login*|Login utilisateur|[red]*Oui*|login
+|*password*|Mot de passe utilisateur|[red]*Oui*|password
+|*basketName*|Nom de la bannette|[red]*Oui*|Derniers compte rendus
+|*organizationId*|Identifiant de l'organisation|[green]*Non*|5
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|===
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getDocLinkFromBasketName>
+         <web:login>login</web:login>
+         <web:password>password</web:password>
+         <web:basketName>Derniers compte rendus</web:basketName>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+         <!--Optional:-->
+         <web:organizationId>5</web:organizationId>
+      </web:getDocLinkFromBasketName>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getDocLinkFromBasketNameResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getDocLinkFromBasketNameReturn>faces/redirect.jsp?authentication=Mv0rX2e9OUFVMpqjMXsaC2Ry%2BYkDnB5snh6sVKmvOGsidZqrnO0kAf71AftrBMVBWdtAvNya2EtwTWoNhWJJJL1kFv6fqrvA0umZI4jkJCsN7wTMZSrBIMDhNfwfow8gA0fCwX6lBMav%2Fhkb5pVEGuJdHeM3SAC5N5YoME%2BVpJo%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR</getDocLinkFromBasketNameReturn>
+         <getDocLinkFromBasketNameReturn>faces/redirect.jsp?authentication=1jWrCAqm8Fe0avhrNrlJb4G8v%2FYhMh2YHGrruJ4F0GKnip8TSjTg31h4niV1a5qqNnUF%2B%2BlXaWl8b1jvgCZYoGJLMKxHE81eWCvMhxVIr0XdyG22Aiwb6PWnxNWNcHNVf6YhcbEUsgqv2Iz4I33i%2BwQITXBtZty1P%2FNu28tJ6LY%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR</getDocLinkFromBasketNameReturn>
+         <getDocLinkFromBasketNameReturn>faces/redirect.jsp?authentication=IuJNqp4wbgBCPohakrVulOzirgz4ytkNxXkV13ovGo8Edep7JJ%2BmSjYQE7qoiDYs%2BzkRF1ZOfe9ZSTpJi7ovPRiVV7V6nyLPSbMVQNLi6g%2BtJPFOkbSHOPW1HsdNeOhw4tTZP116LGE7rKhgdnbA3WWSEW6mCTqJfK%2BZpfqTkXk%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6866&amp;flowCode=CR</getDocLinkFromBasketNameReturn>
+     </getDocLinkFromBasketNameResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+[IMPORTANT]
+====
+Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+====
+
+getDocLinkFromBasketNameTAuthId::
+
+Cette méthode permet d'obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (basketName). L'authentification se fait par
+un jeton (authentication).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*authentication*|Paramètre d'authentification encodé en base 64|[red]*Oui*|SXJpcyZBbWJyZQ==
+|*basketName*|Nom de la bannette|[red]*Oui*|Derniers compte rendus
+|*organizationId*|Identifiant de l'organisation|[green]*Non*|5
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|===
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getDocLinkFromBasketNameTAuthId>
+         <web:authentication>SXJpcyZBbWJyZQ==</web:authentication>
+         <web:basketName>TEST</web:basketName>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+         <!--Optional:-->
+         <web:organizationId>5</web:organizationId>
+      </web:getDocLinkFromBasketNameTAuthId>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getDocLinkFromBasketNameTAuthIdResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getDocLinkFromBasketNameReturn>faces/redirect.jsp?authentication=Mv0rX2e9OUFVMpqjMXsaC2Ry%2BYkDnB5snh6sVKmvOGsidZqrnO0kAf71AftrBMVBWdtAvNya2EtwTWoNhWJJJL1kFv6fqrvA0umZI4jkJCsN7wTMZSrBIMDhNfwfow8gA0fCwX6lBMav%2Fhkb5pVEGuJdHeM3SAC5N5YoME%2BVpJo%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR</getDocLinkFromBasketNameReturn>
+         <getDocLinkFromBasketNameReturn>faces/redirect.jsp?authentication=1jWrCAqm8Fe0avhrNrlJb4G8v%2FYhMh2YHGrruJ4F0GKnip8TSjTg31h4niV1a5qqNnUF%2B%2BlXaWl8b1jvgCZYoGJLMKxHE81eWCvMhxVIr0XdyG22Aiwb6PWnxNWNcHNVf6YhcbEUsgqv2Iz4I33i%2BwQITXBtZty1P%2FNu28tJ6LY%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR</getDocLinkFromBasketNameReturn>
+         <getDocLinkFromBasketNameReturn>faces/redirect.jsp?authentication=IuJNqp4wbgBCPohakrVulOzirgz4ytkNxXkV13ovGo8Edep7JJ%2BmSjYQE7qoiDYs%2BzkRF1ZOfe9ZSTpJi7ovPRiVV7V6nyLPSbMVQNLi6g%2BtJPFOkbSHOPW1HsdNeOhw4tTZP116LGE7rKhgdnbA3WWSEW6mCTqJfK%2BZpfqTkXk%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6866&amp;flowCode=CR</getDocLinkFromBasketNameReturn>
+     </getDocLinkFromBasketNameTAuthIdResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+[IMPORTANT]
+====
+Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+====
+
+getDocNumberFromBasketName::
+
+Cette méthode permet d'obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (basketName).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*login*|Login utilisateur|[red]*Oui*|login
+|*password*|Mot de passe utilisateur|[red]*Oui*|password
+|*basketName*|Nom de la bannette|[red]*Oui*|Derniers compte rendus
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|*organizationId*|Identifiant de l'organisation|[green]*Non*|5
+|===
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getDocNumberFromBasketName>
+         <web:login>login</web:login>
+         <web:password>password</web:password>
+         <web:flowCode>CR</web:flowCode>
+         <web:basketName>Derniers compte rendus</web:basketName>
+      </web:getDocNumberFromBasketName>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getDocNumberFromBasketNameResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getDocNumberFromBasketNameReturn>415</getDocNumberFromBasketNameReturn>
+      </getDocNumberFromBasketNameResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getDocNumberFromBasketNameTAuthId::
+
+Cette méthode permet d'obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (basketName). L'authentification se fait par
+un jeton (authentication).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*authentication*|Paramètre d'authentification encodé en base 64|[red]*Oui*|SXJpcyZBbWJyZQ==
+|*basketName*|Nom de la bannette|[red]*Oui*|Derniers compte rendus
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|*organizationId*|Identifiant de l'organisation|[green]*Non*|5
+|===
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getDocNumberFromBasketNameTAuthId>
+         <web:authentication>SXJpcyZBbWJyZQ==</web:authentication>
+         <web:basketName>Derniers compte rendus</web:basketName>
+         <!--Optional:-->
+         <web:flowCode>PRO</web:flowCode>
+         <!--Optional:-->
+         <web:organizationId>5</web:organizationId>
+      </web:getDocNumberFromBasketNameTAuthId>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getDocNumberFromBasketNameTAuthIdResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getDocNumberFromBasketNameTAuthIdReturn>0</getDocNumberFromBasketNameTAuthIdReturn>
+      </getDocNumberFromBasketNameTAuthIdResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getResultFromBasketName::
+
+Cette méthode permet d'obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (basketName).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*basketName*|Nom de la bannette|[red]*Oui*|Derniers compte rendus
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|*organizationId*|Identifiant de l'organisation|[green]*Non*|5
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getResultFromBasketName>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:basketName>Derniers compte rendus</web:basketName>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+         <!--Optional:-->
+         <web:organizationId>5</web:organizationId>
+      </web:getResultFromBasketName>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getResultFromBasketNameResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getResultFromBasketNameReturn>415</getResultFromBasketNameReturn>
+      </getResultFromBasketNameResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getResultLinkFromBasketName::
+
+Cette méthode permet d'obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (basketName).
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*basketName*|Nom de la bannette|[red]*Oui*|Derniers compte rendus
+|*organizationId*|Identifiant de l'organisation|[green]*Non*|5
+|*flowCode*|Code du flux|[green]*Non*|PRO
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getResultLinkFromBasketName>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:basketName>Derniers compte rendus</web:basketName>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+         <!--Optional:-->
+         <web:organizationId>5</web:organizationId>
+      </web:getResultLinkFromBasketName>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getResultLinkFromBasketNameResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getResultLinkFromBasketNameReturn>faces/redirect.jsp?authentication=A2y%2Fc7NFgsfek6UDydcZ2HwCnYHcqDZ%2FNrQTt5QkjTtk1D9MbZ4R%2FtohACItdI6yVF%2BskkHER6z7OvObyN3A0IbozfdAFqDzhnF8VAXEZKyMK%2BECcUV4rOt7fXwXiyLYozyVlb80hPBNqsyl0GgjdJkTBtX41bpLVpkwyE41dRE%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR</getResultLinkFromBasketNameReturn>
+         <getResultLinkFromBasketNameReturn>faces/redirect.jsp?authentication=Wlwao36%2F6F2KTHoGTAlompwI75HiXc2ROa3P011uzO6Qndvu7uQ68HnVOBv0ur6r2tFMeU5qGXvt4KICddq6xIODtBcp447QgAQGVXqaw9PfIOLgslysLH%2BxjFmnDcceoo7mF08ngfiiAfkLJ3NEuoW%2FM9YO%2Fu07D0xmkYV%2F6gQ%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR</getResultLinkFromBasketNameReturn>
+     </getResultLinkFromBasketNameResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+[IMPORTANT]
+====
+Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+====

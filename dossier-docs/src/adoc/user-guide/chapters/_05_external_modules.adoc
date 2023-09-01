@@ -1,0 +1,155 @@
+[[_05_external_modules]]
+== Intégration des modules (édition de documents, scan, …)
+
+Ce chapitre traite de la mise en place des différents modules présents dans {dossier} (édition de document, scan, etc).
+
+=== Mode sans _applet_ ({java} Web Start)
+
+Une _applet_ est un logiciel fonctionnant par l’intermédiaire d’un navigateur internet. Dans {dossier}, avant la version *6.2*, différentes _applets_ étaient
+utilisés lors de l’ouverture du module de scan, de l’impression de pièce jointe, de l’édition d’un document et de l’utilisation du module signature.
+
+À partir de la version *6.2* d’{dossier}, le logiciel s’adapte à l’évolution des navigateurs internet et change légèrement son fonctionnement par rapport à 
+l’utilisation des différents modules. {dossier} *6.2* propose désormais un mode sans _applet_. Avant la version *6.2*, les différentes _applets_ utilisées dans
+{dossier} (soit le module de scan, le module d’édition d’un document et le module de signature) fonctionnaient par l’intermédiaire de la technologie {java},
+intégrée au navigateur internet. Désormais, tous ces modules sont des logiciels indépendants du navigateur internet. Ce nouveau fonctionnement
+implique quelques légers changements pour l’utilisateur dans {dossier} lors de l’utilisation de l’un des modules (notamment lors de
+leur premier lancement).
+
+==== Activation du mode sans _applet_ (Administrateur)
+
+L’opération décrite dans ce chapitre doit être réalisée par un administrateur.
+
+L’activation du mode {java} Web Start (mode sans _applet_) ne peut s’effectuer qu’à partir du serveur applicatif, autrement dit, le poste où l’application
+{dossier} est installée (généralement différent de celui d’où l’application est utilisée).
+
+L’activation du mode sans _applet_ s’effectue à partir du fichier *config.properties*. Ce fichier se situe généralement au type de chemin
+suivant sur le serveur applicatif :
+
+*<Installation Tomcat>\webapps\Dossier\xml*
+
+Le fichier *config.properties* est un fichier texte regroupant différents paramètres modifiables. Pour éditer ce fichier, vous devez
+l’ouvrir à l’aide d’un logiciel de type _Bloc-notes_ ou _Notepad++_ par exemple. Repérez dans le fichier la section intitulée *{java} Web Start*.
+Localisez ensuite dans cette section le paramètre *applet.java.WebStart.activated* (ce dernier permet d’activer/désactiver
+le mode sans _applet_).
+
+Pour activer le mode sans _applet_, ce paramètre doit être suivi de la mention "true" juste à gauche du signe "=" (`applet.java.WebStart.activated=true`).
+Ce paramètre est désactivé s’il est suivi de la mention "false". Une fois les modifications effectuées, enregistrez le fichier *config.properties* et refermez-le.
+Redémarrez ensuite {dossier} sur le serveur applicatif pour que la modification soit prise en compte.
+
+[NOTE]
+====
+A partir de Dossier *7.2*, tous ces paramètres peuvent être directement gérés via l'admin {airs}.
+====
+
+==== Autres paramètres
+
+En dehors de l’activation du mode sans _applet_, le fichier *config.properties* contient les paramètres suivants :
+
+* *applet.java.WebStart.editDocument.serverPort* : permet de spécifier le numéro du port à associer à l’_applet_ EditDocument, correspondant à
+l’_applet_ permettant d’éditer les documents dans {dossier} (le numéro du port doit être indiqué juste après le signe "=").
+* *applet.java.WebStart.imageScan.serverPort* : permet de spécifier le numéro du port à associer à l’_applet_ ImageScan, correspondant à l’_applet_
+permettant de scanner et d’annoter les documents dans {dossier} (le numéro du port doit être indiqué juste après le signe "=").
+* *applet.java.WebStart.print.serverPort* : permet de spécifier le numéro du port à associer à l’_applet_ print, correspondant à l’_applet_
+d’impression de document dans {dossier} (le numéro du port doit être indiqué juste après le signe "=").
+
+Une fois les modifications effectuées, enregistrez le fichier *config.properties* et refermez-le. Redémarrez ensuite {dossier} sur le serveur applicatif pour que la modification soit prise en compte.
+
+=== Utilisation des modules (document, scan, signature…) en JWS
+
+Pour un fonctionnement optimal d’{dossier} lors de l’utilisation d’un module, vous devrez suivre certaines recommandations (en mode sans
+_applet_). Ce chapitre ne concerne pas les éventuels utilisateurs n’utilisant pas le mode de fonctionnement sans _applet_, dit {java} Web Start dans {dossier}.
+
+==== Module d’édition de document
+
+Lors de la première utilisation du module d’édition de document (lors de la modification d’un document ou l’ajout d’annotations par exemple), un
+téléchargement sera automatiquement proposé depuis le navigateur :
+
+.Télécharger le module d'édition de documents
+image:media/image153.png[width=347,height=262]
+
+Cliquez sur *Ouvrir avec* (ou l’option équivalente sur votre navigateur), le logiciel adéquat sera proposé par défaut. Après l’installation automatique du module, il est possible qu’il soit
+nécessaire d’autoriser son lancement sur l’ordinateur :
+
+.Autoriser l'accès au module
+image:media/image154.png[width=421,height=305]
+
+Cliquez ici sur *Autoriser l’accès* afin que le module ne soit pas bloqué par le pare-feu.
+
+Une fois le module lancé, vous devrez désigner le répertoire où se situe l’éditeur de fichier pour le format à éditer en cliquant sur *Choisir l’éditeur de fichier* :
+
+.Choix de l'éditeur
+image:media/image155.png[width=636,height=160]
+
+Après avoir cliqué sur *Choisir l’éditeur de fichier doc*, (le fichier à modifier étant un fichier doc dans l’exemple), vous devez sélectionner dans l’explorateur de document le fichier (.exe) correspondant au
+logiciel permettant d’éditer ce type de format. Une fois cette opération réalisée, le fichier s’ouvre avec le logiciel correspondant, et vous
+pouvez effectuer les modifications souhaitées via l’application choisie. Une fois les modifications terminées, enregistrez votre document, puis cliquez sur *Valider les modifications* dans la fenêtre du module :
+
+.Valider les modifications ou Annuler
+image:media/image156.png[width=572,height=144]
+
+Vous pouvez également cliquer sur *Annuler* pour ne pas mémoriser les derniers changements effectués.
+
+De manière générale, vous ne devrez normalement jamais refermer la fenêtre *Digitech Edit Document Module*, afin de ne pas avoir à télécharger le module à chaque fois qu’il est utilisé. Un message
+préventif s’affiche suite à une tentative de fermeture du module. Si vous avez toutefois refermé cet encadré, vous devrez télécharger à nouveau ce module lors d’une future utilisation.
+
+Si vous lancez le module d’édition de document par erreur, et que le lien vers un éditeur du format correspondant n’a pas encore été défini, il est conseillé d’annuler cette opération en réduisant la fenêtre
+*Digitech Edit Document Module* (et non en la refermant) :
+
+.Réduction de la fenêtre d'édition de document
+image:media/image157.png[width=636,height=160]
+
+Lorsque le module d’édition de document est ouvert, l’icône correspondante sera ajoutée dans les icônes ou les icônes cachées de `Windows` :
+
+.Icône associée au module d'édition de document
+image:media/image158.png[width=276,height=162]
+
+Ce module devra rester ouvert pour le bon fonctionnement de l’application (ou une réinstallation du module sera nécessaire).
+
+Dans le cas où vous souhaiteriez modifier le choix du logiciel associé à l’édition d’un type de fichier spécifique dans {dossier}, vous
+devrez modifier le fichier *AIRS_OPENFILES.properties* (à l’aide de *Notepad++* par exemple), situé au type de chemin suivant sur l’ordinateur en question :
+
+`C:\Utilisateur\__nom d’utilisateur\__AppData\Local\Temp\AIRS_OPENFILES.properties`
+
+Vous devez avoir accès aux fichiers cachés sur votre ordinateur pour accéder à ce fichier.
+
+En ouvrant le fichier *AIRS_OPENFILES.properties*, vous pourrez, pour chaque extension, définir un chemin vers l’application la prenant en
+charge ou réinitialiser ce lien. En effaçant un chemin dans le fichier, il vous sera à nouveau proposé de définir le logiciel à utiliser lors de
+la modification d’un document de ce type dans {dossier} :
+
+.Edition du fichier AIRS_OPENFILES.properties
+image:media/image159.png[width=680,height=256]
+
+==== Module de scan
+
+Lors de la première utilisation du module de scan, en cliquant sur image:media/image160.png[height=23]
+pour scanner un fichier, le téléchargement du fichier du module sera automatiquement lancé :
+
+.Télécharger le module de scan
+image:media/image161.png[width=368,height=278]
+
+Cliquez sur *Ouvrir avec* (ou l’option équivalente sur votre navigateur), le logiciel adéquat sera proposé par défaut.
+
+Contrairement au module d’édition de texte, si vous refermer le module de scan en cliquant sur la croix de l’encadré, il sera simplement réduit et restera présent dans les icônes (ou les icônes cachées) de Windows :
+
+.Icône associée au module de scan
+image:media/image162.png[width=311,height=127]
+
+Ce module ne devra pas être refermé dans les icônes `Windows` pour le bon fonctionnement de l’application (ou une réinstallation sera nécessaire).
+
+==== Module de signature
+
+Ce module apparait lors de l’utilisation de la signature. L’installation de ce module est similaire aux autres modules décrits ci-dessus. Ce module ne devra également pas être refermé en cliquant sur la croix.
+
+==== Module d’impression
+
+Ce module apparait lors de l’impression de pièce jointe. L’installation de ce module est similaire aux autres modules décrits ci-dessus :
+
+.Icône associée au module d’impression
+image:media/image163.png[width=238,height=130]
+
+.Module impression
+image:media/image164.png[width=366,height=93]
+
+Ce module ne devra également pas être refermé en cliquant sur la croix.
+
+<<<

@@ -1,0 +1,118 @@
+[[autority_list_soap]]
+=== AuthorityList
+
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/WSAuthorityList?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IAuthorityListWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Méthodes
+
+getAuthorityListCodes::
+
+Cette méthode permet de récupérer tous les codes de liste d'autorité disponibles. Ces codes peuvent ensuite être utilisés au sein de la methode suivante afin de
+récupérer les différents termes d'une liste d'autorité.
+
+==== Authentification
+
+[IMPORTANT]
+====
+Aucun paramètre d'entrée n'est requis pour l'utilisation de cette méthode.
+
+Une https://tools.ietf.org/html/rfc7617[*authentification basique*^] est cependant nécessaire.
+
+L'utilisateur connecté doit également posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getAuthorityListCodes/>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getAuthorityListCodesResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <code>DEX_TYPE_DOSSIER</code>
+         <code>AL_DOC_LINK</code>
+         <code>PRO_APP_FLUX_COU</code>
+         <code>PRO_AFF_TYPE</code>
+         <code>PRO_DOC_CATEGORIE</code>
+      </getAuthorityListCodesResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getTerms::
+
+Cette méthode permet de récupérer les termes d'une liste d'autorité à partir de son code (fieldCode)
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+  <type:login>login</type:login>
+  <type:password>password</type:password>
+</web:connectionData>
+----
+|*fieldCode*|Code identifiant la liste d'autorité|[red]*Oui*|AL_DOC_LINK
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getTerms>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+            <type:authentificationId>?</type:authentificationId>
+         </web:connectionData>
+         <web:fieldCode>AL_DOC_LINK</web:fieldCode>
+      </web:getTerms>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getTermsResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getTermsReturn>
+            <code>pere-fils</code>
+            <id>1</id>
+            <label>pere-fils</label>
+         </getTermsReturn>
+      </getTermsResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_authoritylist>> pour une description de la structure de retour. (Se référer à WSTerm).

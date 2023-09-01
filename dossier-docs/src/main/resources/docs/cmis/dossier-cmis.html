@@ -1,0 +1,3314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<meta name="author" content="Digitech">
+<link rel="icon" type="image/png" href="images/icons/logo_dossier_favicon_32.png">
+<title>CMIS AIRS Dossier</title>
+<link rel="stylesheet" href="css/digitech.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="highlightjs/styles/github.min.css">
+<!--
+<meta name="theme-color" content="#319197" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">-->
+<script src="js/setup.js"></script><script defer src="js/site.js"></script>
+
+</head>
+<body id="Dossier-cmis" class="book toc2 toc-left">
+<div id="banner-container" class="container" role="banner">
+    <div id="banner" class="contained" role="banner">
+        <div id="switch-theme">
+            <input type="checkbox" id="switch-theme-checkbox"/>
+            <label for="switch-theme-checkbox">Dark Theme</label>
+        </div>
+    </div>
+</div>
+<div id="header">
+<h1>CMIS <strong>AIRS Dossier</strong></h1>
+<div class="details">
+<span id="author" class="author">Digitech</span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">04/07/2023 14:31:40</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Sommaire</div>
+<ul class="sectlevel1">
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#cmis_basics">2. Concepts <code><span style="color: #167EF2">CMIS</span></code></a>
+<ul class="sectlevel2">
+<li><a href="#cmis_repository">2.1. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #FFBD33">repository</span></code></a></li>
+<li><a href="#cmis_query">2.2. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #D35400">query</span></code></a></li>
+<li><a href="#cmis_services">2.3. <code><span style="color: #167EF2">CMIS</span></code> services</a></li>
+<li><a href="#cmis_object_model">2.4. <code><span style="color: #167EF2">CMIS</span></code> object model</a>
+<ul class="sectlevel3">
+<li><a href="#cmis_folder_object">2.4.1. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">folder</span></code> object</a></li>
+<li><a href="#cmis_document_object">2.4.2. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">document</span></code> object</a></li>
+<li><a href="#cmis_policy_object">2.4.3. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">policy</span></code> object</a></li>
+<li><a href="#cmis_versionning">2.4.4. <code><span style="color: #167EF2">CMIS</span></code> versioning</a></li>
+<li><a href="#cmis_bindings">2.4.5. <code><span style="color: #167EF2">CMIS</span></code> bindings/protocoles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cmis_browser">3. Browser Binding</a>
+<ul class="sectlevel2">
+<li><a href="#cmis_browser_parameters">3.1. Paramètres additionnels communs</a></li>
+<li><a href="#cmis_browser_repo">3.2. Interrogation d&#8217;un <code><span style="color: #FFBD33">repository</span></code></a></li>
+<li><a href="#cmis_browser_retreive">3.3. Récupération d&#8217;éléments</a></li>
+<li><a href="#cmis_browser_crud">3.4. Opération Création/Mise à jour/Suppression</a>
+<ul class="sectlevel3">
+<li><a href="#_création">3.4.1. Création :</a></li>
+<li><a href="#_suppression">3.4.2. Suppression :</a></li>
+<li><a href="#_mise_à_jour_des_documents">3.4.3. Mise à jour des documents :</a></li>
+</ul>
+</li>
+<li><a href="#cmis_browser_query">3.5. Recherche</a></li>
+<li><a href="#cmis_browser_content">3.6. Récupération du contenu d&#8217;un document</a></li>
+<li><a href="#cmis_browser_tips">3.7. Bonnes pratiques</a></li>
+</ul>
+</li>
+<li><a href="#cmis_dossier">4. <span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> serveur</a>
+<ul class="sectlevel2">
+<li><a href="#cmis_dossier_model">4.1. Arborescence / object model</a></li>
+<li><a href="#cmis_dossier_authentication">4.2. Authentification</a></li>
+<li><a href="#cmis_dossier_restrictions">4.3. Limitations</a></li>
+<li><a href="#cmis_dossier_recommendation">4.4. Préconisations</a></li>
+</ul>
+</li>
+<li><a href="#cmis_client">5. Clients CMIS</a>
+<ul class="sectlevel2">
+<li><a href="#cmis_client_apache">5.1. Apache Chemistry / opencmis</a></li>
+<li><a href="#cmis_client_dossier">5.2. <span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> client.</a></li>
+<li><a href="#cmis_client_dossier_use_cases">5.3. <span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> : Cas d&#8217;utilisation</a>
+<ul class="sectlevel3">
+<li><a href="#_récupération_dun_objet">5.3.1. Récupération d&#8217;un objet</a></li>
+<li><a href="#_récupération_des_enfants_dun_objet">5.3.2. Récupération des enfants d&#8217;un objet</a></li>
+<li><a href="#_récupération_du_contenu_binaire_dun_document">5.3.3. Récupération du contenu binaire d&#8217;un document</a></li>
+<li><a href="#_queries">5.3.4. <code><span style="color: #D35400">queries</span></code></a></li>
+<li><a href="#_suppression_dun_document">5.3.5. Suppression d&#8217;un document</a></li>
+<li><a href="#_mise_à_jour_dun_document">5.3.6. Mise à jour d&#8217;un document</a></li>
+<li><a href="#_création_dun_commentaire">5.3.7. Création d&#8217;un commentaire</a></li>
+<li><a href="#_création_dun_document_airs">5.3.8. Création d&#8217;un document AIRS</a></li>
+<li><a href="#_création_dune_pièce_jointe">5.3.9. Création d&#8217;une pièce jointe</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#cmis_appendix">6. Annexes</a>
+<ul class="sectlevel2">
+<li><a href="#cmis_appendix_dossier_interface">6.1. Interface client <span style="color: #D4CE28">Dossier</span></a></li>
+<li><a href="#cmis_appendix_dossier_library">6.2. librairie <strong>dossier-cmis-client</strong></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/dossier-cover.png" alt="dossier cover">
+</div>
+</div>
+<div class="paragraph">
+<p><code>Digitech SA</code><br>
+<em>ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173<br>
+13322 Marseille Cedex 16</em></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Copyright (c) 2020 <code>Digitech SA</code>, tous droits réservés.</p>
+</div>
+<hr>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 1. Notes de suivi</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Etat</th>
+<th class="tableblock halign-left valign-top">Objet</th>
+<th class="tableblock halign-left valign-top">Rédacteur</th>
+<th class="tableblock halign-left valign-top">Validateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01/05/2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><span style="color: #167EF2">CMIS</span></code> (<em><strong>C</strong>ontent <strong>M</strong>anagement <strong>I</strong>nteroperability <strong>S</strong>ervices</em>) est
+une norme/un standard géré par le consortium <a href="https://www.oasis-open.org/org" target="_blank" rel="noopener"><strong>OASIS</strong></a>,
+dont le but premier est de permettre une interopérabilité entre des systèmes de gestion de contenu (type <em>geide</em> par exemple).</p>
+</div>
+<div class="paragraph">
+<p>Cette norme permet à des <code>clients</code> et des <code>serveurs</code> (ou à des <code>consommateurs</code> et des <code>fournisseurs</code>)
+de <em>communiquer</em>, <em>échanger</em>, <em>dialoguer</em> ensemble via <code><strong>HTTP</strong></code> (<strong>REST json</strong>  ou <strong>XML AtomPub</strong>).</p>
+</div>
+<div class="paragraph">
+<p>La dernière version publiée de la norme est <a href="http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html" target="_blank" rel="noopener"><strong>CMIS 1.1</strong></a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Les <strong>webservices</strong> de type <code>SOAP</code> ne sont pas disponibles, car obsolètes et moins performants (ils ont été simplement désactivés).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> est compatible avec la norme <code><span style="color: #167EF2">CMIS</span></code> dans sa version <strong>1.1</strong>,
+permettant à des applications tierces d&#8217;accéder au contenu de l&#8217;application <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+<div class="paragraph">
+<p>Ce document décrit brièvement :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>le format des APIs <code><span style="color: #167EF2">CMIS</span></code> REST (leurs appels)</p>
+</li>
+<li>
+<p>une description du format des réponses</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> fournit une implémentation <span class="underline">restreinte</span> de la norme <code><span style="color: #167EF2">CMIS</span></code>, dans le sens où l&#8217;intégralité de la norme n&#8217;est pas implémentée.</p>
+</div>
+<div class="paragraph">
+<p>Cependant, celle-ci évolue au fil des demandes et des versions de <span style="color: #D4CE28">Dossier</span>.
+Par exemple :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la version <strong>7.0</strong> de <span style="color: #D4CE28">Dossier</span> a intégré pour la première fois une implémentation de la norme <code><span style="color: #167EF2">CMIS</span></code>, partie navigation.</p>
+</li>
+<li>
+<p>la version <strong>7.1</strong> de <span style="color: #D4CE28">Dossier</span> a ajouté les <code><span style="color: #D35400">queries</span></code> et la possibilité d&#8217;ajouter, modifier ou supprimer des <code><span style="color: #82E0AA">documents</span></code>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Les chapitres suivants décrivent</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>(<em>succinctement</em>) la norme <code><span style="color: #167EF2">CMIS</span></code> et les concepts introduits par celle-ci (<a href="#cmis_basics">2, <em>Concepts <code><span style="color: #167EF2">CMIS</span></code></em></a>)</p>
+</li>
+<li>
+<p>de manière un peu plus détaillée le protocole <a href="#cmis_browser">3, <em>Browser Binding</em></a></p>
+</li>
+<li>
+<p>l&#8217;utilisation de clients pour interroger <span style="color: #D4CE28">Dossier</span> via le protocle <code><span style="color: #167EF2">CMIS</span></code> (<a href="#cmis_client">5, <em>Clients CMIS</em></a>)</p>
+</li>
+</ul>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmis_basics"><a class="anchor" href="#cmis_basics"></a>2. Concepts <code><span style="color: #167EF2">CMIS</span></code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>La norme <code><span style="color: #167EF2">CMIS</span></code> introduit un certain nombre de concepts.
+Ce chapitre décrit succinctement les principaux.</p>
+</div>
+<div class="sect2">
+<h3 id="cmis_repository"><a class="anchor" href="#cmis_repository"></a>2.1. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #FFBD33">repository</span></code></h3>
+<div class="paragraph">
+<p>Le point d&#8217;entrée de la norme <code><span style="color: #167EF2">CMIS</span></code> est la notion de <code><span style="color: #FFBD33">repository</span></code> (qui pourrait être traduit par <em>référentiel</em>).
+Celui-ci représente une instance d&#8217;un <em>système de gestion de contenu</em>, avec ses <em>métadonnées</em>, ses <em>index</em>, son <em>contenu</em>, ses <em>fichiers</em>&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Le <code><span style="color: #FFBD33">repository</span></code> est l&#8217;entité racine vers laquelle toutes les requêtes sont adressées, notamment en appels REST où le <code><span style="color: #FFBD33">repository</span></code> sert de chemin racine.</p>
+</div>
+<div class="paragraph">
+<p>Le <code><span style="color: #FFBD33">repository</span></code>, par simple appel, renvoie sa description et ses capacités.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_query"><a class="anchor" href="#cmis_query"></a>2.2. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #D35400">query</span></code></h3>
+<div class="paragraph">
+<p><code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #D35400">query</span></code> est une synthaxe de requêtage basée sur la norme <strong>SQL-92</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Seules les <code><span style="color: #D35400">queries</span></code> de recherche/sélection sont gérées, c&#8217;est-à-dire qu&#8217;aucune <span class="underline">mise à jour</span> ou <span class="underline">manipulation</span> de données n&#8217;est permise.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Une synthaxe de requête consiste:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>SELECT</strong>, suivi d&#8217;une liste des propriétés recherchées.</p>
+</li>
+<li>
+<p><strong>FROM</strong>, précisant la liste des objets interrogés/recherchés.</p>
+</li>
+<li>
+<p><strong>JOIN</strong>, dans le but d&#8217;effectuer une jointure entre différents types d&#8217;objets</p>
+</li>
+<li>
+<p><strong>WHERE</strong>, précisant les critères de sélection</p>
+</li>
+<li>
+<p><strong>IN</strong> et <strong>ANY</strong>, afin de requêter des propriétés multi-évaluées</p>
+</li>
+<li>
+<p><strong>CONTAINS</strong>, applicable sur des champs full-text (et donc le contenu des documents)</p>
+</li>
+<li>
+<p><strong>IN_FOLDER</strong> et <strong>IN_TREE</strong>, afin de rechercher dans une hiérarchie de documents.</p>
+</li>
+<li>
+<p><strong>ORDERBY</strong>, dans le but de trier les résultats.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Une <code><span style="color: #D35400">query</span></code>, et ses résultats, peut être paginée afin de faciliter la présentation (côté client) et optimiser les performances.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_services"><a class="anchor" href="#cmis_services"></a>2.3. <code><span style="color: #167EF2">CMIS</span></code> services</h3>
+<div class="paragraph">
+<p><code><span style="color: #167EF2">CMIS</span></code> founit un ensemble de service accessibles via <strong>AtomPub</strong> ou <strong>Browser</strong>, selon votre choix.</p>
+</div>
+<div class="paragraph">
+<p>Ces services sont les suivants:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Repository service</dt>
+<dd>
+<p>Permet de découvrir la liste des <code><span style="color: #FFBD33">repositories</span></code> disponibles, leurs capacités, leur structure et quels types sont disponibles au sein de ceux-ci.</p>
+</dd>
+<dt class="hdlist1">Navigation service</dt>
+<dd>
+<p>Permet de naviguer dans un <code><span style="color: #FFBD33">repository</span></code> et son arborescence, en parcourant sa hiérarchie de dossiers parents/enfants.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Généralement, vous pouvez utiliser ces services pour obtenir les enfants ou parents d&#8217;un objet.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Object service</dt>
+<dd>
+<p>Founit les opérations basiques de type CRUD (<strong>C</strong>reate, <strong>R</strong>ead, <strong>U</strong>pdate, <strong>D</strong>elete)<br>
+et les servuces de contrôle de tout objet (<code><span style="color: #82E0AA">document</span></code>, <code><span style="color: #82E0AA">folder</span></code>, <code><span style="color: #82E0AA">policy</span></code> et <code><span style="color: #82E0AA">relationship</span></code>).</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Pour les objets <code><span style="color: #82E0AA">document</span></code>, cela inclut la récupération et la mise à jour des <em>propriétés</em>, des <em>policies</em> et des fichiers associés (<em>content stream</em>).</p>
+</div>
+<div class="paragraph">
+<p>Ces services retrouvent un (ou des) objet(s) à partir :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>d&#8217;un <strong>chemin</strong></p>
+</li>
+<li>
+<p>ou d&#8217;un <strong>ID</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Les clients <code><span style="color: #167EF2">CMIS</span></code> peuvent alors également découvrir les actions disponibles, et <span class="underline">autorisées</span> à l&#8217;utilisateur connecté.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Multi-filing service</dt>
+<dd>
+<p>Ces services vous permettent de constituer une hiérarchie entre <code><span style="color: #82E0AA">documents</span></code> et <code><span style="color: #82E0AA">folders</span></code> en ajoutant ou en supprimant un objet dans ou à partir d&#8217;un <code><span style="color: #82E0AA">folder</span></code>.</p>
+</dd>
+<dt class="hdlist1">Discovery service</dt>
+<dd>
+<p>Fournit les services de requêtage (<code><span style="color: #D35400">query</span></code>) et de modifications.</p>
+</dd>
+<dt class="hdlist1">Change service</dt>
+<dd>
+<p>Service de découverte de modification de contenu depuis la dernière vériication.</p>
+</dd>
+<dt class="hdlist1">Versioning service</dt>
+<dd>
+<p>Fournit un service d&#8217;accès à l&#8217;historisation des versions d&#8217;un objet, si celui-ci est versionné.</p>
+</dd>
+<dt class="hdlist1">Relationship service</dt>
+<dd>
+<p>Permet de créer, de gérer et d&#8217;accéder à des relations ou des associations entre des objets.</p>
+</dd>
+<dt class="hdlist1">Policy services</dt>
+<dd>
+<p>Permet d&#8217;appliquer des <code><span style="color: #82E0AA">policies</span></code> à un objet de type <code><span style="color: #82E0AA">document</span></code>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Les <code><span style="color: #82E0AA">policies</span></code> sont des entités notamment uilisées pour gérer l&#8217;accès sécurité et accès aux <code><span style="color: #82E0AA">documents</span></code>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">ACL service</dt>
+<dd>
+<p>Permet de gérer l&#8217;accès et les contrôles (<strong>A</strong>ccess <strong>C</strong>ontrol <strong>L</strong>ists) permettant alors d&#8217;effectuer certaines opérations sur un objet/une entité.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_object_model"><a class="anchor" href="#cmis_object_model"></a>2.4. <code><span style="color: #167EF2">CMIS</span></code> object model</h3>
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> fournit un modèle d&#8217;objet <code><span style="color: #167EF2">CMIS</span></code> permettant d&#8217;abstraire le contenu de <span style="color: #D4CE28">Dossier</span>.</p>
+</div>
+<div class="paragraph">
+<p>Il implémente la navigation entre <code><span style="color: #82E0AA">folders</span></code> et <code><span style="color: #82E0AA">documents</span></code>.</p>
+</div>
+<div class="paragraph">
+<p><code><span style="color: #167EF2">CMIS</span></code> permet la définition de <em>types</em> d&#8217;objets, chacun ayant ses propriétés, par exemple,
+chaque objet possède un <strong>type</strong>, un <strong>ID</strong>, &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Les <em>types</em> d&#8217;objet supportent l&#8217;héritage (hiérarchie entre objets).</p>
+</div>
+<div class="paragraph">
+<p>Les <em>types</em> <code><span style="color: #82E0AA">document</span></code> permettent d&#8217;accéder à du contenu binaire (généralement un fichier joint) si disponible, nommé <code><span style="color: #82E0AA">content stream</span></code> dans le jargon <code><span style="color: #167EF2">CMIS</span></code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code><span style="color: #167EF2">CMIS</span></code> data model
+<span class="image"><img src="images/cmis_object_model.png" alt="cmis object model"></span></p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="cmis_folder_object"><a class="anchor" href="#cmis_folder_object"></a>2.4.1. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">folder</span></code> object</h4>
+<div class="paragraph">
+<p>Tout <code><span style="color: #82E0AA">document</span></code> est rattaché à un <code><span style="color: #82E0AA">folder</span></code> (ou plus exactement à une hiérarchie de <code><span style="color: #82E0AA">folders</span></code>).</p>
+</div>
+<div class="paragraph">
+<p>Un <code><span style="color: #82E0AA">document</span></code> peut cependant appartenir à plusieurs <code><span style="color: #82E0AA">folders</span></code>.</p>
+</div>
+<div class="paragraph">
+<div class="title"><code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">folder</span></code>/<code><span style="color: #82E0AA">document</span></code> <code><span style="color: #82E0AA">relationship</span></code>s</div>
+<p><span class="image"><img src="images/cmis_folder_object.png" alt="cmis folder object"></span></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cmis_document_object"><a class="anchor" href="#cmis_document_object"></a>2.4.2. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">document</span></code> object</h4>
+<div class="paragraph">
+<p>Les <code><span style="color: #82E0AA">documents</span></code> ont des propriétés - qui peuvent être multi-évaluées - et (optionnellement) un contenu binaire (<code><span style="color: #82E0AA">content stream</span></code>) - qui peut être versionné.</p>
+</div>
+<div class="paragraph">
+<p>Chaque propriété :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>est <code>typée</code> : <em>Object ID</em>, <em>string</em>, <em>integer</em>, <em>decimal</em>, <em>boolean</em>, <em>float</em>, <em>datetime</em>.</p>
+</li>
+<li>
+<p>et possède des <code>attributs</code> : <em>nom</em>, <em>required</em>, <em>queryable</em>, <em>type</em> &#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title"><code><span style="color: #167EF2">CMIS</span></code> document object</div>
+<p><span class="image"><img src="images/cmis_document_object.png" alt="cmis document object"></span></p>
+</div>
+<div class="paragraph">
+<p>Un <code><span style="color: #82E0AA">document</span></code> peut également posséder des <code><span style="color: #82E0AA">rendition</span></code>s, représentant une version alternative du <code><span style="color: #82E0AA">content stream</span></code>.<br>
+Les exemples les plus courants sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>thumbnail</em>: version <em>imagette</em> (aperçu) d&#8217;un <code><span style="color: #82E0AA">content stream</span></code> du <code><span style="color: #82E0AA">document</span></code>, utilisée par les applications mobiles.</p>
+</li>
+<li>
+<p><em>application/pdf</em>: version <em>PDF</em> d&#8217;un <code><span style="color: #82E0AA">content stream</span></code> du <code><span style="color: #82E0AA">document</span></code>, utilisée par tous clients ne souhaitant pas effectuer de conversion de fichiers.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> ne fournit pas de <code><span style="color: #82E0AA">rendition</span></code> alternative.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cmis_policy_object"><a class="anchor" href="#cmis_policy_object"></a>2.4.3. <code><span style="color: #167EF2">CMIS</span></code> <code><span style="color: #82E0AA">policy</span></code> object</h4>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Avertissement"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce type d&#8217;objet n&#8217;est actuellement pas géré par <span style="color: #D4CE28">Dossier</span></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Un objet de type <code><span style="color: #82E0AA">policy</span></code> permet de représenter la stratégie/la politique d&#8217;accès à un document.</p>
+</div>
+<div class="paragraph">
+<p>Le type <code>ACL</code> (<strong>A</strong>ccess <strong>C</strong>ontrol <strong>L</strong>ist) est un sous-type de <code><span style="color: #82E0AA">policy</span></code>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cmis_versionning"><a class="anchor" href="#cmis_versionning"></a>2.4.4. <code><span style="color: #167EF2">CMIS</span></code> versioning</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> ne gère le versionning que sur les fichiers binaires associés à un <code><span style="color: #82E0AA">document</span></code>.<br>
+Ceci n&#8217;est pas géré au travers de la norme <code><span style="color: #167EF2">CMIS</span></code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cmis_bindings"><a class="anchor" href="#cmis_bindings"></a>2.4.5. <code><span style="color: #167EF2">CMIS</span></code> bindings/protocoles</h4>
+<div class="paragraph">
+<p>Tout client peut communiquer avec un <code><span style="color: #FFBD33">repository</span></code> <code><span style="color: #167EF2">CMIS</span></code> en utilisant l&#8217;un des protocoles disponibles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Browser</code> (<strong><span class="underline">recommandé</span></strong>) :</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code><span style="color: #167EF2">CMIS</span></code> fournit un accès de type <code>REST</code> basé sur des échanges au format <strong>JSON</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Ce <em>binding</em> a été ajouté en version <strong>1.1</strong> de la norme <code><span style="color: #167EF2">CMIS</span></code> afin de simplifier les échanges avec les applications <em>web</em>, <em>mobiles</em>,
+ce type d&#8217;échanges étant populaires et très répandus depuis plusieurs années.</p>
+</div>
+<div class="paragraph">
+<p>Cette implémentation utilise les seuls verbes <code>GET</code> et <code>POST</code>.</p>
+</div>
+<div class="paragraph">
+<p>Les URLs d&#8217;accès et d&#8217;interrogation sont simples, par exemple, dans le but d&#8217;obtenir la liste des <code><span style="color: #FFBD33">repositories</span></code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>où :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>hostname</strong>: serveur (<code>IP</code> ou <code>Nom d&#8217;hôte</code>) hébergeant l&#8217;application <span style="color: #D4CE28">Dossier</span></p>
+</li>
+<li>
+<p><strong>port</strong>: port du service d&#8217;accès à l&#8217;application <span style="color: #D4CE28">Dossier</span></p>
+</li>
+<li>
+<p><strong>context</strong>: context applicatif</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Vous trouverez de pus amples informations dans le chapitre dédié <a href="#cmis_browser">3, <em>Browser Binding</em></a></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AtomPub</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ce protocole <strong>RESTFul</strong> est basé sur <a href="https://tools.ietf.org/html/rfc5023" target="_blank" rel="noopener"><strong>Atom Publishing</strong></a>.<br></p>
+</div>
+<div class="paragraph">
+<p>Les clients qui souhaitent exploiter ce protocole utiliseront l&#8217;url du <code>Service Document</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/atom</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Pour une description complète de ces protocoles, veuillez vous reporter aux
+<a href="http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html" target="_blank" rel="noopener"><strong>spécifications officielles <code><span style="color: #167EF2">CMIS</span></code></strong></a> .</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Les <strong>Web Services</strong> de type <code>SOAP</code> ne sont pas disponibles car obsolètes et moins performants.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmis_browser"><a class="anchor" href="#cmis_browser"></a>3. Browser Binding</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Les informations indiquées dans ce chapitre sont succinctes, veuillez vous référer à la <a href="http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html" target="_blank" rel="noopener">documentation officielle</a> pour plus d&#8217;informations+
+Il est préconisé d&#8217;employer un client, disponible par exemple <a href="http://chemistry.apache.org/opencmis-client-api.html" target="_blank" rel="noopener">ici</a> pour abstraire et masquer la complexité des échanges.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>En utilisant un simple appel <strong>HTTP</strong> de type <strong>GET</strong> et quelques paramètres additionnels, le contenu d&#8217;un <code><span style="color: #FFBD33">repository</span></code> peut être récupéré/interrogé.<br></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_parameters"><a class="anchor" href="#cmis_browser_parameters"></a>3.1. Paramètres additionnels communs</h3>
+<div class="paragraph">
+<p>Les requêtes d&#8217;interrogation peuvent avoir des paramètres additionnels (optionnels)</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 2. Liste des paramètres <em>http optionnels</em></caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Nom</th>
+<th class="tableblock halign-left valign-top">Valeur par défaut</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>filter</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>*</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des propriétés attendues en réponse (<strong>queryname</strong> au sens <code><span style="color: #167EF2">CMIS</span></code>), séparées par une virgule</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>includeAllowableActions</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si <strong class="green">true</strong>, la réponse doit indiquer également la liste des actions disponibles</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>includeRelationships</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IncludeRelationships.NONE</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>La réponse doit indiquer également les relations avec ce noeud.<br>
+valeurs possibles:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>NONE</p>
+</li>
+<li>
+<p>SOURCE</p>
+</li>
+<li>
+<p>TARGET</p>
+</li>
+<li>
+<p>BOTH</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>renditionFilter</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>cmis:none</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des <em>renditions</em> attendues en réponse</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>includePolicyIds</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si <strong class="green">true</strong>, la réponse doit indiquer également la liste des <em>policies</em> disponibles</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>includeAcl</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si <strong class="green">true</strong>, la réponse doit indiquer également les <code>ACL</code> (<strong>A</strong>ccess <strong>C</strong>ontrol <strong>L</strong>ists) pour ce noeud</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_repo"><a class="anchor" href="#cmis_browser_repo"></a>3.2. Interrogation d&#8217;un <code><span style="color: #FFBD33">repository</span></code></h3>
+<div class="paragraph">
+<p>Afin d&#8217;obtenir des informations sur le <code><span style="color: #FFBD33">repository</span></code>, le paramètre <strong>callback</strong> devra être précisé.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser?callback=showRepositoryInfo</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>dont la réponse sera similaire à ce qui suit :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">showRepositoryInfo(
+ { "Dossier-2":
+   {"repositoryId":"Dossier-2",
+    "repositoryName":"Dossier-2AC",
+    "repositoryDescription":"2AC",
+    "vendorName":"Digitech",
+    "productName":"Dossier",
+...</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>l&#8217;attribut <strong>repositoryId</strong> est important car permet d&#8217;accéder aux données du référentiel ciblé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_retreive"><a class="anchor" href="#cmis_browser_retreive"></a>3.3. Récupération d&#8217;éléments</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Dans les exemples ci-après, <strong>Dossier-2</strong> correspond au <strong>repositoryId</strong> ciblé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>La récupération d&#8217;un objet s&#8217;effectue simplement en spécifiant l' <strong>ID</strong> de l&#8217;objet souhaité.<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2/root?objectId=ZmxvdzpDUg%3D%3D</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Réponse (mode <em>succinct</em>)</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "succinctProperties": {
+    "cmis:objectId": "ZmxvdzpDUg==",
+    "cmis:objectTypeId": "dossier:flow",
+    "cmis:baseTypeId": "cmis:folder",
+    "cmis:name": "Compte Rendu",
+    "cmis:description": "Flow created in simplified mode",
+    "cmis:createdBy": "dossier",
+    "cmis:creationDate": null,
+    "cmis:lastModifiedBy": "dossier",
+    "cmis:lastModificationDate": null,
+    "cmis:changeToken": null,
+    "cmis:parentId": "QGRvc3NpZXJfcm9vdEA=",
+    "cmis:path": "\/flow:CR",
+    "cmis:allowedChildObjectTypeIds": [
+      "cm:basket"
+    ],
+    "dossier:flow:code": "CR",
+    "dossier:flow:contentType": "CR"
+  },
+  "allowableActions": {
+    "canDeleteObject": false,
+    "canUpdateProperties": false,
+    "canGetFolderTree": true,
+    "canGetProperties": true,
+    "canGetObjectRelationships": false,
+    "canGetObjectParents": true,
+    "canGetFolderParent": true,
+    "canGetDescendants": true,
+    "canMoveObject": false,
+    "canDeleteContentStream": false,
+    "canCheckOut": false,
+    "canCancelCheckOut": false,
+    "canCheckIn": false,
+    "canSetContentStream": false,
+    "canGetAllVersions": false,
+    "canAddObjectToFolder": false,
+    "canRemoveObjectFromFolder": false,
+    "canGetContentStream": false,
+    "canApplyPolicy": false,
+    "canGetAppliedPolicies": false,
+    "canRemovePolicy": false,
+    "canGetChildren": true,
+    "canCreateDocument": false,
+    "canCreateFolder": false,
+    "canCreateRelationship": false,
+    "canCreateItem": false,
+    "canDeleteTree": false,
+    "canGetRenditions": false,
+    "canGetACL": true,
+    "canApplyACL": false
+  },
+  "acl": {
+    "aces": []
+  },
+  "exactACL": true
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dans le but de récupérer les <span class="underline"><strong>enfants</strong></span> d&#8217;une entité, il faudra préciser ici le paramètre suivant :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisselector=children</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ce qui donne, pour obtenir les <span class="underline"><strong>enfants</strong></span> de l&#8217;objet d&#8217;ID <strong>ZmxvdzpDUg==</strong> dans le <code><span style="color: #FFBD33">repository</span></code> <strong>Dossier-2</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2/root?objectId=ZmxvdzpDUg%3D%3D&amp;cmisselector=children&amp;succinct=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse obtenue sera alors un <em>json</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "objects": [
+    {
+      "object": {
+        "succinctProperties": {
+          "cmis:objectId": "YmFza2V0OkNSI0Rlcm5pZXJzIGNvbXB0ZSByZW5kdXM=",
+          "cmis:objectTypeId": "cm:basket",
+          "cmis:baseTypeId": "cmis:folder",
+          "cmis:name": "Derniers compte rendus",
+          "cmis:createdBy": "dossier",
+          "cmis:creationDate": null,
+          "cmis:lastModifiedBy": "dossier",
+          "cmis:lastModificationDate": null
+        }
+      }
+    }
+  ],
+  "hasMoreItems": false
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>D&#8217;autres paramètres (que ceux indiqués dans le chapitre <a href="#cmis_browser_parameters">Section 3.1, &#8220;Paramètres additionnels communs&#8221;</a>) sont disponibles</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 3. paramètres <em>additionnels</em>_</caption>
+<colgroup>
+<col style="width: 14.2857%;">
+<col style="width: 14.2857%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Nom</th>
+<th class="tableblock halign-left valign-top">Valeur par défaut</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>orderBy</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>*</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des <strong>queryname</strong> (suivis de <strong>ASC</strong> ou <strong>DESC</strong>), séparées par une virgules, définissant le tri souhaité.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>includePathSegments</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si <strong class="green">true</strong>, la réponse contiendra pour chaque enfant lle <em>path</em> relatif.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>maxItems</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre maximum d&#8217;éléments retournés</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>SkipCount</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre d&#8217;éléments <em>passés</em> (et donc non renvoyés en réponse). A utiliser en combinaison avec <strong>maxItems</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_crud"><a class="anchor" href="#cmis_browser_crud"></a>3.4. Opération Création/Mise à jour/Suppression</h3>
+<div class="paragraph">
+<p>Les opérations de création, de mise à jour ou de suppression sont effectuées via une commande <strong>HTTP</strong> de type <strong>POST</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Le paramètre additionnel précisant le type d&#8217;opération est <code>cmisaction</code>, par exemple, pour une création</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisaction=createDocument</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_création"><a class="anchor" href="#_création"></a>3.4.1. Création :</h4>
+<div class="paragraph">
+<p>L&#8217;application fournit 3 opérations de création en fonction du type d&#8217;objet que l&#8217;on veut créer : <strong>createItem</strong>, <strong>createFolder</strong> et <strong>createDocument</strong>.</p>
+</div>
+<div class="ulist">
+<div class="title">Il existe 3 types d&#8217;objets qui sont créables via CMIS dans AIRS Dossier :</div>
+<ul>
+<li>
+<p>Les documents AIRS (<strong>createFolder</strong>)</p>
+</li>
+<li>
+<p>Les pièces jointes (<strong>createDocument</strong>)</p>
+</li>
+<li>
+<p>Les commentaires (<strong>createItem</strong>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Création d&#8217;un commentaire (<strong>createItem</strong>)</p>
+</div>
+<div class="paragraph">
+<p>La création d&#8217;un commentaire nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisaction=createItem
+objectId=&lt;IDENTIFIANT DE L'OBJET PARENT&gt;
+propertyId[0]=cmis:name
+propertyValue[0]=&lt;TEXTE DU COMMENTAIRE&gt;
+propertyId[1]=cmis:objectTypeId
+propertyValue[1]=cm:comment
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:item
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voici un exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-httprequest hljs" data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=createItem&amp;propertyId[0]=cmis:name&amp;propertyValue[0]=TEST COMMENT&amp;propertyId[1]=cmis:objectTypeId&amp;propertyValue[1]=cm:comment&amp;propertyId[2]=cmis:baseTypeId&amp;propertyValue[2]=cmis:item&amp;objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse obtenue sera alors un <em>json</em> reprenant l&#8217;ensemble des propriétés du document mis à jour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"properties": {
+  "cmis:objectId":    {
+    "id": "cmis:objectId",
+    "localName": "cmis:objectId",
+    "queryName": "cmis:objectId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2"
+  },
+  "cmis:objectTypeId":    {
+    "id": "cmis:objectTypeId",
+    "localName": "cmis:objectTypeId",
+    "queryName": "cmis:objectTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cm:document:cr"
+  },
+  "cmis:baseTypeId":    {
+    "id": "cmis:baseTypeId",
+    "localName": "cmis:baseTypeId",
+    "queryName": "cmis:baseTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cmis:folder"
+  },
+  "cmis:name":    {
+    "id": "cmis:name",
+    "localName": "cmis:name",
+    "queryName": "cmis:name",
+    "type": "string",
+    "cardinality": "single",
+    "value": "CHANGEMENT_DE_VALEUR"
+  },
+  "cmis:description":    {
+    "id": "cmis:description",
+    "localName": "cmis:description",
+    "queryName": "cmis:description",
+    "type": "string",
+    "cardinality": "single",
+    "value": "CHANGEMENT_DE_VALEUR"
+  },
+  "cmis:createdBy":    {
+    "id": "cmis:createdBy",
+    "localName": "cmis:createdBy",
+    "queryName": "cmis:createdBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "dossier"
+  },
+  "cmis:creationDate":    {
+    "id": "cmis:creationDate",
+    "localName": "cmis:creationDate",
+    "queryName": "cmis:creationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1670248188000
+  },
+  "cmis:lastModifiedBy":    {
+    "id": "cmis:lastModifiedBy",
+    "localName": "cmis:lastModifiedBy",
+    "queryName": "cmis:lastModifiedBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "dossier"
+  },
+  "cmis:lastModificationDate":    {
+    "id": "cmis:lastModificationDate",
+    "localName": "cmis:lastModificationDate",
+    "queryName": "cmis:lastModificationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1674660862000
+  },
+  "cmis:changeToken":    {
+    "id": "cmis:changeToken",
+    "localName": "cmis:changeToken",
+    "queryName": "cmis:changeToken",
+    "type": "string",
+    "cardinality": "single",
+    "value": "MjUvMDEvMjAyMyAxNjozNDoyMg=="
+  },
+  "cmis:parentId":    {
+    "id": "cmis:parentId",
+    "localName": "cmis:parentId",
+    "queryName": "cmis:parentId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "YmFza2V0OkNSOkRlcm5pZXJzIGNvbXB0ZSByZW5kdXM="
+  },
+  "cmis:path":    {
+    "id": "cmis:path",
+    "localName": "cmis:path",
+    "queryName": "cmis:path",
+    "type": "string",
+    "cardinality": "single",
+    "value": "/orga:5/flow:CR/basket:CR:Derniers compte rendus/document:CR:Derniers compte rendus:7476"
+  },
+  "cmis:allowedChildObjectTypeIds":    {
+    "id": "cmis:allowedChildObjectTypeIds",
+    "localName": "cmis:allowedChildObjectTypeIds",
+    "queryName": "cmis:allowedChildObjectTypeIds",
+    "type": "id",
+    "cardinality": "multi",
+    "value":       [
+      "cm:attachment",
+      "cm:comment",
+      "cm:event"
+    ]
+  },
+  "cm:document:cr:crTheme":    {
+    "id": "cm:document:cr:crTheme",
+    "localName": "cm:document:cr:crTheme",
+    "displayName": "Thématique",
+    "queryName": "cm:document:cr:crTheme",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:dModif":    {
+    "id": "cm:document:cr:dModif",
+    "localName": "cm:document:cr:dModif",
+    "displayName": "Date de modification",
+    "queryName": "cm:document:cr:dModif",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1674660862000
+  },
+  "cm:document:cr:dCreat":    {
+    "id": "cm:document:cr:dCreat",
+    "localName": "cm:document:cr:dCreat",
+    "displayName": "Date de création",
+    "queryName": "cm:document:cr:dCreat",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1670248188000
+  },
+  "cm:document:cr:crRedacteur":    {
+    "id": "cm:document:cr:crRedacteur",
+    "localName": "cm:document:cr:crRedacteur",
+    "displayName": "Rédacteur",
+    "queryName": "cm:document:cr:crRedacteur",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:crDes":    {
+    "id": "cm:document:cr:crDes",
+    "localName": "cm:document:cr:crDes",
+    "displayName": "Désignation",
+    "queryName": "cm:document:cr:crDes",
+    "type": "string",
+    "cardinality": "single",
+    "value": "CHANGEMENT_DE_VALEUR"
+  },
+  "cm:document:cr:crResume":    {
+    "id": "cm:document:cr:crResume",
+    "localName": "cm:document:cr:crResume",
+    "displayName": "Résumé",
+    "queryName": "cm:document:cr:crResume",
+    "type": "string",
+    "cardinality": "single",
+    "value": "test creat"
+  },
+  "cm:document:cr:crDate":    {
+    "id": "cm:document:cr:crDate",
+    "localName": "cm:document:cr:crDate",
+    "displayName": "Date événement",
+    "queryName": "cm:document:cr:crDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:tPrior":    {
+    "id": "cm:document:cr:tPrior",
+    "localName": "cm:document:cr:tPrior",
+    "displayName": "xml_priority_field_label",
+    "queryName": "cm:document:cr:tPrior",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:multi":    {
+    "id": "cm:document:cr:multi",
+    "localName": "cm:document:cr:multi",
+    "displayName": "test champs multi",
+    "queryName": "cm:document:cr:multi",
+    "type": "string",
+    "cardinality": "single",
+    "value": ""
+  },
+  "cm:document:cr:corres":    {
+    "id": "cm:document:cr:corres",
+    "localName": "cm:document:cr:corres",
+    "displayName": "correspondent",
+    "queryName": "cm:document:cr:corres",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:masqueNum":    {
+    "id": "cm:document:cr:masqueNum",
+    "localName": "cm:document:cr:masqueNum",
+    "displayName": "test masque",
+    "queryName": "cm:document:cr:masqueNum",
+    "type": "integer",
+    "cardinality": "single",
+    "value": null
+  }
+}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Création d&#8217;un document (<strong>createFolder</strong>)</p>
+</div>
+<div class="paragraph">
+<p>La création d&#8217;un document (AIRS) nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisaction=createFolder
+objectId=&lt;IDENTIFIANT DE L'OBJET PARENT&gt;
+propertyId[0]=cmis:objectTypeId
+propertyValue[0]=&lt;CODE CMIS DU TYPE DE CONTENU&gt;
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:folder
+propertyId[2]=&lt;IDENTIFIANT DE LA PROPRIETE 2&gt;
+propertyValue[2]=&lt;VALEUR DE LA PROPRIETE 2&gt;
+...</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le paramètre <strong>objectId</strong> doit contenir l&#8217;identifiant CMIS du flux Airs Dossier dans lequel le document doit être créé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Voici un exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-httprequest hljs" data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=createFolder&amp;propertyId[0]=cm:document:cr:crDes&amp;propertyValue[0]=TEST CREATE FOLDER&amp;propertyId[1]=cmis:objectTypeId&amp;propertyValue[1]=cm:document:cr&amp;propertyId[2]=cmis:baseTypeId&amp;propertyValue[2]=cmis:folder&amp;objectId=ZmxvdzpDUg==</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse obtenue sera alors un <em>json</em> reprenant l&#8217;ensemble des propriétés du document AIRS créé.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"properties": {
+  "cmis:objectId":    {
+    "id": "cmis:objectId",
+    "localName": "cmis:objectId",
+    "queryName": "cmis:objectId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "ZG9jdW1lbnQ6NzY3Nzo3Njc3"
+  },
+  "cmis:objectTypeId":    {
+    "id": "cmis:objectTypeId",
+    "localName": "cmis:objectTypeId",
+    "queryName": "cmis:objectTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cm:document:cr"
+  },
+  "cmis:baseTypeId":    {
+    "id": "cmis:baseTypeId",
+    "localName": "cmis:baseTypeId",
+    "queryName": "cmis:baseTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cmis:folder"
+  },
+  "cmis:name":    {
+    "id": "cmis:name",
+    "localName": "cmis:name",
+    "queryName": "cmis:name",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Aucune valeur"
+  },
+  "cmis:description":    {
+    "id": "cmis:description",
+    "localName": "cmis:description",
+    "queryName": "cmis:description",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Aucune valeur"
+  },
+  "cmis:createdBy":    {
+    "id": "cmis:createdBy",
+    "localName": "cmis:createdBy",
+    "queryName": "cmis:createdBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "dossier"
+  },
+  "cmis:creationDate":    {
+    "id": "cmis:creationDate",
+    "localName": "cmis:creationDate",
+    "queryName": "cmis:creationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1679649084000
+  },
+  "cmis:lastModifiedBy":    {
+    "id": "cmis:lastModifiedBy",
+    "localName": "cmis:lastModifiedBy",
+    "queryName": "cmis:lastModifiedBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "dossier"
+  },
+  "cmis:lastModificationDate":    {
+    "id": "cmis:lastModificationDate",
+    "localName": "cmis:lastModificationDate",
+    "queryName": "cmis:lastModificationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1679649084000
+  },
+  "cmis:changeToken":    {
+    "id": "cmis:changeToken",
+    "localName": "cmis:changeToken",
+    "queryName": "cmis:changeToken",
+    "type": "string",
+    "cardinality": "single",
+    "value": "MjQvMDMvMjAyMyAxMDoxMToyNA=="
+  },
+  "cmis:parentId":    {
+    "id": "cmis:parentId",
+    "localName": "cmis:parentId",
+    "queryName": "cmis:parentId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "YmFza2V0Ojc2Nzc="
+  },
+  "cmis:path":    {
+    "id": "cmis:path",
+    "localName": "cmis:path",
+    "queryName": "cmis:path",
+    "type": "string",
+    "cardinality": "single",
+    "value": "/orga:5/flow:7677/basket:7677/document:7677:7677"
+  },
+  "cmis:allowedChildObjectTypeIds":    {
+    "id": "cmis:allowedChildObjectTypeIds",
+    "localName": "cmis:allowedChildObjectTypeIds",
+    "queryName": "cmis:allowedChildObjectTypeIds",
+    "type": "id",
+    "cardinality": "multi",
+    "value":       [
+      "cm:attachment",
+      "cm:comment",
+      "cm:event"
+    ]
+  },
+  "cm:document:cr:crTheme":    {
+    "id": "cm:document:cr:crTheme",
+    "localName": "cm:document:cr:crTheme",
+    "displayName": "Thématique",
+    "queryName": "cm:document:cr:crTheme",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:dModif":    {
+    "id": "cm:document:cr:dModif",
+    "localName": "cm:document:cr:dModif",
+    "displayName": "Date de modification",
+    "queryName": "cm:document:cr:dModif",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1679649084000
+  },
+  "cm:document:cr:dCreat":    {
+    "id": "cm:document:cr:dCreat",
+    "localName": "cm:document:cr:dCreat",
+    "displayName": "Date de création",
+    "queryName": "cm:document:cr:dCreat",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1679649084000
+  },
+  "cm:document:cr:crRedacteur":    {
+    "id": "cm:document:cr:crRedacteur",
+    "localName": "cm:document:cr:crRedacteur",
+    "displayName": "Rédacteur",
+    "queryName": "cm:document:cr:crRedacteur",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:crDes":    {
+    "id": "cm:document:cr:crDes",
+    "localName": "cm:document:cr:crDes",
+    "displayName": "Désignation",
+    "queryName": "cm:document:cr:crDes",
+    "type": "string",
+    "cardinality": "single",
+    "value": "TEST CREATE FOLDER"
+  },
+  "cm:document:cr:crResume":    {
+    "id": "cm:document:cr:crResume",
+    "localName": "cm:document:cr:crResume",
+    "displayName": "Résumé",
+    "queryName": "cm:document:cr:crResume",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:crDate":    {
+    "id": "cm:document:cr:crDate",
+    "localName": "cm:document:cr:crDate",
+    "displayName": "Date événement",
+    "queryName": "cm:document:cr:crDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:tPrior":    {
+    "id": "cm:document:cr:tPrior",
+    "localName": "cm:document:cr:tPrior",
+    "displayName": "xml_priority_field_label",
+    "queryName": "cm:document:cr:tPrior",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:multi":    {
+    "id": "cm:document:cr:multi",
+    "localName": "cm:document:cr:multi",
+    "displayName": "test champs multi",
+    "queryName": "cm:document:cr:multi",
+    "type": "string",
+    "cardinality": "single",
+    "value": ""
+  },
+  "cm:document:cr:corres":    {
+    "id": "cm:document:cr:corres",
+    "localName": "cm:document:cr:corres",
+    "displayName": "correspondent",
+    "queryName": "cm:document:cr:corres",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:masqueNum":    {
+    "id": "cm:document:cr:masqueNum",
+    "localName": "cm:document:cr:masqueNum",
+    "displayName": "test masque",
+    "queryName": "cm:document:cr:masqueNum",
+    "type": "integer",
+    "cardinality": "single",
+    "value": null
+  }
+}}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Création d&#8217;une pièce jointe (<strong>createAttachment</strong>)</p>
+</div>
+<div class="paragraph">
+<p>La création d&#8217;une pièce jointe nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisaction=createDocument
+objectId=&lt;IDENTIFIANT DE L'OBJET PARENT&gt;
+propertyId[0]=cmis:objectTypeId
+propertyValue[0]=cm:attachment
+propertyId[1]=cmis:baseTypeId
+propertyValue[1]=cmis:document
+propertyId[2]=cmis:contentStreamFileName
+propertyValue[2]=&lt;NOM DU FICHIER&gt;
+propertyId[2]=cmis:name
+propertyValue[2]=&lt;LABEL DE l'ATTACHMENT&gt;
+...</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le content stream doit être ajouté via une enveloppe multipart.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Voici un exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-httprequest hljs" data-lang="httprequest">POST http://localhost:8080/dossierweb80/cmis/browser/Dossier-5/root?cmisaction=createDocument&amp;propertyId[0]=cmis:contentStreamFileName&amp;propertyValue[0]=test.pdf&amp;propertyId[1]=cmis:objectTypeId&amp;propertyValue[1]=cm:attachment&amp;propertyId[2]=cmis:baseTypeId&amp;propertyValue[2]=cmis:document&amp;objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NjQy&amp;propertyId[3]=cmis:name&amp;propertyValue[3]=test piece jointe
+HTTP/1.1
+Accept-Encoding: gzip,deflate
+Content-Type: multipart/form-data; boundary="----=_Part_4_495007518.1679652147738"
+MIME-Version: 1.0
+Content-Length: 922418</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse obtenue sera alors un <em>json</em> reprenant l&#8217;ensemble des propriétés de la pièce jointe créée.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"properties": {
+  "cmis:objectTypeId":    {
+    "id": "cmis:objectTypeId",
+    "localName": "cmis:objectTypeId",
+    "queryName": "cmis:objectTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cm:attachment"
+  },
+  "cmis:baseTypeId":    {
+    "id": "cmis:baseTypeId",
+    "localName": "cmis:baseTypeId",
+    "queryName": "cmis:baseTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cmis:document"
+  },
+  "cmis:objectId":    {
+    "id": "cmis:objectId",
+    "localName": "cmis:objectId",
+    "queryName": "cmis:objectId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "YXR0YWNobWVudDpDUjpEZXJuaWVycyBjb21wdGUgcmVuZHVzOjc2NDI6NzAxNA=="
+  },
+  "cmis:secondaryObjectTypeIds":    {
+    "id": "cmis:secondaryObjectTypeIds",
+    "localName": "cmis:secondaryObjectTypeIds",
+    "queryName": "cmis:secondaryObjectTypeIds",
+    "type": "id",
+    "cardinality": "multi",
+    "value": null
+  },
+  "cmis:name":    {
+    "id": "cmis:name",
+    "localName": "cmis:name",
+    "queryName": "cmis:name",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Charte Informatique DIGITECH_20220214.pdf"
+  },
+  "cmis:description":    {
+    "id": "cmis:description",
+    "localName": "cmis:description",
+    "queryName": "cmis:description",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cmis:createdBy":    {
+    "id": "cmis:createdBy",
+    "localName": "cmis:createdBy",
+    "queryName": "cmis:createdBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Felix Nicolas"
+  },
+  "cmis:creationDate":    {
+    "id": "cmis:creationDate",
+    "localName": "cmis:creationDate",
+    "queryName": "cmis:creationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1671876056000
+  },
+  "cmis:lastModifiedBy":    {
+    "id": "cmis:lastModifiedBy",
+    "localName": "cmis:lastModifiedBy",
+    "queryName": "cmis:lastModifiedBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Felix Nicolas"
+  },
+  "cmis:lastModificationDate":    {
+    "id": "cmis:lastModificationDate",
+    "localName": "cmis:lastModificationDate",
+    "queryName": "cmis:lastModificationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1671876056000
+  },
+  "cmis:changeToken":    {
+    "id": "cmis:changeToken",
+    "localName": "cmis:changeToken",
+    "queryName": "cmis:changeToken",
+    "type": "string",
+    "cardinality": "single",
+    "value": "YXR0YWNobWVudDpDUjpEZXJuaWVycyBjb21wdGUgcmVuZHVzOjc2NDI6NzAxNA=="
+  },
+  "cmis:isImmutable":    {
+    "id": "cmis:isImmutable",
+    "localName": "cmis:isImmutable",
+    "queryName": "cmis:isImmutable",
+    "type": "boolean",
+    "cardinality": "single",
+    "value": true
+  },
+  "cmis:isLatestVersion":    {
+    "id": "cmis:isLatestVersion",
+    "localName": "cmis:isLatestVersion",
+    "queryName": "cmis:isLatestVersion",
+    "type": "boolean",
+    "cardinality": "single",
+    "value": true
+  },
+  "cmis:isMajorVersion":    {
+    "id": "cmis:isMajorVersion",
+    "localName": "cmis:isMajorVersion",
+    "queryName": "cmis:isMajorVersion",
+    "type": "boolean",
+    "cardinality": "single",
+    "value": true
+  },
+  "cmis:isLatestMajorVersion":    {
+    "id": "cmis:isLatestMajorVersion",
+    "localName": "cmis:isLatestMajorVersion",
+    "queryName": "cmis:isLatestMajorVersion",
+    "type": "boolean",
+    "cardinality": "single",
+    "value": true
+  },
+  "cmis:isPrivateWorkingCopy":    {
+    "id": "cmis:isPrivateWorkingCopy",
+    "localName": "cmis:isPrivateWorkingCopy",
+    "queryName": "cmis:isPrivateWorkingCopy",
+    "type": "boolean",
+    "cardinality": "single",
+    "value": true
+  },
+  "cmis:versionLabel":    {
+    "id": "cmis:versionLabel",
+    "localName": "cmis:versionLabel",
+    "queryName": "cmis:versionLabel",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Charte Informatique DIGITECH_20220214.pdf"
+  },
+  "cmis:versionSeriesId":    {
+    "id": "cmis:versionSeriesId",
+    "localName": "cmis:versionSeriesId",
+    "queryName": "cmis:versionSeriesId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "attachment:CR:Derniers compte rendus:7642:7014"
+  },
+  "cmis:isVersionSeriesCheckedOut":    {
+    "id": "cmis:isVersionSeriesCheckedOut",
+    "localName": "cmis:isVersionSeriesCheckedOut",
+    "queryName": "cmis:isVersionSeriesCheckedOut",
+    "type": "boolean",
+    "cardinality": "single",
+    "value": false
+  },
+  "cmis:versionSeriesCheckedOutBy":    {
+    "id": "cmis:versionSeriesCheckedOutBy",
+    "localName": "cmis:versionSeriesCheckedOutBy",
+    "queryName": "cmis:versionSeriesCheckedOutBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cmis:versionSeriesCheckedOutId":    {
+    "id": "cmis:versionSeriesCheckedOutId",
+    "localName": "cmis:versionSeriesCheckedOutId",
+    "queryName": "cmis:versionSeriesCheckedOutId",
+    "type": "id",
+    "cardinality": "single",
+    "value": null
+  },
+  "cmis:checkinComment":    {
+    "id": "cmis:checkinComment",
+    "localName": "cmis:checkinComment",
+    "queryName": "cmis:checkinComment",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cmis:contentStreamLength":    {
+    "id": "cmis:contentStreamLength",
+    "localName": "cmis:contentStreamLength",
+    "queryName": "cmis:contentStreamLength",
+    "type": "integer",
+    "cardinality": "single",
+    "value": 0
+  },
+  "cmis:contentStreamMimeType":    {
+    "id": "cmis:contentStreamMimeType",
+    "localName": "cmis:contentStreamMimeType",
+    "queryName": "cmis:contentStreamMimeType",
+    "type": "string",
+    "cardinality": "single",
+    "value": "application/pdf"
+  },
+  "cmis:contentStreamFileName":    {
+    "id": "cmis:contentStreamFileName",
+    "localName": "cmis:contentStreamFileName",
+    "queryName": "cmis:contentStreamFileName",
+    "type": "string",
+    "cardinality": "single",
+    "value": "Charte Informatique DIGITECH_20220214.pdf"
+  },
+  "cmis:contentStreamId":    {
+    "id": "cmis:contentStreamId",
+    "localName": "cmis:contentStreamId",
+    "queryName": "cmis:contentStreamId",
+    "type": "id",
+    "cardinality": "single",
+    "value": null
+  }
+}}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_suppression"><a class="anchor" href="#_suppression"></a>3.4.2. Suppression :</h4>
+<div class="paragraph">
+<p>L&#8217;application fournit 2 opérations de suppression en fonction du type d&#8217;objet que l&#8217;on souhaite supprimer : <strong>delete</strong> et <strong>deleteTree</strong></p>
+</div>
+<div class="ulist">
+<div class="title">Il existe 3 types d&#8217;objets qui sont supprimables via CMIS dans AIRS Dossier :</div>
+<ul>
+<li>
+<p>Les documents AIRS (<strong>deleteTree</strong>)</p>
+</li>
+<li>
+<p>Les pièces jointes (<strong>delete</strong>)</p>
+</li>
+<li>
+<p>Les commentaires (<strong>delete</strong>)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La suppression des documents est une suppression logique et non définitive. Il est donc possible de restaurer les documents directement depuis l&#8217;application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>La suppression nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisaction=&lt;delete OU deleteTree&gt;
+objectId=&lt;IDENTIFIANT DE L'OBJET&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quelques exemples :</p>
+</div>
+<div class="paragraph">
+<p>Suppression d&#8217;un document</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-httprequest hljs" data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=deleteTree&amp;objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDgw</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Suppression d&#8217;une pièce jointe</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-httprequest hljs" data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=delete&amp;objectId=YXR0YWNobWVudDpDUjpEZXJuaWVycyBjb21wdGUgcmVuZHVzOjc0ODA6Njc4Nw==</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mise_à_jour_des_documents"><a class="anchor" href="#_mise_à_jour_des_documents"></a>3.4.3. Mise à jour des documents :</h4>
+<div class="paragraph">
+<p>La mise à jour des documents nécessite les paramètres suivants :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisaction=update
+objectId=&lt;IDENTIFIANT DE L'OBJET&gt;
+propertyId[0]=&lt;IDENTIFIANT DE LA PROPRIETE 0&gt;
+propertyValue[0]=&lt;VALEUR DE LA PROPRIETE 0&gt;
+propertyId[1]=&lt;IDENTIFIANT DE LA PROPRIETE 1&gt;
+propertyValue[1]=&lt;VALEUR DE LA PROPRIETE 1&gt;
+...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Voici un exemple :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-httprequest hljs" data-lang="httprequest">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-5/root?cmisaction=update&amp;objectId=ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2&amp;propertyId[0]=cm:document:cr:crDes&amp;propertyValue[0]=CHANGEMENT_DE_VALEUR</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>La réponse obtenue sera alors un <em>json</em> reprenant l&#8217;ensemble des propriétés du document mis à jour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{"properties": {
+  "cmis:objectId":    {
+    "id": "cmis:objectId",
+    "localName": "cmis:objectId",
+    "queryName": "cmis:objectId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NDc2"
+  },
+  "cmis:objectTypeId":    {
+    "id": "cmis:objectTypeId",
+    "localName": "cmis:objectTypeId",
+    "queryName": "cmis:objectTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cm:document:cr"
+  },
+  "cmis:baseTypeId":    {
+    "id": "cmis:baseTypeId",
+    "localName": "cmis:baseTypeId",
+    "queryName": "cmis:baseTypeId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "cmis:folder"
+  },
+  "cmis:name":    {
+    "id": "cmis:name",
+    "localName": "cmis:name",
+    "queryName": "cmis:name",
+    "type": "string",
+    "cardinality": "single",
+    "value": "CHANGEMENT_DE_VALEUR"
+  },
+  "cmis:description":    {
+    "id": "cmis:description",
+    "localName": "cmis:description",
+    "queryName": "cmis:description",
+    "type": "string",
+    "cardinality": "single",
+    "value": "CHANGEMENT_DE_VALEUR"
+  },
+  "cmis:createdBy":    {
+    "id": "cmis:createdBy",
+    "localName": "cmis:createdBy",
+    "queryName": "cmis:createdBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "dossier"
+  },
+  "cmis:creationDate":    {
+    "id": "cmis:creationDate",
+    "localName": "cmis:creationDate",
+    "queryName": "cmis:creationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1670248188000
+  },
+  "cmis:lastModifiedBy":    {
+    "id": "cmis:lastModifiedBy",
+    "localName": "cmis:lastModifiedBy",
+    "queryName": "cmis:lastModifiedBy",
+    "type": "string",
+    "cardinality": "single",
+    "value": "dossier"
+  },
+  "cmis:lastModificationDate":    {
+    "id": "cmis:lastModificationDate",
+    "localName": "cmis:lastModificationDate",
+    "queryName": "cmis:lastModificationDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1674660862000
+  },
+  "cmis:changeToken":    {
+    "id": "cmis:changeToken",
+    "localName": "cmis:changeToken",
+    "queryName": "cmis:changeToken",
+    "type": "string",
+    "cardinality": "single",
+    "value": "MjUvMDEvMjAyMyAxNjozNDoyMg=="
+  },
+  "cmis:parentId":    {
+    "id": "cmis:parentId",
+    "localName": "cmis:parentId",
+    "queryName": "cmis:parentId",
+    "type": "id",
+    "cardinality": "single",
+    "value": "YmFza2V0OkNSOkRlcm5pZXJzIGNvbXB0ZSByZW5kdXM="
+  },
+  "cmis:path":    {
+    "id": "cmis:path",
+    "localName": "cmis:path",
+    "queryName": "cmis:path",
+    "type": "string",
+    "cardinality": "single",
+    "value": "/orga:5/flow:CR/basket:CR:Derniers compte rendus/document:CR:Derniers compte rendus:7476"
+  },
+  "cmis:allowedChildObjectTypeIds":    {
+    "id": "cmis:allowedChildObjectTypeIds",
+    "localName": "cmis:allowedChildObjectTypeIds",
+    "queryName": "cmis:allowedChildObjectTypeIds",
+    "type": "id",
+    "cardinality": "multi",
+    "value":       [
+      "cm:attachment",
+      "cm:comment",
+      "cm:event"
+    ]
+  },
+  "cm:document:cr:crTheme":    {
+    "id": "cm:document:cr:crTheme",
+    "localName": "cm:document:cr:crTheme",
+    "displayName": "Thématique",
+    "queryName": "cm:document:cr:crTheme",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:dModif":    {
+    "id": "cm:document:cr:dModif",
+    "localName": "cm:document:cr:dModif",
+    "displayName": "Date de modification",
+    "queryName": "cm:document:cr:dModif",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1674660862000
+  },
+  "cm:document:cr:dCreat":    {
+    "id": "cm:document:cr:dCreat",
+    "localName": "cm:document:cr:dCreat",
+    "displayName": "Date de création",
+    "queryName": "cm:document:cr:dCreat",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": 1670248188000
+  },
+  "cm:document:cr:crRedacteur":    {
+    "id": "cm:document:cr:crRedacteur",
+    "localName": "cm:document:cr:crRedacteur",
+    "displayName": "Rédacteur",
+    "queryName": "cm:document:cr:crRedacteur",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:crDes":    {
+    "id": "cm:document:cr:crDes",
+    "localName": "cm:document:cr:crDes",
+    "displayName": "Désignation",
+    "queryName": "cm:document:cr:crDes",
+    "type": "string",
+    "cardinality": "single",
+    "value": "CHANGEMENT_DE_VALEUR"
+  },
+  "cm:document:cr:crResume":    {
+    "id": "cm:document:cr:crResume",
+    "localName": "cm:document:cr:crResume",
+    "displayName": "Résumé",
+    "queryName": "cm:document:cr:crResume",
+    "type": "string",
+    "cardinality": "single",
+    "value": "test creat"
+  },
+  "cm:document:cr:crDate":    {
+    "id": "cm:document:cr:crDate",
+    "localName": "cm:document:cr:crDate",
+    "displayName": "Date événement",
+    "queryName": "cm:document:cr:crDate",
+    "type": "datetime",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:tPrior":    {
+    "id": "cm:document:cr:tPrior",
+    "localName": "cm:document:cr:tPrior",
+    "displayName": "xml_priority_field_label",
+    "queryName": "cm:document:cr:tPrior",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:multi":    {
+    "id": "cm:document:cr:multi",
+    "localName": "cm:document:cr:multi",
+    "displayName": "test champs multi",
+    "queryName": "cm:document:cr:multi",
+    "type": "string",
+    "cardinality": "single",
+    "value": ""
+  },
+  "cm:document:cr:corres":    {
+    "id": "cm:document:cr:corres",
+    "localName": "cm:document:cr:corres",
+    "displayName": "correspondent",
+    "queryName": "cm:document:cr:corres",
+    "type": "string",
+    "cardinality": "single",
+    "value": null
+  },
+  "cm:document:cr:masqueNum":    {
+    "id": "cm:document:cr:masqueNum",
+    "localName": "cm:document:cr:masqueNum",
+    "displayName": "test masque",
+    "queryName": "cm:document:cr:masqueNum",
+    "type": "integer",
+    "cardinality": "single",
+    "value": null
+  }
+}}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_query"><a class="anchor" href="#cmis_browser_query"></a>3.5. Recherche</h3>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Attention"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;application <span style="color: #D4CE28">Dossier</span> offre la possibilité d&#8217;effectuer des <code><span style="color: #D35400">queries</span></code> <code><span style="color: #167EF2">CMIS</span></code> avec quelques limitations
+car les opérateurs <strong>JOIN</strong>, <strong>IN_FOLDER</strong> et <strong>IN_TREE</strong> ne sont pas traités/implémentés en version <strong>7.1</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Dans le but de lancer une recherche (<code><span style="color: #D35400">query</span></code>), les paramètres suivants doivent être précisés :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisselector=query
+q=&lt;CRITERES DE RECHERCHE&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quelques exemples :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">q=SELECT * FROM cm:document:cr WHERE cmis:creationDate &gt;= '28/03/2020'
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20&gt;=%20'28/03/2020'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes = 'Désignation'
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20=%20'Désignation'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%'
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">q=SELECT * FROM cm:document:cr WHERE cm:document:cr:crDes LIKE 'Désign%' AND cmis:creationDate &gt;= '28/03/2020'
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cm:document:cr:crDes%20LIKE%20'Désign%'%20AND%20cmis:creationDate%20&gt;=%20'28/03/2020'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">q=SELECT * FROM cm:document:cr WHERE cmis:creationDate IN ('04/05/2020', '07/05/2020')
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20IN%20('04/05/2020',%20'07/05/2020')</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sql hljs" data-lang="sql">q=SELECT * FROM cm:document:cr WHERE cmis:creationDate NOT IN ('04/05/2020', '07/05/2020') ORDER BY cmis:creationDate DESC
+
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2?cmisselector=query&amp;succinct=true&amp;q=SELECT%20*%20FROM%20cm:document:cr%20WHERE%20cmis:creationDate%20NOT%20IN%20('04/05/2020',%20'07/05/2020')%20ORDER%20BY%20cmis:creationDate%20DESC</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_content"><a class="anchor" href="#cmis_browser_content"></a>3.6. Récupération du contenu d&#8217;un document</h3>
+<div class="paragraph">
+<p>La récupération du contenu d&#8217;un document s&#8217;effectue en précisant les paramètres</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">cmisselector=content
+objectId=&lt;IDENTIFIANT DU DOCUMENT&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2/root?objectId=YXR0YWNobWVudDpDUiNEZXJuaWVycyBjb21wdGUgcmVuZHVzIzQ2MzMjNDI1Mg%3D%3D&amp;cmisselector=content</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le corps (<strong>body</strong>) de la réponse sera alors le document <em>streamé</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_browser_tips"><a class="anchor" href="#cmis_browser_tips"></a>3.7. Bonnes pratiques</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Réponses '<em>succinctes</em>'</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Les réponses, au format <em>JSON</em>, peuvent être verbeuses (i.e. représentant un important volume de données).</p>
+</div>
+<div class="paragraph">
+<p>Ces réponses peuvent être abrégées/réduites en précisant le paramètre <strong>succinct=true</strong>.</p>
+</div>
+<div class="paragraph">
+<p>En reprentant l&#8217;exemple du chapitre <a href="#cmis_browser_retreive">Section 3.3, &#8220;Récupération d&#8217;éléments&#8221;</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/cmis/browser/Dossier-2/root/ZmxvdzpDUg%3D%3D?cmisselector=children&amp;succinct=true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>la réponse sera alors :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-JSON hljs" data-lang="JSON">{
+  "objects": [
+    {
+      "object": {
+        "succinctProperties": {
+          "cmis:objectId": "ZG9jdW1lbnQ6Q1IjRGVybmllcnMgY29tcHRlIHJlbmR1cyM0Njky",
+          "cmis:objectTypeId": "cm:document:cr#cr",
+          "cmis:baseTypeId": "cmis:folder",
+          "cmis:name": "jjj",
+          "cmis:description": "jjj",
+          "cmis:createdBy": "dossier",
+          "cmis:creationDate": 1589880601000,
+          "cmis:lastModifiedBy": "dossier",
+          "cmis:lastModificationDate": 1590482813000,
+          "cmis:changeToken": "MjYvMDUvMjAyMCAxMDo0Njo1Mw==",
+          "cmis:parentId": "ZmxvdzpDUg%3D%3D",
+          "cmis:path": "/flow:CR/basket:CR#Derniers compte rendus/document:CR#Derniers compte rendus#4692",
+          "cmis:allowedChildObjectTypeIds": [
+            "cm:attachment",
+            "cm:comment",
+            "cm:event"
+          ],
+          "cm:document:cr:crTheme": "Entreprise Libérée",
+          "cm:document:cr:crDes": "Compte-rendu",
+          "cm:document:cr:crRedacteur": "FÉLIX Nicolas",
+          "cm:document:cr:crDate": 1589925600000
+        }
+      }
+    },
+    ...,</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmis_dossier"><a class="anchor" href="#cmis_dossier"></a>4. <span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> serveur</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cmis_dossier_model"><a class="anchor" href="#cmis_dossier_model"></a>4.1. Arborescence / object model</h3>
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> présente une réprésentation <code><span style="color: #167EF2">CMIS</span></code> comme il suit.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> data model
+<span class="image"><img src="images/cmis_dossier_object_model.png" alt="cmis dossier object model"></span></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_dossier_authentication"><a class="anchor" href="#cmis_dossier_authentication"></a>4.2. Authentification</h3>
+<div class="paragraph">
+<p>L&#8217;authentification au service <code><span style="color: #167EF2">CMIS</span></code> <span style="color: #D4CE28">Dossier</span> est effectuée via une
+<a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Authentication#Sch%C3%A9ma_d&#8217;authentification_basique_(Basic)" target="_blank" rel="noopener"><code>Basic HTTP Authentication</code></a>,
+c&#8217;est-à-dire que le couple <strong>identifiant</strong>/<strong>mot de passe</strong> est transmis dans l&#8217;entête <em>http</em> encodé en <strong>base64</strong></p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cela sous-entend que pour une utilisation sur un réseau publique, le protocole <strong>HTTPS / TLS</strong> doit être mis en place.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_dossier_restrictions"><a class="anchor" href="#cmis_dossier_restrictions"></a>4.3. Limitations</h3>
+<div class="paragraph">
+<p>L&#8217;implémentation de la norme <code><span style="color: #167EF2">CMIS</span></code> dans <span style="color: #D4CE28">Dossier</span> n&#8217;est pas exhaustive, la norme définissant de nombreuses fonctionnalités optionnelles.</p>
+</div>
+<div class="paragraph">
+<p>Voici les principales fonctionnalités <span class="underline"><strong>non</strong></span> implémentées (en <strong>7.1</strong> de <span style="color: #D4CE28">Dossier</span>):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Versioning</em></p>
+</li>
+<li>
+<p>Modifications des <em>permissions</em> et droits d'<em>accès</em></p>
+</li>
+<li>
+<p>Accès au <em>Change logs</em></p>
+</li>
+<li>
+<p><code><span style="color: #82E0AA">policies</span></code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>De plus, les opérateurs suivants, définis dans la norme <code><span style="color: #167EF2">CMIS</span></code>-SQL (voir liste et description <a href="#cmis_query">ici</a>), ne sont pas implémentés</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>JOIN</strong></p>
+</li>
+<li>
+<p><strong>IN_FOLDER</strong> et <strong>IN_TREE</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_dossier_recommendation"><a class="anchor" href="#cmis_dossier_recommendation"></a>4.4. Préconisations</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comme déjà évoqué <a href="#cmis_bindings">ici</a>, pour des raisons de performances et simplicité, le protocole <code>Browser Binding</code> est préconisé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmis_client"><a class="anchor" href="#cmis_client"></a>5. Clients CMIS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cmis_client_apache"><a class="anchor" href="#cmis_client_apache"></a>5.1. Apache Chemistry / opencmis</h3>
+<div class="paragraph">
+<p>Plusieurs clients <code><span style="color: #167EF2">CMIS</span></code> (<strong>1.1</strong>) gratuits sont disponibles, dont le <a href="https://chemistry.apache.org/java/developing/tools/dev-tools-workbench.html" target="_blank" rel="noopener"><strong><code><span style="color: #167EF2">CMIS</span></code> workbench</strong></a> fournit par le projet <code>Apache Chemistry</code>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/workbench1.png" alt="workbench1"></span></p>
+</div>
+<div class="paragraph">
+<p>Chaque intégrateur/développeur peut utiliser l&#8217;une des <a href="https://chemistry.apache.org/" target="_blank" rel="noopener">librairies disponibles</a> pour implémenter son propre client, en suivant notamment les différents guides disponibles <a href="https://chemistry.apache.org/java/developing/index.html" target="_blank" rel="noopener">ici</a> et
+<a href="https://chemistry.apache.org/java/how-to/index.html" target="_blank" rel="noopener">là</a>, ainsi que les <a href="https://chemistry.apache.org/java/examples/index.html" target="_blank" rel="noopener">exemples</a> à disposition.</p>
+</div>
+<div class="paragraph">
+<p>D&#8217;autres librairies existent également en dehors du contexte <code>Apache Chemistry</code>, comme celle-ci <a href="https://github.com/agea/CmisJS" target="_blank" rel="noopener">CmisJS</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_client_dossier"><a class="anchor" href="#cmis_client_dossier"></a>5.2. <span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> client.</h3>
+<div class="paragraph">
+<p><span style="color: #D4CE28">Dossier</span> fournit, à partir de sa version <strong>7.1</strong>, un client <code><span style="color: #167EF2">CMIS</span></code> <span style="color: #F24E52">Java</span>, basé sur le projet <code>Apache Chemistry</code>.</p>
+</div>
+<div class="paragraph">
+<p>Celui-ci abstrait les principales actions utilisées.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Avertissement"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La librairie, <strong>dossier-cmis-client.jar</strong> (actuellement en version <strong>1.0.1</strong>), n&#8217;est pas disponible sur un référentiel <code>maven</code> publique.<br>
+Veuillez nous contacter pour obtenir celle-ci.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Vous trouverez :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>dans le chapitre <a href="#cmis_client_dossier_use_cases">suivant</a> des exemples concrets.</p>
+</li>
+<li>
+<p>en annexe <a href="#cmis_appendix_dossier_interface">l&#8217;interface principale</a></p>
+</li>
+<li>
+<p>également en annexe <a href="#cmis_appendix_dossier_library">les dépendances</a> nécessaires à l&#8217;utilisation de la librairie <strong>dossier-cmis-client.jar</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_client_dossier_use_cases"><a class="anchor" href="#cmis_client_dossier_use_cases"></a>5.3. <span style="color: #D4CE28">Dossier</span> <code><span style="color: #167EF2">CMIS</span></code> : Cas d&#8217;utilisation</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Toutes les opérations nécessitent au préalable <strong class="green-background"><span class="underline">une connexion à un <code><span style="color: #FFBD33">repository</span></code></span></strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class CmisConnection {
+  /** The repository id. */
+  private static final String REPOSITORY_ID = "myRepoID";
+
+  private Session session = null;
+
+  private IDossierCmisClient cmisClient;
+
+  /**
+   * constructor
+   *
+   * @param appUrl dossier URL
+   */
+  public CmisConnection(String appUrl) {
+    super();
+    cmisClient = new DossierBrowserCmisClient(url);
+  }
+
+  /**
+   * Main method.
+   */
+  public static void main(String[] args)
+      throws Exception {
+    String dossierUrl = args[0];
+    String login = args[0];
+    String pwd = args[0];
+
+    CmisConnection con = new CmisConnection(dossierUrl);
+    Session session = con.connect2Repo(login, pwd);
+  }
+
+  /**
+   * connect to repository
+   *
+   * @param login login
+   * @param pwd   password
+   * @return token Session
+   * @throws Exception ...
+   */
+  public Session connect2Repo(String login, String pwd)
+      throws Exception {
+    Session session = null;
+    try {
+      // This call will work if there is only one repository !
+      session = cmisClient.createSession(login, pwd);
+      // else call
+      // session = cmisClient.createSession(REPOSITORY_ID, login, pwd);
+    }
+    catch(...){
+    }
+    return session;
+  }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si <span style="color: #D4CE28">Dossier</span> contient plus d&#8217;un <code><span style="color: #FFBD33">repository</span></code> (par défaut, 1 est défini par <strong>organisation</strong>), il vous faut :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>spécifier l' <strong>ID</strong> du repository cible</p>
+<div class="ulist">
+<ul>
+<li>
+<p>soit parce que vous le connaissez</p>
+</li>
+<li>
+<p>soit en interrogeant le serveur <code><span style="color: #167EF2">CMIS</span></code> et en récupérant la liste des <code><span style="color: #FFBD33">repositories</span></code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">  /**
+   * get available repository IDs
+   *
+   * @param login login
+   * @param pwd   password
+   * @return repo IDs
+   * @throws Exception ...
+   */
+  public List&lt;String&gt; getRepositoryIDs(String login, String pwd)
+      throws Exception {
+    try {
+      List&lt;Repository&gt; repositories = cmisClient.getRepositoriesCmisInfo(login, pwd);
+      if(repositories != null) {
+        return repositories.stream().map(RepositoryInfo::getId).collect(Collectors.toList())
+      }
+    }
+    catch(...){
+    }
+    return Collections.emptyList();
+  }</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_récupération_dun_objet"><a class="anchor" href="#_récupération_dun_objet"></a>5.3.1. Récupération d&#8217;un objet</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public Map&lt;String, String&gt; getObjectIDPropertiesAsString(Session session, String objectId)
+    throws Exception{
+
+    try{
+      CmisObjectWrapper obj = cmisClient.getObjectById(session, objectId);
+      return obj.getProperties().entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, e -&gt; e.getValue().getValueAsString()));
+    }
+    catch(...){
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_récupération_des_enfants_dun_objet"><a class="anchor" href="#_récupération_des_enfants_dun_objet"></a>5.3.2. Récupération des enfants d&#8217;un objet</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public List&lt;CmisObjectWrapper&gt; getObjectChildren(Session session, String objectId)
+    throws Exception{
+
+    try{
+      CmisObjectWrapper obj = cmisClient.getObjectById(session, objectId);
+
+      return cmisClient.getAllChildren(obj.getCmisObject());
+    }
+    catch(...){
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_récupération_du_contenu_binaire_dun_document"><a class="anchor" href="#_récupération_du_contenu_binaire_dun_document"></a>5.3.3. Récupération du contenu binaire d&#8217;un document</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public ContentStream getContentStream(Session session, String objectId)
+    throws Exception{
+
+    try{
+      // attention, ContentStream#getStream, si utilisé, doit être fermé !
+      return cmisClient.getContentStream(session, objectId);
+    }
+    catch(...){
+    }
+}
+
+public String downloadContentStream(Session session, String objectId)
+    throws Exception{
+
+  try{
+    // renvoie le chemin absolu vers le fichier téléchargé
+    return cmisClient.downloadContentStream(session, objectId);
+  }
+  catch(...){
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>il est également possible d&#8217;obtenir un contenu <strong class="green-background">partiel</strong> du contenu</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public ContentStream getPartialContentStream(Session session, String objectId, long offset, long length)
+    throws Exception{
+
+  try{
+    // attention, ContentStream#getStream, si utilisé, doit être fermé !
+    return cmisClient.getContentStream(session, objectId, offset,  length );
+  }
+  catch(...){
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong class="yellow-background">TODO Rendition à ajouter</strong></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_queries"><a class="anchor" href="#_queries"></a>5.3.4. <code><span style="color: #D35400">queries</span></code></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public List&lt;CmisQueryResultWrapper&gt; query(Session session, String query)
+    throws Exception{
+
+  return cmisClient.queryObjects(session, query);
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_suppression_dun_document"><a class="anchor" href="#_suppression_dun_document"></a>5.3.5. Suppression d&#8217;un document</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void deleteObject(Session session, String objectId)
+    throws Exception {
+
+  try {
+    cmisClient.deleteObject(session, objectId);
+  }
+  catch(...) {
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mise_à_jour_dun_document"><a class="anchor" href="#_mise_à_jour_dun_document"></a>5.3.6. Mise à jour d&#8217;un document</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void updateObject(Session session, String objectId)
+    throws Exception {
+
+  try {
+    String testString = "TEST UPDATE ";
+    Map&lt;String, Object&gt; properties = new HashMap&lt;&gt;();
+    properties.put("cm:document:cr:crDes", testString);
+    properties.put("cm:document:cr:crDate", new Date(531658800));
+    cmisClient.updateObject(session, objectId, properties);
+  }
+  catch(...) {
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_création_dun_commentaire"><a class="anchor" href="#_création_dun_commentaire"></a>5.3.7. Création d&#8217;un commentaire</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void createComment(Session session, String objectId)
+  throws Exception {
+
+  try {
+    String testString = "TEST COMMENT ";
+    Map&lt;String, Object&gt; properties = new HashMap&lt;&gt;();
+    properties.put("cmis:name", testString);
+    properties.put("cmis:objectTypeId", "cm:comment");
+    properties.put("cmis:baseTypeId", "cmis:item");
+    ObjectId newObjectId = cmisClient.createObject(session, objectId, properties, null);
+  }
+  catch(...) {
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_création_dun_document_airs"><a class="anchor" href="#_création_dun_document_airs"></a>5.3.8. Création d&#8217;un document AIRS</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void createFolder(Session session, String objectId)
+    throws Exception {
+
+  try {
+    String testString = "TEST CREATE FOLDER";
+    Map&lt;String, Object&gt; properties = new HashMap&lt;&gt;();
+    properties.put("cmis:objectTypeId", "cm:document:cr");
+    properties.put("cmis:baseTypeId", "cmis:folder");
+    properties.put("cm:document:cr:crDes", testString);
+    properties.put("cm:document:cr:crTheme", "172");
+    properties.put("cm:document:cr:crRedacteur", "97");
+    properties.put("cm:document:cr:crDate", new Date(531658800));
+    ObjectId newObjectId = cmisClient.createObject(session, "ZmxvdzpDUg==", properties, null);
+  }
+  catch(...){
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_création_dune_pièce_jointe"><a class="anchor" href="#_création_dune_pièce_jointe"></a>5.3.9. Création d&#8217;une pièce jointe</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public void updateObject(Session session, String objectId)
+    throws Exception {
+
+  try {
+    String testString = "TEST_CREATE_DOCUMENT";
+    Map&lt;String, Object&gt; properties = new HashMap&lt;&gt;();
+    properties.put("cmis:objectTypeId", "cm:attachment");
+    properties.put("cmis:baseTypeId", "cmis:document");
+    properties.put("cmis:versionLabel", testString);
+    properties.put("cmis:contentStreamFileName", "nomDeFichier.pdf");
+    properties.put("cmis:name", testString);
+    Path contentStream = Paths.get("C:/files/1.pdf");
+    ObjectId newObjectId = cmisClient.createObject(session, "ZG9jdW1lbnQ6Q1I6RGVybmllcnMgY29tcHRlIHJlbmR1czo3NjQy", properties, contentStream);
+  }
+  catch(...) {
+  }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cmis_appendix"><a class="anchor" href="#cmis_appendix"></a>6. Annexes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="cmis_appendix_dossier_interface"><a class="anchor" href="#cmis_appendix_dossier_interface"></a>6.1. Interface client <span style="color: #D4CE28">Dossier</span></h3>
+<div class="listingblock">
+<div class="title">Interface IDossierCmisClient</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package com.digitech.dossier.cmis.client;
+
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.apache.chemistry.opencmis.client.api.*;
+import org.apache.chemistry.opencmis.commons.data.ContentStream;
+import org.apache.chemistry.opencmis.commons.data.RepositoryCapabilities;
+import org.apache.chemistry.opencmis.commons.data.RepositoryInfo;
+
+import com.digitech.dossier.cmis.client.exception.CmisClientException;
+import com.digitech.dossier.cmis.client.exception.InvalidArgumentException;
+import com.digitech.dossier.cmis.client.exception.ObjectNotFoundException;
+import com.digitech.dossier.cmis.client.typedef.CmisObjectWrapper;
+import com.digitech.dossier.cmis.client.typedef.CmisQueryResultWrapper;
+import com.digitech.dossier.cmis.client.typedef.CmisTypeDefinitionWrapper;
+
+/**
+ * Dossier Cmis Client interface
+ */
+public interface IDossierCmisClient {
+
+  /**
+   * inject basic credential (and default ones)
+   *
+   * @param login user login
+   * @param pwd   user password
+   */
+  void setCredentials(String login, String pwd);
+
+  /**
+   * inject language (and default one)
+   *
+   * @param language expected user language
+   */
+  void setLanguage(String language);
+
+  /**
+   * create CMIS session on 1st repository, using already set credentials
+   * If more than one repository exist, an exception will be thrown
+   *
+   * @return {@link Session}
+   * @throws CmisClientException in case of any exception
+   */
+  Session createSession()
+      throws CmisClientException;
+
+  /**
+   * create CMIS session on 1st repository, using already set credentials
+   *
+   * @param repoId repository Id
+   * @return {@link Session}
+   * @throws CmisClientException in case of any exception
+   */
+  Session createSession(String repoId)
+      throws CmisClientException;
+
+  /**
+   * create CMIS session on 1t repository
+   * If more than one repository exist, an exception will be thrown
+   *
+   * @param login login
+   * @param pwd   password
+   * @return {@link Session}
+   * @throws CmisClientException in case of any exception
+   */
+  Session createSession(String login, String pwd)
+      throws CmisClientException;
+
+  /**
+   * create CMIS session on specific repository (id)
+   *
+   * @param repoId repository Id
+   * @param login  login
+   * @param pwd    password
+   * @return {@link Session}
+   * @throws CmisClientException in case of any exception
+   */
+  Session createSession(String repoId, String login, String pwd)
+      throws CmisClientException;
+
+  /**
+   * create CMIS session  on specific repository (id)
+   *
+   * @param login    login
+   * @param pwd      password
+   * @param repoId   repository Id
+   * @param language language
+   * @return {@link Session}
+   * @throws CmisClientException in case of any exception
+   */
+  Session createSession(String repoId, String login, String pwd, String language)
+      throws CmisClientException;
+
+  /**
+   * get available repositories, using credentials already specified by previous *setCredentials* call
+   *
+   * @return {@link Repository}
+   * @throws CmisClientException in case of any exception
+   */
+  List&lt;Repository&gt; getRepositoriesCmisInfo()
+      throws CmisClientException;
+
+  /**
+   * get available repositories, using specific credentials
+   *
+   * @param login login
+   * @param pwd   password
+   * @return {@link RepositoryInfo}
+   * @throws CmisClientException in case of any exception
+   */
+  List&lt;Repository&gt; getRepositoriesCmisInfo(String login, String pwd)
+      throws CmisClientException;
+
+  /**
+   * get cmis repository information, related to the repository user is connected to
+   *
+   * @param session valid CMIS server session
+   * @return {@link Repository}
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws CmisClientException      in case of any exception
+   */
+  RepositoryInfo getRepositoryCmisInfo(Session session)
+      throws InvalidArgumentException, CmisClientException;
+
+  /**
+   * get repository capabilities
+   *
+   * @param session valid CMIS server session
+   * @return {@link RepositoryCapabilities}
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws CmisClientException      in case of any exception
+   */
+  RepositoryCapabilities getRepositoryCapabilities(Session session)
+      throws InvalidArgumentException, CmisClientException;
+
+  /**
+   * check if current repository enabled Query
+   *
+   * @param session valid CMIS server session
+   * @return true if it is supported
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws CmisClientException      in case of any exception
+   */
+  boolean isSupportQuery(Session session)
+      throws InvalidArgumentException, CmisClientException;
+
+  /**
+   * get type definition from its ID
+   *
+   * @param session valid CMIS server session
+   * @param typeId  type ID
+   * @return {@link ObjectType}
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
+   */
+  ObjectType getCmisTypeDefinition(Session session, String typeId)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * load type definitions
+   *
+   * @param session valid CMIS server session
+   * @return list of {@link ObjectType}
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
+   */
+  List&lt;ObjectType&gt; getCmisTypeDefinitions(Session session)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get type definition from its ID
+   *
+   * @param session valid CMIS server session
+   * @param typeId  type ID
+   * @return {@link CmisTypeDefinitionWrapper}
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
+   */
+  CmisTypeDefinitionWrapper getWrappedTypeDefinition(Session session, String typeId)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * load type definitions
+   *
+   * @param session valid CMIS server session
+   * @return list of {@link CmisTypeDefinitionWrapper}
+   * @throws CmisClientException      if input {@link Session} is invalid
+   * @throws InvalidArgumentException in case of any exception
+   */
+  List&lt;CmisTypeDefinitionWrapper&gt; getWrappedTypeDefinitions(Session session)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get root folder
+   *
+   * @param session valid CMIS server session
+   * @return root {@link Folder}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  Folder getRootFolder(Session session)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get folder children, iterable result
+   *
+   * @param parent {@link Folder} to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid
+   */
+  ItemIterable&lt;CmisObject&gt; getChildren(Folder parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get folder children, iterable result
+   *
+   * @param parent folder to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid or not a {@link Folder}
+   */
+  ItemIterable&lt;CmisObject&gt; getChildren(CmisObject parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get all folder children
+   *
+   * @param parent {@link Folder} to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid
+   */
+  List&lt;CmisObjectWrapper&gt; getAllChildren(Folder parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get all folder children
+   *
+   * @param parent folder to get children from
+   * @return iterable children
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if parent is not valid or not a {@link Folder}
+   */
+  List&lt;CmisObjectWrapper&gt; getAllChildren(CmisObject parent)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get object by its id
+   *
+   * @param session valid CMIS server session
+   * @param id      object id
+   * @return {@link CmisObjectWrapper}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  CmisObjectWrapper getObjectById(Session session, String id)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * get object by its id
+   *
+   * @param session          valid CMIS server session
+   * @param id               object id
+   * @param filteredMetadata expected returned metadata (by default all)
+   * @return {@link CmisObjectWrapper}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  CmisObjectWrapper getObjectById(Session session, String id, Set&lt;String&gt; filteredMetadata)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * get object by its path
+   *
+   * @param session valid CMIS server session
+   * @param path    object path
+   * @return {@link CmisObjectWrapper}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  CmisObjectWrapper getObjectByPath(Session session, String path)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get object by its path
+   *
+   * @param session          valid CMIS server session
+   * @param path             object path
+   * @param filteredMetadata expected returned metadata (by default all)
+   * @return {@link CmisObjectWrapper}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  CmisObjectWrapper getObjectByPath(Session session, String path, Set&lt;String&gt; filteredMetadata)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * query objects
+   *
+   * @param session valid CMIS server session
+   * @param query   SQL-92 compliant query
+   * @return list of results (wrapped to {@link CmisQueryResultWrapper})
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  List&lt;CmisQueryResultWrapper&gt; queryObjects(Session session, String query)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * query objects
+   *
+   * @param session  valid CMIS server session
+   * @param query    SQL-92 compliant query
+   * @param pageSize page size
+   * @return list of results (wrapped to {@link CmisQueryResultWrapper})
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  List&lt;CmisQueryResultWrapper&gt; queryObjects(Session session, String query, int pageSize)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * query objects, and get IDs
+   *
+   * @param session valid CMIS server session
+   * @param query   SQL-92 compliant query
+   * @return list of objects ids
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  List&lt;String&gt; queryObjectIDs(Session session, String query)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * query objects, and get IDs
+   *
+   * @param session  valid CMIS server session
+   * @param query    SQL-92 compliant query
+   * @param pageSize page size
+   * @return list of objects ids
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   */
+  List&lt;String&gt; queryObjectIDs(Session session, String query, int pageSize)
+      throws CmisClientException, InvalidArgumentException;
+
+  /**
+   * get content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return url
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  String getContentStreamUrl(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * get document content Stream.
+   * Careful, if using {@link ContentStream#getStream()}, you should take care of closing it
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return see {@link ContentStream}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  ContentStream getContentStream(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * download content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @param offset   offset (in bytes) to start document reading (first offset will then be skipped)
+   * @param length   byte number read
+   * @return see {@link ContentStream}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */
+  ContentStream getContentStream(Session session, String objectId, long offset, long length)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException, IOException;
+
+  /**
+   * download content URL
+   *
+   * @param session  valid CMIS server session
+   * @param objectId object id to get document url from
+   * @return full downloaded file path
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */
+  String downloadContentStream(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException, IOException;
+
+  /**
+   * download content URL
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @param targetFolder folder to download file to
+   * @return full downloaded file path
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   * @throws IOException              if any I/O exception occurred
+   */
+  String downloadContentStream(Session session, String objectId, Path targetFolder)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException, IOException;
+
+  /**
+   * delete an object
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  void deleteObject(Session session, String objectId)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+
+  /**
+   * update an object
+   *
+   * @param session      valid CMIS server session
+   * @param objectId     object id to get document url from
+   * @param propertiesMap   properties to update (cmis property code, property value) {@link Map}
+   * @throws CmisClientException      in case of any exception
+   * @throws InvalidArgumentException if input {@link Session} is invalid
+   * @throws ObjectNotFoundException  if object has not been found
+   */
+  void updateObject(Session session, String objectId, Map&lt;String, ?&gt; propertiesMap)
+      throws CmisClientException, InvalidArgumentException, ObjectNotFoundException;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cmis_appendix_dossier_library"><a class="anchor" href="#cmis_appendix_dossier_library"></a>6.2. librairie <strong>dossier-cmis-client</strong></h3>
+<div class="listingblock">
+<div class="title">Liste des dépendances de <strong>dossier-cmis-client</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">com.digitech.airs:dossier-cmis-client:jar: 1.0.1
++- org.apache.chemistry.opencmis:chemistry-opencmis-client-impl:jar:1.1.0:compile
+|  +- org.apache.chemistry.opencmis:chemistry-opencmis-client-api:jar:1.1.0:compile
+|  +- org.apache.chemistry.opencmis:chemistry-opencmis-commons-api:jar:1.1.0:compile
+|  +- org.apache.chemistry.opencmis:chemistry-opencmis-commons-impl:jar:1.1.0:compile
+|  |  \- org.codehaus.woodstox:woodstox-core-asl:jar:4.4.1:compile
+|  |     \- org.codehaus.woodstox:stax2-api:jar:3.1.4:compile
+|  +- org.apache.chemistry.opencmis:chemistry-opencmis-client-bindings:jar:1.1.0:compile
+|  +- org.apache.cxf:cxf-rt-transports-http:jar:3.3.5:compile
+|  |  \- org.apache.cxf:cxf-core:jar:3.3.5:compile
+|  |     +- org.glassfish.jaxb:jaxb-runtime:jar:2.4.0-b180830.0438:compile
+|  |     |  +- javax.xml.bind:jaxb-api:jar:2.2.2:compile
+|  |     |  |  +- javax.xml.stream:stax-api:jar:1.0-2:compile
+|  |     |  |  \- javax.activation:activation:jar:1.1:compile
+|  |     |  +- org.glassfish.jaxb:txw2:jar:2.4.0-b180830.0438:compile
+|  |     |  +- com.sun.istack:istack-commons-runtime:jar:3.0.7:compile
+|  |     |  +- org.jvnet.staxex:stax-ex:jar:1.8:compile
+|  |     |  +- com.sun.xml.fastinfoset:FastInfoset:jar:1.2.15:compile
+|  |     |  \- javax.activation:javax.activation-api:jar:1.2.0:compile
+|  |     +- com.fasterxml.woodstox:woodstox-core:jar:5.0.3:compile
+|  |     +- org.apache.ws.xmlschema:xmlschema-core:jar:2.2.5:compile
+|  |     \- jakarta.xml.bind:jakarta.xml.bind-api:jar:2.3.2:compile
+|  |        \- jakarta.activation:jakarta.activation-api:jar:1.2.1:compile
+|  \- org.apache.cxf:cxf-rt-ws-policy:jar:3.0.12:compile
+|     +- wsdl4j:wsdl4j:jar:1.6.3:compile
+|     \- org.apache.neethi:neethi:jar:3.0.3:compile
++- org.apache.commons:commons-lang3:jar:3.9:compile
++- org.apache.commons:commons-collections4:jar:4.4:compile
++- commons-io:commons-io:jar:2.6:compile
++- commons-codec:commons-codec:jar:1.13:compile
++- org.slf4j:slf4j-api:jar:1.7.30:compile</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="highlightjs/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script type="text/javascript" src="tools/codeTools.js"></script>
+<script type="text/javascript" src="tools/tabs.js"></script>
+<script type="text/javascript" src="tools/switchTheme.js"></script>
+<script type="text/javascript">
+
+  function initTabsAndTheme() {
+    buildTabs();
+    initTheme();
+  }
+
+  /* Tocbot dynamic TOC, works with tocbot 4.0.x */
+  try {
+    tocbot.init({
+      contentSelector: '#content',
+      headingSelector: 'h1, h2, h3, h4, h5',
+      smoothScroll: true,
+      headingsOffset: 40,
+      scrollSmoothOffset: -40,
+      orderedList: false
+    });
+
+    let oldtoc = document.getElementById('toctitle').nextElementSibling;
+    const newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+
+    const handleTocOnResize = function () {
+      const width = window.innerWidth
+          || document.documentElement.clientWidth
+          || document.body.clientWidth;
+      if (width < 768) {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          collapseDepth: 6,
+          activeLinkClass: 'ignoreactive',
+          throttleTimeout: 1000,
+          smoothScroll: false
+        });
+      } else {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          smoothScroll:  true,
+          headingsOffset: 40,
+          scrollSmoothOffset: -40,
+          orderedList: false
+        });
+      }
+    };
+
+    addCodeToolElements();
+    switchInitialTheme();
+    handleTocOnResize();
+    window.addEventListener('resize', handleTocOnResize);
+    window.addEventListener("load", initTabsAndTheme());
+  }
+  catch(err) {}
+
+
+</script>
+</body>
+</html>

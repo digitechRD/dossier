@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>fr.digitech.ged.dossier</groupId>
+    <artifactId>dossier.documentation.gh</artifactId>
+    <version>1.0.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>dossier-docs</artifactId>
+  <packaging>jar</packaging>
+  <name>Dossier Docs</name>
+  <version>1.0.1-SNAPSHOT</version>
+  <description>Dossier ASCIIDOC documentation</description>
+
+  <profiles>
+    <!-- sso -->
+    <profile>
+      <id>dossier-sso</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-sso</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>sso</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- user-guide -->
+    <profile>
+      <id>dossier-user-guide</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-user-guide</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>user-guide</id-key>
+        <embedAssets>false</embedAssets>
+        <doc.outputFile>[Dossier]Manuel-Utilisateur</doc.outputFile>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- cmis -->
+    <profile>
+      <id>dossier-cmis</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-cmis</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>cmis</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- ws-soap -->
+    <profile>
+      <id>dossier-ws</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-ws</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>webservices</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- groovy -->
+    <profile>
+      <id>dossier-groovy</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-groovy</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>groovy</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- signature-book -->
+    <profile>
+      <id>dossier-signature-book</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-signature-book</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>signature-book</id-key>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+
+    <!-- sample officiel -->
+    <profile>
+      <id>docs-sample</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>docs-sample</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>generate-pdf-asciidoc-sample</id>
+                <phase>generate-resources</phase>
+                <goals>
+                  <goal>process-asciidoc</goal>
+                </goals>
+                <configuration>
+                  <attributes>
+                    <pdf-stylesdir>${project.basedir}/src/adoc/z-asciidoc-sample</pdf-stylesdir>
+                    <pdf-style>chronicles</pdf-style>
+                    <sourceHighlighter>coderay</sourceHighlighter>
+                  </attributes>
+                  <sourceDirectory>${basedir}/src/adoc/z-asciidoc-sample</sourceDirectory>
+                  <sourceDocumentName>chronicles-example.adoc</sourceDocumentName>
+                  <outputDirectory>src/main/resources/docs/sample</outputDirectory>
+                  <backend>pdf</backend>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>

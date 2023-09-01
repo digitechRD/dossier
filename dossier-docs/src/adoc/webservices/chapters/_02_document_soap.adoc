@@ -1,0 +1,375 @@
+[[document_soap]]
+=== Document
+
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/WSDocument?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IDocumentWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Méthodes
+
+create::
+
+Cette méthode permet de créer un document
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*documentData*|Ensemble de données du document|[red]*Oui*|
+[source,xml]
+----
+<web:documentData>
+    <type:contentType>CR</type:contentType>
+    <type:data>cid:1245214428780</type:data>
+    <type:fields>
+        <web:item>
+            <type:code>D_MODIF</type:code>
+            <type:field>2/07/2022 15:32:47</type:field>
+        </web:item>
+        <web:item>
+            <type:code>CR_DES</type:code>
+            <type:field>Test creat</type:field>
+        </web:item>
+        <web:item>
+            <type:code>CR_RESUME</type:code>
+            <type:field>test creat</type:field>
+        </web:item>
+    </type:fields>
+</web:documentData>
+----
+
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:create>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:documentData>
+            <type:contentType>CR</type:contentType>
+            <type:data>cid:1245214428780</type:data>
+            <type:fields>
+               <web:item>
+                  <type:code>D_MODIF</type:code>
+                  <type:field>2/07/2022 15:32:47</type:field>
+               </web:item>
+                <web:item>
+                  <type:code>CR_DES</type:code>
+                  <type:field>Test creat</type:field>
+               </web:item>
+                <web:item>
+                  <type:code>CR_RESUME</type:code>
+                  <type:field>test creat</type:field>
+               </web:item>
+            </type:fields>
+         </web:documentData>
+      </web:create>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+cf le chapitre <<appendix_document>> pour une description de la structure documentData.
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <createResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <createReturn>6734</createReturn>
+      </createResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+get::
+
+Cette méthode permet de récupérer les métadonnées d'un document à partir de son identifiant
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source, xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document|[red]*Oui*|4959
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:get>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>4959</web:docId>
+      </web:get>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getReturn>
+            <types:contentType>CR</types:contentType>
+            <types:fields>
+               <item>
+                  <types:code>D_MODIF</types:code>
+                  <types:field>12/07/2022 15:32:47</types:field>
+               </item>
+               <item>
+                  <types:code>CR_THEME</types:code>
+                  <types:field>Réunion Transverse</types:field>
+               </item>
+               <item>
+                  <types:code>D_CREAT</types:code>
+                  <types:field>24/08/2021 11:02:30</types:field>
+               </item>
+               <item>
+                  <types:code>CR_DES</types:code>
+                  <types:field>test html</types:field>
+               </item>
+               <item>
+                  <types:code>CR_REDACTEUR</types:code>
+                  <types:field>ADM Dossier</types:field>
+               </item>
+               <item>
+                  <types:code>CR_DATE</types:code>
+                  <types:field>24/08/2021 0:00:00</types:field>
+               </item>
+               <item>
+                  <types:code>CR_RESUME</types:code>
+                  <types:field>test html</types:field>
+               </item>
+            </types:fields>
+            <types:secretLevel>10</types:secretLevel>
+         </getReturn>
+      </getResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_document>> pour une description de la structure de retour. (Se référer à documentData).
+
+
+update::
+
+Cette méthode permet de mettre à jour les métadonnées d'un document
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document|[red]*Oui*|4959
+|*documentData*|Ensemble de données du document|[red]*Oui*|
+[source,xml]
+----
+<web:documentData>
+    <type:contentType>CR</type:contentType>
+    <type:data>cid:1245214428780</type:data>
+    <type:fields>
+        <web:item>
+            <type:code>D_MODIF</type:code>
+            <type:field>2/07/2022 15:32:47</type:field>
+        </web:item>
+        <web:item>
+            <type:code>CR_DES</type:code>
+            <type:field>Test creat</type:field>
+        </web:item>
+        <web:item>
+            <type:code>CR_RESUME</type:code>
+            <type:field>test creat</type:field>
+        </web:item>
+    </type:fields>
+</web:documentData>
+----
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:update>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>6734</web:docId>
+         <web:documentData>
+            <type:contentType>CR</type:contentType>
+            <type:fields>
+               <web:item>
+                  <type:code>CR_DES</type:code>
+                  <type:field>TEST UPDATE</type:field>
+               </web:item>
+            </type:fields>
+         </web:documentData>
+      </web:update>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <updateResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <updateReturn>6734</updateReturn>
+      </updateResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+delete::
+
+Cette méthode permet de supprimer logiquement un document.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source, xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document|[red]*Oui*|4959
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:delete>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>6734</web:docId>
+      </web:delete>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <deleteResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <deleteReturn>6734</deleteReturn>
+      </deleteResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+remove::
+
+Cette méthode permet de supprimer physiquement un document.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source, xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document|[red]*Oui*|4959
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:remove>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>6734</web:docId>
+      </web:remove>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <removeResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <deleteReturn>6734</deleteReturn>
+      </removeResponse>
+   </soap:Body>
+</soap:Envelope>
+----

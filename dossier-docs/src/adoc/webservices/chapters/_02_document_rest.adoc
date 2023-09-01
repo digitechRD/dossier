@@ -1,0 +1,354 @@
+[[document_rest]]
+=== Document
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IDocumentClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {POST} /document
+
+Cette méthode permet de créer un document
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*documentData*|{multipart}|Ensemble de données du document|[red]*Oui*|
+[source,json]
+----
+{
+  "contentType": "CR",
+  "secretLevel": 0,
+  "fields": [{
+    "code": "CR",
+    "field": "Title"}],
+  "data": ["CR"],
+  "filename": "test",
+  "flowCode": "CR",
+  "scriptCode": "test"
+}
+----
+|*fileData*|{multipart}|Liste de fichiers|[green]*Non*|
+|===
+cf le chapitre <<appendix_document>> pour une description de la structure documentData (Se réferer à WSCommonDocumentType).
+
+[NOTE]
+====
+Le type de contenu du corps de la requête doit être "multipart/form-data".
+Pour ajouter plusieurs fichiers au document, il suffit d'envoyer plusieurs fois le paramètre fileData dans le corps de la requête.
+====
+[source]
+.appel _curl_
+----
+curl --location --request POST '<host>:<port>/<context>/rest/document' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ='  \
+--form 'documentData="{
+    \"contentType\": \"CR\",
+    \"fields\": [
+      {
+        \"code\": \"D_MODIF\",
+        \"field\": \"04/02/2021 16:58:35\"
+      },
+      {
+        \"code\": \"CR_DES\",
+        \"field\": \"Test DOC\"
+      },
+      {
+        \"code\": \"CR_REDACTEUR\",
+        \"field\": \"1\"
+      },
+      {
+        \"code\": \"CR_DATE\",
+        \"field\": \"01/01/2022 0:00:00\"
+      },
+      {
+        \"code\": \"CR_RESUME\",
+        \"field\": \"TEST DOC\"
+      }
+    ]
+  }";type=application/json' \
+--form 'fileData=@"/C:/TEST1.pdf"' \
+--form 'fileData=@"/C:/TEST2.pdf"'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/document
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<document_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[document_rest_response]]
+[source,text]
+.Retour, Identifiant du document
+----
+6733
+----
+
+===== {GET} /document/{docId}
+
+Cette méthode permet de récupérer les métadonnées d'un document à partir de son identifiant
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|
+4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/document/4959' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/document/4959
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentgetjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentgetjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "WSDocumentType": {
+    "contentType": "CR",
+    "secretLevel": 10,
+    "fields": [
+      {
+        "code": "D_MODIF",
+        "field": "12/07/2022 15:32:47"
+      },
+      {
+        "code": "CR_THEME",
+        "field": "Réunion Transverse"
+      },
+      {
+        "code": "D_CREAT",
+        "field": "24/08/2021 11:02:30"
+      },
+      {
+        "code": "CR_DES",
+        "field": "test html"
+      },
+      {
+        "code": "CR_REDACTEUR",
+        "field": "ADM Dossier"
+      },
+      {
+        "code": "CR_DATE",
+        "field": "24/08/2021 0:00:00"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "test html"
+      }
+    ]
+  }
+}
+----
+
+cf le chapitre <<appendix_document>> pour une description de la structure de retour.
+
+===== {PATCH} /document/{docId}
+
+Cette méthode permet de mettre à jour les métadonnées d'un document
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*documentData*|{multipart}|Ensemble de données du document|[red]*Oui*|
+[source,json]
+----
+{
+  "contentType": "CR",
+  "secretLevel": 0,"fields": [{
+    "code": "CR",
+    "field": "Title"}],
+  "data": ["CR"],
+  "filename": "test",
+  "flowCode": "CR",
+  "scriptCode": "test"
+}
+----
+|*fileData*|{multipart}|Liste de fichiers|[green]*Non*|
+|===
+cf le chapitre <<appendix_document>> pour une description de la structure documentData.
+[NOTE]
+====
+Le type de contenu du corps de la requête doit être "multipart/form-data".
+Pour ajouter plusieurs fichiers au document, il suffit d'envoyer plusieurs fois le paramètre fileData dans le corps de la requête.
+====
+[source]
+.appel _curl_
+----
+curl -X 'PATCH' \
+  '<host>:<port>/<context>/rest/document/4959' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "fields": [
+      {
+        "code": "CR_DES",
+        "field": "test html"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "test html"
+      }
+    ]
+  }'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/document/4959
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentupdatejson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentupdatejson_response]]
+[source,text]
+.Exemple de retour
+----
+4959
+----
+
+===== {DELETE} /document/{docId}
+
+Cette méthode permet de supprimer logiquement un document.
+[NOTE]
+====
+Les documents enfants seront aussi supprimés.
+====
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/4959' \
+  -H 'accept: text/plain' \
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/document/4959
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentdeletejson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentdeletejson_response]]
+[source,text]
+.Liste d'identifiants des documents supprimés
+----
+[4959, 2845]
+----
+
+===== {DELETE} /document/remove/{docId}
+
+Cette méthode permet de supprimer physiquement un document.
+[NOTE]
+====
+Les documents enfants seront aussi supprimés.
+====
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/remove/4959' \
+  -H 'accept: text/plain' \
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/document/remove/4959
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentremovejson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentremovejson_response]]
+[source,text]
+.Liste d'identifiants des documents supprimés
+----
+[4959, 2845]
+----

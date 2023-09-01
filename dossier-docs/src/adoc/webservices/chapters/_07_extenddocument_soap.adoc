@@ -1,0 +1,416 @@
+[[extenddocument_soap]]
+=== ExtendDocument
+
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/extendDocument?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IExtendDocumentWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Méthodes
+
+deleteDocuments::
+
+Cette méthode permet de supprimer des documents par lot.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*arg0*|Objet contenant les informations de connexion.|[red]*Oui*|
+[source,xml]
+----
+<arg0>
+    <login>login</login>
+    <password>password</password>
+</arg0>
+----
+|*arg1*|Identifiant AIRS du document a supprimer. Ce paramètre peut apparaître plusieurs fois.|[red]*Oui*|
+[source,xml]
+----
+<arg1>157</arg1>
+----
+
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure arg0 (voir connectionData).
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:deleteDocuments>
+         <arg0>
+            <login>login</login>
+            <password>password</password>
+         </arg0>
+         <!--1 or more repetitions:-->
+         <arg1>1</arg1>
+         <arg1>2</arg1>
+      </web:deleteDocuments>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:deleteDocumentsResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com/" xmlns:ns4="http://webservices.dossier.digitech.com">
+         <dos:return>
+            <ns4:docId>1</ns4:docId>
+            <ns4:state>OK</ns4:state>
+            <ns4:message></ns4:message>
+            <ns4:children/>
+         </dos:return>
+         <dos:return>
+            <ns4:docId>2</ns4:docId>
+            <ns4:state>ERROR</ns4:state>
+            <ns4:message>com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas</ns4:message>
+            <ns4:children/>
+         </dos:return>
+      </dos:deleteDocumentsResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour (voir WSDeleteReportItemType).
+
+deleteDocumentsType::
+
+Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*arg0*|Objet contenant les informations de connexion.|[red]*Oui*|
+[source,xml]
+----
+<arg0>
+    <login>login</login>
+    <password>password</password>
+</arg0>
+----
+|*arg1*|Identifiant AIRS du document a supprimer. Ce paramètre peut apparaître plusieurs fois.|[red]*Oui*|
+[source,xml]
+----
+<arg1>157</arg1>
+----
+|*deleteType*|Type de suppression. Valeurs possibles :
+DOC_REMOVE_TYPE_DOC_ONLY
+DOC_REMOVE_TYPE_CHECK_PARENT
+DOC_REMOVE_TYPE_FORCE|[red]*Oui*|DOC_REMOVE_TYPE_FORCE
+
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure arg0 (voir connectionData).
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:deleteDocumentsType>
+         <arg0>
+            <login>n.felix</login>
+            <password>password</password>
+         </arg0>
+         <!--1 or more repetitions:-->
+         <arg1>1</arg1>
+         <arg1>2</arg1>
+         <deleteType>DOC_REMOVE_TYPE_FORCE</deleteType>
+      </web:deleteDocumentsType>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:deleteDocumentsTypeResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com/" xmlns:ns4="http://webservices.dossier.digitech.com">
+         <dos:return>
+            <ns4:docId>1</ns4:docId>
+            <ns4:state>OK</ns4:state>
+            <ns4:message></ns4:message>
+            <ns4:children/>
+         </dos:return>
+         <dos:return>
+            <ns4:docId>2</ns4:docId>
+            <ns4:state>ERROR</ns4:state>
+            <ns4:message>com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas</ns4:message>
+            <ns4:children/>
+         </dos:return>
+      </dos:deleteDocumentsTypeResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour (voir WSDeleteReportItemType).
+
+getAttachementByDocId::
+
+Cette méthode permet de récupérer la première pièce jointe d'un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*arg0*|Objet contenant les informations de connexion.|[red]*Oui*|
+[source,xml]
+----
+<arg0>
+    <login>login</login>
+    <password>password</password>
+</arg0>
+----
+|*arg1*|Identifiant du document|[red]*Oui*|4959
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure arg0 (voir connectionData).
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getAttachementByDocId>
+         <arg0>
+            <login>login</login>
+            <password>password</password>
+         </arg0>
+         <arg1>5028</arg1>
+      </web:getAttachementByDocId>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:getAttachementByDocIdResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com/" xmlns:ns4="http://webservices.dossier.digitech.com">
+         <dos:return>
+            <ns4:firstAttachment>
+               <ns4:id>5189</ns4:id>
+               <ns4:airsType>ORIGINAL</ns4:airsType>
+               <ns4:label>viroflay7àé.pdf</ns4:label>
+               <ns4:data>JVBERi0xLjMNJeLjz9MNCjEgMCBvYmoNPDwvTWV0YWRhdGEgMjcgMCBSL1BhZ2VzIDIgMCBSL1R5cGUvQ2F0YWxvZz4...</ns4:data>
+               <ns4:fileName>viroflay7àé.pdf</ns4:fileName>
+            </ns4:firstAttachment>
+            <ns4:items/>
+         </dos:return>
+      </dos:getAttachementByDocIdResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_document>> pour une description de la structure de retour (voir WSAttachmentListType).
+
+insertDocuments::
+
+Cette méthode permet créer des documents par lot.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*arg0*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<arg0>
+    <login>login</login>
+    <password>password</password>
+</arg0>
+----
+|*arg1*|Liste de WSInsertDocumentType. Ce paramètre peut apparaître plusieurs fois.|[red]*Oui*|
+[source,xml]
+----
+<arg1>
+    <currentDocument>
+       <contentType>CR</contentType>
+       <secretLevel>10</secretLevel>
+       <fields>
+          <!--Zero or more repetitions:-->
+          <field>
+             <code>D_MODIF</code>
+             <field>04/02/2021 16:58:35</field>
+          </field>
+          <field>
+             <code>CR_DES</code>
+             <field>Test DOC</field>
+          </field>
+       </fields>
+       <data>cid:373014430535</data>
+       <flowCode>CR</flowCode>
+    </currentDocument>
+    <doUpdateParent>false</doUpdateParent>
+</arg1>
+----
+|===
+cf le chapitre <<appendix_general>> pour une description de la structure arg0 (voir connectionData).
+
+cf le chapitre <<appendix_general>> pour une description de la structure WSInsertDocumentType.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:insertDocuments>
+         <arg0>
+            <login>login</login>
+            <password>password</password>
+         </arg0>
+         <!--1 or more repetitions:-->
+         <arg1>
+            <currentDocument>
+               <contentType>CR</contentType>
+               <secretLevel>10</secretLevel>
+               <fields>
+                  <!--Zero or more repetitions:-->
+                  <field>
+                     <code>D_MODIF</code>
+                     <field>04/02/2021 16:58:35</field>
+                  </field>
+                  <field>
+                     <code>CR_DES</code>
+                     <field>Test DOC</field>
+                  </field>
+               </fields>
+               <data>cid:373014430535</data>
+               <flowCode>CR</flowCode>
+            </currentDocument>
+            <doUpdateParent>false</doUpdateParent>
+         </arg1>
+      </web:insertDocuments>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:insertDocumentsResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com/" xmlns:ns4="http://webservices.dossier.digitech.com">
+         <dos:return>
+            <ns4:docId>6976</ns4:docId>
+            <ns4:state>ERROR</ns4:state>
+            <ns4:message>Erreur</ns4:message>
+         </dos:return>
+      </dos:insertDocumentsResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour (voir WSInsertReportItemType).
+
+updateDocuments::
+
+Cette méthode permet de mettre à jour des documents par lot.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*arg0*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<arg0>
+    <login>login</login>
+    <password>password</password>
+</arg0>
+----
+|*arg1*|Liste de WSExtendDocumentType. Ce paramètre peut apparaître plusieurs fois.|[red]*Oui*|
+[source,xml]
+----
+<arg1>
+   <contentType>CR</contentType>
+   <secretLevel>10</secretLevel>
+   <fields>
+      <!--Zero or more repetitions:-->
+      <field>
+         <code>D_MODIF</code>
+         <field>04/02/2021 16:58:35</field>
+      </field>
+      <field>
+         <code>CR_DES</code>
+         <field>Test DOC</field>
+      </field>
+   </fields>
+   <flowCode>CR</flowCode>
+   <web1:docId>5028</web1:docId>
+</arg1>
+----
+|===
+cf le chapitre <<appendix_general>> pour une description de la structure arg0 (voir connectionData).
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSExtendDocumentType.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com/" xmlns:web1="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:updateDocuments>
+         <arg0>
+            <login>login</login>
+            <password>password</password>
+         </arg0>
+         <!--1 or more repetitions:-->
+         <arg1>
+               <contentType>CR</contentType>
+               <secretLevel>10</secretLevel>
+               <fields>
+                  <!--Zero or more repetitions:-->
+                  <field>
+                     <code>D_MODIF</code>
+                     <field>04/02/2021 16:58:35</field>
+                  </field>
+                  <field>
+                     <code>CR_DES</code>
+                     <field>Test DOC</field>
+                  </field>
+               </fields>
+               <flowCode>CR</flowCode>
+               <web1:docId>5028</web1:docId>
+         </arg1>
+      </web:updateDocuments>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:updateDocumentsResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com/" xmlns:ns4="http://webservices.dossier.digitech.com">
+         <dos:return>
+            <ns4:docId>5028</ns4:docId>
+            <ns4:state>OK</ns4:state>
+            <ns4:message/>
+         </dos:return>
+      </dos:updateDocumentsResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour (voir WSUpdateReportItemType).

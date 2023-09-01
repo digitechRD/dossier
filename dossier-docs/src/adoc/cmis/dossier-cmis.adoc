@@ -1,0 +1,62 @@
+[[Dossier-cmis]]
+= CMIS *AIRS Dossier*
+v1.0, 01/05/2020
+:revnumber: 1.0
+include::{sharedResource}/adoc/template.adoc[]
+:favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
+// substition/alias
+:cmis: pass:quotes[`<span style="color: #167EF2">CMIS</span>`]
+:repository: pass:quotes[`<span style="color: #FFBD33">repository</span>`]
+:repositories: pass:quotes[`<span style="color: #FFBD33">repositories</span>`]
+:query: pass:quotes[`<span style="color: #D35400">query</span>`]
+:queries: pass:quotes[`<span style="color: #D35400">queries</span>`]
+:document: pass:quotes[`<span style="color: #82E0AA">document</span>`]
+:documents: pass:quotes[`<span style="color: #82E0AA">documents</span>`]
+:folder: pass:quotes[`<span style="color: #82E0AA">folder</span>`]
+:folders: pass:quotes[`<span style="color: #82E0AA">folders</span>`]
+:contentstream: pass:quotes[`<span style="color: #82E0AA">content stream</span>`]
+:relationship: pass:quotes[`<span style="color: #82E0AA">relationship</span>`]
+:policy: pass:quotes[`<span style="color: #82E0AA">policy</span>`]
+:policies: pass:quotes[`<span style="color: #82E0AA">policies</span>`]
+:rendition: pass:quotes[`<span style="color: #82E0AA">rendition</span>`]
+:dossier-client-version: 1.0.1
+
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+`Digitech SA` +
+_ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
+13322 Marseille Cedex 16_
+
+'''
+
+Copyright (c) 2020 `Digitech SA`, tous droits réservés.
+
+'''
+
+[options="header,autowidth",width=100%]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|01/05/2020|1.0|Validé|Création du document|Nicolas Félix|
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+include::chapters/_01_introduction.adoc[]
+
+include::chapters/_02_cmis_basics.adoc[]
+
+include::chapters/_03_cmis_browser.adoc[]
+
+include::chapters/_04_cmis_dossier.adoc[]
+
+include::chapters/_05_cmis_client.adoc[]
+
+include::chapters/_99_appendixes.adoc[]

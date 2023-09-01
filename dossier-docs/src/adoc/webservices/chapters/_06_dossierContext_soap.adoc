@@ -1,0 +1,152 @@
+[[dossierContext_soap]]
+=== Search
+
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/WSDossierContext?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IDossierContextWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Méthodes
+
+getFlows::
+
+Cette méthode renvoie la liste des flux paramétrés au sein de l'application.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getFlows/>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:getFlowsResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com">
+         <getFlowsReturn>
+            <code>DOCUMENTATION</code>
+            <label>Flow created in simplified mode</label>
+         </getFlowsReturn>
+         <getFlowsReturn>
+            <code>REF</code>
+            <label>Flow created in simplified mode</label>
+         </getFlowsReturn>
+         <getFlowsReturn>
+            <code>CPA</code>
+            <label>Flow created in simplified mode</label>
+         </getFlowsReturn>
+         <getFlowsReturn>
+            <code>PRO</code>
+            <label>Flux Projet</label>
+         </getFlowsReturn>
+         <getFlowsReturn>
+            <code>CR</code>
+            <label>Flow created in simplified mode</label>
+         </getFlowsReturn>
+      </dos:getFlowsResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getContentTypeLinks::
+
+Cette méthode permet de récupérer la liste des informations d'un type de contenu.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getContentTypeLinks>
+         <web:contentTypeCode>DOC_CATEGORIE</web:contentTypeCode>
+         <!--Optional:-->
+         <web:flowCode>DOCUMENTATION</web:flowCode>
+      </web:getContentTypeLinks>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:getContentTypeLinksResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com">
+         <getContentTypeLinksReturn>
+            <code>DOC_CATEGORIE</code>
+            <id>15</id>
+            <description>Catégorie</description>
+            <linksInfosList>
+               <linksInfosList>
+                  <dos:childContentType>
+                     <code>DOC_DOCUMENT</code>
+                     <id>16</id>
+                     <description>Document</description>
+                     <linksInfosList/>
+                  </dos:childContentType>
+                  <dos:linkedFieldInfos>
+                     <dos:linkedFieldInfos>
+                        <dos:fieldChildcode>DOC_CAT_CODE</dos:fieldChildcode>
+                        <dos:fieldFathercode>DOC_CAT_CODE</dos:fieldFathercode>
+                     </dos:linkedFieldInfos>
+                  </dos:linkedFieldInfos>
+               </linksInfosList>
+            </linksInfosList>
+         </getContentTypeLinksReturn>
+      </dos:getContentTypeLinksResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_dossiercontext>> pour une description de la structure de retour.
+
+getMandatoryField::
+
+Cette méthode permet de récupérer la liste des champs obligatoires d'un type de contenu.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getMandatoryField>
+         <web:contentTypeCode>CR</web:contentTypeCode>
+         <!--Optional:-->
+         <web:flowCode>CR</web:flowCode>
+      </web:getMandatoryField>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <dos:getMandatoryFieldResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns:dos="http://webservices.dossier.digitech.com">
+         <getMandatoryFieldReturn>CR_THEME</getMandatoryFieldReturn>
+         <getMandatoryFieldReturn>CR_DES</getMandatoryFieldReturn>
+         <getMandatoryFieldReturn>CR_REDACTEUR</getMandatoryFieldReturn>
+         <getMandatoryFieldReturn>CR_DATE</getMandatoryFieldReturn>
+      </dos:getMandatoryFieldResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+

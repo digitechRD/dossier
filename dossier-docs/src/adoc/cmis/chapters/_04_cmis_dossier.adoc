@@ -1,0 +1,49 @@
+<<<
+
+[[cmis_dossier]]
+==  {dossier} {cmis} serveur
+
+[[cmis_dossier_model]]
+=== Arborescence / object model
+
+{dossier} présente une réprésentation {cmis} comme il suit.
+
+. {dossier} {cmis} data model
+image:cmis_dossier_object_model.png[align=center]
+
+[[cmis_dossier_authentication]]
+=== Authentification
+
+L'authentification au service {cmis} {dossier} est effectuée via une
+https://developer.mozilla.org/fr/docs/Web/HTTP/Authentication#Sch%C3%A9ma_d'authentification_basique_(Basic)[`Basic HTTP Authentication`^],
+c'est-à-dire que le couple *identifiant*/*mot de passe* est transmis dans l'entête _http_ encodé en *base64*
+
+[IMPORTANT]
+====
+Cela sous-entend que pour une utilisation sur un réseau publique, le protocole *HTTPS / TLS* doit être mis en place.
+====
+
+[[cmis_dossier_restrictions]]
+=== Limitations
+
+L'implémentation de la norme {cmis} dans {dossier} n'est pas exhaustive, la norme définissant de nombreuses fonctionnalités optionnelles.
+
+Voici les principales fonctionnalités [underline]#*non*# implémentées (en *7.1* de {dossier}):
+
+* _Versioning_
+* Modifications des _permissions_ et droits d'_accès_
+* Accès au _Change logs_
+* {policies}
+
+De plus, les opérateurs suivants, définis dans la norme {cmis}-SQL (voir liste et description <<cmis_query, ici>>), ne sont pas implémentés
+
+* *JOIN*
+* *IN_FOLDER* et *IN_TREE*
+
+[[cmis_dossier_recommendation]]
+=== Préconisations
+
+[IMPORTANT]
+====
+Comme déjà évoqué <<cmis_bindings, ici>>, pour des raisons de performances et simplicité, le protocole `Browser Binding` est préconisé.
+====

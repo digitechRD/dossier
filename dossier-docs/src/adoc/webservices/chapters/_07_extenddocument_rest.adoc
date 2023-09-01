@@ -1,0 +1,433 @@
+[[extenddocument_rest]]
+=== ExtendDocument
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IExte,dDocumentClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait l'utilisation de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {DELETE} /extendDocument/deleteDocuments
+
+Cette méthode permet de supprimer des documents par lot.
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docIds*|{query}|Liste des identifiants des documents à supprimer|[red]*Oui*|
+235
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  'http://<host>:<port>/<context>/rest/extendDocument/deleteDocuments?docIds=1&docIds=2' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendDocument/deleteDocuments?docIds=1&docIds=2
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<extenddocument_delete_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[extenddocument_delete_rest_response]]
+[source,json]
+.Liste de WSDeleteReportItemType
+----
+{
+  "ArrayList": [
+    {
+      "docId": 1,
+      "state": "OK",
+      "children": [],
+      "errMessage": ""
+    },
+    {
+      "docId": 2,
+      "state": "ERROR",
+      "children": [],
+      "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour.
+
+===== {DELETE} /deleteDocumentsType/{deleteType}
+
+Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*deleteType*|{path}|Type de suppression. Valeurs possibles : DOC_REMOVE_TYPE_DOC_ONLY
+DOC_REMOVE_TYPE_CHECK_PARENT
+DOC_REMOVE_TYPE_FORCE |[red]*Oui*|DOC_REMOVE_TYPE_DOC_ONLY
+|*docIds*|{query}|Liste des identifiants des documents à supprimer|[red]*Oui*|
+4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/extendDocument/deleteDocumentsType/DOC_REMOVE_TYPE_DOC_ONLY?docIds=1&docIds=2' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendDocument/deleteDocumentsType/DOC_REMOVE_TYPE_DOC_ONLY?docIds=1&docIds=2
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<extenddocument_deletetype_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[extenddocument_deletetype_rest_response]]
+[source,json]
+.Liste de WSDeleteReportItemType
+----
+{
+  "ArrayList": [
+    {
+      "docId": 1,
+      "state": "OK",
+      "children": [],
+      "errMessage": ""
+    },
+    {
+      "docId": 2,
+      "state": "ERROR",
+      "children": [],
+      "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour.
+
+===== {GET} /extendDocument/{docId}
+
+Cette méthode permet de récupérer la première pièce jointe d'un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'PATCH' \
+  '<host>:<port>/<context>/rest/extendDocument/5028' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendDocument/5028
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<extenddocument_get_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[extenddocument_get_rest_response]]
+[source,json]
+.WSAttachmentListType
+----
+{
+  "WSAttachmentListType": {
+    "firstAttachment": {
+      "id": 5189,
+      "airsType": "ORIGINAL",
+      "label": "viroflay7àé.pdf",
+      "fileName": "viroflay7àé.pdf",
+      "data": "JVBERi0xLjMNJeLjz9MNCjEgMCBvYmoNPDw..."
+      },
+    "items": []
+  }
+}
+
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour.
+
+===== {POST} /extendDocument
+
+Cette méthode permet créer des documents par lot.
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*documentsData*|{multipart}|Liste de WSInsertDocumentType|[red]*Oui*|
+voir <<appendix_extenddocument_sample_post_output, structure de sortie ici>>.
+|*filesData*|{multipart}|Liste de fichiers|[green]*Non*|
+|===
+
+[NOTE]
+====
+Il est possible d'ajouter plusieurs fichiers par documents.
+Le paramètre *filesData* doit contenir toutes les pièces jointes devant être ajoutées pour l'ensemble des documents.
+Il suffit ensuite d'indiquer au sein de la structure *documentsData* via les paramètres *filesIndex* et *filesName* les index et les noms des pièces jointes
+qui devront être ajoutés
+pour le document.
+Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
+*filesIndex*=[0,1] et *filesName*=["A","B"]
+====
+
+[source]
+.appel _curl_
+----
+curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocument' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=38558D0584562F70C045F65639F98D3E' \
+--form 'documentsData="{
+    "currentDocument": {
+    "contentType": "CR",
+    "secretLevel": 10,
+     "filesIndex":[0,1],
+    "fields": [
+      {
+        "code": "D_MODIF",
+        "field": "04/02/2021 16:58:35"
+      },
+      {
+        "code": "D_CREAT",
+        "field": "04/04/2019 18:40:22"
+      },
+      {
+        "code": "CR_DES",
+        "field": "Test 1"
+      },
+      {
+        "code": "CR_REDACTEUR",
+        "field": "1"
+      },
+      {
+        "code": "CR_DATE",
+        "field": "01/01/2022 0:00:00"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "TEST 1"
+      }
+    ]
+  },
+    "doUpdateParent": false
+  }";type=application/json' \
+--form 'documentsData="{
+    "currentDocument": {
+    "contentType": "CR",
+    "secretLevel": 10,
+     "filesIndex":[1,0],
+     "filesName":["2.pdf", "1.pdf"],
+    "fields": [
+      {
+        "code": "D_MODIF",
+        "field": "04/02/2021 16:58:35"
+      },
+      {
+        "code": "D_CREAT",
+        "field": "04/04/2019 18:40:22"
+      },
+      {
+        "code": "CR_DES",
+        "field": "Test 2"
+      },
+      {
+        "code": "CR_REDACTEUR",
+        "field": "1"
+      },
+      {
+        "code": "CR_DATE",
+        "field": "01/01/2022 0:00:00"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "TEST 2"
+      }
+    ]
+  },
+    "doUpdateParent": false
+  }";type=application/json' \
+--form 'filesData=@"/C:/1.pdf"' \
+--form 'filesData=@"/C:/2.pdf"'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendDocument
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<extenddocument_insert_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[extenddocument_insert_rest_response]]
+[source,json]
+.Liste de WSInsertReportItemType
+----
+{
+  "ArrayList": [
+    {
+      "docId": 6935,
+      "state": "OK",
+      "message": "",
+      "parentState": "NONE"
+    },
+    {
+      "docId": 6936,
+      "state": "OK",
+      "message": "",
+      "parentState": "NONE"
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSInsertReportItemType.
+
+===== {PATCH} /extendDocument
+
+Cette méthode permet de mettre à jour des documents par lot.
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*documentsData*|{multipart}|Liste de WSExtendDocumentType|[red]*Oui*|
+voir <<appendix_extenddocument_sample_patch_output, structure de sortie ici>>.
+|*filesData*|{multipart}|Liste de fichiers|[green]*Non*|
+|===
+
+[NOTE]
+====
+Il est possible d'ajouter plusieurs fichiers par documents.
+Le paramètre *filesData* doit contenir toutes les pièces jointes devant être ajoutées pour l'ensemble des documents.
+Il suffit ensuite d'indiquer au sein de la structure *documentsData* via les paramètres *filesIndex* et *filesName* les index et les noms des pièces jointes
+qui devront être ajoutés
+pour le document.
+Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le document nécessite les 2 premières pièce jointes(A et B), il faudra envoyer
+*filesIndex*=[0,1] et *filesName*=["A","B"]
+====
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSExtendDocumentType.
+
+[source]
+.appel _curl_
+----
+curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocument' \
+--header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Cookie: JSESSIONID=9AF46F86AAE176E787C1BCF0F1B6FDFB' \
+--form 'documentsData="{
+    "contentType": "CR",
+    "filesIndex":[0],
+    "fields": [
+      {
+        "code": "CR_RESUME",
+        "field": "TEST 4"
+      }
+    ],
+    "flowCode": "CR",
+    "docId": 7363
+  }";type=application/json' \
+--form 'documentsData="{
+    "contentType": "CR",
+    "filesIndex":[0],
+    "filesName":["DIGITECH_20220214.pdf"],
+    "fields": [
+      {
+        "code": "CR_RESUME",
+        "field": "TEST 5"
+      }
+    ],
+    "flowCode": "CR",
+    "docId": 7362
+  }";type=application/json' \
+--form 'filesData=@"/C:/DIGITECH_20220214.pdf"'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendDocument
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<extenddocument_update_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[extenddocument_update_rest_response]]
+[source,json]
+.Liste de WSUpdateReportItemType
+----
+{
+  "ArrayList": [
+    {
+      "docId": 6935,
+      "state": "OK",
+      "errMessage": ""
+    },
+    {
+      "docId": 6936,
+      "state": "OK",
+      "errMessage": ""
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSUpdateReportItemType.

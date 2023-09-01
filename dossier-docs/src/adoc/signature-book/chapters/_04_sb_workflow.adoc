@@ -1,0 +1,96 @@
+<<<
+
+[[sb_workflow]]
+=== Paramétrage du nom du modèle et du circuit
+
+[[sb_workflow_template]]
+==== Nom du modèle (niveau racine de l'arborescence du {signbook})
+
+Le Nom du modèle est d’abord récupéré dans la _map_ des propriétés issus du script groovy initialisation :
+
+[source,java]
+----
+resultValue.getPropertiesMap().put(EnumDepth.DEPTH_0.name(), [MODEL_NAME]) // here set the model
+----
+
+*[MODEL_NAME]* peut être une valeur en dur, ou le nom d'un champ du document dans ce cas *MODEL_NAME=%[FIELD_CODE]%*.
+
+Si la valeur n’a pas pu être récupérée dans cette _map_, alors on prend la valeur issue des paramètres de l’interface, dans la proprièté *MODEL_NAME* : Cette
+valeur peut être une valeur en dur ou le nom d'un champ du document dans ce cas *MODEL_NAME=%[FIELD_CODE]%*
+
+[[sb_workflow_name]]
+==== Nom du circuit
+
+Le circuit de validation dans le {signbook} peut-être défini de différente manière:
+
+. Définir le nom d’une liste d’autorité qui contient les différentes valeurs possibles.
+
+menu:{adminAIRS}[Gestionnaire de flux > Modifier le flux]
+
+image:sb_ga_8.png[align=center]
+
+Dans la partie où sont définis les type de contenu gérés par le flux, en cliquant sur l’icône image:sb_ga_9.png[], l’on peut choisir un champ de type liste
+d’autorité qui contient le circuit de validation pour le {signbook}:
+
+image:sb_ga_10.png[align=center]
+
+Si ce paramétrage est effectué, alors une liste déroulante sera affichée dans l'onglet {signbook} pour choisir cette valeur:
+
+image:sb_dossier_1.png[align=center]
+
+[start=2]
+. Renseigner le nom du circuit via le script initialisation
+
+[source,java]
+----
+resultValue.getPropertiesMap().put(EnumDepth.DEPTH_1.name(), CIRCUIT_NAME) // here set the nature
+----
+
+*CIRCUIT_NAME* peut être une valeur en dur, ou contenir le nom d'un champ du document dans ce cas *CIRCUIT_NAME=%[FIELD_CODE]%*
+
+[start=3]
+. Récupération du nom du circuit dans les paramètres de l’interface
+
+La valeur est récupérée dans la propriétés *CIRCUIT_NAME* : la valeur peut être une valeur en dur ou contenir le nom d'un champ du document dans ce cas *CIRCUIT_NAME=%[FIELD_CODE]%*
+
+[[sb_workflow_function]]
+==== Accès aux fonctions {signbook}
+
+L’accès aux fonctions {signbook} se fait depuis la vue *document*:
+
+En plus du droit *DOSSIERS_SB_SEND* que doit posséder l’utilisateur, l’envoi ne pourra être effectué que si le document est en mode *Edition*
+
+image:sb_dossier_2.png[align=center]
+
+L’opérateur devra choisir la pièce principale à signer:
+
+image:sb_dossier_3.png[align=center]
+
+Le circuit de validation (en fonction du paramétrage mis en place)
+
+image:sb_dossier_4.png[align=center]
+
+Si le document contient plusieurs pièces jointes, l’opérateur pourra sélectionner celle qu’il souhaite joindre en annexe à la demande
+
+image:sb_dossier_5.png[align=center]
+
+Une fois tous les éléments obligatoires positionnés, le bouton image:sb_dossier_6.png[] devient alors visible. Cliquez dessus pour envoyer le document vers le
+{signbook}.
+
+image:sb_dossier_7.png[align=center]
+
+Une fois le document envoyé, la page se met à jour avec [underline]#2 nouveaux# boutons :
+
+* image:sb_dossier_8.png[] : ce bouton va permettre d’interroger le {signbook} et de récupérer le document s’il a été signé et/ou récupérer son état et les
+commentaires qui ont pu y être ajoutés. Ce bouton n’est actif que si l’utilisateur a le droit *DOSSIERS_SB_RETRIEVE* et si le document est en consultation.
+
+Tableau listant les commentaires fait sur le document depuis le {signbook}:
+
+image:sb_dossier_9.png[align=center]
+
+* image:sb_dossier_10.png[] : ce bouton va permettre d’annuler la demande de signature. Ce bouton n’est actif que si l’utilisateur à le droit
+*DOSSIERS_SB_CANCEL* et si le document est en consultation.
+
+Si l’utilisateur a le droit *DOSSIERS_SB_SHOW_HISTO*, il aura également accès à l’historique des actions liées au parapheur.
+
+image:sb_dossier_11.png[align=center]

@@ -1,0 +1,284 @@
+[[attachment_soap]]
+=== Attachment
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+
+----
+http(s)://<hostname>:<port>/<context>/services/WSAttachment?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IAttachmentWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation de cette *API*.
+
+==== Méthodes
+
+addOrUpdate::
+
+Cette méthode permet de créer un document
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document AIRS|[red]*Oui*|5072
+|*attachmentData*|Ensemble de données de la pièce jointe|[red]*Oui*|
+[source,xml]
+----
+         <web:attachmentData>
+            <type:label>PJ de test</type:label>
+            <type:fileName>PJ.pdf</type:fileName>
+            <type:data>JVBERi0xLjUNCiW1tbW1D1...</type:data>
+         </web:attachmentData>
+----
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:addOrUpdate>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>5072</web:docId>
+         <web:attachmentData>
+            <type:label>PJ de test</type:label>
+            <type:fileName>PJ.pdf</type:fileName>
+            <type:data>JVBERi0xLjUNCiW1tbW1D1...</type:data>
+         </web:attachmentData>
+      </web:addOrUpdate>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+cf le chapitre <<appendix_attachment>> pour une description de la structure attachmentData.
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <createResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <createReturn>6734</createReturn>
+      </createResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+getAttachmentList::
+
+Cette méthode permet de récupérer liste des pièces jointes d'un document AIRS.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document|[red]*Oui*|4959
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getAttachmentList>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>5072</web:docId>
+      </web:getAttachmentList>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getAttachmentListResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getAttachmentListReturn>
+            <airsType>ORIGINAL</airsType>
+            <fileName>viroflay7àé.pdf</fileName>
+            <id>5220</id>
+            <label>viroflay7àé.pdf</label>
+         </getAttachmentListReturn>
+         <getAttachmentListReturn>
+            <airsType>ORIGINAL</airsType>
+            <fileName>1.pdf</fileName>
+            <id>6563</id>
+            <label>1.pdf</label>
+         </getAttachmentListReturn>
+         <getAttachmentListReturn>
+            <airsType>ORIGINAL</airsType>
+            <fileName>PJ.pdf</fileName>
+            <id>6703</id>
+            <label>PJ de test</label>
+         </getAttachmentListReturn>
+      </getAttachmentListResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_attachment>> pour une description de la structure de retour.
+(Se référer à WSAttachmentType).
+
+getAttachment::
+
+Cette méthode permet de récupérer une piéce jointe à partir de son identifiant et de celui de son document AIRS.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document AIRS|[red]*Oui*|4959
+|*attachmentId*|Identifiant de la piéce jointe|[red]*Oui*|1684
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:getAttachement>
+         <web:connectionData>
+            <type:login>login</type:login>
+            <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>5072</web:docId>
+         <web:attachmentId>6563</web:attachmentId>
+      </web:getAttachement>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <getAttachementResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <getAttachementReturn>
+            <types:contentType>CR</types:contentType>
+            <types:fields>
+               <item>
+                  <types:code>D_MODIF</types:code>
+                  <types:field>14/11/2022 11:33:29</types:field>
+               </item>
+               <item>
+                  <types:code>D_CREAT</types:code>
+                  <types:field>21/10/2021 15:52:21</types:field>
+               </item>
+               <item>
+                  <types:code>CR_DATE</types:code>
+                  <types:field>14/11/2022 0:00:00</types:field>
+               </item>
+               <item>
+                  <types:code>CR_RESUME</types:code>
+                  <types:field>new CR updated (UnitTest: 2022-11-14T11:33:00)</types:field>
+               </item>
+            </types:fields>
+            <types:secretLevel>10</types:secretLevel>
+            <types:filename>1.pdf</types:filename>
+            <types:data>JVBERi0xLjcN...</types:data>
+ </getAttachementReturn>
+      </getAttachementResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_document>> pour une description de la structure de retour.
+(Se référer à documentData).
+
+delete::
+
+Cette méthode permet de supprimer une pièce jointe d'un document AIRS.
+
+[cols="1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*connectionData*|Objet contenant les informations de connexion|[red]*Oui*|
+[source,xml]
+----
+<web:connectionData>
+    <type:login>login</type:login>
+    <type:password>password</type:password>
+</web:connectionData>
+----
+|*docId*|Identifiant du document AIRS|[red]*Oui*|4959
+|*attachmentId*|Identifiant de la piéce jointe|[red]*Oui*|1684
+|===
+
+cf le chapitre <<appendix_general>> pour une description de la structure connectionData.
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com" xmlns:type="http://type.webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:delete>
+         <web:connectionData>
+          <type:login>login</type:login>
+          <type:password>password</type:password>
+         </web:connectionData>
+         <web:docId>5072</web:docId>
+         <web:attachmentId>6563</web:attachmentId>
+      </web:delete>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <deleteResponse xmlns:types="http://type.webservices.dossier.digitech.com" xmlns="http://webservices.dossier.digitech.com">
+         <deleteReturn>6563</deleteReturn>
+      </deleteResponse>
+   </soap:Body>
+</soap:Envelope>
+----
+

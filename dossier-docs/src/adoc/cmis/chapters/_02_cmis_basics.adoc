@@ -1,0 +1,217 @@
+<<<
+
+[[cmis_basics]]
+== Concepts {cmis}
+
+La norme {cmis} introduit un certain nombre de concepts.
+Ce chapitre décrit succinctement les principaux.
+
+[[cmis_repository]]
+=== {cmis} {repository}
+
+Le point d'entrée de la norme {cmis} est la notion de {repository} (qui pourrait être traduit par _référentiel_).
+Celui-ci représente une instance d'un _système de gestion de contenu_, avec ses _métadonnées_, ses _index_, son _contenu_, ses _fichiers_...
+
+Le {repository} est l'entité racine vers laquelle toutes les requêtes sont adressées, notamment en appels REST où le {repository} sert de chemin racine.
+
+Le {repository}, par simple appel, renvoie sa description et ses capacités.
+
+[[cmis_query]]
+=== {cmis} {query}
+
+{cmis} {query} est une synthaxe de requêtage basée sur la norme *SQL-92*.
+
+[NOTE]
+====
+Seules les {queries} de recherche/sélection sont gérées, c'est-à-dire qu'aucune [underline]#mise à jour# ou [underline]#manipulation# de données n'est permise.
+====
+
+Une synthaxe de requête consiste:
+
+* *SELECT*, suivi d'une liste des propriétés recherchées.
+* *FROM*, précisant la liste des objets interrogés/recherchés.
+* *JOIN*, dans le but d'effectuer une jointure entre différents types d'objets
+* *WHERE*, précisant les critères de sélection
+* *IN* et *ANY*, afin de requêter des propriétés multi-évaluées
+* *CONTAINS*, applicable sur des champs full-text (et donc le contenu des documents)
+* *IN_FOLDER* et *IN_TREE*, afin de rechercher dans une hiérarchie de documents.
+* *ORDERBY*, dans le but de trier les résultats.
+
+Une {query}, et ses résultats, peut être paginée afin de faciliter la présentation (côté client) et optimiser les performances.
+
+[[cmis_services]]
+=== {cmis} services
+
+{cmis} founit un ensemble de service accessibles via *AtomPub* ou *Browser*, selon votre choix.
+
+Ces services sont les suivants:
+
+Repository service::
+Permet de découvrir la liste des {repositories} disponibles, leurs capacités, leur structure et quels types sont disponibles au sein de ceux-ci.
+
+Navigation service::
+Permet de naviguer dans un {repository} et son arborescence, en parcourant sa hiérarchie de dossiers parents/enfants.
+
+Généralement, vous pouvez utiliser ces services pour obtenir les enfants ou parents d'un objet.
+
+Object service::
+Founit les opérations basiques de type CRUD (**C**reate, **R**ead, **U**pdate, **D**elete) +
+et les servuces de contrôle de tout objet ({document}, {folder}, {policy} et {relationship}).
+
+Pour les objets {document}, cela inclut la récupération et la mise à jour des _propriétés_, des _policies_ et des fichiers associés (_content stream_).
+
+Ces services retrouvent un (ou des) objet(s) à partir :
+
+* d'un *chemin*
+* ou d'un *ID*
+
+Les clients {cmis} peuvent alors également découvrir les actions disponibles, et [underline]#autorisées# à l'utilisateur connecté.
+
+Multi-filing service::
+Ces services vous permettent de constituer une hiérarchie entre {documents} et {folders} en ajoutant ou en supprimant un objet dans ou à partir d'un {folder}.
+
+Discovery service::
+Fournit les services de requêtage ({query}) et de modifications.
+
+Change service::
+Service de découverte de modification de contenu depuis la dernière vériication.
+
+Versioning service::
+Fournit un service d'accès à l'historisation des versions d'un objet, si celui-ci est versionné.
+
+Relationship service::
+Permet de créer, de gérer et d'accéder à des relations ou des associations entre des objets.
+
+Policy services::
+Permet d'appliquer des {policies} à un objet de type {document}.
+
+Les {policies} sont des entités notamment uilisées pour gérer l'accès sécurité et accès aux {documents}.
+
+ACL service::
+Permet de gérer l'accès et les contrôles (**A**ccess **C**ontrol **L**ists) permettant alors d'effectuer certaines opérations sur un objet/une entité.
+
+[[cmis_object_model]]
+=== {cmis} object model
+
+{dossier} fournit un modèle d'objet {cmis} permettant d'abstraire le contenu de {dossier}.
+
+Il implémente la navigation entre {folders} et {documents}.
+
+{cmis} permet la définition de _types_ d'objets, chacun ayant ses propriétés, par exemple,
+chaque objet possède un *type*, un *ID*, ...
+
+Les _types_ d'objet supportent l'héritage (hiérarchie entre objets).
+
+Les _types_ {document} permettent d'accéder à du contenu binaire (généralement un fichier joint) si disponible, nommé {contentstream} dans le jargon {cmis}.
+
+. {cmis} data model
+image:cmis_object_model.png[align=center]
+
+[[cmis_folder_object]]
+==== {cmis} {folder} object
+
+Tout {document} est rattaché à un {folder} (ou plus exactement à une hiérarchie de {folders}).
+
+Un {document} peut cependant appartenir à plusieurs {folders}.
+
+.{cmis} {folder}/{document} {relationship}s
+image:cmis_folder_object.png[align=center]
+
+[[cmis_document_object]]
+==== {cmis} {document} object
+
+Les {documents} ont des propriétés - qui peuvent être multi-évaluées - et (optionnellement) un contenu binaire ({contentstream}) - qui peut être versionné.
+
+Chaque propriété :
+
+* est `typée` : _Object ID_, _string_, _integer_, _decimal_, _boolean_, _float_, _datetime_.
+* et possède des `attributs` : _nom_, _required_, _queryable_, _type_ ...
+
+.{cmis} document object
+image:cmis_document_object.png[align=center]
+
+Un {document} peut également posséder des {rendition}s, représentant une version alternative du {contentstream}. +
+Les exemples les plus courants sont :
+
+* _thumbnail_: version _imagette_ (aperçu) d'un {contentstream} du {document}, utilisée par les applications mobiles.
+* _application/pdf_: version _PDF_ d'un {contentstream} du {document}, utilisée par tous clients ne souhaitant pas effectuer de conversion de fichiers.
+
+[NOTE]
+====
+{dossier} ne fournit pas de {rendition} alternative.
+====
+
+[[cmis_policy_object]]
+==== {cmis} {policy} object
+
+[WARNING]
+====
+Ce type d'objet n'est actuellement pas géré par {dossier}
+====
+
+Un objet de type {policy} permet de représenter la stratégie/la politique d'accès à un document.
+
+Le type `ACL` (**A**ccess **C**ontrol **L**ist) est un sous-type de {policy}.
+
+[[cmis_versionning]]
+==== {cmis} versioning
+
+[IMPORTANT]
+====
+{dossier} ne gère le versionning que sur les fichiers binaires associés à un {document}. +
+Ceci n'est pas géré au travers de la norme {cmis}
+====
+
+
+[[cmis_bindings]]
+==== {cmis} bindings/protocoles
+
+Tout client peut communiquer avec un {repository} {cmis} en utilisant l'un des protocoles disponibles:
+
+* `Browser` (*[underline]#recommandé#*) :
+
+{cmis} fournit un accès de type `REST` basé sur des échanges au format *JSON*.
+
+Ce _binding_ a été ajouté en version *1.1* de la norme {cmis} afin de simplifier les échanges avec les applications _web_, _mobiles_,
+ce type d'échanges étant populaires et très répandus depuis plusieurs années.
+
+Cette implémentation utilise les seuls verbes `GET` et `POST`.
+
+Les URLs d'accès et d'interrogation sont simples, par exemple, dans le but d'obtenir la liste des {repositories}.
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/browser
+----
+
+où :
+
+* *hostname*: serveur (`IP` ou `Nom d'hôte`) hébergeant l'application {dossier}
+* *port*: port du service d'accès à l'application {dossier}
+* *context*: context applicatif
+
+Vous trouverez de pus amples informations dans le chapitre dédié <<cmis_browser>>
+
+
+* `AtomPub`
+
+Ce protocole *RESTFul* est basé sur https://tools.ietf.org/html/rfc5023[*Atom Publishing*^]. +
+
+Les clients qui souhaitent exploiter ce protocole utiliseront l'url du `Service Document`
+
+[source]
+----
+http(s)://<hostname>:<port>/<context>/cmis/atom
+----
+
+Pour une description complète de ces protocoles, veuillez vous reporter aux
+http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html[*spécifications officielles {cmis}*^] .
+
+
+[NOTE]
+====
+Les *Web Services* de type `SOAP` ne sont pas disponibles car obsolètes et moins performants.
+====
+
+
+

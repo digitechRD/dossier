@@ -1,0 +1,142 @@
+<<<
+
+[[cmis_client]]
+==  Clients CMIS
+
+[[cmis_client_apache]]
+=== Apache Chemistry / opencmis
+
+Plusieurs clients {cmis} (*1.1*) gratuits sont disponibles, dont le https://chemistry.apache.org/java/developing/tools/dev-tools-workbench.html[*{cmis} workbench*^] fournit par le projet `Apache Chemistry`.
+
+image:workbench1.png[align=center]
+
+Chaque intégrateur/développeur peut utiliser l'une des https://chemistry.apache.org/[librairies disponibles^] pour implémenter son propre client, en suivant notamment les différents guides disponibles https://chemistry.apache.org/java/developing/index.html[ici^] et
+https://chemistry.apache.org/java/how-to/index.html[là^], ainsi que les https://chemistry.apache.org/java/examples/index.html[exemples^] à disposition.
+
+D'autres librairies existent également en dehors du contexte `Apache Chemistry`, comme celle-ci https://github.com/agea/CmisJS[CmisJS^].
+
+[[cmis_client_dossier]]
+=== {dossier} {cmis} client.
+
+{dossier} fournit, à partir de sa version *7.1*, un client {cmis} {java}, basé sur le projet `Apache Chemistry`.
+
+Celui-ci abstrait les principales actions utilisées.
+
+[WARNING]
+====
+La librairie, *dossier-cmis-client.jar* (actuellement en version *{dossier-client-version}*), n'est pas disponible sur un référentiel `maven` publique. +
+Veuillez nous contacter pour obtenir celle-ci.
+====
+
+Vous trouverez :
+
+* dans le chapitre <<cmis_client_dossier_use_cases, suivant>> des exemples concrets.
+* en annexe <<cmis_appendix_dossier_interface, l'interface principale>>
+* également en annexe <<cmis_appendix_dossier_library, les dépendances>> nécessaires à l'utilisation de la librairie *dossier-cmis-client.jar*.
+
+[[cmis_client_dossier_use_cases]]
+=== {dossier} {cmis} : Cas d'utilisation
+
+[IMPORTANT]
+====
+Toutes les opérations nécessitent au préalable [green-background]*[underline]#une connexion à un {repository}#*
+====
+
+[source,java]
+----
+include::../files/cmis_dossier_connexion.java[tag=connection]
+----
+
+Si {dossier} contient plus d'un {repository} (par défaut, 1 est défini par *organisation*), il vous faut :
+
+* spécifier l' *ID* du repository cible
+** soit parce que vous le connaissez
+** soit en interrogeant le serveur {cmis} et en récupérant la liste des {repositories}
+
+[source,java]
+----
+include::../files/cmis_dossier_connexion.java[tag=repos]
+----
+
+==== Récupération d'un objet
+
+[source,java]
+----
+include::../files/cmis_dossier_getobject.java[]
+----
+
+==== Récupération des enfants d'un objet
+
+[source,java]
+----
+include::../files/cmis_dossier_getchildren.java[]
+----
+
+==== Récupération du contenu binaire d'un document
+
+[source,java]
+----
+include::../files/cmis_dossier_getcontentstream.java[tag=getall]
+----
+
+il est également possible d'obtenir un contenu [green-background]*partiel* du contenu
+
+[source,java]
+----
+include::../files/cmis_dossier_getcontentstream.java[tag=getpartial]
+----
+
+[yellow-background]*TODO Rendition à ajouter*
+
+==== {queries}
+
+[source,java]
+----
+include::../files/cmis_dossier_queries.java[tag=simple]
+----
+
+==== Suppression d'un document
+
+[source,java]
+----
+include::../files/cmis_dossier_delete.java[tag=simple]
+----
+
+==== Mise à jour d'un document
+
+[source,java]
+----
+include::../files/cmis_dossier_update.java[tag=simple]
+----
+==== Création d'un commentaire
+
+[source,java]
+----
+include::../files/cmis_dossier_createItem.java[tag=simple]
+----
+==== Création d'un document AIRS
+
+[source,java]
+----
+include::../files/cmis_dossier_createFolder.java[tag=simple]
+----
+==== Création d'une pièce jointe
+
+[source,java]
+----
+include::../files/cmis_dossier_createDocument.java[tag=simple]
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+

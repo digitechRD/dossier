@@ -1,0 +1,120 @@
+[[extended_search_rest]]
+=== ExtendSearch
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *7.1* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IExtendedSearchClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {GET} search4FieldsAndAttachments
+
+Cette méthode permet à partir d'une requête {airs} de récupérer
+
+* des documents
+* leurs _metadata_ (champs)
+* et les informations sur les pièces jointes de chaque document
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*airsRequest*|{query}|Requête {airs}|[red]*Oui*|D_CREAT >= "28/03/2020"
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|{query}|Code du flux dans lequel la recherche est effectuée. +
+Si Vide, celui-ci sera déduit de la liste des types de contenu|[red]*Oui*|CR
+|*continuationToken*|{query}|Clé de _continuation_. +
+Le nombre de résultats reçus est limité à *20* (par défaut, côté {dossier}. +
+Si vous souhaitez plus de résultats, le {webservice} doit être rappelé en ajoutant cette clé.|[green]*Non*
+|OTU4ODQ0ZTFhMDllODViYTNjN2JiNThkOWM5YjQwNDAjIzE1OTI5MTc3MTM2MDYjIzQ1ODYjIzIw
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR' \
+  -H 'accept: application/json'
+
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR&ctyCodes=PRO_CLIENT' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR
+
+http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR&ctyCodes=PRO_CLIENT
+----
+
+[NOTE]
+====
+La valeur _D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22_ correspond à *D_CREAT >= "01/01/2020"*
+====
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<extendedearchjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[extendedearchjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "WSExtendSearchResult": {
+      "resultNumber": 0,
+      "continuationToken": "string",
+      "documents": [
+        {
+          "refAirs": 0,
+          "secretLevel": 0,
+          "contentType": "string",
+          "fields": [
+            {
+              "code": "string",
+              "label": "string",
+              "value": "string",
+              "refValue": "string"
+            }
+          ],
+          "attachments": [
+            {
+              "id": 0,
+              "label": "string",
+              "fileName": "string",
+              "airsType": "string",
+              "versions": [
+                {
+                  "id": 0,
+                  "label": "string",
+                  "fileName": "string",
+                  "version": 0,
+                  "date": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+}
+----
+
+cf. le chapitre <<appendix_extendsearch>> pour une description de la structure de retour.

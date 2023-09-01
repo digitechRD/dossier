@@ -1,0 +1,53 @@
+[[appendix_document]]
+=== Document modèles
+
+La réponse est retournée sous forme de chaîne de caractères,
+au format {xml} ({soap}) ou {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+WSDocumentType (REST)
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*contentType*|type de contenu du document||_string_
+|*secretLevel*|Niveau de secret||_integer_
+|*data*|données du document principal en bytes||_string_
+|*filename*|nom du fichier||_string_
+|*flowCode*|code du flux||_string_
+|*scriptCode*|code du script||_string_
+4+|*fields > field*
+|*code*|code du champ||_string_
+|*field*|valeur du champ||_integer_
+|===
+
+WSCommonDocumentType (REST)
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*contentType*|type de contenu du document||_string_
+|*secretLevel*|Niveau de secret||_integer_
+|*flowCode*|code du flux||_string_
+|*scriptCode*|code du script||_string_
+4+|*fields > field*
+|*code*|code du champ||_string_
+|*field*|valeur du champ||_integer_
+|===
+
+documentData (SOAP)
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*contentType*|type de contenu du document||_string_
+|*secretLevel*|Niveau de secret||_integer_
+|*data*|données du document principal en bytes||_string_
+|*filename*|nom du fichier||_string_
+|*flowCode*|code du flux||_string_
+|*scriptCode*|code du script||_string_
+4+|*fields > item*
+|*code*|code du champ||_string_
+|*field*|valeur du champ||_integer_
+|===

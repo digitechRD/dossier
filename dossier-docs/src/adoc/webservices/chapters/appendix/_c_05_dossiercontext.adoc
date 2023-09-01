@@ -1,0 +1,35 @@
+[[appendix_dossiercontext]]
+=== DossierContext modèles
+
+La réponse est retournée sous forme de chaîne de caractères,
+au format {xml} ({soap}) ou {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+Liste de flux
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*code*|Code du flux||_string_
+|*label*|Nom du flux||_string_
+|===
+
+
+WSContentTypeInfosType (REST)
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*code*|Code du type de contenu||_string_
+|*id*|Identifiant AIRS du type de contenu||_integer_
+|*description*|Nom du type de contenu||_string_
+4+|*linksInfosList > childContentType*
+|*code*|Code du type de contenu fils||_string_
+|*id*|Identifiant AIRS du type de contenu fils||_integer_
+|*description*|Nom du type de contenu fils||_string_
+|*linksInfosList*|Informations du type de contenu fils| Contient une liste vide si le type de contenu fils n'a pas d'enfant|strucutre _linksInfosList_
+4+|*linksInfosList > linkedFieldInfos*
+|*fieldChildcode*|Code du champ utilisé par le type de contenu fils pour la liaison père-fils||_string_
+|*fieldFathercode*|Code du champ utilisé par le type de contenu père pour la liaison père-fils||_string_
+|===

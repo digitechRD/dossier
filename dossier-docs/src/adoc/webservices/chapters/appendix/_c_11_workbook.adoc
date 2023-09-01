@@ -1,0 +1,28 @@
+[[appendix_workbook]]
+=== Workbook modèles
+
+La réponse est retournée sous forme de chaîne de caractères,
+au format {json}
+
+Celle-ci contient les informations suivantes :
+
+WSWorkbookType
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*id*|identifiant du classeur||_integer_
+|*name*|nom du classeur||_string_
+|*description*|description du classeur||_string_
+|*creatorId*|identifiant du créateur du classeur||_integer_
+|*workbookType*|type du classeur||_string_
+|*shareStartDate*|date de début de partage du classeur|timestamp|_integer_
+|*shareEndDate*|date de fin de partage du classeur|timestamp|_integer_
+|*status*|statut du classeur|DOSSIER_WB_STATUS_ACTIVE ou DOSSIER_WB_STATUS_CLOSED|_string_
+|*share*|état de partage du classeur|DOSSIER_WB_SHARE_SHARED ou DOSSIER_WB_SHARE_PRIVATE ou DOSSIER_WB_SHARE_PUBLIC|_string_
+|*usersRead*|liste d'utilisateurs avec accès en lecture seulement||_[]integer_
+|*usersReadWrite*|liste d'utilisateurs avec accès en lecture et écriture||_[]integer_
+|*orgasRead*|liste d'organisations avec accès en lecture seulement||_[]integer_
+|*orgasReadWrite*|liste d'organisations avec accès en lecture et écriture||_[]integer_
+|*documents*|liste d'identifiants des documents du classeur||_[]integer_
+|===

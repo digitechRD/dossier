@@ -1,0 +1,127 @@
+[[authority_list_rest]]
+=== AuthorityList
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IAuthorityListClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {GET} /authorityList
+
+Cette méthode permet de récupérer tous les codes de liste d'autorité disponibles. Ces codes peuvent ensuite être utilisés au sein de la methode suivante afin de
+récupérer les différents termes d'une liste d'autorité.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/authorityList' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/authorityList
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<authoritylist_getcodejson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[authoritylist_getcodejson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "DEX_TYPE_DOSSIER",
+    "AL_DOC_LINK",
+    "PRO_APP_FLUX_COU",
+    "PRO_AFF_TYPE",
+    "PRO_DOC_CATEGORIE",
+    "PRO_DOC_CLASSEMENT"
+  ]
+}
+----
+
+===== {GET} /authorityList/{fieldCode}
+
+Cette méthode permet de récupérer les termes d'une liste d'autorité à partir de son code (*fieldCode*)
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*fieldCode*|{path}|Code identifiant la liste d'autorité|[red]*Oui*|
+PRO_APP_FLUX_COU
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/authorityList/PRO_APP_FLUX_COU' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/authorityList/PRO_APP_FLUX_COU
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<authoritylist_gettermsjson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Liste d'autorité non trouvée
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[authoritylist_gettermsjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    {
+      "id": 3,
+      "code": "NO",
+      "label": "Non"
+    },
+    {
+      "id": 4,
+      "code": "YES",
+      "label": "Oui"
+    }
+  ]
+}
+----
+
+cf le chapitre <<appendix_authoritylist>> pour une description de la structure de retour.

@@ -1,0 +1,37 @@
+[[Dossier-ws]]
+= WebServices *AIRS Dossier*
+v2.0, 14/09/2022
+:revnumber: 2.0
+include::{sharedResource}/adoc/template.adoc[]
+:revdate: 14/09/2022
+:favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
+:dossier-stub-version: 1.2.1
+:dossier-rest-client-version: 1.0.0
+
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+[options="header"]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur 
+|22/06/2020|1.0|Validé|Création du document|{NFE}|
+|12/05/2021|1.1|Validé|Modification du document, ajout compatibilité *7.1*|{NFE}|
+|14/09/2022|2.0|Validé|Ajout WS *v8.0*|{NFE} / {JMU}|{NFE}
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+include::chapters/_01_introduction.adoc[]
+
+include::chapters/_a_rest.adoc[]
+
+include::chapters/_b_soap.adoc[]
+
+include::chapters/_c_annexes.adoc[]

@@ -1,0 +1,379 @@
+[[Dossier-sso]]
+= Mise en place du SSO pour le produit *AIRS Dossier*
+v3.0, 05/04/2022
+:revnumber: 3.0
+include::{sharedResource}/adoc/template.adoc[]
+:revdate: 05/04/2022
+
+// substition/alias
+:dossier:  pass:quotes[<span style="color: #D4CE28">Dossier</span>]
+:java:  pass:quotes[*<span style="color: #F24E52">JAVA</span>*]
+:sso:  pass:quotes[<span style="color: #F27E36">SSO</span>]
+:windows:  pass:quotes[<span style="color: #F25937">Windows</span>]
+:microsoft:  pass:quotes[<span style="color: #F25937">Microsoft</span>]
+:linux:  pass:quotes[<span style="color: #F25937">Linux</span>]
+:kerberos:  pass:quotes[<span style="color: #167EF2">Kerberos</span>]
+:spnego:  pass:quotes[<span style="color: #167EF2">SPNEGO</span>]
+:tomcat:  pass:quotes[<span style="color: #F24E52">Tomcat</span>]
+
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+[options="header,autowidth"]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|02/11/2011|1.0|Validé|Création du document|Régis Krawezyk|
+|01/08/2019|2.0|Validé|Modification du document|Nicolas Félix|
+|05/04/2022|3.0|Validé|Dossier *8.0*|Nicolas Félix|
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+<<<
+
+== Introduction
+
+L'authentification unique (en anglais **S**ingle **S**ign-**O**n ou {sso}) permet à un utilisateur de ne procéder qu'à une seule authentification pour accéder à son poste de travail ainsi qu’aux applications.
+
+Sans {sso}, à chaque accès à la page d’accueil de {dossier}, l’utilisateur doit d’abord entrer ses *login* et *mot de passe*, que l’application utilise pour ouvrir une session {dossier}. +
+
+Avec {sso}, le navigateur transmet automatiquement à l'application le nom que l'utilisateur a saisi pour s'authentifier lors de l'ouverture de sa session
+{windows}.
+Dès lors, l'application réceptionne le nom et vérifie sa validité auprès du serveur d’authentification,avant de l’autoriser ou non à accéder à l'application.
+
+Ce document décrit le paramétrage nécessaire pour intégrer {dossier} au sein d’un domaine géré par +++<span style="color: #167EF2">Active Directory</span>+++
+({sso} de type {kerberos}).
+En annexe est décrite la même procédure avec une authentification réalisée par un serveur {kerberos} sous {linux}.
+
+<<<
+
+== Paramétrage et mise en œuvre {sso} {kerberos} pour {dossier}
+
+L'authentification unique (en anglais *S*ingle *S*ign-*O*n ou {sso}) permet
+à un utilisateur de ne procéder qu'à une seule authentification pour accéder
+à son poste de travail ainsi qu’aux applications.
+
+Sans {sso}, à chaque accès à la page d’accueil de {dossier}, l’utilisateur doit
+d’abord entrer ses login et mot de passe, afin d’ouvrir une session {dossier}.
+Avec {sso}, le navigateur transmet automatiquement à l'application le nom que
+l'utilisateur a saisi pour s'authentifier lors de l'ouverture de sa session {windows}.
+Dès lors, l'application réceptionne le nom et vérifie sa validité auprès du
+serveur d’authentification, avant de l’autoriser ou non à accéder à l'application.
+
+Ce document décrit le paramétrage nécessaire pour intégrer {dossier} au sein
+d’un domaine géré par Active Directory ({sso} de type {kerberos}).
+En annexe est décrite la même procédure avec une authentification
+réalisée par un serveur {kerberos} sous {linux}.
+
+Ce chapitre se découpe en plusieurs parties qui sont liées à des
+types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de fonctionnement.
+
+* Définition d’un compte {kerberos} (Dans l’exemple ci-dessous, ce sera un compte AD)
+* Association du compte {kerberos} à un SPN (Service Principal Name)
+* Association du service avec l’application {dossier}
+
+=== Création d’un compte Kerberos
+
+Dans notre exemple, il s’agit d’ajouter un compte sur un *AD* :
+
+image::windows-sso1.png[]
+
+image::windows-sso2.png[]
+
+Dans cet exemple a été créé l’utilisateur `dcosso` au sein de l’*Active Directory*
+(association avec une machine et un domaine) et son ajout comme membre de `Groupe_Admin_Local`.
+
+=== Association du compte {kerberos} à un SPN
+
+Il est très déconseillé d’utiliser un compte {kerberos} déjà existant afin de l’utiliser, sur une même machine,
+pour mettre en place le principe de connexion {sso} sur une autre application telle que {dossier}.
+
+Nous conseillons donc, soit de définir un nouveau compte, soit de supprimer les associations existantes.
+À savoir que les opérations de création et/ou modification des associations existantes ne peuvent être
+réalisées que par l’administrateur système au sein de l’organisation.
+
+=== Contrôle de l’existence des associations
+
+Afin de s’assurer que de telles associations n’existent pas,
+vous avez la possibilité de vérifier via la commande ci-dessous, qui ne nécessite pas le statut d’administrateur du système.
+
+[source]
+----
+setspn.exe -L $USER_AD_DOSSIER
+----
+
+où $USER_AD_DOSSIER désigne votre compte Kerberos
+
+Si de telles associations existent sur une même machine, vous avez alors la possibilité de définir un autre compte Kerberos ou de supprimer toutes les références à ce compte sur cette machine en vous assurant qu’elles ne sont pas utilisées par d’autres configurations {sso}. Pour supprimer les références, il suffit d’exécuter, pour chacune des lignes où apparaît ce compte, la commande ci-dessous sachant qu’une telle action nécessite d’être administrateur du système :
+
+[source]
+----
+setspn.exe -D <ligne>
+----
+
+Par exemple, si vous avez les deux lignes suivantes pour le compte dossier_app  (@setspn.exe –L dossier_app@) :
+
+* HTTP/SRV_DOSSIER
+* HTTP/SRV_DOSSIER.DOMAINE
+
+Il faudra alors exécuter les deux commandes :
+
+[source]
+----
+setspn.exe -D HTTP/SRV_DOSSIER dossier_app
+setspn.exe -D HTTP/SRV_DOSSIER.DOMAINE dossier_app
+----
+
+=== Création d'une association (ou d’un service)
+
+Pour cela, il suffit d’utiliser l’utilitaire setspn qui nécessite de disposer des droits d’administration système :
+
+[source]
+----
+setspn.exe -A HTTP/$APP_SERVEUR.$DOMAINE $USER_AD_DOSSIER
+----
+
+où :
+
+* *$APP_SERVEUR* par le nom du serveur qui contient le serveur d’applications Web au sein duquel est déployé l’application {dossier}
+* *$DOMAINE* par le nom de votre domaine, il doit correspondre avec le domaine auquel est associé le compte Kerberos
+
+Toutes ces informations doivent être renseignées en majuscule (serveur et domaine). Quant à l'utilisateur, simplement respecter la casse utilisée lors de sa création.
+
+Pour la vérification, vous pouvez exécuter la commande suivante :
+
+[source]
+----
+setspn.exe -L $USER_AD_DOSSIER
+----
+
+===  Génération du *"keytab"*
+
+Il apparaît ensuite  indispensable de réinitialiser le mot de passe du compte $USER_AD_DOSSIER.
+
+Pour cela, vous devez générer un fichier *keytab* à l'aide de la commande suivante :
+
+[source]
+----
+ktpass -out fichier.keytab -princ HTTP/$APP_SERVEUR@$DOMAINE -mapuser $user_ad_dossier@$DOMAINE-pass password -crypto all -ptype KRB5_NT_PRINCIPAL
+----
+
+Le fichier `fichier.keytab` ainsi généré se trouve à la racine du répertoire de l'utilisateur connecté au serveur.
+Il sera utilisé afin de mettre en œuvre le mode {sso} pour l’utilisation du produit {dossier}.
+
+===  Test du paramétrage
+
+Ce chapitre a pour but de tester depuis le serveur applicatif le bon fonctionnement du {sso}.
+Dans un premier temps (dans une ligne de commande) exécuter la ligne suivante (puis renseigner le mot de passe affecté au compte) :
+
+[source]
+----
+kinit $USER_AD_DOSSIER
+----
+
+La réponse doit être du genre *[underline]#New ticket is stored in cache file C:\Users\..."#*.
+
+Si cette étape est *OK*, se placer dans le répertoire *\bin* du `JDK`. Nous allons ici avoir besoin du fichier *keytab* généré ci-dessus.
+
+[source]
+----
+java -Dsun.security.krb5.debug=true sun.security.krb5.internal.tools.Kinit -k -t <rep>\fichier.keytab HTTP/$APP_SERVEUR@$DOMAINE
+----
+
+Où *<rep>* est le nom complet du dossier contenant le fichier `fichier.keytab` précédemment généré
+
+Cette commande ne doit pas présenter d'erreur et se terminer, elle aussi, par *[underline]#New ticket is stored in cache file C:\Users\...#*
+
+Suite à cette opération, les URL du type ci-dessous pourront être protégées par le filtre d’authentification {kerberos} de l’application Web :
+
+[source]
+----
+http://$APP_SERVEUR<:port>
+http://$APP_SERVEUR<:port>/dossier
+http://$APP_SERVEUR.$DOMAINE<:port>/dossier
+----
+
+où <:port> est la donnée du port de communication paramétré pour le serveur apache-Tomcat.
+
+À ce stade, on peut considérer la connexion {sso} depuis le serveur applicatif comme valide et procéder désormais au paramétrage de l'application {dossier}.
+
+=== Association avec l’application {dossier}
+
+Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application {dossier}. Sera uniquement concerné le fichier config.xml présent au sein du sous-dossier Config/ des composants de l’application {dossier} déployée.
+
+Il faut alors ajouter la balise spnego  entre les balises cfe (ou error si la balise cfe est absente) et la balise generation. Naturellement, ce paramétrage ne peut pas être ajouté ou combiné avec le paramétrage OpenId Keycloak (balise « IDP »).
+
+3 attributs peuvent être renseignés :
+
+* *debug* (paramètre optionnel pour augmenter les traces : true ou false),
+* *keyTabLocation*
+* *servicePrincipal*
+
+[CAUTION]
+====
+La casse est importante !
+====
+
+<<<
+
+== Activation {kerberos} dans le navigateur des utilisateurs
+
+Reste ensuite à autoriser l’utilisation de ce mode de fonctionnement au sein des divers navigateurs du client.
+En fonction de la version du navigateur, des sites déjà référencés, ce paramétrage peut ne pas être nécessaire.
+Il convient de réaliser un test sans avant de les ajouter.
+
+=== Internet Explorer
+
+Aller dans menu:Outils[Options Internet,Sécurité,Intranet local,Sites...,Avancé..] et indiquer le domaine *http://$DOMAINE* comme étant dans l'intranet.
+
+=== Firefox
+
+L’authentification {kerberos} est activée par défaut pour les versions récentes de *Firefox*.
+Entrer kbd:[about:config] dans la barre d’adresse et restreindre la liste des options en entrant *negotiate* dans le filtre de recherche rapide.
+Double-cliquer sur l’entrée *network.negotiate-auth.trusted-uris*, puis entrer *.$DOMAINE* pour limiter l’authentification {kerberos} à ce _domaine_.
+
+[NOTE]
+====
+Cette entrée peut être laissée vide pour une autorisation sans restriction (non recommandée)
+====
+
+<<<
+
+== Annexes
+
+=== Authenfication auprès d’un serveur Linux {kerberos} MIT
+
+==== Sur le serveur
+
+. Installer les packages `krb5-libs`, `krb5-server` et `krb5-workstation`.
+
+. Editer les fichiers de configuration link:/etc/krb5.conf[/etc/krb5.conf] et link:/var/kerberos/krb5kdc/kdc.conf[/var/kerberos/krb5kdc/kdc.conf] afin qu’ils reflètent le nom du domaine correct (dans le cadre d’un domaine simple, il suffit de remplacer *EXAMPLE.COM* et *example.com* en respectant la casse et de remplacer *kerberos.example.com* par le nom du serveur
+{kerberos}).
+
+. Créer la base de données au moyen de la commande :
+
+[source]
+/usr/kerberos/sbin/kdb5_util create –s
+
+Editer le fichier link:/var/kerberos/krb5kdc/kadm5.acl[/var/kerberos/krb5kdc/kadm5.acl].
+Ce fichier est utilisé par `kadmind` pour déterminer les personnes qui ont le droit d’administrer la base de données {kerberos} et leur niveau d’accès.
+On peut se contenter de laisser une ligne unique (remplacer *EXAMPLE.COM*) :
+
+[source]
+*/admin@EXAMPLE.COM*
+
+[start=4]
+. Créer le premier utilisateur par la commande (remplacer *username*) :
+
+[source]
+/usr/kerberos/sbin/kadmin.local -q "addprinc username/admin"
+
+[start=5]
+. Lancer les services suivants par la commande :
+
+[source]
+/sbin/service krb5kdc start
+/sbin/service kadmin start
+
+[start=6]
+. Ajouter un par un chaque poste de travail du réseau (remplacer *pc-sso.digitech.lan* par le nom du poste au sein du réseau) :
+
+[source]
+addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan
+
+[start=7]
+. Ajouter chaque nouvel utilisateur autorisé à ouvrir une session par la commande (remplacer *L.LOGIN* par le login de l’utilisateur) :
+
+[source]
+addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN
+
+[start=8]
+. Ajouter de la même manière un compte de pré-authentification pour l’application {dossier}, dont nous reporterons les login et mot de passe dans le fichier *sso .properties* (cf. référence plus haut).
+
+. Editer le fichier link:/etc/krb5.conf[/etc/krb5.conf] qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier *krb5.conf*
+nécessaire au paramétrage de +++<span style="color: #9867F2">JAAS</span>+++).
+Cette étape n’est pas nécessaire si les postes de travail sont situés sur le même domaine que le serveur.
+
+. *Redémarrer* {kerberos}.
+
+Vous trouverez des explications complètes de cette procédure à link:++http://docs.fedoraproject
+.org/security-guide/f11/en-US/sect-Security_Guide-Kerberos-Configuring_a_Kerberos_5_Server.html++[l'adresse suivante]
+
+<<<
+
+==== Sur le poste client
+
+. Configurer {kerberos} par les commandes suivantes au moyen de l’utilitaire `ksetup` qui fait partie lui-aussi des supports tools de {windows}.
+
+[NOTE]
+====
+Il faut remplacer respectivement *$DOMAINE*, *$KER_SERVEUR* et *$PASSWORD* au sein de l’exemple ci-dessous par:
+
+* le nom du domaine
+* le nom du serveur {kerberos}
+* le mot de passe utilisé par apache {tomcat} pour consulter le serveur d'authentification (cf. compte dossier créé précédemment)
+====
+
+[source,sh]
+ksetup /setdomain $DOMAINE
+ksetup /addkdc $DOMAINE $KER_SERVEUR.$DOMAINE
+ksetup /setcomputerpassword $PASSWORD
+
+[start=2]
+. *rebooter*
+
+. Exécuter la commander suivante
+
+[source,sh]
+ksetup /mapuser * *
+
+[start=4]
+. Vérifier que le nom du domaine de la machine a bien été modifié en ouvrant les menu:propriétés{sp}du{sp}poste{sp}de{sp}travail[Nom de l’ordinateur,Modifier,Autres].
+
+. Décocher également l’option *Modifier le suffixe DNS principal*.
+
+. Créer le compte utilisateur correspondant à l’un des comptes déjà ouverts sur le serveur {linux}.
+A partir de maintenant, l’utilisateur devrait être en mesure de s’authentifier en sélectionnant le bon domaine dans la liste déroulante lors de la prochaine ouverture de session {windows}.
+
+Vous trouverez des explications complètes sur cette procédure à link:++http://www.dice.inf.ed.ac.uk/groups/user_support/windows/winxpauthmit.html++[l'adresse
+suivante]
+
+<<<
+
+=== Erreurs courantes
+
+==== Failure unspecified at GSS-API level
+
+_Suite du message_ :
+----
+Mechanism level: Encryption type AES256 CTS mode with HMAC SHA1-96 is not supported/enabled)
+----
+
+La configuration par défaut prévoit une clé aes de 128 (aes128-cts) il apparait ici un défaut de configuration car la clé du client est aes sur 256 bits . Il est donc nécessaire ici de faire évoluer la configuration de Dossier est de modifier dans le fichier krb5.conf présent dans le répertoire xml :
+
+[source,properies]
+.Configuration par défaut
+----
+[libdefaults]
+default_realm = <CLIENT_REALM>
+  default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5
+  des-cbc-crc permitted_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+----
+
+[source,properies]
+.Nouvelle configuration
+----
+[libdefaults]
+default_realm = <CLIENT_REALM>
+  default_tkt_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+  default_tgs_enctypes = aes256-cts aes128-cts rc4-hmac
+  des3-cbc-sha1 des-cbc-md5 des-cbc-crc permitted_enctypes = aes256-cts aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+----

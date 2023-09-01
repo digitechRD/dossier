@@ -1,0 +1,2454 @@
+// suppress inspection "AsciiDocAttributeShouldBeDefined" for whole file
+[[Dossier-user-guide]]
+= {dossier}, Manuel Utilisateur
+v7.2
+:revnumber: 1.1
+:revdate: {productReleaseDate}
+:author: Digitech
+:organization: Digitech
+:doctype: book
+:reproducible:
+:experimental:
+:compact:
+:!webfonts:
+// use locale font-awesome icons
+:icons: font
+:iconfont-remote!:
+:iconfont-name: font-awesome.min
+:icon-set: far
+:nofooter:
+:toc-title: Sommaire
+:chapter-signifier:
+:listing-caption: Listing
+:sectnums:
+:toc:
+:toclevels: 3
+//:sectnumlevels: 3
+:xrefstyle: full
+ifdef::backend-pdf[]
+:img-prio-width: 10
+:title-logo-image: image:dossier-cover.png[align=center]
+:smile: icon:smile[role="yellow"]
+:hand-peace: icon:hand-peace[role="yellow"]
+:!nofooter:
+endif::[]
+ifndef::backend-pdf[]
+:toc: left
+:img-prio-width: 18
+:smile: icon:smile-o[role="yellow"]
+:hand-peace: icon:hand-peace-o[role="yellow"]
+endif::[]
+:imagesDir: images
+:favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
+:img_blocking: image:icons/blocking.png["Bloquant"]
+:img_urgent: image:icons/urgent.png["Urgent"]
+:img_high: image:icons/high.png["Haute"]
+:img_normal: image:icons/normal.png["Normal"]
+:img_low: image:icons/low.png["Bas"]
+// substition/alias
+:digitech: pass:quotes[`<span style="color:#EF2547;font-weight:bold">Digitech</span>`]
+:dossier: pass:quotes[`<span style="color:#D4CE28;font-weight:bold">AIRS Dossier</span>`]
+:java: pass:quotes[`<span style="color:#F24E52">java</span>`]
+:document: pass:quotes[`<span style="color:#82E0AA">document</span>`]
+
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+`Digitech SA` +
+_ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
+13322 Marseille Cedex 16_
+
+'''
+Copyright (c) 2022 `Digitech SA`, tous droits réservés.
+'''                 
+
+[options="header,autowidth",width=100%]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|01/05/2020|1.0|Validé|Création du document|Sylvain Muscarnera|Daniel Cogneau
+|07/01/2022|1.1|Travail|Version _asciidoc_|Nicolas Félix|
+|===
+
+<<<
+
+include::chapters/_01_introduction.adoc[]
+include::chapters/_02_identification.adoc[]
+include::chapters/_03_structure_generale.adoc[]
+include::chapters/_04_pj_edition.adoc[]
+include::chapters/_05_external_modules.adoc[]
+include::chapters/_06_home_page.adoc[]
+
+
+== Bannettes
+
+.Bannettes
+image:media/image203.png[width=680,height=213]
+
+
+La liste les bannettes disponibles dépend de la configuration
+applicative. Une bannette représente un ensemble de documents possédant
+une caractéristique commune et sur lesquels une action doit être
+effectuée.
+
+Les bannettes sont disponibles depuis la page d’Accueil (panneau
+*Aujourd’hui*) :
+
+.Accès aux bannettes (Accueil)
+image:media/image204.png[width=349,height=188]
+
+Vous pouvez cliquer sur l’intitulé d’une bannette pour l’ouvrir en *Vue
+résultats*. Le bouton image:media/image166.png[width=16,height=16] vous permet de rafraîchir le contenu toutes les bannettes.
+
+Ces mêmes bannettes seront également disponibles via le menu *Bannettes*
+> *Afficher les Bannettes* :
+
+.Accès bannettes (Menu)
+image:media/image203.png[width=680,height=213]
+
+Un clic sur l'intitulé de la bannette ou sur l'icône
+image:media/image205.png[width=23,height=14] permet d'accéder à la *Vue résultats* correspondante. Pour réactualiser
+le nombre de documents propre à une bannette dans le menu *Bannettes*,
+il est nécessaire de cliquer sur l'action
+image:media/image206.png[width=16,height=17].
+Pour rafraichir l'ensemble des bannettes depuis ce menu il est
+nécessaire de cliquer sur l'action
+image:media/image21.png[width=45,height=28].
+Pour plus d'informations au sujet des tables de données, veuillez-vous
+référer à la section Table de données page 16.
+
+== Favoris
+
+Les documents désignés comme favoris peuvent être consultés rapidement
+depuis la page *Favoris*, accessible via des liens sur la page
+d’*Accueil* ou le menu de navigation (*Documents* > *Favoris*). Tous les
+utilisateurs ont la possibilité d’ajouter des documents aux *Favoris*.
+Cependant, ils ne peuvent le faire que pour les documents auxquels ils
+ont accès.
+
+Depuis la *Vue Document* il est possible d'ajouter le document courant
+aux *Favoris*. Ces documents sont ensuite accessibles depuis le lien de
+l’*Accueil* ou du menu de navigation. L’ajout d’un document dans les
+favoris se fait en cliquant sur l’icône
+image:media/image207.png[width=30,height=24]depuis
+la *Vue Document*. Une fenêtre modale s’ouvre alors : permettant de
+renseigner le *Titre du Favori*, de l'associer à une *Catégorie* et
+d’*Activer le Suivi* de ce document :
+
+.Ajout de favori
+image:media/image22.png[width=419,height=154]
+
+Cette fenêtre vous permet de spécifier les éléments suivants :
+
+* *Titre du Favori* : écrivez ici le titre à attribuer à ce favori.
+* *Catégorie* : permet de déterminer la catégorie dans laquelle placer
+ce favori. Vous pouvez directement écrire dans ce champ (afin de créer
+une nouvelle catégorie ou de recherche une catégorie existante) ou bien
+en cliquant sur la flèche
+image:media/image208.png[width=20,height=19] à droite du champ, en sélectionnant
+la catégorie souhaitée dans la liste déroulante qui s’affiche.
+
+Pour valider l’ajout du favori, cliquez sur *ENREGISTRER*.
+
+.Favoris
+image:media/image209.png[width=514,height=391]
+
+La page *Favoris* (accessible via le menu de navigation *Documents* >
+*Favori* et la page d’Accueil) affiche les documents favoris sous forme
+arborescente. Les nœuds racines (de type
+image:media/image210.png[width=110,height=15]) définissent des catégories et les nœuds
+feuilles définissent des documents
+(image:media/image211.png[width=16,height=21] ou
+image:media/image212.png[width=19,height=19]).
+
+Lors du survol d’un document favori, différentes actions apparaissent
+sur sa droite :
+
+[cols=",",options="header",]
+|===
+|Boutons |Actions correspondantes
+|image:media/image211.png[height=21]
+|Afficher la fiche du document.
+
+|image:media/image191.png[height=23]
+|Retirer le document des favoris (le document ne sera pas supprimé de
+l’application).
+
+|image:media/image168.png[width=32,height=31]
+|Le bouton ainsi affiché indique que le suivi du document n’est pas
+activé (voir favoris sans suivi image:media/image211.png[] décrit
+plus haut). Cliquer dessus permet d’activer le suivi de ce favori.
+
+|image:media/image169.png[width=32,height=31]
+|Le bouton ainsi affiché indique que le suivi est activé sur ce favori
+(voir favoris avec suivi
+image:media/image212.png[] décrit plus
+haut). Cliquer dessus permet de désactiver le suivi de ce favori.
+
+|image:media/image213.png[width=18,height=17]/image:media/image214.png[width=18,height=17]
+|permet d’activer image:media/image213.png[width=18,height=17]/désactiverimage:media/image214.png[width=18,height=17]
+le suivi du favori. Les favoris dont le suivi est activé vous permettent
+de recevoir des notifications en temps réel dès que le document
+correspondant est modifié ou supprimé. Les documents dont le favori avec
+suivi est activé sont représentés par les icônes
+image:media/image212.png[height=17].
+Les autres documents sont représentés par les icônes
+image:media/image211.png[height=17].
+|===
+
+En double-cliquant sur l'intitulé d'un nœud, il devient possible de le
+modifier. De plus, l'arborescence peut être entièrement réorganisée en
+glissant/déposant les nœuds. Il est ainsi possible de déplacer un
+document vers une autre catégorie ou encore de modifier l'ordre des
+nœuds dans l'arborescence.
+
+La zone *Catégorie* permet d'ajouter un nouveau nœud racine (catégorie)
+à l'arborescence. Lorsqu’une catégorie ne contient pas de document, il
+est possible de la supprimer en cliquant sur l’icône :
+image:media/image191.png[height=23].
+
+[NOTE]
+====
+* Un document suivi qui a été modifié/supprimé s'affiche en rouge dans l'arborescence.
+* Un document supprimé apparaitra rayé dans l'arborescence.
+====
+
+== Mes requêtes
+
+La fonctionnalité *Requêtes Personnelles* permet d'enregistrer une
+recherche paramétrée afin de la réexécuter a posteriori. Ces requêtes
+peuvent également être partagées avec des utilisateurs nommés, une
+organisation, ou bien avec tous les utilisateurs de la GED. La création
+d’une requête personnelle se fait depuis la *Vue résultats*, en cliquant
+sur le bouton *Enregistrer…*. Une fenêtre modale s’ouvre alors pour
+personnaliser l’enregistrement de la requête :
+
+image:media/image215.png[width=478,height=241]
+
+* {blank}
++
+____
+*Requête AIRS* : affiche la requête de recherche au format AIRS. Cette
+ligne n’est pas éditable.
+____
+* {blank}
++
+____
+*Nom de la requête* : le libellé de la requête.
+____
+* {blank}
++
+____
+*Description* : le texte décrivant la requête exécutée.
+____
+* {blank}
++
+____
+*Publique* : la requête peut être visible par tous les utilisateurs.
+____
+* {blank}
++
+____
+*Type de Partage* : une requête peut ne pas être partagée (avec la
+valeur *Personnel* par exemple) ou bien avoir plusieurs types de
+partages.
+____
+
+Si le *Type de Partage* d’une requête est paramétré comme
+*Personnel*, celle-ci ne sera visible que pour l’utilisateur qui l’aura
+créée. La requête peut être partagée avec d’autres utilisateurs et
+organisations en sélectionnant les valeurs *Partagé avec…* ou *Partagé
+avec tout le monde* dans la liste déroulante *Type de Partage*. En
+sélectionnant la valeur *Partagé avec…*, la fenêtre modale laisse
+apparaître de nouveaux champs pour sélectionner la ou les
+organisation(s) avec lesquelles l'utilisateur souhaite partager cette
+requête (toute personne appartenant à une des organisations cibles sera
+alors en mesure de voir la requête), ou bien la ou les utilisateur(s)
+parmi ceux existants.
+
+image:media/image216.png[width=388,height=410]
+
+Pour activer un partage, l'utilisateur doit sélectionner le(s)
+organisation(s)/utilisateur(s) et cliquer sur *Copier*. Si une requête
+est partagée avec tout le monde, alors tout utilisateur ayant accès à la
+GED pourra consulter la requête.
+
+Les requêtes personnelles présentent les requêtes mémorisées auxquelles
+l'utilisateur peut accéder. On distingue les trois thématiques
+suivantes : les requêtes *Personnelles*, les requêtes *Partagées* et les
+requêtes *Abonnées*.
+
+=== Requêtes personnelles
+
+.Requêtes personnelles
+image:media/image217.png[width=680,height=154]
+
+Les requêtes personnelles listent les requêtes créées par l'utilisateur
+courant sous forme tabulaire. Les actions suivantes sont disponibles :
+
+* image:media/image218.png[width=22,height=14] : affiche la *Vue résultats* pour la requête souhaitée.
+* image:media/image219.png[width=17,height=17] : affiche le formulaire de recherche avancée initialisé à partir de la
+requête souhaitée.
+* image:media/image220.png[width=18,height=17] : affiche le panneau modal de modification des propriétés de la requête
+courante.
+* image:media/image191.png[width=19,height=23] : supprime la requête courante.
+
+L'action image:media/image221.png[width=18,height=21] permet de supprimer l'ensemble des requêtes.
+
+Pour plus d'informations au sujet des tables de données, veuillez-vous
+référer à la section Table de données page 16.
+
+=== Requêtes partagées
+
+Les requêtes partagées listent les requêtes partagées avec l'utilisateur
+courant ou une de ses organisations. Les actions suivantes sont
+disponibles :
+
+* image:media/image218.png[width=22,height=14] :
+affiche la *Vue résultats* pour la requête souhaitée.
+
+* image:media/image219.png[width=17,height=17]:
+affiche le formulaire de *Recherche avancée* initialisée à partir de
+la requête souhaitée.
+
+Pour plus d'informations au sujet des tables de données, veuillez-vous
+référer à la section Table de données page 16.
+
+=== Requêtes abonnées
+
+Les requêtes *Abonnées* correspondent aux requêtes *Publiques*
+auxquelles l'utilisateur courant est abonné. Les actions suivantes sont
+disponibles :
+
+* image:media/image218.png[width=22,height=14] :
+affiche la *Vue résultats* pour la requête souhaitée.
+* image:media/image219.png[width=17,height=17] :
+affiche le formulaire de recherche avancée initialisée à partir de la
+requête souhaitée.
+* image:media/image191.png[height=23] :
+désabonne l'utilisateur de la requête courante.
+
+Pour plus d'informations au sujet des tables de données, veuillez-vous
+référer à la section Table de données page 16.
+
+L'action
+image:media/image222.png[width=22,height=24]
+permet de s’abonner à une requête *Publique*. En cliquant sur
+image:media/image222.png[width=22,height=24],
+le panneau modal des requêtes *Publiques* disponibles s’affiche.
+
+.Requêtes publiques
+image:media/image223.png[width=471,height=198]
+
+
+À partir de l’écran *Requêtes publiques*, vous pouvez cocher les
+requêtes *Publiques* auxquelles vous souhaiter vous abonner. Cliquez sur
+le bouton *S'ABONNER* pour vous abonner aux requêtes sélectionnées dans
+le tableau.
+
+== Historiques
+
+L’historique enregistre un certain nombre d’évènements réalisés par
+l’utilisateur, comme les recherches qu’il a effectuées et les documents
+qu’il a consultés.
+
+Pour accéder à l’historique d’{dossier}, suivez le chemin suivant :
+*Recherche* > *Historiques des Recherches* ou *Documents* > *Historique des documents*.
+
+Que vous sélectionnez l’*Historique des documents* ou l’*Historique des
+Recherches*, les deux types d’historiques seront affichés (avec
+l’*Historique des documents* situé au-dessus de l’*Historique des recherches*).
+
+=== Historique des Documents
+
+.Historique des documents
+image:media/image224.png[width=680,height=208]
+
+L'historique des documents, accessible via le chemin *Documents* >
+*Historique des Documents*, présentent sous forme tabulaire les
+documents précédemment consultés par l'utilisateur courant.
+
+Vous avez ici accès aux actions suivantes :
+
+* image:media/image218.png[width=22,height=14] :
+permet d’afficher le document correspondant (*Vue Document*).
+* image:media/image191.png[width=19,height=23] :
+permet de retirer le document correspondant de l'historique (le document
+en lui-même ne sera pas supprimé).
+* image:media/image221.png[width=19,height=21] :
+située en haut à droite du tableau, cette icône permet de retirer tous
+les documents historisés listés dans ce tableau (la suppression
+n’affecte pas les documents).
+
+Pour plus d'informations au sujet des tables de données, veuillez-vous
+référer à la section Table de données page 16.
+
+=== Historique des recherches
+
+.Historiques des recherches
+image:media/image225.png[width=633,height=291]
+
+L'historique des recherches accessible via le chemin *Recherche* >
+*Historique des Recherches*, présentent sous forme tabulaire les
+recherches précédemment exécutées par l'utilisateur courant.
+
+Vous avez ici accès aux actions suivantes :
+
+* image:media/image218.png[width=22,height=14] :
+permet d'accéder aux résultats de recherche (*Vue résultats*) de la
+requête correspondante (vous pouvez également cliquer sur l'intitulé de
+la requête).
+* image:media/image191.png[width=19,height=23] :
+permet de retirer la requête correspondante de l'historique.
+* image:media/image226.png[] :
+située en haut à droite du tableau, cette icône permet de retirer toutes
+les recherches historisées listées dans ce tableau.
+* image:media/image143.png[width=28,height=28]:
+permet de modifier la requête correspondante (vous serez alors redirigés
+vers l’écran de *Recherche avancée*, contenant la requête
+correspondante).
+
+== Presse-papier
+
+.Presse-papier
+image:media/image227.png[width=566,height=208]
+
+
+Le *Presse-Papier* présente sous forme tabulaire les documents copiés au
+cours de la session.
+
+Le *Presse-Papier* peut contenir des documents, mais aussi un ensemble de
+pages provenant d'une pièce jointe.
+
+Un clic sur l'*ID* du document ou sur l'icône
+image:media/image193.png[width=29,height=29]
+permet d'accéder à la *Vue Document* du document.
+
+Un clic sur l'icône
+image:media/image228.png[width=18,height=18]
+permet de recharger l'élément. En effet, si un élément présent dans le
+*presse-papier* est modifié par une tierce personne, une icône s'affiche
+en début de ligne pour en informer l'utilisateur (l'élément est alors
+inexploitable au sein de l'application). Il est alors nécessaire de
+recharger l'élément afin de pouvoir l'exploiter à nouveau.
+
+Pour retirer un document du presse-papier, veuillez cliquer sur l'action
+image:media/image191.png[height=23]
+(ceci ne supprime pas le document de la GED).
+
+Enfin, pour retirer tous les documents du *presse-papier*, veuillez
+cliquer sur l'action
+image:media/image221.png[height=21].
+
+Pour plus d'informations au sujet des tables de données, veuillez-vous
+référer à la section Table de données page 16.
+
+Depuis la *Vue Document*, en cliquant sur l’icône
+image:media/image229.png[width=26,height=26],
+vous pouvez réaliser les actions suivantes :
+
+* Ajouter au *presse-papier* le document courant (copier).
+* Créer une copie d'un document du *presse-papier* dans le dossier
+courant (coller).
+* Déplacer un document du *presse-papier* dans le dossier courant.
+* Créer un lien entre un document du *presse-papier* et le document
+courant.
+* Dupliquer le document courant dans son dossier (sans l'ajouter au
+*presse-papier*).
+
+=== Ajouter le document au presse-papier
+
+image:media/image231.png[width=336,height=113]
+
+Afin d’ajouter le document courant au *presse-papier*, cliquez sur
+image:media/image229.png[width=26,height=26]
+puis sur *Copier*.
+
+Après un clic sur l’action *Copier*, une fenêtre modale *Ajout d’un
+élément au presse-papier* s'affiche, vous permettant de saisir
+l'intitulé du document placé dans le *presse-papier*.
+
+.Ajout d’un élément au presse-papier
+image:media/image232.png[width=420,height=175]
+
+Cliquez sur *ENREGISTREZ* pour valider l’ajout de l’élément dans le
+*presse-papier*.
+
+Attention
+
+Le contenu du *presse-papier* sera vidé à chaque déconnexion d’{dossier}.
+
+=== Copier un document du presse-papier dans le dossier courant (coller).
+
+Cette fonction est accessible seulement au sein d’un dossier. Afin de
+créer une copie d'un document du *presse-papier* dans le dossier courant
+(coller), cliquez sur
+image:media/image229.png[width=26,height=26]
+puis sur *Coller*. Choisissez ensuite le dossier souhaité :
+
+.Coller un élément du presse-papier
+image:media/image233.png[width=529,height=225]
+
+=== Déplacer un document du presse-papier dans le Dossier courant.
+
+Cette fonction est accessible seulement pour un dossier. Afin de
+déplacer un document du presse-papier dans le dossier courant, cliquez
+sur
+image:media/image229.png[width=26,height=26]
+puis sur *Déplacer*. Choisissez ensuite le dossier vers lequel effectuer
+le déplacement :
+
+.Déplacer le contenu du presse-papier
+image:media/image234.png[width=532,height=230]
+
+Contrairement à la fonction de duplication, cette action ne crée pas une
+copie du document, mais le déplace dans un nouveau dossier.
+
+=== Créer un lien entre un document du presse-papier et un dossier.
+
+Afin de créer un lien entre un document du *presse-papier* et le
+document courant, cliquez sur
+image:media/image229.png[width=26,height=26]
+puis sur *Lier à*. Choisissez ensuite le dossier avec lequel effectuer
+la liaison :
+
+.Lier le presse-papier à un dossier
+image:media/image235.png[width=450,height=197]
+
+
+Après sélection du dossier, une fenêtre modale s'affiche afin de
+sélectionner le type de lien à créer (dépend du paramétrage de
+l'application). Le lien est ensuite visible dans l’onglet *Lien* de la
+*Vue Document*.
+
+=== Dupliquer le document courant dans son dossier
+
+Afin de dupliquer le document courant dans son dossier (sans l'ajouter
+au *presse-papier*), cliquez sur
+image:media/image229.png[width=26,height=26]
+puis sur *Dupliquer*.
+
+. {dossier}: Dupliquer le document courant
+image:media/image236.png[width=144,height=187]
+
+D’un point de vue fonctionnel cela revient à faire un « copier » puis «
+coller » sur le même document.
+
+[NOTE]
+====
+Sur les menus contextuels des fonctions *Coller*, *Déplacer* et *Lier*
+*à*, les éléments qui s’affichent sont les libellés des éléments placés
+dans le *presse-papier*. Le libellé est créé lors de l’insertion du
+document dans le *presse-papier* (*Copier*). La fonction s’appliquera au
+document souhaité, ou bien à tous les documents du *presse-papier* lors
+d'un clic sur l'élément *Tous*.
+====
+
+Depuis la *visionneuse,* il est également possible d'ajouter au
+*presse-papier* un ensemble de pages issus d'une pièce jointe (cf.
+Visionneuse page 23).
+
+== Autres recherches
+
+=== Partie commune
+
+.Partie commune
+image:media/image237.png[width=551,height=182]
+
+La fonctionnalité de *Recherche* permet de définir et d'exécuter des
+recherches AIRS. Depuis la page d'*Accueil* de l'application, la
+fonctionnalité de *Recherche* est accessible depuis le sous-menu
+*Recherche* > *Recherche Simple* ou *Recherche* > *Recherche avancée*.
+Les fonctions de recherche sont également disponibles depuis le bloc
+fonctionnel *RECHERCHE*.
+
+Il existe deux types de recherche :
+
+* La *Recherche simple*.
+* La *Recherche avancée*.
+
+Pendant une recherche, vous pouvez passer d'un mode de recherche à un
+autre en sélectionnant le mode désiré dans la liste déroulante *Vue*,
+comme suit :
+
+.Choix du mode de recherche
+image:media/image238.png[width=228,height=108]
+
+Il est nécessaire de cliquer sur l'action
+image:media/image239.png[width=60,height=37]
+afin d'exécuter une recherche et d'afficher la page des résultats (vous
+pouvez également utiliser la touche Entrée du clavier).
+
+L'action
+image:media/image240.png[width=53,height=34]
+permet de vider l'ensemble des critères de recherche (*mode simple*)
+ou l'expression de recherche (*mode avancé*).
+
+Le mode d'affichage des résultats permet de définir la mode de
+présentation des résultats de recherche (affichage *Simple* ou affichage
+*3 fenêtres*). L’ensemble des critères de recherche dépendent du flux
+sélectionné, du *Type de Contenu* sélectionné et du paramétrage
+effectué sur la vue (via l’Admin AIRS).
+
+=== Recherche simple
+
+.Recherche simple
+image:media/image241.png[width=680,height=364]
+
+La *Recherche Simple*, accessible en suivant le chemin *Recherche* >
+*Recherche simple*, permet de réaliser des recherches AIRS en
+spécifiant des valeurs pour un ensemble de critères. La recherche
+construite est une recherche par intersection. Par exemple, si
+l'utilisateur spécifie la valeur _« 15/10/1980_ » pour un critère de
+*Date de création* et la valeur *À CLASSER* pour un critère de *Type*
+de document, la requête AIRS construite sera de la forme : D_CREAT =
+_15/10/1980_ *ET* DOC_TYPE = *À CLASSER*.
+
+La liste déroulante *Type de Contenu* permet de spécifier le *Type de
+Contenu* sur lequel la recherche doit être réalisée. Il est important de
+spécifier en premier lieu le *Type de Contenu*, car les critères de
+recherche affichés dépendent du *Type de Contenu* sélectionné.
+
+Les critères de recherche se caractérisent par :
+
+* Un intitulé : il définit le nom du critère de recherche.
+* Un opérateur : il définit le type d'opérateur à appliquer sur le
+critère de recherche. Selon la configuration de l'application, les
+opérateurs suivants peuvent être utilisés :
+** *=* : permet de spécifier l'égalité.
+** *>* : permet de spécifier la supériorité.
+** *<* : permet de spécifier l'infériorité.
+** *\{}* : permet de spécifier un intervalle de valeurs. L'intervalle de
+valeurs peut être spécifié sur les champs de type numérique ou de type
+date.
+** *} \{* : permet de spécifier un intervalle de valeurs "non compris
+entre". L'intervalle de valeurs ainsi saisi sera exclu des résultats de
+recherche. L'intervalle de valeurs "non compris entre" peut être
+spécifié sur les champs de type numérique ou de type date.
+* Un champ de recherche : il définit la valeur du critère de recherche.
+
+Selon le type du champ de recherche, celui-ci ne sera pas éditable. Il
+faudra alors utiliser les différents "picker" de valeur disponible (pour
+plus d’informations sur les pickers, consultez le chapitre Pickers page
+18) :
+
+* Picker de date : accessible en cliquant sur l’icône
+image:media/image37.png[width=26,height=26], permet de sélectionner une date. La date peut être saisie manuellement
+en respectant le format mentionné sous le champ : jj/mm/aaaa.
+* Picker d'organisation : accessible en cliquant sur l'icône
+image:media/image39.png[] permet de
+sélectionner une organisation.
+* Picker d'autorité : accessible en cliquant sur l'icône
+image:media/image41.png[] permet
+de sélectionner un élément d'une liste d'autorité.
+* Picker d'utilisateur : accessible en cliquant sur l'icône
+image:media/image43.png[width=24,height=24],
+permet de sélectionner un utilisateur.
+
+Si un critère de recherche est déjà renseigné pour un champ, le picker
+s'initialisera avec cette même valeur.
+
+Pour effacer la valeur d'un champ il peut être nécessaire de cliquer sur
+l’icône
+image:media/image242.png[width=24,height=24].
+
+[NOTE]
+====
+Pour certains champs, des caractères dit "joker" peuvent être spécifiés.
+Une annotation du type « (1) Les caractères'+', '*' peuvent être
+utilisés en tant que joker. » est alors mentionnée en regard du champ
+concerné. Les caractères jokers peuvent servir dans les cas suivants :
+
+* Faire une recherche sur tous les documents dont le champ correspondant
+est renseigné : pour ce faire, il suffit de remplir un champ avec
+seulement *+* ou ***. Exemple : *+* pour le critère *Objet* : recherche
+de tous les documents ayant un objet de renseigné.
+* Faire une recherche sur un champ qui commence par tel ou tel mot :
+pour ce faire, il faut ajouter les caractères *+* ou *** avant ou après
+le mot recherché. Exemple : "contrat**+**" permet de faire une recherche
+sur tous les mots commençant par "contrat".
+* Faire une recherche sur un champ qui contient tel ou tel mot : pour ce
+faire, il suffit entourer le mot recherché par *+* ou ***. Exemple :
+"**+**contrat*+*" permet de faire une recherche sur tous les mots
+contenant l’élément "contrat".
+====
+
+[NOTE]
+====
+Selon la configuration de votre application {dossier}, une liste
+de suggestions peut s'afficher lors de la saisie d'un critère de
+recherche. Les valeurs disponibles s'affichent au fur et à mesure de la
+saisie ; l'utilisateur pourra alors sélectionner la valeur souhaitée.
+====
+
+=== Recherche avancée
+
+.Recherche avancée
+image:media/image244.png[width=680,height=294]
+
+
+La *Recherche Avancée* permet de réaliser des recherches documentaires
+très précises, en spécifiant des valeurs pour des critères ciblés et sur
+un ensemble de *Types de contenu*. Pour réaliser une *Recherche*
+*avancée*, il est nécessaire de sélectionner dans un premier temps le(s)
+*Type(s) de Contenu* sur le(s)quel(s) la recherche doit être jouée.
+Le bouton
+image:media/image245.png[width=26,height=19]
+permet de sélectionner simultanément tous les types de contenu et le
+bouton
+image:media/image246.png[width=18,height=17]
+permet de tous les désélectionner.
+
+Selon la configuration applicative et les droits de l'utilisateur
+connecté, il est possible d'activer la recherche sur tous les flux (en
+cochant la case *Activer la recherche sur tous les flux ?*). Dès lors,
+tous les *Type*(s) *de Contenu* pour tous les flux de l'utilisateur
+seront disponibles.
+
+Vous pouvez désigner les types de contenu sur lesquels s’effectuera la
+recherche en cochant les cases associées aux intitulés souhaités (dans
+la partie droite de l’écran). Une fois le(s) *Type*(s) *de Contenu*
+souhaité(s) coché(s), vous pouvez cliquer sur l'action
+image:media/image247.png[width=28,height=21]
+pour afficher la fenêtre d'*Ajout d'une Locution*, ou sur l'action
+image:media/image248.png[width=20,height=24] pour
+ajouter une parenthèse ouvrante.
+
+.Ajout d'une locution
+image:media/image249.png[width=389,height=164]
+
+La fenêtre d'*Ajout d'une Locution* permet de spécifier le champ à
+ajouter, le type d'opérateur à utiliser ainsi que la valeur du critère.
+Selon le type du champ de recherche, celui-ci n'est pas éditable. Il
+faut alors utiliser le picker (sélecteur) de valeur.
+
+Pour plus de détails sur les pickers, voir le chapitre Pickers page 18.
+Une fois l'ajout de locution finalisé, veuillez cliquer sur le bouton
+*AJOUTER* pour mettre à jour l'expression de recherche.
+
+.Ajout d'une locution
+image:media/image250.png[width=680,height=290]
+
+Au fil de la construction de l'expression, la liste des actions
+possibles est mise à jour. Il est alors possible de spécifier des
+opérateurs interlocutions. L'action
+image:media/image251.png[width=28,height=27] (*ET*) permet
+d'ajouter l'opérateur d'intersection interlocutions (elle permet ainsi
+de cumuler les effets de différentes locutions). L'action
+image:media/image252.png[width=22,height=27] (*SAUF*) permet
+d'ajouter l'opérateur de négation interlocutions (permet par exemple
+d’exclure certaines valeurs de la recherche). L'action
+image:media/image253.png[width=24,height=24] (*OU*) permet
+d'ajouter l'opérateur d'union interlocutions (permet par exemple de
+différencier deux groupes de locutions basés sur des critères
+différents, ainsi l’élément recherché devra correspondre aux critères de
+l’un des deux groupes et non aux critères cumulés des deux groupes). Une
+fois l'expression de recherche renseignée, il suffit de lancer la
+recherche en cliquant sur l'action
+image:media/image239.png[width=60,height=37]. La
+page des résultats de recherche (*Vue résultats*) est alors affichée.
+
+=== Recherche dans les documents supprimés
+
+Les documents supprimés disparaissent des bannettes dans lesquelles ils
+se trouvent et ne peuvent plus être retrouvés par la recherche (simple,
+avancée…). Cependant, on peut toujours les retrouver via la *Recherche
+dans les documents supprimés*. Elle est accessible en fonction des
+droits de l’utilisateur connecté. On accède à cette page de deux
+façons : soit par le bloc fonctionnel *RECHERCHE* sur la page
+d’*Accueil* en cliquant sur *Recherche dans les documents supprimés*,
+soit par la barre de navigation : *Recherche* > *Recherche dans les*
+*documents supprimés*.
+
+Une fois sur cette page, vous pouvez rechercher les documents supprimés.
+Le fonctionnement de la recherche proposée est ici similaire à celui de
+la *Recherche simple* (cf. Recherche simple page 75).
+
+Une fois la recherche lancée, trois actions sont possibles dans les
+résultats de recherche (via la colonne *Actions* du tableau) :
+
+* image:media/image254.png[width=34,height=34] :
+Restaurer un document supprimé. Cliquez sur l’icône présente sur la
+ligne du document que vous souhaitez restaurer. Vous pouvez aussi
+restaurer tous les documents simultanément en cliquant sur l’icône :
+image:media/image256.png[width=23,height=24]
+situé en haut à gauche du tableau.
+* image:media/image257.png[width=34,height=34] :
+Supprimer définitivement un document. Cliquez sur l’icône présente sur
+la ligne du document que vous souhaitez supprimer. Vous pouvez aussi
+supprimer tous les documents simultanément en cliquant sur l’icône :
+image:media/image259.png[width=21,height=23]
+situé en haut à droite du tableau.
+* image:media/image260.png[width=37,height=37] :
+Permet de consulter la pièce jointe associée au document.
+
+Vous pouvez également sélectionner unitairement des documents en cochant
+les cases correspondantes afin de supprimer (bouton
+image:media/image257.png[width=34,height=34])
+ou de restaurer (bouton
+image:media/image254.png[width=34,height=34])
+uniquement votre sélection :
+
+.Vue Documents supprimés
+image:media/image262.png[width=680,height=179]
+
+==  Résultat de Recherche
+
+=== Partie commune
+
+La page d'affichage des résultats de recherche permet de visualiser les
+résultats d'une recherche (*Recherche simple*, *Recherche avancée*)
+et de visualiser le contenu d'une tablette. Il existe deux modes
+d'affichage des résultats de recherche : la *Vue résultats* et la *Vue 3 fenêtres*. Pour commuter d'un mode d'affichage à un autre, veuillez
+sélectionner la vue désirée dans la liste déroulante *Vue*, accessible à
+partir du coin supérieur droit :
+
+.Partie commune
+image:media/image263.png[width=680,height=209]
+
+[NOTE]
+====
+Si aucune recherche n'a été exécutée, l'icône affichée en page
+d'*Accueil* et l'entrée du menu de navigation *Vue résultats* (ou *Vue*
+*3* f**enêtres**) sont alors grisées.
+====
+
+[NOTE]
+====
+La vue courante sélectionnée est mémorisée durant toute la session.
+====
+
+=== Vue résultats
+
+.Vue résultats
+image:media/image23.png[width=680,height=320]
+
+La *Vue résultats* permet de visualiser un résultat de recherche ou le
+contenu d'une bannette. Les données affichées dans la *Vue résultats*
+dépendent de la configuration. Seule la colonne de sélection et la
+colonne *Actions* ne dépendent pas de la configuration.
+
+Un bouton de retour en haut de page représenté par une double flèche est
+disponible en *Vue Résultats*. En cliquant sur le bouton de retour en haut
+de page vous êtes directement renvoyé en haut de la page
+correspondante :
+
+.Retour en haut de page
+image:media/image264.png[width=580,height=258]
+
+En ajustant manuellement les proportions entre le tableau et la
+visionneuse, vos ajustements seront automatiquement enregistrés dans
+l’application.
+
+==== Actions
+
+La colonne *Actions* permet d'exécuter une action unitaire sur la ligne
+courante. On distingue les actions suivantes :
+
+* Le verrouillage du document est illustré par l'icône
+image:media/image265.png[width=30,height=30](ou
+image:media/image267.png[width=32,height=32]
+s’il est verrouillé par vous-même). Cliquez sur
+image:media/image269.png[width=32,height=32]
+pour déverrouiller le document. Selon les droits de l'utilisateur, il se
+peut que ce bouton soit désactivé.
+* Les documents non verrouillés ne sont pas accompagnés d’icône de type
+cadenas dans la 1^ère^ colonne sur la gauche. Cliquez sur
+image:media/image271.png[width=31,height=31]
+pour verrouiller le document. Selon les droits de l'utilisateur, il se
+peut que ce bouton soit désactivé.
+* Affichage de la *Vue plan de classement*, illustré par l'icône
+image:media/image273.png[height=15] (selon
+les droits de l'utilisateur).
+* Affichage de la *Vue Document*, illustrée par l'icône
+image:media/image193.png[width=29,height=29]
+pour la consultation, ou par l’icône
+image:media/image274.png[width=27,height=27]
+pour l’édition (selon les droits de l'utilisateur).
+* L’icône
+image:media/image260.png[width=32,height=32]
+permet d’afficher la pièce jointe correspondante.
+
+La première colonne du tableau (sur la droite) indique par l’icône
+image:media/image276.png[width=20,height=20]
+la présence de commentaire sur le document correspondant. Cette icône
+est également accompagnée du nombre de commentaires associés au document
+(« 1 » ici par exemple). En plaçant le curseur de la souris sur l’icône,
+on peut visualiser rapidement les commentaires correspondants. L’absence
+de cette icône signifie qu’aucun commentaire (visible par l’utilisateur)
+n’est associé au document en question.
+
+La *Vue résultats* permet de réaliser des actions globales, par
+l’intermédiaire des icônes situées juste au-dessus du tableau :
+
+image:media/image277.png[height=37]
+
+Selon votre configuration, vous avez accès aux actions suivantes :
+
+[cols=",",options="header",]
+|===
+|Boutons |Actions correspondantes
+|image:media/image20.png[height=38]
+|Permet de retourner à l’écran d’accueil.
+
+|image:media/image21.png[height=37]
+|Rafraichir la page. Cela permet de rejouer la requête et de mettre à
+jour les résultats de recherche.
+
+|image:media/image278.png[height=34]
+|Modifier les critères de recherche. Cette action affiche la page
+*Recherche simple*. Si une recherche a précédemment été réalisée via
+la recherche simple, on retrouvera les champs précédemment renseignés.
+
+|image:media/image279.png[width=22,height=22]
+|Permet de désélectionner tous les éléments sélectionnés (même s’ils
+sont sélectionnés sur une autre page du tableau).
+
+|image:media/image280.png[height=28]
+|Tout indexer. Cette action permet de lancer la procédure d'indexation
+sur l'ensemble des résultats de recherche.
+
+|image:media/image281.png[height=20]
+|Enregistrer la requête pour pouvoir la retrouver plus tard.
+
+|image:media/image92.png[height=19] |Permet d’afficher
+dans une fenêtre (*Liste des signets*) tous les signets qui ont été
+apposés sur des documents (indépendamment de la sélection). Dans cette
+fenêtre, vous pouvez cliquer sur l’icône
+image:media/image218.png[width=22,height=14]
+(ou double-cliquer sur la ligne) pour afficher la page du document
+référencé par le signet via la *Vue résultats*.
+
+|image:media/image282.png[height=19] |Permet d’effectuer une demande de
+signature pour le document sélectionné.
+
+|image:media/image283.png[height=23]
+|Exporter l'ensemble des résultats de recherche au format CSV.
+|===
+
+[NOTE]
+====
+Vous pouvez naviguer entre les différents documents listés en *Vue
+résultats* en utilisant les flèches et du clavier. Vous pouvez également
+naviguer entre les différentes pièces jointes du document sélectionné en
+utilisant les combinaisons de touches suivantes :
+====
+
+* {blank}
++
+____
+Ctrl + : affiche la pièce jointe suivante dans la *visionneuse*.
+____
+* Ctrl + : affiche la pièce jointe précédente dans la *visionneuse*.
+
+La *Vue résultats* permet de réaliser des actions sur l’ensemble des
+documents sélectionnés (chaque action étant visible ou non en fonction
+des droits de l'utilisateur connecté) :
+
+[cols=",",options="header",]
+|===
+|Boutons |Actions correspondantes
+|image:media/image191.png[height=23]
+|Supprimer les documents sélectionnés. Avant que la suppression ne soit
+effective, une demande de confirmation de suppression indiquant le
+nombre de documents sélectionnés en *Vue résultats* vous est adressée.
+
+|image:media/image284.png[height=27] |Indexer les
+documents sélectionnés.
+
+|image:media/image285.png[height=18]
+|Exporter au format CSV les documents sélectionnés.
+
+|image:media/image286.png[height=21] |Verrouiller les
+documents sélectionnés.
+
+|image:media/image287.png[height=21] |Déverrouiller
+les documents sélectionnés.
+|===
+
+Selon la configuration de votre environnement, différentes options de
+suppression vous seront proposées. Ces différentes options permettent la
+suppression de documents hiérarchiquement rattachés au(x) document(s)
+que vous souhaitez supprimer (sélectionnés). Il s’agit d’une hiérarchie
+de type Dossier - Document, telle qu’on peut l’observer dans la vue
+*Plan de classement* (cf. *Vue Plan de classement* page 103) d’un document
+(à ne pas confondre avec l’onglet *Liens* d’un document, accessible en
+*Vue Document*, ne permettant que de faire des liens symboliques entre
+documents). Après un clic sur l’action image:media/image191.png[] les
+options suivantes pourront vous être proposées :
+
+* *Supprimer seulement le(s) Documents) sélectionné(s)* : supprime
+uniquement le ou les documents sélectionnés.
+* *Supprimer le(s) Document(s) sélectionné(s) et les Documents enfants
+qui n’ont pas d’autres parents* : supprime le(s) document(s)
+sélectionné(s) et les documents qui ont des connexions hiérarchiques de
+type enfant avec ces documents uniquement.
+* *Supprimer le(s) Document(s) sélectionné(s) et les Document enfants *:
+supprime les documents sélectionnés et les documents qui ont des liens
+de type enfant avec ces documents, même s’ils ont des liens avec
+d’autres documents non sélectionnés ici.
+
+.Types de suppression
+image:media/image288.png[width=490,height=210]
+
+Cliquez sur *SUPPRIMER* pour confirmer la suppression, ou sur *ANNULER*
+pour stopper l’opération.
+
+[NOTE]
+====
+Selon le paramétrage de votre application {dossier}, les boutons
+d’actions pourront être alignés à droite ou à gauche (configuration par
+défaut).
+====
+
+==== Tris et Filtres
+
+Afin d'ordonner la liste des résultats de recherche, des outils de tri
+sont disponibles en haut de certaines colonnes (des menus déroulants,
+des flèches de tri
+(image:media/image289.png[flèches
+tri,width=19,height=20]) ou des champs vides). Il est possible de faire
+des tris multicolonnes.
+
+Pour certains éléments de la *Vue résultats*, vous pouvez utiliser des
+filtres afin de limiter la recherche à des éléments précis. Ces filtres
+se situent juste au-dessous des intitulés de colonne du tableau de la
+*Vue résultats*. Il existe deux types de filtre :
+
+* Les filtres de type saisie prédictive : ces filtres sont représentés
+par un simple encadré blanc, dans lequel vous pouvez saisir du texte.
+Seuls les documents contenant le texte saisi pour ce champ, seront
+affichés dans les résultats de recherche.
+* Les filtres de type listes déroulantes : ces filtres sont représentés
+par un encadré blanc, accompagné d’un triangle, comme suit :
+image:media/image290.png[height=16]. Vous pouvez dans
+ce filtre accéder à une liste déroulante en cliquant sur le triangle
+noir. L’élément sélectionné dans cette liste conditionnera l’affichage
+des résultats de recherche.
+
+Vous pouvez rétablir la valeur des tris par défaut en cliquant sur
+l’action
+image:media/image24.png[
+plusieurs filtres pouvant être utilisés simultanément, vous pouvez
+annuler l’effet de tous les filtres utilisés en cliquant sur l’icône
+image:media/image291.png[height=20].
+
+[NOTE]
+====
+Les différentes configurations effectuées sur les tris et les filtres
+seront conservés si vous basculez entre la *Vue Document* et la *Vue
+résultats*. Autrement dit, si vous accédez à l’édition d’un document
+(*Vue Document*) à partir de la *Vue résultats*, le passage d’une vue à
+l’autre ne modifiera pas les critères de tri et de filtrage initialement
+utilisés en *Vue résultats*.
+====
+
+En fonction de votre configuration, lorsque le mode d’affichage *Avancé*
+est activé vous pouvez modifier de manière précise l’affichage des
+colonnes. Avec la possibilité de masquer, repositionner et
+redimensionner une colonne. Pour ce faire, cliquez sur l’icône
+image:media/image292.png[width=20,height=22] qui apparait
+lorsque vous passez le curseur de la souris dans l’encadré supérieur
+d’une colonne (comme dans la colonne *Actions* ci-dessous) :
+
+.Modifier l'affichage des colonnes
+image:media/image293.png[width=260,height=171]
+
+Cliquez sur l’icône
+image:media/image292.png[width=20,height=22] afin de
+personnaliser l’affichage des colonnes ; de nouvelles options
+apparaissent :
+
+.Options d'affichage
+image:media/image294.png[width=354,height=343]
+
+Ces options vous permettent de paramétrer le tri à appliquer sur la
+colonne correspondante (*croissant*, *décroissant*), l’affichage groupé
+des informations en fonction du type de contenu de la colonne
+sélectionnée (*Grouper sur cette colonne*, *Annuler le regroupement*) ainsi que les colonnes que vous souhaitez afficher ou
+masquer (en cochant la case ou les cases avec l’intitulé correspondant
+dans le sous-menu *Colonnes*). Les options d'affichage paramétrées ici
+sont conservées dans les préférences de l'utilisateur.
+
+[NOTE]
+====
+Si le nombre de résultats de recherche est trop grand, la fonctionnalité
+de tri sera désactivée.
+====
+
+=== Vue 3 fenêtres
+
+.Vue 3 fenêtres
+image:media/image295.png[width=680,height=344]
+
+La page *Vue 3 fenêtres*, similairement à la *Vue résultats*, permet de
+visualiser un résultat de recherche ou le contenu d'une bannette, mais
+divise son contenu en trois zones distinctes. Ce mode permet donc de
+visualiser sur un seul écran :
+
+* La liste des résultats de recherche, identique au fonctionnement de la
+*Vue résultats*.
+* Le contenu détaillé du document sélectionné via les informations de la
+*Vue Document*.
+* Les pièces jointes associées au document courant.
+
+Pour sélectionner un nouveau document, il est nécessaire de cliquer sur
+l'icône
+image:media/image218.png[width=22,height=14]
+dans la colonne *Action*. La colonne *Etat* permet de visualiser l'état
+du document. Les trois états qui suivent peuvent être affichés :
+
+* Document non verrouillé, illustré par l'absence d’icône de type
+cadenas.
+* Document verrouillé par un autre utilisateur, illustré par l'icône
+image:media/image267.png[width=31,height=31].
+* Document verrouillé par moi-même, illustré par l'icône
+image:media/image267.png[width=31,height=31].
+* Document verrouillé par un autre utilisateur
+image:media/image265.png[width=30,height=30]
+(déposez le curseur de la souris sur cette icône pour voir le nom de
+l’utilisateur à l’origine du verrouillage du document).
+
+Pour de plus amples informations sur les résultats de recherche,
+veuillez-vous référer à la section Vue résultats page 81.
+
+Pour de plus amples informations sur les détails du document,
+veuillez-vous référer à la section Vue document / Fiche document page
+89.
+
+Pour de plus amples informations sur la fenêtre des pièces jointes,
+veuillez-vous référer à la section page Ecran de visualisation de pièce
+jointe page 97.
+
+[NOTE]
+====
+Vous pouvez utiliser la barre de séparation afin de redimensionner les
+zones relatives aux résultats de recherche et à la *Vue Document* du
+document sélectionné. L'affichage de la *Vue 3 fenêtres* nécessite une
+résolution minimale de 1152 * 864.
+====
+
+== Vue document / Fiche document
+
+=== Introduction
+
+.Vue unitaire
+image:media/image296.png[width=680,height=306]
+
+La *Vue Document* (également appelée *Fiche Document*) permet de
+visualiser le contenu thématisé et détaillé d'un document. Pour afficher
+la position du document dans l'arborescence, veuillez cliquer sur le
+lien *Afficher le plan de classement*. Si le document est verrouillé
+la *Vue Document* s'ouvre en mode *EDITION*, sinon la *Vue Document*
+s'ouvre en mode *CONSULTATION*.
+
+La page *Vue Document* se divise en deux parties : la *barre*
+*d'actions* et la fiche détaillée.
+
+La fiche détaillée a été organisée en six onglets (affichés selon les
+droits de l'utilisateur) :
+
+* L’onglet *Contenu*,
+* L’onglet *Pièce Jointe*,
+* L’onglet *Historique*,
+* L’onglet *Commentaire*,
+* L’onglet *Lien*,
+* L’onglet *Workflow*.
+
+Selon la configuration de l'application, la fenêtre d'affichage de la
+pièce jointe est automatiquement ouverte. En ajustant manuellement les
+proportions entre le tableau et la visionneuse, vos ajustements seront
+automatiquement enregistrés dans l’application.
+
+=== Actions
+
+.Actions
+image:media/image297.png[width=680,height=104]
+
+La *barre d'actions* (illustrée ci-dessus), accessible depuis la *Vue
+Document*, permet de réaliser différents types d’actions (la plupart des
+actions disponibles sont liées à des droits utilisateur).
+
+==== Actions globales
+
+* image:media/image298.png[width=60,height=38]
+permet de passer en mode *EDITION*. Le document est alors
+automatiquement verrouillé.
+* image:media/image299.png[width=60,height=38]
+permet de sauvegarder le document et de passer en monde *CONSULTATION*.
+Le document est alors automatiquement déverrouillé. Un script métier
+peut être joué lors de la sauvegarde de façon à réaliser des contrôles
+supplémentaires. Il est par exemple possible de faire des contrôles
+inter-champs avant de rendre effective la sauvegarde.
+* image:media/image191.png[width=19,height=23]
+permet de supprimer le document. Un script métier peut être joué lors de
+la suppression de façon à réaliser des contrôles complémentaires. Il est
+par exemple possible de faire des contrôles inter-champs avant de rendre
+effective la suppression.
+* image:media/image300.png[width=23,height=20]permet
+de copier une url d’accès public à ce document dans le presse-papier.
+Une fois la copie effectuée, une notification vous en avertira. Cette
+url pourra ensuite être partagée avec d’autres utilisateurs.
+
+* image:media/image192.png[width=29,height=21]permet
+d'envoyer un e-mail (les pièces jointes du document peuvent être
+insérées dans le mail). :
+
+image:media/image301.png[width=490,height=385]
+
+* *De* : indique l’adresse mail de l’émetteur. Ce champ est
+automatiquement complété par l’adresse mail de l’utilisateur courant (ou
+de son service le cas échéant). Dans certains cas, vous avez la
+possibilité de choisir entre votre adresse mail et celle de votre
+service via une liste déroulante.
+* *Pour* : champ correspondant à l’adresse mail du destinataire. Il est
+possible d’insérer plusieurs destinataires en séparant les adresse par
+des virgules « , ». Ce champ utilise la saisie prédictive.
+* *Copie à* : champ correspondant à l’adresse mail d’une éventuelle
+personne en copie.
+* *Copie cachée à* : champ correspondant à l’adresse mail d’une
+éventuelle personne en copie cachée.
+* *Sujet* : correspond à l’objet du mail.
+* *Contenu* : champ de rédaction du contenu du mail. Vous disposez
+également ici de nombreux outils de mise en forme du texte.
+* *Pièces jointes* (case) : cochez ici la ou les cases correspondant
+aux pièces que vous souhaitez joindre au mail. S’il y a plusieurs pièces
+jointes (fichiers), vous pourrez *Tou(te)s* les sélectionner ou
+*Aucun(e)* en cliquant sur les boutons correspondants.
+
+Une fois les champs nécessaires complétés, cliquez sur
+image:media/image302.png[height=22] pour valider l’envoi de
+votre mail. Cliquez sur
+image:media/image303.png[height=22] pour refermer cet écran sans
+envoyer le mail
+
+* image:media/image304.png[height=19]
+permet d'ajouter le document courant aux *Favoris*.
+* image:media/image92.png[height=19] permet d'afficher
+les signets.
+* image:media/image282.png[height=19] permet d’effectuer une demande de
+signature (cf. Effectuer une demande de signature page 113).
+* image:media/image305.png[height=19] permet de
+copier/dupliquer/lier le document (un menu contextuel s'affiche afin de
+proposer l'action à réaliser). Pour plus d’information sur cette
+fonctionnalité, consultez le chapitre Presse-papier page 70.
+
+* image:media/image306.png[height=24] (affichée
+seulement si le *Plan de classement* est visible) permet de punaiser le
+document. Le fait de punaiser le document permet de naviguer dans
+l'arborescence et de consulter les pièces jointes d'autres documents
+tout en conservant la fiche détaillée du document punaisé. L'action
+image:media/image307.png[height=24] permet quant à
+elle de dépunaiser le document.
+
+==== Actions de Workflow AIRS
+
+* L'action secondaire
+image:media/image308.png[height=24]
+(affiché selon la configuration de l'application), permet de modifier
+l'état d'un document. En survolant ce bouton, une infobulle permet de
+connaître avec précision le type de modification engendré par cette
+action.
+
+==== Actions de Workflow
+
+* image:media/image309.png[height=23]
+(affichée selon la configuration Workflow), permet de mettre en attente
+la tâche Workflow dans laquelle se trouve le document.
+* image:media/image310.png[height=18]
+(affichée selon la configuration Workflow), permet de clôturer la tâche
+Workflow dans laquelle se trouve le document.
+* image:media/image308.png[height=24]
+(affichée selon la configuration Workflow), permet de valider la tâche
+Workflow dans laquelle se trouve le document.
+* image:media/image311.png[height=33]
+(affichée selon la configuration Workflow), permet d'attribuer la tâche
+Workflow dans laquelle se trouve le document à un autre utilisateur ou
+une autre organisation.
+
+==== Actions personnalisées
+
+* Ce bloc peut contenir des actions personnalisées principales ou
+secondaires (par exemple : la copie de document, l'export de document,
+...). Les actions personnalisées permettent l'interopérabilité d’{dossier} avec des applications tierces. Elles peuvent être aussi
+utilisées afin de générer des rapports.
+
+=== Onglet contenu
+
+.Onglet contenu
+image:media/image312.png[width=680,height=297]
+
+L'onglet *Contenu* donne accès à certains champs d'indexation (selon
+configuration) du document. Cet onglet est affiché selon les droits de
+l'utilisateur.
+
+On distingue deux modes de fonctionnement :
+
+* Le mode *CONSULTATION* permet seulement la visualisation des champs
+d'indexation.
+* Le mode *EDITION* (affiché selon les droits utilisateur) permet de
+modifier la valeur de certains champs d'indexation. Certains champs sont
+modifiables à l'aide de pickers.
+
+En fonction de la configuration de votre application, il est possible de
+créer/supprimer des documents liés et de renseigner la valeur de leurs indexes.
+
+[NOTE]
+====
+Selon la configuration, les champs peuvent être regroupés par
+thématiques afin d'améliorer la lisibilité du formulaire.
+====
+
+=== Onglet pièce jointe
+
+.Onglet pièce jointe
+image:media/image313.png[width=680,height=337]
+
+L'onglet *Pièce jointe* permet de visualiser l'ensemble des pièces
+jointes du document. Cet onglet est affiché selon les droits de
+l'utilisateur. Les informations suivantes sont affichées :
+
+* **Id**entifiant de la pièce jointe.
+* *Action*(s) réalisables sur la pièce jointe :
+** image:media/image218.png[width=22,height=14] :
+permet de visualiser la pièce jointe via la fenêtre de visualisation.
+** image:media/image314.png[width=23,height=23] :
+permet de télécharger la pièce jointe.
+** image:media/image141.png[width=37,height=37] :
+permet de modifier le fichier de la pièce jointe (selon votre
+configuration, l’édition de pièce jointe pourra se dérouler de manière
+différente, cf. Edition des pièces jointes, documents page 37).
+** image:media/image143.png[width=28,height=28] :
+permet de modifier les informations liées à la pièce jointe.
+** image:media/image160.png[width=24,height=23] :
+permet de numériser une nouvelle pièce jointe.
+* *Intitulé* de la pièce jointe.
+* *Type* de la pièce jointe.
+* *Nom du fichier* joint.
+
+On distingue deux modes de fonctionnement :
+
+* Le mode *CONSULTATION* permet seulement de consulter les pièces
+jointes.
+* Le mode *EDITION* (affiché selon les droits utilisateur) permet
+d'ajouter, de modifier ou même de supprimer une pièce jointe.
+
+Pour visualiser le fichier de la pièce jointe, il est nécessaire de
+cliquer sur l'action
+image:media/image94.png[width=17,height=9]; la fenêtre de
+visualisation de pièce jointe est alors affichée.
+
+Pour supprimer une pièce jointe, il faut au préalable cocher le(s)
+pièce(s) jointe(s) puis cliquer sur l’action
+image:media/image191.png[width=19,height=23] :
+
+.Supprimer une pièce jointe
+image:media/image316.png[width=680,height=164]
+
+Un message de confirmation s'affiche avant d'appliquer la suppression.
+
+[NOTE]
+====
+Si le "versioning" est activé (via le l’Admin AIRS), il est alors
+possible de sélectionner la version de la pièce jointe à afficher dans
+la colonne *Versions*.
+====
+
+==== Ajouter une pièce jointe
+
+L’ajout de pièce jointe peut ici se réaliser de trois manières :
+
+[arabic]
+. Via le bouton
+image:media/image49.png[width=21,height=20] :
+
+Pour ajouter une pièce jointe, cliquez sur l'icône :
+image:media/image49.png[width=21,height=20]. La
+fenêtre modale *Ajout/Modification d'une pièce jointe* s'ouvre :
+
+.Ajout d'une pièce jointe
+image:media/image317.png[width=480,height=224]
+
+
+Saisissez les informations liées à la pièce jointe telles que son
+*Intitulé* et son *Type* puis, sélectionnez le fichier à télécharger.
+Ajoutez la pièce jointe en la déposant par cliquer-glisser dans la zone
+intitulée *Déposer un nouveau fichier ici*. Vous pouvez également
+cliquer dans cette zone pour rechercher le fichier à importer sur votre
+poste. Selon votre configuration, si la pièce jointe choisie ne convient
+pas, vous pouvez la supprimer en cliquant sur *[underline]#Supprimer#*. En
+cliquant sur le bouton *Enregistrer*, le fichier est téléchargé et la
+pièce jointe ajoutée au courrier (il est également possible que la pièce
+jointe soit directement ajoutée selon votre configuration).
+
+[arabic, start=2]
+. Via la zone *Déposer un nouveau fichier ici :*
+
+Ajoutez la pièce jointe en la déposant par cliquer-glisser dans la zone
+intitulée *Déposer un nouveau fichier ici*. Vous pouvez également
+cliquer dans cette zone pour rechercher le fichier à importer sur votre
+poste. Si la pièce jointe choisie ne convient pas, vous pouvez la
+supprimer en cliquant sur *[underline]#Supprimer#*.
+
+[arabic, start=3]
+. Via la numérisation
+image:media/image160.png[height=23]
+
+Vous pouvez aussi numériser la pièce jointe à ajouter à l’aide de la
+touche
+image:media/image160.png[height=23].
+Cette touche déclenche l’apparition d’un module de numérisation dans
+lequel vous pourrez numériser un document à l’aide d’un scanneur. Afin
+d’utiliser le module de numérisation, vous devez impérativement disposer
+du driver Twain adéquat sur votre poste informatique (selon votre
+configuration cette option pourra ne pas être disponible).
+
+==== Ecran de visualisation de pièce jointe
+
+.Pièce jointe
+image:media/image318.png[width=495,height=464]
+
+La fenêtre de visualisation de pièce jointe permet de consulter les
+pièces jointes d'un document. Selon le type de fichier à visualiser, la
+pièce jointe est affichée dans la *visionneuse* (cf. Visionneuse page
+23). Si le document courant se trouve dans un dossier, il est alors
+possible de naviguer dans ce dossier en sélectionnant un autre document.
+Pour ce faire, il est nécessaire d'utiliser les flèches de part et
+d'autre du document courant. Pour naviguer de pièce jointe en pièce
+jointe, il est nécessaire d'utiliser les flèches de part et d'autre de
+la pièce jointe courante.
+
+[NOTE]
+====
+Si la pièce jointe n'est pas trouvée dans le système de fichier AIRS, un
+message d'erreur est affiché.
+====
+
+[NOTE]
+====
+Il est possible de masquer/afficher l’écran de visualisation de pièces
+jointes en cliquant sur la double flèche située dans son coin supérieur
+droit.
+====
+
+=== Onglet lien
+
+.Onglet lien
+image:media/image319.png[width=680,height=236]
+
+L'onglet *Lien* permet de consulter l'ensemble des documents liés au
+document courant. Cet onglet est affiché selon les droits de
+l'utilisateur. Les informations suivantes sont affichées :
+
+* *Intitulé* du lien.
+* *Pièces jointes* associées au document lié (un clic sur la pièce
+jointe permet de l'afficher dans la fenêtre de visualisation).
+* *Type de Contenu* du document lié.
+* *Nom du Lien* utilisé pour récupérer le document lié.
+* *Direction du Lien* (parent ou enfant).
+
+Pour afficher la fiche détaillée du document lié, il est nécessaire de
+cliquer sur l'action
+image:media/image218.png[width=22,height=14].
+
+Pour supprimer un ou plusieurs liens, il faut au préalable cocher le(s)
+document(s) puis cliquer sur l'action
+image:media/image191.png[width=19,height=23]. Un
+message de confirmation s'affiche avant d'appliquer la suppression.
+
+.Ajout de pièce jointe
+image:media/image320.png[width=503,height=554]
+
+Pour créer un lien, veuillez cliquer sur l'action
+image:media/image49.png[width=21,height=20]. La
+fenêtre modale *Sélection de document(s)* s'ouvre. Il est alors possible
+de sélectionner le *Type de Lien* puis de saisir les critères de
+recherche (les critères de recherche affichés dépendent du paramétrage
+applicatif) puis de cliquer sur le bouton *Rechercher* afin d'afficher
+les résultats de recherche. Il est alors possible de cocher les
+documents qui doivent être liés au document courant puis de cliquer sur
+le bouton *SÉLECTIONNER* afin de créer le lien.
+
+=== Onglet Historique
+
+.Onglet historique
+image:media/image321.png[width=680,height=441]
+
+L'onglet *Historique* permet de visualiser l'historique des actions AIRS
+réalisées sur le document. Cet onglet est affiché selon les droits de
+l'utilisateur. Les informations suivantes sont affichées :
+
+* L’*Id* du document concerné par l’action.
+* *Message* de trace lié à l'action AIRS.
+* Nom de l'*Acteur* responsable de l'action AIRS.
+* *Date* de réalisation de l'action AIRS.
+
+=== Onglet Workflow
+
+L'onglet *Workflow* permet de visualiser l'historique des tâches
+*Workflow* par lesquelles est passé le document. Cet onglet est affiché
+selon les droits de l'utilisateur. Les informations suivantes sont
+affichées :
+
+* Nom des tâches du *Workflow* par lesquelles le document est passé.
+* Nom des *Acteurs* responsables du traitement d'une tâche.
+* Date de début et date d'achèvement de chaque tâche.
+
+=== Onglet Signature (optionnel)
+
+.Onglet Signature
+image:media/image322.png[width=680,height=289]
+
+Cet onglet est uniquement destiné aux utilisateurs disposant du droit de
+signer électroniquement un document dans {dossier}. Cet onglet
+n’apparait qu’en *Edition*. Pour plus d’informations sur la signature,
+veuillez consulter le chapitre Signature page 107.
+
+=== Onglet Commentaire
+
+.Onglet commentaire
+image:media/image323.png[width=680,height=257]
+
+L'onglet *Commentaire* permet de visualiser l'ensemble des commentaires
+relatifs au document. Cet onglet est affiché selon les droits de
+l'utilisateur. On distingue deux modes de fonctionnement :
+
+* Le mode *Consultation* permet seulement la visualisation des
+commentaires.
+* Le mode *Edition* (affiché selon les droits utilisateur) permet
+d'ajouter ou de supprimer un commentaire.
+
+Pour supprimer un ou plusieurs commentaires, il faut au préalable cocher
+le(s) document(s) puis cliquer sur l'action
+image:media/image324.png[width=18,height=22].
+Un message de confirmation s'affiche avant d'appliquer la suppression.
+
+[NOTE]
+====
+Il est seulement possible de supprimer les commentaires dont vous êtes
+l’auteur (sauf si vous disposez du droit *DOSSIERS_COMMENT_DELETE*
+permettant de supprimer n’importe quel commentaire). À noter également
+que pour les commentaires renseignés sous délégation, il sera fait
+mention de la délégation dans le commentaire.
+====
+
+Il est possible de modifier un des commentaires en cochant un
+commentaire puis en cliquant sur l'action
+image:media/image325.png[width=21,height=21],
+la fenêtre *Ajout/Modification d’un Commentaire* s’ouvre alors :
+
+.Ajout de commentaire
+image:media/image326.png[width=487,height=507]
+
+Pour ajouter un commentaire, veuillez cliquer sur l'action
+image:media/image49.png[width=21,height=20]. La
+fenêtre modale *Ajout/Modification d'un Commentaire* s'ouvre également.
+Il est alors possible de saisir le commentaire à ajouter ainsi que le
+type de partage à appliquer. Il faut considérer les niveaux de partage
+(confidentialité) suivants :
+
+* *Privé* : le commentaire n'est visible que par son auteur (si *Type de
+Partage* est également réglé sur la valeur *Personnelle*).
+* *Partagé* : le commentaire n'est visible que par son auteur et les
+utilisateurs souhaités (utilisateurs appartenant à une organisation
+et/ou utilisateurs individuellement).
+
+En cliquant sur l'action *ENREGISTRER*, le commentaire est créé.
+
+=== Vue Plan de classement
+
+.Arborescence
+image:media/image327.png[width=680,height=255]
+
+
+La vue *Plan de classement* permet de visualiser le document courant
+dans son arborescence. Dès lors, il est possible de naviguer à travers
+l'arborescence afin de sélectionner un autre document. Pour rafraichir
+le *Plan de classement*, veuillez cliquer sur l'action
+image:media/image328.png[width=20,height=20].
+
+L'action
+image:media/image329.png[width=21,height=15]
+permet de réinitialiser l'arborescence afin d’afficher à nouveau son
+état initial.
+
+Les boutons
+image:media/image330.png[width=18,height=13]
+et
+image:media/image331.png[width=18,height=13]
+ont été ajoutés afin de respectivement déployer ou de réduire en un clic
+l’intégralité de l’arborescence :
+
+.Arbre déplié
+image:media/image332.png[width=456,height=185]
+
+.Arbre replié
+image:media/image333.png[width=455,height=185]
+
+Vous pouvez agrandir la partie dédiée à l’affichage du plan de
+classement en cliquant sur la flèche située en bas de l’écran :
+
+.Agrandir Plan de classement
+image:media/image334.png[width=455,height=217]
+
+Une fois cette zone agrandie, vous pourrez la réduire en cliquant à
+nouveau sur cette flèche (pointant désormais vers le haut).
+
+Il existe différents types de nœud pouvant être affichés dans le *Plan
+de classement* :
+
+* Nœud dossier
+image:media/image335.png[width=16,height=16] :
+il correspond à un document AIRS de type dossier. Pour sélectionner un
+nœud dossier, veuillez cliquer sur son intitulé.
+* Nœud dossier virtuel
+image:media/image335.png[width=16,height=16] :
+il correspond à un nœud virtuel (aucun document AIRS ne lui est
+associé). Ce type de nœud permet de créer des regroupements de données
+dans le *Plan de classement*. Ce type de nœud ne peut pas être
+sélectionné.
+* Nœud document
+image:media/image336.png[width=16,height=16] :
+il correspond à un document AIRS. Pour sélectionner un nœud document,
+veuillez cliquer sur son intitulé.
+
+Quand un nœud de type dossier ou un nœud de type document possède des
+pièces jointes, les trois premières pièces jointes sont alors affichées
+à droite de l’intitulé (avec des icônes du type
+image:media/image260.png[width=18,height=18],
+image:media/image337.png[
+image:media/image338.png[height=16]). Pour
+visualiser une pièce jointe, il est nécessaire de cliquer sur l'icône
+correspondante dans le *Plan de classement* (la fenêtre de visualisation
+de pièce jointe s’ouvre en conséquence). Lors du survol des icônes de
+pièce jointe, le nom du fichier est affiché dans une infobulle.
+
+Lorsqu’un document à deux parents différents, il est impossible
+d’afficher les deux parents simultanément dans la vue plan de
+classement. Vous pourrez ici choisir le parent à partir duquel afficher
+la vue plan de classement via une liste déroulante.
+
+La liste déroulante située à droite de l’icône
+image:media/image339.png[width=25,height=25]
+permet de sélectionner le document parent à partir duquel la vue plan de
+classement sera déployée :
+
+.Sélection du parent à afficher
+image:media/image340.png[width=432,height=185]
+
+Le document parent choisi dans la liste déroulante (*Marché* ici) sera
+donc placé tout en haut de l’arborescence. Une fois votre choix effectué
+dans cette liste déroulante, vous devez appuyer sur le bouton
+image:media/image339.png[width=25,height=25]
+pour rendre le changement effectif.
+
+Lorsqu’il est possible de redescendre dans l’arborescence au niveau d’un
+document fils, on rencontre également la liste déroulante *Changer de
+nœud parent* :
+
+.Changer de nœud parent
+image:media/image341.png[width=322,height=183]
+
+Une fois un document fils sélectionné, l’affichage du plan de classement
+sera initialisé à partir de ce document.
+
+[NOTE]
+====
+Si le *Plan de classement* est étendu il est possible de la réduire et
+de la déployer en cliquant sur les nœuds correspondants (symbolisé par
+l’icône
+image:media/image342.png[width=11,height=11] ). Vous pouvez
+également masquer l’intégralité de l’arborescence en cliquant sur
+*Cacher le plan de classement* (situé dans le coin supérieur droit).
+====
+
+== Signature
+
+____
+Si vous utilisez une version d’{dossier} disposant du module de
+signature, il vous sera possible de signer numériquement des documents
+dans {dossier}.
+
+On distingue deux modes de signature :
+____
+
+* La signature avec certificat (Lex Persona).
+* La signature sans certificat.
+
+____
+Seuls les fichiers au format ODT, DOC, DOCX, TIF et PDF pourront être
+signés numériquement dans {dossier}. Une fois un document signé,
+il sera automatiquement converti au format PDF.
+
+Il existe deux principaux moyens d’utiliser les fonctionnalités liées à
+la signature :
+____
+
+* Signer un document (*Vue Document* / *Vue résultats*).
+* Effectuer une demande de signature vers un signataire accrédité (*Vue
+résultats*).
+
+=== Signer un document (onglet signature)
+
+Afin de signer numériquement un document dans {dossier}, vous
+devez au préalable disposer du droit de signature et d’un certificat de
+signature valide, clé USB ou carte à puce (pour la signature avec
+certificat uniquement). Il sera également nécessaire d’installer les
+pilotes nécessaires au bon fonctionnement du certificat (pour la
+signature avec certificat uniquement). La signature s’effectue
+généralement en *Vue Document*, par l’intermédiaire de l’onglet
+*Signature*.
+
+Il existe trois moyens d’accès à la signature d’un document :
+
+* Par l’intermédiaire de la bannette *Documents à signer* (affichage
+*Vue résultats*) : lorsqu’une demande de signature vous a été assignée
+(cf. Effectuer une demande de signature page 113), vous pourrez accéder
+à ce document grâce à la bannette *Documents à signer*. Cette bannette
+affiche en *Vue résultats* l’ensemble des documents pour lesquels votre
+signature a été demandée.
+* Via la *Vue Document* : lors de l’accès à un document en modification,
+vous pouvez signer ce document par l’intermédiaire de l’onglet
+*Signature*.
+* Lorsque vous utilisez un profil uniquement dédié à la signature (cf.
+Profil Signataire uniquement page 114).
+
+Dans tous les cas, le module de signature est accessible en cliquant sur
+l’onglet *Signature*. Cette interface se présente généralement comme
+suit :
+
+.Module de signature
+image:media/image322.png[width=680,height=289]
+
+La partie supérieure du module est constitué d’un bandeau de
+notification décrivant les différentes étapes ou problèmes rencontrés
+durant la réalisation de la signature. La couleur du bandeau indique la
+nature de la notification. On retrouve les trois couleurs suivantes :
+
+[cols=",",options="header",]
+|===
+|Couleurs |Nature de la notification
+|*Bleu* a|
+Il s’agit principalement de notification informative, décrivant une
+étape ou un problème mineur. Par exemple :
+
+image:media/image343.png[width=247,height=40]
+
+|*Vert* a|
+Indique le bon déroulement d’une étape. Par exemple :
+
+image:media/image344.png[width=290,height=40]
+
+|*Rouge* a|
+Indique la survenue d’une erreur (accompagnée du code correspondant), ou
+de l’échec d’une procédure. Par exemple :
+
+image:media/image345.png[width=248,height=40]
+
+|===
+
+==== Signature avec certificat
+
+La liste déroulante intitulé *Document à signer* vous permet de
+sélectionner le document (la pièce jointe plus précisément) sur lequel
+apposer la signature :
+
+.Choix de la pièce jointe à signer
+image:media/image346.png[width=253,height=77]
+
+La liste déroulante *Certificats disponibles*, permet de sélectionner le
+certificat avec lequel apposer la signature. Si un seul certificat est
+disponible, il sera sélectionné par défaut :
+
+.Choix du certificat pour signature
+image:media/image347.png[height=71]
+
+Si aucun certificat n’est proposé, assurez-vous de bien avoir connecté
+la clé USB ou la carte à puce contenant le certificat (pensez également
+à vérifier la validité du certificat).
+
+L’icône
+image:media/image348.png[height=33]
+permet d’afficher les informations générales concernant ce certificat.
+
+Une fois le document à signer et le certificat sélectionnés, vous pouvez
+démarrer l’étape de signature en cliquant sur image:media/image349.png[height=36].
+Après avoir cliqué sur image:media/image349.png[], si le certificat est valide, vous devrez saisir le code confidentiel
+associé au certificat :
+
+.Saisie du mot de passe (certificat)
+image:media/image350.png[width=641,height=270]
+
+Une fois le mot de passe saisi, cliquez sur *OK*.
+
+Après cette étape, le document est signé numériquement et une
+notification doit vous en informer :
+
+.Notification de signature réussie
+image:media/image344.png[width=290,height=40]
+
+[NOTE]
+====
+Si l’ouverture du module de signature semble dysfonctionner, pensez à
+vérifier qu’aucun plugin {java} important n’est bloqué par votre
+navigateur internet :
+
+image:media/image351.png[width=467,height=237]
+====
+
+==== Signature sans certificat
+
+Vous pouvez sélectionner la pièce jointe à signer via la liste
+déroulante *Document à signer*. Vous pouvez ensuite démarrer l’étape de
+signature en cliquant sur
+image:media/image352.png[width=60,height=38] :
+
+.Signer un document
+image:media/image353.png[width=656,height=176]
+
+Après cette étape, le document est signé et une notification doit vous
+en informer :
+
+.Notification de signature réussie
+image:media/image344.png[width=290,height=40]
+
+==== Demande de signature
+
+Lorsque vous recevez une demande de signature (cf. Effectuer une demande
+de signature page 113), la signature fonctionnera de manière légèrement
+différente. Toutes les demandes de signature vous étant adressées
+apparaissent dans la bannette *Documents à signer*. Une demande de
+signature pourra être validée en signant le document ou rejetée si le
+signataire la refuse.
+
+Pour traiter une demande de signature, ouvrez le document correspondant
+puis cliquez sur l’onglet *Signature*. La pièce jointe sur laquelle est
+basée la demande de signature sera imposée (vous ne pourrez pas choisir
+d’autres pièces jointes tant que cette demande n’aura pas été traitée).
+Le nom de cette pièce jointe est indiqué à droite de la mention
+*Document à signer* :
+
+.Signer suite à une demande de signature
+image:media/image354.png[width=617,height=226]
+
+Pour signer le document et accepter la demande de signature, cliquez sur
+image:media/image349.png[height=36]/image:media/image352.png[width=57,height=36]
+(la procédure précise est détaillée au chapitre précédent page 107).
+
+Pour refuser la demande de signature, cliquez sur
+image:media/image355.png[height=35].
+Pour valider un refus de signature, vous devrez saisir un commentaire
+via le nouvel écran *Ajout/Modification d’un Commentaire* (qui
+apparaît juste après avoir cliqué sur
+image:media/image355.png[height=35]) :
+
+.Justifier un refus de signature
+image:media/image356.png[height=245]
+
+Cet écran est similaire à celui d’ajout de commentaires via l’onglet
+*Commentaire* (détaillé page 101). Une fois le commentaire définis, vous
+pouvez cliquer sur *Enregistrer* pour valider le refus de cette demande
+de signature. Le commentaire de justification du refus sera accessible à
+partir de l’onglet *Commentaire* du document correspondant.
+
+Dès lors qu’une demande de signature est traitée (qu’elle soit refusée
+ou acceptée), le document correspondant disparaîtra de la bannette
+*Documents à signer*.
+
+=== Documents signés
+
+Tous documents contenant des documents signés seront accompagnés du
+symbole image:media/image357.png[height=20] en *Vue résultats* :
+
+.Document contenant une pièce signée
+image:media/image358.png[height=134]
+
+En *Vue Document*, les pièces jointes signées apparaissent dans l’onglet
+*Pièce jointe*. Elles sont également accompagnées du symbole
+image:media/image359.png[height=24].
+Sur les pièces jointes signées, si le versioningfootnote:[Le versioning
+représente ici la possibilité de consulter différentes versions d’une
+même pièce jointe. Une nouvelle version étant automatiquement
+sauvegardée dès que la pièce jointe subie une modification (signature,
+etc).] est activé, vous pourrez sélectionner les différentes versions
+de cette pièce jointe :
+
+.Choix de version d'une pièce jointe
+image:media/image360.png[width=678,height=214]
+
+Dès qu’une pièce jointe est signée, une nouvelle version (avec
+signature) de celle-ci est ajoutée à la liste des pièces jointes
+disponibles. La *Version en cours* représente la dernière version de la
+pièce jointe. Si vous souhaitez consulter ou réaliser des actions sur
+une version précise, vous devrez au préalable la sélectionner dans le
+tableau via la liste déroulante. Dans certain cas vous pourrez supprimer
+la pièce jointe sélectionnée en cliquant sur
+image:media/image149.png[width=19,height=19]
+dans la colonne *Action* (hors version courante).
+
+Dans certains cas, la signature électronique d’un document pourra
+déclencher l’apparition de nouveaux éléments sur celui-ci, comme une
+signature au format image, la date de signature, etc. Pour plus
+d’informations sur ces éléments, veuillez-consulter le chapitre
+Utilisation des balises page 115.
+
+=== Effectuer une demande de signature
+
+Vous pouvez effectuer une demande de signature d’un document à un
+signataire (celle-ci ne nécessite aucun droit particulier). Une demande
+de signature peut s’effectuer en *Vue Document* ou en *Vue résultats*.
+Dans les deux cas, le bouton à utiliser pour effectuer une demande de
+signature sera le suivant :
+image:media/image282.png[height=19](ce bouton sera disponible
+uniquement si le module de signature est activé).
+
+En *Vue Document*, ce bouton sera disponible à partir de la barre
+d’action :
+
+.Barre d'actions (vue document)
+image:media/image361.png[width=632,height=80]
+
+Après avoir cliqué sur image:media/image282.png[], l’écran de *Sélection des
+documents à signer* apparaît :
+
+.Sélection des documents à signer
+image:media/image362.png[height=178]
+
+La liste déroulante *Signataire* vous permet de sélectionner le
+signataire vers lequel effectuer la demande de signature (il est
+impossible de désigner plusieurs signataires).
+
+Sous la liste *Signataire* la liste des pièces jointes associées au
+document s’affiche. Sélectionnez la pièce que le signataire devra signer
+en cochant le bouton radio correspondant (il est impossible de
+sélectionner plusieurs pièces jointes simultanément).
+
+Pour valider la demande de signature, cliquez sur *Enregistrer* (ou sur
+*Annuler* si vous ne souhaitez pas qu’elle soit prise en compte). Une
+fois une demande de signature effectuée, une notification vous en
+informe :
+
+.Notification demande de signature
+image:media/image363.png[width=602,height=40]
+
+En *Vue résultats*, la demande de signature fonctionne de manière
+similaire, sauf que vous pourrez également sélectionner plusieurs
+documents et ainsi effectuer plusieurs demandes de signatures
+simultanément en cliquant sur
+image:media/image282.png[height=19] :
+
+.Demande de signature et sélection multiple
+image:media/image364.png[height=354]
+
+Lorsque plusieurs documents ont été sélectionnés pour une demande de
+signature, vous pourrez choisir le signataire vers lequel l’ensemble des
+demandes de signatures sera assigné. Vous pourrez également choisir,
+pour chaque document, la pièce jointe associée à la demande de signature
+en cochant le bouton correspondant.
+
+Une fois le signataire et les pièces jointes souhaitées sélectionnés,
+cliquez sur *Enregistrer* pour envoyer les demandes de signatures
+correspondantes. Une notification vous informera du bon envoi des
+demandes de signature.
+
+[NOTE]
+====
+Si une demande de signature est effectuée sur un document pour lequel
+une autre demande de signature est déjà en cours, la demande précédente
+sera annulée au profit de la nouvelle.
+====
+
+=== Profil Signataire uniquement
+
+Selon votre utilisation d’{dossier}, il est possible que vous
+soyez uniquement amenés à réaliser des signatures électroniques. Dans ce
+cas, vous disposez probablement d’un profil d’utilisation spécifique
+dédié à la signature (*DOSSIER_SIGNATURE_SEULEMENT*).
+
+Lorsque vous vous connectez avec un tel profil vous n’aurez accès qu’à
+un nombre restreint de menus dans {dossier}, vous permettant
+principalement de signer électroniquement les documents qui vous sont
+assignés. Dès la connexion avec ce profil, une vue similaire à la *Vue
+résultats* s’affiche, mais seules les demandes de signature vous étant
+attribuées seront visibles :
+
+.Profil signataire seulement
+image:media/image365.png[height=269]
+
+Cette vue correspond à la bannette *Documents à signer*. Ce profil étant
+destiné à la signature de document vous étant attribués (via une demande
+de signature), vous n’aurez pas accès à un certain nombre d’actions,
+comme la recherche ou la création de document par exemple.
+
+=== Utilisation des balises
+
+Lorsqu’un document est amené à être signé, il est possible d’apposer des
+balises sur celui-ci, afin qu’après le dépôt de la signature, des
+données spécifiques apparaissent sur le document (date de signature,
+motif de signature, QR code, etc).
+
+Ces balises au format texte, pourront être insérées dans des fichiers
+(modèles) au format ODT, DOC et DOCX.
+
+Les balises doivent être directement intégrées au sein du document, en
+saisissant le texte correspondant, à l’endroit où la balise devra
+apparaître après signature. Il est d’usage de saisir les balises en
+police de couleur blanche (si document sur fond blanc) afin que le texte
+correspondant ne soit pas visible.
+
+On retrouve par exemple les balises suivantes :
+
+* #QR_CODE# : permet l’apparition d’un QR code au niveau de la balise.
+Ce QR code permettra ensuite de récupérer des informations sur le
+document signé (date de signature, identifiant du document, etc).
+* #SIGNATURE# : permet l’apparition de la signature associée au
+signataire au niveau de la balise. Le fichier utilisé pour la signature
+se détermine via le l’Admin AIRS, durant l’édition d’un utilisateur.
+* #PARAPH# : permet l’apparition du paraphe associé au signataire au
+niveau de la balise. Le fichier utilisé pour le paraphe se détermine via
+le l’Admin AIRS, durant l’édition d’un utilisateur.
+* #DATE# : permet d’indiquer la date de la signature du document au
+niveau de la balise afin d’horodater le document.
+
+== Parapheur électronique
+
+Le parapheur, si disponible, est accessible à partir de la vue document,
+en mode édition :
+
+.Parapheur
+image:media/image366.png[width=604,height=460]
+
+Ce menu est divisé en différentes sections. Dans la partie supérieure,
+le champ *Sélectionner le document principal à transmettre vers le
+parapheur* vous permet de choisir via une liste déroulante le document
+que vous souhaitez signer.
+
+Le champ *Circuit* vous permet de déterminer le circuit de validation à
+utiliser.
+
+On retrouve sous cette section le tableau *Sélectionner les documents
+annexes à transmettre vers le parapheur* :
+
+.Annexes à transmettre au parapheur
+image:media/image367.png[width=604,height=112]
+
+Ce tableau permet, dans le cas ou plusieurs pièces jointes sont
+présentes, de sélectionner celles qui seront associées à cette demande.
+
+Une fois tous les éléments obligatoires renseignés, le bouton
+image:media/image368.png[width=32,height=34]situé
+dans le coin supérieur droit devient visible. Vous pouvez cliquer sur
+image:media/image368.png[width=32,height=34]pour
+envoyer le document vers le parapheur. Une fois l’envoi effectué,
+l’écran se met à jour avec notamment deux nouveaux boutons disponibles :
+
+.Parapheur (envoi effectué)
+image:media/image369.png[width=604,height=333]
+
+
+* image:media/image370.png[width=33,height=29](disponible
+en mode *Consultation* uniquement) permet d’actualiser le statut du
+document dans le cas où l’affichage n’est pas à jour. L’état du document
+est décrit dans le tableau *Historique* situé en bas de l’interface.
+* image:media/image371.png[width=29,height=30](disponible
+en mode *Consultation* uniquement) : permet d’annuler la demande de
+signature.
+
+On retrouve les deux tableaux suivants dans la partie inférieure de
+l’interface :
+
+* *Commentaires issus du parapheur* : liste les commentaires faits sur le
+document depuis le parapheur :
+
+.Commentaires parapheur
+image:media/image372.png[width=604,height=98]
+
+* *Historique* : affiche l’historique des actions liées au parapheur.
+
+==  Rapports
+
+.Rapports
+image:media/image373.png[height=230]
+
+La page *Rapports*, accessible à partir du chemin *Suivi* > *Rapport*,
+permet de visualiser l'ensemble des rapports configurés pour
+l'*Organisation* courante. Les rapports peuvent être affichés au format
+PDF (en cliquant sur l’icône
+image:media/image374.png[height=16]) ou au
+format HTML (en cliquant sur l’icône
+image:media/image375.png[height=16]).
+En cliquant sur le format souhaité, le rapport correspondant s’affiche
+dans une nouvelle fenêtre.
+
+==  Préférences
+
+La page *Préférence*, accessible à partir du chemin *Paramètres* >
+*Préférence*, permet de spécifier les préférences applicatives de
+l'utilisateur courant :
+
+.Préférences
+image:media/image376.png[width=680,height=195]
+
+Les préférences sont sauvegardées dans le profil itinérant de
+l'utilisateur, ce qui permet à l'utilisateur connecté de retrouver ses
+préférences lors d'une future connexion. Les préférences utilisateurs
+sont réparties au travers différentes catégories (onglets) :
+
+* *Application* : regroupe des options générales sur {dossier}.
+* *Données Personnelles* : permet de personnaliser vos préférences
+utilisateurs.
+* *Délégation* : permet de gérer les délégations.
+* *Administration *: permet de gérer le niveau des logs (nécessaire pour
+la maintenance de l’application).
+* *Accès rapide aux actions personnalisées *: permet de personnaliser
+l’accès à certaines actions en *Vue résultats*.
+* *Liste des contacts personnels* : permet de gérer vos contacts
+personnels (utilisables lors de l’envoi de mail par exemple).
+
+=== Application
+
+.Préférences applicatives
+image:media/image376.png[width=680,height=195]
+
+La section *Application* des *Préférences* vous donne accès aux
+paramètres suivants :
+
+* *Langue de l’application* : spécifie la langue par défaut à utiliser.
+* *Fuseau horaire* : définit le fuseau horaire par défaut à utiliser.
+* *Séparateur de décimales* : définit le séparateur de décimal à
+utiliser pour les nombres réels dans {dossier}.
+* *Compléter la partie décimale par des zéros *: permet l’affichage
+automatique de deux décimales au minimum pour les valeurs numériques
+saisies dans des champs (si cochée). Par exemple, en saisissant 30 dans
+un champ numérique, la valeur 30,00 sera affichée.
+
+Cliquez sur l’action
+image:media/image299.png[height=38] afin
+d'appliquer et de sauvegarder les modifications effectuées dans les
+préférences.
+
+=== Données Personnelles
+
+.Données Personnelles
+image:media/image377.png[width=680,height=250]
+
+La section *Données Personnelles* des *Préférences* vous donne accès aux
+paramètres suivants :
+
+* *Nombre de résultats :* spécifie le nombre de résultats par page
+affiché par défaut dans l’application (*Vue résultats*, choix d’un
+service, etc).
+* *Nom* : détermine le nom de l'utilisateur affiché dans le bandeau
+d'en-tête.
+* *Prénom* : détermine le prénom de l'utilisateur affiché dans le
+bandeau d'en-tête.
+* *Email* : défini l'e-mail de l'utilisateur.
+* *Entête minimisé* : replie l’entête pour ne plus afficher que la barre
+de menu. Il est nécessaire que l'entête ne soit pas minimisé pour
+changer d'organisation courante.
+* *Notifications activées* : l'activation des notifications permet
+d'être averti immédiatement si une modification/suppression est apportée
+à un document favori suivi.
+* *Ouverture automatique des pièces jointes* : Affiche automatiquement
+la première des pièces jointes d'un document a son ouverture.
+* *Pièce jointe réduite par défaut* : (affiché si l'utilisateur dispose
+du droit d'affichage des pièces jointes en *Vue résultats*) : les pièces
+jointes sont ouvertes dans une vue repliée au bord de l'écran.
+* *Rester en vue plan de classement après la création d’un doc.* :
+permet de maintenir l’affichage de la vue *Plan de classement*
+(arborescente) sur le document père après la création d’un document
+enfant (si cochée). Si la case est décochée, à la création du document
+enfant en vue *Plan de classement*, la vue de consultation du document
+enfant correspondant s’ouvrira.
+* *Afficher la pièce jointe en vue résultat par simple clic* : en
+cochant cette option, un simple clic sur la ligne d’un résultat suffit
+pour afficher la pièce jointe correspondante. La sélection d’un résultat
+nécessitera en revanche un double clic. Lorsque cette option n’est pas
+cochée, un simple clic permet de sélectionner un résultat et un double
+clic permet l’affichage de la pièce jointe correspondante.
+* *Cumuler les tris* : permet de cumuler les tris dans les tableaux.
+Lorsque l’option est active l’ordre des tris tel qu’il est appliqué est
+indiqué sur la colonne correspondante par un numéro (1 pour le 1^er^
+tri, etc).
+* *Panneaux visibles en page d’Accueil* : permet de cocher les panneaux
+qui seront affichés en page d’accueil.
+* *Flux sélectionné par défaut* : permet de déterminer le flux
+sélectionné par défaut lors de la connexion à l’application.
+* *Taille de la police de caractère* : permet de personnaliser la taille
+de la police à utiliser dans l’application. Cliquez sur la lettre *A*
+correspondant à la taille de police que vous souhaitez utiliser.
+* *Extensions de fichier* (visionneuse) : les fichiers dont les
+extensions sont cochées seront ouverts avec la *visionneuse*. Si vous
+utilisez la visionneuse embarquée de {dossier}, les extensions décochées
+ici seront lues par la visionneuse liée au navigateur.
+* *Annotation de type "note" incrustée (visionneuse)* : les
+annotations de type "note" doivent-elles être incrustées dans l'image
+(case cochée) ou non (case décochée) ? Par défaut, les annotations de
+type "note" ne sont pas incrustées ; un marqueur est affiché et la note
+s'affiche lors du passage de la souris sur ce dernier.
+
+* *Barre d’outils fixe* : fixe la barre d’outils de la *visionneuse*.
+Par défaut, il faut passer le curseur de la souris en haut de la
+*visionneuse* pour que la barre d’outils apparaisse.
+
+* *Niveau de zoom par défaut (visionneuse)* : le niveau de zoom par
+défaut à appliquer.
+* *Persistance de l'état (niveau de zoom et rotation) entre les documents (visionneuse)* : détermine si l'état de la *visionneuse*
+doit être maintenu entre les documents consultés. Si ce paramètre est
+coché, le niveau de zoom ainsi que le type de rotation seront conservés
+entre les différents documents affichés.
+* *{java} Web Start* : permet de personnaliser les paramètres liés à
+chacun des modules {java} Web Start (*EditDocument* (édition de
+document), *ImageScan* (numérisation) et *Print* (impression)). Vous
+pouvez pour chacun des modules choisir de surcharger ou non le port
+prédéfini (*Surcharger le port*), ainsi que de lancer le module
+correspondant dès la page d’accueil ou non (*Lancement du module en page
+d’accueil*). Si le module ne se lance pas dès la page d’accueil, il se
+lancera uniquement lorsqu’il sera utilisé (via une édition de document
+(doc/odt…), une numérisation ou une impression par exemple).
+
+Cliquez sur l’action
+image:media/image299.png[height=38] afin
+d'appliquer et de sauvegarder les modifications effectuées dans les
+préférences.
+
+=== Délégation
+
+.Délégation
+image:media/image378.png[width=680,height=136]
+
+La section *Délégation* des *Préférences* vous permet de gérer
+les délégations attribuées aux utilisateurs. La page *Délégation* vous
+permet de sélectionner une ou plusieurs personnes délégataires à qui
+vous choisissez de déléguer vos attributions pendant une durée
+déterminée ou indéterminée.
+
+Le délégataire a accès à toutes les actions possibles de l’utilisateur
+qui lui a délégué ses attributions. L'auteur de l'action (ajout d'un
+commentaire, historique, etc) sera inscrit dans l'historique de la
+manière suivante : « Michèle Durand par délégation de Fernand Martin ».
+Le délégataire accède aux bannettes du délégant et à ses droits. En
+revanche, le délégataire ne peut pas accéder aux paramètres du délégant.
+
+La liste des délégués s'affiche sous forme tabulaire. Pour ajouter une
+délégation, cliquez sur l'action
+image:media/image49.png[height=20] ; la
+fenêtre modale *Ajout/Modification d'une délégation* s'ouvre :
+
+.Ajout d'une délégation
+image:media/image379.png[width=480,height=200]
+
+Une délégation contient les paramètres suivants :
+
+* *Utilisateur* : spécifie l'utilisateur pour qui autoriser la
+délégation (le délégué).
+* *Date de début* : détermine la date à partir de laquelle la
+délégation est activée.
+* *Date de fin* : détermine la date à partir de laquelle la
+délégation prend fin. Si la *Date de fin* n'est pas spécifiée, la
+délégation sera active indéfiniment.
+
+Une fois la délégation paramétrée, cliquez sur *ENREGISTRER* pour la
+confirmer.
+
+Il est possible de modifier une délégation en la cochant préalablement
+dans le tableau, puis en cliquant sur l'action
+image:media/image325.png[width=21,height=21] correspondante.
+
+Pour supprimer une délégation, il faut au préalable la cocher puis
+cliquer sur l'action
+image:media/image380.png[width=19,height=14].
+Un message de confirmation s'affiche avant d'appliquer la suppression.
+
+Il est impossible de réaliser plusieurs délégations espacées dans le
+temps pour un même utilisateur. Dès qu’une délégation est paramétrée
+pour un utilisateur, celui-ci n’apparaitra plus comme disponible dans la
+liste des utilisateurs sélectionnable, lors de l’ajout d’une nouvelle
+délégation.
+
+Lorsqu’un utilisateur reçoit une délégation, il peut cocher un bouton
+radio (intitulé *Délégataire*) lui permettant de choisir une délégation.
+Ce bouton se situe dans l’en-tête d’{dossier}, à droite du bouton
+indiquant votre nom d’utilisateur. Pour choisir une délégation, cliquez
+sur le bouton radio *Délégataire*, puis cliquez dans le champ
+correspondant pour afficher la liste des délégations disponibles (comme
+suit) :
+
+image:media/image381.png[height=70]
+
+Sélectionnez l’utilisateur dont vous souhaitez utiliser la délégation
+dans la liste déroulante. Une fois un utilisateur sélectionné, vous
+disposez de l’ensemble de ses droits. Pour ne plus utiliser la
+délégation, sélectionnez le bouton indiquant votre nom d’utilisateur
+dans l’en-tête d’{dossier} (*Admin* dans l’exemple).
+
+=== Administration
+
+.Administration
+image:media/image382.png[width=680,height=176]
+
+L’onglet *Administration* permet de paramétrer les logs (historique des
+évènements de l’application) qui seront envoyés à l’équipe chargée de la
+maintenance du logiciel en cas de problème par exemple.
+
+Cliquez sur l’action
+image:media/image299.png[height=38] afin
+d'appliquer et de sauvegarder les modifications effectuées dans les
+préférences.
+
+=== Actions personnalisées
+
+.Accès rapide aux actions personnalisées
+image:media/image383.png[width=680,height=264]
+
+L’*Accès rapide aux actions personnalisées* permet de déterminer par
+flux les actions qui seront accessibles via la barre d’outils dans la
+*Vue résultats*. Si aucune action n’est proposée dans ce menu, cela
+signifie que vous ne disposez d’aucune action personnalisée pour le flux
+sélectionné.
+
+Toutes les icônes qui ne sont pas cochées ici seront accessibles par
+l’intermédiaire de l’icône
+image:media/image384.png[width=20,height=20]
+en *Vue résultats* :
+
+.Accès au menu Outils
+image:media/image385.png[width=540,height=136]
+
+.Accès aux actions personnalisées (menu outils)
+image:media/image386.png[width=527,height=208]
+
+Les icônes cochées dans l’onglet *Accès rapide aux actions
+personnalisées* apparaitront à l’inverse directement dans la barre
+d’action.
+
+.Accès aux actions personnalisées (barre d'actions)
+image:media/image387.png[width=755,height=161]
+
+[NOTE]
+====
+Vous pourrez également accéder aux actions personnalisées à l’aide des
+raccourcis préalablement définis lors du paramétrage de l’application.
+L’accès à ces raccourcis se fait en appuyant simultanément sur la touche
+<alt> et la touche définie en tant que raccourci (les raccourcis sont
+indiqués dans l’info-bulle de l’action correspondante).
+====
+
+=== Liste des contacts personnels
+
+La liste des contacts vous permet d’ajouter de nouveaux contacts que
+vous pourrez utiliser lors de l’envoi de mail.
+
+Le menu *Liste des contacts personnels* est disponible à partir des
+*Préférences* utilisateurs :
+
+.Liste des contacts personnels
+image:media/image388.png[width=680,height=137]
+
+Le tableau présent ici liste les contacts personnels que vous avez
+ajoutés (les contacts présents en base population ne sont pas listés ici)
+ou auxquels vous avez envoyé un mail.
+
+Pour ajouter un nouveau contact, cliquez sur le bouton
+image:media/image49.png[width=18,height=17] situé dans le bandeau supérieur. Vous devrez ensuite compléter les
+informations liées à ce contact :
+
+.Formulaire d'ajout de contact
+image:media/image389.png[width=450,height=150]
+
+* *Nom à afficher* : correspond au nom du contact tel qu’il apparaitra
+(ou qu’il sera suggéré en saisie prédictive).
+* *Adresse électronique* : correspond à l’adresse mail du contact.
+
+Une fois le contact paramétré, cliquez sur *Enregistrer* pour l’ajouter
+à la liste des contacts.
+
+Vous pouvez éditer ou supprimer un contact existant en le sélectionnant
+dans le tableau listant les contacts :
+
+.Utilisateur sélectionné
+image:media/image390.png[width=414,height=138]
+
+L’icône image:media/image380.png[width=19,height=14] permet de supprimer le contact correspondant. Une demande de
+confirmation vous sera adressée avant la suppression effective.
+
+L’icône image:media/image391.png[width=14,height=18] permet de modifier le contact correspondant.
+
+== Modifier le mot de passe
+
+.Modifier le mot de passe
+image:media/image392.png[width=680,height=222]
+
+La page *Modification du mot de passe*, accessible en suivant le chemin
+*Paramètres* > *Modifier le mot de passe*, permet de modifier le mot
+de passe de l'utilisateur connecté. Afin de modifier son mot de passe,
+il est nécessaire de :
+
+* Saisir son *Mot de passe actuel*.
+* Saisir son *Nouveau mot de passe*.
+* Réaliser une *Confirmation du nouveau mot de passe* en le
+saisissant une seconde fois.
+
+En fonction des règles de nommage (définies dans la configuration
+applicative), des caractères numériques ou des caractères spéciaux
+doivent être saisis. Si le nouveau mot de passe respecte les règles de
+nommage, un clic sur l'action image:media/image299.png[height=38] permet de le rendre effectif.
+
+== Aide ?
+
+Le menu *aide ?* est constitué de deux sous-menus :
+
+* *Notes de version*
+* *A propos d’{dossier}*
+
+=== Notes de version
+
+Le menu *Notes de version*, accessible à partir de l’onglet *Aides ?* permet d’accéder aux descriptifs des dernières versions d’{dossier}
+via un nouvel onglet :
+
+.Notes de version
+image:media/image393.png[width=623,height=380]
+
+Vous pouvez cliquer sur le numéro de version pour laquelle vous
+souhaitez afficher le descriptif des nouveautés correspondantes.
+
+=== A propos d’{dossier}
+
+Le menu *À propos d’{dossier}* (le nom de l’application peut varier),
+accessible à partir de l’onglet *Aides ?* permet d’afficher la version
+d’{dossier} et des différents serveurs utilisés :
+
+.A propos d’{dossier}
+image:media/image394.png[width=449,height=201]
+
+Vous pouvez appuyer sur *Fermer* pour refermer cet affichage.
+
+=== Raccourcis
+
+Cette section détaille certains raccourcis clavier utilisables dans
+l’application :
+
+==== Raccourcis global
+
+L’ensemble des actions personnalisées peuvent être associées à un
+raccourci clavier (dont la valeur dépend de votre paramétrage).
+
+==== Vue Réponse et Résultat
+
+* Les flèches haut et bas permettent de naviguer entre les éléments :
+* Il est possible de télécharger la pièce jointe active avec le
+raccourci *Ctrl+Alt+D* (valeur par défaut).
+* Il est possible de réaliser des actions d’interactions tel que valider
+ou appliquer via le raccourci *Ctrl+Entrée*. Sur la page de *Création*,
+*Ctrl+Entrée* permet la création d’un nouveau document.
+
+==== Visionneuse
+
+Vous pouvez utiliser les raccourcis clavier suivant durant la
+consultation de document dans la *visionneuse* :
+
+* Flèche droite : affiche la page suivante du document.
+* Flèche gauche : affiche la page précédente du document.
+* Touche plus + : augmente le niveau de zoom d’un palier.
+* Touche moins - : diminue le niveau de zoom d’un palier.

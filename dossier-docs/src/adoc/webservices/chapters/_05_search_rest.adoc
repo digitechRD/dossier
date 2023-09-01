@@ -1,0 +1,262 @@
+[[search_rest]]
+=== Search
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.ISearchClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {GET} /search/docCount
+
+Cette méthode renvoie le nombre de documents remontés par la requête AIRS
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*airsRequest*|{query}|Requête AIRS|[red]*Oui*|D_CREAT>01/01/2018
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|{query}|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/search/docCount?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/search/docCount?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<search_getdocCountjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[search_getdocCountjson_response]]
+[source,text]
+.Integer
+----
+34
+----
+
+===== {GET} /search/docLink
+
+Cette méthode permet d'obtenir les liens URL vers les documents renvoyés par la requête AIRS.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*airsRequest*|{query}|Requête AIRS|[red]*Oui*|D_CREAT>01/01/2018
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|{query}|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<search_getdocLinkjson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[search_getdocLinkjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+  "ArrayList": [
+    "faces/redirect.jsp?authentication=HPa4o3rdP3jo%2FTvySbkDVZMK%2FYuCpRx%2BjOSv5Tp0t9z%2BdIpmSlbBGpgF4ZT9SjaaM5yiNjYtgZ4kuNmMit%2F2LyaaTta6zfYjRsEnfVqCIaXfQqrdxfjVXQNcpILl0f2I1L%2F%2Bovj2AsDD9r3x127k36wMF8MTOW3K8NMG5ouxH8k%3D&outcome=gotoDocumentUnitaire&docId=6868&flowCode=CR",
+    "faces/redirect.jsp?authentication=qJoexW7AAhobyxEaEGCpYq77hjkdaayibx%2B5CiCHmX3JD5PbX%2FNtkSQG%2B38CNrNezmUjKGQc7uBjazIzQZwMAeQcgv7dhrpeJH64jAtkBbM37j279eWg2lcQltrqWGF2wqPXrsIejkUGwMqa4S3AQR1CSGHitW9owSwqmuFWXwM%3D&outcome=gotoDocumentUnitaire&docId=6867&flowCode=CR",
+    ...
+    ]
+}
+----
+
+[IMPORTANT]
+====
+Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+====
+
+===== {GET} /search/results
+
+Cette méthode permet d'obtenir les métadonnées des documents renvoyés par la requête AIRS.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*airsRequest*|{query}|Requête AIRS|[red]*Oui*|D_CREAT>01/01/2018
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|{query}|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<search_getresultsjson_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[search_getresultsjson_response]]
+[source,json]
+.WSSearchResultType
+----
+{
+  "ArrayList": [
+    {
+      "refAirsId": 4372,
+      "fields": [
+        {
+          "code": "D_MODIF",
+          "field": "04/02/2021 17:04:36"
+        },
+        {
+          "code": "CR_THEME",
+          "field": "172"
+        },
+        {
+          "code": "D_CREAT",
+          "field": "13/01/2020 16:51:20"
+        },
+        {
+          "code": "CR_DES",
+          "field": "CR réu. transverse du lundi 13 janvier 2020-1"
+        },
+        {
+          "code": "CR_REDACTEUR",
+          "field": "7"
+        },
+        {
+          "code": "CR_DATE",
+          "field": "01/01/2022 0:00:00"
+        },
+        {
+          "code": "CR_RESUME",
+          "field": "CR réu. transverse du lundi 13 janvier 2020"
+        },
+        {
+          "code": "T_PRIOR",
+          "field": ""
+        },
+        {
+          "code": "MULTI",
+          "field": ""
+        },
+        {
+          "code": "CORRES",
+          "field": ""
+        },
+        {
+          "code": "MASQUE_NUM",
+          "field": ""
+        }
+      ]
+    },
+    {
+      "refAirsId": 4473,
+      "fields": [
+        {
+          "code": "D_MODIF",
+          "field": "31/01/2020 14:20:19"
+        },
+        {
+          "code": "CR_THEME",
+          "field": "174"
+        },
+        {
+          "code": "D_CREAT",
+          "field": "31/01/2020 14:20:19"
+        },
+        {
+          "code": "CR_DES",
+          "field": "Café Sideral 3"
+        },
+        {
+          "code": "CR_REDACTEUR",
+          "field": "11"
+        },
+        {
+          "code": "CR_DATE",
+          "field": "31/01/2020 0:00:00"
+        },
+        {
+          "code": "CR_RESUME",
+          "field": "Compte rendu du 3ème café SIDERAL"
+        },
+        {
+          "code": "T_PRIOR",
+          "field": ""
+        },
+        {
+          "code": "MULTI",
+          "field": ""
+        },
+        {
+          "code": "CORRES",
+          "field": ""
+        },
+        {
+          "code": "MASQUE_NUM",
+          "field": ""
+        }
+      ]
+    },
+...
+  ]
+}
+----
+cf le chapitre <<appendix_search>> pour une description de la structure de retour.

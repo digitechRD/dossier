@@ -1,0 +1,133 @@
+[[extended_search_soap]]
+=== ExtendSearch
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *7.1* de {dossier}
+====
+
+La *wsdl* est accessible à l'adresse suivante :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/services/extendSearch?wsdl
+----
+
+L'encodage des requêtes et des réponses est *UTF-8*.
+
+==== Client
+
+La classe `com.digitech.dossier.ws.IExtendSearchWSClient` de la librairie *com.digitech.airs:dossier-ws-stubs:{dossier-stub-version}* abstrait l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+search4FieldsAndAttachments::
+
+Cette méthode permet à partir d'une requête {airs} de récupérer
+
+* des documents
+* leurs _metadata_ (champs)
+* et les informations sur les pièces jointes de chaque document
+
+[cols="1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Description|Requis|Exemple
+|*airsRequest*|Requête {airs}|[red]*Oui*|D_CREAT >= 28/03/2020
+|*ctyCodes*|Liste des types de contenu dans lesquels la recherche est executée|[red]*Oui*|CR
+|*flowCode*|Code du flux dans lequel la recherche est effectuée. +
+Si Vide, celui-ci sera déduit de la liste des types de contenu|[red]*Oui*|CR
+|*continuationToken*|Clé de _continuation_. +
+Le nombre de résultats reçus est limité à *20* (par défaut, côté {dossier}. +
+Si vous souhaitez plus de résultats, le {webservice} doit être rappelé en ajoutant cette clé.|[green]*Non*
+|OTU4ODQ0ZTFhMDllODViYTNjN2JiNThkOWM5YjQwNDAjIzE1OTI5MTc3MTM2MDYjIzQ1ODYjIzIw
+|===
+
+[source,xml]
+.exemple de requête soap
+----
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservices.dossier.digitech.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:search4FieldsAndAttachments>
+         <web:airsRequest>D_CREAT >= 28/03/2020</web:airsRequest>
+         <!--1 or more repetitions:-->
+         <web:ctyCodes>CR</web:ctyCodes>
+         <web:ctyCodes>PRO_CLIENT</web:ctyCodes>
+         <!--Optional:-->
+         <web:flowCode/>
+         <!--Optional:-->
+         <web:continuationToken/>
+      </web:search4FieldsAndAttachments>
+   </soapenv:Body>
+</soapenv:Envelope>
+----
+
+[source,xml]
+.Réponse {soap}
+----
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <dos:search4FieldsAndAttachmentsResponse
+          xmlns:type="http://type.webservices.dossier.digitech.com"
+          xmlns:dos="http://webservices.dossier.digitech.com">
+      <dos:search4FieldsAndAttachments>
+        <dos:resultNumber>35</dos:resultNumber>
+        <dos:documents>
+          <dos:document>
+            <dos:refAirs>4539</dos:refAirs>
+            <dos:secretLevel>10</dos:secretLevel>
+            <dos:contentType>CR</dos:contentType>
+            <dos:fields>
+              <type:field>
+                <code>D_MODIF</code>
+                <label>Date de modification</label>
+                <value>22/06/2020 15:38:10</value>
+              </type:field>
+              <type:field>
+                <code>CR_THEME</code>
+                <label>Thématique</label>
+                <value>Réunion Transverse</value>
+                <refValue>172</refValue>
+              </type:field>
+              ...
+            </dos:fields>
+            <dos:attachments>
+              <type:attachment>
+                <id>4254</id>
+                <label>20_euros</label>
+                <fileName>20_euros.PDF</fileName>
+                <airsType>ORIGINAL</airsType>
+              </type:attachment>
+              <type:attachment>
+                <id>4257</id>
+                <label>test_compat</label>
+                <fileName>test_compat-1.odt</fileName>
+                <airsType>ORIGINAL</airsType>
+                <type:versions>
+                  <type:version>
+                    <id>4255</id>
+                    <label>test_compat</label>
+                    <fileName>test_compat.odt</fileName>
+                    <version>1</version>
+                    <date>22/08/2022 15:32:05</date>
+                  </type:version>
+                  ...
+                </type:versions>
+              </type:attachment>
+              ...
+            </dos:attachments>
+          </dos:document>
+            ...
+        </dos:documents>
+      </dos:search4FieldsAndAttachments>
+    </dos:search4FieldsAndAttachmentsResponse>
+  </soap:Body>
+</soap:Envelope>
+----
+
+cf le chapitre <<appendix_extendsearch>> pour une description de la structure de retour.

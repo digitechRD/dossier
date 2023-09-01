@@ -1,0 +1,37 @@
+[[Dossier-signature-book]]
+= Mise œuvre d'un `Parapheur` dans l'application `Dossier`
+v1.0, 02/11/2019
+:revnumber: 1.0
+include::{sharedResource}/adoc/template.adoc[]
+:revdate: 06/01/2021
+// substition/alias
+:signbook: pass:quotes[`<span style="color: #82E0AA">Parapheur</span>`]
+
+
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+[options="header"]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|06/01/2021|1.0|Validé|Document|Frédéric Gadaut|Nicolas Félix
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+<<<
+
+include::chapters/_01_introduction.adoc[]
+
+include::chapters/_02_interface_admin.adoc[]
+
+include::chapters/_03_sb_groovy.adoc[]
+
+include::chapters/_04_sb_workflow.adoc[]

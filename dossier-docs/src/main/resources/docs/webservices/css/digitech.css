@@ -1,0 +1,290 @@
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+
+@import url(asciidoctor-default.css);
+
+:root {
+  --white: #F2F2F2;
+  --black: #2b2b2b;
+  --orange: #ffa900;
+  --blue: #30658f;
+  --green: #00b74a;
+  --red: #f93154;
+  --toc-bg-color: var(--blue);
+  --table-header-bg-color: #ffe2a8;
+
+  --note-text-color: #30658f;
+  --note-bg-color: #f1f6fa;
+  --note-color: #03a9f4;
+
+  --tip-text-color: #27625b;
+  --tip-bg-color: #f3fdfc;
+  --tip-color: #4db6ac;
+
+  --warning-text-color: #886a39;
+  --warning-bg-color: #fff8f2;
+  --warning-color: #f39c12;
+
+  --caution-text-color: #83432c;
+  --caution-bg-color: #fff7f5;
+  --caution-color: #bf3400;
+
+  --important-text-color: #b60038;
+  --important-bg-color: #ffedf2;
+  --important-color: #e40046;
+}
+
+.note {
+  color: var(--note-color);
+}
+
+.admonitionblock {
+  margin: 1.4rem 0 0
+}
+
+.admonitionblock p, .admonitionblock td.content {
+  font-size: 1rem
+}
+
+.admonitionblock td.content > .title + *, .admonitionblock td.content > :not(.title):first-child {
+  margin-top: 0
+}
+
+.admonitionblock pre {
+  font-size: .83333rem
+}
+
+.admonitionblock > table {
+  table-layout: fixed;
+  position: relative;
+  width: 100%
+}
+
+.admonitionblock > table td.content {
+  padding: 1.5rem 1rem .5rem;
+  background: #fafafa;
+  width: 100%;
+  word-wrap: anywhere;
+  border-left: 3px solid;
+  border-right: 3px solid;
+}
+
+.admonitionblock.note td.content {
+  color: var(--note-text-color);
+  border-color: var(--note-color);
+  background-color: var(--note-bg-color);
+}
+
+.admonitionblock.tip td.content {
+  color: var(--tip-text-color);
+  border-color: var(--tip-color);
+  background-color: var(--tip-bg-color);
+}
+
+.admonitionblock.important td.content {
+  color: var(--important-text-color);
+  border-color: var(--important-color);
+  background-color: var(--important-bg-color);
+}
+
+.admonitionblock.warning td.content {
+  color: var(--warning-text-color);
+  border-color: var(--warning-color);
+  background-color: var(--warning-bg-color);
+}
+
+.admonitionblock.caution td.content {
+  color: var(--caution-text-color);
+  border-color: var(--caution-color);
+  background-color: var(--caution-bg-color);
+}
+
+.admonitionblock .icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: .83333rem;
+  padding: 0 .5rem;
+  height: 1.25rem;
+  line-height: 1;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: .45rem;
+  -webkit-transform: translate(-.5rem, -50%);
+  transform: translate(-.5rem, -50%)
+}
+
+.admonitionblock td.icon [class^="fa icon-"] {
+  text-shadow: unset;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.admonitionblock td.icon .fa::before {
+  content: attr(title) !important;
+  color: var(--white);
+  padding: 0 1em 0 1.5em;
+}
+
+.admonitionblock > table td.icon {
+  width: auto;
+}
+
+.admonitionblock .icon i {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%
+}
+
+.admonitionblock .icon {
+  border-radius: 0.5rem;
+}
+
+.admonitionblock.note .icon {
+  background: var(--note-color) url("../images/icons/note.svg") no-repeat;
+}
+
+.admonitionblock.tip .icon {
+  background: var(--tip-color) url("../images/icons/tip.svg") no-repeat;
+}
+
+.admonitionblock.important .icon {
+  background: var(--important-color) url("../images/icons/important.svg") no-repeat;
+}
+
+.admonitionblock.warning .icon {
+  background: var(--warning-color) url("../images/icons/warning.svg") no-repeat;
+}
+
+.admonitionblock.caution .icon {
+  background: var(--caution-color) url("../images/icons/caution.svg") no-repeat;
+}
+
+
+.get, .post, .put, .patch, .delete,
+.action-get, .action-post, .action-put, .action-patch, .action-delete,
+.res, .action-res {
+  font-weight: 700;
+  padding: 2px 8px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.action-res, .res {
+  color: var(--white);
+  background-color: #30658f;
+  text-transform: uppercase;
+}
+
+.action-get, .get {
+  color: var(--white);
+  background-color: #61affe;
+}
+
+.action-post,.post {
+  color: var(--white);
+  background-color: #49cc90;
+}
+
+.action-put,.put {
+  color: var(--white);
+  background-color: #fca130;
+}
+
+.action-patch,.patch {
+  color: var(--white);
+  background-color: #50e3c2;
+}
+
+.action-delete,.delete {
+  color: var(--white);
+  background-color: #f93e3e;
+}
+
+
+/** tocbot */
+#tocbot a.toc-link.node-name--H1 { font-style: italic }
+@media screen {
+  #tocbot > ul.toc-list { margin-bottom: 0.5em; margin-left: 0.125em }
+  #tocbot ul.sectlevel0, #tocbot a.toc-link.node-name--H1 + ul { padding-left: 0 }
+  #tocbot li { line-height: 1.3334; }
+  #tocbot .toc-link { transition: all 0.5s; }
+  #tocbot a.toc-link { width: 100%; height: 100%; display: block; }
+  .is-collapsible { max-height: 3000px; overflow: hidden; }
+  .is-collapsed { max-height: 0 }
+  .is-active-link { font-weight: 700; }
+  li.is-active-li > a { background-color: var(--toc-bg-color); color: var(--white); border-radius: 4px; padding: 0.4rem 0.6rem; }
+}
+@media print {
+  #tocbot a.toc-link.node-name--H4 { display: none }
+}
+
+/** adding table cell styles */
+table.tableblock thead, table.tableblock tfoot {
+  background-color: var(--table-header-bg-color);
+}
+td.tableblock {
+  margin: 0;
+  padding: 0;
+}
+td.tableblock p {
+  padding: 0.5rem;
+}
+td.tableblock .bg-blue p {
+  background-color: var(--blue);
+  color: var(--white);
+}
+td.tableblock .bg-orange p {
+  background-color: var(--orange);
+  color: var(--black);
+}
+td.tableblock .bg-green p {
+  background-color: var(--green);
+  color: var(--white);
+}
+td.tableblock .bg-red p {
+  background-color: var(--red);
+  color: var(--black);
+}
+td.tableblock .bold p {
+  font-weight: bold;
+}
+
+.blue-bg {
+  background-color: var(--blue);
+}
+.green-bg {
+  background-color: var(--green);
+}
+.red-bg {
+  background-color: var(--red);
+}
+.orange-bg {
+  background-color: var(--orange);
+}
+
+.white-text {
+  color: var(--white);
+}
+.black-text {
+  color: var(--black);
+}
+.blue-text {
+  color: var(--blue);
+}
+.green-text {
+  color: var(--green);
+}
+.red-text {
+  color: var(--red);
+}
+.orange-text {
+  color: var(--orange);
+}

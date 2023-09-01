@@ -1,0 +1,147 @@
+<<<
+
+[[sb_admin]]
+== Administration
+
+[[sb_admin_create_interface_sb]]
+=== Création d’une interface {signbook}
+
+Depuis l'application {adminAIRS}, veuillez créer un *type d’interface* {signbook}
+
+[TIP]
+====
+Cette catégorie n'est disponible qu'en mode expert.
+====
+
+.{adminAIRS}, _Types d'interface_
+image:sb_ga_1.png[align=center]
+
+
+[WARNING]
+====
+*ATTENTION* le code de cette interface doit être [underline]#*PARAPHEUR*#.
+
+image:sb_ga_2.png[align=center]
+====
+
+
+[[sb_admin_create_connector]]
+=== Création d’un connecteur
+
+Toujours depuis l'application {adminAIRS}, veuillez créer un connecteur
+
+.{adminAIRS}, _Connecteurs_
+image:sb_ga_3.png[align=center]
+
+[WARNING]
+====
+*ATTENTION* les variables sont différents selon le parapheur utilisé.
+====
+
+.{adminAIRS}, _Connecteur_
+image:sb_ga_4.png[align=center]
+
+Liste des services _connecteur_ en fonction du parapheur externe :
+
+* `SRCI`: *fr.digitech.connector.SrciSBConnector* (dernière version *2.0.9*)
+* `MT Software`: *fr.digitech.connector.mtsoftware.MTSoftwareConnector* (version *1.0.7*)
+* `Adullact`: *fr.digitech.connector.adullact.AdullactSBConnector* (version *2.0.3*)
+* `Pastell`: *fr.digitech.connector.sb.pastell.PastellSbConnector* (version *2.0.8*)
+
+[[sb_admin_create_interface]]
+=== Création d’une interface
+
+Depuis l'application {adminAIRS}, sélectionnez le menu *_Interfaces_*
+
+.{adminAIRS}, _Menu Interfaces_
+image:sb_ga_5.png[align=center]
+
+.{adminAIRS}, _Interfaces_
+image:sb_ga_6.png[align=center]
+
+
+* Type de l’interface : *PARAPHEUR*
+* Connecteur de l’interface : Le connecteur créé *précédemment*.
+* Application : Plateforme *AIRS*
+
+==== Paramétrage de l'interface
+
+[NOTE]
+====
+Les paramètres [red]#rouge# sont obligatoires
+====
+
+.Liste des paramètres d'interface
+[cols="2a,1a,5a",options="header"]
+|===
+|Paramètre|Type|Description
+|*[red]#IN_DIRECTORY#*|Chaine|Répertoire d’export des dossiers du parapheur
+|*[red]#OUT_DIRECTORY#*|Chaine|Répertoire de retour des dossiers du parapheur
+|*HTTP_USERNAME*|Chaine|Nom d’utilisateur déclaré pour le parapheur. (Fournis par le client)
+|*HTTP_PASWORD*|Chaine|Password associé au nom d’utilisateur. (Fournis par le client)
+|*[red]#ENDPOINT_ADDRESS#*|Chaine|Adresse de connexion aux services du parapheur (Fournis par l’éditeur du parapheur)
+|*TRUSTSTORE_TYPE*|Chaine|Type du truststore
+|*TRUSTSTORE*|Chaine|Chemin vers le truststore
+|*TRUSTSTORE_PASSWORD*|Chaine|Mot de passe pour le truststore
+|*KEYSTORE_TYPE*|Chaine|Type du keystore
+|*KEYSTORE*|Chaine|Chemin vers le keystore
+|*KEYSTORE_PASSWORD*|Chaine|Mot de passe pour le keystore
+|*PROXY_URL*|Chaine|Adresse du serveur proxy
+|*PROXY_PORT*|Chaine|Port du serveur proxy
+|*CIRCUIT_NAME*|Chaine|Nom du circuit dans le parapheur (Ce paramètre peut-être surchargé cf 7.2)
+|*MODEL_NAME*|Chaine|Nom du modèle (niveau racine de l'arborescence du parapheur) (Ce paramètre peut-être surchargé cf 7.1)
+|*SESSION_TIMEOUT*|Chaine|Timeout (en millisecondes) de la session
+|*FILENAME_MAX_SIZE*|Chaine|Nombre de caractères maximum du nom du fichier principal
+|*SSL_MODE*|Chaine|1 si mode SSL 0 sinon. Si 0 les paramètres concernant les keystore et truststore sont ignorés
+|*ORGANISATION_ID*|Chaine|Identifiant de l’organisation (Fournit par le client)
+|*LIMIT_DATE*|Chaine|Durée limite pour la validation
+|*PARAPHEUR_CANCEL_MESSAGE*|Chaine|Message d'annulation d'un dossier dans le parapheur
+|*SIREN*|Chaine|Numéro siren
+|===
+
+[TIP]
+====
+Le script *param_interface_parapheur.sql* permet de créer tous ces paramètres.
+====
+
+[NOTE]
+====
+Tous les paramètres listés ci-dessous ne sont évidemment pas nécessaires à tous les connecteurs.
+====
+
+
+[[sb_admin_rights]]
+=== Droits complémentaires {dossier}
+
+Les droits suivants doivent être associés à un profil d'utilisateur afin d'accéder aux actions correspondantes.
+
+.Droits {dossier}
+[cols="2a,5a",options="header"]
+|===
+|Droit|Description
+|*DOSSIERS_SB_SEND*|{dossier}: Droit d'envoyer des documents vers le parapheur
+|*DOSSIERS_SB_RETRIEVE*|{dossier}: Droit de relever manuellement les documents du parapheur
+|*DOSSIERS_SB_CANCEL*|{dossier}: Droit d'annuler les documents du parapheur
+|*DOSSIERS_SB_SHOW_HISTO*|{dossier}: Droit de consulter l'historique du parapheur
+|===
+
+
+[[sb_admin_activation]]
+=== Activation de la fonctionnalité {signbook} dans {dossier}
+
+Editer le fichier *config.properties* pour y définir les propriétés suivantes:
+
+.Droits {dossier}
+[cols="2a,2a,5a",options="header"]
+|===
+|Clé|Valeur|Description
+|*signBook.enabled*|[green]#true#|Activation de la fonctionnalité {signbook}
+|*signBook.autoRetrieve.folder.enabled*|[green]#true#|Activation de la relève automatique des documents
+|*signBook.autoRetrive.folder.JobInterval*|[blue]#1800000# (30 minutes)|Fréquence de la relève des documents dans le {signbook} (en ms, valeur par défaut
+*7200000*, soit [underline]#2 heures#)
+|===
+
+[NOTE]
+====
+A partir de la verison *7.2* de {dossier}, ces paramètres peuvent être directement définis via l'application {adminAIRS}
+====

@@ -1,0 +1,46 @@
+<<<
+
+[[introduction]]
+== Introduction
+
+{cmis} (_**C**ontent **M**anagement **I**nteroperability **S**ervices_) est
+une norme/un standard géré par le consortium https://www.oasis-open.org/org[*OASIS*^],
+dont le but premier est de permettre une interopérabilité entre des systèmes de gestion de contenu (type _geide_ par exemple).
+
+Cette norme permet à des `clients` et des `serveurs` (ou à des `consommateurs` et des `fournisseurs`)
+de _communiquer_, _échanger_, _dialoguer_ ensemble via `*HTTP*` (*REST json*  ou *XML AtomPub*).
+
+La dernière version publiée de la norme est http://docs.oasis-open.org/cmis/CMIS/v1.1/CMIS-v1.1.html[*CMIS 1.1*, window="_blank"].
+
+[NOTE]
+====
+Les *webservices* de type `SOAP` ne sont pas disponibles, car obsolètes et moins performants (ils ont été simplement désactivés).
+====
+
+{dossier} est compatible avec la norme {cmis} dans sa version *1.1*, 
+permettant à des applications tierces d'accéder au contenu de l'application {dossier}.
+
+Ce document décrit brièvement :
+
+* le format des APIs {cmis} REST (leurs appels)
+* une description du format des réponses
+
+
+[IMPORTANT]
+====
+{dossier} fournit une implémentation [underline]#restreinte# de la norme {cmis}, dans le sens où l'intégralité de la norme n'est pas implémentée.
+
+Cependant, celle-ci évolue au fil des demandes et des versions de {dossier}.
+Par exemple :
+
+* la version *7.0* de {dossier} a intégré pour la première fois une implémentation de la norme {cmis}, partie navigation.
+* la version *7.1* de {dossier} a ajouté les {queries} et la possibilité d'ajouter, modifier ou supprimer des {documents}.
+====
+
+
+Les chapitres suivants décrivent
+
+* (_succinctement_) la norme {cmis} et les concepts introduits par celle-ci (<<cmis_basics>>)
+* de manière un peu plus détaillée le protocole <<cmis_browser>>
+* l'utilisation de clients pour interroger {dossier} via le protocle {cmis} (<<cmis_client>>)
+

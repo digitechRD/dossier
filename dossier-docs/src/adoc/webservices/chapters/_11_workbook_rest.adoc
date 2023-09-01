@@ -1,0 +1,376 @@
+[[workbook_rest]]
+=== Workbook
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IWorkbookClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation
+de cette *API*.
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+===== {POST} /workbook
+
+Cette méthode permet de créer un classeur
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*WSWorkbookType*|{body}|Ensemble de données du classeur|[red]*Oui*|
+[source,json]
+----
+{
+  "name": "test",
+  "description": "description",
+  "workbookType": "DOSSIER_WB_TYPE_STD",
+  "status": "DOSSIER_WB_STATUS_ACTIVE",
+  "share": "DOSSIER_WB_SHARE_PUBLIC"
+}
+----
+|===
+cf le chapitre <<appendix_workbook>> pour une description de la structure WSWorkbookType.
+
+[source]
+.appel _curl_
+----
+curl --location --request POST '<host>:<port>/<context>/rest/workbook' \
+-H 'accept: text/plain' \
+  -H 'Authorization: Basic QURNOnBhc3N3b3Jk' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "test",
+  "description": "description",
+  "workbookType": "DOSSIER_WB_TYPE_STD",
+  "status": "DOSSIER_WB_STATUS_ACTIVE",
+  "share": "DOSSIER_WB_SHARE_PUBLIC"
+}'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<workbook_rest_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[workbook_rest_response]]
+[source,text]
+.Retour, Identifiant du document
+----
+8005
+----
+
+===== {GET} /workbook/{id}
+
+Cette méthode permet de récupérer les métadonnées d'un document à partir de son identifiant
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*id*|{path}|Identifiant du classeur|[red]*Oui*|
+4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/workbook/8001' \
+--header 'Authorization: Basic bi5mZWxpeDpwYXNzd29yZA=='
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook/8001
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<workbookgetjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*403*|L'utilisateur n'a pas le droit de visualiser le classeur
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[workbookgetjson_response]]
+[source,json]
+.Structure de retour
+----
+{
+    "WSWorkbookType": {
+        "id": 8001,
+        "name": "TEST 75",
+        "description": "workbook created at : 2023/07/13 09:15:14",
+        "creatorId": 1,
+        "workbookType": "DOSSIER_WB_TYPE_STD",
+        "shareStartDate": 1689232808000,
+        "status": "DOSSIER_WB_STATUS_ACTIVE",
+        "share": "DOSSIER_WB_SHARE_SHARED",
+        "usersRead": [
+            1
+        ],
+        "usersReadWrite": [
+            2,
+            59
+        ],
+        "orgasRead": [],
+        "orgasReadWrite": [
+            6
+        ],
+        "documents": []
+    }
+}
+----
+
+cf le chapitre <<appendix_workbook>> pour une description de la structure de retour.
+
+===== {GET} /workbook
+
+Cette méthode permet de récupérer tous les classeurs visibles par l'utilisateur
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/workbook' \
+  -H 'accept: application/json'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<workbookgetalljson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[workbookgetalljson_response]]
+.Liste d'Integer
+[source,json]
+----
+{
+  "ArrayList": [
+    7968,
+    7981,
+    7961,
+    7970,
+    7973,
+    7939,
+    7959,
+    7887,
+    7972,
+    7980,
+    7899,
+    7965,
+    7969
+  ]
+}
+----
+
+===== {PATCH} /workbook
+
+Cette méthode permet de modifier un classeur
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*WSWorkbookType*|{body}|Ensemble de données du classeur|[red]*Oui*|
+[source,json]
+----
+{
+  "id": "8001",
+  "name": "test modifié",
+  "description": "description modifiée",
+  "workbookType": "DOSSIER_WB_TYPE_STD",
+  "status": "DOSSIER_WB_STATUS_ACTIVE",
+  "share": "DOSSIER_WB_SHARE_PUBLIC"
+}
+----
+|===
+cf le chapitre <<appendix_workbook>> pour une description de la structure WSWorkbookType.
+
+[source]
+.appel _curl_
+----
+curl --location --request PATCH '<host>:<port>/<context>/rest/workbook' \
+-H 'accept: text/plain' \
+  -H 'Authorization: Basic QURNOnBhc3N3b3Jk' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "test modifié",
+  "description": "description modifiée",
+  "workbookType": "DOSSIER_WB_TYPE_STD",
+  "status": "DOSSIER_WB_STATUS_ACTIVE",
+  "share": "DOSSIER_WB_SHARE_PUBLIC"
+}'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+===== {DELETE} /workbook/{id}
+
+Cette méthode permet de supprimer un classeur
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*id*|{path}|Identifiant du classeur|[red]*Oui*|
+8001
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/workbook/8001' \
+  -H 'accept: */*' \
+  -H 'Authorization: Basic QURNOnBhc3N3b3Jk'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook/8001
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*404*|Classeur non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+===== {PATCH} /workbook/{id}/add
+
+Cette méthode permet d'ajouter des documents à un classeur
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*id*|{path}|Identifiant du classeur|[red]*Oui*|7140
+|*docIds*|{body}|Liste d'identifiants des documents à ajouter au classeur|[red]*Oui*|
+[source,json]
+----
+[5555,6666]
+----
+|===
+
+
+[source]
+.appel _curl_
+----
+curl -X 'PATCH' \
+'<host>:<port>/<context>/rest/workbook/7887/add' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '[5555,6666]'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook/7887/add
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*404*|Classeur non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+===== {PATCH} /workbook/{id}/remove
+
+Cette méthode permet de retirer des documents d'un classeur
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*id*|{path}|Identifiant du classeur|[red]*Oui*|7140
+|*docIds*|{body}|Liste d'identifiants des documents à retirer du classeur|[red]*Oui*|
+[source,json]
+----
+[5555,6666]
+----
+|===
+
+
+[source]
+.appel _curl_
+----
+curl -X 'PATCH' \
+'<host>:<port>/<context>/rest/workbook/7887/remove' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '[5555,6666]'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/workbook/7887/remove
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*404*|Classeur non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+
