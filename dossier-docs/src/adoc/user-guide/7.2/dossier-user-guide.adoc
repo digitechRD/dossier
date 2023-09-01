@@ -1,0 +1,56 @@
+// suppress inspection "AsciiDocAttributeShouldBeDefined" for whole file
+[[Dossier-user-guide]]
+= {dossier}, Manuel Utilisateur
+v7.2
+:revnumber: 1.1
+include::{sharedResource}/adoc/template.adoc[]
+:revdate: {productReleaseDate}
+:favicon: {imagesDir}/icons/logo_dossier_favicon_32.png
+
+ifdef::backend-pdf[]
+:title-logo-image: image:dossier-cover.png[align=center]
+endif::[]
+
+
+ifndef::backend-pdf[]
+image::dossier-cover.png[]
+endif::[]
+
+[cols="3a,5a",options="noheader",role="tableBorder stripes-none"]
+|===
+|image::icons/digitech_logo_and_text.svg[align=left,role="filtered max-width-400 m-auto"]
+.2+<.>|`Digitech SA` +
+_ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
+13322 Marseille Cedex 16_
+|Copyright (c) {generatedYear} `Digitech SA`, tous droits réservés.
+|===
+
+[options="header,autowidth",width=100%]
+.Notes de suivi
+|===
+|Date|Version|Etat|Objet|Rédacteur|Validateur
+|01/05/2020|1.0|Validé|Création du document|Sylvain Muscarnera|Daniel Cogneau
+|07/01/2022|1.1|Travail|Version _asciidoc_|Nicolas Félix|
+|===
+
+<<<
+
+include::chapters/_01_introduction.adoc[]
+include::chapters/_02_identification.adoc[]
+include::chapters/_03_structure_generale.adoc[]
+include::chapters/_04_pj_edition.adoc[]
+include::chapters/_05_external_modules.adoc[]
+include::chapters/_06_home_page.adoc[]
+include::chapters/_07_baskets.adoc[]
+include::chapters/_08_favorites.adoc[]
+include::chapters/_09_requests.adoc[]
+include::chapters/_10_history.adoc[]
+include::chapters/_11_clipboard.adoc[]
+include::chapters/_12_search.adoc[]
+include::chapters/_13_search_results.adoc[]
+include::chapters/_14_document_view.adoc[]
+include::chapters/_15_signature.adoc[]
+include::chapters/_16_signature_book.adoc[]
+include::chapters/_17_reports.adoc[]
+include::chapters/_18_preferences.adoc[]
+include::chapters/_19_help.adoc[]
