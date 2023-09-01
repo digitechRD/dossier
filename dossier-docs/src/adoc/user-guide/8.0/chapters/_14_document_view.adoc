@@ -1,0 +1,432 @@
+[[_14_document_view]]
+== Vue document / Fiche document
+
+=== Introduction
+
+.Vue unitaire
+image:14_document_view/image296.png[width=680,height=306]
+
+La *Vue Document* (également appelée *Fiche Document*) permet de visualiser le contenu thématisé et détaillé d'un document.
+Pour afficher la position du document dans l'arborescence, veuillez cliquer sur le lien *Afficher le plan de classement*.
+Si le document est verrouillé la *Vue Document* s'ouvre en mode *EDITION*, sinon la *Vue Document*
+s'ouvre en mode *CONSULTATION*.
+
+La page *Vue Document* se divise en deux parties : la *barre*
+*d'actions* et la fiche détaillée.
+
+La fiche détaillée a été organisée en six onglets (affichés selon les droits de l'utilisateur) :
+
+* L’onglet *Contenu*,
+* L’onglet *Pièce Jointe*,
+* L’onglet *Historique*,
+* L’onglet *Commentaire*,
+* L’onglet *Lien*,
+* L’onglet *Workflow*.
+
+Selon la configuration de l'application, la fenêtre d'affichage de la pièce jointe est automatiquement ouverte.
+En ajustant manuellement les proportions entre le tableau et la visionneuse, vos ajustements seront automatiquement enregistrés dans l’application.
+
+=== Actions
+
+.Actions
+image:14_document_view/image297.png[width=680,height=104]
+
+La *barre d'actions* (illustrée ci-dessus), accessible depuis la *Vue Document*, permet de réaliser différents types d’actions (la plupart des actions disponibles sont liées à des droits utilisateur).
+
+==== Actions globales
+
+* image:14_document_view/image298.png[width=60,height=38]
+permet de passer en mode *EDITION*.
+Le document est alors automatiquement verrouillé.
+* image:14_document_view/image299.png[width=60,height=38]
+permet de sauvegarder le document et de passer en monde *CONSULTATION*.
+Le document est alors automatiquement déverrouillé.
+Un script métier peut être joué lors de la sauvegarde de façon à réaliser des contrôles supplémentaires.
+Il est par exemple possible de faire des contrôles inter-champs avant de rendre effective la sauvegarde.
+* image:14_document_view/image191.png[width=19,height=23]
+permet de supprimer le document.
+Un script métier peut être joué lors de la suppression de façon à réaliser des contrôles complémentaires.
+Il est par exemple possible de faire des contrôles inter-champs avant de rendre effective la suppression.
+* image:14_document_view/image300.png[width=23,height=20]permet de copier une url d’accès public à ce document dans le presse-papier.
+Une fois la copie effectuée, une notification vous en avertira.
+Cette url pourra ensuite être partagée avec d’autres utilisateurs.
+
+* image:14_document_view/image192.png[width=29,height=21]permet d'envoyer un e-mail (les pièces jointes du document peuvent être insérées dans le mail). :
+
+image:14_document_view/image301.png[width=490,height=385]
+
+* *De* : indique l’adresse mail de l’émetteur.
+Ce champ est automatiquement complété par l’adresse mail de l’utilisateur courant (ou de son service le cas échéant).
+Dans certains cas, vous avez la possibilité de choisir entre votre adresse mail et celle de votre service via une liste déroulante.
+* *Pour* : champ correspondant à l’adresse mail du destinataire.
+Il est possible d’insérer plusieurs destinataires en séparant les adresse par des virgules « , ».
+Ce champ utilise la saisie prédictive.
+* *Copie à* : champ correspondant à l’adresse mail d’une éventuelle personne en copie.
+* *Copie cachée à* : champ correspondant à l’adresse mail d’une éventuelle personne en copie cachée.
+* *Sujet* : correspond à l’objet du mail.
+* *Contenu* : champ de rédaction du contenu du mail.
+Vous disposez également ici de nombreux outils de mise en forme du texte.
+* *Pièces jointes* (case) : cochez ici la ou les cases correspondant aux pièces que vous souhaitez joindre au mail.
+S’il y a plusieurs pièces jointes (fichiers), vous pourrez *Tou(te)s* les sélectionner ou
+*Aucun(e)* en cliquant sur les boutons correspondants.
+
+Une fois les champs nécessaires complétés, cliquez sur
+image:14_document_view/image302.png[height=22] pour valider l’envoi de votre mail.
+Cliquez sur
+image:14_document_view/image303.png[height=22] pour refermer cet écran sans envoyer le mail
+
+* image:14_document_view/image304.png[height=19]
+permet d'ajouter le document courant aux *Favoris*.
+* image:14_document_view/image92.png[height=19] permet d'afficher les signets.
+* image:14_document_view/image282.png[height=19] permet d’effectuer une demande de signature (cf.
+Effectuer une demande de signature page 113).
+* image:14_document_view/image305.png[height=19] permet de copier/dupliquer/lier le document (un menu contextuel s'affiche afin de proposer l'action à réaliser).
+Pour plus d’information sur cette fonctionnalité, consultez le chapitre Presse-papier page 70.
+
+* image:14_document_view/image306.png[height=24] (affichée seulement si le *Plan de classement* est visible) permet de punaiser le document.
+Le fait de punaiser le document permet de naviguer dans l'arborescence et de consulter les pièces jointes d'autres documents tout en conservant la fiche détaillée du document punaisé.
+L'action
+image:14_document_view/image307.png[height=24] permet quant à elle de dépunaiser le document.
+
+==== Actions de Workflow AIRS
+
+* L'action secondaire
+image:14_document_view/image308.png[height=24]
+(affiché selon la configuration de l'application), permet de modifier l'état d'un document.
+En survolant ce bouton, une infobulle permet de connaître avec précision le type de modification engendré par cette action.
+
+==== Actions de Workflow
+
+* image:14_document_view/image309.png[height=23]
+(affichée selon la configuration Workflow), permet de mettre en attente la tâche Workflow dans laquelle se trouve le document.
+* image:14_document_view/image310.png[height=18]
+(affichée selon la configuration Workflow), permet de clôturer la tâche Workflow dans laquelle se trouve le document.
+* image:14_document_view/image308.png[height=24]
+(affichée selon la configuration Workflow), permet de valider la tâche Workflow dans laquelle se trouve le document.
+* image:14_document_view/image311.png[height=33]
+(affichée selon la configuration Workflow), permet d'attribuer la tâche Workflow dans laquelle se trouve le document à un autre utilisateur ou une autre organisation.
+
+==== Actions personnalisées
+
+* Ce bloc peut contenir des actions personnalisées principales ou secondaires (par exemple : la copie de document, l'export de document, ...).
+Les actions personnalisées permettent l'interopérabilité d’{dossier} avec des applications tierces.
+Elles peuvent être aussi utilisées afin de générer des rapports.
+
+=== Onglet contenu
+
+.Onglet contenu
+image:14_document_view/image312.png[width=680,height=297]
+
+L'onglet *Contenu* donne accès à certains champs d'indexation (selon configuration) du document.
+Cet onglet est affiché selon les droits de l'utilisateur.
+
+On distingue deux modes de fonctionnement :
+
+* Le mode *CONSULTATION* permet seulement la visualisation des champs d'indexation.
+* Le mode *EDITION* (affiché selon les droits utilisateur) permet de modifier la valeur de certains champs d'indexation.
+Certains champs sont modifiables à l'aide de pickers.
+
+En fonction de la configuration de votre application, il est possible de créer/supprimer des documents liés et de renseigner la valeur de leurs indexes.
+
+[NOTE]
+====
+Selon la configuration, les champs peuvent être regroupés par thématiques afin d'améliorer la lisibilité du formulaire.
+====
+
+=== Onglet pièce jointe
+
+.Onglet pièce jointe
+image:14_document_view/image313.png[width=680,height=337]
+
+L'onglet *Pièce jointe* permet de visualiser l'ensemble des pièces jointes du document.
+Cet onglet est affiché selon les droits de l'utilisateur.
+Les informations suivantes sont affichées :
+
+* **Id**entifiant de la pièce jointe.
+* *Action*(s) réalisables sur la pièce jointe :
+** image:14_document_view/image218.png[width=22,height=14] :
+permet de visualiser la pièce jointe via la fenêtre de visualisation.
+** image:14_document_view/image314.png[width=23,height=23] :
+permet de télécharger la pièce jointe.
+** image:14_document_view/image141.png[width=37,height=37] :
+permet de modifier le fichier de la pièce jointe (selon votre configuration, l’édition de pièce jointe pourra se dérouler de manière différente, cf.
+Edition des pièces jointes, documents page 37).
+** image:14_document_view/image143.png[width=28,height=28] :
+permet de modifier les informations liées à la pièce jointe.
+** image:14_document_view/image160.png[width=24,height=23] :
+permet de numériser une nouvelle pièce jointe.
+* *Intitulé* de la pièce jointe.
+* *Type* de la pièce jointe.
+* *Nom du fichier* joint.
+
+On distingue deux modes de fonctionnement :
+
+* Le mode *CONSULTATION* permet seulement de consulter les pièces jointes.
+* Le mode *EDITION* (affiché selon les droits utilisateur) permet d'ajouter, de modifier ou même de supprimer une pièce jointe.
+
+Pour visualiser le fichier de la pièce jointe, il est nécessaire de cliquer sur l'action
+image:14_document_view/image94.png[width=17,height=9]; la fenêtre de visualisation de pièce jointe est alors affichée.
+
+Pour supprimer une pièce jointe, il faut au préalable cocher le(s) pièce(s) jointe(s) puis cliquer sur l’action
+image:14_document_view/image191.png[width=19,height=23] :
+
+.Supprimer une pièce jointe
+image:14_document_view/image316.png[width=680,height=164]
+
+Un message de confirmation s'affiche avant d'appliquer la suppression.
+
+[NOTE]
+====
+Si le "versioning" est activé (via le l’Admin AIRS), il est alors possible de sélectionner la version de la pièce jointe à afficher dans la colonne *Versions*.
+====
+
+==== Ajouter une pièce jointe
+
+L’ajout de pièce jointe peut ici se réaliser de trois manières :
+
+[arabic]
+. Via le bouton
+image:14_document_view/image49.png[width=21,height=20] :
+
+Pour ajouter une pièce jointe, cliquez sur l'icône :
+image:14_document_view/image49.png[width=21,height=20].
+La fenêtre modale *Ajout/Modification d'une pièce jointe* s'ouvre :
+
+.Ajout d'une pièce jointe
+image:14_document_view/image317.png[width=480,height=224]
+
+Saisissez les informations liées à la pièce jointe telles que son
+*Intitulé* et son *Type* puis, sélectionnez le fichier à télécharger.
+Ajoutez la pièce jointe en la déposant par cliquer-glisser dans la zone intitulée *Déposer un nouveau fichier ici*.
+Vous pouvez également cliquer dans cette zone pour rechercher le fichier à importer sur votre poste.
+Selon votre configuration, si la pièce jointe choisie ne convient pas, vous pouvez la supprimer en cliquant sur *[underline]#Supprimer#*.
+En cliquant sur le bouton *Enregistrer*, le fichier est téléchargé et la pièce jointe ajoutée au courrier (il est également possible que la pièce jointe soit directement ajoutée selon votre configuration).
+
+[arabic,start=2]
+. Via la zone *Déposer un nouveau fichier ici :*
+
+Ajoutez la pièce jointe en la déposant par cliquer-glisser dans la zone intitulée *Déposer un nouveau fichier ici*.
+Vous pouvez également cliquer dans cette zone pour rechercher le fichier à importer sur votre poste.
+Si la pièce jointe choisie ne convient pas, vous pouvez la supprimer en cliquant sur *[underline]#Supprimer#*.
+
+[arabic,start=3]
+. Via la numérisation
+image:14_document_view/image160.png[height=23]
+
+Vous pouvez aussi numériser la pièce jointe à ajouter à l’aide de la touche
+image:14_document_view/image160.png[height=23].
+Cette touche déclenche l’apparition d’un module de numérisation dans lequel vous pourrez numériser un document à l’aide d’un scanneur.
+Afin d’utiliser le module de numérisation, vous devez impérativement disposer du driver Twain adéquat sur votre poste informatique (selon votre configuration cette option pourra ne pas être disponible).
+
+==== Ecran de visualisation de pièce jointe
+
+.Pièce jointe
+image:14_document_view/image318.png[width=495,height=464]
+
+La fenêtre de visualisation de pièce jointe permet de consulter les pièces jointes d'un document.
+Selon le type de fichier à visualiser, la pièce jointe est affichée dans la *visionneuse* (cf.
+Visionneuse page 23).
+Si le document courant se trouve dans un dossier, il est alors possible de naviguer dans ce dossier en sélectionnant un autre document.
+Pour ce faire, il est nécessaire d'utiliser les flèches de part et d'autre du document courant.
+Pour naviguer de pièce jointe en pièce jointe, il est nécessaire d'utiliser les flèches de part et d'autre de la pièce jointe courante.
+
+[NOTE]
+====
+Si la pièce jointe n'est pas trouvée dans le système de fichier AIRS, un message d'erreur est affiché.
+====
+
+[NOTE]
+====
+Il est possible de masquer/afficher l’écran de visualisation de pièces jointes en cliquant sur la double flèche située dans son coin supérieur droit.
+====
+
+=== Onglet lien
+
+.Onglet lien
+image:14_document_view/image319.png[width=680,height=236]
+
+L'onglet *Lien* permet de consulter l'ensemble des documents liés au document courant.
+Cet onglet est affiché selon les droits de l'utilisateur.
+Les informations suivantes sont affichées :
+
+* *Intitulé* du lien.
+* *Pièces jointes* associées au document lié (un clic sur la pièce jointe permet de l'afficher dans la fenêtre de visualisation).
+* *Type de Contenu* du document lié.
+* *Nom du Lien* utilisé pour récupérer le document lié.
+* *Direction du Lien* (parent ou enfant).
+
+Pour afficher la fiche détaillée du document lié, il est nécessaire de cliquer sur l'action
+image:14_document_view/image218.png[width=22,height=14].
+
+Pour supprimer un ou plusieurs liens, il faut au préalable cocher le(s) document(s) puis cliquer sur l'action
+image:14_document_view/image191.png[width=19,height=23].
+Un message de confirmation s'affiche avant d'appliquer la suppression.
+
+.Ajout de pièce jointe
+image:14_document_view/image320.png[width=503,height=554]
+
+Pour créer un lien, veuillez cliquer sur l'action
+image:14_document_view/image49.png[width=21,height=20].
+La fenêtre modale *Sélection de document(s)* s'ouvre.
+Il est alors possible de sélectionner le *Type de Lien* puis de saisir les critères de recherche (les critères de recherche affichés dépendent du paramétrage applicatif) puis de cliquer sur le bouton *Rechercher* afin d'afficher les résultats de recherche.
+Il est alors possible de cocher les documents qui doivent être liés au document courant puis de cliquer sur le bouton *SÉLECTIONNER* afin de créer le lien.
+
+=== Onglet Historique
+
+.Onglet historique
+image:14_document_view/image321.png[width=680,height=441]
+
+L'onglet *Historique* permet de visualiser l'historique des actions AIRS réalisées sur le document.
+Cet onglet est affiché selon les droits de l'utilisateur.
+Les informations suivantes sont affichées :
+
+* L’*Id* du document concerné par l’action.
+* *Message* de trace lié à l'action AIRS.
+* Nom de l'*Acteur* responsable de l'action AIRS.
+* *Date* de réalisation de l'action AIRS.
+
+=== Onglet Workflow
+
+L'onglet *Workflow* permet de visualiser l'historique des tâches
+*Workflow* par lesquelles est passé le document.
+Cet onglet est affiché selon les droits de l'utilisateur.
+Les informations suivantes sont affichées :
+
+* Nom des tâches du *Workflow* par lesquelles le document est passé.
+* Nom des *Acteurs* responsables du traitement d'une tâche.
+* Date de début et date d'achèvement de chaque tâche.
+
+=== Onglet Signature (optionnel)
+
+.Onglet Signature
+image:14_document_view/image322.png[width=680,height=289]
+
+Cet onglet est uniquement destiné aux utilisateurs disposant du droit de signer électroniquement un document dans {dossier}.
+Cet onglet n’apparait qu’en *Edition*.
+Pour plus d’informations sur la signature, veuillez consulter le chapitre Signature page 107.
+
+=== Onglet Commentaire
+
+.Onglet commentaire
+image:14_document_view/image323.png[width=680,height=257]
+
+L'onglet *Commentaire* permet de visualiser l'ensemble des commentaires relatifs au document.
+Cet onglet est affiché selon les droits de l'utilisateur.
+On distingue deux modes de fonctionnement :
+
+* Le mode *Consultation* permet seulement la visualisation des commentaires.
+* Le mode *Edition* (affiché selon les droits utilisateur) permet d'ajouter ou de supprimer un commentaire.
+
+Pour supprimer un ou plusieurs commentaires, il faut au préalable cocher le(s) document(s) puis cliquer sur l'action
+image:14_document_view/image324.png[width=18,height=22].
+Un message de confirmation s'affiche avant d'appliquer la suppression.
+
+[NOTE]
+====
+Il est seulement possible de supprimer les commentaires dont vous êtes l’auteur (sauf si vous disposez du droit *DOSSIERS_COMMENT_DELETE*
+permettant de supprimer n’importe quel commentaire).
+À noter également que pour les commentaires renseignés sous délégation, il sera fait mention de la délégation dans le commentaire.
+====
+
+Il est possible de modifier un des commentaires en cochant un commentaire puis en cliquant sur l'action
+image:14_document_view/image325.png[width=21,height=21], la fenêtre *Ajout/Modification d’un Commentaire* s’ouvre alors :
+
+.Ajout de commentaire
+image:14_document_view/image326.png[width=487,height=507]
+
+Pour ajouter un commentaire, veuillez cliquer sur l'action
+image:14_document_view/image49.png[width=21,height=20].
+La fenêtre modale *Ajout/Modification d'un Commentaire* s'ouvre également.
+Il est alors possible de saisir le commentaire à ajouter ainsi que le type de partage à appliquer.
+Il faut considérer les niveaux de partage (confidentialité) suivants :
+
+* *Privé* : le commentaire n'est visible que par son auteur (si *Type de Partage* est également réglé sur la valeur *Personnelle*).
+* *Partagé* : le commentaire n'est visible que par son auteur et les utilisateurs souhaités (utilisateurs appartenant à une organisation et/ou utilisateurs individuellement).
+
+En cliquant sur l'action *ENREGISTRER*, le commentaire est créé.
+
+=== Vue Plan de classement
+
+.Arborescence
+image:14_document_view/image327.png[width=680,height=255]
+
+La vue *Plan de classement* permet de visualiser le document courant dans son arborescence.
+Dès lors, il est possible de naviguer à travers l'arborescence afin de sélectionner un autre document.
+Pour rafraichir le *Plan de classement*, veuillez cliquer sur l'action
+image:14_document_view/image328.png[width=20,height=20].
+
+L'action
+image:14_document_view/image329.png[width=21,height=15]
+permet de réinitialiser l'arborescence afin d’afficher à nouveau son état initial.
+
+Les boutons
+image:14_document_view/image330.png[width=18,height=13]
+et
+image:14_document_view/image331.png[width=18,height=13]
+ont été ajoutés afin de respectivement déployer ou de réduire en un clic l’intégralité de l’arborescence :
+
+.Arbre déplié
+image:14_document_view/image332.png[width=456,height=185]
+
+.Arbre replié
+image:14_document_view/image333.png[width=455,height=185]
+
+Vous pouvez agrandir la partie dédiée à l’affichage du plan de classement en cliquant sur la flèche située en bas de l’écran :
+
+.Agrandir Plan de classement
+image:14_document_view/image334.png[width=455,height=217]
+
+Une fois cette zone agrandie, vous pourrez la réduire en cliquant à nouveau sur cette flèche (pointant désormais vers le haut).
+
+Il existe différents types de nœud pouvant être affichés dans le *Plan de classement* :
+
+* Nœud dossier
+image:14_document_view/image335.png[width=16,height=16] :
+il correspond à un document AIRS de type dossier.
+Pour sélectionner un nœud dossier, veuillez cliquer sur son intitulé.
+* Nœud dossier virtuel
+image:14_document_view/image335.png[width=16,height=16] :
+il correspond à un nœud virtuel (aucun document AIRS ne lui est associé).
+Ce type de nœud permet de créer des regroupements de données dans le *Plan de classement*.
+Ce type de nœud ne peut pas être sélectionné.
+* Nœud document
+image:14_document_view/image336.png[width=16,height=16] :
+il correspond à un document AIRS.
+Pour sélectionner un nœud document, veuillez cliquer sur son intitulé.
+
+Quand un nœud de type dossier ou un nœud de type document possède des pièces jointes, les trois premières pièces jointes sont alors affichées à droite de l’intitulé (avec des icônes du type
+image:14_document_view/image260.png[width=18,height=18],
+image:14_document_view/image337.png[
+image:14_document_view/image338.png[height=16]). Pour visualiser une pièce jointe,il est nécessaire de cliquer sur l'icône correspondante dans le *Plan de classement* (la fenêtre de visualisation de pièce jointe s’ouvre en conséquence). Lors du survol des icônes de pièce jointe,le nom du fichier est affiché dans une infobulle.
+
+Lorsqu’un document à deux parents différents, il est impossible d’afficher les deux parents simultanément dans la vue plan de classement.
+Vous pourrez ici choisir le parent à partir duquel afficher la vue plan de classement via une liste déroulante.
+
+La liste déroulante située à droite de l’icône
+image:14_document_view/image339.png[width=25,height=25]
+permet de sélectionner le document parent à partir duquel la vue plan de classement sera déployée :
+
+.Sélection du parent à afficher
+image:14_document_view/image340.png[width=432,height=185]
+
+Le document parent choisi dans la liste déroulante (*Marché* ici) sera donc placé tout en haut de l’arborescence.
+Une fois votre choix effectué dans cette liste déroulante, vous devez appuyer sur le bouton
+image:14_document_view/image339.png[width=25,height=25]
+pour rendre le changement effectif.
+
+Lorsqu’il est possible de redescendre dans l’arborescence au niveau d’un document fils, on rencontre également la liste déroulante *Changer de nœud parent* :
+
+.Changer de nœud parent
+image:14_document_view/image341.png[width=322,height=183]
+
+Une fois un document fils sélectionné, l’affichage du plan de classement sera initialisé à partir de ce document.
+
+[NOTE]
+====
+Si le *Plan de classement* est étendu il est possible de la réduire et de la déployer en cliquant sur les nœuds correspondants (symbolisé par l’icône
+image:14_document_view/image342.png[width=11,height=11] ).
+Vous pouvez également masquer l’intégralité de l’arborescence en cliquant sur
+*Cacher le plan de classement* (situé dans le coin supérieur droit).
+====
+
+<<<
