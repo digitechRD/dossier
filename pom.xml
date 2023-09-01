@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>fr.digitech.ged</groupId>
+    <artifactId>digitech-asciidoc-builder</artifactId>
+    <version>1.0.3</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>fr.digitech.ged.dossier</groupId>
+  <artifactId>dossier.documentation.gh</artifactId>
+  <version>1.0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>dossier-docs</module>
+  </modules>
+
+  <organization>
+    <name>Digitech</name>
+    <url>http://www.digitech.fr</url>
+  </organization>
+  <developers>
+    <developer>
+      <id>nfe</id>
+      <name>Nicolas FELIX</name>
+      <roles>
+        <role>Technical Expert</role>
+      </roles>
+      <email>nicolas.felix@digitech.fr</email>
+      <organization>Digitech</organization>
+      <organizationUrl>www.digitech.fr</organizationUrl>
+    </developer>
+  </developers>
+
+  <properties>
+    <doc.outputFile>dossier-${id-key}</doc.outputFile>
+    <sourceDocumentName>dossier-${id-key}.adoc</sourceDocumentName>
+  </properties>
+</project>
