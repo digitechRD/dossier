@@ -13,7 +13,9 @@
 <link rel="stylesheet" href="highlightjs/styles/github.min.css">
 <!--
 <meta name="theme-color" content="#319197" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">-->
+<meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">
+-->
+<script src="echarts/echarts.min.js"></script>
 <script src="js/setup.js"></script><script defer src="js/site.js"></script>
 
 </head>
@@ -30,7 +32,7 @@
 <h1>Mise en place du SSO pour le produit <strong>AIRS Dossier</strong></h1>
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
-<span id="revnumber">version 3.0,</span>
+<span id="revnumber">version 3.1,</span>
 <span id="revdate">05/04/2022</span>
 </div>
 <div id="toc" class="toc2">
@@ -122,6 +124,14 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">3.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dossier <strong>8.0</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29/09/2023</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dossier <strong>8.0</strong>/<strong>8.1</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -368,27 +378,83 @@ http://$APP_SERVEUR.$DOMAINE&lt;:port&gt;/dossier</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_association_avec_lapplication_airs_dossier"><a class="anchor" href="#_association_avec_lapplication_airs_dossier"></a>2.7. Association avec l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code></h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code>. Sera uniquement concerné le fichier config.xml présent au sein du sous-dossier Config/ des composants de l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code> déployée.</p>
+<p>Utilisez l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code> pour paramétrer <code><span style="color:#D4CE28">AIRS Dossier</span></code> !</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Il faut alors ajouter la balise spnego  entre les balises cfe (ou error si la balise cfe est absente) et la balise generation. Naturellement, ce paramétrage ne peut pas être ajouté ou combiné avec le paramétrage OpenId Keycloak (balise « IDP »).</p>
+<p>Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code>. Sera uniquement concerné le fichier <strong>params.xml</strong> présent au sein du sous-dossier <strong>xml</strong> des composants de l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code> déployée.</p>
 </div>
 <div class="paragraph">
-<p>3 attributs peuvent être renseignés :</p>
+<p>Il faut alors ajouter la balise <strong>spnegoConfig</strong> (peu importe la position, seulement en tant qu'<em>enfant</em> du nœud <strong>params</strong>).</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>En plus de cette balise <strong>spnegoConfig</strong>, la balise <strong>authenticationMode</strong> (sous <strong>appConfig</strong>) doit être positionné à la valeur <strong>SSO</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;authenticationMode&gt;SSO&lt;/authenticationMode&gt;</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La balise <strong>ssoActivated</strong> n&#8217;est plus utilisée, sa valeur étant surchargée par la balise <strong>authenticationMode</strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>4 attributs peuvent être renseignés :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>debug</strong> (paramètre optionnel pour augmenter les traces : true ou false),</p>
+<p><strong>keyTabLocation</strong>: <span class="[underline"><strong>obligatoire</strong></span>] nom du <code>keytab</code> (localisé dans le répertoire <strong>xml</strong> de <code><span style="color:#D4CE28">AIRS Dossier</span></code>)</p>
 </li>
 <li>
-<p><strong>keyTabLocation</strong></p>
+<p><strong>servicePrincipal</strong>: <span class="[underline"><strong>obligatoire</strong></span>] service principal utilisé lors de la génération du <code>keytab</code></p>
 </li>
 <li>
-<p><strong>servicePrincipal</strong></p>
+<p><strong>allowLogin</strong>: [<em>optionnel</em>] indique si la mire de login classique (user/password) reste disponible (<strong>true</strong> par défaut).</p>
+</li>
+<li>
+<p><strong>debug</strong>: [<em>optionnel</em>] pour augmenter les traces  (<strong>false</strong> par défaut).</p>
 </li>
 </ul>
+</div>
+<div class="listingblock">
+<div class="title">exemple</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml"> &lt;spnegoConfig servicePrincipal="HTTP/SRV-APPDIGI-01@DIGITECH.LAN" keytabLocation="kerb5_dossier.ktab" /&gt;</code></pre>
+</div>
 </div>
 <div class="admonitionblock caution">
 <table>

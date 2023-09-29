@@ -1,7 +1,7 @@
 [[Dossier-sso]]
 = Mise en place du SSO pour le produit *AIRS Dossier*
 v3.0, 05/04/2022
-:revnumber: 3.0
+:revnumber: 3.1
 include::{sharedResource}/adoc/template.adoc[]
 :revdate: 05/04/2022
 
@@ -27,6 +27,7 @@ endif::[]
 |02/11/2011|1.0|Validé|Création du document|Régis Krawezyk|
 |01/08/2019|2.0|Validé|Modification du document|Nicolas Félix|
 |05/04/2022|3.0|Validé|Dossier *8.0*|Nicolas Félix|
+|29/09/2023|3.1|Validé|Dossier *8.0*/*8.1*|Nicolas Félix|
 |===
 
 ifdef::env-github[]
@@ -203,15 +204,42 @@ où <:port> est la donnée du port de communication paramétré pour le serveur 
 
 === Association avec l’application {dossier}
 
-Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application {dossier}. Sera uniquement concerné le fichier config.xml présent au sein du sous-dossier Config/ des composants de l’application {dossier} déployée.
+[TIP]
+====
+Utilisez l'application {adminAIRS} pour paramétrer {dossier} !
+====
 
-Il faut alors ajouter la balise spnego  entre les balises cfe (ou error si la balise cfe est absente) et la balise generation. Naturellement, ce paramétrage ne peut pas être ajouté ou combiné avec le paramétrage OpenId Keycloak (balise « IDP »).
+Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application {dossier}. Sera uniquement concerné le fichier *params.xml* présent au sein du sous-dossier *xml* des composants de l’application {dossier} déployée.
 
-3 attributs peuvent être renseignés :
+Il faut alors ajouter la balise *spnegoConfig* (peu importe la position, seulement en tant qu'_enfant_ du nœud *params*).
 
-* *debug* (paramètre optionnel pour augmenter les traces : true ou false),
-* *keyTabLocation*
-* *servicePrincipal*
+[IMPORTANT]
+====
+En plus de cette balise *spnegoConfig*, la balise *authenticationMode* (sous *appConfig*) doit être positionné à la valeur *SSO*.
+
+[source,xml]
+----
+<authenticationMode>SSO</authenticationMode>
+----
+====
+
+[NOTE]
+====
+La balise *ssoActivated* n'est plus utilisée, sa valeur étant surchargée par la balise *authenticationMode*
+====
+
+4 attributs peuvent être renseignés :
+
+* *keyTabLocation*: [[underline]#*obligatoire*#] nom du `keytab` (localisé dans le répertoire *xml* de {dossier})
+* *servicePrincipal*: [[underline]#*obligatoire*#] service principal utilisé lors de la génération du `keytab`
+* *allowLogin*: [_optionnel_] indique si la mire de login classique (user/password) reste disponible (*true* par défaut).
+* *debug*: [_optionnel_] pour augmenter les traces  (*false* par défaut).
+
+.exemple
+[source,xml]
+----
+ <spnegoConfig servicePrincipal="HTTP/SRV-APPDIGI-01@DIGITECH.LAN" keytabLocation="kerb5_dossier.ktab" />
+----
 
 [CAUTION]
 ====
