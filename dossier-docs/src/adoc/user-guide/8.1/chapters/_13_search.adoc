@@ -1,0 +1,250 @@
+[[_13_search]]
+== Recherches Simples et Avancées
+
+=== Partie commune
+
+.Partie commune
+image:13_search/Menus_Search.png[]
+
+La fonctionnalité de *Recherche* permet de définir et d'exécuter des recherches AIRS.
+Depuis la page d'*Accueil* de l'application, la fonctionnalité de *Recherche* est accessible depuis image:icons/header_other_actions.png[pdfwidth=24,role="size-24"] via le sous-menu *Recherche*, *Recherche avancée* et *Recherche Plein texte*.
+
+Il existe quatre types de recherche :
+
+* La *Recherche globale* image:icons/header_search.png[pdfwidth=24,role="size-24"] (qui inclue la recherche *Plein Texte* image:icons/Ico_PleinTexte.png[pdfwidth=24,role="size-24"] si activée).
+* La *Recherche Plein texte* (qui peut être incluse dans la *Recherche globale*)
+* La *Recherche simple*.
+* La *Recherche avancée*.
+
+Pendant une *Recherche simple* et avancée, vous pouvez passer d'un mode de recherche à un autre en cliquant sur le raccourci correspondant sur la droite :
+
+* image:icons/Ico_AdvanceSearch.png[pdfwidth=24,role="size-24"] : raccourci vers la *Recherche avancée*.
+* image:icons/Ico_SimpleSearch.png[pdfwidth=24,role="size-24"] : raccourci vers la *Recherche simple*.
+
+Il est nécessaire de cliquer sur l'action
+image:13_search/image239.png[pdfwidth=24,role="size-24"]
+afin d'exécuter une recherche et d'afficher la page des résultats (vous pouvez également utiliser la touche Entrée du clavier).
+
+L'action
+image:13_search/image240.png[pdfwidth=24,role="size-24"]
+permet de vider l'ensemble des critères de recherche (*mode simple*) ou l'expression de recherche (*mode avancé*).
+
+Le mode d'affichage des résultats permet de définir la mode de présentation des résultats de recherche (affichage *Simple* ou affichage
+*3 fenêtres*).
+L’ensemble des critères de recherche dépendent du flux sélectionné, du *Type de Contenu* sélectionné et du paramétrage effectué sur la vue (via l’Admin AIRS).
+
+=== Recherche Globale
+
+Le champ de *Recherche globale* est uniquement disponible depuis la barre de navigation. Il permet d’effectuer une recherche sur l’ensemble des pièces jointes auxquelles vous avez accès dans {dossier}. Cette recherche permet également de repérer les différentes itérations d’un mot au sein des pièces jointes présentes dans les résultats de recherche. Si vous travaillez sur plusieurs flux, il est également possible d’inclure tous vos flux dans les résultats de recherche.
+Selon votre paramétrage, la *Recherche globale* pourra proposer plusieurs options qui s’affichent en cliquant dans le champ :
+
+.Recherche Globale
+image:13_search/GlobalSearch.png[]
+
+On retrouve les options de recherche suivante (qui peuvent être activées (fond vert) / désactivées (fond neutre) par simple clic) :
+
+* *Rechercher sur tous les flux* : permet d’activer/désactiver la recherche sur l’ensemble des flux.
+* *Activer la suggestion des mots* : permet d’afficher des suggestions de mots basées sur votre saisie. En cliquant sur le mot suggéré, celui-ci vient automatiquement s’inscrire dans le champ de recherche :
+
+.Suggestion de mot en Recherche Globale
+image:13_search/WordSuggest.png[]
+
+Il suffit de cliquer sur une suggestion pour l’utiliser dans le champ de recherche.
+Il suffit de saisir les termes recherchés puis de cliquer sur la loupe image:icons/header_search.png[pdfwidth=24,role="size-24"] ou d’appuyer sur la touche kbd:[Entrée] du clavier pour lancer la recherche. Si l’icône image:icons/Ico_PleinTexte.png[pdfwidth=24,role="size-24"] est disponible, elle permet de lancer une recherche basée sur du texte (*Recherche Plein texte*). Dans les résultats de recherche, l’élément recherché apparait surligné dans des encadrés sur la gauche. Chaque encadré représente un document différent :
+
+.Résultat Recherche Globale
+image:13_search/Filtre.png[]
+
+Pour chaque résultat, on retrouve les options suivantes :
+
+[cols="1a,5a",options="noheader",width="100%"]
+|===
+|image:icons/Ico_Favorites.png[pdfwidth=24,role="size-24"]|Ajouter aux favoris.
+|image:icons/Ico_Home.png[pdfwidth=24,role="size-24"]|Ajouter à l’écran d’accueil (en tant que panneau).
+|image:icons/Ico_VueDoc.png[pdfwidth=24,role="size-24"]|Afficher le document dans la visionneuse.
+|image:icons/Ico_VueArbo.png[pdfwidth=24,role="size-24"]|Afficher la *Vue Arborescente*.
+|image:icons/Ico_DisplayDoc.png[pdfwidth=24,role="size-24"]|Afficher la *Vue document*.
+|===
+
+Si le document principal n’est pas masqué, il s’affiche sur la droite dans la visionneuse.
+Si les résultats de recherche sont répartis sur plusieurs pages, vous pouvez naviguer entre les pages en cliquant sur les numéros situés en haut de page :
+
+.Navigation Rechercher Globale
+image:13_search/Filter2.png[]
+
+==== Filtre
+Il est possible de filtrer les résultats de la *Recherche globale*. La zone de paramétrage du filtre peut être affichée/masquée en cliquant sur le bouton image:icons/GlobalResultFilter_4.png[pdfwidth=24,role="size-24"] situé en haut à droite. Le filtre se présente comme suit :
+
+.Filtre Recherche Globale
+image:13_search/GlobalResultFilter_3.png[]
+
+La liste déroulante dans la partie supérieure permet de déterminer l’élément à filtrer :
+
+.Filtre Recherche Globale
+image:13_search/GlobalResultFilter_5.png[]
+
+Vous pouvez également filtrer les résultats en fonction de la *Date de création* et/ou de modification. Il suffit pour cela de sélectionner le symbole ainsi que la ou les dates correspondantes.
+
+* kbd:[=] : permet de filtrer sur la date renseignée.
+* kbd:[>] : permet de filtrer sur toutes les dates supérieures à la date renseignée.
+* kbd:[<] : permet de filtrer sur toutes les dates inférieures à la date renseignée.
+* kbd:[{}] : permet de filtrer sur toutes les dates comprises dans l’intervalle défini (il faudra ici saisir deux dates).
+* kbd:[}{] : permet de filtrer sur toutes les dates non comprises dans l’intervalle défini (il faudra ici saisir deux dates).
+
+Une fois un élément sélectionné, les champs de filtrage correspondant sont affichés et peuvent être paramétrés.
+Pour appliquer le filtre, cliquez sur le bouton image:icons/GlobalResultFilter_YES.png[pdfwidth=24,role="size-24"] *Appliquer le filtre* (disponible en haut et en bas du filtre).
+
+Le filtre peut être désactivé en cliquant sur le bouton image:icons/GlobalResultFilter_No.png[pdfwidth=24,role="size-24"] (disponible en haut et en bas du filtre).
+
+=== Recherche simple
+
+.Recherche simple
+image:13_search/image241.png[width=680,height=364]
+
+La *Recherche Simple*, accessible depuis la barre de navigation en suivant le chemin image:icons/header_other_actions.png[pdfwidth=24,role="size-24"] > *Recherche* permet de réaliser des recherches AIRS en spécifiant des valeurs pour un ensemble de critères.
+La recherche construite est une recherche par intersection.
+Par exemple, si l'utilisateur spécifie la valeur _« 15/10/1980_ » pour un critère de
+*Date de création* et la valeur *À CLASSER* pour un critère de *Type*
+de document, la requête AIRS construite sera de la forme : D_CREAT =
+_15/10/1980_ *ET* DOC_TYPE = *À CLASSER*.
+
+La liste déroulante *Type de Contenu* permet de spécifier le *Type de Contenu* sur lequel la recherche doit être réalisée.
+Il est important de spécifier en premier lieu le *Type de Contenu*, car les critères de recherche affichés dépendent du *Type de Contenu* sélectionné.
+
+Les critères de recherche se caractérisent par :
+
+* Un intitulé : il définit le nom du critère de recherche.
+* Un opérateur : il définit le type d'opérateur à appliquer sur le critère de recherche.
+Selon la configuration de l'application, les opérateurs suivants peuvent être utilisés :
+** *=* : permet de spécifier l'égalité.
+** *>* : permet de spécifier la supériorité.
+** *<* : permet de spécifier l'infériorité.
+** *{}* : permet de spécifier un intervalle de valeurs.
+L'intervalle de valeurs peut être spécifié sur les champs de type numérique ou de type date.
+** *} {* : permet de spécifier un intervalle de valeurs "non compris entre".
+L'intervalle de valeurs ainsi saisi sera exclu des résultats de recherche.
+L'intervalle de valeurs "non compris entre" peut être spécifié sur les champs de type numérique ou de type date.
+* Un champ de recherche : il définit la valeur du critère de recherche.
+
+Selon le type du champ de recherche, celui-ci ne sera pas éditable.
+Il faudra alors utiliser les différents "picker" de valeur disponible (pour plus d’informations sur les pickers, consultez le chapitre <<Pickers,Pickers>>) :
+
+* Picker de date : accessible en cliquant sur l’icône
+image:13_search/image37.png[pdfwidth=24,role="size-24"], permet de sélectionner une date.
+La date peut être saisie manuellement en respectant le format mentionné sous le champ : jj/mm/aaaa.
+* Picker d'organisation : accessible en cliquant sur l'icône
+image:13_search/image39.png[pdfwidth=24,role="size-24"] permet de sélectionner une organisation.
+* Picker d'autorité : accessible en cliquant sur l'icône
+image:13_search/image41.png[pdfwidth=24,role="size-24"] permet de sélectionner un élément d'une liste d'autorité.
+* Picker d'utilisateur : accessible en cliquant sur l'icône
+image:13_search/image43.png[pdfwidth=24,role="size-24"], permet de sélectionner un utilisateur.
+
+Si un critère de recherche est déjà renseigné pour un champ, le picker s'initialisera avec cette même valeur.
+
+Pour effacer la valeur d'un champ il peut être nécessaire de cliquer sur l’icône
+image:13_search/image242.png[pdfwidth=24,role="size-24"].
+
+[NOTE]
+====
+Pour certains champs, des caractères dits "joker" peuvent être spécifiés.
+Une annotation du type « _(1) Les caractères'+', '*' peuvent être utilisés en tant que joker._ » est alors mentionnée en regard du champ concerné.
+Les caractères jokers peuvent servir dans les cas suivants :
+
+REPRISE
+
+* Faire une recherche sur tous les documents dont le champ correspondant est renseigné : pour ce faire, il suffit de remplir un champ avec seulement kbd:[+] ou kbd:[✱]. Exemple : + pour le critère *Objet* : recherche de tous les documents ayant un objet de renseigné.
+* Faire une recherche sur un champ qui commence par tel ou tel mot :
+pour ce faire, il faut ajouter les caractères + ou ✱ avant ou après
+le mot recherché. Exemple : "contrat+" permet de faire une recherche sur tous les mots commençant par "contrat".
+* Faire une recherche sur un champ qui contient tel ou tel mot : pour ce faire, il suffit entourer le mot recherché par + ou ✱. Exemple :
+"+contrat+" permet de faire une recherche sur tous les mots contenant l’élément "contrat".
+====
+
+[NOTE]
+====
+Selon la configuration de votre application {dossier}, une liste de suggestions peut s'afficher lors de la saisie d'un critère de recherche.
+Les valeurs disponibles s'affichent au fur et à mesure de la saisie ; l'utilisateur pourra alors sélectionner la valeur souhaitée.
+====
+
+=== Recherche avancée
+
+.Recherche avancée
+image:13_search/AdvancedSearch1.png[]
+
+La *Recherche Avancée* permet de réaliser des recherches documentaires très précises, en spécifiant des valeurs pour des critères ciblés et sur un ensemble de *Types de contenu*.
+Pour réaliser une *Recherche avancée*, il est nécessaire de sélectionner dans un premier temps le(s)
+*Type(s) de Contenu* sur le(s)quel(s) la recherche doit être jouée.
+Le bouton image:icons/Ico_SearchSelect.png[pdfwidth=24,role="size-24"]
+permet de sélectionner simultanément tous les types de contenu et le bouton image:13_search/image246.png[pdfwidth=24,role="size-24"] permet de tous les désélectionner.
+
+Selon la configuration applicative et les droits de l'utilisateur connecté, il est possible d'activer la recherche sur tous les flux (en cochant la case *Activer la recherche sur tous les flux ?*). Dès lors, tous les *Type*(s) de Contenu* pour tous les flux de l'utilisateur seront disponibles.
+
+Vous pouvez désigner les types de contenu sur lesquels s’effectuera la recherche en cochant les cases associées aux intitulés souhaités (dans la partie droite de l’écran).
+Une fois le(s) *Type*(s) *de Contenu*
+souhaité(s) coché(s), vous pouvez cliquer sur l'action
+image:icons/Ico_LocADD.png[pdfwidth=24,role="size-24"]
+pour afficher la fenêtre d'*Ajout d'une Locution*, ou sur l'action
+image:icons/Ico_LocPARENT2.png[pdfwidth=24,role="size-24"] pour ajouter une parenthèse ouvrante.
+
+.Ajout d'une locution
+image:13_search/image249.png[width=389,height=164]
+
+La fenêtre d'*Ajout d'une Locution* permet de spécifier le champ à ajouter, le type d'opérateur à utiliser ainsi que la valeur du critère.
+Selon le type du champ de recherche, celui-ci n'est pas éditable.
+Il faut alors utiliser le picker (sélecteur) de valeur.
+
+Pour plus de détails sur les pickers, voir le chapitre <<Pickers,Pickers>>.
+Une fois l'ajout de locution finalisé, veuillez cliquer sur le bouton *AJOUTER* pour mettre à jour l'expression de recherche.
+
+.Ajout d'une locution
+image:13_search/AdvancedSearch2.png[]
+
+Au fil de la construction de l'expression, la liste des actions possibles est mise à jour.
+Il est alors possible de spécifier des opérateurs interlocutions.
+L'action
+image:icons/Ico_LocET.png[pdfwidth=24,role="size-24"] (*ET*) permet d'ajouter l'opérateur d'intersection interlocutions (elle permet ainsi de cumuler les effets de différentes locutions).
+L'action
+image:icons/Ico_LocSAUF.png[pdfwidth=24,role="size-24"] (*SAUF*) permet d'ajouter l'opérateur de négation interlocutions (permet par exemple d’exclure certaines valeurs de la recherche).
+L'action
+image:icons/Ico_LocOU.png[pdfwidth=24,role="size-24"] (*OU*) permet d'ajouter l'opérateur d'union interlocutions (permet par exemple de différencier deux groupes de locutions basés sur des critères différents, ainsi l’élément recherché devra correspondre aux critères de l’un des deux groupes et non aux critères cumulés des deux groupes).
+
+Une fois l'expression de recherche renseignée, il suffit de lancer la recherche en cliquant sur l'action
+image:13_search/image239.png[pdfwidth=24,role="size-24"].
+La page des résultats de recherche (*Vue résultats*) est alors affichée.
+
+=== Recherche dans les documents supprimés
+
+Les documents supprimés disparaissent des bannettes dans lesquelles ils se trouvent et ne peuvent plus être retrouvés par la recherche (simple, avancée…).
+Cependant, on peut toujours les retrouver via la *Recherche dans les documents supprimés*.
+Elle est accessible en fonction des droits de l’utilisateur connecté.
+On accède à cette page via la barre de navigation en cliquant sur image:icons/header_other_actions.png[pdfwidth=24,role="size-24"] > *Recherche dans les documents supprimés*.
+
+Une fois sur cette page, vous pouvez rechercher les documents supprimés.
+Le fonctionnement de la recherche proposée est ici similaire à celui de la *Recherche simple* (cf.
+<<Recherche simple,Recherche simple>>).
+
+Une fois la recherche lancée, trois actions sont possibles dans les résultats de recherche (via la colonne *Actions* du tableau) :
+
+* image:13_search/image254.png[pdfwidth=24,role="size-24"] :
+Restaurer un document supprimé.
+Cliquez sur l’icône présente sur la ligne du document que vous souhaitez restaurer.
+Vous pouvez aussi restaurer tous les documents simultanément en cliquant sur l’icône :
+image:13_search/image256.png[pdfwidth=24,role="size-24"]
+situé en haut à gauche du tableau.
+* image:13_search/image257.png[pdfwidth=24,role="size-24"] :
+Supprimer définitivement un document.
+Cliquez sur l’icône présente sur la ligne du document que vous souhaitez supprimer.
+Vous pouvez aussi supprimer tous les documents simultanément en cliquant sur l’icône :
+image:icons/Ico_Doc_SupprAll.png[pdfwidth=24,role="size-24"]
+situé en haut à droite du tableau.
+* image:13_search/image260.png[pdfwidth=24,role="size-24"] :
+Permet de consulter la pièce jointe associée au document.
+
+Vous pouvez également sélectionner unitairement des documents en cochant les cases correspondantes afin de supprimer (bouton
+image:13_search/image257.png[pdfwidth=24,role="size-24"]) ou de restaurer (bouton
+image:13_search/image254.png[pdfwidth=24,role="size-24"]) uniquement votre sélection :
+
+.Vue Documents supprimés
+image:13_search/DeletedView.png[]
+
+<<<
