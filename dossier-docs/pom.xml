@@ -169,6 +169,46 @@
       </build>
     </profile>
 
+    <!-- rd-slides-sample -->
+    <profile>
+      <id>arcade_news</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>arcade_news</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <!-- attention, le profile slideOnly doit être activé ! -->
+      <properties>
+        <id-key>arcade_news</id-key>
+        <subLevelDir>8.1</subLevelDir>
+        <skipSlides>false</skipSlides>
+        <skipPdf>true</skipPdf>
+        <skipHtml>true</skipHtml>
+        <skipSpringHtml>true</skipSpringHtml>
+        <skipMultipleHtml>true</skipMultipleHtml>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <configuration>
+              <outputDirectory>${basedir}/src/main/resources/docs/${id-key}/${subLevelDir}</outputDirectory>
+              <sourceDocumentName>arcade-${subLevelDir}-news.adoc</sourceDocumentName>
+              <attributes>
+                <notitle/>
+                <customCss>css/arcade_news.css</customCss>
+              </attributes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
 
     <!-- sample officiel -->
     <profile>

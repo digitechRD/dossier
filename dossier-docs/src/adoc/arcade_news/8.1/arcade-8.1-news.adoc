@@ -1,0 +1,254 @@
+[.main.title]
+= {arcadeged} 8.1, nouveautés
+include::{sharedResource}/adoc/template_slide.adoc[]
+:tickets:  pass:[<span style="color: #f93154">tickets</span>]
+:check-ok: image:icons/check-ok.svg["ok",width=16,height=16,role="emoji"]
+:check-ko: image:icons/check-ko.svg["ko",width=16,height=16,role="emoji"]
+:check-cancel: image:icons/check-cancel.svg["cancel",width=16,height=16,role="emoji"]
+
+image:cockoftherock.png[width=500px,align=center]
+
+version https://fr.wikipedia.org/wiki/Coq-de-roche_p%C3%A9ruvien[Rupicola peruvianus (_Coq-de-roche péruvien_),window="_blank"]!
+
+[transition="zoom-in convex-out"]
+== Ordre du jour
+
+[%step]
+* Introduction
+* (*4*) Principales nouveautés
+* Mais il y en a d'autres {emoji-ok}
+* Conclusion
+
+[transition="zoom-in convex-out"]
+== Objectifs de cette version
+
+Les objectifs de cette version sont :
+
+* travailler sur quelques lacunes identifiées sur le produit {dossier}.
+* délivrer une version _" rapidement "_
+** *130* {tickets} (*15* encore ouverts)
+** *920* heures réalisées (_650_ estimées initialement)
+
+[transition="zoom-in convex-out",role="bg-image thank-you"]
+=== Remerciements
+
+Merci à tous {emoji-ok}
+
+Et plus particulièrement :
+
+* à la team produit : [res]*EAR*, [res]*PRO*
+* aux différents contributeurs techniques : [res]*MRA*, [res]*JMU*
+* aux différents participants indirects : [res]*JDE*, [res]*PJO*, [res]*LGU*, [res]*MJC*, [res]*OKA*, [res]*ALA*
+* _désolé pour ceux que j'ai oubliés !_ {emoji-ok}
+
+[transition="zoom-in convex-out"]
+=== Déroulé
+
+* image:clock-fast-icon.svg["clock",role="inline-icon"] Durée 1h
+* image:hand-icon.svg["hand",role="inline-icon"] Intervenez quand vous le souhaitez
+* image:demo-icon.svg["demo",role="inline-icon"] Enumération -> démo quand cela est possible
+
+[transition="zoom-in convex-out"]
+== {dossier} devient
+
+image:enhancements/logo_arcade_ged_vertical.svg["arcade", height="300px"]
+
+avec son thème associé, plus _" épuré "_
+
+[transition="zoom-in convex-out"]
+=== {arcadeged} login
+
+image:enhancements/theme_login1.png["arcade login"]
+
+[transition="zoom-in convex-out"]
+=== {arcadeged} accueil
+
+image:enhancements/theme_home1.png["arcade home"]
+
+[transition="zoom-in convex-out"]
+=== {arcadeged} résultats
+
+image:enhancements/theme_search_result1.png["arcade sarch result"]
+
+[transition="zoom-in convex-out"]
+=== {arcadeged} fiche
+
+image:enhancements/theme_viewunit1.png["arcade view unit"]
+
+[transition="zoom-in convex-out",role="text-left"]
+== Classeurs
+
+[NOTE]
+====
+Cette fonctionnalité est inspirée de la notion de projet sous {courrier}
+====
+
+Elle permet  :
+
+* de classer des documents de différents types de contenu dans un même `dossier`
+* de partager ses documents avec différentes personnes et services
+** en consultation [underline]#seulement#
+** ou en mode *collaboratif*
+
+image:enhancements/workbook_home1.png["workbook home"]
+
+[transition="zoom-in convex-out"]
+=== Classeurs
+
+[NOTE]
+====
+Cette fonctionnalité est désactivée par défaut (activable par simple option)
+====
+
+[TIP]
+====
+Une fois activée, la configuration est *[underline]#automatique#* au prochain démarrage de l'application.
+
+Seules les accréditations (droits supplémentaires) devront alors être précisées.
+====
+
+[transition="zoom-in convex-out"]
+=== Accueil
+
+.Raccourcis
+image:enhancements/workbook_home1.png["workbook home block"]
+
+.Tuile/widget
+image:enhancements/workbook_home_widget.png["workbook home block"]
+
+[transition="zoom-in convex-out"]
+=== Création
+
+image:enhancements/workbook_vu_create1.png["workbook création"]
+
+[transition="zoom-in convex-out"]
+=== Consultation
+
+image:enhancements/workbook_consultation.png["workbook consultation"]
+
+[transition="zoom-in convex-out"]
+=== Ajout d'un document
+
+image:enhancements/workbook_vu_add1.png["workbook ajout"]
+
+[transition="zoom-in convex-out"]
+== Reconciliation de documents
+
+[NOTE]
+====
+Oui, oui, cette fonctionnalité est déjà disponible sous {courrier} et {arcade} (portail).
+====
+
+image:enhancements/dina1.png["dina1"]
+
+[transition="zoom-in convex-out"]
+== Edition en ligne
+
+// image:enhancements/online1.png["online 1"]
+
+[transition="zoom-in convex-out",role="bg-image other-enh"]
+== Autres réalisations
+
+[transition="zoom-in convex-out"]
+=== _Mot de passe oublié_
+
+image:enhancements/oenh-forgotten-pwd.png[]
+
+* Disponible via option (client [res]*NGR*)
+* Seulement si l'authentification est en mode *basique*, [underline]#sans *LDAP*, ni *openID*, ni *SSO*#
+
+[transition="zoom-in convex-out"]
+=== Suggestion automatique sur les champs liés à un contenu parent
+
+[NOTE]
+====
+Aucun paramétrage n'est nécessaire !
+====
+
+[TIP]
+====
+La recherche n'est pas seulement effectuée sur la [underline]#valeur# du champ, mais également sur tous les champs ([underline]#hors dates#) constituant sur le titre/label affiché.
+====
+
+image:enhancements/oenh-linked-field-search.png["linked field 1"]
+
+[transition="zoom-in convex-out"]
+=== Filtre dans la vue arborescente
+
+image:enhancements/oenh-tree-filtering-1.png["arbo filtre"]
+
+image:enhancements/oenh-tree-filtering-2.png["arbo filtre"]
+
+[transition="zoom-in convex-out"]
+=== Evolutions mineures
+
+* raccourcis kbd:[↑] et kbd:[↓] sur les champs *date* (jour _suivant_/jour _précédent_)
+* *UI*
+** des drapeaux associés aux langues disponibles image:enhancements/oenh-mineur-locales-with-flags.png["langues et drapeaux"]
+** Possibilité de choisir son thème (_option applicative_) image:enhancements/oenh-mineur-fonts-choice.png["theme choice"]
+** Possibilité de choisir sa police de caractères (_option applicative_) image:enhancements/oenh-mineur-fonts-choice.png["font choice"]
+** script générique de *[underline]#masquage contextuel#* de champ selon la valeur d'un autre (démo effectué sur les _classeurs_)
+
+[transition="zoom-in convex-out"]
+=== Evolutions invisibles
+
+* *[Performance]* Chargement accru/intense du cache au démarrage de l'application (pré-chargement des caches rattachés aux utilisateurs)
+* *[Accessibilité]* compatibilité WCAG 2.1 (merci à {JDE}).
+
+[noheader]
+|===
+|8.0|8.1
+|image:enhancements/oenh-wcag-21-1.png["wcag1"]|image:enhancements/oenh-wcag-21-2.png["wcag2"]
+|===
+
+
+[transition="zoom-in convex-out",role="text-left"]
+=== Matrice de compatibilité
+
+[cols="1a,1a,1a,1a,1a,1a,1a"]
+|===
+|Version|`jdk`|`tomcat`|{airs}|{fulltext}|{digioffice}|{adminAirs}
+|{dossier} *8.0*|1.8|9.0.x|4.5.x|4.1|-|2.6
+|{arcadeged} *8.1*|1.8|9.0.x|>= 4.5.60|4.2|1.0|2.7
+|===
+
+[transition="zoom-in convex-out"]
+== À suivre (cette version)
+
+* image:test-icon.svg["tests",role="inline-icon"] Pas de tests par la cellule ITQ, tests internes [res]*EAR* + [res]*NBR* le 21/02 PM.
+* image:setup-icon.svg["install",role="inline-icon"] Installation sur l'environnement interne à la fin du mois
+* image:todo-icon.svg["todo",role="inline-icon"] Reste-à-faire :
+** *keycloak* (rebrancher/retester)
+** mode *multi-tabs* (à merger ensuite dans la *8.0*)
+** Documentation
+
+[transition="zoom-in convex-out"]
+== À suivre (prochaine version)
+
+* Compatibilité {airs} version *5*
+* Intégration nouveau moteur de *Workflow* ?!?
+* ...
+
+[transition="zoom-in convex-out",role="bg-image warn"]
+== On compte sur vous
+
+[IMPORTANT]
+====
+Comme indiqué, cette version ne passe pas entre les mains de la cellule [res]*ITQ*, +
+donc, une fois disponible en interne, il est [underline]#primordial# que vous remontiez tout problème rencontré.
+====
+
+* N'hésitez pas à créer un {ticket} dans {redmine}.
+* Notifiez [res]*SRO* pour toute question/demande de récupération des logs, ...
+
+[CAUTION]
+====
+Vous ne recevrez aucune réponse de ma part via teams, à bons entendeurs {emoji-ok}
+====
+
+[transition="zoom-in convex-out",role="bg-image questions"]
+== Merci à tous !
+
+Des questions ?
+
+
