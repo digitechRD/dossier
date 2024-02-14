@@ -1,7 +1,11 @@
 [.main.title]
 = {arcadeged} 8.1, nouveautés
 include::{sharedResource}/adoc/template_slide.adoc[]
+:ticket:  pass:[<span style="color: #f93154">ticket</span>]
 :tickets:  pass:[<span style="color: #f93154">tickets</span>]
+:onlyoffice:  pass:[<span style="color: #ff905e">OnlyOffice</span>]
+:gsuite:  pass:[<span style="color: #185abc">Google Suite</span>]
+:o365:  pass:[<span style="color: #a84d58">Office365</span>]
 :check-ok: image:icons/check-ok.svg["ok",width=16,height=16,role="emoji"]
 :check-ko: image:icons/check-ko.svg["ko",width=16,height=16,role="emoji"]
 :check-cancel: image:icons/check-cancel.svg["cancel",width=16,height=16,role="emoji"]
@@ -38,8 +42,13 @@ Et plus particulièrement :
 
 * à la team produit : [res]*EAR*, [res]*PRO*
 * aux différents contributeurs techniques : [res]*MRA*, [res]*JMU*
-* aux différents participants indirects : [res]*JDE*, [res]*PJO*, [res]*LGU*, [res]*MJC*, [res]*OKA*, [res]*ALA*
+* aux différents participants indirects : [res]*JDE*, [res]*PJO*, [res]*LGU*, [res]*MJC*, [res]*PAC*, [res]*OKA*, [res]*ALA*
 * _désolé pour ceux que j'ai oubliés !_ {emoji-ok}
+
+[NOTE]
+====
+Bienvenue à [res]*GCL*, nouveau membre de l'équipe produit.
+====
 
 [transition="zoom-in convex-out"]
 === Déroulé
@@ -53,7 +62,18 @@ Et plus particulièrement :
 
 image:enhancements/logo_arcade_ged_vertical.svg["arcade", height="300px"]
 
-avec son thème associé, plus _" épuré "_
+avec son thème associé, plus _" épuré "_. +
+
+[IMPORTANT]
+====
+{digitech} a la volonté de créer une gamme `Arcade` autour de la donnée :
+
+* {arcade} portail
+* {arcadeged}
+* + _à venir/potentiel_ :
+** contrôle de la donnée/moteur d'alertes
+** BI
+====
 
 [transition="zoom-in convex-out"]
 === {arcadeged} login
@@ -80,7 +100,7 @@ image:enhancements/theme_viewunit1.png["arcade view unit"]
 
 [NOTE]
 ====
-Cette fonctionnalité est inspirée de la notion de projet sous {courrier}
+Cette fonctionnalité est (fortement) inspirée de la notion de projet sous {courrier}
 ====
 
 Elle permet  :
@@ -108,6 +128,17 @@ Seules les accréditations (droits supplémentaires) devront alors être précis
 ====
 
 [transition="zoom-in convex-out"]
+=== Classeurs
+
+[NOTE]
+====
+L'idée est de partager - dans le [underline]#futur# - des documents stockés dans {arcadeged} avec des applications [underline]#externes# :
+
+* au travers des web services (_REST_) déjà disponibles
+* via un module/connecteur {arcade} ? (_à suivre_ {emoji-ok})
+====
+
+[transition="zoom-in convex-out"]
 === Accueil
 
 .Raccourcis
@@ -127,24 +158,121 @@ image:enhancements/workbook_vu_create1.png["workbook création"]
 image:enhancements/workbook_consultation.png["workbook consultation"]
 
 [transition="zoom-in convex-out"]
-=== Ajout d'un document
+=== Ajout de document
 
-image:enhancements/workbook_vu_add1.png["workbook ajout"]
+[options="noheader"]
+|===
+|via *la fiche d'un document*|via *la page de résultats de recherche*
+|image:enhancements/workbook_vu_add1.png["workbook fiche ajout"]|image:enhancements/workbook_res_add1.png["workbook résultats ajout"]
+|===
 
-[transition="zoom-in convex-out"]
-== Reconciliation de documents
+.Sélection d'un classeur
+image:enhancements/workbook_res_add2.png["workbook résultats ajout"]
+
+[transition="zoom-in convex-out",role="text-left"]
+== Réconciliation de documents
 
 [NOTE]
 ====
 Oui, oui, cette fonctionnalité est déjà disponible sous {courrier} et {arcade} (portail).
 ====
 
-image:enhancements/dina1.png["dina1"]
+Cette fonctionnalité permet de rechercher et identifier des documents similaires dans l'ensemble des fichiers stockés.
+
+[CAUTION]
+====
+Attention à la notion de *[underline]#score#* :
+
+* [underline]#ce n'est pas# un *pourcentage* !
+* il représente plutôt un _poids_, indique un _taux de correspondance_ entre 2 documents
+* il est dépendant de nombreux facteurs, dont le contenu du document (nombre et diversité des mots, ...)
+====
 
 [transition="zoom-in convex-out"]
-== Edition en ligne
+=== Reconciliation de documents
 
-// image:enhancements/online1.png["online 1"]
+image:enhancements/dina1.png["dina1"]
+
+[transition="zoom-in convex-out",role="text-left"]
+== Édition en ligne
+
+L'objectif est de permettre la modification de documents `office` directement dans le navigateur.
+
+3 connecteurs en cours de réalisation :
+
+* {onlyoffice} {MRA}
+* {gsuite} {NFE} / {JMU}
+* {o365} {PJO}
+
+[transition="zoom-in convex-out"]
+=== Édition en ligne (Attention)
+
+[IMPORTANT]
+====
+*[underline]#Aucun#* de ces connecteurs n'est à ce jour qualifié !
+
+Un travail important de développement - et surtout qualification - reste nécessaire.
+====
+
+[CAUTION]
+====
+Avis aux commerciaux, si vous vendez un connecteur qui n'est pas qualifié, validé, officiellement disponible, +
+la charge et responsabilité vous reviennent de le développer {emoji-ok}
+====
+
+[transition="zoom-in convex-out"]
+=== Édition en ligne (Statut)
+
+[%header,cols="2a,1a,1a,1a,3a"]
+|===
+|Connecteur|Statut|Intégration {arcadeged}|Intégration {courrier}|Observations
+|{onlyoffice}|_90%_|_75%_|--|En cours de test. Installation en interne ({arcadeged}) _soon_
+|{gsuite}|_90%_|_75%_|_75%_|http://srv-ged-11/redmine/issues/55651[Bug #55651,window="redmine"] (_"ennuyeux"_)
+|{o365}|_démarré_|--|--|Pas de possibilité d'intégrer l'éditeur en tant que *frame*
+|===
+
+[transition="zoom-in convex-out"]
+=== Édition en ligne (Propriétés)
+
+[%header,cols="2a,3a,3a"]
+|===
+|Connecteur|Extensions (nativement) gérées|Observations
+|{onlyoffice}|doc xsl ppt docx xslx pptx odt ods odp txt|*pdf* ? _à tester_
+|{gsuite}|docx xslx pptx|
+|{o365}|docx xslx pptx (_à confirmer_)|
+|===
+
+[transition="zoom-in convex-out"]
+=== Édition en ligne (Propriétés) (bis)
+
+[NOTE]
+====
+En plus des extensions *nativement* [underline]#gérées#, vous pouvez paramétrer le module {digioffice} pour qu'il accepte d'autres types de document.
+
+Il prendra alors ces documents en charge en les convertissant, _"silencieusement"_, en réception (*upload*) comme en restitution (*download*).
+                                             
+[underline]#Exemple# : *doc* --> *docx* --> *doc*, pour une utilisation de {gsuite}
+====
+
+[TIP]
+====
+L'application *métier* peut prendre en charge ces conversions {emoji-ok}
+====
+
+[CAUTION]
+====
+Toute conversion de document (entre différents formats) peut engendrer des pertes et/ou des modifications de styles, données...
+====
+
+[transition="zoom-in convex-out"]
+=== Édition en ligne
+
+image:enhancements/onlineEdit1.png["online word"]
+
+[transition="zoom-in convex-out"]
+=== Édition en ligne
+
+image:enhancements/onlineEdit2.png["online xlsx"]
 
 [transition="zoom-in convex-out",role="bg-image other-enh"]
 == Autres réalisations
@@ -154,7 +282,7 @@ image:enhancements/dina1.png["dina1"]
 
 image:enhancements/oenh-forgotten-pwd.png[]
 
-* Disponible via option (client [res]*NGR*)
+* Disponible via option (client [res]*NGR*, _I think_ *CSB*)
 * Seulement si l'authentification est en mode *basique*, [underline]#sans *LDAP*, ni *openID*, ni *SSO*#
 
 [transition="zoom-in convex-out"]
@@ -167,7 +295,7 @@ Aucun paramétrage n'est nécessaire !
 
 [TIP]
 ====
-La recherche n'est pas seulement effectuée sur la [underline]#valeur# du champ, mais également sur tous les champs ([underline]#hors dates#) constituant sur le titre/label affiché.
+La recherche n'est pas seulement effectuée sur la [underline]#valeur# du champ, mais également sur tous les champs ([underline]#hors dates#) définissant le titre/label affiché.
 ====
 
 image:enhancements/oenh-linked-field-search.png["linked field 1"]
@@ -177,27 +305,34 @@ image:enhancements/oenh-linked-field-search.png["linked field 1"]
 
 [options="noheader"]
 |===
-|Arbre non filtré|image:enhancements/oenh-tree-filtering-1.png["arbo filtre"]
-|Arbre filtré (valeur *147*)|Arbre filtré (valeur *fourni*[sseur])
+|*Arbre non filtré*|image:enhancements/oenh-tree-filtering-1.png["arbo filtre"]
+|*Arbre filtré* (valeur *147*)|*Arbre filtré* (valeur *fourni*[sseur])
 |image:enhancements/oenh-tree-filtering-2.png["arbo filtre"]|image:enhancements/oenh-tree-filtering-3.png["arbo filtre"]
 |===
 
 
 [transition="zoom-in convex-out"]
-=== Evolutions mineures
+=== Évolutions mineures
 
 * raccourcis *↑* et *↓* sur les champs *date* (jour _suivant_/jour _précédent_)
+** [underline]#rappel# : la touche *espace* permet de pré-saisir la date du jour.
 * *UI*
-** des drapeaux associés aux langues disponibles image:enhancements/oenh-mineur-locales-with-flags.png["langues et drapeaux"]
+** ajout de drapeaux associés aux langues disponibles (petite évolution mais {emoji-ok}...) image:enhancements/oenh-mineur-locales-with-flags.png["langues et drapeaux"]
 ** Possibilité de choisir son thème (_option applicative_) image:enhancements/oenh-mineur-fonts-choice.png["theme choice",height="150"]
+
+[transition="zoom-in convex-out"]
+=== Évolutions mineures (_suite_)
+* *UI*
 ** Possibilité de choisir sa police de caractères (_option applicative_) image:enhancements/oenh-mineur-fonts-choice.png["font choice",height="150"]
 ** script générique de *[underline]#masquage contextuel#* de champ selon la valeur d'un autre (démo effectuée sur les _classeurs_)
 
-[transition="zoom-in convex-out"]
-=== Evolutions invisibles
+[transition="zoom-in convex-out",role="text-left"]
+=== Évolutions non visibles
+
+_mais_ intéressantes, voire *importantes* !
 
 * *[Performance]* Chargement accru/intense du cache au démarrage de l'application (pré-chargement des caches rattachés aux utilisateurs)
-* *[Accessibilité]* compatibilité WCAG 2.1 (merci {JDE}!).
+* *[Accessibilité]* compatibilité *WCAG 2.1 AA* (merci {JDE}!).
 
 [options="noheader"]
 |===
@@ -209,7 +344,7 @@ image:enhancements/oenh-linked-field-search.png["linked field 1"]
 [transition="zoom-in convex-out",role="text-left"]
 === Matrice de compatibilité
 
-[cols="1a,1a,1a,1a,1a,1a,1a"]
+[%header,cols="1a,1a,1a,1a,1a,1a,1a"]
 |===
 |Version|`jdk`|`tomcat`|{airs}|{fulltext}|{digioffice}|{adminAirs}
 |{dossier} *8.0*|1.8|9.0.x|4.5.x|4.1|-|2.6
@@ -243,7 +378,7 @@ donc, une fois disponible en interne, il est [underline]#primordial# que vous re
 ====
 
 * N'hésitez pas à créer un {ticket} dans {redmine}.
-* Notifiez [res]*SRO* pour toute question/demande de récupération des logs, ...
+* Notifiez [res]*SRO* et/ou [res]*GCL* pour toute question/demande de récupération des logs, ...
 
 [CAUTION]
 ====
