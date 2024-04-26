@@ -4,7 +4,7 @@
 === Introduction
 
 .Vue unitaire
-image:15_document_view/DocView1.png[]
+image:15_document_view/doc_view.png[]
 
 La *Vue Document* (également appelée *Fiche Document*) permet de visualiser le contenu thématisé et détaillé d'un document.
 Pour afficher la position du document dans l'arborescence, veuillez cliquer sur le lien *Afficher le plan de classement*.
@@ -14,13 +14,14 @@ s'ouvre en mode *CONSULTATION*.
 La page *Vue Document* se divise en deux parties : la *barre*
 *d'actions* et la fiche détaillée.
 
-La fiche détaillée a été organisée en six onglets (affichés selon les droits de l'utilisateur) :
+La fiche détaillée a été organisée en plusieurs onglets (affichés selon les droits de l'utilisateur) :
 
 * L’onglet *Contenu*,
 * L’onglet *Pièce Jointe*,
 * L’onglet *Historique*,
 * L’onglet *Commentaire*,
 * L’onglet *Lien*,
+* L’onglet *Réconciliation*,
 * L’onglet *Workflow*.
 
 Selon la configuration de l'application, la fenêtre d'affichage de la pièce jointe est automatiquement ouverte.
@@ -29,30 +30,32 @@ En ajustant manuellement les proportions entre le tableau et la visionneuse, vos
 === Actions
 
 .Actions
-image:15_document_view/DocView2.png[]
+image:15_document_view/action_bar.png[]
 
 La *barre d'actions* (illustrée ci-dessus), accessible depuis la *Vue Document*, permet de réaliser différents types d’actions (la plupart des actions disponibles sont liées à des droits utilisateur).
 
 ==== Actions globales
 
-* image:15_document_view/image298.png[pdfwidth=24,role="size-24"] :
+* image:15_document_view/button_edit.png[pdfwidth=24,role="size-24"] :
 permet de passer en mode *EDITION*.
 Le document est alors automatiquement verrouillé.
-* image:15_document_view/image299.png[pdfwidth=24,role="size-24"] :
+* image:15_document_view/button_save.png[pdfwidth=24,role="size-24"] :
 permet de sauvegarder le document et de passer en monde *CONSULTATION*.
 Le document est alors automatiquement déverrouillé.
 Un script métier peut être joué lors de la sauvegarde de façon à réaliser des contrôles supplémentaires.
 Il est par exemple possible de faire des contrôles inter-champs avant de rendre effective la sauvegarde.
-* image:icons/Ico_Suppr_unit1.png[pdfwidth=24,role="size-24"] :
+* image:icons/icon_delete.png[pdfwidth=24,role="size-24"] :
 permet de supprimer le document.
 Un script métier peut être joué lors de la suppression de façon à réaliser des contrôles complémentaires.
 Il est par exemple possible de faire des contrôles inter-champs avant de rendre effective la suppression.
-* image:15_document_view/image300.png[pdfwidth=24,role="size-24"] : permet de copier une url d’accès public à ce document dans le presse-papier.
+* image:15_document_view/button_copy_url.png[pdfwidth=24,role="size-24"] : permet de copier une url d’accès public à ce document dans le presse-papier.
 Une fois la copie effectuée, une notification vous en avertira.
 Cette url pourra ensuite être partagée avec d’autres utilisateurs.
-* image:15_document_view/image192.png[pdfwidth=24,role="size-24"] : permet d'envoyer un e-mail (les pièces jointes du document peuvent être insérées dans le mail). :
+* image:15_document_view/button_send_mail.png[pdfwidth=24,role="size-24"] : permet d'envoyer un e-mail (les pièces jointes du document peuvent être insérées
+dans
+le mail). :
 
-image:15_document_view/image301.png[width=490,height=385]
+image:15_document_view/modal_send_mail.png[width=490,height=385]
 
 * *De* : indique l’adresse mail de l’émetteur.
 Ce champ est automatiquement complété par l’adresse mail de l’utilisateur courant (ou de son service le cas échéant).
@@ -70,9 +73,9 @@ S’il y a plusieurs pièces jointes (fichiers), vous pourrez *Tou(te)s* les sé
 *Aucun(e)* en cliquant sur les boutons correspondants.
 
 Une fois les champs nécessaires complétés, cliquez sur
-image:15_document_view/image302.png[pdfwidth=24,role="size-24"] pour valider l’envoi de votre mail.
+image:15_document_view/send_mail.png[] pour valider l’envoi de votre mail.
 Cliquez sur
-image:15_document_view/image303.png[pdfwidth=24,role="size-24"] pour refermer cet écran sans envoyer le mail
+image:15_document_view/cancel.png[] pour refermer cet écran sans envoyer le mail
 
 * image:icons/Ico_Favorites.png[pdfwidth=24,role="size-24"] :
 permet d'ajouter le document courant aux *Favoris*.
@@ -115,7 +118,7 @@ Elles peuvent être aussi utilisées afin de générer des rapports.
 === Onglet contenu
 
 .Onglet contenu
-image:15_document_view/DocView3.png[600,600]
+image:15_document_view/content_tab.png[600,600]
 
 L'onglet *Contenu* donne accès à certains champs d'indexation (selon configuration) du document.
 Cet onglet est affiché selon les droits de l'utilisateur.
@@ -136,7 +139,7 @@ Selon la configuration, les champs peuvent être regroupés par thématiques afi
 === Onglet pièce jointe
 
 .Onglet pièce jointe
-image:15_document_view/PJ1.png[600,600]
+image:15_document_view/attachment_tab.png[600,600]
 
 L'onglet *Pièce jointe* permet de visualiser l'ensemble des pièces jointes du document.
 Cet onglet est affiché selon les droits de l'utilisateur.
@@ -171,7 +174,7 @@ Pour supprimer une pièce jointe, il faut au préalable cocher le(s) pièce(s) j
 image:icons/Ico_Suppr3.png[pdfwidth=24,role="size-24"] :
 
 .Supprimer une pièce jointe
-image:15_document_view/PJ2.png[]
+image:15_document_view/delete_attachment.png[]
 
 Un message de confirmation s'affiche avant d'appliquer la suppression.
 
@@ -193,7 +196,7 @@ image:icons/Ico_Add3.png[pdfwidth=24,role="size-24"].
 La fenêtre modale *Ajout/Modification d'une pièce jointe* s'ouvre :
 
 .Ajout d'une pièce jointe
-image:15_document_view/PJ3.png[600,600]
+image:15_document_view/add_attachment.png[600,600]
 
 Saisissez les informations liées à la pièce jointe telles que son
 *Intitulé* et son *Type* puis, sélectionnez le fichier à télécharger.
@@ -271,16 +274,41 @@ La fenêtre modale *Sélection de document(s)* s'ouvre.
 Il est alors possible de sélectionner le *Type de Lien* puis de saisir les critères de recherche (les critères de recherche affichés dépendent du paramétrage applicatif) puis de cliquer sur le bouton *Rechercher* afin d'afficher les résultats de recherche.
 Il est alors possible de cocher les documents qui doivent être liés au document courant, puis de cliquer sur le bouton *SÉLECTIONNER* afin de créer le lien.
 
+=== Onglet Réconciliation
+
+.Onglet Réconciliation
+image:15_document_view/reconciliation_tab.png[]
+
+Cette fonctionnalité permet de trouver des documents ayant un lien entre eux par leur contenu, les sujets abordés...
+
+.Exemple
+image:15_document_view/example_reconciliation.png[]
+
+[IMPORTANT]
+====
+Les résultats affichés, comme étant potentiellement des documents liés à la fiche en cours de consultation, indiquent un *score*.
+Ne prenez pas ce `score` comme un "pourcentage" (de rapprochement entre les 2 documents), mais plutôt comme un *poids*, une *estimation*.
+Ce `score` peut d’ailleurs évoluer en fonction de contenu de l’ensemble des données d'Arcade GED.
+====
+
+Si vous considérez qu’il est intéressant de lier 2 documents entre eux (pour les retrouver plus aisément ultérieurement par exemple), vous pouvez alors créer
+un lien permanent entre eux, en utilisant le bouton image:15_document_view/button_link.png[]
+
+[NOTE]
+====
+Si vous créez un lien entre 2 documents, ce lien sera visible pour *tous les utilisateurs* consultant ces documents.
+====
+
 === Onglet Historique
 
 .Onglet historique
-image:15_document_view/Log.png[1]
+image:15_document_view/history_tab.png[1]
 
 L'onglet *Historique* permet de visualiser l'historique des actions AIRS réalisées sur le document.
 Cet onglet est affiché selon les droits de l'utilisateur.
 Les informations suivantes sont affichées :
 
-* L’*Id* du document concerné par l’action.
+// * L’*Id* du document concerné par l’action.
 * *Message* de trace lié à l'action AIRS.
 * Nom de l'*Acteur* responsable de l'action AIRS.
 * *Date* de réalisation de l'action AIRS.
@@ -308,7 +336,7 @@ Pour plus d’informations sur la signature, veuillez consulter le chapitre <<Si
 === Onglet Commentaire
 
 .Onglet commentaire
-image:15_document_view/Comm.png[]
+image:15_document_view/comment_tab.png[]
 
 L'onglet *Commentaire* permet de visualiser l'ensemble des commentaires relatifs au document.
 Cet onglet est affiché selon les droits de l'utilisateur.
@@ -328,11 +356,11 @@ permettant de supprimer n’importe quel commentaire).
 À noter également que pour les commentaires renseignés sous délégation, il sera fait mention de la délégation dans le commentaire.
 ====
 
-Il est possible de modifier un des commentaires en cochant un commentaire puis en cliquant sur l'action
+Il est possible de modifier un ou des commentaires en cochant un commentaire puis en cliquant sur l'action
 image:icons/Ico_EditDelegation.png[pdfwidth=24,role="size-24"], la fenêtre *Ajout/Modification d’un Commentaire* s’ouvre alors :
 
 .Ajout de commentaire
-image:15_document_view/image326.png[width=487,height=507]
+image:15_document_view/modify_comment.png[width=487,height=507]
 
 Pour ajouter un commentaire, veuillez cliquer sur l'action
 image:icons/Ico_Add3.png[pdfwidth=24,role="size-24"].
@@ -348,33 +376,33 @@ En cliquant sur l'action *ENREGISTRER*, le commentaire est créé.
 === Vue Plan de classement
 
 .Arborescence
-image:15_document_view/PDC_0.png[]
+image:15_document_view/tree_view.png[]
 
 La vue *Plan de classement* permet de visualiser le document courant dans son arborescence.
 Dès lors, il est possible de naviguer à travers l'arborescence afin de sélectionner un autre document.
 Pour rafraichir le *Plan de classement*, veuillez cliquer sur l'action
-image:icons/Ico_PDC3.png[pdfwidth=24,role="size-24"].
+image:icons/icon_refresh.png[pdfwidth=24,role="size-24"].
 
 L'action
-image:icons/Ico_PDC4.png[pdfwidth=24,role="size-24"]
+image:icons/icon_tree_reinit.png[pdfwidth=24,role="size-24"]
 permet de réinitialiser l'arborescence afin d’afficher à nouveau son état initial.
 
 Les boutons
-image:icons/Ico_PDC1.png[pdfwidth=24,role="size-24"]
+image:icons/icon_expand_tree.png[pdfwidth=24,role="size-24"]
 et
-image:icons/Ico_PDC2.png[pdfwidth=24,role="size-24"]
+image:icons/icon_reduce_tree.png[pdfwidth=24,role="size-24"]
 ont été ajoutés afin de respectivement déployer ou de réduire en un clic l’intégralité de l’arborescence :
 
 .Arbre déplié
-image:15_document_view/PDC_2.png[pdfwidth=24,role="size-24"]
+image:15_document_view/tree_expanded.png[]
 
 .Arbre replié
-image:15_document_view/PDC_3.png[pdfwidth=24,role="size-24"]
+image:15_document_view/tree_reduced.png[]
 
 Vous pouvez modifier la taille de la partie dédiée à l’affichage du plan de classement en maintenant le clic gauche de la souris enfoncé au niveau de la barre grise inférieure :
 
 .Agrandir Plan de classement
-image:15_document_view/PDC_4.png[]
+image:15_document_view/tree_size.png[]
 
 Il suffit ensuite de déplacer la souris pour agrandir ou diminuer la taille de la zone.
 
@@ -396,8 +424,11 @@ Pour sélectionner un nœud document, veuillez cliquer sur son intitulé.
 
 Quand un nœud de type dossier ou un nœud de type document possède des pièces jointes, les trois premières pièces jointes sont alors affichées à droite de l’intitulé (avec des icônes du type
 image:15_document_view/image260.png[pdfwidth=24,role="size-24"],
-image:15_document_view/image337.png[pdfwidth=24,role="size-24"]
-image:15_document_view/image338.png[pdfwidth=24,role="size-24"]). Pour visualiser une pièce jointe,il est nécessaire de cliquer sur l'icône correspondante dans le *Plan de classement* (la fenêtre de visualisation de pièce jointe s’ouvre en conséquence). Lors du survol des icônes de pièce jointe,le nom du fichier est affiché dans une infobulle.
+image:15_document_view/attachment_pdf.svg[pdfwidth=24,role="size-24"]
+image:15_document_view/attachment_docx.svg[pdfwidth=24,role="size-24"]). Pour visualiser une pièce jointe, il est nécessaire de cliquer sur l'icône
+correspondante
+dans
+le *Plan de classement* (la fenêtre de visualisation de pièce jointe s’ouvre en conséquence). Lors du survol des icônes de pièce jointe,le nom du fichier est affiché dans une infobulle.
 
 Lorsqu’un document à deux parents différents, il est impossible d’afficher les deux parents simultanément dans la vue *Plan de classement*.
 Vous pourrez ici choisir le parent à partir duquel afficher la vue plan de classement via une liste déroulante.
