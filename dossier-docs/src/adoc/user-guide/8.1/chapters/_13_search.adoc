@@ -24,13 +24,13 @@ Pendant une *Recherche simple* et avancée, vous pouvez passer d'un mode de rech
 
 Il est nécessaire de cliquer sur l'action
 image:13_search/button_search.png[pdfwidth=24,role="size-24"]
-afin d'exécuter une recherche et d'afficher la page des résultats (vous pouvez également utiliser la touche Entrée du clavier).
+afin d'exécuter une recherche et d'afficher la page des résultats (vous pouvez également utiliser la touche kbd:[Entrée] du clavier).
 
 L'action
 image:13_search/empty_button.png[pdfwidth=24,role="size-24"]
 permet de vider l'ensemble des critères de recherche (*mode simple*) ou l'expression de recherche (*mode avancé*).
 
-Le mode d'affichage des résultats permet de définir la mode de présentation des résultats de recherche (affichage *Simple* ou affichage
+Le mode d'affichage des résultats permet de définir le mode de présentation des résultats de recherche (affichage *Simple* ou affichage
 *3 fenêtres*).
 L’ensemble des critères de recherche dépendent du flux sélectionné, du *Type de Contenu* sélectionné et du paramétrage effectué sur la vue (via l’Admin AIRS).
 
@@ -42,9 +42,12 @@ Selon votre paramétrage, la *Recherche globale* pourra proposer plusieurs optio
 .Recherche Globale
 image:13_search/global_search.png[]
 
-On retrouve les options de recherche suivante (qui peuvent être activées (fond vert) / désactivées (fond neutre) par simple clic) :
+On retrouve les options de recherche suivantes (qui peuvent être activées (fond vert) / désactivées (fond neutre) par simple clic) :
 
 * *Rechercher sur tous les flux* : permet d’activer/désactiver la recherche sur l’ensemble des flux.
+* *Lancer la recherche rapide par défaut* : permet d’activer/désactiver le lancement de la recherche rapide en appuyant sur la touche kbd:[Entrée]. Si elle est
+désactivée c'est la recherche Plein-texte qui est lancée avec kbd:[Entrée]. La recherche rapide se lance alors en appuyant sur
+kbd:[Ctrl+Entrée].
 * *Activer la suggestion des mots* : permet d’afficher des suggestions de mots basées sur votre saisie. En cliquant sur le mot suggéré, celui-ci vient automatiquement s’inscrire dans le champ de recherche :
 
 .Suggestion de mot en Recherche Globale
@@ -53,7 +56,8 @@ image:13_search/word_suggest.png[]
 Il suffit de cliquer sur une suggestion pour l’utiliser dans le champ de recherche.
 Il suffit de saisir les termes recherchés puis de cliquer sur image:icons/icon_fast_search.png[pdfwidth=24,role="size-24"] ou d’appuyer sur la touche
 kbd:[Entrée] du clavier pour lancer la recherche. Si l’icône image:icons/icon_plein_texte.png[pdfwidth=24,role="size-24"] est disponible, elle permet de lancer
-une recherche basée sur du texte (*Recherche Plein texte*). Dans les résultats de recherche, l’élément recherché apparait surligné dans des encadrés sur la gauche. Chaque encadré représente un document différent :
+une recherche basée sur du texte (*Recherche Plein texte*). Dans les résultats de recherche, l’élément recherché apparaît surligné dans des encadrés sur la
+gauche. Chaque encadré représente un document différent :
 
 .Résultat Recherche Globale
 image:13_search/search_results.png[]
@@ -122,12 +126,12 @@ Les critères de recherche se caractérisent par :
 * Un intitulé : il définit le nom du critère de recherche.
 * Un opérateur : il définit le type d'opérateur à appliquer sur le critère de recherche.
 Selon la configuration de l'application, les opérateurs suivants peuvent être utilisés :
-** *=* : permet de spécifier l'égalité.
-** *>* : permet de spécifier la supériorité.
-** *<* : permet de spécifier l'infériorité.
-** *{}* : permet de spécifier un intervalle de valeurs.
+** kbd:[=] : permet de spécifier l'égalité.
+** kbd:[>] : permet de spécifier la supériorité.
+** kbd:[<] : permet de spécifier l'infériorité.
+** kbd:[{}] : permet de spécifier un intervalle de valeurs.
 L'intervalle de valeurs peut être spécifié sur les champs de type numérique ou de type date.
-** *} {* : permet de spécifier un intervalle de valeurs "non compris entre".
+** kbd:[}{] : permet de spécifier un intervalle de valeurs "non compris entre".
 L'intervalle de valeurs ainsi saisi sera exclu des résultats de recherche.
 L'intervalle de valeurs "non compris entre" peut être spécifié sur les champs de type numérique ou de type date.
 * Un champ de recherche : il définit la valeur du critère de recherche.
@@ -153,17 +157,16 @@ image:13_search/image242.png[pdfwidth=24,role="size-24"].
 [NOTE]
 ====
 Pour certains champs, des caractères dits "joker" peuvent être spécifiés.
-Une annotation du type « _(1) Les caractères'+', '*' peuvent être utilisés en tant que joker._ » est alors mentionnée en regard du champ concerné.
+Une annotation du type « _(1) Les caractères '+', '*' peuvent être utilisés en tant que joker._ » est alors mentionnée en regard du champ concerné.
 Les caractères jokers peuvent servir dans les cas suivants :
 
-REPRISE
-
-* Faire une recherche sur tous les documents dont le champ correspondant est renseigné : pour ce faire, il suffit de remplir un champ avec seulement kbd:[+] ou kbd:[✱]. Exemple : + pour le critère *Objet* : recherche de tous les documents ayant un objet de renseigné.
+* Faire une recherche sur tous les documents dont le champ correspondant est renseigné : pour ce faire, il suffit de remplir un champ avec seulement kbd:[ + ]
+ou kbd:[✱]. Exemple : "+" pour le critère *Objet* : recherche de tous les documents ayant un objet de renseigné.
 * Faire une recherche sur un champ qui commence par tel ou tel mot :
-pour ce faire, il faut ajouter les caractères + ou ✱ avant ou après
+pour ce faire, il faut ajouter les caractères kbd:[ + ] ou kbd:[✱] avant ou après
 le mot recherché. Exemple : "contrat+" permet de faire une recherche sur tous les mots commençant par "contrat".
-* Faire une recherche sur un champ qui contient tel ou tel mot : pour ce faire, il suffit entourer le mot recherché par + ou ✱. Exemple :
-"+contrat+" permet de faire une recherche sur tous les mots contenant l’élément "contrat".
+* Faire une recherche sur un champ qui contient tel ou tel mot : pour ce faire, il suffit d'entourer le mot recherché par kbd:[ + ] ou kbd:[✱]. Exemple :
+"\+contrat+" permet de faire une recherche sur tous les mots contenant l’élément "contrat".
 ====
 
 [NOTE]
@@ -184,10 +187,11 @@ Le bouton image:13_search/icon_search_select.png[pdfwidth=24,role="size-24"]
 permet de sélectionner simultanément tous les types de contenu et le bouton image:13_search/icon_search_unselect.png[pdfwidth=24,role="size-24"] permet de
 tous les désélectionner.
 
-Selon la configuration applicative et les droits de l'utilisateur connecté, il est possible d'activer la recherche sur tous les flux (en cochant la case *Activer la recherche sur tous les flux ?*). Dès lors, tous les *Type*(s) de Contenu* pour tous les flux de l'utilisateur seront disponibles.
+Selon la configuration applicative et les droits de l'utilisateur connecté, il est possible d'activer la recherche sur tous les flux (en cochant la case
+*Rechercher sur tous les flux ?*). Dès lors, tous les *Type(s) de Contenu* pour tous les flux de l'utilisateur seront disponibles.
 
 Vous pouvez désigner les types de contenu sur lesquels s’effectuera la recherche en cochant les cases associées aux intitulés souhaités (dans la partie droite de l’écran).
-Une fois le(s) *Type*(s) *de Contenu*
+Une fois le(s) *Type(s) de Contenu*
 souhaité(s) coché(s), vous pouvez cliquer sur l'action
 image:icons/Ico_LocADD.png[pdfwidth=24,role="size-24"]
 pour afficher la fenêtre d'*Ajout d'une Locution*, ou sur l'action
