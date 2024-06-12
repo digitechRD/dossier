@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="author" content="Digitech">
+<link rel="icon" type="image/png" href="images/icons/arcade_favicon-32x32.png">
+<title>Personnalisation de l&#8217;application Arcade GED à l&#8217;aide de scripts Groovy</title>
+<link rel="stylesheet" href="css/digitech.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="highlightjs/styles/github.min.css">
+<!--
+<meta name="theme-color" content="#319197" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">
+-->
+<script src="echarts/echarts.min.js"></script>
+<script src="js/setup.js"></script><script defer src="js/site.js"></script>
+
+</head>
+<body id="Dossier-groovy" class="book toc2 toc-left">
+<div id="banner-container" class="container" role="banner">
+    <div id="banner" class="contained" role="banner">
+        <div id="switch-theme">
+            <input type="checkbox" id="switch-theme-checkbox"/>
+            <label for="switch-theme-checkbox">Dark Theme</label>
+        </div>
+    </div>
+</div>
+<div id="header">
+<h1>Personnalisation de l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> à l&#8217;aide de scripts Groovy</h1>
+<div class="details">
+<span id="author" class="author">Digitech</span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">12/06/2024 10:09:03</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Sommaire</div>
+<ul class="sectlevel1">
+<li><a href="#_01_intro">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_objet_du_document">1.1. Objet du document</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/arcade-cover.png" alt="arcade cover">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch tableBorder stripes-none">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock text-left filtered max-width-400 m-auto">
+<div class="content">
+<img src="images/icons/digitech_logo_and_text.svg" alt="digitech logo and text">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-bottom" rowspan="2"><div class="content"><div class="paragraph">
+<p><code>Digitech SA</code><br>
+<em>ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173<br>
+13322 Marseille Cedex 16</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Copyright (c) 2024 <code>Digitech SA</code>, tous droits réservés.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 1. Notes de suivi</caption>
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">État</th>
+<th class="tableblock halign-left valign-top">Objet</th>
+<th class="tableblock halign-left valign-top">Rédacteur</th>
+<th class="tableblock halign-left valign-top">Validateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01/06/2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">MRA</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_01_intro"><a class="anchor" href="#_01_intro"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_objet_du_document"><a class="anchor" href="#_objet_du_document"></a>1.1. Objet du document</h3>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="highlightjs/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script type="text/javascript" src="tools/codeTools.js"></script>
+<script type="text/javascript" src="tools/tabs.js"></script>
+<script type="text/javascript" src="tools/switchTheme.js"></script>
+<script type="text/javascript">
+
+  function initTabsAndTheme() {
+    buildTabs();
+    initTheme();
+  }
+
+  /* Tocbot dynamic TOC, works with tocbot 4.0.x */
+  try {
+    tocbot.init({
+      contentSelector: '#content',
+      headingSelector: 'h1, h2, h3, h4, h5',
+      smoothScroll: true,
+      headingsOffset: 40,
+      scrollSmoothOffset: -40,
+      orderedList: false
+    });
+
+    let oldtoc = document.getElementById('toctitle').nextElementSibling;
+    const newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+
+    const handleTocOnResize = function () {
+      const width = window.innerWidth
+          || document.documentElement.clientWidth
+          || document.body.clientWidth;
+      if (width < 768) {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          collapseDepth: 6,
+          activeLinkClass: 'ignoreactive',
+          throttleTimeout: 1000,
+          smoothScroll: false
+        });
+      } else {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          smoothScroll:  true,
+          headingsOffset: 40,
+          scrollSmoothOffset: -40,
+          orderedList: false
+        });
+      }
+    };
+
+    addCodeToolElements();
+    switchInitialTheme();
+    handleTocOnResize();
+    window.addEventListener('resize', handleTocOnResize);
+    window.addEventListener("load", initTabsAndTheme());
+  }
+  catch(err) {}
+
+
+</script>
+</body>
+</html>

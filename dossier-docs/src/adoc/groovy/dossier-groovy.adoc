@@ -1,80 +1,37 @@
 [[Dossier-groovy]]
-= Personnnalisation de l'application *AIRS Dossier* à l'aide de scripts Groovy
-v1.0, 02/11/2019
-:revnumber: 2.0
-:revdate: 02/11/2019
-:author: Digitech
-:organization: Digitech
-:doctype: book
-:reproducible:
-:experimental:
-:compact:
-:!webfonts:
-// use locale font-awesome icons
-:icons: font
-:iconfont-remote!:
-:iconfont-name: font-awesome.min
-:icon-set: far
-:nofooter:
-:toc-title: Sommaire
-:chapter-signifier:
-:listing-caption: Listing
-:sectnums:
-:toc:
-:toclevels: 3
-:xrefstyle: full
+= Personnalisation de l'application {arcadeged} à l'aide de scripts Groovy
+v1.0, 01/06/2024
+:revnumber: 1.0
+include::{sharedResource}/adoc/template.adoc[]
+:revdate: {productReleaseDate}
+:dossier: pass:quotes[`<span style="color:#2C8470">Arcade GED</span>`]
+:favicon: {imagesDir}/icons/arcade_favicon-32x32.png
+
 ifdef::backend-pdf[]
-:img-prio-width: 10
-:title-logo-image: image:dossier-cover.png[align=center]
-:!nofooter:
-endif::[]
-ifndef::backend-pdf[]
-:toc: left
-:img-prio-width: 18
-endif::[]
-ifdef::env-github[]
-:imagesdir: images
-:toc-placement!:
-:tip-caption: :bulb:
-:note-caption: :information_source:
-:important-caption: :heavy_exclamation_mark:
-:caution-caption: :fire:
-:warning-caption: :warning:
-endif::[]
-ifndef::env-github[]
-:imagesDir: images
-endif::[]
-:img_blocking: image:icons/blocking.png["Bloquant"]
-:img_urgent: image:icons/urgent.png["Urgent"]
-:img_high: image:icons/high.png["Haute"]
-:img_normal: image:icons/normal.png["Normal"]
-:img_low: image:icons/low.png["Bas"]
-// substition/alias
-:dossier:  pass:quotes[<span style="color: #D4CE28">Dossier</span>]
-:java:  pass:quotes[*<span style="color: #F24E52">JAVA</span>*]
-:sso:  pass:quotes[<span style="color: #F27E36">SSO</span>]
-:windows:  pass:quotes[<span style="color: #F25937">Windows</span>]
-:microsoft:  pass:quotes[<span style="color: #F25937">Microsoft</span>]
-:linux:  pass:quotes[<span style="color: #F25937">Linux</span>]
-:kerberos:  pass:quotes[<span style="color: #167EF2">Kerberos</span>]
-:spnego:  pass:quotes[<span style="color: #167EF2">SPNEGO</span>]
-
-ifndef::backend-pdf[]
-image::dossier-cover.png[]
+:title-logo-image: image:arcade-cover.png[align=center]
 endif::[]
 
-[options="header,autowidth"]
+ifndef::backend-pdf[]
+image::arcade-cover.png[]
+endif::[]
+
+[cols="3a,5a",options="noheader",role="tableBorder stripes-none"]
+|===
+|image::icons/digitech_logo_and_text.svg[align=left,role="filtered max-width-400 m-auto"]
+.2+<.>|`Digitech SA` +
+_ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
+13322 Marseille Cedex 16_
+|Copyright (c) {generatedYear} `Digitech SA`, tous droits réservés.
+|===
+
+[options="header,autowidth",width=100%]
 .Notes de suivi
 |===
-|Date|Version|Etat|Objet|Rédacteur|Validateur
-|02/11/2019|1.0|En cours|Création du document|Nicolas Félix|
+|Date|Version|État|Objet|Rédacteur|Validateur
+|01/06/2024|1.0|Validé|Création du document|{MRA}|
 |===
-
-ifdef::env-github[]
-toc::[]
-endif::[]
 
 <<<
 
-== Introduction
+include::chapters/_01_introduction.adoc[]
 
