@@ -644,11 +644,20 @@ td.tableblock .bg-red p {
   color: var(--custom-black);
 }
 
+td.tableblock .header p,
 td.tableblock .sub-header p {
-  background-color: var(--table-subheader-bg-color);
   color: var(--table-header-text-color);
   font-weight: bold;
   font-style: italic;
+}
+
+td.tableblock .header p {
+  background-color: var(--table-header-bg-color);
+  font-size: 1.1rem;
+}
+
+td.tableblock .sub-header p {
+  background-color: var(--table-subheader-bg-color);
 }
 
 td.tableblock .bold p {
