@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">12/06/2024 10:09:03</span>
+<span id="revdate">14/06/2024 18:12:08</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -41,6 +41,13 @@
 <li><a href="#_01_intro">1. Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#_objet_du_document">1.1. Objet du document</a></li>
+</ul>
+</li>
+<li><a href="#_10_DocCreation">2. DocCreation</a>
+<ul class="sectlevel2">
+<li><a href="#_description">2.1. Description</a></li>
+<li><a href="#_paramètres">2.2. Paramètres</a></li>
+<li><a href="#_example">2.3. Example</a></li>
 </ul>
 </li>
 </ul>
@@ -118,7 +125,134 @@
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_objet_du_document"><a class="anchor" href="#_objet_du_document"></a>1.1. Objet du document</h3>
-<div style="page-break-after: always;"></div>
+<div class="paragraph">
+<p>Ce document décrit les différents scripts groovy permettant la personnalisation d&#8217;Arcade GED.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_DocCreation"><a class="anchor" href="#_10_DocCreation"></a>2. DocCreation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description"><a class="anchor" href="#_description"></a>2.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est déclenché lors de la création d&#8217;un document, afin de préremplir les données du formulaire.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres"><a class="anchor" href="#_paramètres"></a>2.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_updateFields</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Collection&lt;UpdateField&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultDocCreationInitializer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>_updatedFields</strong> définissant les champs affichés</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_example"><a class="anchor" href="#_example"></a>2.3. Example</h3>
+<div class="paragraph">
+<p>Ajout de l&#8217;utilisateur courant en tant que rédacteur et de la date du jour lorsque l&#8217;on accède à la page de création d&#8217;un document.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IDocument
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import com.digitech.dossier.common.utils.FieldUtils
+import com.digitech.dossier.common.model.backend.params.UpdateField
+
+def today = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+UpdateField uf = _updateFields.get('CR_DATE')
+if(uf != null) {
+  FieldUtils.setValue(_document as IDocument, 'CR_DATE', today)
+}
+uf = _updateFields.get('CR_REDACTEUR')
+if(uf != null) {
+ FieldUtils.setValue(_document as IDocument, 'CR_REDACTEUR', _userContext.getUserId())
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de création d&#8217;un Compte rendu</div>
+<p><span class="image"><img src="images/doc_creation_example.png" alt="doc creation example"></span></p>
+</div>
 </div>
 </div>
 </div>

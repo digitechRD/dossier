@@ -3,22 +3,32 @@
 
 === Description
 
-Ce type de script est utilisé lorsque l'on accède à la page de création d'un document.
+Ce script est déclenché lors de la création d'un document, afin de préremplir les données du formulaire.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="1a,1a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .5+|IScriptResultModel<ScriptResultDocCreationInitializer>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_document|IDocument
-|_updateFields|Collection<UpdateField>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|
+|_userContext|IUserCoreContext|
+|_document|IDocument|
+|_updateFields|Collection<UpdateField>|
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultDocCreationInitializer 2+|contient la variable *_updatedFields* définissant les champs affichés
 |===
 
-=== Sample
+=== Example
 
 Ajout de l'utilisateur courant en tant que rédacteur et de la date du jour lorsque l'on accède à la page de création d'un document.
 
