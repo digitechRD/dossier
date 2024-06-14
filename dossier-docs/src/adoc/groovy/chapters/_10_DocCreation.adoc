@@ -1,0 +1,45 @@
+[[_10_DocCreation]]
+== DocCreation
+
+=== Description
+
+Ce type de script est utilisé lorsque l'on accède à la page de création d'un document.
+
+=== Paramètres
+
+[options="header"]
+[cols="25%,25%,50%"]
+|===
+2+|Entrée|Sortie
+s|_Nom_ s|_Type_ .5+|IScriptResultModel<ScriptResultDocCreationInitializer>
+|_logger|Logger
+|_userContext|IUserCoreContext
+|_document|IDocument
+|_updateFields|Collection<UpdateField>
+|===
+
+=== Sample
+
+Ajout de l'utilisateur courant en tant que rédacteur et de la date du jour lorsque l'on accède à la page de création d'un document.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.IDocument
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import com.digitech.dossier.common.utils.FieldUtils
+import com.digitech.dossier.common.model.backend.params.UpdateField
+
+def today = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+UpdateField uf = _updateFields.get('CR_DATE')
+if(uf != null) {
+  FieldUtils.setValue(_document as IDocument, 'CR_DATE', today)
+}
+uf = _updateFields.get('CR_REDACTEUR')
+if(uf != null) {
+ FieldUtils.setValue(_document as IDocument, 'CR_REDACTEUR', _userContext.getUserId())
+}
+----
+
+.Exemple de création d'un Compte rendu
+image:doc_creation_example.png[]
