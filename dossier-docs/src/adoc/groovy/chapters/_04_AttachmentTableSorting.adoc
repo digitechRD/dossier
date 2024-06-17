@@ -3,19 +3,45 @@
 
 === Description
 
-Tri pièces jointes lorsqu'on les récupère
+Ce script est utilisé lors de la récupération des pièces jointes d'un document, afin de les trier avant de les afficher.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .5+|ScriptResultValueAttachmentToDisplay
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_docId|Integer
-|_attachmentList|List<IAttachment>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_docId|Integer|ID du document
+|_attachmentList|List<IAttachment>|Liste des pièces jointes
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueAttachmentToDisplay 2+|contient les variables *_document* et *_attachment* correspondant au document et sa pièce jointe à afficher
 |===
 
-=== Sample
+=== Exemple
+
+Tri de la liste des pièces jointes par ordre alphabétique.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.impl.comparator.AttachmentComparator
+import org.apache.commons.collections4.CollectionUtils
+
+if(CollectionUtils.isNotEmpty(_attachmentList)) {
+  _attachmentList.sort(AttachmentComparator.ATT_LABEL_COMP)
+}
+----
+
+.Exemple d'affichage d'une liste de pièces jointes triées par ordre alphabétique
+image:examples/attachment_table_sorting_example.png[]
+

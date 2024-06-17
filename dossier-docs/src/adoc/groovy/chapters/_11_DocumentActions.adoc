@@ -3,18 +3,54 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script est utilisé lors de la récupération des actions pour un document.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .4+|IScriptResultModel<ScriptResultValueDocumentActions>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_fieldValueMap|Map<String, IFieldValue>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_fieldValueMap|Map<String, IFieldValue>|Liste des champs
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueDocumentActions 2+|contient les variables *_allActions* (toutes les actions) et *_unavailableActions* (actions
+indisponibles)
 |===
 
-=== Sample
+=== Exemple
+
+Ajout de l'interdiction d'effectuer l'action *Verrouiller* pour un utilisateur n'ayant pas le profil _DOC_ADMIN_CLIENT_.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.UserContext
+import com.digitech.dossier.common.model.backend.airs.IFieldValue
+import com.digitech.dossier.common.utils.UserUtils
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
+
+UserContext usrContext = _userContext
+ScriptResultModel<ScriptResultValueDocumentActions> theOutput = _output
+
+List<ScriptResultValueDocumentActions.Action> unavailableActions = new ArrayList<ScriptResultValueDocumentActions.Action>()
+if(!UserUtils.hasProfile(usrContext, "DOS_ADMIN_CLIENT")) {
+  unavailableActions.add(ScriptResultValueDocumentActions.Action.LOCK)
+}
+theOutput.getValue().getUnavailableActions().addAll(unavailableActions)
+----
+
+.Exemple de résultats de recherche pour un utilisateur n'ayant pas le droit de verrouiller les documents
+image:examples/document_actions_example.png[]
+
+

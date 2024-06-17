@@ -7,7 +7,7 @@ Ce script est déclenché lors de la création d'un document, afin de prérempli
 
 === Paramètres
 
-[options="noheader",cols="1a,1a,3a"]
+[options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
 Entrées|[.sub-header]
@@ -15,10 +15,10 @@ _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
 
-|_logger|org.log4j.Logger|
-|_userContext|IUserCoreContext|
-|_document|IDocument|
-|_updateFields|Collection<UpdateField>|
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_document|IDocument|Document
+|_updateFields|Collection<UpdateField>|Champs du document
 3+|[.header]
 Sortie
 |[.sub-header]
@@ -28,7 +28,7 @@ _Description_
 |ScriptResultDocCreationInitializer 2+|contient la variable *_updatedFields* définissant les champs affichés
 |===
 
-=== Example
+=== Exemple
 
 Ajout de l'utilisateur courant en tant que rédacteur et de la date du jour lorsque l'on accède à la page de création d'un document.
 
@@ -52,4 +52,4 @@ if(uf != null) {
 ----
 
 .Exemple de création d'un Compte rendu
-image:doc_creation_example.png[]
+image:examples/doc_creation_example.png[]
