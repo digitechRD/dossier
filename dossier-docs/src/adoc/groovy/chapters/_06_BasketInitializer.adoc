@@ -3,18 +3,52 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est utilisé pour initialiser les bannettes.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .4+|IScriptResultModel<ScriptResultValueBasketInitializer>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_basket|IBasketModel
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_basket|IBasketModel|Bannette
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueBasketInitializer 2+|contient la variable *_properties* qui contient les propriétés de la bannette
 |===
 
-=== Sample
+=== Exemple
+
+Masquer les bannettes ne contenant aucun document.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.IBasketModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueBasketInitializer
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.common.model.backend.UserContext
+
+UserContext usrContext = _userContext
+ScriptResultModel<ScriptResultValueBasketInitializer> theOutput = _output
+IBasketModel basket = _basket
+if(basket.getResultNumber(usrContext) == 0) {
+  theOutput.getValue().getProperties().put(ScriptResultValueBasketInitializer.BasketProperty.DISPLAYED, "false")
+}
+----
+
+.Exemple de liste des bannettes (sans script)
+image:examples/basket_initializer_example_without_script.png[]
+
+.Exemple de liste des bannettes (avec script)
+image:examples/basket_initializer_example_with_script.png[]
+

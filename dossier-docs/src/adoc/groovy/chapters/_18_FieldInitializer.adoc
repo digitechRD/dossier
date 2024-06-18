@@ -3,20 +3,49 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script est déclenché lors de l'affichage des champs d'un document.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .6+|IScriptResultModel<ScriptResultValueFieldInitializer>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_airsDocument|IDocument
-|_document|IDocument
-|parameters|Map<String, Object>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_airsDocument|IDocument|Document Airs
+|_document|IDocument|Document
+|parameters|Map<String, Object>|Paramètres
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueFieldInitializer 2+|contient les variables *_results*, *_properties* et *_validatorAttributs*
 |===
 
-=== Sample
+=== Exemple
+
+Affichage des champs _CR_REDACTEUR_ et _CR_DATE_ en lecture seule.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.params.UpdateField
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueFieldInitializer
+
+UpdateField updateField = _updateField
+ScriptResultModel<ScriptResultValueFieldInitializer> theOutput = _output
+if(updateField.getFieldCode() == "CR_REDACTEUR" || updateField.getFieldCode() == "CR_DATE") {
+  theOutput.getValue().getProperties().put(ScriptResultValueFieldInitializer.FieldProperty.READ_ONLY, "true")
+}
+
+----
+
+.Exemple de champs en lecture seule lors de la création d'un compte-rendu
+image:examples/field_initializer_example.png[]
