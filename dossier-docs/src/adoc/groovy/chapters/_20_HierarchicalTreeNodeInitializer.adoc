@@ -3,26 +3,47 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script est utilisé lors de l'affichage de l'arborescence dans la vue plan de classement.
 
 === Paramètres
 
-[options="header"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-|Nom|Type
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_treeNode|IHierarchicalTreeNode
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_treeNode|IHierarchicalTreeNode|Arbre
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueHierarchicalTreeNodeInitializer 2+|contient la variable *_properties* qui correspondent aux propriétés de l'arbre
 |===
 
-[options="header"]
-[cols="25%,25%,50%"]
-|===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .4+|IScriptResultModel<T>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_treeNode|IHierarchicalTreeNode
-|===
+=== Exemple
 
-=== Sample
+Personnalisation des icônes des nœuds de l'arborescence et ajout du déploiement intégral de l'arbre.
+
+[source, groovy]
+----
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueHierarchicalTreeNodeInitializer
+
+ScriptResultModel<ScriptResultValueHierarchicalTreeNodeInitializer> theOutput = _output
+theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.EXPANDED, "true")
+theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.ICON_FOLDER, "/ui/common/img/dossier_logo.svg")
+theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fatal.svg")
+----
+
+.Exemple d'affichage du plan de classement (sans script)
+image:examples/hierarchical_tree_node_initializer_example_without_script.png[]
+
+.Exemple de personnalisation de l'affichage du plan de classement (avec script)
+image:examples/hierarchical_tree_node_initializer_example_with_script.png[]

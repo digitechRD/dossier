@@ -3,22 +3,98 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script est déclenché lorsque l'on souhaite avoir une dépendance entre les valeurs de certains champs.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .8+|IScriptResultModel<T>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_fieldToUpdate|IField
-|_fieldMap|Map<String, IField>
-|_updatedField|IField
-|_updateFieldValues|Object
-|_parameterMap|List<IParameter>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_fieldToUpdate|IField|Champ à mettre à jour
+|_fieldMap|Map<String, IField>|Liste des champs
+|_updatedField|IField|Champ que l'on modifie
+|_updateFieldValues|Object|
+|_parameterMap|List<IParameter>|
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|IScriptResultModel<T> 2+|
 |===
 
-=== Sample
+=== Exemple
+
+Modification de la liste des choix pour le champ _Plan de classement_ lorsque la valeur du champ _Catégorie de document_ est modifiée.
+
+[source, groovy]
+----
+import java.lang.*;
+import java.util.*;
+import javax.faces.*;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.apache.commons.lang.*;
+
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.airs.IField;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+import com.digitech.dossier.common.Utils;
+
+import com.digitech.dossier.common.*;
+
+import java.lang.Double;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+
+import com.digitech.dossier.common.model.backing.factory.*;
+import javax.faces.component.html.*;
+import javax.faces.component.*;
+import javax.faces.model.*;
+
+import com.digitech.dossier.common.service.IAuthorityList;
+import com.digitech.jcorbairs.Term;
+
+IField fieldToUpdate = _fieldToUpdate
+IField updatedField = _updatedField
+List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(fieldToUpdate.getConfigField());
+Term updatedFieldCode = getAuthorityListService().getTerm((Integer) updatedField.getValue())
+
+List<SelectItem> test = new ArrayList<>();
+for(items in selectItems) {
+  if(items.getValue() != null) {
+    Term code = getAuthorityListService().getTerm((Integer) items.getValue());
+    SelectItem item = new SelectItem()
+    item.setLabel(code.getValues()[0] as String)
+    item.setValue(code.getCode())
+    test.add(item)
+  }
+}
+List<SelectItem> filteredList = test.findAll({it.getValue().startsWith(updatedFieldCode.getCode() as String)})
+HtmlSelectOneMenu component = ((HtmlSelectOneMenu)  ((UIComponent)fieldToUpdate.getComponent()));
+component.getChildren().get(0).setValue(filteredList);
+
+/**
+ * @return IAuthorityList the Authority List
+ */
+public static IAuthorityList getAuthorityListService() {
+  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+}
+----
+
+.Exemple de choix pour la catégorie Commerce
+image:examples/field_dependency_example_commerce.png[]
+
+.Exemple de choix pour la catégorie Comptabilité
+image:examples/field_dependency_example_compta.png[]
