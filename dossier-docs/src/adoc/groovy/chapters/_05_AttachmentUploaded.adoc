@@ -3,20 +3,54 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est utilisé lorsque l'on dépose une pièce jointe.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .6+|IScriptResultModel<SimpleScriptResultModel>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_document|IDocument
-|_attachment|IAttachment
-|_mode|AttachmentUploadEventMode
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_document|IDocument|Document
+|_attachment|IAttachment|Pièce jointe
+|_mode|AttachmentUploadEventMode|Mode (ajout/suppression)
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|SimpleScriptResultModel 2+|
 |===
 
-=== Sample
+=== Exemple
+
+Remplissage du champ _Désignation_ lors de la création d'un compte-rendu via le dépôt de pièce jointe depuis la page d'accueil.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.utils.FieldUtils
+import com.digitech.dossier.script.model.impl.typedef.AttachmentUploadEventMode
+
+des = FieldUtils.getValue(_document, "CR_DES")
+
+if(_mode == AttachmentUploadEventMode.REMOVE) {
+  if(_attachment?.fileName == des) {
+    FieldUtils.setValue(_document, "CR_DES", null)
+  }
+}
+else {
+  if(des == null) {
+    FieldUtils.setValue(_document, "CR_DES", _attachment?.fileName)
+  }
+}
+----
+
+.Exemple de création de compte-rendu avec pièce jointe
+image:examples/attachment_uploaded_example.png[]
