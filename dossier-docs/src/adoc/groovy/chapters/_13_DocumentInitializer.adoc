@@ -3,20 +3,44 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est déclenché lorsqu'une action personnalisée est lancée ou lors d'un export.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .6+|IScriptResultModel<ScriptResultValueChecker>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_airsDocument|IDocument
-|_document|IDocument
-|parameters|Map<String, Object>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_airsDocument|IDocument|Document Airs
+|_document|IDocument|Document
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueDocumentInitializer 2+|contient la variable *_documentList*
 |===
 
-=== Sample
+=== Exemple
+
+Affichage d'un message à la fin d'une action personnalisée.
+
+[source, groovy]
+----
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentInitializer
+
+ScriptResultValueDocumentInitializer result = output.getValue()
+
+result.setMessageSeverity(com.digitech.dossier.script.model.IScriptResultValueModel.Severity.INFO)
+result.setMessageSummary("Action personnalisée sur le document '" + document.getAirsRefId() + "'")
+----
+
+.Exemple de message
+image:example/document_initializer_example.png[]

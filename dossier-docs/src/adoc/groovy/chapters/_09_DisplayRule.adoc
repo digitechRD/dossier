@@ -3,19 +3,57 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est déclenché pour l'affichage des actions personnalisées.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .5+|?
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_document|IDocument
-|_attachment|IAttachment
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_document|IDocument|Document
+|_attachment|IAttachment|Pièce jointe
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueDisplayRule 2+|contient la variable *_valid* qui détermine l'affichage de l'action
 |===
 
-=== Sample
+=== Exemple
+
+Affichage de l'action "Diffuser le CR à Digitech !" si le document contient des pièces jointes et que le champ _Thématique_ contient la valeur _Réunion
+transverse_.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.common.service.IAuthorityList;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.jcorbairs.Term;
+
+IDocument document = _document
+Term updatedFieldCode = getAuthorityListService().getTerm((Integer) document.getField("CR_THEME").getValue())
+_result.setValid(document?.getAttachments(_userContext)?.size > 0 && updatedFieldCode.getCode() == "TH_TRANS")
+
+/**
+ * @return IAuthorityList the Authority List
+ */
+public static IAuthorityList getAuthorityListService() {
+  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+}
+----
+
+.Exemple d'affichage de l'action
+image:examples/display_rule_example_displayed.png[]
+
+.Exemple où l'action est masquée
+image:examples/display_rule_example_hidden.png[]

@@ -3,19 +3,44 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script est utilisé avant une recherche pour valider les critères.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .5+|?
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_search|ISearchModel
-|parameters|Map<String, Object>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_search|ISearchModel|Recherche
+|parameters|Map<String, Object>|Paramètres
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueChecker 2+|contient la variable *_valid* qui détermine si la recherche est valide
 |===
 
-=== Sample
+=== Exemple
+
+Blocage d'une recherche si une certaine condition est rencontrée.
+
+[source, groovy]
+----
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueChecker
+
+if( condition ) {
+  ScriptResultModel<ScriptResultValueChecker> outputParam = output
+  ScriptResultValueChecker result = new ScriptResultValueChecker()
+  result.setValid(false);
+  outputParam.setValue(result)
+}
+----
