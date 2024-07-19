@@ -3,20 +3,31 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est utilisé lors de l'exécution des webservices sur les pièces jointes (ajout ou mise à jour).
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .6+|ScriptResultWSDocument / IScriptResultModel<ScriptResultWSDocument>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_docId|Integer
-|_attData|IWSAttachmentUpdateType
-|_mode|ScriptModeRun
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_docId|Integer|Doc ID
+|_attData|IWSAttachmentUpdateType|Attachment data
+|_mode|ScriptModeRun|Mode
+
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultWSDocument 2+|contient les variables *_secretLevel*, *_codeFieldValues*, *_ctxValues* et *_document*
 |===
 
-=== Sample
+=== Exemple

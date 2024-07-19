@@ -3,18 +3,42 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script est déclenché lorsqu'un export est lancé.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .6+|IScriptResultModel<ScriptResultValueExportInitializer>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_documents|List<IDocument>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_documents|List<IDocument>|Liste de documents à exporter
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueExportInitializer 2+|contient les variables *_fileResultPath* et *_fileResultName*
 |===
 
-=== Sample
+=== Exemple
+
+Définition des variables *fileResultPath* et *fileResultName*.
+
+[source, groovy]
+----
+import com.digitech.dossier.script.model.IScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueExportInitializer
+
+IScriptResultModel resultModel = _output
+ScriptResultValueExportInitializer result = new ScriptResultValueExportInitializer()
+result.setFileResultPath("fileResultPath")
+result.setFileResultName("fileResultName")
+resultModel.setValue(result)
+----

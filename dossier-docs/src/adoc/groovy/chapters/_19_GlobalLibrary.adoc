@@ -3,14 +3,32 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est utilisé pour définir des méthodes qui pourront être utilisées dans d'autres scripts.
 
-=== Paramètres
+=== Exemple
 
-[options="header"]
-|===
-|Sortie
-|IScriptResultModel
-|===
+Nous avons le script de type GlobalLibrary *DocUtils.groovy* ci-dessous :
 
-=== Sample
+[source, groovy]
+----
+public static String getThirdFromList(List<String> list) {
+  if(list.size() >= 3) {
+    return list.get(2)
+  } else {
+    return null
+  }
+}
+----
+
+On pourra alors utiliser la méthode *getThirdFromList* dans un autre script de cette façon :
+
+[source, groovy]
+----
+List<String> list = new ArrayList<>()
+list.add("a")
+list.add("b")
+list.add("c")
+list.add("d")
+String res = DocUtils.getThirdFromList(List<String> list)
+----
+

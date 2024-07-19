@@ -3,18 +3,38 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce type de script est utilisé afin de décrire l'exécution d'une tâche.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .4+|IScriptResultModel<IScriptResultValueModel>
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_flowCodes|List<String>
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_scriptLogger|org.log4j.Logger|Logger
+|_flowCodes|List<String>|Flowcodes
+|_parameterMap|Map<String, Object>|Paramètres de la tâche
 |===
 
-=== Sample
+=== Exemple
+
+On peut passer un paramètre dans la configuration de la tâche (fichier *task.xml*) de cette façon :
+
+[source, xml]
+----
+<parameter name="param" type="STRING" value="machin"/>
+----
+
+Et ainsi récupérer ce paramètre dans le script afin de l'utiliser lorsque la tâche s'exécute :
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.impl.Parameter
+
+Parameter param = _parameterMap?.get("param") as Parameter
+String res = param?.getValue()
+----
