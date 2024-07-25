@@ -31,3 +31,25 @@ _Description_
 |===
 
 === Exemple
+
+Arrêt du chargement d'une pièce jointe si l'attribut *label* n'a pas été renseigné dans la requête.
+
+[source, curl]
+----
+curl --location 'http://localhost:7373/dossierweb/rest/attachment/9097' --header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--form 'attachmentData="{
+    \"scriptCode\": \"test\"
+}";type=application/json' --form 'fileData=@"/path/document.docx"'
+----
+
+[source, groovy]
+----
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import com.digitech.dossier.webservices.type.WSAttachmentUpdateType
+
+ScriptResultWSDocument result = _output.getValue()
+WSAttachmentUpdateType att = _attData
+if(att.getLabel() == null) {
+  result.fillKOResult("Empty label")
+}
+----
