@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">14/06/2024 18:12:08</span>
+<span id="revdate">02/08/2024 15:14:21</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -41,13 +41,159 @@
 <li><a href="#_01_intro">1. Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#_objet_du_document">1.1. Objet du document</a></li>
+<li><a href="#_bonnes_pratiques_et_astuces_arcade_ged">1.2. Bonnes pratiques et astuces <code><span style="color:#2C8470">Arcade GED</span></code></a></li>
 </ul>
 </li>
-<li><a href="#_10_DocCreation">2. DocCreation</a>
+<li><a href="#_02_AttachmentDisplaySorting">2. AttachmentDisplaySorting</a>
 <ul class="sectlevel2">
 <li><a href="#_description">2.1. Description</a></li>
 <li><a href="#_paramètres">2.2. Paramètres</a></li>
-<li><a href="#_example">2.3. Example</a></li>
+<li><a href="#_sample">2.3. Sample</a></li>
+</ul>
+</li>
+<li><a href="#_03_AttachmentInitializer">3. AttachmentInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_2">3.1. Description</a></li>
+<li><a href="#_paramètres_2">3.2. Paramètres</a></li>
+<li><a href="#_sample_2">3.3. Sample</a></li>
+</ul>
+</li>
+<li><a href="#_04_AttachmentTableSorting">4. AttachmentTableSorting</a>
+<ul class="sectlevel2">
+<li><a href="#_description_3">4.1. Description</a></li>
+<li><a href="#_paramètres_3">4.2. Paramètres</a></li>
+<li><a href="#_exemple">4.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_05_AttachmentUploaded">5. AttachmentUploaded</a>
+<ul class="sectlevel2">
+<li><a href="#_description_4">5.1. Description</a></li>
+<li><a href="#_paramètres_4">5.2. Paramètres</a></li>
+<li><a href="#_exemple_2">5.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_06_BasketInitializer">6. BasketInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_5">6.1. Description</a></li>
+<li><a href="#_paramètres_5">6.2. Paramètres</a></li>
+<li><a href="#_exemple_3">6.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_07_ConnectorPropertiesInitializer">7. ConnectorPropertiesInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_6">7.1. Description</a></li>
+<li><a href="#_paramètres_6">7.2. Paramètres</a></li>
+<li><a href="#_sample_3">7.3. Sample</a></li>
+</ul>
+</li>
+<li><a href="#_08_CustomHomeBlock">8. CustomHomeBlock</a>
+<ul class="sectlevel2">
+<li><a href="#_description_7">8.1. Description</a></li>
+<li><a href="#_paramètres_7">8.2. Paramètres</a></li>
+<li><a href="#_exemple_4">8.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_09_DisplayRule">9. DisplayRule</a>
+<ul class="sectlevel2">
+<li><a href="#_description_8">9.1. Description</a></li>
+<li><a href="#_paramètres_8">9.2. Paramètres</a></li>
+<li><a href="#_exemple_5">9.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_10_DocCreation">10. DocCreation</a>
+<ul class="sectlevel2">
+<li><a href="#_description_9">10.1. Description</a></li>
+<li><a href="#_paramètres_9">10.2. Paramètres</a></li>
+<li><a href="#_exemple_6">10.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_11_DocumentActions">11. DocumentActions</a>
+<ul class="sectlevel2">
+<li><a href="#_description_10">11.1. Description</a></li>
+<li><a href="#_paramètres_10">11.2. Paramètres</a></li>
+<li><a href="#_exemple_7">11.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_12_DocumentChecker">12. DocumentChecker</a>
+<ul class="sectlevel2">
+<li><a href="#_description_11">12.1. Description</a></li>
+<li><a href="#_paramètres_11">12.2. Paramètres</a></li>
+<li><a href="#_exemple_8">12.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_13_DocumentInitializer">13. DocumentInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_12">13.1. Description</a></li>
+<li><a href="#_paramètres_12">13.2. Paramètres</a></li>
+<li><a href="#_exemple_9">13.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_14_ElementFilter">14. ElementFilter</a>
+<ul class="sectlevel2">
+<li><a href="#_description_13">14.1. Description</a></li>
+<li><a href="#_paramètres_13">14.2. Paramètres</a></li>
+<li><a href="#_exemple_10">14.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_15_ExportInitializer">15. ExportInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_14">15.1. Description</a></li>
+<li><a href="#_paramètres_14">15.2. Paramètres</a></li>
+<li><a href="#_exemple_11">15.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_16_ExternalScript">16. ExternalScript</a>
+<ul class="sectlevel2">
+<li><a href="#_description_15">16.1. Description</a></li>
+<li><a href="#_exemple_12">16.2. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_17_FieldDependency">17. FieldDependency</a>
+<ul class="sectlevel2">
+<li><a href="#_description_16">17.1. Description</a></li>
+<li><a href="#_paramètres_15">17.2. Paramètres</a></li>
+<li><a href="#_exemple_13">17.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_18_FieldInitializer">18. FieldInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_17">18.1. Description</a></li>
+<li><a href="#_paramètres_16">18.2. Paramètres</a></li>
+<li><a href="#_exemple_14">18.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_19_GlobalLibrary">19. GlobalLibrary</a>
+<ul class="sectlevel2">
+<li><a href="#_description_18">19.1. Description</a></li>
+<li><a href="#_exemple_15">19.2. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_20_HierarchicalTreeNodeInitializer">20. HierarchicalTreeNodeInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_19">20.1. Description</a></li>
+<li><a href="#_paramètres_17">20.2. Paramètres</a></li>
+<li><a href="#_exemple_16">20.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_21_Task">21. Task</a>
+<ul class="sectlevel2">
+<li><a href="#_description_20">21.1. Description</a></li>
+<li><a href="#_paramètres_18">21.2. Paramètres</a></li>
+<li><a href="#_exemple_17">21.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_22_WSAttachmentInitializer">22. WSAttachmentInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_21">22.1. Description</a></li>
+<li><a href="#_paramètres_19">22.2. Paramètres</a></li>
+<li><a href="#_exemple_18">22.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_23_WSDocumentInitializer">23. WSDocumentInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_22">23.1. Description</a></li>
+<li><a href="#_paramètres_20">23.2. Paramètres</a></li>
+<li><a href="#_exemple_19">23.3. Exemple</a></li>
 </ul>
 </li>
 </ul>
@@ -108,12 +254,12 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">01/06/2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02/08/2024</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">MRA</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -126,27 +272,79 @@
 <div class="sect2">
 <h3 id="_objet_du_document"><a class="anchor" href="#_objet_du_document"></a>1.1. Objet du document</h3>
 <div class="paragraph">
-<p>Ce document décrit les différents scripts groovy permettant la personnalisation d&#8217;Arcade GED.</p>
+<p>Ce document décrit les différents scripts <code><span style="color:#2C8470">Arcade GED</span></code> permettant la personnalisation d&#8217;Arcade GED.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bonnes_pratiques_et_astuces_arcade_ged"><a class="anchor" href="#_bonnes_pratiques_et_astuces_arcade_ged"></a>1.2. Bonnes pratiques et astuces <code><span style="color:#2C8470">Arcade GED</span></code></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Variables en entrée.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Toutes les variables contextuelles transférées par l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> sont préfixées du caractère <strong>_</strong>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Opérateur <strong>elvis</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Le langage <code><span style="color:#2C8470">Arcade GED</span></code> est (très) proche du langage <code><span style="color:#F24E52">Java</span></code>. En tout cas, le compilateur <code><span style="color:#2C8470">Arcade GED</span></code> interprète une syntaxe <strong>pure</strong> <code><span style="color:#F24E52">Java</span></code>.</p>
+</div>
+<div class="paragraph">
+<p>Cependant, le langage se trouve enrichi (<em>du point de vue de l&#8217;auteur de ce document <span class="image emoji size-20"><img src="images/icons/smile-ok.svg" alt="ok" width="24" height="24"></span></em>) par certaines caractéristiques, notamment l&#8217;opérateur <a href="https://docs.groovy-lang.org/next/html/documentation/core-operators.html#_elvis_operator" target="_blank" rel="noopener"><strong>elvis</strong></a>, un raccourci à l&#8217;opérateur ternaire <code><span style="color:#F24E52">Java</span></code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">displayName = user.name ? user.name : 'Anonymous'
+// devient
+displayName = user.name ?: 'Anonymous'</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Opérateur de navigation <em>"sécurisé"</em></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>ou dans la langue de <em>Shakespeare</em> <strong>Safe Navigation Operator</strong>.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;opérateur est identique à <em>elvis</em> et permet d&#8217;appel à des méthodes d&#8217;objet sans crainte de <strong>NullPointerException</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">// si person ou address ou home est NULL, roadNumber sera NULL
+def roadNumber = person?.address?.home?.roadNumber</code></pre>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_10_DocCreation"><a class="anchor" href="#_10_DocCreation"></a>2. DocCreation</h2>
+<h2 id="_02_AttachmentDisplaySorting"><a class="anchor" href="#_02_AttachmentDisplaySorting"></a>2. AttachmentDisplaySorting</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_description"><a class="anchor" href="#_description"></a>2.1. Description</h3>
 <div class="paragraph">
-<p>Ce script est déclenché lors de la création d&#8217;un document, afin de préremplir les données du formulaire.</p>
+<p>Ce script permet de définir quelle pièce jointe est affichée <em>par défaut</em> en vue hiérarchique.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_paramètres"><a class="anchor" href="#_paramètres"></a>2.2. Paramètres</h3>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
-<col style="width: 20%;">
-<col style="width: 20%;">
-<col style="width: 60%;">
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
 </colgroup>
 <tbody>
 <tr>
@@ -172,7 +370,9 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>org.log4j.Logger</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -181,7 +381,361 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>IUserCoreContext</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docId</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ID du document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attachmentList</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;IAttachment&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des pièces jointes</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueAttachmentToDisplay</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_document</strong> et <strong>_attachment</strong> correspondant au document et sa pièce jointe à afficher</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_sample"><a class="anchor" href="#_sample"></a>2.3. Sample</h3>
+<div class="paragraph">
+<p>Tri de la liste des pièces jointes par ordre alphabétique.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.impl.comparator.AttachmentComparator
+import org.apache.commons.collections4.CollectionUtils
+
+if(CollectionUtils.isNotEmpty(_attachmentList)) {
+  output.attachment = _attachmentList.get(0)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_03_AttachmentInitializer"><a class="anchor" href="#_03_AttachmentInitializer"></a>3. AttachmentInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_2"><a class="anchor" href="#_description_2"></a>3.1. Description</h3>
+<div class="paragraph">
+<p><em>à documenter</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_2"><a class="anchor" href="#_paramètres_2"></a>3.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docId</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ID du document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IAttachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Pièce jointe</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueChecker</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>valid ?</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_sample_2"><a class="anchor" href="#_sample_2"></a>3.3. Sample</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_04_AttachmentTableSorting"><a class="anchor" href="#_04_AttachmentTableSorting"></a>4. AttachmentTableSorting</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_3"><a class="anchor" href="#_description_3"></a>4.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est utilisé lors de la récupération des pièces jointes d&#8217;un document, afin de les trier avant de les afficher.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_3"><a class="anchor" href="#_paramètres_3"></a>4.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docId</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ID du document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attachmentList</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;IAttachment&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des pièces jointes</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueAttachmentToDisplay</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_document</strong> et <strong>_attachment</strong> correspondant au document et sa pièce jointe à afficher</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple"><a class="anchor" href="#_exemple"></a>4.3. Exemple</h3>
+<div class="paragraph">
+<p>Tri de la liste des pièces jointes par ordre alphabétique.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.impl.comparator.AttachmentComparator
+import org.apache.commons.collections4.CollectionUtils
+
+if(CollectionUtils.isNotEmpty(_attachmentList)) {
+  _attachmentList.sort(AttachmentComparator.ATT_LABEL_COMP)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple d&#8217;affichage d&#8217;une liste de pièces jointes triées par ordre alphabétique</div>
+<p><span class="image"><img src="images/examples/attachment_table_sorting_example.png" alt="attachment table sorting example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_05_AttachmentUploaded"><a class="anchor" href="#_05_AttachmentUploaded"></a>5. AttachmentUploaded</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_4"><a class="anchor" href="#_description_4"></a>5.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé lorsque l&#8217;on dépose une pièce jointe.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_4"><a class="anchor" href="#_paramètres_4"></a>5.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -190,7 +744,633 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>IDocument</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IAttachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Pièce jointe</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_mode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>AttachmentUploadEventMode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mode (ajout/suppression)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>SimpleScriptResultModel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_2"><a class="anchor" href="#_exemple_2"></a>5.3. Exemple</h3>
+<div class="paragraph">
+<p>Remplissage du champ <em>Désignation</em> lors de la création d&#8217;un compte-rendu via le dépôt de pièce jointe depuis la page d&#8217;accueil.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.FieldUtils
+import com.digitech.dossier.script.model.impl.typedef.AttachmentUploadEventMode
+
+des = FieldUtils.getValue(_document, "CR_DES")
+
+if(_mode == AttachmentUploadEventMode.REMOVE) {
+  if(_attachment?.fileName == des) {
+    FieldUtils.setValue(_document, "CR_DES", null)
+  }
+}
+else {
+  if(des == null) {
+    FieldUtils.setValue(_document, "CR_DES", _attachment?.fileName)
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de création de compte-rendu avec pièce jointe</div>
+<p><span class="image"><img src="images/examples/attachment_uploaded_example.png" alt="attachment uploaded example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_06_BasketInitializer"><a class="anchor" href="#_06_BasketInitializer"></a>6. BasketInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_5"><a class="anchor" href="#_description_5"></a>6.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé pour initialiser les bannettes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_5"><a class="anchor" href="#_paramètres_5"></a>6.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_basket</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IBasketModel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Bannette</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueBasketInitializer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>_properties</strong> qui contient les propriétés de la bannette</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_3"><a class="anchor" href="#_exemple_3"></a>6.3. Exemple</h3>
+<div class="paragraph">
+<p>Masquer les bannettes ne contenant aucun document.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IBasketModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueBasketInitializer
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+
+ScriptResultModel&lt;ScriptResultValueBasketInitializer&gt; theOutput = _output
+IBasketModel basket = _basket
+if(basket.getResultNumber(_userContext) == 0) {
+  theOutput.getValue().getProperties().put(ScriptResultValueBasketInitializer.BasketProperty.DISPLAYED, "false")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de liste des bannettes (sans script)</div>
+<p><span class="image"><img src="images/examples/basket_initializer_example_without_script.png" alt="basket initializer example without script"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de liste des bannettes (avec script)</div>
+<p><span class="image"><img src="images/examples/basket_initializer_example_with_script.png" alt="basket initializer example with script"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_07_ConnectorPropertiesInitializer"><a class="anchor" href="#_07_ConnectorPropertiesInitializer"></a>7. ConnectorPropertiesInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_6"><a class="anchor" href="#_description_6"></a>7.1. Description</h3>
+<div class="paragraph">
+<p><em>à documenter</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_6"><a class="anchor" href="#_paramètres_6"></a>7.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IAttachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Pièce jointe</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_flowModel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Flow code</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueConnectorRule</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_sample_3"><a class="anchor" href="#_sample_3"></a>7.3. Sample</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_08_CustomHomeBlock"><a class="anchor" href="#_08_CustomHomeBlock"></a>8. CustomHomeBlock</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_7"><a class="anchor" href="#_description_7"></a>8.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est utilisé pour l&#8217;affichage des blocs personnalisables de l&#8217;écran d&#8217;accueil</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_7"><a class="anchor" href="#_paramètres_7"></a>8.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_parameterMap</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Map&lt;String, Object&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Paramètres</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>CustomBlockScriptResultModel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les propriétés du bloc</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_4"><a class="anchor" href="#_exemple_4"></a>8.3. Exemple</h3>
+<div class="paragraph">
+<p>Personnalisation du style de l&#8217;entête avec un aspect de sous-titre ("h2").</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backing.search.home.PredefinedChartHomeBlockModel
+
+PredefinedChartHomeBlockModel block = _model
+block.setHeaderStyleClass("h2")</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_09_DisplayRule"><a class="anchor" href="#_09_DisplayRule"></a>9. DisplayRule</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_8"><a class="anchor" href="#_description_8"></a>9.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est déclenché pour l&#8217;affichage des actions personnalisées.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_8"><a class="anchor" href="#_paramètres_8"></a>9.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IAttachment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Pièce jointe</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueDisplayRule</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>_valid</strong> qui détermine l&#8217;affichage de l&#8217;action</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_5"><a class="anchor" href="#_exemple_5"></a>9.3. Exemple</h3>
+<div class="paragraph">
+<p>Affichage de l&#8217;action "Diffuser le CR à Digitech !" si le document contient des pièces jointes et que le champ <em>Thématique</em> contient la valeur <em>Réunion
+transverse</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.common.service.IAuthorityList;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.jcorbairs.Term;
+
+IDocument document = _document
+Term updatedFieldCode = getAuthorityListService().getTerm((Integer) document.getField("CR_THEME").getValue())
+_result.setValid(document?.getAttachments(_userContext)?.size &gt; 0 &amp;&amp; updatedFieldCode.getCode() == "TH_TRANS")
+
+/**
+ * @return IAuthorityList the Authority List
+ */
+public static IAuthorityList getAuthorityListService() {
+  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple d&#8217;affichage de l&#8217;action</div>
+<p><span class="image"><img src="images/examples/display_rule_example_displayed.png" alt="display rule example displayed"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Exemple où l&#8217;action est masquée</div>
+<p><span class="image"><img src="images/examples/display_rule_example_hidden.png" alt="display rule example hidden"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_10_DocCreation"><a class="anchor" href="#_10_DocCreation"></a>10. DocCreation</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_9"><a class="anchor" href="#_description_9"></a>10.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est déclenché lors de la création d&#8217;un document, afin de préremplir les données du formulaire.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_9"><a class="anchor" href="#_paramètres_9"></a>10.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -199,7 +1379,9 @@
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Collection&lt;UpdateField&gt;</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champs du document</p>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
@@ -226,7 +1408,7 @@
 </table>
 </div>
 <div class="sect2">
-<h3 id="_example"><a class="anchor" href="#_example"></a>2.3. Example</h3>
+<h3 id="_exemple_6"><a class="anchor" href="#_exemple_6"></a>10.3. Exemple</h3>
 <div class="paragraph">
 <p>Ajout de l&#8217;utilisateur courant en tant que rédacteur et de la date du jour lorsque l&#8217;on accède à la page de création d&#8217;un document.</p>
 </div>
@@ -251,7 +1433,1514 @@ if(uf != null) {
 </div>
 <div class="paragraph">
 <div class="title">Exemple de création d&#8217;un Compte rendu</div>
-<p><span class="image"><img src="images/doc_creation_example.png" alt="doc creation example"></span></p>
+<p><span class="image"><img src="images/examples/doc_creation_example.png" alt="doc creation example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_11_DocumentActions"><a class="anchor" href="#_11_DocumentActions"></a>11. DocumentActions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_10"><a class="anchor" href="#_description_10"></a>11.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est utilisé lors de la récupération des actions pour un document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_10"><a class="anchor" href="#_paramètres_10"></a>11.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_fieldValueMap</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Map&lt;String, IFieldValue&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des champs</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueDocumentActions</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_allActions</strong> (toutes les actions) et <strong>_unavailableActions</strong> (actions
+indisponibles)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_7"><a class="anchor" href="#_exemple_7"></a>11.3. Exemple</h3>
+<div class="paragraph">
+<p>Ajout de l&#8217;interdiction d&#8217;effectuer l&#8217;action <strong>Verrouiller</strong> pour un utilisateur n&#8217;ayant pas le profil <em>DOC_ADMIN_CLIENT</em>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IFieldValue
+import com.digitech.dossier.common.utils.UserUtils
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
+
+ScriptResultModel&lt;ScriptResultValueDocumentActions&gt; theOutput = _output
+
+List&lt;ScriptResultValueDocumentActions.Action&gt; unavailableActions = new ArrayList&lt;ScriptResultValueDocumentActions.Action&gt;()
+if(!UserUtils.hasProfile(_userContext, "DOS_ADMIN_CLIENT")) {
+  unavailableActions.add(ScriptResultValueDocumentActions.Action.LOCK)
+}
+theOutput.getValue().getUnavailableActions().addAll(unavailableActions)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de résultats de recherche pour un utilisateur n&#8217;ayant pas le droit de verrouiller les documents</div>
+<p><span class="image"><img src="images/examples/document_actions_example.png" alt="document actions example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_12_DocumentChecker"><a class="anchor" href="#_12_DocumentChecker"></a>12. DocumentChecker</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_11"><a class="anchor" href="#_description_11"></a>12.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est utilisé avant une recherche pour valider les critères.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_11"><a class="anchor" href="#_paramètres_11"></a>12.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_search</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ISearchModel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recherche</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>parameters</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Map&lt;String, Object&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Paramètres</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueChecker</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>_valid</strong> qui détermine si la recherche est valide</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_8"><a class="anchor" href="#_exemple_8"></a>12.3. Exemple</h3>
+<div class="paragraph">
+<p>Blocage d&#8217;une recherche si une certaine condition est rencontrée.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueChecker
+
+if( condition ) {
+  ScriptResultModel&lt;ScriptResultValueChecker&gt; outputParam = output
+  ScriptResultValueChecker result = new ScriptResultValueChecker()
+  result.setValid(false);
+  outputParam.setValue(result)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_13_DocumentInitializer"><a class="anchor" href="#_13_DocumentInitializer"></a>13. DocumentInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_12"><a class="anchor" href="#_description_12"></a>13.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est déclenché lorsqu&#8217;une action personnalisée est lancée ou lors d&#8217;un export.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_12"><a class="anchor" href="#_paramètres_12"></a>13.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_airsDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document Airs</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueDocumentInitializer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>_documentList</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_9"><a class="anchor" href="#_exemple_9"></a>13.3. Exemple</h3>
+<div class="paragraph">
+<p>Affichage d&#8217;un message à la fin d&#8217;une action personnalisée.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentInitializer
+
+ScriptResultValueDocumentInitializer result = output.getValue()
+
+result.setMessageSeverity(com.digitech.dossier.script.model.IScriptResultValueModel.Severity.INFO)
+result.setMessageSummary("Action personnalisée sur le document '" + document.getAirsRefId() + "'")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de message</div>
+<p><span class="image"><img src="images/examples/document_initializer_example.png" alt="document initializer example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_14_ElementFilter"><a class="anchor" href="#_14_ElementFilter"></a>14. ElementFilter</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_13"><a class="anchor" href="#_description_13"></a>14.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé pour filtrer les listes d&#8217;éléments.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_13"><a class="anchor" href="#_paramètres_13"></a>14.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_users</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;?&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des utilisateurs</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_elements</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;?&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des éléments</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;?&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>Variable <strong>_elements</strong> qui correspond à la liste des éléments en sortie</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_10"><a class="anchor" href="#_exemple_10"></a>14.3. Exemple</h3>
+<div class="paragraph">
+<p>Filtrage sur une liste d&#8217;utilisateurs : affichage des personnes dont le nom de famille commence par un "D".</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.UserUtils
+import com.digitech.jcorbairs.User
+
+List&lt;User&gt; userList = _users
+List&lt;User&gt; filteredList = userList.findAll({it.getLastName().startsWith("D")})
+elements.clear()
+elements.addAll(filteredList)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de filtre sur une liste d&#8217;utilisateurs</div>
+<p><span class="image"><img src="images/examples/element_filter_example.png" alt="element filter example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_15_ExportInitializer"><a class="anchor" href="#_15_ExportInitializer"></a>15. ExportInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_14"><a class="anchor" href="#_description_14"></a>15.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est déclenché lorsqu&#8217;un export est lancé.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_14"><a class="anchor" href="#_paramètres_14"></a>15.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_documents</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;IDocument&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste de documents à exporter</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueExportInitializer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_fileResultPath</strong> et <strong>_fileResultName</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_11"><a class="anchor" href="#_exemple_11"></a>15.3. Exemple</h3>
+<div class="paragraph">
+<p>Définition des variables <strong>fileResultPath</strong> et <strong>fileResultName</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.model.IScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueExportInitializer
+
+IScriptResultModel resultModel = _output
+ScriptResultValueExportInitializer result = new ScriptResultValueExportInitializer()
+result.setFileResultPath("fileResultPath")
+result.setFileResultName("fileResultName")
+resultModel.setValue(result)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_16_ExternalScript"><a class="anchor" href="#_16_ExternalScript"></a>16. ExternalScript</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_15"><a class="anchor" href="#_description_15"></a>16.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script n&#8217;est pas directement géré par Dossier (librairies externes).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exemple_12"><a class="anchor" href="#_exemple_12"></a>16.2. Exemple</h3>
+
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_17_FieldDependency"><a class="anchor" href="#_17_FieldDependency"></a>17. FieldDependency</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_16"><a class="anchor" href="#_description_16"></a>17.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est déclenché lorsque l&#8217;on souhaite avoir une dépendance entre les valeurs de certains champs.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_15"><a class="anchor" href="#_paramètres_15"></a>17.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_fieldToUpdate</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IField</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ à mettre à jour</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_fieldMap</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Map&lt;String, IField&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des champs</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_updatedField</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IField</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ que l&#8217;on modifie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_updateFieldValues</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Object</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_parameterMap</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;IParameter&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IScriptResultModel&lt;T&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_13"><a class="anchor" href="#_exemple_13"></a>17.3. Exemple</h3>
+<div class="paragraph">
+<p>Modification de la liste des choix pour le champ <em>Plan de classement</em> lorsque la valeur du champ <em>Catégorie de document</em> est modifiée.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import java.lang.*;
+import java.util.*;
+import javax.faces.*;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.apache.commons.lang.*;
+
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.airs.IField;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+import com.digitech.dossier.common.Utils;
+
+import com.digitech.dossier.common.*;
+
+import java.lang.Double;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+
+import com.digitech.dossier.common.model.backing.factory.*;
+import javax.faces.component.html.*;
+import javax.faces.component.*;
+import javax.faces.model.*;
+
+import com.digitech.dossier.common.service.IAuthorityList;
+import com.digitech.jcorbairs.Term;
+
+IField fieldToUpdate = _fieldToUpdate
+IField updatedField = _updatedField
+List&lt;SelectItem&gt; selectItems = new SelectItemFactory().getAuthorities(fieldToUpdate.getConfigField());
+Term updatedFieldCode = getAuthorityListService().getTerm((Integer) updatedField.getValue())
+
+List&lt;SelectItem&gt; test = new ArrayList&lt;&gt;();
+for(items in selectItems) {
+  if(items.getValue() != null) {
+    Term code = getAuthorityListService().getTerm((Integer) items.getValue());
+    SelectItem item = new SelectItem()
+    item.setLabel(code.getValues()[0] as String)
+    item.setValue(code.getCode())
+    test.add(item)
+  }
+}
+List&lt;SelectItem&gt; filteredList = test.findAll({it.getValue().startsWith(updatedFieldCode.getCode() as String)})
+HtmlSelectOneMenu component = ((HtmlSelectOneMenu)  ((UIComponent)fieldToUpdate.getComponent()));
+component.getChildren().get(0).setValue(filteredList);
+
+/**
+ * @return IAuthorityList the Authority List
+ */
+public static IAuthorityList getAuthorityListService() {
+  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de choix pour la catégorie Commerce</div>
+<p><span class="image"><img src="images/examples/field_dependency_example_commerce.png" alt="field dependency example commerce"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de choix pour la catégorie Comptabilité</div>
+<p><span class="image"><img src="images/examples/field_dependency_example_compta.png" alt="field dependency example compta"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_18_FieldInitializer"><a class="anchor" href="#_18_FieldInitializer"></a>18. FieldInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_17"><a class="anchor" href="#_description_17"></a>18.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est déclenché lors de l&#8217;affichage des champs d&#8217;un document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_16"><a class="anchor" href="#_paramètres_16"></a>18.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_airsDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document Airs</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>parameters</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Map&lt;String, Object&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Paramètres</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueFieldInitializer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_results</strong>, <strong>_properties</strong> et <strong>_validatorAttributs</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_14"><a class="anchor" href="#_exemple_14"></a>18.3. Exemple</h3>
+<div class="paragraph">
+<p>Affichage des champs <em>CR_REDACTEUR</em> et <em>CR_DATE</em> en lecture seule.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.params.UpdateField
+import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueFieldInitializer
+
+UpdateField updateField = _updateField
+ScriptResultModel&lt;ScriptResultValueFieldInitializer&gt; theOutput = _output
+if(updateField.getFieldCode() == "CR_REDACTEUR" || updateField.getFieldCode() == "CR_DATE") {
+  theOutput.getValue().getProperties().put(ScriptResultValueFieldInitializer.FieldProperty.READ_ONLY, "true")
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de champs en lecture seule lors de la création d&#8217;un compte-rendu</div>
+<p><span class="image"><img src="images/examples/field_initializer_example.png" alt="field initializer example"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_19_GlobalLibrary"><a class="anchor" href="#_19_GlobalLibrary"></a>19. GlobalLibrary</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_18"><a class="anchor" href="#_description_18"></a>19.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé pour définir des méthodes qui pourront être utilisées dans d&#8217;autres scripts.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_exemple_15"><a class="anchor" href="#_exemple_15"></a>19.2. Exemple</h3>
+<div class="paragraph">
+<p>Nous avons le script de type GlobalLibrary <strong>DocUtils.groovy</strong> ci-dessous :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">public static String getThirdFromList(List&lt;String&gt; list) {
+  if(list.size() &gt;= 3) {
+    return list.get(2)
+  } else {
+    return null
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On pourra alors utiliser la méthode <strong>getThirdFromList</strong> dans un autre script de cette façon :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">List&lt;String&gt; list = new ArrayList&lt;&gt;()
+list.add("a")
+list.add("b")
+list.add("c")
+list.add("d")
+String res = DocUtils.getThirdFromList(List&lt;String&gt; list)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_20_HierarchicalTreeNodeInitializer"><a class="anchor" href="#_20_HierarchicalTreeNodeInitializer"></a>20. HierarchicalTreeNodeInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_19"><a class="anchor" href="#_description_19"></a>20.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est utilisé lors de l&#8217;affichage de l&#8217;arborescence dans la vue plan de classement.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_17"><a class="anchor" href="#_paramètres_17"></a>20.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_treeNode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IHierarchicalTreeNode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Arbre</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultValueHierarchicalTreeNodeInitializer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>_properties</strong> qui correspondent aux propriétés de l&#8217;arbre</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_16"><a class="anchor" href="#_exemple_16"></a>20.3. Exemple</h3>
+<div class="paragraph">
+<p>Personnalisation des icônes des nœuds de l&#8217;arborescence et ajout du déploiement intégral de l&#8217;arbre.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.model.impl.result.ScriptResultModel
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueHierarchicalTreeNodeInitializer
+
+ScriptResultModel&lt;ScriptResultValueHierarchicalTreeNodeInitializer&gt; theOutput = _output
+theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.EXPANDED, "true")
+theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.ICON_FOLDER, "/ui/common/img/dossier_logo.svg")
+theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fatal.svg")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple d&#8217;affichage du plan de classement (sans script)</div>
+<p><span class="image"><img src="images/examples/hierarchical_tree_node_initializer_example_without_script.png" alt="hierarchical tree node initializer example without script"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Exemple de personnalisation de l&#8217;affichage du plan de classement (avec script)</div>
+<p><span class="image"><img src="images/examples/hierarchical_tree_node_initializer_example_with_script.png" alt="hierarchical tree node initializer example with script"></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_21_Task"><a class="anchor" href="#_21_Task"></a>21. Task</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_20"><a class="anchor" href="#_description_20"></a>21.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé afin de décrire l&#8217;exécution d&#8217;une tâche.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_18"><a class="anchor" href="#_paramètres_18"></a>21.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_scriptLogger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_flowCodes</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;String&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Flowcodes</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_parameterMap</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Map&lt;String, Object&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Paramètres de la tâche</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_17"><a class="anchor" href="#_exemple_17"></a>21.3. Exemple</h3>
+<div class="paragraph">
+<p>On peut passer un paramètre dans la configuration de la tâche (fichier <strong>task.xml</strong>) de cette façon :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;parameter name="param" type="STRING" value="machin"/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Et ainsi récupérer ce paramètre dans le script afin de l&#8217;utiliser lorsque la tâche s&#8217;exécute :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.impl.Parameter
+
+Parameter param = _parameterMap?.get("param") as Parameter
+String res = param?.getValue()</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_22_WSAttachmentInitializer"><a class="anchor" href="#_22_WSAttachmentInitializer"></a>22. WSAttachmentInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_21"><a class="anchor" href="#_description_21"></a>22.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les pièces jointes (ajout ou mise à jour).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_19"><a class="anchor" href="#_paramètres_19"></a>22.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docId</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Doc ID</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attData</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IWSAttachmentUpdateType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Attachment data</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_mode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptModeRun</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mode</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultWSDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_secretLevel</strong>, <strong>_codeFieldValues</strong>, <strong>_ctxValues</strong> et <strong>_document</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>22.3. Exemple</h3>
+<div class="paragraph">
+<p>Arrêt du chargement d&#8217;une pièce jointe si l&#8217;attribut <strong>label</strong> n&#8217;a pas été renseigné dans la requête.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-curl hljs" data-lang="curl">curl --location 'http://localhost:7373/dossierweb/rest/attachment/9097' --header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--form 'attachmentData="{
+    \"scriptCode\": \"test\"
+}";type=application/json' --form 'fileData=@"/path/document.docx"'</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import com.digitech.dossier.webservices.type.WSAttachmentUpdateType
+
+ScriptResultWSDocument result = _output.getValue()
+WSAttachmentUpdateType att = _attData
+if(att.getLabel() == null) {
+  result.fillKOResult("Empty label")
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_23_WSDocumentInitializer"><a class="anchor" href="#_23_WSDocumentInitializer"></a>23. WSDocumentInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_22"><a class="anchor" href="#_description_22"></a>23.1. Description</h3>
+<div class="paragraph">
+<p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_20"><a class="anchor" href="#_paramètres_20"></a>23.2. Paramètres</h3>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docId</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Integer</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Doc ID</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_attData</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IWSAttachmentUpdateType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Attachment data</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_mode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptModeRun</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mode</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultWSDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_secretLevel</strong>, <strong>_codeFieldValues</strong>, <strong>_ctxValues</strong> et <strong>_document</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_19"><a class="anchor" href="#_exemple_19"></a>23.3. Exemple</h3>
+<div class="paragraph">
+<p>Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est mis à jour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.script.model.impl.result.ScriptModeRun
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import java.text.SimpleDateFormat
+
+def today = new Date()
+def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+if (_mode == ScriptModeRun.UPDATE) {
+  ScriptResultWSDocument scriptResult = _result
+  IDocument doc = _document as IDocument
+  String resume = doc.getField("CR_RESUME").getAirsValue()
+  String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
+  scriptResult.addFieldValue("CR_RESUME", newResume)
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Exemple d&#8217;ajout de commentaire dans le champ Résumé lors de la mise à jour d&#8217;un document</div>
+<p><span class="image"><img src="images/examples/ws_document_initializer_example.png" alt="ws document initializer example"></span></p>
 </div>
 </div>
 </div>

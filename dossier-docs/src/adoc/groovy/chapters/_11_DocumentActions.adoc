@@ -34,17 +34,15 @@ Ajout de l'interdiction d'effectuer l'action *Verrouiller* pour un utilisateur n
 
 [source, groovy]
 ----
-import com.digitech.dossier.common.model.backend.UserContext
 import com.digitech.dossier.common.model.backend.airs.IFieldValue
 import com.digitech.dossier.common.utils.UserUtils
 import com.digitech.dossier.script.model.impl.result.ScriptResultModel
 import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
 
-UserContext usrContext = _userContext
 ScriptResultModel<ScriptResultValueDocumentActions> theOutput = _output
 
 List<ScriptResultValueDocumentActions.Action> unavailableActions = new ArrayList<ScriptResultValueDocumentActions.Action>()
-if(!UserUtils.hasProfile(usrContext, "DOS_ADMIN_CLIENT")) {
+if(!UserUtils.hasProfile(_userContext, "DOS_ADMIN_CLIENT")) {
   unavailableActions.add(ScriptResultValueDocumentActions.Action.LOCK)
 }
 theOutput.getValue().getUnavailableActions().addAll(unavailableActions)

@@ -3,18 +3,40 @@
 
 === Description
 
-Point d'ancrage dans l'application
+Ce script permet de définir quelle pièce jointe est affichée _par défaut_ en vue hiérarchique.
 
 === Paramètres
 
-[options="header"]
-[cols="25%,25%,50%"]
+[options="noheader",cols="2a,2a,3a"]
 |===
-2+|Entrée|Sortie
-s|_Nom_ s|_Type_ .4+|ScriptResultValueAttachmentToDisplay
-|_logger|Logger
-|_userContext|IUserCoreContext
-|_docId|Integer
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_docId|Integer|ID du document
+|_attachmentList|List<IAttachment>|Liste des pièces jointes
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|ScriptResultValueAttachmentToDisplay 2+|contient les variables *_document* et *_attachment* correspondant au document et sa pièce jointe à afficher
 |===
 
 === Sample
+
+Tri de la liste des pièces jointes par ordre alphabétique.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.impl.comparator.AttachmentComparator
+import org.apache.commons.collections4.CollectionUtils
+
+if(CollectionUtils.isNotEmpty(_attachmentList)) {
+  output.attachment = _attachmentList.get(0)
+}
+----

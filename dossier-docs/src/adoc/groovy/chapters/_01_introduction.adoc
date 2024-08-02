@@ -3,4 +3,37 @@
 
 === Objet du document
 
-Ce document décrit les différents scripts groovy permettant la personnalisation d'Arcade GED.
+Ce document décrit les différents scripts {groovy} permettant la personnalisation d'Arcade GED.
+
+=== Bonnes pratiques et astuces {groovy}
+
+. Variables en entrée.
+
+Toutes les variables contextuelles transférées par l'application {arcadeged} sont préfixées du caractère *_*.
+
+[start=2]
+. Opérateur *elvis*
+
+Le langage {groovy} est (très) proche du langage {java}. En tout cas, le compilateur {groovy} interprète une syntaxe *pure* {java}.
+
+Cependant, le langage se trouve enrichi (_du point de vue de l'auteur de ce document {emoji-ok}_) par certaines caractéristiques, notamment l'opérateur https://docs.groovy-lang.org/next/html/documentation/core-operators.html#_elvis_operator[*elvis*, window="_blank"], un raccourci à l'opérateur ternaire {java}
+
+[source, groovy]
+----
+displayName = user.name ? user.name : 'Anonymous'
+// devient
+displayName = user.name ?: 'Anonymous'
+----
+
+[start=3]
+. Opérateur de navigation _"sécurisé"_
+
+ou dans la langue de _Shakespeare_ *Safe Navigation Operator*.
+
+L'opérateur est identique à _elvis_ et permet d'appel à des méthodes d'objet sans crainte de *NullPointerException*
+
+[source, groovy]
+----
+// si person ou address ou home est NULL, roadNumber sera NULL
+def roadNumber = person?.address?.home?.roadNumber
+----

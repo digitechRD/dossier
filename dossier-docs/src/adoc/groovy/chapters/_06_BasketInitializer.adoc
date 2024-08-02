@@ -36,12 +36,10 @@ Masquer les bannettes ne contenant aucun document.
 import com.digitech.dossier.common.model.backend.airs.IBasketModel
 import com.digitech.dossier.script.model.impl.result.ScriptResultValueBasketInitializer
 import com.digitech.dossier.script.model.impl.result.ScriptResultModel
-import com.digitech.dossier.common.model.backend.UserContext
 
-UserContext usrContext = _userContext
 ScriptResultModel<ScriptResultValueBasketInitializer> theOutput = _output
 IBasketModel basket = _basket
-if(basket.getResultNumber(usrContext) == 0) {
+if(basket.getResultNumber(_userContext) == 0) {
   theOutput.getValue().getProperties().put(ScriptResultValueBasketInitializer.BasketProperty.DISPLAYED, "false")
 }
 ----
