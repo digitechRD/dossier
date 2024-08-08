@@ -1,5 +1,5 @@
 [[attachment_rest]]
-=== Document
+=== Attachment
 
 [NOTE]
 ====
@@ -252,3 +252,38 @@ http://<host>:<port>/<context>/rest/attachment/5072/6703
   ]
 }
 ----
+
+===== {GET} /attachment/download/{attachmentId}
+
+Cette méthode permet de télécharger le binaire (contenu) d'une pièce jointe.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*attachmentId*|{path}|Identifiant de la pièce jointe|[red]*Oui*|6325
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/attachment/download/6703' \
+  -H 'accept: application/octet-stream'' \
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/attachment/download/6703
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie. Byte[] en réponse.
+|[red]*401*|Authentification non fournie
+|[red]*404*|Pièce jointe non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
