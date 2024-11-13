@@ -221,7 +221,7 @@ Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le docu
 .appel _curl_
 ----
 curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocument' \
---header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Authorization: Basic <credencials>' \
 --header 'Cookie: JSESSIONID=38558D0584562F70C045F65639F98D3E' \
 --form 'documentsData="{
     "currentDocument": {
@@ -365,7 +365,7 @@ cf le chapitre <<appendix_extenddocument>> pour une description de la structure 
 .appel _curl_
 ----
 curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocument' \
---header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Authorization: Basic <credencials>' \
 --header 'Cookie: JSESSIONID=9AF46F86AAE176E787C1BCF0F1B6FDFB' \
 --form 'documentsData="{
     "contentType": "CR",

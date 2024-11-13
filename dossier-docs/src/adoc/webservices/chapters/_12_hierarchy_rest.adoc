@@ -1,0 +1,318 @@
+[[hierarchy_rest]]
+=== Hiérarchie
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version *8.1* de {dossier}
+====
+
+==== Client
+
+La classe `com.digitech.dossier.rest.ws.IHierarchyClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation de cette *API* ({java} seulement)
+
+==== Authentification
+
+Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+==== Méthodes
+
+===== {GET} /hierarchy
+
+Cette méthode permet de récupérer l'arborescence d'un document.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{query}|Identifiant du document|[red]*Oui*|
+|*organizationId*|{query}|Identifiant de l'organisation|[green]*Non*|
+|*parentCtyCodes*|{query}|Liste des types de contenu [underline]#parents# pour lesquels la ou les arborescences seront construites|[green]*Non*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/hierarchy?docId=3331' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<hierarchy_rest_response>>)
+|[red]*404*|Document *DocId* non trouvé
+|[red]*401*|Authentification non fournie
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[hierarchy_rest_response]]
+[source,json]
+.Retour, arborescence
+----
+{
+  "originalDocId": <id>,
+  "originalCtyCodes": [
+    "<code1>", "<code2>"
+  ],
+  "originalOrganizationId": <id>,
+  "trees": [
+    {
+      "id": <id>,
+      "ctCode": "<ct_code>",
+      "title": "<title>",
+      "type": "<type>",
+      "children": [
+        {
+        "id": <id>,
+        "ctCode": "<ct_code>",
+        "title": "<title>",
+        "type": "<type>",
+        "children": [ ... ]
+        }
+        ...
+      ]
+    }
+  ]
+}
+----
+
+avec
+[cols="1a,1a,4a",options="header"]
+|===
+|Paramètre|Type|Description
+|*originalDocId*|_integer_|Identifiant du document recherché, pour lequel l'arborescence va être calculée (correspond au paramètre *docId* en _entrée_)
+|*originalCtyCodes*|liste de _string_|Liste des content-types parent (correspond au paramètre *parentCtyCodes* en _entrée_)
+|*originalOrganizationId*|_integer_|Identifiant de l'organisation sur lequel la recherche a été restreinte (correspond au paramètre *organizationId* en
+_entrée_). +
+[NOTE]
+====
+Ce champ ne sera pas disponible s'il n'a pas été transmis en _entrée_
+====
+|*trees* 2+|nœud parent des arborescences
+|*id*|_integer_|Identifiant du document
+|*ctCode*|_string_|Code du content-type d'appartenance du document
+|*title*|_string_|Titre / Label du nœud du document dans cette arborescence
+|*type*|_enum_|Type de nœud parmi:
+
+* *UNKNOWN*: inconnu (_ne devrait pas survenir_)
+* *FOLDER*: type *Dossier* / *Conteneur*
+* *FILE*: type *Fichier* / nœud _feuille_ / niveau le plus bas (profond) dans l'arborescence
+* *COMPUTED*: type *Calculé* / nœud _virtuel_
+
+|===
+
+[[hierarchy_rest_sample1]]
+[source,json]
+.(docId = 3331). Disponible dans 1 seule arbroescence
+----
+{
+  "hierarchy": {
+    "originalDocId": 3331,
+    "originalCtyCodes": [],
+    "trees": [
+      {
+        "id": 3331,
+        "ctCode": "PRO_CLIENT",
+        "title": "CD 22 (Côtes d'Armor) (INES 575)",
+        "type": "FOLDER",
+        "children": [
+          {
+            "id": 3332,
+            "ctCode": "PRO_AFFAIRE",
+            "title": "Principale - AIRS Délib (2018/48424 - Cabrit Sebastien - MAPA)",
+            "type": "FOLDER",
+            "children": [
+              {
+                "id": -1,
+                "ctCode": "PRO_DOCUMENT",
+                "title": "Comptabilité",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": -1,
+                    "ctCode": "PRO_DOCUMENT",
+                    "title": "Commande",
+                    "type": "COMPUTED",
+                    "children": [
+                      {
+                        "id": 3344,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "Courrier de notification (21/03/2019)",
+                        "type": "FILE"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": -1,
+                "ctCode": "PRO_DOCUMENT",
+                "title": "Commerce",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": -1,
+                    "ctCode": "PRO_DOCUMENT",
+                    "title": "Offre",
+                    "type": "COMPUTED",
+                    "children": [
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "DPGF / DQE",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3338,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "DQE (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      },
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "Matrice financière Digitech",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3340,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "Matrice V4.2 INTERNE (voir ds EXCEL) (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      },
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "BPU",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3339,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "BPU (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": -1,
+                    "ctCode": "PRO_DOCUMENT",
+                    "title": "DCE",
+                    "type": "COMPUTED",
+                    "children": [
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "CCTP / Cahier des charges",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3333,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "CCTP (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 3602,
+            "ctCode": "PRO_APP_DELIB",
+            "title": "AIRS Delib 6.0.2",
+            "type": "FILE"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+[[hierarchy_rest_sample2]]
+[source,json]
+.(docId = 72). Disponible dans 2 arbroescences
+----
+{
+  "hierarchy": {
+	"originalDocId": 72,
+	"originalCtyCodes": [],
+    "trees": [
+      {
+        "id": 45,
+        "ctCode": "PRO_SANTE",
+        "title": "M1301 - M1301",
+        "type": "FOLDER",
+        "children": [
+          {
+            "id": -1,
+            "ctCode": "ACC_TRAVAIL",
+            "title": "ACCIDENT DU TRAVAIL",
+            "type": "COMPUTED",
+            "children": [
+              {
+                "id": -1,
+                "ctCode": "ACC_TRAVAIL",
+                "title": "1276/03",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": 72,
+                    "ctCode": "ACC_TRAVAIL",
+                    "title": "AT Arrêt de travail - 04/02/2003",
+                    "type": "FILE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "ctCode": "ASSURE",
+        "title": "4263237 - BERNARD,FRANCOIS,JOSEPH MANES",
+        "type": "FOLDER",
+        "children": [
+          {
+            "id": -1,
+            "ctCode": "ACC_TRAVAIL",
+            "title": "ACCIDENT DU TRAVAIL",
+            "type": "COMPUTED",
+            "children": [
+              {
+                "id": -1,
+                "ctCode": "ACC_TRAVAIL",
+                "title": "1276/03",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": 72,
+                    "ctCode": "ACC_TRAVAIL",
+                    "title": "AT Arrêt de travail - 04/02/2003",
+                    "type": "FILE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+----

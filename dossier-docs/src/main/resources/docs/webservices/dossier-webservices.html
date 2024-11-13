@@ -32,7 +32,7 @@
 <h1>WebServices <strong>AIRS Dossier</strong></h1>
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
-<span id="revnumber">version 2.1,</span>
+<span id="revnumber">version 2.2,</span>
 <span id="revdate">08/08/2024</span>
 </div>
 <div id="toc" class="toc2">
@@ -96,73 +96,84 @@
 </li>
 </ul>
 </li>
-<li><a href="#attachment_rest">2.5. Attachment</a>
+<li><a href="#hierarchy_rest">2.5. Hiérarchie</a>
 <ul class="sectlevel3">
 <li><a href="#_client_5">2.5.1. Client</a></li>
 <li><a href="#_authentification_5">2.5.2. Authentification</a></li>
 <li><a href="#_méthodes_5">2.5.3. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_post_attachmentdocid">2.5.3.1. <strong class="post">POST</strong> /attachment/{docId}</a></li>
-<li><a href="#_get_attachmentdocid">2.5.3.2. <strong class="get">GET</strong> /attachment/{docId}</a></li>
-<li><a href="#_get_attachmentdocidattachmentid">2.5.3.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</a></li>
-<li><a href="#_delete_attachmentdocid">2.5.3.4. <strong class="delete">DELETE</strong> /attachment/{docId}</a></li>
-<li><a href="#_get_attachmentdownloadattachmentid">2.5.3.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</a></li>
+<li><a href="#_get_hierarchy">2.5.3.1. <strong class="get">GET</strong> /hierarchy</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#dossierContext_rest">2.6. DossierContext</a>
+<li><a href="#attachment_rest">2.6. Attachment</a>
 <ul class="sectlevel3">
 <li><a href="#_client_6">2.6.1. Client</a></li>
 <li><a href="#_authentification_6">2.6.2. Authentification</a></li>
 <li><a href="#_méthodes_6">2.6.3. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_dossiercontextflows">2.6.3.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
-<li><a href="#_get_dossiercontextcontenttypectycode">2.6.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
-<li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.6.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
+<li><a href="#_post_attachmentdocid">2.6.3.1. <strong class="post">POST</strong> /attachment/{docId}</a></li>
+<li><a href="#_get_attachmentdocid">2.6.3.2. <strong class="get">GET</strong> /attachment/{docId}</a></li>
+<li><a href="#_get_attachmentdocidattachmentid">2.6.3.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</a></li>
+<li><a href="#_delete_attachmentdocid">2.6.3.4. <strong class="delete">DELETE</strong> /attachment/{docId}</a></li>
+<li><a href="#_get_attachmentdownloadattachmentid">2.6.3.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#extenddocument_rest">2.7. ExtendDocument</a>
+<li><a href="#dossierContext_rest">2.7. DossierContext</a>
 <ul class="sectlevel3">
 <li><a href="#_client_7">2.7.1. Client</a></li>
 <li><a href="#_authentification_7">2.7.2. Authentification</a></li>
 <li><a href="#_méthodes_7">2.7.3. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_delete_extenddocumentdeletedocuments">2.7.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</a></li>
-<li><a href="#_delete_deletedocumentstypedeletetype">2.7.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</a></li>
-<li><a href="#_get_extenddocumentdocid">2.7.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</a></li>
-<li><a href="#_post_extenddocument">2.7.3.4. <strong class="post">POST</strong> /extendDocument</a></li>
-<li><a href="#_patch_extenddocument">2.7.3.5. <strong class="patch">PATCH</strong> /extendDocument</a></li>
+<li><a href="#_get_dossiercontextflows">2.7.3.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
+<li><a href="#_get_dossiercontextcontenttypectycode">2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
+<li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.7.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#extended_search_rest">2.8. ExtendSearch</a>
+<li><a href="#extenddocument_rest">2.8. ExtendDocument</a>
 <ul class="sectlevel3">
 <li><a href="#_client_8">2.8.1. Client</a></li>
 <li><a href="#_authentification_8">2.8.2. Authentification</a></li>
 <li><a href="#_méthodes_8">2.8.3. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_search4fieldsandattachments">2.8.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</a></li>
+<li><a href="#_delete_extenddocumentdeletedocuments">2.8.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</a></li>
+<li><a href="#_delete_deletedocumentstypedeletetype">2.8.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</a></li>
+<li><a href="#_get_extenddocumentdocid">2.8.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</a></li>
+<li><a href="#_post_extenddocument">2.8.3.4. <strong class="post">POST</strong> /extendDocument</a></li>
+<li><a href="#_patch_extenddocument">2.8.3.5. <strong class="patch">PATCH</strong> /extendDocument</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#workbook_rest">2.9. Workbook</a>
+<li><a href="#extended_search_rest">2.9. ExtendSearch</a>
 <ul class="sectlevel3">
 <li><a href="#_client_9">2.9.1. Client</a></li>
 <li><a href="#_authentification_9">2.9.2. Authentification</a></li>
 <li><a href="#_méthodes_9">2.9.3. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_post_workbook">2.9.3.1. <strong class="post">POST</strong> /workbook</a></li>
-<li><a href="#_get_workbookid">2.9.3.2. <strong class="get">GET</strong> /workbook/{id}</a></li>
-<li><a href="#_get_workbook">2.9.3.3. <strong class="get">GET</strong> /workbook</a></li>
-<li><a href="#_patch_workbook">2.9.3.4. <strong class="patch">PATCH</strong> /workbook</a></li>
-<li><a href="#_delete_workbookid">2.9.3.5. <strong class="delete">DELETE</strong> /workbook/{id}</a></li>
-<li><a href="#_patch_workbookidadd">2.9.3.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</a></li>
-<li><a href="#_patch_workbookidremove">2.9.3.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</a></li>
+<li><a href="#_get_search4fieldsandattachments">2.9.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#workbook_rest">2.10. Workbook</a>
+<ul class="sectlevel3">
+<li><a href="#_client_10">2.10.1. Client</a></li>
+<li><a href="#_authentification_10">2.10.2. Authentification</a></li>
+<li><a href="#_méthodes_10">2.10.3. Méthodes</a>
+<ul class="sectlevel4">
+<li><a href="#_post_workbook">2.10.3.1. <strong class="post">POST</strong> /workbook</a></li>
+<li><a href="#_get_workbookid">2.10.3.2. <strong class="get">GET</strong> /workbook/{id}</a></li>
+<li><a href="#_get_workbook">2.10.3.3. <strong class="get">GET</strong> /workbook</a></li>
+<li><a href="#_patch_workbook">2.10.3.4. <strong class="patch">PATCH</strong> /workbook</a></li>
+<li><a href="#_delete_workbookid">2.10.3.5. <strong class="delete">DELETE</strong> /workbook/{id}</a></li>
+<li><a href="#_patch_workbookidadd">2.10.3.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</a></li>
+<li><a href="#_patch_workbookidremove">2.10.3.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</a></li>
 </ul>
 </li>
 </ul>
@@ -173,52 +184,52 @@
 <ul class="sectlevel2">
 <li><a href="#document_soap">3.1. Document</a>
 <ul class="sectlevel3">
-<li><a href="#_client_10">3.1.1. Client</a></li>
-<li><a href="#_méthodes_10">3.1.2. Méthodes</a></li>
+<li><a href="#_client_11">3.1.1. Client</a></li>
+<li><a href="#_méthodes_11">3.1.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#autority_list_soap">3.2. AuthorityList</a>
 <ul class="sectlevel3">
-<li><a href="#_client_11">3.2.1. Client</a></li>
-<li><a href="#_méthodes_11">3.2.2. Méthodes</a></li>
-<li><a href="#_authentification_10">3.2.3. Authentification</a></li>
+<li><a href="#_client_12">3.2.1. Client</a></li>
+<li><a href="#_méthodes_12">3.2.2. Méthodes</a></li>
+<li><a href="#_authentification_11">3.2.3. Authentification</a></li>
 </ul>
 </li>
 <li><a href="#baskets_soap">3.3. Baskets</a>
 <ul class="sectlevel3">
-<li><a href="#_client_12">3.3.1. Client</a></li>
-<li><a href="#_méthodes_12">3.3.2. Méthodes</a></li>
+<li><a href="#_client_13">3.3.1. Client</a></li>
+<li><a href="#_méthodes_13">3.3.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#search_soap">3.4. Search</a>
 <ul class="sectlevel3">
-<li><a href="#_client_13">3.4.1. Client</a></li>
-<li><a href="#_méthodes_13">3.4.2. Méthodes</a></li>
+<li><a href="#_client_14">3.4.1. Client</a></li>
+<li><a href="#_méthodes_14">3.4.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#attachment_soap">3.5. Attachment</a>
 <ul class="sectlevel3">
-<li><a href="#_client_14">3.5.1. Client</a></li>
-<li><a href="#_méthodes_14">3.5.2. Méthodes</a></li>
+<li><a href="#_client_15">3.5.1. Client</a></li>
+<li><a href="#_méthodes_15">3.5.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#dossierContext_soap">3.6. DossierContext</a>
 <ul class="sectlevel3">
-<li><a href="#_client_15">3.6.1. Client</a></li>
-<li><a href="#_méthodes_15">3.6.2. Méthodes</a></li>
+<li><a href="#_client_16">3.6.1. Client</a></li>
+<li><a href="#_méthodes_16">3.6.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#extenddocument_soap">3.7. ExtendDocument</a>
 <ul class="sectlevel3">
-<li><a href="#_client_16">3.7.1. Client</a></li>
-<li><a href="#_méthodes_16">3.7.2. Méthodes</a></li>
+<li><a href="#_client_17">3.7.1. Client</a></li>
+<li><a href="#_méthodes_17">3.7.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#extended_search_soap">3.8. ExtendSearch</a>
 <ul class="sectlevel3">
-<li><a href="#_client_17">3.8.1. Client</a></li>
-<li><a href="#_authentification_11">3.8.2. Authentification</a></li>
-<li><a href="#_méthodes_17">3.8.3. Méthodes</a></li>
+<li><a href="#_client_18">3.8.1. Client</a></li>
+<li><a href="#_authentification_12">3.8.2. Authentification</a></li>
+<li><a href="#_méthodes_18">3.8.3. Méthodes</a></li>
 </ul>
 </li>
 </ul>
@@ -261,7 +272,7 @@
 <tr>
 <th class="tableblock halign-left valign-top">Date</th>
 <th class="tableblock halign-left valign-top">Version</th>
-<th class="tableblock halign-left valign-top">Etat</th>
+<th class="tableblock halign-left valign-top">État</th>
 <th class="tableblock halign-left valign-top">Objet</th>
 <th class="tableblock halign-left valign-top">Rédacteur</th>
 <th class="tableblock halign-left valign-top">Validateur</th>
@@ -269,18 +280,18 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22/06/2020</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13/11/2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.2</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ajout <strong>WSHierarchy</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">12/05/2021</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">08/08/2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Modification du document, ajout compatibilité <strong>7.1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ajout <strong>WSAttachment</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -293,10 +304,18 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">08/08/2024</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12/05/2021</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ajout WSAttachment#download</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modification du document, ajout compatibilité <strong>7.1</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22/06/2020</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -342,6 +361,7 @@ Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -410,6 +430,7 @@ Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="sect2">
 <h3 id="document_rest"><a class="anchor" href="#document_rest"></a>2.1. Document</h3>
 <div class="admonitionblock note">
@@ -429,7 +450,7 @@ Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 <div class="sect3">
 <h4 id="_client"><a class="anchor" href="#_client"></a>2.1.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -534,7 +555,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 <div class="title">appel <em>curl</em></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl --location --request POST '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document' \
---header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ='  \
+--header 'Authorization: Basic &lt;credencials&gt;'  \
 --form 'documentData="{
     \"contentType\": \"CR\",
     \"fields\": [
@@ -1199,6 +1220,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 <pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[4959, 2845]</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -1221,7 +1243,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 <div class="sect3">
 <h4 id="_client_2"><a class="anchor" href="#_client_2"></a>2.2.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IAuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IAuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -1457,6 +1479,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_authoritylist">Section 4.3, &#8220;Authority List modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -1479,7 +1502,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div class="sect3">
 <h4 id="_client_3"><a class="anchor" href="#_client_3"></a>2.3.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IBasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IBasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -2127,6 +2150,7 @@ de cette <strong>API</strong>.</p>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -2149,7 +2173,7 @@ de cette <strong>API</strong>.</p>
 <div class="sect3">
 <h4 id="_client_4"><a class="anchor" href="#_client_4"></a>2.4.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.ISearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.ISearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -2211,7 +2235,7 @@ de cette <strong>API</strong>.</p>
 <p><code><span style="color:#4DEFE9">query</span></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -2348,7 +2372,7 @@ de cette <strong>API</strong>.</p>
 <p><code><span style="color:#4DEFE9">query</span></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -2505,7 +2529,7 @@ de cette <strong>API</strong>.</p>
 <p><code><span style="color:#4DEFE9">query</span></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -2697,11 +2721,549 @@ de cette <strong>API</strong>.</p>
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_search">Section 4.4, &#8220;Search modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="attachment_rest"><a class="anchor" href="#attachment_rest"></a>2.5. Attachment</h3>
+<h3 id="hierarchy_rest"><a class="anchor" href="#hierarchy_rest"></a>2.5. Hiérarchie</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8.1</strong> de <code><span style="color:#D4CE28">AIRS Dossier</span></code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_client_5"><a class="anchor" href="#_client_5"></a>2.5.1. Client</h4>
+<div class="paragraph">
+<p>La classe <code>com.digitech.dossier.rest.ws.IHierarchyClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
+l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_authentification_5"><a class="anchor" href="#_authentification_5"></a>2.5.2. Authentification</h4>
+<div class="paragraph">
+<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_méthodes_5"><a class="anchor" href="#_méthodes_5"></a>2.5.3. Méthodes</h4>
+<div class="sect4">
+<h5 id="_get_hierarchy"><a class="anchor" href="#_get_hierarchy"></a>2.5.3.1. <strong class="get">GET</strong> /hierarchy</h5>
+<div class="paragraph">
+<p>Cette méthode permet de récupérer l&#8217;arborescence d&#8217;un document.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 30. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>docId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>organizationId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant de l&#8217;organisation</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>parentCtyCodes</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des types de contenu <span class="underline">parents</span> pour lesquels la ou les arborescences seront construites</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/hierarchy?docId=3331' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 31. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie (cf. <a href="#hierarchy_rest_response">Retour, arborescence</a>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">404</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document <strong>DocId</strong> non trouvé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="hierarchy_rest_response" class="listingblock">
+<div class="title">Retour, arborescence</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "originalDocId": &lt;id&gt;,
+  "originalCtyCodes": [
+    "&lt;code1&gt;", "&lt;code2&gt;"
+  ],
+  "originalOrganizationId": &lt;id&gt;,
+  "trees": [
+    {
+      "id": &lt;id&gt;,
+      "ctCode": "&lt;ct_code&gt;",
+      "title": "&lt;title&gt;",
+      "type": "&lt;type&gt;",
+      "children": [
+        {
+        "id": &lt;id&gt;,
+        "ctCode": "&lt;ct_code&gt;",
+        "title": "&lt;title&gt;",
+        "type": "&lt;type&gt;",
+        "children": [ ... ]
+        }
+        ...
+      ]
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>avec</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 66.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>originalDocId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document recherché, pour lequel l&#8217;arborescence va être calculée (correspond au paramètre <strong>docId</strong> en <em>entrée</em>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>originalCtyCodes</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>liste de <em>string</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des content-types parent (correspond au paramètre <strong>parentCtyCodes</strong> en <em>entrée</em>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>originalOrganizationId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant de l&#8217;organisation sur lequel la recherche a été restreinte (correspond au paramètre <strong>organizationId</strong> en
+<em>entrée</em>).<br></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce champ ne sera pas disponible s&#8217;il n&#8217;a pas été transmis en <em>entrée</em></p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>trees</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>nœud parent des arborescences</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>id</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ctCode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code du content-type d&#8217;appartenance du document</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>title</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Titre / Label du nœud du document dans cette arborescence</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>type</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>enum</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type de nœud parmi:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>UNKNOWN</strong>: inconnu (<em>ne devrait pas survenir</em>)</p>
+</li>
+<li>
+<p><strong>FOLDER</strong>: type <strong>Dossier</strong> / <strong>Conteneur</strong></p>
+</li>
+<li>
+<p><strong>FILE</strong>: type <strong>Fichier</strong> / nœud <em>feuille</em> / niveau le plus bas (profond) dans l&#8217;arborescence</p>
+</li>
+<li>
+<p><strong>COMPUTED</strong>: type <strong>Calculé</strong> / nœud <em>virtuel</em></p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="hierarchy_rest_sample1" class="listingblock">
+<div class="title">(docId = 3331). Disponible dans 1 seule arbroescence</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "hierarchy": {
+    "originalDocId": 3331,
+    "originalCtyCodes": [],
+    "trees": [
+      {
+        "id": 3331,
+        "ctCode": "PRO_CLIENT",
+        "title": "CD 22 (Côtes d'Armor) (INES 575)",
+        "type": "FOLDER",
+        "children": [
+          {
+            "id": 3332,
+            "ctCode": "PRO_AFFAIRE",
+            "title": "Principale - AIRS Délib (2018/48424 - Cabrit Sebastien - MAPA)",
+            "type": "FOLDER",
+            "children": [
+              {
+                "id": -1,
+                "ctCode": "PRO_DOCUMENT",
+                "title": "Comptabilité",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": -1,
+                    "ctCode": "PRO_DOCUMENT",
+                    "title": "Commande",
+                    "type": "COMPUTED",
+                    "children": [
+                      {
+                        "id": 3344,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "Courrier de notification (21/03/2019)",
+                        "type": "FILE"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": -1,
+                "ctCode": "PRO_DOCUMENT",
+                "title": "Commerce",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": -1,
+                    "ctCode": "PRO_DOCUMENT",
+                    "title": "Offre",
+                    "type": "COMPUTED",
+                    "children": [
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "DPGF / DQE",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3338,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "DQE (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      },
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "Matrice financière Digitech",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3340,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "Matrice V4.2 INTERNE (voir ds EXCEL) (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      },
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "BPU",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3339,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "BPU (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": -1,
+                    "ctCode": "PRO_DOCUMENT",
+                    "title": "DCE",
+                    "type": "COMPUTED",
+                    "children": [
+                      {
+                        "id": -1,
+                        "ctCode": "PRO_DOCUMENT",
+                        "title": "CCTP / Cahier des charges",
+                        "type": "COMPUTED",
+                        "children": [
+                          {
+                            "id": 3333,
+                            "ctCode": "PRO_DOCUMENT",
+                            "title": "CCTP (20/03/2019)",
+                            "type": "FILE"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": 3602,
+            "ctCode": "PRO_APP_DELIB",
+            "title": "AIRS Delib 6.0.2",
+            "type": "FILE"
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+<div id="hierarchy_rest_sample2" class="listingblock">
+<div class="title">(docId = 72). Disponible dans 2 arbroescences</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "hierarchy": {
+	"originalDocId": 72,
+	"originalCtyCodes": [],
+    "trees": [
+      {
+        "id": 45,
+        "ctCode": "PRO_SANTE",
+        "title": "M1301 - M1301",
+        "type": "FOLDER",
+        "children": [
+          {
+            "id": -1,
+            "ctCode": "ACC_TRAVAIL",
+            "title": "ACCIDENT DU TRAVAIL",
+            "type": "COMPUTED",
+            "children": [
+              {
+                "id": -1,
+                "ctCode": "ACC_TRAVAIL",
+                "title": "1276/03",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": 72,
+                    "ctCode": "ACC_TRAVAIL",
+                    "title": "AT Arrêt de travail - 04/02/2003",
+                    "type": "FILE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "ctCode": "ASSURE",
+        "title": "4263237 - BERNARD,FRANCOIS,JOSEPH MANES",
+        "type": "FOLDER",
+        "children": [
+          {
+            "id": -1,
+            "ctCode": "ACC_TRAVAIL",
+            "title": "ACCIDENT DU TRAVAIL",
+            "type": "COMPUTED",
+            "children": [
+              {
+                "id": -1,
+                "ctCode": "ACC_TRAVAIL",
+                "title": "1276/03",
+                "type": "COMPUTED",
+                "children": [
+                  {
+                    "id": 72,
+                    "ctCode": "ACC_TRAVAIL",
+                    "title": "AT Arrêt de travail - 04/02/2003",
+                    "type": "FILE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attachment_rest"><a class="anchor" href="#attachment_rest"></a>2.6. Attachment</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2717,28 +3279,28 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_5"><a class="anchor" href="#_client_5"></a>2.5.1. Client</h4>
+<h4 id="_client_6"><a class="anchor" href="#_client_6"></a>2.6.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IAttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IAttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_5"><a class="anchor" href="#_authentification_5"></a>2.5.2. Authentification</h4>
+<h4 id="_authentification_6"><a class="anchor" href="#_authentification_6"></a>2.6.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_5"><a class="anchor" href="#_méthodes_5"></a>2.5.3. Méthodes</h4>
+<h4 id="_méthodes_6"><a class="anchor" href="#_méthodes_6"></a>2.6.3. Méthodes</h4>
 <div class="sect4">
-<h5 id="_post_attachmentdocid"><a class="anchor" href="#_post_attachmentdocid"></a>2.5.3.1. <strong class="post">POST</strong> /attachment/{docId}</h5>
+<h5 id="_post_attachmentdocid"><a class="anchor" href="#_post_attachmentdocid"></a>2.6.3.1. <strong class="post">POST</strong> /attachment/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;ajouter ou de mettre à jour une pièce jointe</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 30. Paramètres en entrée</caption>
+<caption class="title">Table 32. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -2816,7 +3378,7 @@ de cette <strong>API</strong>.</p>
 <div class="title">appel <em>curl</em></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl --location --request POST '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/attachment/5072' \
---header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Authorization: Basic &lt;credencials&gt;' \
 --header 'Cookie: JSESSIONID=6528D38B0114048987669D4EF48BF9F1' \
 --form 'attachmentData="{
   "label": "PJ de test"}"
@@ -2831,7 +3393,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 31. Réponses</caption>
+<caption class="title">Table 33. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -2877,12 +3439,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_attachmentdocid"><a class="anchor" href="#_get_attachmentdocid"></a>2.5.3.2. <strong class="get">GET</strong> /attachment/{docId}</h5>
+<h5 id="_get_attachmentdocid"><a class="anchor" href="#_get_attachmentdocid"></a>2.6.3.2. <strong class="get">GET</strong> /attachment/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des informations des des pièces jointes d&#8217;un document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 32. Paramètres en entrée</caption>
+<caption class="title">Table 34. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -2934,7 +3496,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 33. Réponses</caption>
+<caption class="title">Table 35. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3006,12 +3568,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_attachmentdocidattachmentid"><a class="anchor" href="#_get_attachmentdocidattachmentid"></a>2.5.3.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</h5>
+<h5 id="_get_attachmentdocidattachmentid"><a class="anchor" href="#_get_attachmentdocidattachmentid"></a>2.6.3.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer un une pièce jointe ainsi que son document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 34. Paramètres en entrée</caption>
+<caption class="title">Table 36. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3080,7 +3642,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 35. Réponses</caption>
+<caption class="title">Table 37. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3162,12 +3724,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_attachmentdocid"><a class="anchor" href="#_delete_attachmentdocid"></a>2.5.3.4. <strong class="delete">DELETE</strong> /attachment/{docId}</h5>
+<h5 id="_delete_attachmentdocid"><a class="anchor" href="#_delete_attachmentdocid"></a>2.6.3.4. <strong class="delete">DELETE</strong> /attachment/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer une pièce jointe d&#8217;un document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 36. Paramètres en entrée</caption>
+<caption class="title">Table 38. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3236,7 +3798,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 37. Réponses</caption>
+<caption class="title">Table 39. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3294,12 +3856,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_attachmentdownloadattachmentid"><a class="anchor" href="#_get_attachmentdownloadattachmentid"></a>2.5.3.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</h5>
+<h5 id="_get_attachmentdownloadattachmentid"><a class="anchor" href="#_get_attachmentdownloadattachmentid"></a>2.6.3.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de télécharger le binaire (contenu) d&#8217;une pièce jointe.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 38. Paramètres en entrée</caption>
+<caption class="title">Table 40. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3351,7 +3913,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 39. Réponses</caption>
+<caption class="title">Table 41. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3397,11 +3959,12 @@ de cette <strong>API</strong>.</p>
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dossierContext_rest"><a class="anchor" href="#dossierContext_rest"></a>2.6. DossierContext</h3>
+<h3 id="dossierContext_rest"><a class="anchor" href="#dossierContext_rest"></a>2.7. DossierContext</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -3417,23 +3980,23 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_6"><a class="anchor" href="#_client_6"></a>2.6.1. Client</h4>
+<h4 id="_client_7"><a class="anchor" href="#_client_7"></a>2.7.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IDossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IDossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_6"><a class="anchor" href="#_authentification_6"></a>2.6.2. Authentification</h4>
+<h4 id="_authentification_7"><a class="anchor" href="#_authentification_7"></a>2.7.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_6"><a class="anchor" href="#_méthodes_6"></a>2.6.3. Méthodes</h4>
+<h4 id="_méthodes_7"><a class="anchor" href="#_méthodes_7"></a>2.7.3. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_dossiercontextflows"><a class="anchor" href="#_get_dossiercontextflows"></a>2.6.3.1. <strong class="get">GET</strong> /dossierContext/flows</h5>
+<h5 id="_get_dossiercontextflows"><a class="anchor" href="#_get_dossiercontextflows"></a>2.7.3.1. <strong class="get">GET</strong> /dossierContext/flows</h5>
 <div class="paragraph">
 <p>Cette méthode renvoie la liste des flux paramétrés au sein de l&#8217;application.</p>
 </div>
@@ -3452,7 +4015,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 40. Réponses</caption>
+<caption class="title">Table 42. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3524,12 +4087,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_dossiercontextcontenttypectycode"><a class="anchor" href="#_get_dossiercontextcontenttypectycode"></a>2.6.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</h5>
+<h5 id="_get_dossiercontextcontenttypectycode"><a class="anchor" href="#_get_dossiercontextcontenttypectycode"></a>2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 41. Paramètres en entrée</caption>
+<caption class="title">Table 43. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3598,7 +4161,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 42. Réponses</caption>
+<caption class="title">Table 44. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3677,12 +4240,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_dossiercontextmandatoryfieldsctycode"><a class="anchor" href="#_get_dossiercontextmandatoryfieldsctycode"></a>2.6.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</h5>
+<h5 id="_get_dossiercontextmandatoryfieldsctycode"><a class="anchor" href="#_get_dossiercontextmandatoryfieldsctycode"></a>2.7.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des champs obligatoires d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 43. Paramètres en entrée</caption>
+<caption class="title">Table 45. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3751,7 +4314,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 44. Réponses</caption>
+<caption class="title">Table 46. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3810,11 +4373,12 @@ de cette <strong>API</strong>.</p>
 }</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extenddocument_rest"><a class="anchor" href="#extenddocument_rest"></a>2.7. ExtendDocument</h3>
+<h3 id="extenddocument_rest"><a class="anchor" href="#extenddocument_rest"></a>2.8. ExtendDocument</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -3830,26 +4394,26 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_7"><a class="anchor" href="#_client_7"></a>2.7.1. Client</h4>
+<h4 id="_client_8"><a class="anchor" href="#_client_8"></a>2.8.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IExte,dDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
+<p>La classe <code>com.digitech.dossier.rest.ws.IExte,dDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_7"><a class="anchor" href="#_authentification_7"></a>2.7.2. Authentification</h4>
+<h4 id="_authentification_8"><a class="anchor" href="#_authentification_8"></a>2.8.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_7"><a class="anchor" href="#_méthodes_7"></a>2.7.3. Méthodes</h4>
+<h4 id="_méthodes_8"><a class="anchor" href="#_méthodes_8"></a>2.8.3. Méthodes</h4>
 <div class="sect4">
-<h5 id="_delete_extenddocumentdeletedocuments"><a class="anchor" href="#_delete_extenddocumentdeletedocuments"></a>2.7.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</h5>
+<h5 id="_delete_extenddocumentdeletedocuments"><a class="anchor" href="#_delete_extenddocumentdeletedocuments"></a>2.8.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 45. Paramètres en entrée</caption>
+<caption class="title">Table 47. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3901,7 +4465,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 46. Réponses</caption>
+<caption class="title">Table 48. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3965,12 +4529,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_deletedocumentstypedeletetype"><a class="anchor" href="#_delete_deletedocumentstypedeletetype"></a>2.7.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</h5>
+<h5 id="_delete_deletedocumentstypedeletetype"><a class="anchor" href="#_delete_deletedocumentstypedeletetype"></a>2.8.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 47. Paramètres en entrée</caption>
+<caption class="title">Table 49. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4041,7 +4605,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 48. Réponses</caption>
+<caption class="title">Table 50. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4105,12 +4669,12 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_extenddocumentdocid"><a class="anchor" href="#_get_extenddocumentdocid"></a>2.7.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</h5>
+<h5 id="_get_extenddocumentdocid"><a class="anchor" href="#_get_extenddocumentdocid"></a>2.8.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la première pièce jointe d&#8217;un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 49. Paramètres en entrée</caption>
+<caption class="title">Table 51. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4162,7 +4726,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 50. Réponses</caption>
+<caption class="title">Table 52. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4230,12 +4794,12 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_post_extenddocument"><a class="anchor" href="#_post_extenddocument"></a>2.7.3.4. <strong class="post">POST</strong> /extendDocument</h5>
+<h5 id="_post_extenddocument"><a class="anchor" href="#_post_extenddocument"></a>2.8.3.4. <strong class="post">POST</strong> /extendDocument</h5>
 <div class="paragraph">
 <p>Cette méthode permet créer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 51. Paramètres en entrée</caption>
+<caption class="title">Table 53. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4311,7 +4875,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div class="title">appel <em>curl</em></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl --location --request POST 'http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument' \
---header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Authorization: Basic &lt;credencials&gt;' \
 --header 'Cookie: JSESSIONID=38558D0584562F70C045F65639F98D3E' \
 --form 'documentsData="{
     "currentDocument": {
@@ -4393,7 +4957,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 52. Réponses</caption>
+<caption class="title">Table 54. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4457,12 +5021,12 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_extenddocument"><a class="anchor" href="#_patch_extenddocument"></a>2.7.3.5. <strong class="patch">PATCH</strong> /extendDocument</h5>
+<h5 id="_patch_extenddocument"><a class="anchor" href="#_patch_extenddocument"></a>2.8.3.5. <strong class="patch">PATCH</strong> /extendDocument</h5>
 <div class="paragraph">
 <p>Cette méthode permet de mettre à jour des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 53. Paramètres en entrée</caption>
+<caption class="title">Table 55. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4541,7 +5105,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div class="title">appel <em>curl</em></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl --location --request PATCH 'http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument' \
---header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
+--header 'Authorization: Basic &lt;credencials&gt;' \
 --header 'Cookie: JSESSIONID=9AF46F86AAE176E787C1BCF0F1B6FDFB' \
 --form 'documentsData="{
     "contentType": "CR",
@@ -4578,7 +5142,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 54. Réponses</caption>
+<caption class="title">Table 56. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4638,11 +5202,12 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_extenddocument">Section 4.6, &#8220;ExtendDocument modèles&#8221;</a> pour une description de la structure WSUpdateReportItemType.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extended_search_rest"><a class="anchor" href="#extended_search_rest"></a>2.8. ExtendSearch</h3>
+<h3 id="extended_search_rest"><a class="anchor" href="#extended_search_rest"></a>2.9. ExtendSearch</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4658,22 +5223,22 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_8"><a class="anchor" href="#_client_8"></a>2.8.1. Client</h4>
+<h4 id="_client_9"><a class="anchor" href="#_client_9"></a>2.9.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait l&#8217;utilisation
+<p>La classe <code>com.digitech.dossier.rest.ws.IExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_8"><a class="anchor" href="#_authentification_8"></a>2.8.2. Authentification</h4>
+<h4 id="_authentification_9"><a class="anchor" href="#_authentification_9"></a>2.9.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_8"><a class="anchor" href="#_méthodes_8"></a>2.8.3. Méthodes</h4>
+<h4 id="_méthodes_9"><a class="anchor" href="#_méthodes_9"></a>2.9.3. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_search4fieldsandattachments"><a class="anchor" href="#_get_search4fieldsandattachments"></a>2.8.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</h5>
+<h5 id="_get_search4fieldsandattachments"><a class="anchor" href="#_get_search4fieldsandattachments"></a>2.9.3.1. <strong class="get">GET</strong> search4FieldsAndAttachments</h5>
 <div class="paragraph">
 <p>Cette méthode permet à partir d&#8217;une requête <code><span style="color:#25EF72">Airs</span></code> de récupérer</p>
 </div>
@@ -4691,7 +5256,7 @@ de cette <strong>API</strong>.</p>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 55. Paramètres en entrée</caption>
+<caption class="title">Table 57. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4734,7 +5299,7 @@ de cette <strong>API</strong>.</p>
 <p><code><span style="color:#4DEFE9">query</span></code></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -4817,7 +5382,7 @@ http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4Fields
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 56. Réponses</caption>
+<caption class="title">Table 58. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4901,11 +5466,12 @@ http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4Fields
 <div class="paragraph">
 <p>cf. le chapitre <a href="#appendix_extendsearch">Section 4.8, &#8220;ExtendedSearch modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="workbook_rest"><a class="anchor" href="#workbook_rest"></a>2.9. Workbook</h3>
+<h3 id="workbook_rest"><a class="anchor" href="#workbook_rest"></a>2.10. Workbook</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4921,28 +5487,28 @@ http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4Fields
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_9"><a class="anchor" href="#_client_9"></a>2.9.1. Client</h4>
+<h4 id="_client_10"><a class="anchor" href="#_client_10"></a>2.10.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IWorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IWorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.2</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_9"><a class="anchor" href="#_authentification_9"></a>2.9.2. Authentification</h4>
+<h4 id="_authentification_10"><a class="anchor" href="#_authentification_10"></a>2.10.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_9"><a class="anchor" href="#_méthodes_9"></a>2.9.3. Méthodes</h4>
+<h4 id="_méthodes_10"><a class="anchor" href="#_méthodes_10"></a>2.10.3. Méthodes</h4>
 <div class="sect4">
-<h5 id="_post_workbook"><a class="anchor" href="#_post_workbook"></a>2.9.3.1. <strong class="post">POST</strong> /workbook</h5>
+<h5 id="_post_workbook"><a class="anchor" href="#_post_workbook"></a>2.10.3.1. <strong class="post">POST</strong> /workbook</h5>
 <div class="paragraph">
 <p>Cette méthode permet de créer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 57. Paramètres en entrée</caption>
+<caption class="title">Table 59. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4995,7 +5561,7 @@ de cette <strong>API</strong>.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl --location --request POST '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook' \
 -H 'accept: text/plain' \
-  -H 'Authorization: Basic QURNOnBhc3N3b3Jk' \
+  -H 'Authorization: Basic &lt;credencials&gt;' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "test",
@@ -5013,7 +5579,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 58. Réponses</caption>
+<caption class="title">Table 60. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5059,12 +5625,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_workbookid"><a class="anchor" href="#_get_workbookid"></a>2.9.3.2. <strong class="get">GET</strong> /workbook/{id}</h5>
+<h5 id="_get_workbookid"><a class="anchor" href="#_get_workbookid"></a>2.10.3.2. <strong class="get">GET</strong> /workbook/{id}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 59. Paramètres en entrée</caption>
+<caption class="title">Table 61. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5106,7 +5672,7 @@ de cette <strong>API</strong>.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'GET' \
   '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook/8001' \
---header 'Authorization: Basic bi5mZWxpeDpwYXNzd29yZA=='</code></pre>
+--header 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5116,7 +5682,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 60. Réponses</caption>
+<caption class="title">Table 62. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5204,7 +5770,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_workbook"><a class="anchor" href="#_get_workbook"></a>2.9.3.3. <strong class="get">GET</strong> /workbook</h5>
+<h5 id="_get_workbook"><a class="anchor" href="#_get_workbook"></a>2.10.3.3. <strong class="get">GET</strong> /workbook</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer tous les classeurs visibles par l&#8217;utilisateur</p>
 </div>
@@ -5223,7 +5789,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 61. Réponses</caption>
+<caption class="title">Table 63. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5285,12 +5851,12 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_workbook"><a class="anchor" href="#_patch_workbook"></a>2.9.3.4. <strong class="patch">PATCH</strong> /workbook</h5>
+<h5 id="_patch_workbook"><a class="anchor" href="#_patch_workbook"></a>2.10.3.4. <strong class="patch">PATCH</strong> /workbook</h5>
 <div class="paragraph">
 <p>Cette méthode permet de modifier un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 62. Paramètres en entrée</caption>
+<caption class="title">Table 64. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5344,7 +5910,7 @@ de cette <strong>API</strong>.</p>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">curl --location --request PATCH '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook' \
 -H 'accept: text/plain' \
-  -H 'Authorization: Basic QURNOnBhc3N3b3Jk' \
+  -H 'Authorization: Basic &lt;credencials&gt;' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "test modifié",
@@ -5362,7 +5928,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 63. Réponses</caption>
+<caption class="title">Table 65. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5402,12 +5968,12 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_delete_workbookid"><a class="anchor" href="#_delete_workbookid"></a>2.9.3.5. <strong class="delete">DELETE</strong> /workbook/{id}</h5>
+<h5 id="_delete_workbookid"><a class="anchor" href="#_delete_workbookid"></a>2.10.3.5. <strong class="delete">DELETE</strong> /workbook/{id}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 64. Paramètres en entrée</caption>
+<caption class="title">Table 66. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5450,7 +6016,7 @@ de cette <strong>API</strong>.</p>
 <pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'DELETE' \
   '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook/8001' \
   -H 'accept: */*' \
-  -H 'Authorization: Basic QURNOnBhc3N3b3Jk'</code></pre>
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -5460,7 +6026,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 65. Réponses</caption>
+<caption class="title">Table 67. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5508,12 +6074,12 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_patch_workbookidadd"><a class="anchor" href="#_patch_workbookidadd"></a>2.9.3.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</h5>
+<h5 id="_patch_workbookidadd"><a class="anchor" href="#_patch_workbookidadd"></a>2.10.3.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;ajouter des documents à un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 66. Paramètres en entrée</caption>
+<caption class="title">Table 68. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5586,7 +6152,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 67. Réponses</caption>
+<caption class="title">Table 69. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5634,12 +6200,12 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_patch_workbookidremove"><a class="anchor" href="#_patch_workbookidremove"></a>2.9.3.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</h5>
+<h5 id="_patch_workbookidremove"><a class="anchor" href="#_patch_workbookidremove"></a>2.10.3.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</h5>
 <div class="paragraph">
 <p>Cette méthode permet de retirer des documents d&#8217;un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 68. Paramètres en entrée</caption>
+<caption class="title">Table 70. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5712,7 +6278,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 69. Réponses</caption>
+<caption class="title">Table 71. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5759,6 +6325,7 @@ de cette <strong>API</strong>.</p>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -5793,6 +6360,7 @@ fichier. La génération de ces <em>"stubs"</em>) facilite votre dévelopement m
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 <div class="sect2">
 <h3 id="document_soap"><a class="anchor" href="#document_soap"></a>3.1. Document</h3>
 <div class="paragraph">
@@ -5807,14 +6375,14 @@ fichier. La génération de ces <em>"stubs"</em>) facilite votre dévelopement m
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_10"><a class="anchor" href="#_client_10"></a>3.1.1. Client</h4>
+<h4 id="_client_11"><a class="anchor" href="#_client_11"></a>3.1.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IDocumentWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_10"><a class="anchor" href="#_méthodes_10"></a>3.1.2. Méthodes</h4>
+<h4 id="_méthodes_11"><a class="anchor" href="#_méthodes_11"></a>3.1.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">create</dt>
@@ -5824,7 +6392,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 70. Paramètres en entrée</caption>
+<caption class="title">Table 72. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -5955,7 +6523,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 71. Paramètres en entrée</caption>
+<caption class="title">Table 73. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6083,7 +6651,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 72. Paramètres en entrée</caption>
+<caption class="title">Table 74. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6217,7 +6785,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 73. Paramètres en entrée</caption>
+<caption class="title">Table 75. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6309,7 +6877,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 74. Paramètres en entrée</caption>
+<caption class="title">Table 76. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6392,6 +6960,7 @@ de cette <strong>API</strong>.</p>
 &lt;/soap:Envelope&gt;</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -6408,14 +6977,14 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_11"><a class="anchor" href="#_client_11"></a>3.2.1. Client</h4>
+<h4 id="_client_12"><a class="anchor" href="#_client_12"></a>3.2.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IAuthorityListWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_11"><a class="anchor" href="#_méthodes_11"></a>3.2.2. Méthodes</h4>
+<h4 id="_méthodes_12"><a class="anchor" href="#_méthodes_12"></a>3.2.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getAuthorityListCodes</dt>
@@ -6427,7 +6996,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_10"><a class="anchor" href="#_authentification_10"></a>3.2.3. Authentification</h4>
+<h4 id="_authentification_11"><a class="anchor" href="#_authentification_11"></a>3.2.3. Authentification</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -6484,7 +7053,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 75. Paramètres en entrée</caption>
+<caption class="title">Table 77. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6575,6 +7144,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_authoritylist">Section 4.3, &#8220;Authority List modèles&#8221;</a> pour une description de la structure de retour. (Se référer à WSTerm).</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -6591,14 +7161,14 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_12"><a class="anchor" href="#_client_12"></a>3.3.1. Client</h4>
+<h4 id="_client_13"><a class="anchor" href="#_client_13"></a>3.3.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IBasketsWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_12"><a class="anchor" href="#_méthodes_12"></a>3.3.2. Méthodes</h4>
+<h4 id="_méthodes_13"><a class="anchor" href="#_méthodes_13"></a>3.3.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getBasketsList</dt>
@@ -6608,7 +7178,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 76. Paramètres en entrée</caption>
+<caption class="title">Table 78. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6691,7 +7261,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 77. Paramètres en entrée</caption>
+<caption class="title">Table 79. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6801,7 +7371,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 78. Paramètres en entrée</caption>
+<caption class="title">Table 80. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6895,7 +7465,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 79. Paramètres en entrée</caption>
+<caption class="title">Table 81. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7040,7 +7610,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 80. Paramètres en entrée</caption>
+<caption class="title">Table 82. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7169,7 +7739,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 81. Paramètres en entrée</caption>
+<caption class="title">Table 83. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7295,7 +7865,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 82. Paramètres en entrée</caption>
+<caption class="title">Table 84. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7408,7 +7978,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 83. Paramètres en entrée</caption>
+<caption class="title">Table 85. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7532,7 +8102,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 84. Paramètres en entrée</caption>
+<caption class="title">Table 86. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7662,6 +8232,7 @@ un jeton (authentication).</p>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -7678,14 +8249,14 @@ un jeton (authentication).</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_13"><a class="anchor" href="#_client_13"></a>3.4.1. Client</h4>
+<h4 id="_client_14"><a class="anchor" href="#_client_14"></a>3.4.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.ISearchWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_13"><a class="anchor" href="#_méthodes_13"></a>3.4.2. Méthodes</h4>
+<h4 id="_méthodes_14"><a class="anchor" href="#_méthodes_14"></a>3.4.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getResultNumberFromAirsRequest</dt>
@@ -7695,7 +8266,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 85. Paramètres en entrée</caption>
+<caption class="title">Table 87. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7735,7 +8306,7 @@ de cette <strong>API</strong>.</p>
 <p><strong>ctyCodeList</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -7805,7 +8376,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 86. Paramètres en entrée</caption>
+<caption class="title">Table 88. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7845,7 +8416,7 @@ de cette <strong>API</strong>.</p>
 <p><strong>ctyCodeList</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -7935,7 +8506,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 87. Paramètres en entrée</caption>
+<caption class="title">Table 89. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7975,7 +8546,7 @@ de cette <strong>API</strong>.</p>
 <p><strong>ctyCodeList</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -8131,6 +8702,7 @@ de cette <strong>API</strong>.</p>
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_search">Section 4.4, &#8220;Search modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -8147,13 +8719,13 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_14"><a class="anchor" href="#_client_14"></a>3.5.1. Client</h4>
+<h4 id="_client_15"><a class="anchor" href="#_client_15"></a>3.5.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IAttachmentWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_14"><a class="anchor" href="#_méthodes_14"></a>3.5.2. Méthodes</h4>
+<h4 id="_méthodes_15"><a class="anchor" href="#_méthodes_15"></a>3.5.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">addOrUpdate</dt>
@@ -8163,7 +8735,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 88. Paramètres en entrée</caption>
+<caption class="title">Table 90. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8283,7 +8855,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 89. Paramètres en entrée</caption>
+<caption class="title">Table 91. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8396,7 +8968,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 90. Paramètres en entrée</caption>
+<caption class="title">Table 92. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8530,7 +9102,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 91. Paramètres en entrée</caption>
+<caption class="title">Table 93. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8628,6 +9200,7 @@ de cette <strong>API</strong>.</p>
 &lt;/soap:Envelope&gt;</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -8644,14 +9217,14 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_15"><a class="anchor" href="#_client_15"></a>3.6.1. Client</h4>
+<h4 id="_client_16"><a class="anchor" href="#_client_16"></a>3.6.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IDossierContextWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_15"><a class="anchor" href="#_méthodes_15"></a>3.6.2. Méthodes</h4>
+<h4 id="_méthodes_16"><a class="anchor" href="#_méthodes_16"></a>3.6.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getFlows</dt>
@@ -8798,6 +9371,7 @@ de cette <strong>API</strong>.</p>
 &lt;/soap:Envelope&gt;</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -8814,14 +9388,14 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_16"><a class="anchor" href="#_client_16"></a>3.7.1. Client</h4>
+<h4 id="_client_17"><a class="anchor" href="#_client_17"></a>3.7.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IExtendDocumentWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_16"><a class="anchor" href="#_méthodes_16"></a>3.7.2. Méthodes</h4>
+<h4 id="_méthodes_17"><a class="anchor" href="#_méthodes_17"></a>3.7.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">deleteDocuments</dt>
@@ -8831,7 +9405,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 92. Paramètres en entrée</caption>
+<caption class="title">Table 94. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8941,7 +9515,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 93. Paramètres en entrée</caption>
+<caption class="title">Table 95. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9069,7 +9643,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 94. Paramètres en entrée</caption>
+<caption class="title">Table 96. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9173,7 +9747,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 95. Paramètres en entrée</caption>
+<caption class="title">Table 97. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9316,7 +9890,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 96. Paramètres en entrée</caption>
+<caption class="title">Table 98. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9444,6 +10018,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_extenddocument">Section 4.6, &#8220;ExtendDocument modèles&#8221;</a> pour une description de la structure de retour (voir WSUpdateReportItemType).</p>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -9474,20 +10049,20 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_17"><a class="anchor" href="#_client_17"></a>3.8.1. Client</h4>
+<h4 id="_client_18"><a class="anchor" href="#_client_18"></a>3.8.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IExtendSearchWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:1.3.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_11"><a class="anchor" href="#_authentification_11"></a>3.8.2. Authentification</h4>
+<h4 id="_authentification_12"><a class="anchor" href="#_authentification_12"></a>3.8.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_17"><a class="anchor" href="#_méthodes_17"></a>3.8.3. Méthodes</h4>
+<h4 id="_méthodes_18"><a class="anchor" href="#_méthodes_18"></a>3.8.3. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">search4FieldsAndAttachments</dt>
@@ -9510,7 +10085,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 97. Paramètres en entrée</caption>
+<caption class="title">Table 99. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 50%;">
@@ -9545,7 +10120,7 @@ de cette <strong>API</strong>.</p>
 <p><strong>ctyCodes</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des types de contenu dans lesquels la recherche est executée</p>
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong class="red">Oui</strong></p>
@@ -9674,6 +10249,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <p>cf le chapitre <a href="#appendix_extendsearch">Section 4.8, &#8220;ExtendedSearch modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
 <div style="page-break-after: always;"></div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -9687,7 +10263,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <p>connectionData (SOAP)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 98. Paramètres en entrée</caption>
+<caption class="title">Table 100. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -9756,7 +10332,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDocumentType (REST)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 99. Paramètres en sortie</caption>
+<caption class="title">Table 101. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -9879,7 +10455,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSCommonDocumentType (REST)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 100. Paramètres en sortie</caption>
+<caption class="title">Table 102. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -9978,7 +10554,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>documentData (SOAP)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 101. Paramètres en sortie</caption>
+<caption class="title">Table 103. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10111,7 +10687,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 102. Paramètres en sortie</caption>
+<caption class="title">Table 104. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10179,7 +10755,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSSearchResultType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 103. Paramètres en sortie</caption>
+<caption class="title">Table 105. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10252,7 +10828,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 104. Paramètres en sortie</caption>
+<caption class="title">Table 106. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10298,7 +10874,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSContentTypeInfosType (REST)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 105. Paramètres en sortie</caption>
+<caption class="title">Table 107. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10552,7 +11128,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 106. Paramètres en sortie</caption>
+<caption class="title">Table 108. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10628,7 +11204,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 107. Paramètres en sortie</caption>
+<caption class="title">Table 109. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10729,7 +11305,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 108. Paramètres en entrée</caption>
+<caption class="title">Table 110. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11035,7 +11611,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 109. Paramètres en sortie</caption>
+<caption class="title">Table 111. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11109,7 +11685,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 110. Paramètres en entrée</caption>
+<caption class="title">Table 112. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11274,7 +11850,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 111. Paramètres en sortie</caption>
+<caption class="title">Table 113. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11346,7 +11922,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 112. Paramètres en sortie</caption>
+<caption class="title">Table 114. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11416,7 +11992,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>attachmentData (SOAP)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 113. Paramètres en sortie</caption>
+<caption class="title">Table 115. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11560,7 +12136,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 114. Paramètres en sortie</caption>
+<caption class="title">Table 116. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11834,7 +12410,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 115. Paramètres en sortie</caption>
+<caption class="title">Table 117. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">

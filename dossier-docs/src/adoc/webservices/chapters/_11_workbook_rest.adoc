@@ -44,7 +44,7 @@ cf le chapitre <<appendix_workbook>> pour une description de la structure WSWork
 ----
 curl --location --request POST '<host>:<port>/<context>/rest/workbook' \
 -H 'accept: text/plain' \
-  -H 'Authorization: Basic QURNOnBhc3N3b3Jk' \
+  -H 'Authorization: Basic <credencials>' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "test",
@@ -94,7 +94,7 @@ Cette méthode permet de récupérer les métadonnées d'un document à partir d
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/workbook/8001' \
---header 'Authorization: Basic bi5mZWxpeDpwYXNzd29yZA=='
+--header 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -224,7 +224,7 @@ cf le chapitre <<appendix_workbook>> pour une description de la structure WSWork
 ----
 curl --location --request PATCH '<host>:<port>/<context>/rest/workbook' \
 -H 'accept: text/plain' \
-  -H 'Authorization: Basic QURNOnBhc3N3b3Jk' \
+  -H 'Authorization: Basic <credencials>' \
   -H 'Content-Type: application/json' \
   -d '{
   "name": "test modifié",
@@ -268,7 +268,7 @@ Cette méthode permet de supprimer un classeur
 curl -X 'DELETE' \
   '<host>:<port>/<context>/rest/workbook/8001' \
   -H 'accept: */*' \
-  -H 'Authorization: Basic QURNOnBhc3N3b3Jk'
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
