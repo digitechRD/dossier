@@ -28,6 +28,55 @@ Dans le cas où le *Mot de passe* est expiré, l'utilisateur doit au
 préalable saisir un nouveau *Mot de passe* avant de pouvoir accéder à la page d'*Accueil*.
 ====
 
+=== Authentification openID via Keycloak
+
+Si cette méthode d'authentification est paramétrée dans l'application {dossier}, la page de connexion Keycloak apparaîtra à la place de la page de connexion
+classique. L'utilisateur pourra ainsi se connecter et accéder à la page d'accueil.
+
+.Page de connexion Keycloak
+image:02_identification/keycloak_login.png[]
+
+Afin de permettre l'authentification via Keycloak dans l'application {dossier}, vous devrez tout d'abord ajouter un fichier contenant la configuration de
+votre client Keycloak dans le répertoire *xml*.
+
+[source, json]
+----
+{
+  "realm": "master",
+  "auth-server-url": "https://kc.digitechcloud.fr/",
+  "ssl-required": "external",
+  "resource": "ldap_digitech",
+  "credentials": {
+    "secret": "97AyhSNKWc169ibZOPQzn6pucnD2oZG5"
+  },
+  "confidential-port": 0
+}
+----
+
+Vous pouvez récupérer ce fichier depuis l'administration de votre client Keycloak en cliquant sur cette action :
+
+.Récupération de la configuration Keycloak
+image:02_identification/keycloak_config.png[]
+
+Vous allez ensuite modifier le fichier *params.xml* de cette façon :
+
+* Renseigner la balise *appConfig.authenticationMode* avec la valeur *OIC*
+
+[source, xml]
+----
+<appConfig>
+  <authenticationMode>OIC</authenticationMode>
+</appConfig>
+----
+
+* Ajouter la balise *oicConfig* avec le paramètre *configLocation* correspondant à l'emplacement du fichier de configuration Keycloak que vous aurez récupéré
+auparavant
+
+[source, xml]
+----
+<oicConfig configLocation="config_keycloak.json" />
+----
+
 === Déconnexion
 
 Une fois connecté à {dossier}, l'utilisateur peut se déconnecter à tout moment en cliquant sur le bouton image:icons/icon_logout.png[pdfwidth=24,
