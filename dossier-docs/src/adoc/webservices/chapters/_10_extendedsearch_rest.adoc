@@ -30,7 +30,13 @@ Cette méthode permet à partir d'une requête {airs} de récupérer
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*airsRequest*|{query}|Requête {airs}|[red]*Oui*|D_CREAT >= "28/03/2020"
-|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est exécutée|[red]*Oui*|CR
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est exécutée.
+[TIP]
+====
+Pour effectuer une recherche sur tous les types de contnues, vous pouvez spécifier \*.* . +
+La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant au *flowCode*
+====
+|[red]*Oui*|CR
 |*flowCode*|{query}|Code du flux dans lequel la recherche est effectuée. +
 Si Vide, celui-ci sera déduit de la liste des types de contenu|[red]*Oui*|CR
 |*continuationToken*|{query}|Clé de _continuation_. +
