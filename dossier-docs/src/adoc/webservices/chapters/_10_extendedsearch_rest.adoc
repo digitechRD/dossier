@@ -139,10 +139,20 @@ minimiser les opérations de migration.
 ====
 
 
-[cols="1a,1a,4a,1a,2a",options="header"]
+[cols="1a,1a,4a,1a,4a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
 5+|voir paramètres définis au chapitre <<extended_search_rest_v2,précédent>>
+|*sort*|{query}|Critères de tri, défini par le *<code du champ>[,<direction>]*
+[TIP]
+====
+Si vous souhaitez cumuler les champs de tri, veuillez simplement répéter l'attribut, ex.
+[source,text]
+----
+sort=D_CREAT,desc&sort=RESUME,asc&sort=TITRE
+----
+====
+|[green]*Non*|*D_CREAT,desc*
 |*delegated*|{query}|login de l'utilisateur avec lequel la requête sera jouée|[red]*Oui*|*n.felix*
 |===
