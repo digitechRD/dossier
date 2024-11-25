@@ -3,7 +3,7 @@
 
 [NOTE]
 ====
-Ce {webservice} n'est disponible qu'à partir de la version *7.1* de {dossier}
+Ce { webservice} n'est disponible qu'à partir de la version *7.1* de {dossier}
 ====
 
 ==== Client
@@ -17,7 +17,8 @@ Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentificati
 
 ==== Méthodes
 
-===== {GET} search4FieldsAndAttachments
+[[extended_search_rest_v1]]
+===== {GET} /search4FieldsAndAttachments
 
 Cette méthode permet à partir d'une requête {airs} de récupérer
 
@@ -124,3 +125,24 @@ La valeur _D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22_ correspond à *D_CREAT >= "0
 ----
 
 cf. le chapitre <<appendix_extendsearch>> pour une description de la structure de retour.
+
+[[extended_search_rest_v2]]
+===== {GET} /v2/search4FieldsAndAttachments
+
+Cette méthode est identique à la <<extended_search_rest_v2, précédente>>, mais permet en plus de déléguer la recherche effectuée sur un compte différent de
+celui authentifié à l'API.
+
+[NOTE]
+====
+La raison pour laquelle la méthode précédente n'est pas simplement utilisée est de conserver une *rétro-compatibilité* avec les clients existants et ainsi
+minimiser les opérations de migration.
+====
+
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+5+|voir paramètres définis au chapitre <<extended_search_rest_v2,précédent>>
+|*delegated*|{query}|login de l'utilisateur avec lequel la requête sera jouée|[red]*Oui*|*n.felix*
+|===
