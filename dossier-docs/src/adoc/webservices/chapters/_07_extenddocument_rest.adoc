@@ -33,7 +33,8 @@ Cette méthode permet de supprimer des documents par lot.
 ----
 curl -X 'DELETE' \
   'http://<host>:<port>/<context>/rest/extendDocument/deleteDocuments?docIds=1&docIds=2' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -95,7 +96,8 @@ DOC_REMOVE_TYPE_FORCE |[red]*Oui*|DOC_REMOVE_TYPE_DOC_ONLY
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/extendDocument/deleteDocumentsType/DOC_REMOVE_TYPE_DOC_ONLY?docIds=1&docIds=2' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -153,7 +155,8 @@ Cette méthode permet de récupérer la première pièce jointe d'un document ai
 ----
 curl -X 'PATCH' \
   '<host>:<port>/<context>/rest/extendDocument/5028' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

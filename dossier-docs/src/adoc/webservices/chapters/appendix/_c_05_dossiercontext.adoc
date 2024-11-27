@@ -63,13 +63,25 @@ Liste de flux
 * *reference*: champ de type _référence_, pouvant être de sous-catégorie :
 ** *user*: champ associé à un _utilisateur_
 ** *organization*: champ associé à un _organisation_
-** *authority*: champ associé à une _liste d'authorité_
-
-
+** *authority*: champ associé à une _liste d'autorité_
 |_string_
 |*required*|Champ requis ?||_boolean_
 |*readonly*|Champ en lecture seule ?||_boolean_
 |*multivalued*|Champ multivalué ?||_boolean_
-|*reference*|Champ référence ?|si _true_, cela signifie que ce champ est rattaché à une liste (utilisateur, organisation, liste d'authorité)|_boolean_
+|*reference*|Champ référence ?|si _true_, cela signifie que ce champ est rattaché à une liste (utilisateur, organisation, liste d'autorité)|_boolean_
 |*system*|Champ _système_ ?|Si _true_, champ interne, géré par le serveur {airs}|_boolean_
+|===
+
+[[appendix_dossiercontext_WSContentTypeLinkInfo]]
+*WSContentTypeLinkInfo* ({rest})
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*code*|Code du type de contenu||_string_
+|*label*|Libellé du type de contenu||_string_
+4+|*children*, liste des content-types _enfants_, de type *WSContentTypeLinkInfo*
+4+|*linkedFields*, information sur les champs servant de liens entre content-types.
+|*code*|Code du type de contenu *cible*||_string_
+|*parentFieldCode*|Code du type de contenu *source* (_parent_)||_string_
 |===

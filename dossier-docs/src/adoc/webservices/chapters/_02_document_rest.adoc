@@ -123,7 +123,8 @@ Cette méthode permet de récupérer les métadonnées d'un document à partir d
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/document/4959' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -282,6 +283,7 @@ Les documents enfants seront aussi supprimés.
 curl -X 'DELETE' \
   '<host>:<port>/<context>/rest/document/4959' \
   -H 'accept: text/plain' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -328,6 +330,7 @@ Les documents enfants seront aussi supprimés.
 curl -X 'DELETE' \
   '<host>:<port>/<context>/rest/document/remove/4959' \
   -H 'accept: text/plain' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

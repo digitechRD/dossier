@@ -94,7 +94,7 @@ Cette méthode permet de récupérer les métadonnées d'un document à partir d
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/workbook/8001' \
---header 'Authorization: Basic <credencials>'
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -155,7 +155,8 @@ Cette méthode permet de récupérer tous les classeurs visibles par l'utilisate
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/workbook' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -311,7 +312,8 @@ curl -X 'PATCH' \
 '<host>:<port>/<context>/rest/workbook/7887/add' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '[5555,6666]'
+  -d '[5555,6666]' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -354,7 +356,8 @@ curl -X 'PATCH' \
 '<host>:<port>/<context>/rest/workbook/7887/remove' \
   -H 'accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '[5555,6666]'
+  -d '[5555,6666]' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

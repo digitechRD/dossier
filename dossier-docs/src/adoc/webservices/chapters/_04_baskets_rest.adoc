@@ -27,7 +27,8 @@ Récupère la liste des noms des bannettes paramétrées pour l'application.
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/baskets' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -79,7 +80,8 @@ Cette méthode permet de récupérer la liste des noms des bannettes à partir d
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -127,7 +129,8 @@ Cette méthode permet de récupérer la liste des noms des bannettes à partir d
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/baskets/flowCode/PRO' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -177,7 +180,8 @@ Cette méthode permet d'obtenir le nombre de documents que contient la bannette 
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -221,7 +225,8 @@ Cette méthode permet d'obtenir les liens URL vers les documents de la bannette 
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

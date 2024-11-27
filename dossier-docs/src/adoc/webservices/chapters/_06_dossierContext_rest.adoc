@@ -27,7 +27,8 @@ Cette méthode renvoie la liste des flux paramétrés au sein de l'application.
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/dossierContext/flows' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -75,7 +76,7 @@ http://<host>:<port>/<context>/rest/dossierContext/flows
 }
 ----
 
-cf le chapitre <<appendix_dossiercontext>> pour une description de la structure de retour.
+cf le chapitre <<appendix_dossiercontext, en annexe>> pour une description de la structure de retour.
 
 [[dossierContext_contentType_ctycode_old]]
 ===== {GET} /dossierContext/contentType/{ctyCode}
@@ -100,7 +101,8 @@ Cette méthode permet de récupérer la liste des informations d'un type de cont
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flowCode=DOCUMENTATION' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -148,7 +150,7 @@ http://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flo
 }
 ----
 
-cf le chapitre <<appendix_dossiercontext_WSContentTypeInfosType>> pour une description de la structure de retour.
+cf le chapitre <<appendix_dossiercontext_WSContentTypeInfosType, en annexe>> pour une description de la structure de retour.
 
 ===== {GET} /dossierContext/mandatoryFields/{ctyCode}
 
@@ -167,7 +169,8 @@ Cette méthode permet de récupérer la liste des champs obligatoires d'un type 
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/dossierContext/mandatoryFields/CR?flowCode=CR' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -224,7 +227,8 @@ Cette méthode permet de récupérer la liste des informations d'un type de cont
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/dossierContext/contentType/CR/UPDATE' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [cols="^1a,4a",options="header"]
@@ -321,4 +325,68 @@ curl -X 'GET' \
 }
 ----
 
-cf le chapitre <<appendix_dossiercontext_WSContentTypeInfo>> pour une description de la structure de retour.
+cf le chapitre <<appendix_dossiercontext_WSContentTypeInfo, en annexe>> pour une description de la structure de retour.
+
+[[dossierContext_contentType_links]]
+===== {GET} /dossierContext/contentType/links/{ctCode}
+
+Cette méthode permet de récupérer les informations sur les liens entre content-types.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*ctCode*|{path}|Code du type de contenu|[red]*Oui*|DOC_CATEGORIE
+|*flowCode*|{query}|Code du flux dans lequel le type de contenu est paramétré
+
+[CAUTION]
+====
+Quel que soit le content-type que vous précisez, la hiérarchie complète sera retournée par l'API, c'est-à-dire en remontant au content-type *racine*.
+====
+|[green]*Non*|DOCUMENTATION
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/dossierContext/contentType/links/DOC_DOCUMENT' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<dossiercontext_getcontenttypejson_new_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Type de contenu non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[dossiercontext_getcontenttype_links_json_response]]
+[source,json]
+.WSContentTypeLinkInfo
+----
+{
+  "contentTypeLink": {
+    "code": "DOC_CATEGORIE",
+    "label": "Catégorie",
+    "children": [
+      {
+        "code": "DOC_DOCUMENT",
+        "label": "Document",
+        "linkedFields": [
+          {
+            "code": "DOC_CAT_CODE",
+            "parentFieldCode": "DOC_CAT_CODE"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+cf le chapitre <<appendix_dossiercontext_WSContentTypeLinkInfo, en annexe>> pour une description de la structure de retour.

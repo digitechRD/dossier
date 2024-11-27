@@ -58,7 +58,8 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/search/docCount?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -123,7 +124,8 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -199,7 +201,8 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

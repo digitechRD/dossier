@@ -51,11 +51,13 @@ Si vous souhaitez plus de résultats, le {webservice} doit être rappelé en ajo
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR&ctyCodes=PRO_CLIENT' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

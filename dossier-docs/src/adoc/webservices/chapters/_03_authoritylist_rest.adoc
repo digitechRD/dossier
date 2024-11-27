@@ -33,7 +33,8 @@ L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/authorityList' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -85,7 +86,8 @@ PRO_APP_FLUX_COU
 ----
 curl -X 'GET' \
   'http://<host>:<port>/<context>/rest/authorityList/PRO_APP_FLUX_COU' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]

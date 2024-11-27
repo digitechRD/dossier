@@ -92,7 +92,8 @@ Cette méthode permet de récupérer la liste des informations des des pièces j
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/attachment/5072' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -152,7 +153,8 @@ Cette méthode permet de récupérer un une pièce jointe ainsi que son document
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/attachment/5072/6703' \
-  -H 'accept: application/json'
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -222,7 +224,8 @@ Cette méthode permet de supprimer une pièce jointe d'un document AIRS.
 ----
 curl -X 'DELETE' \
   '<host>:<port>/<context>/rest/attachment/5072/6703' \
-  -H 'accept: application/json'' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
@@ -269,7 +272,8 @@ Cette méthode permet de télécharger le binaire (contenu) d'une pièce jointe.
 ----
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/attachment/download/6703' \
-  -H 'accept: application/octet-stream'' \
+  -H 'accept: application/octet-stream' \
+  -H 'Authorization: Basic <credencials>'
 ----
 
 [source]
