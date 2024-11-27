@@ -16,7 +16,8 @@ Liste de flux
 |===
 
 
-WSContentTypeInfosType (REST)
+[[appendix_dossiercontext_WSContentTypeInfosType]]
+*WSContentTypeInfosType* ({rest})
 [cols="2a,3a,3a,1a",options="header"]
 .Paramètres en sortie
 |===
@@ -28,8 +29,47 @@ WSContentTypeInfosType (REST)
 |*code*|Code du type de contenu fils||_string_
 |*id*|Identifiant AIRS du type de contenu fils||_integer_
 |*description*|Nom du type de contenu fils||_string_
-|*linksInfosList*|Informations du type de contenu fils| Contient une liste vide si le type de contenu fils n'a pas d'enfant|strucutre _linksInfosList_
+|*linksInfosList*|Informations du type de contenu fils| Contient une liste vide si le type de contenu fils n'a pas d'enfant|structure _linksInfosList_
 4+|*linksInfosList > linkedFieldInfos*
 |*fieldChildcode*|Code du champ utilisé par le type de contenu fils pour la liaison père-fils||_string_
 |*fieldFathercode*|Code du champ utilisé par le type de contenu père pour la liaison père-fils||_string_
+|===
+
+[[appendix_dossiercontext_WSContentTypeInfo]]
+*WSContentTypeInfo* ({rest})
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+|*code*|Code du type de contenu||_string_
+|*label*|Libellé du type de contenu||_string_
+|*mode*|Correspond au *mode* (type de fiche) demandé pour la liste des champs|Cela répète le paramètre transmis en entrée|_string_
+|*defaultSecretLevel*|Liste des niveaux de secret associés à ce type de contenu||liste d'_integer_
+|*children*|Codes des types de contenus enfant de celui-ci||_string_
+4+|*fields*, liste des champs disponibles
+|*id*|Identifiant ({airs}) du champ||_integer_
+|*code*|Code du champ||_string_
+|*label*|Libellé du champ||_string_
+|*type*|Type de champ|Valeurs possibles :
+
+* *id*: champ _identifiant_ {airs}
+* *secretLevel*: champ de type _niveau de secret_
+* *text*: champ de type _string/texte_
+* *full-text*: champ de type _full-text_
+* *date*: champ de type _date_
+* *float*: champ de type _float_
+* *numeric*: champ de type _numeric_
+* *auto-increment*: champ de type _auto-increment_
+* *reference*: champ de type _référence_, pouvant être de sous-catégorie :
+** *user*: champ associé à un _utilisateur_
+** *organization*: champ associé à un _organisation_
+** *authority*: champ associé à une _liste d'authorité_
+
+
+|_string_
+|*required*|Champ requis ?||_boolean_
+|*readonly*|Champ en lecture seule ?||_boolean_
+|*multivalued*|Champ multivalué ?||_boolean_
+|*reference*|Champ référence ?|si _true_, cela signifie que ce champ est rattaché à une liste (utilisateur, organisation, liste d'authorité)|_boolean_
+|*system*|Champ _système_ ?|Si _true_, champ interne, géré par le serveur {airs}|_boolean_
 |===

@@ -77,7 +77,13 @@ http://<host>:<port>/<context>/rest/dossierContext/flows
 
 cf le chapitre <<appendix_dossiercontext>> pour une description de la structure de retour.
 
+[[dossierContext_contentType_ctycode_old]]
 ===== {GET} /dossierContext/contentType/{ctyCode}
+
+[CAUTION]
+====
+Ce {webservice} est déprécié. + Veuillez utiliser le service décrit <<dossierContext_contentType_ctycode_new, ici>>.
+====
 
 Cette méthode permet de récupérer la liste des informations d'un type de contenu.
 
@@ -142,7 +148,7 @@ http://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flo
 }
 ----
 
-cf le chapitre <<appendix_dossiercontext>> pour une description de la structure de retour.
+cf le chapitre <<appendix_dossiercontext_WSContentTypeInfosType>> pour une description de la structure de retour.
 
 ===== {GET} /dossierContext/mandatoryFields/{ctyCode}
 
@@ -193,3 +199,126 @@ http://<host>:<port>/<context>/rest/dossierContext/mandatoryFields/CR?flowCode=C
   ]
 }
 ----
+
+[[dossierContext_contentType_ctycode_new]]
+===== {GET} /dossierContext/contentType/{ctyCode}/{mode}
+
+Cette méthode permet de récupérer la liste des informations d'un type de contenu.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*ctCode*|{path}|Code du type de contenu|[red]*Oui*|DOC_CATEGORIE
+|*mode*|{path}|Définition des champs selon le mode suivant :
+
+* *READ*: champs lors de la consultation d'un document.
+* *INSERT*: champs lors de la création d'un document (*valeur par défaut*)
+* *UPDATE*: champs lors de la mise à jour d'un document.
+* *INDEX*: champs disponibles lors de l'indexation d'un document.
+|[green]*Non*|INSERT
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://<host>:<port>/<context>/rest/dossierContext/contentType/CR/UPDATE' \
+  -H 'accept: application/json'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<dossiercontext_getcontenttypejson_new_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Type de contenu non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[dossiercontext_getcontenttypejson_new_response]]
+[source,json]
+.WSContentTypeInfo
+----
+{
+  "contentType": {
+    "code": "CR",
+    "label": "Compte rendu",
+    "mode": "update",
+    "defaultSecretLevel": [
+      10
+    ],
+    "children": [],
+    "fields": [
+      {
+        "id": -1,
+        "label": "Identifiant",
+        "type": "id",
+        "required": false,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": true
+      },
+      {
+        "id": 123,
+        "code": "CR_DES",
+        "label": "Désignation",
+        "type": "text",
+        "required": true,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 124,
+        "code": "CR_DATE",
+        "label": "Date événement",
+        "type": "date",
+        "required": true,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 125,
+        "code": "CR_RESUME",
+        "label": "Résumé",
+        "type": "full-text",
+        "required": false,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 126,
+        "code": "CR_THEME",
+        "label": "Thématique",
+        "type": "authority",
+        "required": true,
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 127,
+        "code": "CR_REDACTEUR",
+        "label": "Rédacteur",
+        "type": "user",
+        "required": true,
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      }
+    ]
+  }
+}
+----
+
+cf le chapitre <<appendix_dossiercontext_WSContentTypeInfo>> pour une description de la structure de retour.

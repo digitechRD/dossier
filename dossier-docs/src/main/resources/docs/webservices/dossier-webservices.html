@@ -33,13 +33,13 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 2.3,</span>
-<span id="revdate">08/08/2024</span>
+<span id="revdate">28/11/2024</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#rest">2. REST</a>
+<li><a href="#rest">2. <code><span style="color:#73A12E">rest</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#document_rest">2.1. Document</a>
 <ul class="sectlevel3">
@@ -129,8 +129,9 @@
 <li><a href="#_méthodes_7">2.7.3. Méthodes</a>
 <ul class="sectlevel4">
 <li><a href="#_get_dossiercontextflows">2.7.3.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
-<li><a href="#_get_dossiercontextcontenttypectycode">2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
+<li><a href="#dossierContext_contentType_ctycode_old">2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
 <li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.7.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
+<li><a href="#dossierContext_contentType_ctycode_new">2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}/{mode}</a></li>
 </ul>
 </li>
 </ul>
@@ -181,7 +182,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#soap">3. SOAP</a>
+<li><a href="#soap">3. <code><span style="color:#6666ff">soap</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#document_soap">3.1. Document</a>
 <ul class="sectlevel3">
@@ -281,10 +282,10 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">21/11/2024</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28/11/2024</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ajouts/Corrections <strong class="res">CPS</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ajouts/Corrections (<strong class="res">CPS</strong>)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -344,13 +345,13 @@ des intégrateurs de s&#8217;interfacer avec l&#8217;application <code><span sty
 <p>La liste des <code><span style="color:#0099ff">Web Services</span></code> disponibles est accessible à l&#8217;adresse</p>
 </div>
 <div class="listingblock">
-<div class="title">REST</div>
+<div class="title"><code><span style="color:#73A12E">rest</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/rest/services</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">SOAP</div>
+<div class="title"><code><span style="color:#6666ff">soap</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/services</code></pre>
 </div>
@@ -363,7 +364,7 @@ des intégrateurs de s&#8217;interfacer avec l&#8217;application <code><span sty
 </td>
 <td class="content">
 <div class="paragraph">
-<p>La plupart des <code><span style="color:#0099ff">Web Services</span></code> sont également accessibles en <strong>REST</strong>.<br>
+<p>La plupart des <code><span style="color:#0099ff">Web Services</span></code> sont également accessibles en <strong><code><span style="color:#73A12E">rest</span></code></strong>.<br>
 Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </div>
 </td>
@@ -375,7 +376,7 @@ Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="rest"><a class="anchor" href="#rest"></a>2. REST</h2>
+<h2 id="rest"><a class="anchor" href="#rest"></a>2. <code><span style="color:#73A12E">rest</span></code></h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -4342,7 +4343,21 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_dossiercontextcontenttypectycode"><a class="anchor" href="#_get_dossiercontextcontenttypectycode"></a>2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</h5>
+<h5 id="dossierContext_contentType_ctycode_old"><a class="anchor" href="#dossierContext_contentType_ctycode_old"></a>2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</h5>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Attention"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce <code><span style="color:#0099ff">Web Service</span></code> est déprécié. + Veuillez utiliser le service décrit <a href="#dossierContext_contentType_ctycode_new">ici</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
@@ -4491,7 +4506,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>cf le chapitre <a href="#appendix_dossiercontext">Section 4.5, &#8220;DossierContext modèles&#8221;</a> pour une description de la structure de retour.</p>
+<p>cf le chapitre <a href="#appendix_dossiercontext_WSContentTypeInfosType">[appendix_dossiercontext_WSContentTypeInfosType]</a> pour une description de la structure de retour.</p>
 </div>
 </div>
 <div class="sect4">
@@ -4628,6 +4643,224 @@ de cette <strong>API</strong>.</p>
 }</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="dossierContext_contentType_ctycode_new"><a class="anchor" href="#dossierContext_contentType_ctycode_new"></a>2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}/{mode}</h5>
+<div class="paragraph">
+<p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 47. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ctCode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code du type de contenu</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DOC_CATEGORIE</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>mode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Définition des champs selon le mode suivant :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>READ</strong>: champs lors de la consultation d&#8217;un document.</p>
+</li>
+<li>
+<p><strong>INSERT</strong>: champs lors de la création d&#8217;un document (<strong>valeur par défaut</strong>)</p>
+</li>
+<li>
+<p><strong>UPDATE</strong>: champs lors de la mise à jour d&#8217;un document.</p>
+</li>
+<li>
+<p><strong>INDEX</strong>: champs disponibles lors de l&#8217;indexation d&#8217;un document.</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>INSERT</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'GET' \
+  'http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/dossierContext/contentType/CR/UPDATE' \
+  -H 'accept: application/json'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 48. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie (cf. <a href="#dossiercontext_getcontenttypejson_new_response">WSContentTypeInfo</a>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">404</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type de contenu non trouvé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="dossiercontext_getcontenttypejson_new_response" class="listingblock">
+<div class="title">WSContentTypeInfo</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "contentType": {
+    "code": "CR",
+    "label": "Compte rendu",
+    "mode": "update",
+    "defaultSecretLevel": [
+      10
+    ],
+    "children": [],
+    "fields": [
+      {
+        "id": -1,
+        "label": "Identifiant",
+        "type": "id",
+        "required": false,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": true
+      },
+      {
+        "id": 123,
+        "code": "CR_DES",
+        "label": "Désignation",
+        "type": "text",
+        "required": true,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 124,
+        "code": "CR_DATE",
+        "label": "Date événement",
+        "type": "date",
+        "required": true,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 125,
+        "code": "CR_RESUME",
+        "label": "Résumé",
+        "type": "full-text",
+        "required": false,
+        "reference": false,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 126,
+        "code": "CR_THEME",
+        "label": "Thématique",
+        "type": "authority",
+        "required": true,
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      },
+      {
+        "id": 127,
+        "code": "CR_REDACTEUR",
+        "label": "Rédacteur",
+        "type": "user",
+        "required": true,
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "readonly": false
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>cf le chapitre <a href="#appendix_dossiercontext_WSContentTypeInfo">[appendix_dossiercontext_WSContentTypeInfo]</a> pour une description de la structure de retour.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -4668,7 +4901,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 47. Paramètres en entrée</caption>
+<caption class="title">Table 49. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4720,7 +4953,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 48. Réponses</caption>
+<caption class="title">Table 50. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4789,7 +5022,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 49. Paramètres en entrée</caption>
+<caption class="title">Table 51. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4860,7 +5093,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 50. Réponses</caption>
+<caption class="title">Table 52. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4929,7 +5162,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>Cette méthode permet de récupérer la première pièce jointe d&#8217;un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 51. Paramètres en entrée</caption>
+<caption class="title">Table 53. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4981,7 +5214,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 52. Réponses</caption>
+<caption class="title">Table 54. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5054,7 +5287,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>Cette méthode permet créer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 53. Paramètres en entrée</caption>
+<caption class="title">Table 55. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5212,7 +5445,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 54. Réponses</caption>
+<caption class="title">Table 56. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5281,7 +5514,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <p>Cette méthode permet de mettre à jour des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 55. Paramètres en entrée</caption>
+<caption class="title">Table 57. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5397,7 +5630,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 56. Réponses</caption>
+<caption class="title">Table 58. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5511,7 +5744,7 @@ de cette <strong>API</strong>.</p>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 57. Paramètres en entrée</caption>
+<caption class="title">Table 59. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5652,7 +5885,7 @@ http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4Fields
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 58. Réponses</caption>
+<caption class="title">Table 60. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5759,7 +5992,7 @@ minimiser les opérations de migration.</p>
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 59. Paramètres en entrée</caption>
+<caption class="title">Table 61. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -5879,7 +6112,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de créer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 60. Paramètres en entrée</caption>
+<caption class="title">Table 62. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5950,7 +6183,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 61. Réponses</caption>
+<caption class="title">Table 63. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6001,7 +6234,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 62. Paramètres en entrée</caption>
+<caption class="title">Table 64. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6053,7 +6286,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 63. Réponses</caption>
+<caption class="title">Table 65. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6160,7 +6393,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 64. Réponses</caption>
+<caption class="title">Table 66. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6227,7 +6460,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de modifier un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 65. Paramètres en entrée</caption>
+<caption class="title">Table 67. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6299,7 +6532,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 66. Réponses</caption>
+<caption class="title">Table 68. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6344,7 +6577,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 67. Paramètres en entrée</caption>
+<caption class="title">Table 69. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6397,7 +6630,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 68. Réponses</caption>
+<caption class="title">Table 70. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6450,7 +6683,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;ajouter des documents à un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 69. Paramètres en entrée</caption>
+<caption class="title">Table 71. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6523,7 +6756,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 70. Réponses</caption>
+<caption class="title">Table 72. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6576,7 +6809,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de retirer des documents d&#8217;un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 71. Paramètres en entrée</caption>
+<caption class="title">Table 73. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6649,7 +6882,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 72. Réponses</caption>
+<caption class="title">Table 74. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6703,8 +6936,38 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="soap"><a class="anchor" href="#soap"></a>3. SOAP</h2>
+<h2 id="soap"><a class="anchor" href="#soap"></a>3. <code><span style="color:#6666ff">soap</span></code></h2>
 <div class="sectionbody">
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Préférez les <code><span style="color:#0099ff">Web Services</span></code> de type <code><span style="color:#73A12E">rest</span></code> !</p>
+</div>
+<div class="paragraph">
+<p>En effet, tout en offrant <em>a minima</em> les mêmes services, ils ont de nombreux avantages :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Plus faciles à utiliser.</p>
+</li>
+<li>
+<p>Moins consommateur, tant au niveau <em>mémoire</em> que <em>cpu</em>, côté client et serveur.</p>
+</li>
+<li>
+<p>Plus efficient, rapide.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -6763,7 +7026,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 73. Paramètres en entrée</caption>
+<caption class="title">Table 75. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -6894,7 +7157,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 74. Paramètres en entrée</caption>
+<caption class="title">Table 76. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7022,7 +7285,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 75. Paramètres en entrée</caption>
+<caption class="title">Table 77. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7156,7 +7419,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 76. Paramètres en entrée</caption>
+<caption class="title">Table 78. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7248,7 +7511,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 77. Paramètres en entrée</caption>
+<caption class="title">Table 79. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7424,7 +7687,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 78. Paramètres en entrée</caption>
+<caption class="title">Table 80. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7549,7 +7812,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 79. Paramètres en entrée</caption>
+<caption class="title">Table 81. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7632,7 +7895,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 80. Paramètres en entrée</caption>
+<caption class="title">Table 82. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7742,7 +8005,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 81. Paramètres en entrée</caption>
+<caption class="title">Table 83. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7836,7 +8099,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 82. Paramètres en entrée</caption>
+<caption class="title">Table 84. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -7981,7 +8244,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 83. Paramètres en entrée</caption>
+<caption class="title">Table 85. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8110,7 +8373,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 84. Paramètres en entrée</caption>
+<caption class="title">Table 86. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8236,7 +8499,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 85. Paramètres en entrée</caption>
+<caption class="title">Table 87. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8349,7 +8612,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 86. Paramètres en entrée</caption>
+<caption class="title">Table 88. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8473,7 +8736,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 87. Paramètres en entrée</caption>
+<caption class="title">Table 89. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8637,7 +8900,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 88. Paramètres en entrée</caption>
+<caption class="title">Table 90. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8747,7 +9010,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 89. Paramètres en entrée</caption>
+<caption class="title">Table 91. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8877,7 +9140,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 90. Paramètres en entrée</caption>
+<caption class="title">Table 92. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9106,7 +9369,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 91. Paramètres en entrée</caption>
+<caption class="title">Table 93. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9226,7 +9489,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 92. Paramètres en entrée</caption>
+<caption class="title">Table 94. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9339,7 +9602,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 93. Paramètres en entrée</caption>
+<caption class="title">Table 95. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9473,7 +9736,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 94. Paramètres en entrée</caption>
+<caption class="title">Table 96. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9776,7 +10039,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 95. Paramètres en entrée</caption>
+<caption class="title">Table 97. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9886,7 +10149,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 96. Paramètres en entrée</caption>
+<caption class="title">Table 98. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10014,7 +10277,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 97. Paramètres en entrée</caption>
+<caption class="title">Table 99. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10118,7 +10381,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 98. Paramètres en entrée</caption>
+<caption class="title">Table 100. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10261,7 +10524,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 99. Paramètres en entrée</caption>
+<caption class="title">Table 101. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10456,7 +10719,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 100. Paramètres en entrée</caption>
+<caption class="title">Table 102. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 50%;">
@@ -10631,10 +10894,10 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <div class="sect2">
 <h3 id="appendix_general"><a class="anchor" href="#appendix_general"></a>4.1. modèles globaux</h3>
 <div class="paragraph">
-<p>connectionData (SOAP)</p>
+<p>connectionData (<code><span style="color:#6666ff">soap</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 101. Paramètres en entrée</caption>
+<caption class="title">Table 103. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10700,10 +10963,10 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <div class="paragraph">
-<p>WSDocumentType (REST)</p>
+<p>WSDocumentType (<code><span style="color:#73A12E">rest</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 102. Paramètres en sortie</caption>
+<caption class="title">Table 104. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10823,10 +11086,10 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>WSCommonDocumentType (REST)</p>
+<p>WSCommonDocumentType (<code><span style="color:#73A12E">rest</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 103. Paramètres en sortie</caption>
+<caption class="title">Table 105. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -10922,10 +11185,10 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>documentData (SOAP)</p>
+<p>documentData (<code><span style="color:#6666ff">soap</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 104. Paramètres en sortie</caption>
+<caption class="title">Table 106. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11058,7 +11321,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 105. Paramètres en sortie</caption>
+<caption class="title">Table 107. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11126,7 +11389,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSSearchResultType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 106. Paramètres en sortie</caption>
+<caption class="title">Table 108. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11199,7 +11462,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 107. Paramètres en sortie</caption>
+<caption class="title">Table 109. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11241,11 +11504,11 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>WSContentTypeInfosType (REST)</p>
+<div id="appendix_dossiercontext_WSContentTypeInfosType" class="paragraph">
+<p><strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 108. Paramètres en sortie</caption>
+<caption class="title">Table 110. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11349,7 +11612,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Contient une liste vide si le type de contenu fils n&#8217;a pas d&#8217;enfant</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>strucutre <em>linksInfosList</em></p>
+<p>structure <em>linksInfosList</em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -11379,6 +11642,253 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="appendix_dossiercontext_WSContentTypeInfo" class="paragraph">
+<p><strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 111. Paramètres en sortie</caption>
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Observations</th>
+<th class="tableblock halign-left valign-top">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>code</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code du type de contenu</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>label</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Libellé du type de contenu</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>mode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Correspond au <strong>mode</strong> (type de fiche) demandé pour la liste des champs</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Cela répète le paramètre transmis en entrée</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>defaultSecretLevel</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des niveaux de secret associés à ce type de contenu</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>liste d'<em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>children</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Codes des types de contenus enfant de celui-ci</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="4"><div class="content"><div class="paragraph">
+<p><strong>fields</strong>, liste des champs disponibles</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>id</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant (<code><span style="color:#25EF72">Airs</span></code>) du champ</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>code</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code du champ</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>label</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Libellé du champ</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>type</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type de champ</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valeurs possibles :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>id</strong>: champ <em>identifiant</em> <code><span style="color:#25EF72">Airs</span></code></p>
+</li>
+<li>
+<p><strong>secretLevel</strong>: champ de type <em>niveau de secret</em></p>
+</li>
+<li>
+<p><strong>text</strong>: champ de type <em>string/texte</em></p>
+</li>
+<li>
+<p><strong>full-text</strong>: champ de type <em>full-text</em></p>
+</li>
+<li>
+<p><strong>date</strong>: champ de type <em>date</em></p>
+</li>
+<li>
+<p><strong>float</strong>: champ de type <em>float</em></p>
+</li>
+<li>
+<p><strong>numeric</strong>: champ de type <em>numeric</em></p>
+</li>
+<li>
+<p><strong>auto-increment</strong>: champ de type <em>auto-increment</em></p>
+</li>
+<li>
+<p><strong>reference</strong>: champ de type <em>référence</em>, pouvant être de sous-catégorie :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>user</strong>: champ associé à un <em>utilisateur</em></p>
+</li>
+<li>
+<p><strong>organization</strong>: champ associé à un <em>organisation</em></p>
+</li>
+<li>
+<p><strong>authority</strong>: champ associé à une <em>liste d&#8217;authorité</em></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>required</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ requis ?</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>boolean</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>readonly</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ en lecture seule ?</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>boolean</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>multivalued</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ multivalué ?</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>boolean</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>reference</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ référence ?</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>si <em>true</em>, cela signifie que ce champ est rattaché à une liste (utilisateur, organisation, liste d&#8217;authorité)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>boolean</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>system</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Champ <em>système</em> ?</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si <em>true</em>, champ interne, géré par le serveur <code><span style="color:#25EF72">Airs</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>boolean</em></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -11499,7 +12009,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 109. Paramètres en sortie</caption>
+<caption class="title">Table 112. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11575,7 +12085,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 110. Paramètres en sortie</caption>
+<caption class="title">Table 113. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11676,7 +12186,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 111. Paramètres en entrée</caption>
+<caption class="title">Table 114. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -11982,7 +12492,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 112. Paramètres en sortie</caption>
+<caption class="title">Table 115. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12056,7 +12566,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 113. Paramètres en entrée</caption>
+<caption class="title">Table 116. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12221,7 +12731,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 114. Paramètres en sortie</caption>
+<caption class="title">Table 117. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12293,7 +12803,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 115. Paramètres en sortie</caption>
+<caption class="title">Table 118. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12360,10 +12870,10 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>attachmentData (SOAP)</p>
+<p>attachmentData (<code><span style="color:#6666ff">soap</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 116. Paramètres en sortie</caption>
+<caption class="title">Table 119. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12454,7 +12964,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>WSCommonAttachmentUpdateType (REST)</p>
+<p>WSCommonAttachmentUpdateType (<code><span style="color:#73A12E">rest</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
@@ -12507,7 +13017,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 117. Paramètres en sortie</caption>
+<caption class="title">Table 120. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12781,7 +13291,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 118. Paramètres en sortie</caption>
+<caption class="title">Table 121. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
