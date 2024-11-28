@@ -243,7 +243,14 @@
 <li><a href="#appendix_document">4.2. Document modèles</a></li>
 <li><a href="#appendix_authoritylist">4.3. Authority List modèles</a></li>
 <li><a href="#appendix_search">4.4. Search modèles</a></li>
-<li><a href="#appendix_dossiercontext">4.5. DossierContext modèles</a></li>
+<li><a href="#appendix_dossiercontext">4.5. DossierContext modèles</a>
+<ul class="sectlevel3">
+<li><a href="#_getcontenttypelinks">4.5.1. <strong>getContentTypeLinks</strong></a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeInfosType">4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeInfo">4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeLinkInfo">4.5.4. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
+</ul>
+</li>
 <li><a href="#appendix_extenddocument">4.6. ExtendDocument modèles</a></li>
 <li><a href="#appendix_attachment">4.7. Attachment modèles</a></li>
 <li><a href="#appendix_extendsearch">4.8. ExtendedSearch modèles</a></li>
@@ -4719,6 +4726,9 @@ de cette <strong>API</strong>.</p>
 <div class="ulist">
 <ul>
 <li>
+<p><strong>CONFIG</strong>: ensemble des champs rattachés au content-type.</p>
+</li>
+<li>
 <p><strong>READ</strong>: champs lors de la consultation d&#8217;un document.</p>
 </li>
 <li>
@@ -4768,7 +4778,7 @@ de cette <strong>API</strong>.</p>
 <p><strong class="lime">200</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Opération réussie (cf. <a href="#dossiercontext_getcontenttypejson_new_response">WSContentTypeInfo</a>)</p>
+<p>Opération réussie (cf. exemple <a href="#dossiercontext_getcontenttypejson_new_response1">ici</a> ou <a href="#dossiercontext_getcontenttypejson_new_response2">là</a>)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -4797,29 +4807,22 @@ de cette <strong>API</strong>.</p>
 </tr>
 </tbody>
 </table>
-<div id="dossiercontext_getcontenttypejson_new_response" class="listingblock">
-<div class="title">WSContentTypeInfo</div>
+<div id="dossiercontext_getcontenttypejson_new_response1" class="listingblock">
+<div class="title">WSContentTypeInfo, <strong>mode==INSERT</strong></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "contentType": {
     "code": "CR",
     "label": "Compte rendu",
-    "mode": "update",
-    "defaultSecretLevel": [
+    "mode": "INSERT",
+    "readSecretLevels": [
+      10
+    ],
+    "writeSecretLevels": [
       10
     ],
     "children": [],
     "fields": [
-      {
-        "id": -1,
-        "label": "Identifiant",
-        "type": "id",
-        "required": false,
-        "reference": false,
-        "multivalued": false,
-        "system": false,
-        "readonly": true
-      },
       {
         "id": 123,
         "code": "CR_DES",
@@ -4985,7 +4988,7 @@ de cette <strong>API</strong>.</p>
 <p><strong class="lime">200</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Opération réussie (cf. <a href="#dossiercontext_getcontenttypejson_new_response">WSContentTypeInfo</a>)</p>
+<p>Opération réussie (cf. <a href="#dossiercontext_getcontenttypejson_new_response">[dossiercontext_getcontenttypejson_new_response]</a>)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -11638,6 +11641,8 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </div>
 <div class="sect2">
 <h3 id="appendix_dossiercontext"><a class="anchor" href="#appendix_dossiercontext"></a>4.5. DossierContext modèles</h3>
+<div class="sect3">
+<h4 id="_getcontenttypelinks"><a class="anchor" href="#_getcontenttypelinks"></a>4.5.1. <strong>getContentTypeLinks</strong></h4>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
 au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
@@ -11691,9 +11696,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
-<div id="appendix_dossiercontext_WSContentTypeInfosType" class="paragraph">
-<p><strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</p>
 </div>
+<div class="sect3">
+<h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 112. Paramètres en sortie</caption>
 <colgroup>
@@ -11833,9 +11838,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
-<div id="appendix_dossiercontext_WSContentTypeInfo" class="paragraph">
-<p><strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</p>
 </div>
+<div class="sect3">
+<h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 113. Paramètres en sortie</caption>
 <colgroup>
@@ -11885,7 +11890,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Correspond au <strong>mode</strong> (type de fiche) demandé pour la liste des champs</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Cela répète le paramètre transmis en entrée</p>
+<p>Répétition du paramètre en entrée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
@@ -11893,10 +11898,22 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>defaultSecretLevel</strong></p>
+<p><strong>readSecretLevels</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des niveaux de secret associés à ce type de contenu</p>
+<p>Liste des niveaux de secret associés à ce type de contenu (<em>consultation</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>liste d'<em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>writeSecretLevels</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des niveaux de secret associés à ce type de contenu (<em>création/mise à jour</em>)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -11960,13 +11977,18 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong>type</strong></p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
 <p>Type de champ</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Valeurs possibles :</p>
-</div>
-<div class="ulist">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>Valeurs possibles :</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="ulist">
 <ul>
 <li>
 <p><strong>id</strong>: champ <em>identifiant</em> <code><span style="color:#25EF72">Airs</span></code></p>
@@ -12007,9 +12029,6 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </li>
 </ul>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>string</em></p>
-</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -12018,7 +12037,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Champ requis ?</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>attribut <strong>absent</strong> si <strong>mode==CONFIG</strong></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>boolean</em></p>
 </div></div></td>
@@ -12030,7 +12051,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Champ en lecture seule ?</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>attribut <strong>absent</strong> si <strong>mode==CONFIG</strong></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>boolean</em></p>
 </div></div></td>
@@ -12040,7 +12063,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p><strong>multivalued</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Champ multivalué ?</p>
+<p>Champ multi-valué ?</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -12077,9 +12100,129 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
-<div id="appendix_dossiercontext_WSContentTypeLinkInfo" class="paragraph">
-<p><strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</p>
+<div id="dossiercontext_getcontenttypejson_new_response2" class="listingblock">
+<div class="title">WSContentTypeInfo, <strong>mode==CONFIG</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "contentType": {
+    "code": "CR",
+    "label": "Compte rendu",
+    "mode": "CONFIG",
+    "readSecretLevels": [
+      10
+    ],
+    "writeSecretLevels": [
+      10
+    ],
+    "children": [],
+    "fields": [
+      {
+        "id": 1,
+        "code": "D_CREAT",
+        "label": "Date de création",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": true
+      },
+      {
+        "id": 2,
+        "code": "D_MODIF",
+        "label": "Date de modification",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": true
+      },
+      {
+        "id": 123,
+        "code": "CR_DES",
+        "label": "Désignation",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 124,
+        "code": "CR_DATE",
+        "label": "Date événement",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 125,
+        "code": "CR_RESUME",
+        "label": "Résumé",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 126,
+        "code": "CR_THEME",
+        "label": "Thématique",
+        "type": "authority",
+        "reference": true,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 127,
+        "code": "CR_REDACTEUR",
+        "label": "Rédacteur",
+        "type": "user",
+        "reference": true,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 172,
+        "code": "CORRES",
+        "label": "correspondent",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 173,
+        "code": "MULTI",
+        "label": "test champs multi",
+        "type": "text",
+        "reference": false,
+        "multivalued": true,
+        "system": false
+      },
+      {
+        "id": 174,
+        "code": "MASQUE_NUM",
+        "label": "test masque",
+        "type": "numeric",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 175,
+        "code": "T_PRIOR",
+        "label": "Priorité",
+        "type": "authority",
+        "reference": true,
+        "multivalued": false,
+        "system": false
+      }
+    ]
+  }
+}</code></pre>
 </div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.4. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 114. Paramètres en sortie</caption>
 <colgroup>
@@ -12157,6 +12300,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="appendix_extenddocument"><a class="anchor" href="#appendix_extenddocument"></a>4.6. ExtendDocument modèles</h3>

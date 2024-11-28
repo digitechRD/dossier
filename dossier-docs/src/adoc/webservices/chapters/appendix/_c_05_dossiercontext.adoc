@@ -1,6 +1,7 @@
 [[appendix_dossiercontext]]
 === DossierContext modèles
 
+==== *getContentTypeLinks*
 La réponse est retournée sous forme de chaîne de caractères,
 au format {xml} ({soap}) ou {json} ({rest})
 
@@ -17,7 +18,8 @@ Liste de flux
 
 
 [[appendix_dossiercontext_WSContentTypeInfosType]]
-*WSContentTypeInfosType* ({rest})
+==== *WSContentTypeInfosType* ({rest})
+
 [cols="2a,3a,3a,1a",options="header"]
 .Paramètres en sortie
 |===
@@ -36,26 +38,28 @@ Liste de flux
 |===
 
 [[appendix_dossiercontext_WSContentTypeInfo]]
-*WSContentTypeInfo* ({rest})
+==== *WSContentTypeInfo* ({rest})
+
 [cols="2a,3a,3a,1a",options="header"]
 .Paramètres en sortie
 |===
 |Paramètre|Description|Observations|Type
 |*code*|Code du type de contenu||_string_
 |*label*|Libellé du type de contenu||_string_
-|*mode*|Correspond au *mode* (type de fiche) demandé pour la liste des champs|Cela répète le paramètre transmis en entrée|_string_
-|*defaultSecretLevel*|Liste des niveaux de secret associés à ce type de contenu||liste d'_integer_
+|*mode*|Correspond au *mode* (type de fiche) demandé pour la liste des champs|Répétition du paramètre en entrée|_string_
+|*readSecretLevels*|Liste des niveaux de secret associés à ce type de contenu (_consultation_)||liste d'_integer_
+|*writeSecretLevels*|Liste des niveaux de secret associés à ce type de contenu (_création/mise à jour_)||liste d'_integer_
 |*children*|Codes des types de contenus enfant de celui-ci||_string_
 4+|*fields*, liste des champs disponibles
 |*id*|Identifiant ({airs}) du champ||_integer_
 |*code*|Code du champ||_string_
 |*label*|Libellé du champ||_string_
-|*type*|Type de champ|Valeurs possibles :
+|*type* 2+|Type de champ|_string_
+|_Valeurs possibles :_ 3+|
 
 * *id*: champ _identifiant_ {airs}
 * *secretLevel*: champ de type _niveau de secret_
 * *text*: champ de type _string/texte_
-// * *full-text*: champ de type _full-text_
 * *date*: champ de type _date_
 * *float*: champ de type _float_
 * *numeric*: champ de type _numeric_
@@ -64,16 +68,138 @@ Liste de flux
 ** *user*: champ associé à un _utilisateur_
 ** *organization*: champ associé à un _organisation_
 ** *authority*: champ associé à une _liste d'autorité_
-|_string_
-|*required*|Champ requis ?||_boolean_
-|*readonly*|Champ en lecture seule ?||_boolean_
-|*multivalued*|Champ multivalué ?||_boolean_
+
+|*required*|Champ requis ?|attribut *absent* si *mode==CONFIG*|_boolean_
+|*readonly*|Champ en lecture seule ?|attribut *absent* si *mode==CONFIG*|_boolean_
+|*multivalued*|Champ multi-valué ?||_boolean_
 |*reference*|Champ référence ?|si _true_, cela signifie que ce champ est rattaché à une liste (utilisateur, organisation, liste d'autorité)|_boolean_
 |*system*|Champ _système_ ?|Si _true_, champ interne, géré par le serveur {airs}|_boolean_
 |===
 
+[[dossiercontext_getcontenttypejson_new_response2]]
+[source,json]
+.WSContentTypeInfo, *mode==CONFIG*
+----
+{
+  "contentType": {
+    "code": "CR",
+    "label": "Compte rendu",
+    "mode": "CONFIG",
+    "readSecretLevels": [
+      10
+    ],
+    "writeSecretLevels": [
+      10
+    ],
+    "children": [],
+    "fields": [
+      {
+        "id": 1,
+        "code": "D_CREAT",
+        "label": "Date de création",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": true
+      },
+      {
+        "id": 2,
+        "code": "D_MODIF",
+        "label": "Date de modification",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": true
+      },
+      {
+        "id": 123,
+        "code": "CR_DES",
+        "label": "Désignation",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 124,
+        "code": "CR_DATE",
+        "label": "Date événement",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 125,
+        "code": "CR_RESUME",
+        "label": "Résumé",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 126,
+        "code": "CR_THEME",
+        "label": "Thématique",
+        "type": "authority",
+        "reference": true,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 127,
+        "code": "CR_REDACTEUR",
+        "label": "Rédacteur",
+        "type": "user",
+        "reference": true,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 172,
+        "code": "CORRES",
+        "label": "correspondent",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 173,
+        "code": "MULTI",
+        "label": "test champs multi",
+        "type": "text",
+        "reference": false,
+        "multivalued": true,
+        "system": false
+      },
+      {
+        "id": 174,
+        "code": "MASQUE_NUM",
+        "label": "test masque",
+        "type": "numeric",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 175,
+        "code": "T_PRIOR",
+        "label": "Priorité",
+        "type": "authority",
+        "reference": true,
+        "multivalued": false,
+        "system": false
+      }
+    ]
+  }
+}
+----
+
 [[appendix_dossiercontext_WSContentTypeLinkInfo]]
-*WSContentTypeLinkInfo* ({rest})
+==== *WSContentTypeLinkInfo* ({rest})
+
 [cols="2a,3a,3a,1a",options="header"]
 .Paramètres en sortie
 |===
@@ -85,3 +211,4 @@ Liste de flux
 |*code*|Code du type de contenu *cible*||_string_
 |*parentFieldCode*|Code du type de contenu *source* (_parent_)||_string_
 |===
+

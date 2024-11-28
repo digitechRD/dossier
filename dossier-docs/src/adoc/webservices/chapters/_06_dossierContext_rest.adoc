@@ -215,6 +215,7 @@ Cette méthode permet de récupérer la liste des informations d'un type de cont
 |*ctCode*|{path}|Code du type de contenu|[red]*Oui*|DOC_CATEGORIE
 |*mode*|{path}|Définition des champs selon le mode suivant :
 
+* *CONFIG*: ensemble des champs rattachés au content-type.
 * *READ*: champs lors de la consultation d'un document.
 * *INSERT*: champs lors de la création d'un document (*valeur par défaut*)
 * *UPDATE*: champs lors de la mise à jour d'un document.
@@ -235,36 +236,29 @@ curl -X 'GET' \
 .Réponses
 |===
 |Code Http|Description
-^|[lime]*200*|Opération réussie (cf. <<dossiercontext_getcontenttypejson_new_response>>)
+^|[lime]*200*|Opération réussie (cf. exemple <<dossiercontext_getcontenttypejson_new_response1, ici>> ou <<dossiercontext_getcontenttypejson_new_response2,là>>)
 ^|[red]*401*|Authentification non fournie
 ^|[red]*404*|Type de contenu non trouvé
 ^|[red]*500*|Erreur interne au serveur/service
 |===
 
-[[dossiercontext_getcontenttypejson_new_response]]
+[[dossiercontext_getcontenttypejson_new_response1]]
 [source,json]
-.WSContentTypeInfo
+.WSContentTypeInfo, *mode==INSERT*
 ----
 {
   "contentType": {
     "code": "CR",
     "label": "Compte rendu",
-    "mode": "update",
-    "defaultSecretLevel": [
+    "mode": "INSERT",
+    "readSecretLevels": [
+      10
+    ],
+    "writeSecretLevels": [
       10
     ],
     "children": [],
     "fields": [
-      {
-        "id": -1,
-        "label": "Identifiant",
-        "type": "id",
-        "required": false,
-        "reference": false,
-        "multivalued": false,
-        "system": false,
-        "readonly": true
-      },
       {
         "id": 123,
         "code": "CR_DES",
