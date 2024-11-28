@@ -248,7 +248,9 @@
 <li><a href="#_getcontenttypelinks">4.5.1. <strong>getContentTypeLinks</strong></a></li>
 <li><a href="#appendix_dossiercontext_WSContentTypeInfosType">4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
 <li><a href="#appendix_dossiercontext_WSContentTypeInfo">4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
-<li><a href="#appendix_dossiercontext_WSContentTypeLinkInfo">4.5.4. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
+<li><a href="#dossiercontext_getcontenttypejson_new_response2">4.5.4. WSContentTypeInfo, <strong>mode==CONFIG</strong></a></li>
+<li><a href="#dossiercontext_getcontenttypejson_new_response3">4.5.5. WSContentTypeInfo, <strong>mode==CONFIG</strong>, choices==true</a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeLinkInfo">4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
 </ul>
 </li>
 <li><a href="#appendix_extenddocument">4.6. ExtendDocument modèles</a></li>
@@ -4749,6 +4751,21 @@ de cette <strong>API</strong>.</p>
 <p>INSERT</p>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>choices</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Obtention des valeurs autorisées pour les champs <strong>référence</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
 </tbody>
 </table>
 <div class="listingblock">
@@ -4778,7 +4795,7 @@ de cette <strong>API</strong>.</p>
 <p><strong class="lime">200</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Opération réussie (cf. exemple <a href="#dossiercontext_getcontenttypejson_new_response1">ici</a> ou <a href="#dossiercontext_getcontenttypejson_new_response2">là</a>)</p>
+<p>Opération réussie (cf. exemple <a href="#dossiercontext_getcontenttypejson_new_response1">ici</a> ou <a href="#dossiercontext_getcontenttypejson_new_response2">là</a> ou <a href="#dossiercontext_getcontenttypejson_new_response3">encore là</a>)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -12098,10 +12115,26 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p><em>boolean</em></p>
 </div></div></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>choices</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des valeurs possibles pour les champs de type <em>référence</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>sous la forme <strong>libellé</strong>/<strong>valeur</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>map</em></p>
+</div></div></td>
+</tr>
 </tbody>
 </table>
-<div id="dossiercontext_getcontenttypejson_new_response2" class="listingblock">
-<div class="title">WSContentTypeInfo, <strong>mode==CONFIG</strong></div>
+</div>
+<div class="sect3">
+<h4 id="dossiercontext_getcontenttypejson_new_response2"><a class="anchor" href="#dossiercontext_getcontenttypejson_new_response2"></a>4.5.4. WSContentTypeInfo, <strong>mode==CONFIG</strong></h4>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
   "contentType": {
@@ -12222,7 +12255,220 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </div>
 </div>
 <div class="sect3">
-<h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.4. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
+<h4 id="dossiercontext_getcontenttypejson_new_response3"><a class="anchor" href="#dossiercontext_getcontenttypejson_new_response3"></a>4.5.5. WSContentTypeInfo, <strong>mode==CONFIG</strong>, choices==true</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "contentType": {
+    "code": "CR",
+    "label": "Compte rendu",
+    "mode": "CONFIG",
+    "readSecretLevels": [
+      10
+    ],
+    "writeSecretLevels": [
+      10
+    ],
+    "children": [],
+    "fields": [
+      {
+        "id": 1,
+        "code": "D_CREAT",
+        "label": "D_CREAT",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": true
+      },
+      {
+        "id": 2,
+        "code": "D_MODIF",
+        "label": "D_MODIF",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": true
+      },
+      {
+        "id": 123,
+        "code": "CR_DES",
+        "label": "CR_DES",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 124,
+        "code": "CR_DATE",
+        "label": "CR_DATE",
+        "type": "date",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 125,
+        "code": "CR_RESUME",
+        "label": "CR_RESUME",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 126,
+        "code": "CR_THEME",
+        "label": "CR_THEME",
+        "type": "authority",
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "choices": {
+          "Réunion Transverse": 172,
+          "Groupe de Travail": 173,
+          "Entreprise Libérée": 174,
+          "Réunion Générale": 175,
+          "Comité Stratégique": 176,
+          "Comité Directeur": 177,
+          "Roadmap": 180
+        }
+      },
+      {
+        "id": 127,
+        "code": "CR_REDACTEUR",
+        "label": "CR_REDACTEUR",
+        "type": "user",
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "choices": {
+          "A.PIRIM": 33,
+          "Achat Patrick": 79,
+          "Adm Adm": 1,
+          "Adm Dossier": 3,
+          "Admin Administrateur": 108,
+          "Aquilina Stephane": 73,
+          "Aramburu Eric": 8,
+          "Arnaud Yannick": 102,
+          "Balladon Dorian": 328,
+          "Belkelai Laurent": 91,
+          "Bensidhoum Farida": 80,
+          "Bihan-poudec Theo": 106,
+          "Billon Benjamin": 17,
+          "Bonnans Claire": 82,
+          "Boussage Aurélien": 19,
+          "Brossas Nicolas": 12,
+          "Cabrit Christine": 25,
+          "Cabrit Sebastien": 40,
+          "Carole Olivier": 42,
+          "Charpentier Celine": 100,
+          "Chenh Simon": 20,
+          "Chesneau Serge": 57,
+          "Clémenson Gabriel": 31,
+          "Cogneau Daniel": 81,
+          "Colonna D'istria Franck": 30,
+          "Couderc Joel": 86,
+          "D'isanto Mathias": 15,
+          "Debouillanne Julien": 54,
+          "Delaye Olivier": 47,
+          "Doladille Denis": 14,
+          "Felix Nicolas": 97,
+          "Froche Christophe": 103,
+          "Gadaut Frederic": 95,
+          "Gauthier Bruno": 21,
+          "Ghelardi Alexis": 90,
+          "Grinan Nicolas": 88,
+          "Guentas Fatima": 58,
+          "Guiraud Laurent": 51,
+          "Haddad Nazim": 41,
+          "Jaubert Didier": 23,
+          "Jossinet Pierrick": 59,
+          "Kanjou Olivier": 104,
+          "Khalid Ahlem": 36,
+          "Kolinsky Nicolas": 64,
+          "Lambot Emmanuel": 16,
+          "Lamore Angela": 45,
+          "Lebrun Christophe": 5,
+          "Ln_g0s8g)7xhod!vq9i/$d' Fn_g0s8g)7xhod!vq9i/$d'": 327,
+          "Ln_lv[dg Fn_lv[dg": 334,
+          "Madjid Dahbia": 26,
+          "Mannini Marie-jose": 37,
+          "Marine Michael": 28,
+          "Merzereau Lucile": 38,
+          "Mijoint Olivier": 39,
+          "MJ.CADON": 65,
+          "Moulay Mohamed": 84,
+          "Muscarnera Julien": 11,
+          "Muscarnera Sylvain": 98,
+          "Neffaa Salah": 107,
+          "Olivier Lucas": 10,
+          "Panchot Magali": 34,
+          "Param Dossier": 2,
+          "Poli Marie-pierre": 32,
+          "Priez Théo": 48,
+          "Rakotomavo Mirana": 350,
+          "Rey Pierre-henri": 27,
+          "Robert Jean-jacques": 85,
+          "Roth Philippe": 101,
+          "Roth Sarah": 87,
+          "Ruscony Nadege": 78,
+          "Scarpulla Christelle": 18,
+          "Sittler Christelle": 94,
+          "Utilisateur Dossier": 4,
+          "Viet Bastien": 29,
+          "Vignoli Fabrice": 46,
+          "Zannone Damien": 6
+        }
+      },
+      {
+        "id": 172,
+        "code": "CORRES",
+        "label": "CORRES",
+        "type": "text",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 173,
+        "code": "MULTI",
+        "label": "MULTI",
+        "type": "text",
+        "reference": false,
+        "multivalued": true,
+        "system": false
+      },
+      {
+        "id": 174,
+        "code": "MASQUE_NUM",
+        "label": "MASQUE_NUM",
+        "type": "numeric",
+        "reference": false,
+        "multivalued": false,
+        "system": false
+      },
+      {
+        "id": 175,
+        "code": "T_PRIOR",
+        "label": "T_PRIOR",
+        "type": "authority",
+        "reference": true,
+        "multivalued": false,
+        "system": false,
+        "choices": {
+          "Document urgent": 243,
+          "Normal": 244
+        }
+      }
+    ]
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 114. Paramètres en sortie</caption>
 <colgroup>

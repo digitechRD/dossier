@@ -221,6 +221,7 @@ Cette méthode permet de récupérer la liste des informations d'un type de cont
 * *UPDATE*: champs lors de la mise à jour d'un document.
 * *INDEX*: champs disponibles lors de l'indexation d'un document.
 |[green]*Non*|INSERT
+|*choices*|{query}|Obtention des valeurs autorisées pour les champs *référence*|[green]*Non*|
 |===
 
 [source]
@@ -236,7 +237,8 @@ curl -X 'GET' \
 .Réponses
 |===
 |Code Http|Description
-^|[lime]*200*|Opération réussie (cf. exemple <<dossiercontext_getcontenttypejson_new_response1, ici>> ou <<dossiercontext_getcontenttypejson_new_response2,là>>)
+^|[lime]*200*|Opération réussie (cf. exemple <<dossiercontext_getcontenttypejson_new_response1, ici>> ou <<dossiercontext_getcontenttypejson_new_response2,
+là>> ou <<dossiercontext_getcontenttypejson_new_response3,encore là>>)
 ^|[red]*401*|Authentification non fournie
 ^|[red]*404*|Type de contenu non trouvé
 ^|[red]*500*|Erreur interne au serveur/service
