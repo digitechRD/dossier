@@ -39,7 +39,7 @@
 <div id="toctitle">Sommaire</div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#rest">2. <code><span style="color:#73A12E">rest</span></code></a>
+<li><a href="#rest">2. <code><span style="color:#73A12E">REST</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#document_rest">2.1. Document</a>
 <ul class="sectlevel3">
@@ -183,7 +183,7 @@
 </li>
 </ul>
 </li>
-<li><a href="#soap">3. <code><span style="color:#6666ff">soap</span></code></a>
+<li><a href="#soap">3. <code><span style="color:#6666ff">SOAP</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#document_soap">3.1. Document</a>
 <ul class="sectlevel3">
@@ -246,11 +246,11 @@
 <li><a href="#appendix_dossiercontext">4.5. DossierContext modèles</a>
 <ul class="sectlevel3">
 <li><a href="#_getcontenttypelinks">4.5.1. <strong>getContentTypeLinks</strong></a></li>
-<li><a href="#appendix_dossiercontext_WSContentTypeInfosType">4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
-<li><a href="#appendix_dossiercontext_WSContentTypeInfo">4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeInfosType">4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeInfo">4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</a></li>
 <li><a href="#dossiercontext_getcontenttypejson_new_response2">4.5.4. WSContentTypeInfo, <strong>mode==CONFIG</strong></a></li>
 <li><a href="#dossiercontext_getcontenttypejson_new_response3">4.5.5. WSContentTypeInfo, <strong>mode==CONFIG</strong>, choices==true</a></li>
-<li><a href="#appendix_dossiercontext_WSContentTypeLinkInfo">4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</a></li>
+<li><a href="#appendix_dossiercontext_WSContentTypeLinkInfo">4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</a></li>
 </ul>
 </li>
 <li><a href="#appendix_extenddocument">4.6. ExtendDocument modèles</a></li>
@@ -348,20 +348,20 @@
 <h2 id="introduction"><a class="anchor" href="#introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><code><span style="color:#D4CE28">AIRS Dossier</span></code> propose des <strong><code><span style="color:#0099ff">Web Services</span></code></strong> de type <code><span style="color:#6666ff">soap</span></code> (depuis sa version <strong>4</strong>) et <code><span style="color:#73A12E">rest</span></code> (à partir de la version <strong>7.1</strong>) permettant à d&#8217;autres applications ou à
+<p><code><span style="color:#D4CE28">AIRS Dossier</span></code> propose des <strong><code><span style="color:#0099ff">Web Services</span></code></strong> de type <code><span style="color:#6666ff">SOAP</span></code> (depuis sa version <strong>4</strong>) et <code><span style="color:#73A12E">REST</span></code> (à partir de la version <strong>7.1</strong>) permettant à d&#8217;autres applications ou à
 des intégrateurs de s&#8217;interfacer avec l&#8217;application <code><span style="color:#D4CE28">AIRS Dossier</span></code>.</p>
 </div>
 <div class="paragraph">
 <p>La liste des <code><span style="color:#0099ff">Web Services</span></code> disponibles est accessible à l&#8217;adresse</p>
 </div>
 <div class="listingblock">
-<div class="title"><code><span style="color:#73A12E">rest</span></code></div>
+<div class="title"><code><span style="color:#73A12E">REST</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/rest/services</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title"><code><span style="color:#6666ff">soap</span></code></div>
+<div class="title"><code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/services</code></pre>
 </div>
@@ -374,7 +374,7 @@ des intégrateurs de s&#8217;interfacer avec l&#8217;application <code><span sty
 </td>
 <td class="content">
 <div class="paragraph">
-<p>La plupart des <code><span style="color:#0099ff">Web Services</span></code> sont également accessibles en <strong><code><span style="color:#73A12E">rest</span></code></strong>.<br>
+<p>La plupart des <code><span style="color:#0099ff">Web Services</span></code> sont également accessibles en <strong><code><span style="color:#73A12E">REST</span></code></strong>.<br>
 Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </div>
 </td>
@@ -386,7 +386,7 @@ Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="rest"><a class="anchor" href="#rest"></a>2. <code><span style="color:#73A12E">rest</span></code></h2>
+<h2 id="rest"><a class="anchor" href="#rest"></a>2. <code><span style="color:#73A12E">REST</span></code></h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -4514,6 +4514,12 @@ de cette <strong>API</strong>.</p>
     "code": "DOC_CATEGORIE",
     "id": 15,
     "description": "Catégorie",
+    "readSecretLevels": [
+      10
+    ],
+    "writeSecretLevels": [
+      10
+    ],
     "linksInfosList": [
       {
         "childContentType": {
@@ -7143,7 +7149,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="soap"><a class="anchor" href="#soap"></a>3. <code><span style="color:#6666ff">soap</span></code></h2>
+<h2 id="soap"><a class="anchor" href="#soap"></a>3. <code><span style="color:#6666ff">SOAP</span></code></h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -7153,7 +7159,7 @@ de cette <strong>API</strong>.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Préférez les <code><span style="color:#0099ff">Web Services</span></code> de type <code><span style="color:#73A12E">rest</span></code> !</p>
+<p>Préférez les <code><span style="color:#0099ff">Web Services</span></code> de type <code><span style="color:#73A12E">REST</span></code> !</p>
 </div>
 <div class="paragraph">
 <p>En effet, tout en offrant <em>a minima</em> les mêmes services, ils ont de nombreux avantages :</p>
@@ -7344,7 +7350,7 @@ de cette <strong>API</strong>.</p>
 <p>cf le chapitre <a href="#appendix_document">Section 4.2, &#8220;Document modèles&#8221;</a> pour une description de la structure documentData.</p>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -7436,7 +7442,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -7606,7 +7612,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -7698,7 +7704,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -7790,7 +7796,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -7870,7 +7876,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -7967,7 +7973,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8076,7 +8082,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8190,7 +8196,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8284,7 +8290,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8414,7 +8420,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8544,7 +8550,7 @@ un jeton (authentication).</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8685,7 +8691,7 @@ un jeton (authentication).</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8799,7 +8805,7 @@ un jeton (authentication).</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -8923,7 +8929,7 @@ un jeton (authentication).</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9047,7 +9053,7 @@ un jeton (authentication).</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9197,7 +9203,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9307,7 +9313,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9436,7 +9442,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9676,7 +9682,7 @@ de cette <strong>API</strong>.</p>
 <p>cf le chapitre <a href="#appendix_attachment">Section 4.7, &#8220;Attachment modèles&#8221;</a> pour une description de la structure attachmentData.</p>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9768,7 +9774,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -9896,7 +9902,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10030,7 +10036,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10086,7 +10092,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10140,7 +10146,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10198,7 +10204,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10322,7 +10328,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10450,7 +10456,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10556,7 +10562,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10704,7 +10710,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -10841,7 +10847,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
    &lt;soap:Body&gt;
@@ -11024,7 +11030,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Réponse <code><span style="color:#6666ff">soap</span></code></div>
+<div class="title">Réponse <code><span style="color:#6666ff">SOAP</span></code></div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
   &lt;soap:Body&gt;
@@ -11101,7 +11107,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <div class="sect2">
 <h3 id="appendix_general"><a class="anchor" href="#appendix_general"></a>4.1. modèles globaux</h3>
 <div class="paragraph">
-<p>connectionData (<code><span style="color:#6666ff">soap</span></code>)</p>
+<p>connectionData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 105. Paramètres en entrée</caption>
@@ -11164,13 +11170,13 @@ base 64</p>
 <h3 id="appendix_document"><a class="anchor" href="#appendix_document"></a>4.2. Document modèles</h3>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <div class="paragraph">
-<p>WSDocumentType (<code><span style="color:#73A12E">rest</span></code>)</p>
+<p>WSDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 106. Paramètres en sortie</caption>
@@ -11293,7 +11299,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>WSCommonDocumentType (<code><span style="color:#73A12E">rest</span></code>)</p>
+<p>WSCommonDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 107. Paramètres en sortie</caption>
@@ -11392,7 +11398,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>documentData (<code><span style="color:#6666ff">soap</span></code>)</p>
+<p>documentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 108. Paramètres en sortie</caption>
@@ -11519,7 +11525,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <h3 id="appendix_authoritylist"><a class="anchor" href="#appendix_authoritylist"></a>4.3. Authority List modèles</h3>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
@@ -11587,7 +11593,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <h3 id="appendix_search"><a class="anchor" href="#appendix_search"></a>4.4. Search modèles</h3>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
@@ -11662,7 +11668,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <h4 id="_getcontenttypelinks"><a class="anchor" href="#_getcontenttypelinks"></a>4.5.1. <strong>getContentTypeLinks</strong></h4>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
@@ -11715,7 +11721,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <div class="sect3">
-<h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
+<h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 112. Paramètres en sortie</caption>
 <colgroup>
@@ -11767,6 +11773,34 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>readSecretLevels</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des niveaux de secret associés à ce type de contenu (<em>consultation</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#73A12E">REST</span></code> seulement</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>liste d'<em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>writeSecretLevels</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des niveaux de secret associés à ce type de contenu (<em>création/mise à jour</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#73A12E">REST</span></code> seulement</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>liste d'<em>integer</em></p>
 </div></div></td>
 </tr>
 <tr>
@@ -11857,7 +11891,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <div class="sect3">
-<h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
+<h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 113. Paramètres en sortie</caption>
 <colgroup>
@@ -12468,7 +12502,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </div>
 </div>
 <div class="sect3">
-<h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">rest</span></code>)</h4>
+<h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 114. Paramètres en sortie</caption>
 <colgroup>
@@ -12654,7 +12688,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </div>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
@@ -13448,7 +13482,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <h3 id="appendix_attachment"><a class="anchor" href="#appendix_attachment"></a>4.7. Attachment modèles</h3>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
@@ -13524,7 +13558,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>attachmentData (<code><span style="color:#6666ff">soap</span></code>)</p>
+<p>attachmentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 122. Paramètres en sortie</caption>
@@ -13618,7 +13652,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="paragraph">
-<p>WSCommonAttachmentUpdateType (<code><span style="color:#73A12E">rest</span></code>)</p>
+<p>WSCommonAttachmentUpdateType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <colgroup>
@@ -13665,7 +13699,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <h3 id="appendix_extendsearch"><a class="anchor" href="#appendix_extendsearch"></a>4.8. ExtendedSearch modèles</h3>
 <div class="paragraph">
 <p>La réponse est retournée sous forme de chaîne de caractères,
-au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">soap</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">rest</span></code>)</p>
+au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style="color:#6666ff">SOAP</span></code>) ou <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <div class="paragraph">
 <p>Celle-ci contient les informations suivantes :</p>
