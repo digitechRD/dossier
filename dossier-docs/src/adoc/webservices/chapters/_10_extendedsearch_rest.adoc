@@ -126,12 +126,12 @@ La valeur _D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22_ correspond à *D_CREAT >= "0
 }
 ----
 
-cf. le chapitre <<appendix_extendsearch>> pour une description de la structure de retour.
+cf. le chapitre <<appendix_extendsearch_wsextendsearchresult>> pour une description de la structure de retour.
 
 [[extended_search_rest_v2]]
 ===== {GET} /v2/search4FieldsAndAttachments
 
-Cette méthode est identique à la <<extended_search_rest_v2, précédente>>, mais permet en plus de déléguer la recherche effectuée sur un compte différent de
+Cette méthode est identique à la <<extended_search_rest_v1, précédente>>, mais permet en plus de déléguer la recherche effectuée sur un compte différent de
 celui authentifié à l'API.
 
 [NOTE]
@@ -141,11 +141,11 @@ minimiser les opérations de migration.
 ====
 
 
-[cols="1a,1a,4a,1a,4a",options="header"]
+[cols="1a,1a,4a,2a,3a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
-5+|voir paramètres définis au chapitre <<extended_search_rest_v2,précédent>>
+5+|voir paramètres définis au chapitre <<extended_search_rest_v1,précédent>>
 |*sort*|{query}|Critères de tri, défini par le *<code du champ>[,<direction>]*
 [TIP]
 ====
@@ -158,3 +158,191 @@ sort=D_CREAT,desc&sort=RESUME,asc&sort=TITRE
 |[green]*Non*|*D_CREAT,desc*
 |*delegated*|{query}|login de l'utilisateur avec lequel la requête sera jouée|[red]*Oui*|*n.felix*
 |===
+
+[[extended_search_rest_v3]]
+===== {GET} /results
+
+Cette méthode est similaire à la <<extended_search_rest_v2, précédente>> en permettant en sus de naviguer (_bidirectionnellement_) parmi la plage de résultats
+(en lieu et place de l'utilisation du _continuationToken_)
+
+[cols="1a,1a,4a,2a,3a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+5+|voir paramètres définis au chapitre <<extended_search_rest_v2,précédent>>
+|*page*|{query}|Numéro de page souhaitée (voir la |[green]*Non*, défaut : *0*|
+|*size*|{query}|nombre de résultats maximum renvoyés|[green]*Non*, défaut : *20*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/extendSearch/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=CR&page=1&size=25' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/extendSearch/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=CR&page=1&size=25
+----
+
+[[extendedearchjson_response_results]]
+[source,json]
+.Structure de retour
+----
+{
+  "results": {
+    "documents": [
+      {
+        "refAirs": 2103,
+        "secretLevel": 10,
+        "contentType": "CR",
+        "fields": [
+          {
+            "code": "D_MODIF",
+            "label": "Date de modification",
+            "value": "08/02/2021 14:48:10"
+          },
+          {
+            "code": "CR_THEME",
+            "label": "Thématique",
+            "value": "Réunion Transverse",
+            "refValue": "172"
+          },
+          {
+            "code": "D_CREAT",
+            "label": "Date de création",
+            "value": "01/01/2001 0:00:00"
+          },
+          {
+            "code": "CR_DES",
+            "label": "Désignation",
+            "value": "CR réunion transverse-1"
+          },
+          {
+            "code": "CR_REDACTEUR",
+            "label": "Rédacteur",
+            "value": "Poli Marie-pierre",
+            "refValue": "32"
+          },
+          {
+            "code": "CR_DATE",
+            "label": "Date événement",
+            "value": "01/06/2022 0:00:00"
+          },
+          {
+            "code": "CR_RESUME",
+            "label": "Résumé",
+            "value": ""
+          },
+          {
+            "code": "T_PRIOR",
+            "label": "Priorité",
+            "value": ""
+          },
+          {
+            "code": "MULTI",
+            "label": "test champs multi",
+            "value": ""
+          },
+          {
+            "code": "CORRES",
+            "label": "correspondent",
+            "value": ""
+          },
+          {
+            "code": "MASQUE_NUM",
+            "label": "test masque",
+            "value": ""
+          }
+        ],
+        "attachments": []
+      },
+      {
+        "refAirs": 2230,
+        "secretLevel": 10,
+        "contentType": "CR",
+        "fields": [
+          {
+            "code": "D_MODIF",
+            "label": "Date de modification",
+            "value": "11/02/2021 15:43:49"
+          },
+          {
+            "code": "CR_THEME",
+            "label": "Thématique",
+            "value": "Réunion Transverse",
+            "refValue": "172"
+          },
+          {
+            "code": "D_CREAT",
+            "label": "Date de création",
+            "value": "01/01/2001 0:00:00"
+          },
+          {
+            "code": "CR_DES",
+            "label": "Désignation",
+            "value": "CR de la réunion transverse du lundi 28 mai 18-1"
+          },
+          {
+            "code": "CR_REDACTEUR",
+            "label": "Rédacteur",
+            "value": "Aramburu Eric",
+            "refValue": "8"
+          },
+          {
+            "code": "CR_DATE",
+            "label": "Date événement",
+            "value": "01/06/2022 0:00:00"
+          },
+          {
+            "code": "CR_RESUME",
+            "label": "Résumé",
+            "value": ""
+          },
+          {
+            "code": "T_PRIOR",
+            "label": "Priorité",
+            "value": ""
+          },
+          {
+            "code": "MULTI",
+            "label": "test champs multi",
+            "value": ""
+          },
+          {
+            "code": "CORRES",
+            "label": "correspondent",
+            "value": ""
+          },
+          {
+            "code": "MASQUE_NUM",
+            "label": "test masque",
+            "value": ""
+          }
+        ],
+        "attachments": [
+          {
+            "id": 2199,
+            "label": "00_Compte-rendu_reunion_transverse_du_28_mai__20180528170353993.pdf",
+            "fileName": "00_Compte-rendu_reunion_transverse_du_28_mai__20180528170353993.pdf",
+            "airsType": "ORIGINAL"
+          }
+        ]
+      },
+      ...
+    ],
+    "page": {
+      "size": 25,
+      "number": 1,
+      "totalResults": 2441,
+      "totalPages": 98
+    }
+  }
+}
+----
+
+cf. le chapitre <<appendix_extendsearch_pageableextendsearchresults>> pour une description de la structure de retour.

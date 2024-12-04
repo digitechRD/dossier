@@ -1,4 +1,4 @@
-[[appendix_search]]
+[[appendix_search_results]]
 === Search modèles
 
 La réponse est retournée sous forme de chaîne de caractères,
@@ -6,13 +6,39 @@ au format {xml} ({soap}) ou {json} ({rest})
 
 Celle-ci contient les informations suivantes :
 
-WSSearchResultType
+[[appendix_search_results_v1]]
+==== *WSSearchResultType*
+
 [cols="2a,3a,3a,1a",options="header"]
 .Paramètres en sortie
 |===
 |Paramètre|Description|Observations|Type
 |*refAirsId*|Identifiant AIRS du document||_integer_
-4+|*fields*
+4+^|*fields*
 |*code*|code du champ||_string_
 |*field*|valeur du champ||_string_
+|===
+
+[[appendix_search_results_v2]]
+==== *PageableSearchResults*
+
+La réponse est retournée sous forme de chaîne de caractères, au format {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+4+^|*documents*
+|*id*|Identifiant AIRS du document||_integer_
+|*ctCode*|Type de contenu||_string_
+4+^|*documents* > *fields*
+|*code*|code du champ||_string_
+|*field*|valeur du champ||_string_
+4+^|*page*
+|*size*|Taille de la page (demandée/retournée)||_integer_
+|*number*|Numéro de page (demandée/retournée)||_integer_
+|*totalResults*|Nombre total de résultats||_integer_
+|*totalPages*|Nombre total de page||_integer_
 |===

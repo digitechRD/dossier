@@ -22,7 +22,7 @@ Ce {webservice} requiert une https://tools.ietf.org/html/rfc7617[*authentificati
 
 Cette méthode renvoie le nombre de documents remontés par la requête AIRS
 
-[cols="1a,1a,4a,1a,4a",options="header"]
+[cols="1a,1a,4a,2a,3a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
@@ -88,7 +88,7 @@ http://<host>:<port>/<context>/rest/search/docCount?airsRequest=D_CREAT%3E01%2F0
 
 Cette méthode permet d'obtenir les liens URL vers les documents renvoyés par la requête AIRS.
 
-[cols="1a,1a,4a,1a,4a",options="header"]
+[cols="1a,1a,4a,2a,3a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
@@ -161,11 +161,12 @@ http://<host>:<port>/<context>/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01
 Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
 ====
 
+[[rest_search_results]]
 ===== {GET} /search/results
 
 Cette méthode permet d'obtenir les métadonnées des documents renvoyés par la requête AIRS.
 
-[cols="1a,1a,4a,1a,4a",options="header"]
+[cols="1a,1a,4a,2a,3a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
@@ -328,4 +329,165 @@ http://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3E01%2F01
   ]
 }
 ----
-cf le chapitre <<appendix_search>> pour une description de la structure de retour.
+cf le chapitre <<appendix_search_results_v1>> pour une description de la structure de retour.
+
+[[rest_search_results_v2]]
+===== {GET} /search/v2/results
+
+Tout comme l'API décrite dans le chapitre précédent (<<rest_search_results>>), cette méthode permet d'obtenir les métadonnées des documents renvoyés par
+la requête AIRS, +
+[underline]#mais# les résultats sont désormais paginées.
+
+Ceci permet alors à l'appelant de gérer comme il le souhaite le nombre de résultats à récupérer, comme naviguer parmi ces résultats, ...
+
+[cols="1a,1a,4a,2a,3a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*airsRequest*|{query}|Requête AIRS|[red]*Oui*|D_CREAT>01/01/2018
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est exécutée
+[TIP]
+====
+Pour effectuer une recherche sur tous les types de contnues, vous pouvez spécifier \*.* . +
+La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant au *flowCode*
+====
+|[red]*Oui*|CR
+|*flowCode*|{query}|Code du flux dans lequel la recherche est effectué|[green]*Non*|CR
+|*page*|{query}|Numéro de page souhaitée (voir la |[green]*Non*, défaut : *0*|
+|*size*|{query}|nombre de résultats maximum renvoyés|[green]*Non*, défaut : *20*|
+|*sort*|{query}|Critères de tri, défini par le *<code du champ>[,<direction>]*
+[TIP]
+====
+Si vous souhaitez cumuler les champs de tri, veuillez simplement répéter l'attribut, ex.
+[source,text]
+----
+sort=D_CREAT,desc&sort=RESUME,asc&sort=TITRE
+----
+====
+|[green]*Non*|*D_CREAT,desc*
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_n.felix_
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/search/v2/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=%2A.%2A&page=1&size=50' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[source]
+.appel _requête_
+----
+http://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=%2A.%2A&page=1&size=50
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<search_getresultsjson_response_v2>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[search_getresultsjson_response_v2]]
+[source,json]
+.PageableSearchResults
+----
+{
+  "results": {
+    "documents": [
+      {
+        "id": 1040,
+        "ctCode": "PRO_CLIENT",
+        "fields": [
+          {
+            "code": "PRO_DETAILS",
+            "field": ""
+          },
+          {
+            "code": "D_MODIF",
+            "field": "14/11/2018 11:16:07"
+          },
+          {
+            "code": "PRO_CLI_SATISF",
+            "field": ""
+          },
+          {
+            "code": "PRO_CLI_CONTACT10",
+            "field": ""
+          },
+          {
+            "code": "PRO_CLI_INES",
+            "field": "Non défini"
+          },
+          {
+            "code": "PRO_CLI_CONTACT9",
+            "field": ""
+          },
+          {
+            "code": "PRO_CLI_CONTACT8",
+            "field": ""
+          },
+          {
+            "code": "PRO_CLI_CONTACT7",
+            "field": ""
+          },
+          {
+            "code": "D_CREAT",
+            "field": "25/04/2017 17:02:43"
+          },
+          {
+            "code": "PRO_CLI_ENT",
+            "field": "153"
+          }
+        ]
+      },
+      {
+        "id": 1153,
+        "ctCode": "PRO_AFFAIRE",
+        "fields": [
+          {
+            "code": "PRO_AFF_TYPE",
+            "field": "7"
+          },
+          {
+            "code": "PRO_DETAILS",
+            "field": "Commande via UGAP des licences : Délib + eDélib + Webdélib + Mobilité sous Windows (pour remplacer Qualigraf, notez que cette partie a été mise à part avec un délai de livraison fixé au 28/02/2018 afin de nous laisser le temps de développer l'outil attendu pour fin d'année, cela permettra de ne pas bloquer la facturation sur le reste). \nLa commande SCC inclut également les prestations permettant d'initialiser le projet et de facturer : RLC, etude et cr + installation pour 7 K€\n\nLe client est en train de préparer un marché négocié en direct avec nous pour le reste des prestations"
+          },
+          {
+            "code": "D_MODIF",
+            "field": "15/06/2017 11:11:38"
+          },
+          {
+            "code": "PRO_APP_MEP_SRV_HEBERG",
+            "field": ""
+          },
+          {
+            "code": "PRO_AFF_COM_NUM",
+            "field": ""
+          },
+          {
+            "code": "PRO_AFF_NOM",
+            "field": "Délib"
+          }
+        ]
+      }
+    ],
+    "page": {
+      "size": 50,
+      "number": 1,
+      "totalResults": 3544,
+      "totalPages": 71
+    }
+  }
+}
+----
+cf le chapitre <<appendix_search_results_v2>> pour une description de la structure de retour.

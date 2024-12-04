@@ -29,12 +29,12 @@ Liste de flux
 |*description*|Nom du type de contenu||_string_
 |*readSecretLevels*|Liste des niveaux de secret associés à ce type de contenu (_consultation_)|{rest} seulement|liste d'_integer_
 |*writeSecretLevels*|Liste des niveaux de secret associés à ce type de contenu (_création/mise à jour_)|{rest} seulement|liste d'_integer_
-4+|*linksInfosList > childContentType*
+4+^|*linksInfosList > childContentType*
 |*code*|Code du type de contenu fils||_string_
 |*id*|Identifiant AIRS du type de contenu fils||_integer_
 |*description*|Nom du type de contenu fils||_string_
 |*linksInfosList*|Informations du type de contenu fils| Contient une liste vide si le type de contenu fils n'a pas d'enfant|structure _linksInfosList_
-4+|*linksInfosList > linkedFieldInfos*
+4+^|*linksInfosList > linkedFieldInfos*
 |*fieldChildcode*|Code du champ utilisé par le type de contenu fils pour la liaison père-fils||_string_
 |*fieldFathercode*|Code du champ utilisé par le type de contenu père pour la liaison père-fils||_string_
 |===
@@ -52,11 +52,11 @@ Liste de flux
 |*readSecretLevels*|Liste des niveaux de secret associés à ce type de contenu (_consultation_)||liste d'_integer_
 |*writeSecretLevels*|Liste des niveaux de secret associés à ce type de contenu (_création/mise à jour_)||liste d'_integer_
 |*children*|Codes des types de contenus enfant de celui-ci||_string_
-4+|*fields*, liste des champs disponibles
+4+^|*fields*, liste des champs disponibles
 |*id*|Identifiant ({airs}) du champ||_integer_
 |*code*|Code du champ||_string_
 |*label*|Libellé du champ||_string_
-|*type* 2+|Type de champ|_string_
+|*type* 2+^|Type de champ|_string_
 |_Valeurs possibles :_ 3+|
 
 * *id*: champ _identifiant_ {airs}
@@ -423,8 +423,8 @@ Liste de flux
 |Paramètre|Description|Observations|Type
 |*code*|Code du type de contenu||_string_
 |*label*|Libellé du type de contenu||_string_
-4+|*children*, liste des content-types _enfants_, de type *WSContentTypeLinkInfo*
-4+|*linkedFields*, information sur les champs servant de liens entre content-types.
+4+^|*children*, liste des content-types _enfants_, de type *WSContentTypeLinkInfo*
+4+^|*linkedFields*, information sur les champs servant de liens entre content-types.
 |*code*|Code du type de contenu *cible*||_string_
 |*parentFieldCode*|Code du type de contenu *source* (_parent_)||_string_
 |===
