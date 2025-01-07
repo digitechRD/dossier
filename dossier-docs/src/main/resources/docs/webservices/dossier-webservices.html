@@ -242,7 +242,15 @@
 <li><a href="#appendixes">4. Annexes</a>
 <ul class="sectlevel2">
 <li><a href="#appendix_general">4.1. modèles globaux</a></li>
-<li><a href="#appendix_document">4.2. Document modèles</a></li>
+<li><a href="#appendix_document">4.2. Document modèles</a>
+<ul class="sectlevel3">
+<li><a href="#appendix_document_script">4.2.1. WSDocumentInitializer</a>
+<ul class="sectlevel4">
+<li><a href="#_description">4.2.1.1. Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#appendix_authoritylist">4.3. Authority List modèles</a></li>
 <li><a href="#appendix_search_results">4.4. Search modèles</a>
 <ul class="sectlevel3">
@@ -260,7 +268,15 @@
 <li><a href="#appendix_dossiercontext_WSContentTypeLinkInfo">4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</a></li>
 </ul>
 </li>
-<li><a href="#appendix_extenddocument">4.6. ExtendDocument modèles</a></li>
+<li><a href="#appendix_extenddocument">4.6. ExtendDocument modèles</a>
+<ul class="sectlevel3">
+<li><a href="#appendix_extenddocument_script">4.6.1. WSDocumentInitializer</a>
+<ul class="sectlevel4">
+<li><a href="#_description_2">4.6.1.1. Description</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="#appendix_attachment">4.7. Attachment modèles</a></li>
 <li><a href="#appendix_extendsearch">4.8. ExtendedSearch modèles</a>
 <ul class="sectlevel3">
@@ -12085,7 +12101,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>code du script</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>cf. <a href="#appendix_document_script">description</a></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
 </div></div></td>
@@ -12121,6 +12139,146 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="appendix_document_script"><a class="anchor" href="#appendix_document_script"></a>4.2.1. WSDocumentInitializer</h4>
+<div class="sect4">
+<h5 id="_description"><a class="anchor" href="#_description"></a>4.2.1.1. Description</h5>
+<div class="paragraph">
+<p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 112. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>WSDocument</strong>: <strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
+</li>
+<li>
+<p><strong>WSExtendDocument</strong>:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>document structure</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_parentDocType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>com.digitech.dossier.webservices.extend.type.WSDocumentType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>parent document structure (si disponible, <strong>WSExtendDocument</strong> seulement)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_mode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptModeRun</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mode</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultWSDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_secretLevel</strong>, <strong>_codeFieldValues</strong>, <strong>_ctxValues</strong> et <strong>_document</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Example
+Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est mis à jour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.script.model.impl.result.ScriptModeRun
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import java.text.SimpleDateFormat
+
+def today = new Date()
+def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+if (_mode == ScriptModeRun.UPDATE) {
+  ScriptResultWSDocument scriptResult = _result
+  IDocument doc = _document as IDocument
+  String resume = doc.getField("CR_RESUME").getAirsValue()
+  String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
+  scriptResult.addFieldValue("CR_RESUME", newResume)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="appendix_authoritylist"><a class="anchor" href="#appendix_authoritylist"></a>4.3. Authority List modèles</h3>
@@ -12135,7 +12293,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 112. Paramètres en sortie</caption>
+<caption class="title">Table 113. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12202,7 +12360,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_search_results_v1"><a class="anchor" href="#appendix_search_results_v1"></a>4.4.1. <strong>WSSearchResultType</strong></h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 113. Paramètres en sortie</caption>
+<caption class="title">Table 114. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12271,7 +12429,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 114. Paramètres en sortie</caption>
+<caption class="title">Table 115. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12417,7 +12575,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 115. Paramètres en sortie</caption>
+<caption class="title">Table 116. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12463,7 +12621,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 116. Paramètres en sortie</caption>
+<caption class="title">Table 117. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12633,7 +12791,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 117. Paramètres en sortie</caption>
+<caption class="title">Table 118. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13244,7 +13402,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 118. Paramètres en sortie</caption>
+<caption class="title">Table 119. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13437,7 +13595,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 119. Paramètres en sortie</caption>
+<caption class="title">Table 120. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13513,7 +13671,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 120. Paramètres en sortie</caption>
+<caption class="title">Table 121. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13614,7 +13772,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 121. Paramètres en entrée</caption>
+<caption class="title">Table 122. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13716,7 +13874,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Nom du script a exécuter</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>cf. <a href="#appendix_extenddocument_script">description</a></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
 </div></div></td>
@@ -13852,7 +14012,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Nom du script a exécuter</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>cf. <a href="#appendix_extenddocument_script">description</a></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
 </div></div></td>
@@ -13920,7 +14082,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 122. Paramètres en sortie</caption>
+<caption class="title">Table 123. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13994,7 +14156,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 123. Paramètres en entrée</caption>
+<caption class="title">Table 124. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14115,7 +14277,9 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Nom du script a exécuter</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>cf. <a href="#appendix_extenddocument_script">description</a></p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><em>string</em></p>
 </div></div></td>
@@ -14159,7 +14323,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 124. Paramètres en sortie</caption>
+<caption class="title">Table 125. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14217,6 +14381,146 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="appendix_extenddocument_script"><a class="anchor" href="#appendix_extenddocument_script"></a>4.6.1. WSDocumentInitializer</h4>
+<div class="sect4">
+<h5 id="_description_2"><a class="anchor" href="#_description_2"></a>4.6.1.1. Description</h5>
+<div class="paragraph">
+<p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 126. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>org.log4j.Logger</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Logger</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_userContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IUserCoreContext</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>UserContext</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_docType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>WSDocument</strong>: <strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
+</li>
+<li>
+<p><strong>WSExtendDocument</strong>:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>document structure</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_parentDocType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>com.digitech.dossier.webservices.extend.type.WSDocumentType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>parent document structure (si disponible, <strong>WSExtendDocument</strong> seulement)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_mode</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptModeRun</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mode</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ScriptResultWSDocument</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>contient les variables <strong>_secretLevel</strong>, <strong>_codeFieldValues</strong>, <strong>_ctxValues</strong> et <strong>_document</strong></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Example
+Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est mis à jour.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.script.model.impl.result.ScriptModeRun
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import java.text.SimpleDateFormat
+
+def today = new Date()
+def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+if (_mode == ScriptModeRun.UPDATE) {
+  ScriptResultWSDocument scriptResult = _result
+  IDocument doc = _document as IDocument
+  String resume = doc.getField("CR_RESUME").getAirsValue()
+  String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
+  scriptResult.addFieldValue("CR_RESUME", newResume)
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="appendix_attachment"><a class="anchor" href="#appendix_attachment"></a>4.7. Attachment modèles</h3>
@@ -14231,7 +14535,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 125. Paramètres en sortie</caption>
+<caption class="title">Table 127. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14301,7 +14605,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>attachmentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 126. Paramètres en sortie</caption>
+<caption class="title">Table 128. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14447,7 +14751,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 127. Paramètres en sortie</caption>
+<caption class="title">Table 129. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14718,7 +15022,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 128. Paramètres en sortie</caption>
+<caption class="title">Table 130. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14814,7 +15118,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 129. Paramètres en sortie</caption>
+<caption class="title">Table 131. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">

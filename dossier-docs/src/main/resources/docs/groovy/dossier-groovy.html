@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">02/08/2024 15:14:21</span>
+<span id="revdate">07/01/2025 16:00:01</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -227,7 +227,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Copyright (c) 2024 <code>Digitech SA</code>, tous droits réservés.</p>
+<p>Copyright (c) 2025 <code>Digitech SA</code>, tous droits réservés.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2781,10 +2781,12 @@ String res = param?.getValue()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-curl hljs" data-lang="curl">curl --location 'http://localhost:7373/dossierweb/rest/attachment/9097' --header 'Authorization: Basic Yi5iaWxsb246cGFzc3dvcmQ=' \
---form 'attachmentData="{
-    \"scriptCode\": \"test\"
-}";type=application/json' --form 'fileData=@"/path/document.docx"'</code></pre>
+<pre class="highlightjs highlight"><code class="language-curl hljs" data-lang="curl">curl --location 'http://localhost:7373/dossierweb/rest/attachment/9097' \
+  --header 'Authorization: Basic &lt;credencials&gt;' \
+  --form 'attachmentData="{
+      \"scriptCode\": \"test\"
+  }";type=application/json'
+  --form 'fileData=@"/path/document.docx"'</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -2809,6 +2811,20 @@ if(att.getLabel() == null) {
 <h3 id="_description_22"><a class="anchor" href="#_description_22"></a>23.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>À la fois disponible pour le <code><span style="color:#0099ff">Web Service</span></code> <strong>WSDocument</strong> et <strong>WSExtendDocument</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -2860,24 +2876,31 @@ if(att.getLabel() == null) {
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>_docId</p>
+<p>_docType</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>WSDocument</strong>: <strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
+</li>
+<li>
+<p><strong>WSExtendDocument</strong>:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou</p>
+</li>
+</ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Integer</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Doc ID</p>
+<p>document structure</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>_attData</p>
+<p>_parentDocType</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>IWSAttachmentUpdateType</p>
+<p>com.digitech.dossier.webservices.extend.type.WSDocumentType</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Attachment data</p>
+<p>parent document structure (si disponible, <strong>WSExtendDocument</strong> seulement)</p>
 </div></div></td>
 </tr>
 <tr>

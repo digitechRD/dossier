@@ -148,7 +148,7 @@ WSInsertDocumentType
 |*data*|Données brutes du document|En bytes|_string_
 |*filename*|Nom du fichier||_string_
 |*flowCode*|Code du flux||_string_
-|*scriptCode*|Nom du script a exécuter||_string_
+|*scriptCode*|Nom du script a exécuter|cf. <<appendix_extenddocument_script, description>>|_string_
 |*filesIndex*|Liste des index des pièces jointes à ajouter (voir FilesData). Le premier index correspond à 0.||_Liste d'integer_
 |*filesName*|Liste des noms de pièces jointes à ajouter. L'ordre doit être le même que dans la liste filesIndex||_Liste de string_
 4+^|*WSInsertDocumentType > currentDocument > fields (liste des champs)*
@@ -160,7 +160,7 @@ WSInsertDocumentType
 |*data*|Données brutes du document|En bytes|_string_
 |*filename*|Nom du fichier||_string_
 |*flowCode*|Code du flux||_string_
-|*scriptCode*|Nom du script a exécuter||_string_
+|*scriptCode*|Nom du script a exécuter|cf. <<appendix_extenddocument_script, description>>|_string_
 |*filesIndex*|Liste des index des pièces jointes à ajouter (voir FilesData). Le premier index correspond à 0.||_Liste d'integer_
 |*filesName*|Liste des noms de pièces jointes à ajouter. L'ordre doit être le même que dans la liste filesIndex||_Liste de string_
 4+^|*WSInsertDocumentType > parentDocument > fields (liste des champs)*
@@ -192,7 +192,7 @@ WSExtendDocumentType
 |*flowCode*|Code du flux||_string_
 |*filesIndex*|Liste des index des pièces jointes à ajouter (voir FilesData). Le premier index correspond à 0.||_Liste d'integer_
 |*filesName*|Liste des noms de pièces jointes à ajouter. L'ordre doit être le même que dans la liste filesIndex||_Liste de string_
-|*scriptCode*|Nom du script a exécuter||_string_
+|*scriptCode*|Nom du script a exécuter|cf. <<appendix_extenddocument_script, description>>|_string_
 4+^|*WSExtendDocumentType > fields (liste des champs)*
 |*code*|code du champ|Liste d'identifiants|_string_
 |*field*|valeur du champ|Vide si aucune erreur|_string_
@@ -207,3 +207,6 @@ WSUpdateReportItemType
 |*state*|Etat de l'opération|OK ou ERROR|_string_
 |*errMessage*|Message d'erreur|Vide si aucune erreur|_string_
 |===
+
+[[appendix_extenddocument_script]]
+include::_c_99_document_script.adoc[]
