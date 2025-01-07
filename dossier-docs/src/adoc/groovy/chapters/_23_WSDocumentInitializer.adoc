@@ -5,6 +5,11 @@
 
 Ce type de script est utilisé lors de l'exécution des webservices sur les documents (ajout ou mise à jour).
 
+[NOTE]
+====
+À la fois disponible pour le {webservice} *WSDocument* et *WSExtendDocument*.
+====
+
 === Paramètres
 
 [options="noheader",cols="2a,2a,3a"]
@@ -17,8 +22,10 @@ _Description_
 
 |_logger|org.log4j.Logger|Logger
 |_userContext|IUserCoreContext|UserContext
-|_docId|Integer|Doc ID
-|_attData|IWSAttachmentUpdateType|Attachment data
+|_docType|
+* *WSDocument*: *com.digitech.dossier.webservices.ws.document.type.WSDocumentType*
+* *WSExtendDocument*:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou |document structure
+|_parentDocType|com.digitech.dossier.webservices.extend.type.WSDocumentType|parent document structure (si disponible, *WSExtendDocument* seulement)
 |_mode|ScriptModeRun|Mode
 
 3+|[.header]
