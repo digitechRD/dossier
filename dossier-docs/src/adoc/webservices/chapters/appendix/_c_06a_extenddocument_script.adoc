@@ -1,22 +1,21 @@
-==== WSDocumentInitializer
-===== Description
+==== Script WSDocumentInitializer, Description
 
+[NOTE]
+====
 Ce type de script est utilisé lors de l'exécution des webservices sur les documents (ajout ou mise à jour).
+====
 
-[options="noheader",cols="2a,2a,3a"]
 .Paramètres en entrée
+[options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
 Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
 |_logger|org.log4j.Logger|Logger
 |_userContext|IUserCoreContext|UserContext
-|_docType|
-* *WSDocument*: *com.digitech.dossier.webservices.ws.document.type.WSDocumentType*
-* *WSExtendDocument*:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou |document structure
+|_docType|*com.digitech.dossier.webservices.extend.type.WSDocumentType*|document structure
 |_parentDocType|com.digitech.dossier.webservices.extend.type.WSDocumentType|parent document structure (si disponible, *WSExtendDocument* seulement)
 |_mode|ScriptModeRun|Mode
 
@@ -25,8 +24,12 @@ Sortie
 |[.sub-header]
 _Type_ 2+|[.sub-header]
 _Description_
+|*ScriptResultWSExtendDocument* 2+|contient, [underline]#en plus des variables# de <<appendix_document_script,ScriptResultWSDocument>>, celles relatives au
+document parent :
 
-|ScriptResultWSDocument 2+|contient les variables *_secretLevel*, *_codeFieldValues*, *_ctxValues* et *_document*
+* *parentSecretLevel*
+* *parentCodeFieldValues*
+* *parentDocument*
 |===
 
 Example
@@ -36,16 +39,18 @@ Ajout de commentaire dans le champ *CR_RESUME* si le document est mis à jour.
 ----
 import com.digitech.dossier.common.model.backend.airs.IDocument
 import com.digitech.dossier.script.model.impl.result.ScriptModeRun
-import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSExtendDocument
 import java.text.SimpleDateFormat
 
 def today = new Date()
 def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 if (_mode == ScriptModeRun.UPDATE) {
-  ScriptResultWSDocument scriptResult = _result
+  ScriptResultWSExtendDocument scriptResult = _result
   IDocument doc = _document as IDocument
   String resume = doc.getField("CR_RESUME").getAirsValue()
   String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
   scriptResult.addFieldValue("CR_RESUME", newResume)
+
+ scriptResult.addParentFieldValue("CR_RESUME_PARENT", "hého!")
 }
 ----

@@ -244,11 +244,7 @@
 <li><a href="#appendix_general">4.1. modèles globaux</a></li>
 <li><a href="#appendix_document">4.2. Document modèles</a>
 <ul class="sectlevel3">
-<li><a href="#appendix_document_script">4.2.1. WSDocumentInitializer</a>
-<ul class="sectlevel4">
-<li><a href="#_description">4.2.1.1. Description</a></li>
-</ul>
-</li>
+<li><a href="#appendix_document_script">4.2.1. Script WSDocumentInitializer, Description</a></li>
 </ul>
 </li>
 <li><a href="#appendix_authoritylist">4.3. Authority List modèles</a></li>
@@ -270,11 +266,7 @@
 </li>
 <li><a href="#appendix_extenddocument">4.6. ExtendDocument modèles</a>
 <ul class="sectlevel3">
-<li><a href="#appendix_extenddocument_script">4.6.1. WSDocumentInitializer</a>
-<ul class="sectlevel4">
-<li><a href="#_description_2">4.6.1.1. Description</a></li>
-</ul>
-</li>
+<li><a href="#appendix_extenddocument_script">4.6.1. Script WSDocumentInitializer, Description</a></li>
 </ul>
 </li>
 <li><a href="#appendix_attachment">4.7. Attachment modèles</a></li>
@@ -5392,7 +5384,7 @@ de cette <strong>API</strong>.</p>
 <p><strong class="lime">200</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Opération réussie (cf. <a href="#dossiercontext_getcontenttypejson_new_response">[dossiercontext_getcontenttypejson_new_response]</a>)</p>
+<p>Opération réussie (cf. <a href="#dossiercontext_getcontenttype_links_json_response">WSContentTypeLinkInfo</a>)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -10164,7 +10156,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>cf le chapitre <a href="#appendix_search">[appendix_search]</a> pour une description de la structure de retour.</p>
+<p>cf le chapitre <a href="#appendix_search_results">Section 4.4, &#8220;Search modèles&#8221;</a> pour une description de la structure de retour.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -11782,6 +11774,7 @@ base 64</p>
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
 <h3 id="appendix_document"><a class="anchor" href="#appendix_document"></a>4.2. Document modèles</h3>
@@ -12140,11 +12133,20 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="appendix_document_script"><a class="anchor" href="#appendix_document_script"></a>4.2.1. WSDocumentInitializer</h4>
-<div class="sect4">
-<h5 id="_description"><a class="anchor" href="#_description"></a>4.2.1.1. Description</h5>
+<h4 id="appendix_document_script"><a class="anchor" href="#appendix_document_script"></a>4.2.1. Script WSDocumentInitializer, Description</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 112. Paramètres en entrée</caption>
@@ -12196,29 +12198,11 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>_docType</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p><strong>WSDocument</strong>: <strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
-</li>
-<li>
-<p><strong>WSExtendDocument</strong>:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou</p>
-</li>
-</ul>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>document structure</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>_parentDocType</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>com.digitech.dossier.webservices.extend.type.WSDocumentType</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>parent document structure (si disponible, <strong>WSExtendDocument</strong> seulement)</p>
 </div></div></td>
 </tr>
 <tr>
@@ -12247,10 +12231,26 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>ScriptResultWSDocument</p>
+<p><strong>ScriptResultWSDocument</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>contient les variables <strong>_secretLevel</strong>, <strong>_codeFieldValues</strong>, <strong>_ctxValues</strong> et <strong>_document</strong></p>
+<p>contient les variables:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>secretLevel</strong></p>
+</li>
+<li>
+<p><strong>codeFieldValues</strong></p>
+</li>
+<li>
+<p><strong>ctxValues</strong></p>
+</li>
+<li>
+<p><strong>document</strong></p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 </tbody>
@@ -12277,7 +12277,7 @@ if (_mode == ScriptModeRun.UPDATE) {
 }</code></pre>
 </div>
 </div>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -12347,6 +12347,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
 <h3 id="appendix_search_results"><a class="anchor" href="#appendix_search_results"></a>4.4. Search modèles</h3>
@@ -12558,6 +12559,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -13478,6 +13480,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -14382,11 +14385,20 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="appendix_extenddocument_script"><a class="anchor" href="#appendix_extenddocument_script"></a>4.6.1. WSDocumentInitializer</h4>
-<div class="sect4">
-<h5 id="_description_2"><a class="anchor" href="#_description_2"></a>4.6.1.1. Description</h5>
+<h4 id="appendix_extenddocument_script"><a class="anchor" href="#appendix_extenddocument_script"></a>4.6.1. Script WSDocumentInitializer, Description</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 126. Paramètres en entrée</caption>
@@ -14438,15 +14450,8 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>_docType</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
-<ul>
-<li>
-<p><strong>WSDocument</strong>: <strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
-</li>
-<li>
-<p><strong>WSExtendDocument</strong>:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou</p>
-</li>
-</ul>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>com.digitech.dossier.webservices.extend.type.WSDocumentType</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>document structure</p>
@@ -14489,10 +14494,24 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>ScriptResultWSDocument</p>
+<p><strong>ScriptResultWSExtendDocument</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
-<p>contient les variables <strong>_secretLevel</strong>, <strong>_codeFieldValues</strong>, <strong>_ctxValues</strong> et <strong>_document</strong></p>
+<p>contient, <span class="underline">en plus des variables</span> de <a href="#appendix_document_script">ScriptResultWSDocument</a>, celles relatives au
+document parent :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>parentSecretLevel</strong></p>
+</li>
+<li>
+<p><strong>parentCodeFieldValues</strong></p>
+</li>
+<li>
+<p><strong>parentDocument</strong></p>
+</li>
+</ul>
 </div></div></td>
 </tr>
 </tbody>
@@ -14505,21 +14524,23 @@ Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.airs.IDocument
 import com.digitech.dossier.script.model.impl.result.ScriptModeRun
-import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSExtendDocument
 import java.text.SimpleDateFormat
 
 def today = new Date()
 def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 if (_mode == ScriptModeRun.UPDATE) {
-  ScriptResultWSDocument scriptResult = _result
+  ScriptResultWSExtendDocument scriptResult = _result
   IDocument doc = _document as IDocument
   String resume = doc.getField("CR_RESUME").getAirsValue()
   String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
   scriptResult.addFieldValue("CR_RESUME", newResume)
+
+ scriptResult.addParentFieldValue("CR_RESUME_PARENT", "hého!")
 }</code></pre>
 </div>
 </div>
-</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
@@ -14738,6 +14759,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
 <h3 id="appendix_extendsearch"><a class="anchor" href="#appendix_extendsearch"></a>4.8. ExtendedSearch modèles</h3>
@@ -15103,6 +15125,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect2">
