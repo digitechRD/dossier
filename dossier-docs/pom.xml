@@ -88,6 +88,50 @@
       </build>
     </profile>
 
+    <!-- user-guide -->
+    <profile>
+      <id>dossier-admin-guide</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-admin-guide</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>administration</id-key>
+        <subLevelDir>9.0</subLevelDir>
+        <embedAssets>false</embedAssets>
+        <doc.outputFile>[Dossier]Manuel-Administrateur</doc.outputFile>
+        <compress.pdf>true</compress.pdf>
+        <optimize.pdf>true</optimize.pdf>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>html5-${id-key}</id>
+                <configuration>
+                  <outputFile>${doc.outputFile}.html</outputFile>
+                </configuration>
+              </execution>
+              <execution>
+                <id>pdf-${id-key}</id>
+                <configuration>
+                  <outputFile>${doc.outputFile}.pdf</outputFile>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <!-- cmis -->
     <profile>
       <id>dossier-cmis</id>
