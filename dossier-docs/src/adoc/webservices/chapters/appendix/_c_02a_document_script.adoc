@@ -1,0 +1,55 @@
+==== Script WSDocumentInitializer, Description
+
+[NOTE]
+====
+Ce type de script est utilisé lors de l'exécution des webservices sur les documents (ajout ou mise à jour).
+====
+
+.Paramètres en entrée
+[options="noheader",cols="2a,2a,3a"]
+|===
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+
+|_logger|org.log4j.Logger|Logger
+|_userContext|IUserCoreContext|UserContext
+|_docType|*com.digitech.dossier.webservices.ws.document.type.WSDocumentType*|document structure
+|_mode|ScriptModeRun|Mode
+
+3+|[.header]
+Sortie
+|[.sub-header]
+_Type_ 2+|[.sub-header]
+_Description_
+
+|*ScriptResultWSDocument* 2+|contient les variables:
+
+* *secretLevel*
+* *codeFieldValues*
+* *ctxValues*
+* *document*
+|===
+
+Example
+Ajout de commentaire dans le champ *CR_RESUME* si le document est mis à jour.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.script.model.impl.result.ScriptModeRun
+import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
+import java.text.SimpleDateFormat
+
+def today = new Date()
+def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+if (_mode == ScriptModeRun.UPDATE) {
+  ScriptResultWSDocument scriptResult = _result
+  IDocument doc = _document as IDocument
+  String resume = doc.getField("CR_RESUME").getAirsValue()
+  String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
+  scriptResult.addFieldValue("CR_RESUME", newResume)
+}
+----
