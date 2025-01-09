@@ -1,0 +1,115 @@
+[[_06_pj_edition]]
+== Édition des pièces jointes et documents
+
+[NOTE]
+====
+En fonction de votre configuration, l’édition des pièces jointes et des documents peut fonctionner différemment.
+====
+
+=== Édition en ligne
+
+L'édition en ligne permet d'éditer un document directement au sein du navigateur. Elle est accessible via le bouton
+image:icons/icon_online_edition.png[pdfwidth=24,role="size-24"] qui permet l'ouverture du document.
+
+.Bouton édition en ligne
+image:06_pj_edition/example_button_edition.png[]
+
+L’édition en ligne est possible via les applications Google Suite, Office365 et OnlyOffice.
+
+Pour GoogleSuite et OnlyOffice, lorsque l'on démarre un édition en ligne, le document s'ouvre dans le panneau de droite, à l'endroit où se trouvait la
+visionneuse, comme
+ceci :
+
+.Exemple d'édition en ligne avec OnlyOffice
+image:06_pj_edition/example_edition_onlyoffice.png[]
+
+Vous pouvez donc procéder à la modification du document. Vous disposez du bouton image:06_pj_edition/button_save_edition.png[] pour sauvegarder vos
+modifications, ainsi que du bouton
+image:06_pj_edition/button_cancel_edition.png[] pour tout annuler, les modifications apportées ne seront pas prises en compte.
+
+Pour l'édition en ligne avec Office365, le document s'ouvre dans un nouvel onglet.
+
+.Exemple d'édition en ligne avec Office365
+image:06_pj_edition/example_edition_office365.png[]
+
+Une fois les modifications terminées, il est nécessaire de fermer cet
+onglet pour ensuite valider ou annuler les modifications dans la fenêtre ci-dessous :
+
+.Fenêtre de validation Office365
+image:06_pj_edition/modal_edition_office365.png[]
+
+Les fichiers éditables sont - sauf exception - :
+
+* texte : .doc, .docx, .odt
+* tableur : .xls, .xlsx, .ods
+* présentations : .ppt, .pptx, .odp
+
+.Exemple d'édition en ligne avec GoogleSuite
+image:06_pj_edition/example_edition_gsuite.png[]
+
+[NOTE]
+====
+Pour les connecteurs GoogleSuite et Office365, l'utilisateur doit être connecté avec son compte correspondant à l'application utilisée (compte Gmail ou
+Microsoft), une identification peut vous être demandée lors de l'ouverture d'un document.
+====
+
+=== Mode java Web Start
+
+En utilisant java Web start, le fonctionnement attendu est décrit au chapitre <<Module d’édition de document,Module d’édition de document>>.
+
+=== Mode sans client java
+
+En mode [underline]#sans client *java*#, le module d’édition de document a le comportement suivant :
+
+Lorsque vous éditez un document via le bouton image:icons/icon_modif_infos_object.png[width=29,pdfwidth=24,role="size-24"]
+ou image:icons/icon_modif_pj.png[pdfwidth=24,role="size-24"] une fenêtre de téléchargement liée au navigateur apparaît pour le
+fichier correspondant :
+
+.Ouverture d'une pièce jointe
+image:06_pj_edition/openPJ.png[width=487,height=449]
+image:06_pj_edition/openPJ2.png[width=487,height=449]
+
+Vous pouvez soit ouvrir le document, soit le télécharger pour l’ouvrir ensuite. Une fois que vous avez effectué les modifications souhaitées
+sur le document et que vous l’avez enregistré, vous pouvez cliquer dans l’encadré intitulé *Télécharger le document original* pour sélectionner
+le fichier édité sur votre poste :
+
+.Sélection de la PJ mise à jour
+image:06_pj_edition/openPJ.png[width=487,height=449]
+image:06_pj_edition/selectPJ.png[width=487,height=449]
+
+Si le document que vous sélectionnez n’a pas le même nom que document initialement édité, vous devrez confirmer votre choix en appuyant sur *Valider* :
+
+.Nom du document à envoyer différent de l’original
+image:06_pj_edition/wrongFilename.png[width=401,height=192]
+
+En cas d’erreur, vous pouvez appuyer sur *Annuler* dans la fenêtre de confirmation. Pour annuler complétement la modification du document,
+vous pouvez appuyer sur *Annuler* dans l’encadré *Edition de la pièce jointe*.
+
+Dans le cas des pièces jointes, lorsqu’elles ont été modifiées au moins une fois, il est possible d’afficher leurs différentes versions :
+
+.Choix de version de la PJ
+image:06_pj_edition/versionPJ.png[]
+
+Hors version courante, vous pouvez supprimer la pièce jointe sélectionnée en cliquant sur image:icons/icon_delete_pj.png[pdfwidth=24,role="size-24"].
+
+=== Mode Applet (ancien fonctionnement)
+
+Lors de l’édition d’une pièce jointe avant la version *6.2* d'{dossier}, il y avait plusieurs possibilités lors de l’édition d’un document via le bouton
+image:06_pj_edition/image150.png[pdfwidth=24,role="size-24"] ou image:06_pj_edition/image151.png[pdfwidth=24,role="size-24"] :
+
+. Si l’éditeur de texte, configuré sur le poste client (Microsoft Word ou Open Office), est déjà ouvert, le document à éditer s’y ouvre et un onglet
+supplémentaire s’ouvre dans le navigateur internet.
+
+.Modification de réponse
+image:06_pj_edition/image152.png[width=565,height=107]
+
+
+Cet onglet permet de valider les modifications et de choisir si le document doit être modifié avec Open Office ou Microsoft Word. Faites les modifications nécessaires sur le document dans votre logiciel de
+traitement de texte, enregistrez et quittez. Revenez sur le nouvel onglet *Modification de la pièce jointe*. Cliquez sur *Valider les modifications* afin
+d'appliquer les modifications ou *Annuler* si vous souhaitez annuler les changements.
+
+[start=2]
+. Si l’éditeur de texte n’est pas ouvert, le document à éditer s’y ouvre. Faites les modifications nécessaires sur le document dans votre logiciel de
+traitement de texte, enregistrez et quittez. Dans ce cas, les modifications sont enregistrées automatiquement. Il n’y a pas besoin de valider les modifications.
+
+<<<

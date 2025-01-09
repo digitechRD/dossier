@@ -57,6 +57,7 @@
         <!--<subLevelDir>7.2</subLevelDir>-->
         <!--<subLevelDir>8.0</subLevelDir>-->
         <subLevelDir>8.1</subLevelDir>
+        <!--<subLevelDir>9.0</subLevelDir>-->
         <embedAssets>false</embedAssets>
         <doc.outputFile>[Dossier]Manuel-Utilisateur</doc.outputFile>
         <compress.pdf>true</compress.pdf>
@@ -68,6 +69,20 @@
           <plugin>
             <groupId>org.asciidoctor</groupId>
             <artifactId>asciidoctor-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>html5-${id-key}</id>
+                <configuration>
+                  <outputFile>${doc.outputFile}.html</outputFile>
+                </configuration>
+              </execution>
+              <execution>
+                <id>pdf-${id-key}</id>
+                <configuration>
+                  <outputFile>${doc.outputFile}.pdf</outputFile>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>

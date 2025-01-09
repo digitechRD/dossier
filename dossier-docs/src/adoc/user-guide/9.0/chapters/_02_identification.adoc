@@ -1,0 +1,106 @@
+[[_02_identification]]
+== Identification, Autorisations
+=== Page de Connexion
+
+.Page de connexion
+image:02_identification/login.png[width=537,height=236]
+
+La page de *Connexion* permet à un utilisateur de se connecter à {dossier}. Seules les personnes habilitées doivent pouvoir accéder aux
+données exploitées par le serveur `AIRS`.
+Pour ce faire, l'utilisateur doit renseigner son *Identifiant* et son *Mot de passe*.
+
+Lors de la connexion, après vérification des critères de connexion et acceptation de ceux-ci, le profil de l’utilisateur est chargé.
+Celui-ci dispose alors des droits et accréditations qui lui ont été attribués par l’administrateur du système.
+Si les informations de connexion permettent d’authentifier l’utilisateur et qu'il possède les droits suffisants pour
+accéder à l'application, la page d’*Accueil* est affichée (cf. <<Écran accueil,Écran d'accueil>>).
+
+Si les paramètres de connexion de l’utilisateur sont invalides, le message *Erreur d’authentification. Identifiant ou Mot de passe
+invalide* vous en averti.
+
+// [NOTE]
+// ====
+// En cochant *Se souvenir de moi*, l'*Identifiant* de l'utilisateur sera mémorisé pour les connexions futures.
+// ====
+
+[NOTE]
+====
+Dans le cas où le *Mot de passe* est expiré, l'utilisateur doit au
+préalable saisir un nouveau *Mot de passe* avant de pouvoir accéder à la page d'*Accueil*.
+====
+
+=== Authentification openID via Keycloak
+
+Si cette méthode d'authentification est paramétrée dans l'application {dossier}, la page de connexion Keycloak apparaîtra à la place de la page de connexion
+classique. L'utilisateur pourra ainsi se connecter et accéder à la page d'accueil.
+
+.Page de connexion Keycloak
+image:02_identification/keycloak_login.png[]
+
+Afin de permettre l'authentification via Keycloak dans l'application {dossier}, vous devrez tout d'abord ajouter un fichier contenant la configuration de
+votre client Keycloak dans le répertoire *xml*.
+
+[source, json]
+----
+{
+  "realm": "master",
+  "auth-server-url": "https://kc.digitechcloud.fr/",
+  "ssl-required": "external",
+  "resource": "ldap_digitech",
+  "credentials": {
+    "secret": "97AyhSNKWc169ibZOPQzn6pucnD2oZG5"
+  },
+  "confidential-port": 0
+}
+----
+
+Vous pouvez récupérer ce fichier depuis l'administration de votre client Keycloak en cliquant sur cette action :
+
+.Récupération de la configuration Keycloak
+image:02_identification/keycloak_config.png[]
+
+Vous allez ensuite modifier le fichier *params.xml* de cette façon :
+
+* Renseigner la balise *appConfig.authenticationMode* avec la valeur *OIC*
+
+[source, xml]
+----
+<appConfig>
+  <authenticationMode>OIC</authenticationMode>
+</appConfig>
+----
+
+* Ajouter la balise *oicConfig* avec le paramètre *configLocation* correspondant à l'emplacement du fichier de configuration Keycloak que vous aurez récupéré
+auparavant
+
+[source, xml]
+----
+<oicConfig configLocation="config_keycloak.json" />
+----
+
+=== Déconnexion
+
+Une fois connecté à {dossier}, l'utilisateur peut se déconnecter à tout moment en cliquant sur le bouton image:icons/icon_logout.png[pdfwidth=24,
+role="size-24"] de *Déconnexion*.
+
+Une fois l'utilisateur déconnecté, la page de *Connexion* est affichée.
+
+.Lien de déconnexion
+image:02_identification/logout.png[]
+
+=== Mot de passe oublié
+
+Si l'administrateur a activé cette fonctionnalité, il est possible d'accéder à une fenêtre de demande de mot de passe oublié, après avoir cliqué sur le lien
+image:02_identification/password_forgotten.png[].
+
+.Fenêtre de demande de mot de passe
+image:02_identification/modal_password_forgotten.png[]
+
+Si l'email renseigné par l'utilisateur est retrouvé dans la base, un email lui sera envoyé afin qu'il puisse réinitialiser son mot de passe.
+
+.Exemple de mail
+image:02_identification/email_example.png[]
+
+.Renouvellement du mot de passe
+image:02_identification/password_init.png[]
+
+<<<
