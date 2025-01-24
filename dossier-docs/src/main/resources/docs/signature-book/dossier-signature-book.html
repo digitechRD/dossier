@@ -4,16 +4,30 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.18">
+<meta name="generator" content="Asciidoctor 2.0.23">
 <meta name="author" content="Digitech">
 <link rel="icon" type="image/png" href="images/icons/logo_digitech_favicon_32.png">
 <title>Mise œuvre d&#8217;un Parapheur dans l&#8217;application Dossier</title>
 <link rel="stylesheet" href="css/digitech.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/coderay-asciidoctor.css">
-<link href="css/digitech.css" rel="stylesheet">
+<link rel="stylesheet" href="highlightjs/styles/github.min.css">
+<!--
+<meta name="theme-color" content="#319197" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">
+-->
+<script src="echarts/echarts.min.js"></script>
+<script src="js/setup.js"></script><script defer src="js/site.js"></script>
+
 </head>
 <body id="Dossier-signature-book" class="book toc2 toc-left">
+<div id="banner-container" class="container" role="banner">
+    <div id="banner" class="contained" role="banner">
+        <div id="switch-theme">
+            <input type="checkbox" id="switch-theme-checkbox"/>
+            <label for="switch-theme-checkbox">Dark Theme</label>
+        </div>
+    </div>
+</div>
 <div id="header">
 <h1>Mise œuvre d&#8217;un <code>Parapheur</code> dans l&#8217;application <code>Dossier</code></h1>
 <div class="details">
@@ -24,8 +38,8 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
 <ul class="sectlevel1">
-<li><a href="#introduction"> 1. Introduction</a></li>
-<li><a href="#sb_admin"> 2. Administration</a>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#sb_admin">2. Administration</a>
 <ul class="sectlevel2">
 <li><a href="#sb_admin_create_interface_sb">2.1. Création d’une interface <code><span style="color: #82E0AA">Parapheur</span></code></a></li>
 <li><a href="#sb_admin_create_connector">2.2. Création d’un connecteur</a></li>
@@ -34,11 +48,11 @@
 <li><a href="#_paramétrage_de_linterface">2.3.1. Paramétrage de l&#8217;interface</a></li>
 </ul>
 </li>
-<li><a href="#sb_admin_rights">2.4. Droits complémentaires <code><span style="color: #D4CE28">Dossier</span></code></a></li>
-<li><a href="#sb_admin_activation">2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color: #D4CE28">Dossier</span></code></a></li>
+<li><a href="#sb_admin_rights">2.4. Droits complémentaires <code><span style="color:#D4CE28">AIRS Dossier</span></code></a></li>
+<li><a href="#sb_admin_activation">2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color:#D4CE28">AIRS Dossier</span></code></a></li>
 </ul>
 </li>
-<li><a href="#sb_dossier"> 3. <code><span style="color: #D4CE28">Dossier</span></code></a>
+<li><a href="#sb_dossier">3. <code><span style="color:#D4CE28">AIRS Dossier</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#sb_dossier_script">3.1. Scripts Groovy</a>
 <ul class="sectlevel3">
@@ -63,7 +77,7 @@
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="images/dossier-cover.png" alt="dossier cover">
+<img src="images/arcade-cover.png" alt="arcade cover">
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
@@ -102,27 +116,27 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="introduction"> 1. Introduction</h2>
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ce document décrit comment interconnecter <code><span style="color: #D4CE28">Dossier</span></code> avec un <code><span style="color: #82E0AA">Parapheur</span></code> externe.</p>
+<p>Ce document décrit comment interconnecter <code><span style="color:#D4CE28">AIRS Dossier</span></code> avec un <code><span style="color: #82E0AA">Parapheur</span></code> externe.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="sb_admin"> 2. Administration</h2>
+<h2 id="sb_admin"><a class="anchor" href="#sb_admin"></a>2. Administration</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="sb_admin_create_interface_sb">2.1. Création d’une interface <code><span style="color: #82E0AA">Parapheur</span></code></h3>
+<h3 id="sb_admin_create_interface_sb"><a class="anchor" href="#sb_admin_create_interface_sb"></a>2.1. Création d’une interface <code><span style="color: #82E0AA">Parapheur</span></code></h3>
 <div class="paragraph">
-<p>Depuis l&#8217;application <code><span style="color: #25EF72">adminAIRS</span></code>, veuillez créer un <strong>type d’interface</strong> <code><span style="color: #82E0AA">Parapheur</span></code></p>
+<p>Depuis l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code>, veuillez créer un <strong>type d’interface</strong> <code><span style="color: #82E0AA">Parapheur</span></code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-tip" title="Astuce"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -133,14 +147,14 @@
 </table>
 </div>
 <div class="paragraph">
-<div class="title"><code><span style="color: #25EF72">adminAIRS</span></code>, <em>Types d&#8217;interface</em></div>
+<div class="title"><code><span style="color:#25EF72">adminAIRS</span></code>, <em>Types d&#8217;interface</em></div>
 <p><span class="image"><img src="images/sb_ga_1.png" alt="sb ga 1"></span></p>
 </div>
 <div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-warning" title="Avertissement"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -155,19 +169,19 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="sb_admin_create_connector">2.2. Création d’un connecteur</h3>
+<h3 id="sb_admin_create_connector"><a class="anchor" href="#sb_admin_create_connector"></a>2.2. Création d’un connecteur</h3>
 <div class="paragraph">
-<p>Toujours depuis l&#8217;application <code><span style="color: #25EF72">adminAIRS</span></code>, veuillez créer un connecteur</p>
+<p>Toujours depuis l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code>, veuillez créer un connecteur</p>
 </div>
 <div class="paragraph">
-<div class="title"><code><span style="color: #25EF72">adminAIRS</span></code>, <em>Connecteurs</em></div>
+<div class="title"><code><span style="color:#25EF72">adminAIRS</span></code>, <em>Connecteurs</em></div>
 <p><span class="image"><img src="images/sb_ga_3.png" alt="sb ga 3"></span></p>
 </div>
 <div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-warning" title="Avertissement"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -178,7 +192,7 @@
 </table>
 </div>
 <div class="paragraph">
-<div class="title"><code><span style="color: #25EF72">adminAIRS</span></code>, <em>Connecteur</em></div>
+<div class="title"><code><span style="color:#25EF72">adminAIRS</span></code>, <em>Connecteur</em></div>
 <p><span class="image"><img src="images/sb_ga_4.png" alt="sb ga 4"></span></p>
 </div>
 <div class="paragraph">
@@ -202,16 +216,16 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="sb_admin_create_interface">2.3. Création d’une interface</h3>
+<h3 id="sb_admin_create_interface"><a class="anchor" href="#sb_admin_create_interface"></a>2.3. Création d’une interface</h3>
 <div class="paragraph">
-<p>Depuis l&#8217;application <code><span style="color: #25EF72">adminAIRS</span></code>, sélectionnez le menu <strong><em>Interfaces</em></strong></p>
+<p>Depuis l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code>, sélectionnez le menu <strong><em>Interfaces</em></strong></p>
 </div>
 <div class="paragraph">
-<div class="title"><code><span style="color: #25EF72">adminAIRS</span></code>, <em>Menu Interfaces</em></div>
+<div class="title"><code><span style="color:#25EF72">adminAIRS</span></code>, <em>Menu Interfaces</em></div>
 <p><span class="image"><img src="images/sb_ga_5.png" alt="sb ga 5"></span></p>
 </div>
 <div class="paragraph">
-<div class="title"><code><span style="color: #25EF72">adminAIRS</span></code>, <em>Interfaces</em></div>
+<div class="title"><code><span style="color:#25EF72">adminAIRS</span></code>, <em>Interfaces</em></div>
 <p><span class="image"><img src="images/sb_ga_6.png" alt="sb ga 6"></span></p>
 </div>
 <div class="ulist">
@@ -228,12 +242,12 @@
 </ul>
 </div>
 <div class="sect3">
-<h4 id="_paramétrage_de_linterface">2.3.1. Paramétrage de l&#8217;interface</h4>
+<h4 id="_paramétrage_de_linterface"><a class="anchor" href="#_paramétrage_de_linterface"></a>2.3.1. Paramétrage de l&#8217;interface</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-note" title="Information"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -506,7 +520,7 @@
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-tip" title="Astuce"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -520,7 +534,7 @@
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-note" title="Information"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -533,12 +547,12 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="sb_admin_rights">2.4. Droits complémentaires <code><span style="color: #D4CE28">Dossier</span></code></h3>
+<h3 id="sb_admin_rights"><a class="anchor" href="#sb_admin_rights"></a>2.4. Droits complémentaires <code><span style="color:#D4CE28">AIRS Dossier</span></code></h3>
 <div class="paragraph">
 <p>Les droits suivants doivent être associés à un profil d&#8217;utilisateur afin d&#8217;accéder aux actions correspondantes.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 3. Droits <code><span style="color: #D4CE28">Dossier</span></code></caption>
+<caption class="title">Table 3. Droits <code><span style="color:#D4CE28">AIRS Dossier</span></code></caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 71.4286%;">
@@ -555,7 +569,7 @@
 <p><strong>DOSSIERS_SB_SEND</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color: #D4CE28">Dossier</span></code>: Droit d&#8217;envoyer des documents vers le parapheur</p>
+<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit d&#8217;envoyer des documents vers le parapheur</p>
 </div></div></td>
 </tr>
 <tr>
@@ -563,7 +577,7 @@
 <p><strong>DOSSIERS_SB_RETRIEVE</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color: #D4CE28">Dossier</span></code>: Droit de relever manuellement les documents du parapheur</p>
+<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit de relever manuellement les documents du parapheur</p>
 </div></div></td>
 </tr>
 <tr>
@@ -571,7 +585,7 @@
 <p><strong>DOSSIERS_SB_CANCEL</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color: #D4CE28">Dossier</span></code>: Droit d&#8217;annuler les documents du parapheur</p>
+<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit d&#8217;annuler les documents du parapheur</p>
 </div></div></td>
 </tr>
 <tr>
@@ -579,19 +593,19 @@
 <p><strong>DOSSIERS_SB_SHOW_HISTO</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color: #D4CE28">Dossier</span></code>: Droit de consulter l&#8217;historique du parapheur</p>
+<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit de consulter l&#8217;historique du parapheur</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="sb_admin_activation">2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color: #D4CE28">Dossier</span></code></h3>
+<h3 id="sb_admin_activation"><a class="anchor" href="#sb_admin_activation"></a>2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color:#D4CE28">AIRS Dossier</span></code></h3>
 <div class="paragraph">
 <p>Editer le fichier <strong>config.properties</strong> pour y définir les propriétés suivantes:</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 4. Droits <code><span style="color: #D4CE28">Dossier</span></code></caption>
+<caption class="title">Table 4. Droits <code><span style="color:#D4CE28">AIRS Dossier</span></code></caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 22.2222%;">
@@ -645,11 +659,11 @@
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-note" title="Information"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A partir de la verison <strong>7.2</strong> de <code><span style="color: #D4CE28">Dossier</span></code>, ces paramètres peuvent être directement définis via l&#8217;application <code><span style="color: #25EF72">adminAIRS</span></code></p>
+<p>A partir de la verison <strong>7.2</strong> de <code><span style="color:#D4CE28">AIRS Dossier</span></code>, ces paramètres peuvent être directement définis via l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code></p>
 </div>
 </td>
 </tr>
@@ -660,12 +674,12 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="sb_dossier"> 3. <code><span style="color: #D4CE28">Dossier</span></code></h2>
+<h2 id="sb_dossier"><a class="anchor" href="#sb_dossier"></a>3. <code><span style="color:#D4CE28">AIRS Dossier</span></code></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="sb_dossier_script">3.1. Scripts Groovy</h3>
+<h3 id="sb_dossier_script"><a class="anchor" href="#sb_dossier_script"></a>3.1. Scripts Groovy</h3>
 <div class="sect3">
-<h4 id="sb_dossier_script_init">3.1.1. Script d’initialisation</h4>
+<h4 id="sb_dossier_script_init"><a class="anchor" href="#sb_dossier_script_init"></a>3.1.1. Script d’initialisation</h4>
 <div class="paragraph">
 <p>Ce script est appelé avant l’envoi d’un document vers le <code><span style="color: #82E0AA">Parapheur</span></code>.</p>
 </div>
@@ -673,7 +687,7 @@
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
+<i class="fa icon-warning" title="Avertissement"></i>
 </td>
 <td class="content">
 <div class="paragraph">
@@ -741,7 +755,7 @@ est renseignée si elle est trouvée dans les paramètres de l’interface</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">resultValue.getPropertiesMap().put(DossierExternalFolderConstants.EXTERNALFOLDER_TITLE, <span class="string"><span class="delimiter">&quot;</span><span class="content">%N_CHRONO%</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resultValue.getPropertiesMap().put(DossierExternalFolderConstants.EXTERNALFOLDER_TITLE, "%N_CHRONO%")</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -753,14 +767,14 @@ est renseignée si elle est trouvée dans les paramètres de l’interface</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">resultValue.getMetadatasMap().put(MetadataConstant.OBJECT, <span class="string"><span class="delimiter">&quot;</span><span class="content">%C_OBJET%</span><span class="delimiter">&quot;</span></span>)</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resultValue.getMetadatasMap().put(MetadataConstant.OBJECT, "%C_OBJET%")</code></pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sb_dossier_script_action">3.1.2. Scripts déclenchés sur une action</h4>
+<h4 id="sb_dossier_script_action"><a class="anchor" href="#sb_dossier_script_action"></a>3.1.2. Scripts déclenchés sur une action</h4>
 <div class="paragraph">
-<p>Des scripts peuvent être appelés avant ou après une action liée au <code><span style="color: #82E0AA">Parapheur</span></code>. La configuration des appels se fait via le <code><span style="color: #25EF72">adminAIRS</span></code>, dans la section <strong>Gestion des
+<p>Des scripts peuvent être appelés avant ou après une action liée au <code><span style="color: #82E0AA">Parapheur</span></code>. La configuration des appels se fait via le <code><span style="color:#25EF72">adminAIRS</span></code>, dans la section <strong>Gestion des
 actions déclenchables</strong> de la configuration des vues.</p>
 </div>
 <div class="paragraph">
@@ -777,15 +791,15 @@ l’annulation de la demande</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sb_workflow">3.2. Paramétrage du nom du modèle et du circuit</h3>
+<h3 id="sb_workflow"><a class="anchor" href="#sb_workflow"></a>3.2. Paramétrage du nom du modèle et du circuit</h3>
 <div class="sect3">
-<h4 id="sb_workflow_template">3.2.1. Nom du modèle (niveau racine de l&#8217;arborescence du <code><span style="color: #82E0AA">Parapheur</span></code>)</h4>
+<h4 id="sb_workflow_template"><a class="anchor" href="#sb_workflow_template"></a>3.2.1. Nom du modèle (niveau racine de l&#8217;arborescence du <code><span style="color: #82E0AA">Parapheur</span></code>)</h4>
 <div class="paragraph">
 <p>Le Nom du modèle est d’abord récupéré dans la <em>map</em> des propriétés issus du script groovy initialisation :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">resultValue.getPropertiesMap().put(EnumDepth.DEPTH_0.name(), [MODEL_NAME]) <span class="comment">// here set the model</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resultValue.getPropertiesMap().put(EnumDepth.DEPTH_0.name(), [MODEL_NAME]) // here set the model</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -797,7 +811,7 @@ valeur peut être une valeur en dur ou le nom d&#8217;un champ du document dans 
 </div>
 </div>
 <div class="sect3">
-<h4 id="sb_workflow_name">3.2.2. Nom du circuit</h4>
+<h4 id="sb_workflow_name"><a class="anchor" href="#sb_workflow_name"></a>3.2.2. Nom du circuit</h4>
 <div class="paragraph">
 <p>Le circuit de validation dans le <code><span style="color: #82E0AA">Parapheur</span></code> peut-être défini de différente manière:</p>
 </div>
@@ -809,7 +823,7 @@ valeur peut être une valeur en dur ou le nom d&#8217;un champ du document dans 
 </ol>
 </div>
 <div class="paragraph">
-<p>menu:<code><span style="color: #25EF72">adminAIRS</span></code>[Gestionnaire de flux &gt; Modifier le flux]</p>
+<p>menu:<code><span style="color:#25EF72">adminAIRS</span></code>[Gestionnaire de flux &gt; Modifier le flux]</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/sb_ga_8.png" alt="sb ga 8"></span></p>
@@ -836,7 +850,7 @@ d’autorité qui contient le circuit de validation pour le <code><span style="c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java">resultValue.getPropertiesMap().put(EnumDepth.DEPTH_1.name(), CIRCUIT_NAME) <span class="comment">// here set the nature</span></code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resultValue.getPropertiesMap().put(EnumDepth.DEPTH_1.name(), CIRCUIT_NAME) // here set the nature</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -854,7 +868,7 @@ d’autorité qui contient le circuit de validation pour le <code><span style="c
 </div>
 </div>
 <div class="sect3">
-<h4 id="sb_workflow_function">3.2.3. Accès aux fonctions <code><span style="color: #82E0AA">Parapheur</span></code></h4>
+<h4 id="sb_workflow_function"><a class="anchor" href="#sb_workflow_function"></a>3.2.3. Accès aux fonctions <code><span style="color: #82E0AA">Parapheur</span></code></h4>
 <div class="paragraph">
 <p>L’accès aux fonctions <code><span style="color: #82E0AA">Parapheur</span></code> se fait depuis la vue <strong>document</strong>:</p>
 </div>
@@ -925,14 +939,29 @@ commentaires qui ont pu y être ajoutés. Ce bouton n’est actif que si l’uti
 </div>
 </div>
 </div>
-<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script src="highlightjs/highlight.min.js"></script>
 <script>
-  /* Tocbot dynamic TOC, works with tocbot 3.0.2 */
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script type="text/javascript" src="tools/codeTools.js"></script>
+<script type="text/javascript" src="tools/tabs.js"></script>
+<script type="text/javascript" src="tools/switchTheme.js"></script>
+<script type="text/javascript">
 
+  function initTabsAndTheme() {
+    buildTabs();
+    initTheme();
+  }
+
+  /* Tocbot dynamic TOC, works with tocbot 4.0.x */
   try {
     tocbot.init({
       contentSelector: '#content',
-      headingSelector: 'h1, h2, h3, h4',
+      headingSelector: 'h1, h2, h3, h4, h5',
       smoothScroll: true,
       headingsOffset: 40,
       scrollSmoothOffset: -40,
@@ -952,7 +981,7 @@ commentaires qui ont pu y être ajoutés. Ce bouton n’est actif que si l’uti
       if (width < 768) {
         tocbot.refresh({
           contentSelector: '#content',
-          headingSelector: 'h1, h2, h3, h4',
+          headingSelector: 'h1, h2, h3, h4, h5',
           collapseDepth: 6,
           activeLinkClass: 'ignoreactive',
           throttleTimeout: 1000,
@@ -961,7 +990,7 @@ commentaires qui ont pu y être ajoutés. Ce bouton n’est actif que si l’uti
       } else {
         tocbot.refresh({
           contentSelector: '#content',
-          headingSelector: 'h1, h2, h3, h4',
+          headingSelector: 'h1, h2, h3, h4, h5',
           smoothScroll:  true,
           headingsOffset: 40,
           scrollSmoothOffset: -40,
@@ -969,10 +998,16 @@ commentaires qui ont pu y être ajoutés. Ce bouton n’est actif que si l’uti
         });
       }
     };
-    window.addEventListener('resize', handleTocOnResize);
+
+    addCodeToolElements();
+    switchInitialTheme();
     handleTocOnResize();
+    window.addEventListener('resize', handleTocOnResize);
+    window.addEventListener("load", initTabsAndTheme());
   }
   catch(err) {}
+
+
 </script>
 </body>
 </html>
