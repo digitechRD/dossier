@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.23">
+<meta name="author" content="Digitech">
+<link rel="icon" type="image/png" href="images/icons/logo_digitech_favicon_32.png">
+<title>Mise en place de keycloak pour le produit Arcade GED</title>
+<link rel="stylesheet" href="css/digitech.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="highlightjs/styles/github.min.css">
+<!--
+<meta name="theme-color" content="#319197" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">
+-->
+<script src="echarts/echarts.min.js"></script>
+<script src="js/setup.js"></script><script defer src="js/site.js"></script>
+
+</head>
+<body id="Dossier-openid" class="book toc2 toc-left">
+<div id="banner-container" class="container" role="banner">
+    <div id="banner" class="contained" role="banner">
+        <div id="switch-theme">
+            <input type="checkbox" id="switch-theme-checkbox"/>
+            <label for="switch-theme-checkbox">Dark Theme</label>
+        </div>
+    </div>
+</div>
+<div id="header">
+<h1>Mise en place de <strong>keycloak</strong> pour le produit <strong><code><span style="color:#448279">Arcade GED</span></code></strong></h1>
+<div class="details">
+<span id="author" class="author">Digitech</span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">23/01/2025</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Sommaire</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_paramétrage_keycloak">2. Paramétrage <span style="color: #F25937">Keycloak</span></a></li>
+<li><a href="#_paramétrage_arcade_ged">3. Paramétrage <code><span style="color:#448279">Arcade GED</span></code></a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="images/arcade-cover.png" alt="arcade cover">
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch tableBorder stripes-none">
+<colgroup>
+<col style="width: 37.5%;">
+<col style="width: 62.5%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="imageblock text-left filtered max-width-400 m-auto">
+<div class="content">
+<img src="images/icons/digitech_logo_and_text.svg" alt="digitech logo and text">
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-bottom" rowspan="2"><div class="content"><div class="paragraph">
+<p><code>Digitech SA</code><br>
+<em>ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173<br>
+13322 Marseille Cedex 16</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Copyright (c) 2025 <code>Digitech SA</code>, tous droits réservés.</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 1. Notes de suivi</caption>
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.6666%;">
+<col style="width: 16.667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Date</th>
+<th class="tableblock halign-left valign-top">Version</th>
+<th class="tableblock halign-left valign-top">État</th>
+<th class="tableblock halign-left valign-top">Objet</th>
+<th class="tableblock halign-left valign-top">Rédacteur</th>
+<th class="tableblock halign-left valign-top">Validateur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23/01/2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Création du document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">n.felix</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code><span style="color:#448279">Arcade GED</span></code> permet plusieurs modes d&#8217;authentification :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>'classique'</em>, via un couple <strong>login/mot de passe</strong> géré et stocké directement par <code><span style="color:#448279">Arcade GED</span></code>.</p>
+</li>
+<li>
+<p><em>'<span style="color: #F27E36">SSO</span>/<span style="color: #167EF2">Kerberos</span>'</em></p>
+</li>
+<li>
+<p><span style="color: #F25937">openID</span>, déléguant alors l&#8217;identification d&#8217;un compte à un fournisseur externe.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cette documentation décrit la mise en place de ce dernier mode, authentification <span style="color: #F25937">openID</span>, pour le produit <code><span style="color:#448279">Arcade GED</span></code> via le logiciel
+<span class="underline"><strong><span style="color: #F25937">Keycloak</span></strong></span>.</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_paramétrage_keycloak"><a class="anchor" href="#_paramétrage_keycloak"></a>2. Paramétrage <span style="color: #F25937">Keycloak</span></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Le but de cette documentation n&#8217;est pas de décrire le produit <span style="color: #F25937">Keycloak</span>.
+Celui-ci permet :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>de s&#8217;interconnecter avec de nombreux fournisseurs d&#8217;identité (<em>ldap</em>, <em>saml</em>, <em>openid</em>, etc.)</p>
+</li>
+<li>
+<p>de paramétrer des stratégies d&#8217;authentification complexes, avancées, telle une authentification à 2 facteurs</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Seule la partie <strong>Clients</strong> concerne réellement <code><span style="color:#448279">Arcade GED</span></code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/keycloak_setting1.png" alt="keycloak setting1">
+</div>
+</div>
+<div class="paragraph">
+<p>Les variables suivantes doivent être substituées :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>{{host}}</strong>: nom d&#8217;hôte ou IP de la machine (utilisé par les postes clients/navigateurs). ex <strong>srv-ged-01</strong></p>
+</li>
+<li>
+<p><strong>{{port}}</strong>: port applicatif d'<code><span style="color:#448279">Arcade GED</span></code>. ex <strong>8080</strong></p>
+</li>
+<li>
+<p><strong>{{context}}</strong>: contexte applicatif d'<code><span style="color:#448279">Arcade GED</span></code>. ex <strong>arcadeGED</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Dans la copie d&#8217;écran, le protocole indiqué est <strong>http</strong>. Veuillez également l&#8217;adapter si le <strong>SSL</strong> est activé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Une fois votre configuration terminée, veuillez la récupérer via le bouton <kbd>Export</kbd> en haut à droite,
+bouton <b class="button">Download Adaptor configs</b> et enregistrez le fichier au format <strong>json</strong> (<em>keycloak OIDC JSON</em>)</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/keycloak_setting2.png" alt="keycloak setting2">
+</div>
+</div>
+<div class="listingblock">
+<div class="title">exemple de fichier de configuration <strong>keycloak.json</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "realm": "ArcadeGED",
+  "auth-server-url": "https://&lt;keycloak_url&gt;/",
+  "ssl-required": "external",
+  "resource": "ArcadeGED",
+  "credentials": {
+    "secret": "XXYYXXTTXXTRYDTY"
+  },
+  "confidential-port": 0
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_paramétrage_arcade_ged"><a class="anchor" href="#_paramétrage_arcade_ged"></a>3. Paramétrage <code><span style="color:#448279">Arcade GED</span></code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Veuillez déposer le fichier <strong>json</strong> précédemment téléchargé dans le répertoire <strong><code><span style="color:#448279">Arcade GED</span></code>/xml</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Modifiez alors le fichier de configuration <strong><code><span style="color:#448279">Arcade GED</span></code>/xml/params.xml</strong> en ajoutant la balise suivante :</p>
+</div>
+<div class="listingblock">
+<div class="title">Balise <strong>oicConfig</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oicConfig configLocation="keycloak.json" allowLogin="false"/&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La balise <strong>allowLogin</strong> permet une authentification via <code><span style="color:#448279">Arcade GED</span></code> en cas de panne de <span style="color: #F25937">Keycloak</span> ou de connexion à un compte non géré par <span style="color: #F25937">Keycloak</span></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce paramétrage peut être défini via l'<code><span style="color:#25EF72">adminAIRS</span></code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Si le paramétrage est correct, après redémarrage de l&#8217;application, vous devriez voir apparaître par défaut l&#8217;écran de connexion <span style="color: #F25937">Keycloak</span>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/keycloak_login.png" alt="keycloak login">
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="highlightjs/highlight.min.js"></script>
+<script>
+if (!hljs.initHighlighting.called) {
+  hljs.initHighlighting.called = true
+  ;[].slice.call(document.querySelectorAll('pre.highlight > code[data-lang]')).forEach(function (el) { hljs.highlightBlock(el) })
+}
+</script>
+<script type="text/javascript" src="tocbot/tocbot.min.js"></script>
+<script type="text/javascript" src="tools/codeTools.js"></script>
+<script type="text/javascript" src="tools/tabs.js"></script>
+<script type="text/javascript" src="tools/switchTheme.js"></script>
+<script type="text/javascript">
+
+  function initTabsAndTheme() {
+    buildTabs();
+    initTheme();
+  }
+
+  /* Tocbot dynamic TOC, works with tocbot 4.0.x */
+  try {
+    tocbot.init({
+      contentSelector: '#content',
+      headingSelector: 'h1, h2, h3, h4, h5',
+      smoothScroll: true,
+      headingsOffset: 40,
+      scrollSmoothOffset: -40,
+      orderedList: false
+    });
+
+    let oldtoc = document.getElementById('toctitle').nextElementSibling;
+    const newtoc = document.createElement('div');
+    newtoc.setAttribute('id', 'tocbot');
+    newtoc.setAttribute('class', 'js-toc');
+    oldtoc.parentNode.replaceChild(newtoc, oldtoc);
+
+    const handleTocOnResize = function () {
+      const width = window.innerWidth
+          || document.documentElement.clientWidth
+          || document.body.clientWidth;
+      if (width < 768) {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          collapseDepth: 6,
+          activeLinkClass: 'ignoreactive',
+          throttleTimeout: 1000,
+          smoothScroll: false
+        });
+      } else {
+        tocbot.refresh({
+          contentSelector: '#content',
+          headingSelector: 'h1, h2, h3, h4, h5',
+          smoothScroll:  true,
+          headingsOffset: 40,
+          scrollSmoothOffset: -40,
+          orderedList: false
+        });
+      }
+    };
+
+    addCodeToolElements();
+    switchInitialTheme();
+    handleTocOnResize();
+    window.addEventListener('resize', handleTocOnResize);
+    window.addEventListener("load", initTabsAndTheme());
+  }
+  catch(err) {}
+
+
+</script>
+</body>
+</html>

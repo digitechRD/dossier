@@ -41,6 +41,33 @@
       </build>
     </profile>
 
+    <!-- openid -->
+    <profile>
+      <id>dossier-openid</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+        <property>
+          <name>dossier-openid</name>
+          <value>true</value>
+        </property>
+      </activation>
+
+      <properties>
+        <id-key>openid</id-key>
+        <compress.pdf>true</compress.pdf>
+        <optimize.pdf>true</optimize.pdf>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.asciidoctor</groupId>
+            <artifactId>asciidoctor-maven-plugin</artifactId>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <!-- user-guide -->
     <profile>
       <id>dossier-user-guide</id>

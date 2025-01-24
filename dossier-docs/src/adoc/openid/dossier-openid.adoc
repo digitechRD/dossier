@@ -1,0 +1,122 @@
+[[Dossier-openid]]
+= Mise en place de *keycloak* pour le produit *{arcadeged}*
+v1.0, 23/01/2025
+:revnumber: 1.0
+include::{sharedResource}/adoc/template.adoc[]
+:revdate: 23/01/2025
+
+// substitution/alias
+:sso: pass:quotes[<span style="color: #F27E36">SSO</span>]
+:kerberos: pass:quotes[<span style="color: #167EF2">Kerberos</span>]
+:keycloak: pass:quotes[<span style="color: #F25937">Keycloak</span>]
+:openid: pass:quotes[<span style="color: #F25937">openID</span>]
+
+ifdef::backend-pdf[]
+:title-logo-image: image:arcade-cover.png[align=center]
+endif::[]
+ifndef::backend-pdf[]
+image::arcade-cover.png[]
+endif::[]
+
+[cols="3a,5a",options="noheader",role="tableBorder stripes-none"]
+|===
+|image::icons/digitech_logo_and_text.svg[align=left,role="filtered max-width-400 m-auto"]
+.2+<.>|`Digitech SA` +
+_ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
+13322 Marseille Cedex 16_
+|Copyright (c) {generatedYear} `Digitech SA`, tous droits réservés.
+|===
+
+[options="header",width=100%]
+.Notes de suivi
+|===
+|Date|Version|État|Objet|Rédacteur|Validateur
+|23/01/2025|1.0|Validé|Création du document|{NFE_}|
+|===
+
+ifdef::env-github[]
+toc::[]
+endif::[]
+
+<<<
+
+== Introduction
+
+{arcadeged} permet plusieurs modes d'authentification :
+
+* _'classique'_, via un couple *login/mot de passe* géré et stocké directement par {arcadeged}.
+* _'{sso}/{kerberos}'_
+* {openid}, déléguant alors l'identification d'un compte à un fournisseur externe.
+
+Cette documentation décrit la mise en place de ce dernier mode, authentification {openid}, pour le produit {arcadeged} via le logiciel
+[underline]#*{keycloak}*#.
+
+<<<
+
+== Paramétrage {keycloak}
+
+Le but de cette documentation n'est pas de décrire le produit {keycloak}.
+Celui-ci permet :
+
+* de s'interconnecter avec de nombreux fournisseurs d'identité (_ldap_, _saml_, _openid_, etc.)
+* de paramétrer des stratégies d'authentification complexes, avancées, telle une authentification à 2 facteurs
+
+Seule la partie *Clients* concerne réellement {arcadeged}.
+
+image::keycloak_setting1.png[]
+
+Les variables suivantes doivent être substituées :
+
+* *{{host}}*: nom d'hôte ou IP de la machine (utilisé par les postes clients/navigateurs). ex *srv-ged-01*
+* *{{port}}*: port applicatif d'{arcadeged}. ex *8080*
+* *{{context}}*: contexte applicatif d'{arcadeged}. ex *arcadeGED*
+
+[NOTE]
+====
+Dans la copie d'écran, le protocole indiqué est *http*. Veuillez également l'adapter si le *SSL* est activé.
+====
+
+Une fois votre configuration terminée, veuillez la récupérer via le bouton kbd:[Export] en haut à droite,
+bouton btn:[Download Adaptor configs] et enregistrez le fichier au format *json* (_keycloak OIDC JSON_)
+
+image::keycloak_setting2.png[]
+
+[source,json]
+.exemple de fichier de configuration *keycloak.json*
+----
+{
+  "realm": "ArcadeGED",
+  "auth-server-url": "https://<keycloak_url>/",
+  "ssl-required": "external",
+  "resource": "ArcadeGED",
+  "credentials": {
+    "secret": "XXYYXXTTXXTRYDTY"
+  },
+  "confidential-port": 0
+}
+----
+
+== Paramétrage {arcadeged}
+
+Veuillez déposer le fichier *json* précédemment téléchargé dans le répertoire *{arcadeged}/xml*.
+
+Modifiez alors le fichier de configuration *{arcadeged}/xml/params.xml* en ajoutant la balise suivante :
+[source,xml]
+.Balise *oicConfig*
+----
+<oicConfig configLocation="keycloak.json" allowLogin="false"/>
+----
+
+[IMPORTANT]
+====
+La balise *allowLogin* permet une authentification via {arcadeged} en cas de panne de {keycloak} ou de connexion à un compte non géré par {keycloak}
+====
+
+[TIP]
+====
+Ce paramétrage peut être défini via l'{adminAIRS}.
+====
+
+Si le paramétrage est correct, après redémarrage de l'application, vous devriez voir apparaître par défaut l'écran de connexion {keycloak}.
+
+image::keycloak_login.png[]
