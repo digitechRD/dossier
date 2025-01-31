@@ -233,6 +233,16 @@ bouton <b class="button">Download Adaptor configs</b> et enregistrez le fichier 
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oicConfig configLocation="keycloak.json" allowLogin="false"/&gt;</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Dans ce même fichier, le mode d&#8217;authentification doit être <em>basculée</em> en <strong>OIC</strong></p>
+</div>
+<div class="listingblock">
+<div class="title">Attribut <strong>authenticationMode</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;!-- valeurs possibles : LOGIN, SSO, OIC --&gt;
+&lt;authenticationMode&gt;OIC&lt;/authenticationMode&gt;</code></pre>
+</div>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>

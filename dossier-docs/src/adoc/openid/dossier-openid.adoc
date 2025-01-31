@@ -107,6 +107,14 @@ Modifiez alors le fichier de configuration *{arcadeged}/xml/params.xml* en ajout
 <oicConfig configLocation="keycloak.json" allowLogin="false"/>
 ----
 
+Dans ce même fichier, le mode d'authentification doit être _basculée_ en *OIC*
+[source,xml]
+.Attribut *authenticationMode*
+----
+<!-- valeurs possibles : LOGIN, SSO, OIC -->
+<authenticationMode>OIC</authenticationMode>
+----
+
 [IMPORTANT]
 ====
 La balise *allowLogin* permet une authentification via {arcadeged} en cas de panne de {keycloak} ou de connexion à un compte non géré par {keycloak}
