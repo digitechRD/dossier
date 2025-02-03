@@ -33,7 +33,8 @@ image:02_rights/DOSSIERS_MENU_SEARCH_ADVANCED_dropdown.png[]
 |*DOSSIERS_MENU_SEARCH_RECYCLE_BIN*|Droit de rechercher des documents supprimés||image:02_rights/DOSSIERS_MENU_SEARCH_RECYCLE_BIN.png[]
 |*DOSSIERS_MENU_TREE_INDEXATION*|Droit d'affichage de l'indexation (arbo)||
 |*DOSSIERS_MENU_USERSMANAGEMENT*|Droit d'afficher le menu "Gestion des utilisateurs"|* Affichage du bouton permettant de modifier le mot de
-passe|image:02_rights/DOSSIERS_MENU_USERSMANAGEMENT_password.png[]
+passe
+* L'authentification doit être en mode LOGIN (LDAP désactivé)|image:02_rights/DOSSIERS_MENU_USERSMANAGEMENT_password.png[]
 |===
 
 === Onglets
@@ -43,17 +44,17 @@ passe|image:02_rights/DOSSIERS_MENU_USERSMANAGEMENT_password.png[]
 |Code|Description|Complément|Affichage
 |*DOSSIERS_TAB_COMMENTAIRE_READ*|Droit d'afficher le contenu de l'onglet "Commentaire"||image:02_rights/DOSSIERS_TAB_COMMENTAIRE_READ.png[]
 |*DOSSIERS_TAB_COMMENTAIRE_WRITE*|Droit de modifier le contenu de l'onglet "Commentaire"|* Affichage de l'action
-"Ajouter le commentaire"
+"Ajouter le commentaire" (si elle ne fait pas partie des actions indisponibles)
 * Affichage de la zone d'ajout de commentaire|image:02_rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_action.png[]
 
 image:02_rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_zone.png[]
 |*DOSSIERS_TAB_DOCUMENT_LINK*|Droit d'afficher l'onglet "Lien"||
-|*DOSSIERS_TAB_DOCUMENT_LINK_DINA*|Droit d'afficher l'onglet "Réconciliation"||
+|*DOSSIERS_TAB_DOCUMENT_LINK_DINA*|Droit d'afficher l'onglet "Réconciliation"||xxx
 |*DOSSIERS_TAB_DOCUMENT_READ*|Droit d'afficher l'onglet "Pièces jointes"|Affichage de l'onglet "Pièces jointes" en
 mode vue|image:02_rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png[]
 |*DOSSIERS_TAB_DOCUMENT_WRITE*|Droit de modifier l'onglet "Pièces jointes"|Affichage de l'onglet "Pièces jointes" en
 mode édition|image:02_rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png[]
-|*DOSSIERS_TAB_HISTORIQUE*|Droit d'afficher le contenu de l'onglet "Historique"||image:02_rights/DOSSIERS_TAB_HISTORIQUE.png[]
+|*DOSSIERS_TAB_HISTORIQUE*|Droit d'afficher le contenu de l'onglet "Historique"|En mode Vue ou Édition|image:02_rights/DOSSIERS_TAB_HISTORIQUE.png[]
 |*DOSSIERS_TAB_INDEX_READ*|Droit d'afficher l'onglet "Contenu"|Affichage de l'onglet "Contenu" en
 mode vue|image:02_rights/DOSSIERS_TAB_INDEX_READ_WRITE.png[]
 |*DOSSIERS_TAB_INDEX_WRITE*|Droit de modifier l'onglet "Contenu"|* Affichage de l'onglet "Contenu" en
@@ -74,15 +75,19 @@ image:02_rights/DOSSIERS_TAB_INDEX_WRITE_modify.png[]
 sélectionnées"|image:02_rights/DOSSIERS_DEL_ATTACHMENT.png[]
 |*DOSSIERS_DEL_ATTACHMENT_VERSION*|Droit de supprimer la version d'une pièce jointe||image:02_rights/DOSSIERS_DEL_ATTACHMENT_VERSION.png[]
 |*DOSSIERS_DOWNLOAD_ATTACHMENT*|Droit de télécharger une pièce jointe||image:02_rights/DOSSIERS_DOWNLOAD_ATTACHMENT.png[]
-|*DOSSIERS_IMPORT_ATTACHMENT*|Droit d'importer une pièce jointe||image:02_rights/DOSSIERS_IMPORT_ATTACHMENT.png[]
+|*DOSSIERS_IMPORT_ATTACHMENT*|Droit d'importer une pièce jointe|* Affichage de l'action
+"Ajouter" (si elle ne fait pas partie des actions indisponibles)
+* Non disponible en mode Vue sauf s'il est autorisé
+d'importer des pièces jointes dans tous les modes|image:02_rights/DOSSIERS_IMPORT_ATTACHMENT.png[]
 |*DOSSIERS_MODIFY_ATTACHMENT*|Droit de modifier une pièce jointe||
 |*DOSSIERS_PJ_ADD_PAGE*|Droit d'ajouter des pages à une pièce jointe||
-|*DOSSIERS_PJ_COPY_PAGE*|Droit de copier des pages d'une pièce jointe||
+|*DOSSIERS_PJ_COPY_PAGE*|Droit de copier des pages d'une pièce jointe||xxx
 |*DOSSIERS_PJ_DELETE_PAGE*|Droit de supprimer des pages d'une pièce jointe||
 |*DOSSIERS_DISPLAY_PJ_HISTO*|Droit d'afficher l'historique des pièces jointes||xxx
 |*DOSSIERS_PJ_PRINT*|Droit d'imprimer une pièce jointe||
 |*DOSSIERS_VIEW_ATTACHMENT*|Droit de visualiser une pièce jointe|* Affichage de l'aperçu et des actions sur les pièces jointes dans la vue Document
-* Affichage de l'aperçu des pièces jointes dans la vue Résultats|image:02_rights/DOSSIERS_VIEW_ATTACHMENT_actions.png[]
+* Affichage de l'aperçu des pièces jointes dans la vue Résultats (en ajoutant le droit *DOSSIERS_SEARCHRESULT_WITH_PJ*)
+|image:02_rights/DOSSIERS_VIEW_ATTACHMENT_actions.png[]
 
 image:02_rights/DOSSIERS_VIEW_ATTACHMENT_search.png[]
 |===
@@ -102,10 +107,17 @@ image:02_rights/DOSSIERS_ADD_DOC_header.png[]
 |image:02_rights/DOSSIERS_DISPLAY_TREE_ACCESS_doc.png[]
 
 image:02_rights/DOSSIERS_DISPLAY_TREE_ACCESS_card.png[]
-|*DOSSIERS_DOC_COPY*|Droit de copier un document||image:02_rights/DOSSIERS_DOC_COPY.png[]
-|*DOSSIERS_COPY_URL*|Droit de copier l'URL publique du document dans le presse papier||image:02_rights/DOSSIERS_COPY_URL.png[]
-|*DOSSIERS_DOC_DUPLICATE*|Droit de dupliquer un document||image:02_rights/DOSSIERS_DOC_DUPLICATE.png[]
-|*DOSSIERS_DOC_LINK*|Droit de lier un document||image:02_rights/DOSSIERS_DOC_LINK.png[]
+|*DOSSIERS_DOC_COPY*|Droit de copier un document|* Si le presse-papier est autorisé et si l'action ne fait pas partie des
+actions indisponibles|image:02_rights/DOSSIERS_DOC_COPY.png[]
+|*DOSSIERS_COPY_URL*|Droit de copier l'URL publique du document dans le presse papier|
+* En mode Vue ou Édition
+* Hors vue en mode plein-texte|image:02_rights/DOSSIERS_COPY_URL.png[]
+|*DOSSIERS_DOC_DUPLICATE*|Droit de dupliquer un document|
+* Hors vue en mode plein-texte
+* Si le presse-papier est autorisé et si l'action ne fait pas partie des
+actions indisponibles|image:02_rights/DOSSIERS_DOC_DUPLICATE.png[]
+|*DOSSIERS_DOC_LINK*|Droit de lier un document|* Si le presse-papier est autorisé et si l'action ne fait pas partie des
+actions indisponibles|image:02_rights/DOSSIERS_DOC_LINK.png[]
 |*DOSSIERS_DOC_MERGE*|Droit de fusionner un document||
 |*DOSSIERS_DOC_MOVE*|Droit de déplacer un document||
 |*DOSSIERS_DOC_PASTE*|Droit de coller un document||
@@ -113,7 +125,9 @@ image:02_rights/DOSSIERS_DISPLAY_TREE_ACCESS_card.png[]
 sélectionnés en CSV" et "Exporter tous les documents en CSV" dans la vue Résultats|image:02_rights/DOSSIERS_EXPORT_DOC_selected.png[]
 
 image:02_rights/DOSSIERS_EXPORT_DOC_all.png[]
-|*DOSSIERS_LINK_ADD*|Droit d'ajouter un lien sur un document||
+|*DOSSIERS_LINK_ADD*|Droit d'ajouter un lien sur un document|* Hors mode Vue
+* Si l'action ne fait pas partie des
+actions indisponibles|image:02_rights/DOSSIERS_LINK_ADD.png[]
 |*DOSSIERS_LINK_DELETE*|Droit de supprimer le lien sur un document||
 |*DOSSIERS_SAVE_DOC_FORBIDDEN*|Droit empêchant de sauvegarder un document||image:02_rights/DOSSIERS_SAVE_DOC_FORBIDDEN.png[]
 |*DOSSIERS_SHOW_USER_LOCKED_DOC*|Droit d'afficher si le document est verrouillé par un autre utilisateur|Affichage du nom de l'utilisateur si le droit est
@@ -125,7 +139,7 @@ activé
 * Si le document est verrouillé par un autre utilisateur, l'action sera désactivée|image:02_rights/DOSSIERS_USER_LOCK.png[height=24]
 |*DOSSIERS_LOCK_MULTIPLE*|Droit de verrouiller plusieurs documents|
 * Affichage de l'action "Verrouiller" depuis la vue
-résultats
+résultats (en plus du droit *DOSSIERS_USER_LOCK*)
 * Si l'utilisateur a le droit *ADMINISTRER*, celui-ci prend le dessus
 |image:02_rights/DOSSIERS_LOCK_MULTIPLE.png[]
 |*DOSSIERS_UNLOCK_MULTIPLE*|Droit de déverrouiller plusieurs documents|Affichage de l'action "Déverrouiller" depuis la vue
@@ -157,7 +171,7 @@ résultats|image:02_rights/DOSSIERS_UNLOCK_MULTIPLE.png[]
 [cols="3a,3a,3a,2a"]
 |===
 |Code|Description|Complément|Affichage
-|*DOSSIERS_BOOKMARK_ADD*|Droit d'ajouter des signets||
+|*DOSSIERS_BOOKMARK_ADD*|Droit d'ajouter des signets||image:02_rights/DOSSIERS_BOOKMARK_ADD.png[]
 |*DOSSIERS_BOOKMARK_EDIT_ALL*|Droit de modifier les signets||
 |*DOSSIERS_BOOKMARK_DELETE_ALL*|Droit de supprimer les signets||
 |===
@@ -169,7 +183,7 @@ résultats|image:02_rights/DOSSIERS_UNLOCK_MULTIPLE.png[]
 |Code|Description|Complément|Affichage
 |*DOSSIERS_CORRESPONDENT_ADD*|Droit d'ajouter un correspondant||
 |*DOSSIERS_CORRESPONDENT_CONSULT*|Droit de consulter un correspondant||
-|*DOSSIERS_CORRESPONDENT_DELETE*|Droit de supprimer un correspondant||
+|*DOSSIERS_CORRESPONDENT_DELETE*|Droit de supprimer un correspondant||xxx
 |*DOSSIERS_CORRESPONDENT_EDIT*|Droit de modifier un correspondant||
 |===
 
@@ -186,7 +200,12 @@ image:02_rights/DOSSIERS_FTSEARCH_GLOBAL_menu.png[]
 |*DOSSIERS_SEARCH_GLOBAL*|Droit de réaliser une recherche globale||image:02_rights/DOSSIERS_SEARCH_GLOBAL.png[]
 |*DOSSIERS_SEARCH_MULTIPLE_FLOWS*|Droit de rechercher sur plusieurs flux|Dans la recherche avancée|image:02_rights/DOSSIERS_SEARCH_MULTIPLE_FLOWS.png[]
 |*DOSSIERS_SEARCHRESULT_FILTER*|Droit de filtrer en Vue Résultats||image:02_rights/DOSSIERS_SEARCHRESULT_FILTER.png[]
-|*DOSSIERS_SEARCHRESULT_WITH_PJ*|Droit d'afficher les pièces jointes en vue simple||image:02_rights/DOSSIERS_SEARCHRESULT_WITH_PJ.png[]
+|*DOSSIERS_SEARCHRESULT_WITH_PJ*|Droit d'afficher les pièces jointes en vue simple|* En ajoutant le droit *DOSSIERS_VIEW_ATTACHMENT*
+* Affichage de l'option "Pièce jointe réduite par défaut" dans les
+préférences utilisateur
+|image:02_rights/DOSSIERS_SEARCHRESULT_WITH_PJ.png[]
+
+image:02_rights/DOSSIERS_SEARCHRESULT_WITH_PJ_preferences.png[]
 |===
 
 === Personal space
@@ -224,10 +243,6 @@ image:02_rights/DOSSIERS_PS_FAVORITE_MANAGE_search.png[]
 image:02_rights/DOSSIERS_PS_FAVORITE_MANAGE_doc.png[]
 |*DOSSIERS_PS_HISTORY_DOCUMENT*|Droit d'afficher l'historique des documents||image:02_rights/DOSSIERS_PS_HISTORY_DOCUMENT.png[]
 |*DOSSIERS_PS_HISTORY_SEARCH*|Droit d'afficher l'historique des recherches||image:02_rights/DOSSIERS_PS_HISTORY_SEARCH.png[]
-|*DOSSIERS_PS_PREF_I18N*|Droit de définir la langue et le fuseau horaire de l'application|permet d afficher le menu préférence avec les onglets : délégation, action perso, liste
-de contacts et application|
-|*DOSSIERS_PS_PREF_MY_DATA*|Droit de définir ses données personnelles|permet d'afficher permet d afficher le menu préférence avec les onglets : délégation, action perso, liste de contacts et données
-personnelles|
 |*DOSSIERS_PS_REQ_CREATE*|Droit de création de requête personnelle||image:02_rights/DOSSIERS_PS_REQ_CREATE.png[]
 |*DOSSIERS_PS_REQ_DISP_SUBSCRIBE*|Droit d'afficher les requêtes abonnées||image:02_rights/DOSSIERS_PS_REQ_DISP_SUBSCRIBE.png[]
 |*DOSSIERS_PS_REQ_DISPLAY_SHARED*|Droit d'afficher les requêtes partagées||image:02_rights/DOSSIERS_PS_REQ_DISPLAY_SHARED.png[]
@@ -287,8 +302,23 @@ image:02_rights/DOSSIERS_WORKBOOK_SEARCH_action.png[]
 [cols="3a,3a,3a,2a"]
 |===
 |Code|Description|Complément|Affichage
-|*DOSSIERS_SIGNATURE_SEULEMENT*|Droit pour la signature électronique||
+|*DOSSIERS_SIGNATURE_SEULEMENT*|Droit pour la signature électronique||xxx
 |*SIGNATURE*|Droit pour la signature électronique||
+|===
+
+=== Préférences
+
+[cols="3a,3a,3a,2a"]
+|===
+|*DOSSIERS_HEADER_PREFERENCE*|Droit de visualiser "Mes Préférences"|Permet d'afficher le menu "Préférences" avec les onglets : "Délégation", "Accès rapide
+aux actions personnalisées"
+et "Liste des contacts personnels"|image:02_rights/DOSSIERS_HEADER_PREFERENCE.png[]
+|*DOSSIERS_PS_PREF_I18N*|Droit de définir la langue et le fuseau horaire de l'application|Permet d'afficher le menu "Préférences" avec les onglets : "Délégation", "Accès rapide
+aux actions personnalisées", "Liste des contacts personnels" et "Application"|image:02_rights/DOSSIERS_PS_PREF_I18N.png[]
+|*DOSSIERS_PS_PREF_MY_DATA*|Droit de définir ses données personnelles et les panneaux visibles en page d'accueil|Permet d'afficher le menu "Préférences" avec
+les
+onglets : "Délégation", "Accès rapide
+aux actions personnalisées", "Liste des contacts personnels", "Données personnelles" et "Accueil"|image:02_rights/DOSSIERS_PS_PREF_MY_DATA.png[]
 |===
 
 === Autres
@@ -297,18 +327,15 @@ image:02_rights/DOSSIERS_WORKBOOK_SEARCH_action.png[]
 |===
 |Code|Description|Complément|Affichage
 |*DOSSIERS_CHARTS_HOME_PAGE*|Droit d'afficher les graphiques en page d'accueil||image:02_rights/DOSSIERS_CHARTS_HOME_PAGE.png[]
-|*DOSSIERS_HEADER_VERSION*|||
-|*DOSSIERS_HEADER_PREFERENCE*|Droit de visualiser "Mes Préférences"|Permet d'afficher le menu préférence avec les onglets : délégation, action perso
-et liste
-de contacts|
-|*DOSSIER_HIDE_CUSTOM_PANEL*|Droit de cacher le panneau de modification des pièces jointes||
+|*DOSSIERS_HEADER_VERSION*|||xxx
+|*DOSSIER_HIDE_CUSTOM_PANEL*|Droit de cacher le panneau de modification des pièces jointes||image:02_rights/DOSSIER_HIDE_CUSTOM_PANEL.png[]
 |*DOSSIERS_PIN_DOC_TO_HOME_PAGE*|Droit d'ajout via la vue unitaire d'un document en block page
 d'accueil|* Affichage de l'action "Ajouter en page d'accueil" depuis la page de résultats de la
 recherche plein texte
 * Affichage de la même action depuis la vue Document|image:02_rights/DOSSIERS_PIN_DOC_TO_HOME_PAGE_fulltext.png[]
 
 image:02_rights/DOSSIERS_PIN_DOC_TO_HOME_PAGE_action.png[]
-|*DOSSIERS_PIN_DOWN*|Droit d'épingler||
+|*DOSSIERS_PIN_DOWN*|Droit d'épingler||xxx
 |*DOSSIERS_RECYCLE_BIN*|Droit d'afficher la corbeille des documents supprimés||
 |*DOSSIERS_SEND_MAIL*|Droit d'envoyer un mail|Affichage de l'action "Envoyer un E-mail"|image:02_rights/DOSSIERS_SEND_MAIL.png[]
 |*DOSSIERS_TREE_FILTER*|Droit de filtrer une arborescence||image:02_rights/DOSSIERS_TREE_FILTER.png[]
