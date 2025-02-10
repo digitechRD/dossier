@@ -1,0 +1,237 @@
+[[_04_logs]]
+== Configuration des logs
+
+Le fichier *WEB-INF/classes/logback.properties* est utilisé pour personnaliser les niveaux de logs.
+
+Les différents niveaux de logs possibles sont :
+
+[cols="2a,4a"]
+|===
+|Niveau|Description
+|TRACE|Niveau le plus détaillé, utilisé pour le suivi du programme pas à pas
+|DEBUG|Informations utiles pour le débogage
+|INFO|Messages informatifs indiquant le bon déroulement de l'application
+|WARN|Signale un problème potentiel, mais qui n'empêche pas l'application de fonctionner
+|ERROR|Indique une erreur qui affecte le fonctionnement de l'application
+|OFF|Désactive complètement la journalisation
+|===
+
+.Exemple de fichier logback.properties
+[source,properties]
+----
+# This file defines logback properties
+log_path=${dossier_app}/logs
+#main log level
+log_level=INFO
+log_level_digitech=INFO
+log_level_dossier=INFO
+log_level_viewer=ERROR
+log_level_script=INFO
+log_level_stdout=INFO
+----
+
+Ces clés sont utilisées dans le fichier *Dossier_logback.xml*, mais ce dernier ne peut être modifié car il est écrasé au démarrage. On peut cependant
+surcharger ces valeurs pour définir le niveau
+de logs que l'on souhaite dans *WEB-INF/classes/logback.properties*.
+
+La clé *log_path* peut être définie pour désigner le répertoire où seront déposés les fichiers de log.
+
+=== Appender
+
+Un appender est un composant responsable de l'écriture des logs vers une destination spécifique, comme un fichier ou encore la console.
+
+.Exemple d'appender Console
+[source, xml]
+----
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${log_level_stdout:-OFF}</level>
+    </filter>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%file:%line] %msg%n%rEx</Pattern>
+    </encoder>
+    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+      <evaluator name="loggingTaskEval">
+        <expression>
+          return (logger.contains("groovyLog") || logger.contains("scriptLog"));
+        </expression>
+      </evaluator>
+      <OnMatch>DENY</OnMatch>
+      <OnMismatch>ACCEPT</OnMismatch>
+    </filter>
+  </appender>
+----
+
+Dans cet exemple, le logger enregistre les logs sur la console. Il utilise un filtre _log_level_stdout_ qui prend la valeur _OFF_ par
+défaut mais que l'on
+peut
+donc
+personnaliser dans le fichier
+*logback.properties* :
+
+.Exemple de configuration de la clé dans logback.properties
+[source,properties]
+----
+log_level_stdout=INFO
+----
+
+.Exemple d'appender pour le fichier de log principal
+[source, xml]
+----
+<appender name="FILE_ROLL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}.log</file>
+</appender>
+----
+
+Les fichiers de logs configurés par défaut dans les appenders de *xml/Dossier_logback.xml* sont les suivants :
+
+* dossierweb.log
+* dossierweb_cmis.log
+* dossierweb_scripts.log
+* dossierweb_scheduler.log
+* dossierewb_pop.log
+
+Liste des appenders avec leurs clés personnalisables :
+
+[cols="2a,4a,3a,2a,2a"]
+|===
+|Nom|Classe|Clé(s)|Valeur par défaut|Nom du fichier par défaut
+|STDOUT|ch.qos.logback.core.ConsoleAppender|log_level_stdout|OFF|
+|FILE_ROLL|ch.qos.logback.core.rolling.RollingFileAppender|* log_max_rolling_size
+* log_max_rolling_idx
+* log_total_size_cap|
+* 50MB
+* -20
+* -4|dossierweb.log
+|FILE_CMIS|ch.qos.logback.core.rolling.RollingFileAppender|||dossierweb_cmis.log
+|FILE_SCRIPT|ch.qos.logback.core.rolling.RollingFileAppender|log_level_script|WARN|dossierweb_scripts.log
+|SCHEDULER_SCRIPT|ch.qos.logback.core.rolling.RollingFileAppender|log_scheduler_level|WARN|dossierweb_scheduler.log
+|POPULATION|ch.qos.logback.core.rolling.RollingFileAppender|log_level_pop|WARN|dossierweb_pop.log
+|===
+
+=== Logger
+
+Un logger est un composant qui génère et envoie des messages de log à un ou plusieurs appenders. Il permet de catégoriser et de filtrer les logs en fonction du niveau de sévérité et du contexte de l'application.
+
+Plusieurs loggers sont configurés avec des niveaux et des appenders spécifiques :
+
+.Exemple de logger utilisant l'appender FILE_ROLL
+[source, xml]
+----
+<logger name="com.digitech.dossier" additivity="false" level="${log_level_dossier:-INFO}">
+  <appender-ref ref="FILE_ROLL"/>
+</logger>
+----
+
+Ce logger rassemble les logs du package com.digitech.dossier avec un niveau par défaut INFO (que l'on peut paramétrer en surchargeant la valeur de la clé
+_log_level_dossier_ dans le fichier *logback.properties*) et
+les enregistre dans
+l'appender FILE_ROLL.
+
+La clé *log_level* définit le niveau de log global par défaut, mais il est possible de paramétrer les clés *log_level* de certains logger :
+
+[cols="4a,3a,2a,2a"]
+|===
+|Package|Clé|Valeur par défaut|Appender
+|com.digitech.dossier|log_level_dossier|INFO|FILE_ROLL
+|com.digitech.dossier.page|log_level_dossier_jsp_page|ERROR|FILE_ROLL
+|com.digitech.dossier.common.service.impl|log_level_dossier_services|log_level_dossier (INFO)|FILE_ROLL
+|com.digitech.airsweb|log_level_airsweb|INFO|FILE_ROLL
+|com.digitech.airs|log_level_airs|WARN|FILE_ROLL
+|com.digitech.common.thread.lock|log_level_lock|WARN|FILE_ROLL
+|com.digitech.dossier.rest|log_level_rest|INFO|FILE_ROLL
+|com.digitech.dossier.webservices.rest|log_level_rest|INFO|FILE_ROLL
+|com.digitech.commons.rest|log_level_rest_client|INFO|FILE_ROLL
+|com.digitech.ged.http|log_level_ged_http|INFO|FILE_ROLL
+|com.digitech|log_level_digitech|INFO|FILE_ROLL
+|com.digitech.dossier.script|log_level_script|INFO|FILE_ROLL, FILE_SCRIPT
+|com.digitech.dossier.cmis|log_level_dossier_cmis|INFO|FILE_ROLL, FILE_CMIS
+|com.digitech.faces.servlet|log_level_viewer|WARN|FILE_ROLL
+|com.digitech.faces.model|log_level_viewer|WARN|FILE_ROLL
+|com.digitech.faces.listener.ResourcePhaseListener|log_level_viewer|OFF|FILE_ROLL
+|com.digitech.common.image|log_level_viewer|WARN|FILE_ROLL
+|com.digitech.dossier.servlet.DossierDocumentRendererServlet|log_level_viewer|WARN|FILE_ROLL
+|com.digitech.common.lib.utils|log_level_digitech_lib|WARN|FILE_ROLL
+|com.digitech.dossier.common.SessionManager|log_level_security|WARN|FILE_ROLL
+|org.hibernate|log_level_hibernate|WARN|FILE_ROLL
+|org.hibernate.orm|log_level_hibernate|ERROR|FILE_ROLL
+|javax.security|log_level_security|WARN|FILE_ROLL
+|org.springframework.security|log_level_security|WARN|FILE_ROLL
+|org.springframework.security.kerberos|log_level_security_kerberos|log_level_security (WARN)|FILE_ROLL
+|org.keycloak|log_level_security_keycloak|log_level_security (WARN)|FILE_ROLL
+|javax.servlet|log_level_servlet|WARN|FILE_ROLL
+|com.zaxxer.hikari|log_level_hikari|WARN|FILE_ROLL
+|net.bull|log_level_javamelody|WARN|FILE_ROLL
+|net.sf.ehcache|log_level_cache|WARN|FILE_ROLL
+|org.ehcache|log_level_cache|WARN|FILE_ROLL
+|org.springframework|log_level_spring|WARN|FILE_ROLL
+|org.richfaces|log_level_jsf|ERROR|FILE_ROLL
+|org.ajax4jsf|log_level_jsf|ERROR|FILE_ROLL
+|org.apache|log_level_apache|WARN|FILE_ROLL
+|org.apache.pdfbox|log_level_apache|ERROR|FILE_ROLL
+|org.apache.cxf|log_level_cxf|WARN|FILE_ROLL
+|org.apache.cxf.services|log_level_cxf_services|WARN|FILE_ROLL
+|reactor.netty|log_level_netty|INFO|FILE_ROLL
+|io.netty|log_level_netty|INFO|FILE_ROLL
+|io.swagger|log_level_swagger|WARN|FILE_ROLL
+|com.digitech.dossier.common.model.backend.job|log_level_job|WARN|SCHEDULER_SCRIPT
+|com.digitech.dossier.common.model.backend.airs.impl.Task|log_level_task|WARN|SCHEDULER_SCRIPT
+|com.digitech.common.dal.sgbd|log_level_pop|WARN|POPULATION, FILE_ROLL
+|com.digitech.population|log_level_pop|WARN|POPULATION, FILE_ROLL
+|org.postgresql|log_level_jdbc|WARN|FILE_ROLL
+|===
+
+=== Logger personnalisé
+
+Il est possible d'ajouter un fichier nommé *externalLogback.xml* dans le répertoire *xml* afin d'étendre la configuration
+injectée par défaut.
+
+Ce fichier (optionnel) est paramétré dans _DOSSIER_logback.xml_ comme ceci :
+
+[source,xml]
+----
+<include optional="true" file="${dossier_app}/xml/externalLogback.xml"/>
+----
+
+Ce fichier permet par exemple d'ajouter un appender spécifique pour enregistrer certains logs dans un fichier séparé.
+
+.Exemple de fichier externalLogback.xml
+[source,xml]
+----
+<included>
+  <appender name="FILE_TASK_XXX" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}_task_XXX.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>${log_path}/${project_filename:-dossierweb}_task_XXX_%i.log</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>10</MaxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>10MB</MaxFileSize>
+    </triggeringPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}:%line] %msg%n%rEx</Pattern>
+    </encoder>
+
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${log_level_task_xxx:-${log_level_script}}${:-WARN}</level>
+    </filter>
+
+    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+      <evaluator name="loggingTaskEval">
+        <expression>
+          return logger.contains("loggerTaskXXX");
+        </expression>
+      </evaluator>
+      <OnMatch>ACCEPT</OnMatch>
+      <OnMismatch>DENY</OnMismatch>
+    </filter>
+  </appender>
+
+  <root>
+    <appender-ref ref="FILE_TASK_XXX"/>
+  </root>
+</included>
+----
