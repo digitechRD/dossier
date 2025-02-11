@@ -31,7 +31,8 @@ image:02_rights/DOSSIERS_MENU_SEARCH_dropdown.png[]
 
 image:02_rights/DOSSIERS_MENU_SEARCH_ADVANCED_dropdown.png[]
 |*DOSSIERS_MENU_SEARCH_RECYCLE_BIN*|Droit de rechercher des documents supprimés||image:02_rights/DOSSIERS_MENU_SEARCH_RECYCLE_BIN.png[]
-|*DOSSIERS_MENU_TREE_INDEXATION*|Droit d'affichage de l'indexation (arbo)||
+|*DOSSIERS_MENU_TREE_INDEXATION*|Droit d'affichage de la vue arborescente en mode indexation|Affichage par défaut
+du plan de classement au sein de la vue indexation|image:02_rights/DOSSIERS_MENU_TREE_INDEXATION.png[]
 |*DOSSIERS_MENU_USERSMANAGEMENT*|Droit d'afficher le menu "Gestion des utilisateurs"|* Affichage du bouton permettant de modifier le mot de
 passe
 * L'authentification doit être en mode LOGIN (LDAP désactivé)|image:02_rights/DOSSIERS_MENU_USERSMANAGEMENT_password.png[]
@@ -48,7 +49,7 @@ passe
 * Affichage de la zone d'ajout de commentaire|image:02_rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_action.png[]
 
 image:02_rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_zone.png[]
-|*DOSSIERS_TAB_DOCUMENT_LINK*|Droit d'afficher l'onglet "Lien"||
+|*DOSSIERS_TAB_DOCUMENT_LINK*|Droit d'afficher l'onglet "Lien"||image:02_rights/DOSSIERS_TAB_DOCUMENT_LINK.png[]
 |*DOSSIERS_TAB_DOCUMENT_LINK_DINA*|Droit d'afficher l'onglet "Réconciliation"||xxx
 |*DOSSIERS_TAB_DOCUMENT_READ*|Droit d'afficher l'onglet "Pièces jointes"|Affichage de l'onglet "Pièces jointes" en
 mode vue|image:02_rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png[]
@@ -62,7 +63,8 @@ mode vue
 * Affichage du bouton "Modifier"|image:02_rights/DOSSIERS_TAB_INDEX_READ_WRITE.png[]
 
 image:02_rights/DOSSIERS_TAB_INDEX_WRITE_modify.png[]
-|*DOSSIERS_TAB_SIMILAR_DOCUMENT_LINK*|Droit d'autoriser le module de recherche de documents similaires||
+|*DOSSIERS_TAB_SIMILAR_DOCUMENT_LINK*|Droit d'autoriser le module de recherche de documents similaires|* Affichage des onglets "Liens" et "Réconciliation"
+* Le service full-text doit être accessible|image:02_rights/DOSSIERS_TAB_SIMILAR_DOCUMENT_LINK.png[]
 |*DOSSIERS_TAB_WORKFLOW*|Droit d'afficher l'onglet "Workflow"|Le workflow doit être activé|image:02_rights/DOSSIERS_TAB_WORKFLOW.png[]
 |===
 
@@ -71,20 +73,25 @@ image:02_rights/DOSSIERS_TAB_INDEX_WRITE_modify.png[]
 [cols="3a,3a,3a,2a"]
 |===
 |Code|Description|Complément|Affichage
-|*DOSSIERS_DEL_ATTACHMENT*|Droit de supprimer une pièce jointe|Affichage de l'action "Supprimer les pièces jointes
-sélectionnées"|image:02_rights/DOSSIERS_DEL_ATTACHMENT.png[]
+|*DOSSIERS_DEL_ATTACHMENT*|Droit de supprimer une pièce jointe|* Affichage de l'action "Supprimer les pièces jointes
+sélectionnées"
+* Si l’action ne fait pas partie des actions indisponibles|image:02_rights/DOSSIERS_DEL_ATTACHMENT.png[]
 |*DOSSIERS_DEL_ATTACHMENT_VERSION*|Droit de supprimer la version d'une pièce jointe||image:02_rights/DOSSIERS_DEL_ATTACHMENT_VERSION.png[]
 |*DOSSIERS_DOWNLOAD_ATTACHMENT*|Droit de télécharger une pièce jointe||image:02_rights/DOSSIERS_DOWNLOAD_ATTACHMENT.png[]
 |*DOSSIERS_IMPORT_ATTACHMENT*|Droit d'importer une pièce jointe|* Affichage de l'action
 "Ajouter" (si elle ne fait pas partie des actions indisponibles)
 * Non disponible en mode Vue sauf s'il est autorisé
 d'importer des pièces jointes dans tous les modes|image:02_rights/DOSSIERS_IMPORT_ATTACHMENT.png[]
-|*DOSSIERS_MODIFY_ATTACHMENT*|Droit de modifier une pièce jointe||
+|*DOSSIERS_MODIFY_ATTACHMENT*|Droit de modifier une pièce jointe|
+* Accès au panneau de modification des informations
+d'une pièce jointe
+* Le panneau est accessible si l'utilisateur possède soit le droit *DOSSIERS_MODIFY_ATTACHMENT* soit
+*DOSSIERS_IMPORT_ATTACHMENT*|image:02_rights/DOSSIERS_MODIFY_ATTACHMENT.png[]
 |*DOSSIERS_PJ_ADD_PAGE*|Droit d'ajouter des pages à une pièce jointe|Affichage de l'action "Insérer des pages"|image:02_rights/DOSSIERS_PJ_ADD_PAGE.png[]
 |*DOSSIERS_PJ_COPY_PAGE*|Droit de copier des pages d'une pièce jointe||xxx
 |*DOSSIERS_PJ_DELETE_PAGE*|Droit de supprimer des pages d'une pièce jointe|Affichage de l'action "Supprimer des pages"|image:02_rights/DOSSIERS_PJ_DELETE_PAGE.png[]
 |*DOSSIERS_DISPLAY_PJ_HISTO*|Droit d'afficher l'historique des pièces jointes||xxx
-|*DOSSIERS_PJ_PRINT*|Droit d'imprimer une pièce jointe||
+|*DOSSIERS_PJ_PRINT*|Droit d'imprimer une pièce jointe|Mode JavaWebStart activé|image:02_rights/DOSSIERS_PJ_PRINT.png[]
 |*DOSSIERS_VIEW_ATTACHMENT*|Droit de visualiser une pièce jointe|* Affichage de l'aperçu et des actions sur les pièces jointes dans la vue Document
 * Affichage de l'aperçu des pièces jointes dans la vue Résultats (en ajoutant le droit *DOSSIERS_SEARCHRESULT_WITH_PJ*)
 |image:02_rights/DOSSIERS_VIEW_ATTACHMENT_actions.png[]
@@ -116,11 +123,13 @@ actions indisponibles|image:02_rights/DOSSIERS_DOC_COPY.png[]
 * Hors vue en mode plein-texte
 * Si le presse-papier est autorisé et si l'action ne fait pas partie des
 actions indisponibles|image:02_rights/DOSSIERS_DOC_DUPLICATE.png[]
-|*DOSSIERS_DOC_LINK*|Droit de lier un document|* Si le presse-papier est autorisé et si l'action ne fait pas partie des
+|*DOSSIERS_DOC_LINK*|Droit de lier un document|Si le presse-papier est autorisé et si l'action ne fait pas partie des
 actions indisponibles|image:02_rights/DOSSIERS_DOC_LINK.png[]
 |*DOSSIERS_DOC_MERGE*|Droit de fusionner un document||
-|*DOSSIERS_DOC_MOVE*|Droit de déplacer un document||
-|*DOSSIERS_DOC_PASTE*|Droit de coller un document||
+|*DOSSIERS_DOC_MOVE*|Droit de déplacer un document|Si le presse-papier est autorisé et si l'action ne fait pas partie des
+actions indisponibles|image:02_rights/DOSSIERS_DOC_MOVE.png[]
+|*DOSSIERS_DOC_PASTE*|Droit de coller un document|Si le presse-papier est autorisé et si l'action ne fait pas partie des
+actions indisponibles|image:02_rights/DOSSIERS_DOC_PASTE.png[]
 |*DOSSIERS_EXPORT_DOC*|Droit d'exporter un document|* Affichage des actions "Exporter tous les documents
 sélectionnés en CSV" et "Exporter tous les documents en CSV" dans la vue Résultats|image:02_rights/DOSSIERS_EXPORT_DOC_selected.png[]
 
@@ -272,7 +281,7 @@ des préférences utilisateur|image:02_rights/DOSSIERS_DELEGATION_ADD.png[]
 [cols="3a,3a,3a,2a"]
 |===
 |Code|Description|Complément|Affichage
-|*DOSSIERS_SB_SEND*|Droit d'envoyer des documents vers le parapheur||
+|*DOSSIERS_SB_SEND*|Droit d'envoyer des documents vers le parapheur|Si le document est verrouillé par l'utilisateur|image:02_rights/DOSSIERS_SB_SEND.png[]
 |*DOSSIERS_SB_RETRIEVE*|Droit de relever manuellement les documents du parapheur||
 |*DOSSIERS_SB_CANCEL*|Droit d'annuler les documents du parapheur||
 |*DOSSIERS_SB_SHOW_HISTO*|Droit de consulter l'historique du parapheur||
@@ -309,7 +318,9 @@ image:02_rights/DOSSIERS_WORKBOOK_SEARCH_action.png[]
 |===
 |Code|Description|Complément|Affichage
 |*DOSSIERS_SIGNATURE_SEULEMENT*|Droit pour la signature électronique||xxx
-|*SIGNATURE*|Droit pour la signature électronique||
+|*SIGNATURE*|Droit pour la signature électronique|* Affichage de l'onglet "Signature"
+* La signature doit être activée
+* Le document doit posséder des pièces jointes|image:02_rights/SIGNATURE.png[]
 |===
 
 === Préférences
