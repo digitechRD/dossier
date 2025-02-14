@@ -7,6 +7,8 @@ Ce script permet de définir quelle pièce jointe est affichée _par défaut_ en
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,17 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_docId|Integer|ID du document
-|_attachmentList|List<IAttachment>|Liste des pièces jointes
+|*_docId*|Integer|ID du document
+|*_attachmentList*|List<IAttachment>|Liste des pièces jointes
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultValueAttachmentToDisplay 2+|contient les variables *_document* et *_attachment* correspondant au document et sa pièce jointe à afficher
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueAttachmentToDisplay*|contient les variables *document* et *attachment*
+correspondant au document et sa pièce jointe à afficher
 |===
 
 === Sample
@@ -37,6 +38,6 @@ import com.digitech.dossier.common.model.backend.airs.impl.comparator.Attachment
 import org.apache.commons.collections4.CollectionUtils
 
 if(CollectionUtils.isNotEmpty(_attachmentList)) {
-  output.attachment = _attachmentList.get(0)
+  _result.attachment = _attachmentList.get(0)
 }
 ----

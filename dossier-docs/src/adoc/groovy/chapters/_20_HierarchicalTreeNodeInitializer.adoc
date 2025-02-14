@@ -7,6 +7,8 @@ Ce script est utilisé lors de l'affichage de l'arborescence dans la vue plan de
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,17 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
+|*_treeNode*|IHierarchicalTreeNode|Arbre
 
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_treeNode|IHierarchicalTreeNode|Arbre
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultValueHierarchicalTreeNodeInitializer 2+|contient la variable *_properties* qui correspondent aux propriétés de l'arbre
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueHierarchicalTreeNodeInitializer*|contient la variable *properties* qui
+correspondent aux propriétés de l'arbre
 |===
 
 === Exemple
@@ -33,13 +34,11 @@ Personnalisation des icônes des nœuds de l'arborescence et ajout du déploieme
 
 [source, groovy]
 ----
-import com.digitech.dossier.script.model.impl.result.ScriptResultModel
-import com.digitech.dossier.script.model.impl.result.ScriptResultValueHierarchicalTreeNodeInitializer
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty
 
-ScriptResultModel<ScriptResultValueHierarchicalTreeNodeInitializer> theOutput = _output
-theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.EXPANDED, "true")
-theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.ICON_FOLDER, "/ui/common/img/dossier_logo.svg")
-theOutput.getValue().getProperties().put(ScriptResultValueHierarchicalTreeNodeInitializer.TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fatal.svg")
+_result.getProperties().put(TreeNodeProperty.EXPANDED, "true")
+_result.getProperties().put(TreeNodeProperty.ICON_FOLDER, "/ui/common/img/dossier_logo.svg")
+_result.getProperties().put(TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fatal.svg")
 ----
 
 .Exemple d'affichage du plan de classement (sans script)

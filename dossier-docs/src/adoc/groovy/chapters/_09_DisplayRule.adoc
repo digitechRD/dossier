@@ -7,6 +7,8 @@ Ce type de script est déclenché pour l'affichage des actions personnalisées.
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,18 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
+|*_document*|IDocument|Document
+|*_attachment*|IAttachment|Pièce jointe
 
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_document|IDocument|Document
-|_attachment|IAttachment|Pièce jointe
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultValueDisplayRule 2+|contient la variable *_valid* qui détermine l'affichage de l'action
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueDisplayRule*|contient la variable *valid* qui détermine l'affichage de l'action
 |===
 
 === Exemple
@@ -36,19 +36,18 @@ transverse_.
 [source, groovy]
 ----
 import com.digitech.dossier.common.model.backend.airs.IDocument
-import com.digitech.dossier.common.service.IAuthorityList;
-import com.digitech.dossier.common.service.ServiceManager;
-import com.digitech.jcorbairs.Term;
+import com.digitech.dossier.common.service.IAuthorityList
+import com.digitech.dossier.common.service.ServiceManager
+import com.digitech.jcorbairs.Term
 
-IDocument document = _document
 Term updatedFieldCode = getAuthorityListService().getTerm((Integer) document.getField("CR_THEME").getValue())
-_result.setValid(document?.getAttachments(_userContext)?.size > 0 && updatedFieldCode.getCode() == "TH_TRANS")
+_result.setValid(_document?.getAttachments(_userContext)?.size > 0 && updatedFieldCode?.getCode() == "TH_TRANS")
 
 /**
  * @return IAuthorityList the Authority List
  */
 public static IAuthorityList getAuthorityListService() {
-  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR
 }
 ----
 

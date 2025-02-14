@@ -7,6 +7,8 @@ Ce type de script est utilisé lorsque l'on dépose une pièce jointe.
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,19 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_document|IDocument|Document
-|_attachment|IAttachment|Pièce jointe
-|_mode|AttachmentUploadEventMode|Mode (ajout/suppression)
+|*_document*|IDocument|Document
+|*_attachment*|IAttachment|Pièce jointe
+|*_mode*|AttachmentUploadEventMode|Mode (ajout/suppression)
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|SimpleScriptResultModel 2+|
+|*_result*|*com.digitech.dossier.script.model.impl.result.SimpleScriptResultModel*|_--_
 |===
 
 === Exemple

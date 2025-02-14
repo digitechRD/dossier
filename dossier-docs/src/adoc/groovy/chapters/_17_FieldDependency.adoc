@@ -7,6 +7,8 @@ Ce script est déclenché lorsque l'on souhaite avoir une dépendance entre les 
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,21 +16,18 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_fieldToUpdate|IField|Champ à mettre à jour
-|_fieldMap|Map<String, IField>|Liste des champs
-|_updatedField|IField|Champ que l'on modifie
-|_updateFieldValues|Object|
-|_parameterMap|List<IParameter>|
+|*_fieldToUpdate*|IField|Champ à mettre à jour
+|*_fieldMap*|Map<String, IField>|Liste des champs
+|*_updatedField*|IField|Champ que l'on modifie
+|*_updateFieldValues*|Object|
+|*_parameterMap*|List<IParameter>|
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|IScriptResultModel<T> 2+|
+|*_result*|*com.digitech.dossier.script.model.impl.result.IScriptResultModel<T>*|
 |===
 
 === Exemple
@@ -37,39 +36,9 @@ Modification de la liste des choix pour le champ _Plan de classement_ lorsque la
 
 [source, groovy]
 ----
-import java.lang.*;
-import java.util.*;
-import javax.faces.*;
-import java.util.List;
-import java.util.Map;
 
-import org.slf4j.Logger;
-import org.apache.commons.lang.*;
-
-import com.digitech.dossier.common.model.backend.airs.IDocument;
-import com.digitech.dossier.common.model.backend.airs.IField;
-import com.digitech.dossier.common.service.ServiceManager;
-import com.digitech.dossier.common.service.IServer;
-import com.digitech.dossier.common.Utils;
-
-import com.digitech.dossier.common.*;
-
-import java.lang.Double;
-import com.digitech.dossier.common.service.ServiceManager;
-import com.digitech.dossier.common.service.IServer;
-
-import com.digitech.dossier.common.model.backing.factory.*;
-import javax.faces.component.html.*;
-import javax.faces.component.*;
-import javax.faces.model.*;
-
-import com.digitech.dossier.common.service.IAuthorityList;
-import com.digitech.jcorbairs.Term;
-
-IField fieldToUpdate = _fieldToUpdate
-IField updatedField = _updatedField
-List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(fieldToUpdate.getConfigField());
-Term updatedFieldCode = getAuthorityListService().getTerm((Integer) updatedField.getValue())
+List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(_fieldToUpdate.getConfigField());
+Term updatedFieldCode = getAuthorityListService().getTerm((Integer) _updatedField.getValue())
 
 List<SelectItem> test = new ArrayList<>();
 for(items in selectItems) {
@@ -82,7 +51,7 @@ for(items in selectItems) {
   }
 }
 List<SelectItem> filteredList = test.findAll({it.getValue().startsWith(updatedFieldCode.getCode() as String)})
-HtmlSelectOneMenu component = ((HtmlSelectOneMenu)  ((UIComponent)fieldToUpdate.getComponent()));
+HtmlSelectOneMenu component = ((HtmlSelectOneMenu)  ((UIComponent) _fieldToUpdate.getComponent()));
 component.getChildren().get(0).setValue(filteredList);
 
 /**

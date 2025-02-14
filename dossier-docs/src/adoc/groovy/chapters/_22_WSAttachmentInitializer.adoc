@@ -7,6 +7,8 @@ Ce type de script est utilisé lors de l'exécution des webservices sur les piè
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,20 +16,18 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_docId|Integer|Doc ID
-|_attData|IWSAttachmentUpdateType|Attachment data
-|_mode|ScriptModeRun|Mode
+|*_docId*|Integer|Doc ID
+|*_attData*|IWSAttachmentUpdateType|Attachment data
+|*_mode*|ScriptModeRun|Mode
 
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultWSDocument 2+|contient les variables *_secretLevel*, *_codeFieldValues*, *_ctxValues* et *_document*
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument** 2+**|contient les variables *secretLevel*, *codeFieldValues*, *ctxValues*
+et *document*
 |===
 
 === Exemple
@@ -49,9 +49,8 @@ curl --location 'http://localhost:7373/dossierweb/rest/attachment/9097' \
 import com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument
 import com.digitech.dossier.webservices.type.WSAttachmentUpdateType
 
-ScriptResultWSDocument result = _output.getValue()
 WSAttachmentUpdateType att = _attData
 if(att.getLabel() == null) {
-  result.fillKOResult("Empty label")
+  _result.fillKOResult("Empty label")
 }
 ----

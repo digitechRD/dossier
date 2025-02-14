@@ -7,6 +7,8 @@ Ce script est utilisé lors de la récupération des actions pour un document.
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,18 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
+|*_fieldValueMap*|Map<String, IFieldValue>|Liste des champs
 
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_fieldValueMap|Map<String, IFieldValue>|Liste des champs
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultValueDocumentActions 2+|contient les variables *_allActions* (toutes les actions) et *_unavailableActions* (actions
-indisponibles)
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions*|contient les variables *allActions* (toutes les actions) et
+*unavailableActions* (actions indisponibles)
 |===
 
 === Exemple
@@ -39,13 +39,11 @@ import com.digitech.dossier.common.utils.UserUtils
 import com.digitech.dossier.script.model.impl.result.ScriptResultModel
 import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
 
-ScriptResultModel<ScriptResultValueDocumentActions> theOutput = _output
-
 List<ScriptResultValueDocumentActions.Action> unavailableActions = new ArrayList<ScriptResultValueDocumentActions.Action>()
 if(!UserUtils.hasProfile(_userContext, "DOS_ADMIN_CLIENT")) {
   unavailableActions.add(ScriptResultValueDocumentActions.Action.LOCK)
 }
-theOutput.getValue().getUnavailableActions().addAll(unavailableActions)
+_result.getUnavailableActions().addAll(unavailableActions)
 ----
 
 .Exemple de résultats de recherche pour un utilisateur n'ayant pas le droit de verrouiller les documents

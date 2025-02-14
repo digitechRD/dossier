@@ -7,6 +7,8 @@ Ce script est déclenché lors de la création d'un document, afin de prérempli
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,18 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_document|IDocument|Document
-|_updateFields|Collection<UpdateField>|Champs du document
+|*_document*|IDocument|Document
+|*_updateFields*|Collection<UpdateField>|Champs du document
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultDocCreationInitializer 2+|contient la variable *_updatedFields* définissant les champs affichés
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultDocCreationInitializer*|contient la variable *updatedFields* définissant les champs
+affichés
 |===
 
 === Exemple

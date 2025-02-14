@@ -7,6 +7,8 @@ Ce type de script est utilisé pour filtrer les listes d'éléments.
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,19 +16,16 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_document|IDocument|Document
-|_users|List<?>|Liste des utilisateurs
-|_elements|List<?>|Liste des éléments
+|*_document*|IDocument|Document
+|*_users*|List<?>|Liste des utilisateurs
+|*_elements*|List<?>|Liste des éléments
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|List<?> 2+|Variable *_elements* qui correspond à la liste des éléments en sortie
+|*_result*|List<?>|Variable *_elements* qui correspond à la liste des éléments en sortie
 |===
 
 === Exemple
@@ -38,10 +37,9 @@ Filtrage sur une liste d'utilisateurs : affichage des personnes dont le nom de f
 import com.digitech.dossier.common.utils.UserUtils
 import com.digitech.jcorbairs.User
 
-List<User> userList = _users
-List<User> filteredList = userList.findAll({it.getLastName().startsWith("D")})
-elements.clear()
-elements.addAll(filteredList)
+List<User> filteredList = _users.findAll({it.getLastName().startsWith("D")})
+_elements.clear()
+_elements.addAll(filteredList)
 ----
 
 .Exemple de filtre sur une liste d'utilisateurs

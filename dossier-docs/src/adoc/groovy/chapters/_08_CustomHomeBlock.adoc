@@ -7,6 +7,8 @@ Ce script est utilisé pour l'affichage des blocs personnalisables de l'écran d
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,18 +16,15 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_parameterMap|Map<String, Object>|Paramètres
+|*_parameterMap*|Map<String, Object>|Paramètres
 
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|CustomBlockScriptResultModel 2+|contient les propriétés du bloc
+|*_result*|*com.digitech.dossier.script.model.impl.result.CustomBlockScriptResultModel*|contient les propriétés du bloc
 |===
 
 === Exemple
@@ -34,8 +33,5 @@ Personnalisation du style de l'entête avec un aspect de sous-titre ("h2").
 
 [source, groovy]
 ----
-import com.digitech.dossier.common.model.backing.search.home.PredefinedChartHomeBlockModel
-
-PredefinedChartHomeBlockModel block = _model
-block.setHeaderStyleClass("h2")
+_model.setHeaderStyleClass("h2")
 ----

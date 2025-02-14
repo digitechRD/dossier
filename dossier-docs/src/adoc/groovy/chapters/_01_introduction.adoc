@@ -37,3 +37,13 @@ L'opérateur est identique à _elvis_ et permet d'appel à des méthodes d'objet
 // si person ou address ou home est NULL, roadNumber sera NULL
 def roadNumber = person?.address?.home?.roadNumber
 ----
+
+[TIP]
+====
+Les *2* opérateurs précédemment décrits peuvent être utilisés conjointement !
+
+[source, groovy]
+----
+def roadNumber = person?.address?.home?.roadNumber ?: 666
+----
+====

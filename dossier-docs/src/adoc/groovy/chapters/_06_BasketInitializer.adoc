@@ -7,6 +7,8 @@ Ce type de script est utilisé pour initialiser les bannettes.
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,17 +16,15 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_basket|IBasketModel|Bannette
+|*_basket*|IBasketModel|Bannette
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultValueBasketInitializer 2+|contient la variable *_properties* qui contient les propriétés de la bannette
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueBasketInitializer*|contient la variable *properties* qui contient les propriétés
+de la bannette
 |===
 
 === Exemple
@@ -33,14 +33,10 @@ Masquer les bannettes ne contenant aucun document.
 
 [source, groovy]
 ----
-import com.digitech.dossier.common.model.backend.airs.IBasketModel
 import com.digitech.dossier.script.model.impl.result.ScriptResultValueBasketInitializer
-import com.digitech.dossier.script.model.impl.result.ScriptResultModel
 
-ScriptResultModel<ScriptResultValueBasketInitializer> theOutput = _output
-IBasketModel basket = _basket
-if(basket.getResultNumber(_userContext) == 0) {
-  theOutput.getValue().getProperties().put(ScriptResultValueBasketInitializer.BasketProperty.DISPLAYED, "false")
+if(_basket.getResultNumber(_userContext) == 0) {
+  _result.getProperties().put(ScriptResultValueBasketInitializer.BasketProperty.DISPLAYED, "false")
 }
 ----
 

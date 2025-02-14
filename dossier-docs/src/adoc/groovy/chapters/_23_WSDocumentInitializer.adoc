@@ -12,6 +12,8 @@ Ce type de script est utilisé lors de l'exécution des webservices sur les docu
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -19,22 +21,20 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
 |_docType|
 * *WSDocument*: *com.digitech.dossier.webservices.ws.document.type.WSDocumentType*
-* *WSExtendDocument*:*com.digitech.dossier.webservices.extend.type.WSDocumentType* ou |document structure
-|_parentDocType|com.digitech.dossier.webservices.extend.type.WSDocumentType|parent document structure (si disponible, *WSExtendDocument* seulement)
+* *WSExtendDocument*: *com.digitech.dossier.webservices.extend.type.WSDocumentType* ou |document structure
+|*_parentDocType*| *com.digitech.dossier.webservices.extend.type.WSDocumentType*|parent document structure (si disponible, *WSExtendDocument* seulement)
 |_mode|ScriptModeRun|Mode
 
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultWSDocument 2+|contient les variables *_secretLevel*, *_codeFieldValues*, *_ctxValues* et *_document*
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument*|contient les variables *secretLevel*, *codeFieldValues*, *ctxValues*
+et *document*
 |===
 
 === Exemple
@@ -51,11 +51,10 @@ import java.text.SimpleDateFormat
 def today = new Date()
 def sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
 if (_mode == ScriptModeRun.UPDATE) {
-  ScriptResultWSDocument scriptResult = _result
   IDocument doc = _document as IDocument
   String resume = doc.getField("CR_RESUME").getAirsValue()
   String newResume = resume + "\n" + "Mis à jour le " + sdf.format(today)
-  scriptResult.addFieldValue("CR_RESUME", newResume)
+  _result.addFieldValue("CR_RESUME", newResume)
 }
 ----
 

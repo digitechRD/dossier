@@ -7,6 +7,8 @@ Ce script est utilisé avant une recherche pour valider les critères.
 
 === Paramètres
 
+cf. <<_01_CommonData,attributs communs>>.
+
 [options="noheader",cols="2a,2a,3a"]
 |===
 3+|[.header]
@@ -14,33 +16,43 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
+|*_search*|ISearchModel|Recherche
+|*-parameters*|Map<String, Object>|Paramètres
 
-|_logger|org.log4j.Logger|Logger
-|_userContext|IUserCoreContext|UserContext
-|_search|ISearchModel|Recherche
-|parameters|Map<String, Object>|Paramètres
 3+|[.header]
 Sortie
 |[.sub-header]
-_Type_ 2+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
 _Description_
-
-|ScriptResultValueChecker 2+|contient la variable *_valid* qui détermine si la recherche est valide
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueChecker*|contient la variable *valid* qui détermine si la recherche est valide
 |===
 
-=== Exemple
+=== Exemples
 
-Blocage d'une recherche si une certaine condition est rencontrée.
-
-[source, groovy]
+.Blocage d'une recherche si une certaine condition est rencontrée.
+[source,groovy]
 ----
-import com.digitech.dossier.script.model.impl.result.ScriptResultModel
-import com.digitech.dossier.script.model.impl.result.ScriptResultValueChecker
+boolean condition = checkIfSearchIsValid(_search)
+result.setValid(condition)
 
-if( condition ) {
-  ScriptResultModel<ScriptResultValueChecker> outputParam = output
-  ScriptResultValueChecker result = new ScriptResultValueChecker()
-  result.setValid(false);
-  outputParam.setValue(result)
+private static boolean checkIfSearchIsValid(def sm) {
+  //
+  return ok
 }
 ----
+
+.Ajout d'un critère de recherche
+[source,groovy]
+----
+
+if(!userCanSeeArchiveFolder(_userContext)) {
+  _search.setAirsRequest(_search.getAirsRequest(_userContext)) + " ET ARCHIVE=0"
+}
+
+private static boolean userCanSeeArchiveFolder(IUserCoreContext uc) {
+  // whatever...
+  return uc.getProfileCodeList().contains("ARCHIVE_RIGHT")
+}
+----
+
