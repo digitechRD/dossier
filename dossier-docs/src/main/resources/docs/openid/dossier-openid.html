@@ -243,19 +243,39 @@ bouton <b class="button">Download Adaptor configs</b> et enregistrez le fichier 
 &lt;authenticationMode&gt;OIC&lt;/authenticationMode&gt;</code></pre>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>La balise <strong>allowLogin</strong> permet une authentification via <code><span style="color:#448279">Arcade GED</span></code> en cas de panne de <span style="color: #F25937">Keycloak</span> ou de connexion à un compte non géré par <span style="color: #F25937">Keycloak</span></p>
+<p>2 attributs peuvent être renseignés :</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>configLocation</strong>: <span class="red underline"><strong>[obligatoire]</strong></span> nom du fichier de configuration <span style="color: #F25937">Keycloak</span>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Cette clé peut contenir :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>seulement le <span class="underline">nom du fichier</span>. Celui-ci sera alors localisé dans le répertoire <strong>xml</strong> de <code><span style="color:#448279">Arcade GED</span></code>.</p>
+</li>
+<li>
+<p>le chemin <span class="underline">absolu</span> vers le fichier.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>allowLogin</strong>: [<em>optionnel</em>] indique si la mire de login classique (user/password) reste disponible (<strong>true</strong> par défaut). Cette option permet une authentification via <code><span style="color:#448279">Arcade GED</span></code> en cas de panne de <span style="color: #F25937">Keycloak</span> ou de connexion à un compte non géré par <span style="color: #F25937">Keycloak</span></p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock tip">
 <table>

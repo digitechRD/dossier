@@ -40,32 +40,32 @@ endif::[]
 
 L'authentification unique (en anglais **S**ingle **S**ign-**O**n ou {sso}) permet à un utilisateur de ne procéder qu'à une seule authentification pour accéder à son poste de travail ainsi qu’aux applications.
 
-Sans {sso}, à chaque accès à la page d’accueil de {dossier}, l’utilisateur doit d’abord entrer ses *login* et *mot de passe*, que l’application utilise pour ouvrir une session {dossier}. +
+Sans {sso}, à chaque accès à la page d’accueil de {arcadeged}, l’utilisateur doit d’abord entrer ses *login* et *mot de passe*, que l’application utilise pour ouvrir une session {arcadeged}. +
 
 Avec {sso}, le navigateur transmet automatiquement à l'application le nom que l'utilisateur a saisi pour s'authentifier lors de l'ouverture de sa session
 {windows}.
 Dès lors, l'application réceptionne le nom et vérifie sa validité auprès du serveur d’authentification,avant de l’autoriser ou non à accéder à l'application.
 
-Ce document décrit le paramétrage nécessaire pour intégrer {dossier} au sein d’un domaine géré par +++<span style="color: #167EF2">Active Directory</span>+++
+Ce document décrit le paramétrage nécessaire pour intégrer {arcadeged} au sein d’un domaine géré par +++<span style="color: #167EF2">Active Directory</span>+++
 ({sso} de type {kerberos}).
 En annexe est décrite la même procédure avec une authentification réalisée par un serveur {kerberos} sous {linux}.
 
 <<<
 
-== Paramétrage et mise en œuvre {sso} {kerberos} pour {dossier}
+== Paramétrage et mise en œuvre {sso} {kerberos} pour {arcadeged}
 
 L'authentification unique (en anglais **S**ingle **S**ign-**O**n ou {sso}) permet
 à un utilisateur de ne procéder qu'à une seule authentification pour accéder
 à son poste de travail ainsi qu’aux applications.
 
-Sans {sso}, à chaque accès à la page d’accueil de {dossier}, l’utilisateur doit
-d’abord entrer ses login et mot de passe, afin d’ouvrir une session {dossier}.
+Sans {sso}, à chaque accès à la page d’accueil de {arcadeged}, l’utilisateur doit
+d’abord entrer ses login et mot de passe, afin d’ouvrir une session {arcadeged}.
 Avec {sso}, le navigateur transmet automatiquement à l'application le nom que
 l'utilisateur a saisi pour s'authentifier lors de l'ouverture de sa session {windows}.
 Dès lors, l'application réceptionne le nom et vérifie sa validité auprès du
 serveur d’authentification, avant de l’autoriser ou non à accéder à l'application.
 
-Ce document décrit le paramétrage nécessaire pour intégrer {dossier} au sein
+Ce document décrit le paramétrage nécessaire pour intégrer {arcadeged} au sein
 d’un domaine géré par Active Directory ({sso} de type {kerberos}).
 En annexe est décrite la même procédure avec une authentification
 réalisée par un serveur {kerberos} sous {linux}.
@@ -75,7 +75,7 @@ types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de
 
 * Définition d’un compte {kerberos} (Dans l’exemple ci-dessous, ce sera un compte AD)
 * Association du compte {kerberos} à un SPN (Service Principal Name)
-* Association du service avec l’application {dossier}
+* Association du service avec l’application {arcadeged}
 
 === Création d’un compte Kerberos
 
@@ -91,7 +91,7 @@ Dans cet exemple a été créé l’utilisateur `dcosso` au sein de l’*Active 
 === Association du compte {kerberos} à un SPN
 
 Il est très déconseillé d’utiliser un compte {kerberos} déjà existant afin de l’utiliser, sur une même machine,
-pour mettre en place le principe de connexion {sso} sur une autre application telle que {dossier}.
+pour mettre en place le principe de connexion {sso} sur une autre application telle que {arcadeged}.
 
 Nous conseillons donc, soit de définir un nouveau compte, soit de supprimer les associations existantes.
 À savoir que les opérations de création et/ou modification des associations existantes ne peuvent être
@@ -140,7 +140,7 @@ setspn.exe -A HTTP/$APP_SERVEUR.$DOMAINE $USER_AD_DOSSIER
 
 où :
 
-* *$APP_SERVEUR* par le nom du serveur qui contient le serveur d’applications Web au sein duquel est déployé l’application {dossier}
+* *$APP_SERVEUR* par le nom du serveur qui contient le serveur d’applications Web au sein duquel est déployé l’application {arcadeged}
 * *$DOMAINE* par le nom de votre domaine, il doit correspondre avec le domaine auquel est associé le compte Kerberos
 
 Toutes ces informations doivent être renseignées en majuscule (serveur et domaine). Quant à l'utilisateur, simplement respecter la casse utilisée lors de sa création.
@@ -164,7 +164,7 @@ ktpass -out fichier.keytab -princ HTTP/$APP_SERVEUR@$DOMAINE -mapuser $user_ad_d
 ----
 
 Le fichier `fichier.keytab` ainsi généré se trouve à la racine du répertoire de l'utilisateur connecté au serveur.
-Il sera utilisé afin de mettre en œuvre le mode {sso} pour l’utilisation du produit {dossier}.
+Il sera utilisé afin de mettre en œuvre le mode {sso} pour l’utilisation du produit {arcadeged}.
 
 ===  Test du paramétrage
 
@@ -200,16 +200,16 @@ http://$APP_SERVEUR.$DOMAINE<:port>/dossier
 
 où <:port> est la donnée du port de communication paramétré pour le serveur apache-Tomcat.
 
-À ce stade, on peut considérer la connexion {sso} depuis le serveur applicatif comme valide et procéder désormais au paramétrage de l'application {dossier}.
+À ce stade, on peut considérer la connexion {sso} depuis le serveur applicatif comme valide et procéder désormais au paramétrage de l'application {arcadeged}.
 
-=== Association avec l’application {dossier}
+=== Association avec l’application {arcadeged}
 
 [TIP]
 ====
-Utilisez l'application {adminAIRS} pour paramétrer {dossier} !
+Utilisez l'application {adminAIRS} pour paramétrer {arcadeged} !
 ====
 
-Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application {dossier}. Sera uniquement concerné le fichier *params.xml* présent au sein du sous-dossier *xml* des composants de l’application {dossier} déployée.
+Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application {arcadeged}. Sera uniquement concerné le fichier *params.xml* présent au sein du sous-dossier *xml* des composants de l’application {arcadeged} déployée.
 
 Il faut alors ajouter la balise *spnegoConfig* (peu importe la position, seulement en tant qu'_enfant_ du nœud *params*).
 
@@ -230,8 +230,16 @@ La balise *ssoActivated* n'est plus utilisée, sa valeur étant surchargée par 
 
 4 attributs peuvent être renseignés :
 
-* *keyTabLocation*: [[underline]#*obligatoire*#] nom du `keytab` (localisé dans le répertoire *xml* de {dossier})
-* *servicePrincipal*: [[underline]#*obligatoire*#] service principal utilisé lors de la génération du `keytab`
+* *keytabLocation*: [red underline]#*[obligatoire]*# nom du fichier `keytab`.
+[NOTE]
+====
+Cette clé peut contenir :
+
+* seulement le [underline]#nom du fichier#. Celui-ci sera alors localisé dans le répertoire *xml* de {arcadeged}.
+* le chemin [underline]#absolu# vers le fichier.
+====
+
+* *servicePrincipal*: [red underline]#*[obligatoire]*# service principal utilisé lors de la génération du `keytab`
 * *allowLogin*: [_optionnel_] indique si la mire de login classique (user/password) reste disponible (*true* par défaut).
 * *debug*: [_optionnel_] pour augmenter les traces  (*false* par défaut).
 
@@ -320,7 +328,7 @@ addprinc -pw PASSWORD -e des-cbc-crc:normal host/pc-sso.digitech.lan
 addprinc -pw PASSWORD -e des-cbc-crc:normal L.LOGIN
 
 [start=8]
-. Ajouter de la même manière un compte de pré-authentification pour l’application {dossier}, dont nous reporterons les login et mot de passe dans le fichier *sso .properties* (cf. référence plus haut).
+. Ajouter de la même manière un compte de pré-authentification pour l’application {arcadeged}, dont nous reporterons les login et mot de passe dans le fichier *sso .properties* (cf. référence plus haut).
 
 . Editer le fichier link:/etc/krb5.conf[/etc/krb5.conf] qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier *krb5.conf*
 nécessaire au paramétrage de +++<span style="color: #9867F2">JAAS</span>+++).

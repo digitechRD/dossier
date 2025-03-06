@@ -115,10 +115,18 @@ Dans ce même fichier, le mode d'authentification doit être _basculée_ en *OIC
 <authenticationMode>OIC</authenticationMode>
 ----
 
-[IMPORTANT]
+2 attributs peuvent être renseignés :
+
+* *configLocation*: [red underline]#*[obligatoire]*# nom du fichier de configuration {keycloak}.
+[NOTE]
 ====
-La balise *allowLogin* permet une authentification via {arcadeged} en cas de panne de {keycloak} ou de connexion à un compte non géré par {keycloak}
+Cette clé peut contenir :
+
+* seulement le [underline]#nom du fichier#. Celui-ci sera alors localisé dans le répertoire *xml* de {arcadeged}.
+* le chemin [underline]#absolu# vers le fichier.
 ====
+
+* *allowLogin*: [_optionnel_] indique si la mire de login classique (user/password) reste disponible (*true* par défaut). Cette option permet une authentification via {arcadeged} en cas de panne de {keycloak} ou de connexion à un compte non géré par {keycloak}
 
 [TIP]
 ====

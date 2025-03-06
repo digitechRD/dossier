@@ -39,7 +39,7 @@
 <div id="toctitle">Sommaire</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">1. Introduction</a></li>
-<li><a href="#_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_airs_dossier">2. Paramétrage et mise en œuvre <span style="color: #F27E36">SSO</span> <span style="color: #167EF2">Kerberos</span> pour <code><span style="color:#D4CE28">AIRS Dossier</span></code></a>
+<li><a href="#_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_arcade_ged">2. Paramétrage et mise en œuvre <span style="color: #F27E36">SSO</span> <span style="color: #167EF2">Kerberos</span> pour <code><span style="color:#448279">Arcade GED</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#_création_dun_compte_kerberos">2.1. Création d’un compte Kerberos</a></li>
 <li><a href="#_association_du_compte_kerberos_à_un_spn">2.2. Association du compte <span style="color: #167EF2">Kerberos</span> à un SPN</a></li>
@@ -47,7 +47,7 @@
 <li><a href="#_création_dune_association_ou_dun_service">2.4. Création d&#8217;une association (ou d’un service)</a></li>
 <li><a href="#_génération_du_keytab">2.5. Génération du <strong>"keytab"</strong></a></li>
 <li><a href="#_test_du_paramétrage">2.6. Test du paramétrage</a></li>
-<li><a href="#_association_avec_lapplication_airs_dossier">2.7. Association avec l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code></a></li>
+<li><a href="#_association_avec_lapplication_arcade_ged">2.7. Association avec l’application <code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
 <li><a href="#_activation_kerberos_dans_le_navigateur_des_utilisateurs">3. Activation <span style="color: #167EF2">Kerberos</span> dans le navigateur des utilisateurs</a>
@@ -147,7 +147,7 @@
 <p>L&#8217;authentification unique (en anglais <strong>S</strong>ingle <strong>S</strong>ign-<strong>O</strong>n ou <span style="color: #F27E36">SSO</span>) permet à un utilisateur de ne procéder qu&#8217;à une seule authentification pour accéder à son poste de travail ainsi qu’aux applications.</p>
 </div>
 <div class="paragraph">
-<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <code><span style="color:#D4CE28">AIRS Dossier</span></code>, l’utilisateur doit d’abord entrer ses <strong>login</strong> et <strong>mot de passe</strong>, que l’application utilise pour ouvrir une session <code><span style="color:#D4CE28">AIRS Dossier</span></code>.<br></p>
+<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <code><span style="color:#448279">Arcade GED</span></code>, l’utilisateur doit d’abord entrer ses <strong>login</strong> et <strong>mot de passe</strong>, que l’application utilise pour ouvrir une session <code><span style="color:#448279">Arcade GED</span></code>.<br></p>
 </div>
 <div class="paragraph">
 <p>Avec <span style="color: #F27E36">SSO</span>, le navigateur transmet automatiquement à l&#8217;application le nom que l&#8217;utilisateur a saisi pour s&#8217;authentifier lors de l&#8217;ouverture de sa session
@@ -155,7 +155,7 @@
 Dès lors, l&#8217;application réceptionne le nom et vérifie sa validité auprès du serveur d’authentification,avant de l’autoriser ou non à accéder à l&#8217;application.</p>
 </div>
 <div class="paragraph">
-<p>Ce document décrit le paramétrage nécessaire pour intégrer <code><span style="color:#D4CE28">AIRS Dossier</span></code> au sein d’un domaine géré par <span style="color: #167EF2">Active Directory</span>
+<p>Ce document décrit le paramétrage nécessaire pour intégrer <code><span style="color:#448279">Arcade GED</span></code> au sein d’un domaine géré par <span style="color: #167EF2">Active Directory</span>
 (<span style="color: #F27E36">SSO</span> de type <span style="color: #167EF2">Kerberos</span>).
 En annexe est décrite la même procédure avec une authentification réalisée par un serveur <span style="color: #167EF2">Kerberos</span> sous <span style="color: #F25937">Linux</span>.</p>
 </div>
@@ -163,7 +163,7 @@ En annexe est décrite la même procédure avec une authentification réalisée 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_airs_dossier"><a class="anchor" href="#_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_airs_dossier"></a>2. Paramétrage et mise en œuvre <span style="color: #F27E36">SSO</span> <span style="color: #167EF2">Kerberos</span> pour <code><span style="color:#D4CE28">AIRS Dossier</span></code></h2>
+<h2 id="_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_arcade_ged"><a class="anchor" href="#_paramétrage_et_mise_en_œuvre_sso_kerberos_pour_arcade_ged"></a>2. Paramétrage et mise en œuvre <span style="color: #F27E36">SSO</span> <span style="color: #167EF2">Kerberos</span> pour <code><span style="color:#448279">Arcade GED</span></code></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>L&#8217;authentification unique (en anglais <strong>S</strong>ingle <strong>S</strong>ign-<strong>O</strong>n ou <span style="color: #F27E36">SSO</span>) permet
@@ -171,15 +171,15 @@ En annexe est décrite la même procédure avec une authentification réalisée 
 à son poste de travail ainsi qu’aux applications.</p>
 </div>
 <div class="paragraph">
-<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <code><span style="color:#D4CE28">AIRS Dossier</span></code>, l’utilisateur doit
-d’abord entrer ses login et mot de passe, afin d’ouvrir une session <code><span style="color:#D4CE28">AIRS Dossier</span></code>.
+<p>Sans <span style="color: #F27E36">SSO</span>, à chaque accès à la page d’accueil de <code><span style="color:#448279">Arcade GED</span></code>, l’utilisateur doit
+d’abord entrer ses login et mot de passe, afin d’ouvrir une session <code><span style="color:#448279">Arcade GED</span></code>.
 Avec <span style="color: #F27E36">SSO</span>, le navigateur transmet automatiquement à l&#8217;application le nom que
 l&#8217;utilisateur a saisi pour s&#8217;authentifier lors de l&#8217;ouverture de sa session <span style="color: #F25937">Windows</span>.
 Dès lors, l&#8217;application réceptionne le nom et vérifie sa validité auprès du
 serveur d’authentification, avant de l’autoriser ou non à accéder à l&#8217;application.</p>
 </div>
 <div class="paragraph">
-<p>Ce document décrit le paramétrage nécessaire pour intégrer <code><span style="color:#D4CE28">AIRS Dossier</span></code> au sein
+<p>Ce document décrit le paramétrage nécessaire pour intégrer <code><span style="color:#448279">Arcade GED</span></code> au sein
 d’un domaine géré par Active Directory (<span style="color: #F27E36">SSO</span> de type <span style="color: #167EF2">Kerberos</span>).
 En annexe est décrite la même procédure avec une authentification
 réalisée par un serveur <span style="color: #167EF2">Kerberos</span> sous <span style="color: #F25937">Linux</span>.</p>
@@ -197,7 +197,7 @@ types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de
 <p>Association du compte <span style="color: #167EF2">Kerberos</span> à un SPN (Service Principal Name)</p>
 </li>
 <li>
-<p>Association du service avec l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code></p>
+<p>Association du service avec l’application <code><span style="color:#448279">Arcade GED</span></code></p>
 </li>
 </ul>
 </div>
@@ -225,7 +225,7 @@ types d’opérations distinctes nécessaires à la mise en œuvre de ce mode de
 <h3 id="_association_du_compte_kerberos_à_un_spn"><a class="anchor" href="#_association_du_compte_kerberos_à_un_spn"></a>2.2. Association du compte <span style="color: #167EF2">Kerberos</span> à un SPN</h3>
 <div class="paragraph">
 <p>Il est très déconseillé d’utiliser un compte <span style="color: #167EF2">Kerberos</span> déjà existant afin de l’utiliser, sur une même machine,
-pour mettre en place le principe de connexion <span style="color: #F27E36">SSO</span> sur une autre application telle que <code><span style="color:#D4CE28">AIRS Dossier</span></code>.</p>
+pour mettre en place le principe de connexion <span style="color: #F27E36">SSO</span> sur une autre application telle que <code><span style="color:#448279">Arcade GED</span></code>.</p>
 </div>
 <div class="paragraph">
 <p>Nous conseillons donc, soit de définir un nouveau compte, soit de supprimer les associations existantes.
@@ -294,7 +294,7 @@ setspn.exe -D HTTP/SRV_DOSSIER.DOMAINE dossier_app</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>$APP_SERVEUR</strong> par le nom du serveur qui contient le serveur d’applications Web au sein duquel est déployé l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code></p>
+<p><strong>$APP_SERVEUR</strong> par le nom du serveur qui contient le serveur d’applications Web au sein duquel est déployé l’application <code><span style="color:#448279">Arcade GED</span></code></p>
 </li>
 <li>
 <p><strong>$DOMAINE</strong> par le nom de votre domaine, il doit correspondre avec le domaine auquel est associé le compte Kerberos</p>
@@ -328,7 +328,7 @@ setspn.exe -D HTTP/SRV_DOSSIER.DOMAINE dossier_app</code></pre>
 </div>
 <div class="paragraph">
 <p>Le fichier <code>fichier.keytab</code> ainsi généré se trouve à la racine du répertoire de l&#8217;utilisateur connecté au serveur.
-Il sera utilisé afin de mettre en œuvre le mode <span style="color: #F27E36">SSO</span> pour l’utilisation du produit <code><span style="color:#D4CE28">AIRS Dossier</span></code>.</p>
+Il sera utilisé afin de mettre en œuvre le mode <span style="color: #F27E36">SSO</span> pour l’utilisation du produit <code><span style="color:#448279">Arcade GED</span></code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -373,11 +373,11 @@ http://$APP_SERVEUR.$DOMAINE&lt;:port&gt;/dossier</code></pre>
 <p>où &lt;:port&gt; est la donnée du port de communication paramétré pour le serveur apache-Tomcat.</p>
 </div>
 <div class="paragraph">
-<p>À ce stade, on peut considérer la connexion <span style="color: #F27E36">SSO</span> depuis le serveur applicatif comme valide et procéder désormais au paramétrage de l&#8217;application <code><span style="color:#D4CE28">AIRS Dossier</span></code>.</p>
+<p>À ce stade, on peut considérer la connexion <span style="color: #F27E36">SSO</span> depuis le serveur applicatif comme valide et procéder désormais au paramétrage de l&#8217;application <code><span style="color:#448279">Arcade GED</span></code>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_association_avec_lapplication_airs_dossier"><a class="anchor" href="#_association_avec_lapplication_airs_dossier"></a>2.7. Association avec l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code></h3>
+<h3 id="_association_avec_lapplication_arcade_ged"><a class="anchor" href="#_association_avec_lapplication_arcade_ged"></a>2.7. Association avec l’application <code><span style="color:#448279">Arcade GED</span></code></h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -386,14 +386,14 @@ http://$APP_SERVEUR.$DOMAINE&lt;:port&gt;/dossier</code></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Utilisez l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code> pour paramétrer <code><span style="color:#D4CE28">AIRS Dossier</span></code> !</p>
+<p>Utilisez l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code> pour paramétrer <code><span style="color:#448279">Arcade GED</span></code> !</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code>. Sera uniquement concerné le fichier <strong>params.xml</strong> présent au sein du sous-dossier <strong>xml</strong> des composants de l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code> déployée.</p>
+<p>Pour cette opération, il n’est pas nécessaire de disposer de droits d’administration comme pour les paragraphes précédents sinon de bonnes connaissances des fichiers et paramètres de l’application <code><span style="color:#448279">Arcade GED</span></code>. Sera uniquement concerné le fichier <strong>params.xml</strong> présent au sein du sous-dossier <strong>xml</strong> des composants de l’application <code><span style="color:#448279">Arcade GED</span></code> déployée.</p>
 </div>
 <div class="paragraph">
 <p>Il faut alors ajouter la balise <strong>spnegoConfig</strong> (peu importe la position, seulement en tant qu'<em>enfant</em> du nœud <strong>params</strong>).</p>
@@ -437,10 +437,31 @@ http://$APP_SERVEUR.$DOMAINE&lt;:port&gt;/dossier</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>keyTabLocation</strong>: <span class="[underline"><strong>obligatoire</strong></span>] nom du <code>keytab</code> (localisé dans le répertoire <strong>xml</strong> de <code><span style="color:#D4CE28">AIRS Dossier</span></code>)</p>
+<p><strong>keytabLocation</strong>: <span class="red underline"><strong>[obligatoire]</strong></span> nom du fichier <code>keytab</code>.</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Cette clé peut contenir :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>seulement le <span class="underline">nom du fichier</span>. Celui-ci sera alors localisé dans le répertoire <strong>xml</strong> de <code><span style="color:#448279">Arcade GED</span></code>.</p>
 </li>
 <li>
-<p><strong>servicePrincipal</strong>: <span class="[underline"><strong>obligatoire</strong></span>] service principal utilisé lors de la génération du <code>keytab</code></p>
+<p>le chemin <span class="underline">absolu</span> vers le fichier.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>servicePrincipal</strong>: <span class="red underline"><strong>[obligatoire]</strong></span> service principal utilisé lors de la génération du <code>keytab</code></p>
 </li>
 <li>
 <p><strong>allowLogin</strong>: [<em>optionnel</em>] indique si la mire de login classique (user/password) reste disponible (<strong>true</strong> par défaut).</p>
@@ -601,7 +622,7 @@ On peut se contenter de laisser une ligne unique (remplacer <strong>EXAMPLE.COM<
 <div class="olist arabic">
 <ol class="arabic" start="8">
 <li>
-<p>Ajouter de la même manière un compte de pré-authentification pour l’application <code><span style="color:#D4CE28">AIRS Dossier</span></code>, dont nous reporterons les login et mot de passe dans le fichier <strong>sso .properties</strong> (cf. référence plus haut).</p>
+<p>Ajouter de la même manière un compte de pré-authentification pour l’application <code><span style="color:#448279">Arcade GED</span></code>, dont nous reporterons les login et mot de passe dans le fichier <strong>sso .properties</strong> (cf. référence plus haut).</p>
 </li>
 <li>
 <p>Editer le fichier <a href="/etc/krb5.conf">/etc/krb5.conf</a> qui doit refléter les paramètres du réseau (cf. référence plus haut, identique au fichier <strong>krb5.conf</strong>
