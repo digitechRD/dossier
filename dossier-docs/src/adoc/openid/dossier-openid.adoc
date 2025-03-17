@@ -1,9 +1,9 @@
 [[Dossier-openid]]
 = Mise en place de *keycloak* pour le produit *{arcadeged}*
-v1.0, 23/01/2025
-:revnumber: 1.0
+v1.1, 17/03/2025
+:revnumber: 1.1
 include::{sharedResource}/adoc/template.adoc[]
-:revdate: 23/01/2025
+:revdate: 17/03/2025
 
 // substitution/alias
 :sso: pass:quotes[<span style="color: #F27E36">SSO</span>]
@@ -32,6 +32,7 @@ _ZAC Saumaty Séon - 21 av. Fernand Sardou - CS 40173 +
 |===
 |Date|Version|État|Objet|Rédacteur|Validateur
 |23/01/2025|1.0|Validé|Création du document|{NFE_}|
+|17/03/2025|1.1|Validé|Ajout de l'option *logoutRedirectToLogin*|{NFE_}|
 |===
 
 ifdef::env-github[]
@@ -104,7 +105,7 @@ Modifiez alors le fichier de configuration *{arcadeged}/xml/params.xml* en ajout
 [source,xml]
 .Balise *oicConfig*
 ----
-<oicConfig configLocation="keycloak.json" allowLogin="false"/>
+<oicConfig configLocation="keycloak.json" allowLogin="true" logoutRedirectToLogin="false"/>
 ----
 
 Dans ce même fichier, le mode d'authentification doit être _basculée_ en *OIC*
@@ -127,6 +128,9 @@ Cette clé peut contenir :
 ====
 
 * *allowLogin*: [_optionnel_] indique si la mire de login classique (user/password) reste disponible (*true* par défaut). Cette option permet une authentification via {arcadeged} en cas de panne de {keycloak} ou de connexion à un compte non géré par {keycloak}
+
+* *logoutRedirectToLogin*: [_optionnel_] indique si la déconnexion redirige vers la mire de Login {arcadeged} (*true*
+par défaut). Si *false*, l'utilisateur est redirigé vers la page de connexion de {keycloak}.
 
 [TIP]
 ====
