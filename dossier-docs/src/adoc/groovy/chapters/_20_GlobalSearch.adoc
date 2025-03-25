@@ -1,0 +1,60 @@
+[[_20_GlobalSearch]]
+== GlobalSearch
+
+=== Description
+
+Ce script est déclenché lors de l'exécution d'une recherche dite _"rapide"_.
+
+=== Paramètres
+
+cf. <<_01_CommonData,attributs communs>>.
+
+[options="noheader",cols="2a,2a,3a"]
+|===
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+|*_search*|ISearchModel|recherche courante
+|*_searchPhrase*|String|Critères de recherche saisis
+
+[IMPORTANT]
+====
+Ne modifiez pas le paramètre *_searchPhrase*, préférez injecter - si votre action est celle-ci - la nouvelle requête comme il suit :
+
+[source,groovy]
+----
+_search.setAirsRequest("<new criteria>")
+----
+====
+
+3+|[.header]
+Sortie
+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueChecker*|contient la variable *valid* qui permet (_optionnellement_) d'annuler la
+requête
+|===
+
+=== Exemple
+
+[source, groovy]
+.Ajout d'un critère
+----
+import com.digitech.dossier.common.model.backend.Constants
+
+if(!_searchCriteria.contains(Constants.FIELD_CODE_D_CREAT)) {
+  _search.getAirsRequest() + " ET " + Constants.FIELD_CODE_D_CREAT + ">'01/01/2020'"
+}
+----
+
+[source, groovy]
+.Invalidation de la requête
+----
+if(_searchCriteria.contains("données sensibles")) {
+  _result.valid = false
+}
+----

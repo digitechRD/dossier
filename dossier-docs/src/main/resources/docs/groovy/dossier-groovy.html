@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">14/02/2025 15:20:34</span>
+<span id="revdate">25/03/2025 17:08:37</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -169,32 +169,39 @@
 <li><a href="#_exemple_14">20.2. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_20_HierarchicalTreeNodeInitializer">21. HierarchicalTreeNodeInitializer</a>
+<li><a href="#_20_GlobalSearch">21. GlobalSearch</a>
 <ul class="sectlevel2">
 <li><a href="#_description_19">21.1. Description</a></li>
 <li><a href="#_paramètres_17">21.2. Paramètres</a></li>
 <li><a href="#_exemple_15">21.3. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_21_Task">22. Task</a>
+<li><a href="#_21_HierarchicalTreeNodeInitializer">22. HierarchicalTreeNodeInitializer</a>
 <ul class="sectlevel2">
 <li><a href="#_description_20">22.1. Description</a></li>
 <li><a href="#_paramètres_18">22.2. Paramètres</a></li>
 <li><a href="#_exemple_16">22.3. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_22_WSAttachmentInitializer">23. WSAttachmentInitializer</a>
+<li><a href="#_22_Task">23. Task</a>
 <ul class="sectlevel2">
 <li><a href="#_description_21">23.1. Description</a></li>
 <li><a href="#_paramètres_19">23.2. Paramètres</a></li>
 <li><a href="#_exemple_17">23.3. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_23_WSDocumentInitializer">24. WSDocumentInitializer</a>
+<li><a href="#_23_WSAttachmentInitializer">24. WSAttachmentInitializer</a>
 <ul class="sectlevel2">
 <li><a href="#_description_22">24.1. Description</a></li>
 <li><a href="#_paramètres_20">24.2. Paramètres</a></li>
 <li><a href="#_exemple_18">24.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_24_WSDocumentInitializer">25. WSDocumentInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_23">25.1. Description</a></li>
+<li><a href="#_paramètres_21">25.2. Paramètres</a></li>
+<li><a href="#_exemple_19">25.3. Exemple</a></li>
 </ul>
 </li>
 </ul>
@@ -2350,16 +2357,148 @@ String res = DocUtils.getThirdFromList(List&lt;String&gt; list)</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_20_HierarchicalTreeNodeInitializer"><a class="anchor" href="#_20_HierarchicalTreeNodeInitializer"></a>21. HierarchicalTreeNodeInitializer</h2>
+<h2 id="_20_GlobalSearch"><a class="anchor" href="#_20_GlobalSearch"></a>21. GlobalSearch</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_description_19"><a class="anchor" href="#_description_19"></a>21.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est déclenché lors de l&#8217;exécution d&#8217;une recherche dite <em>"rapide"</em>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_17"><a class="anchor" href="#_paramètres_17"></a>21.2. Paramètres</h3>
+<div class="paragraph">
+<p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_search</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ISearchModel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>recherche courante</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_searchPhrase</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Critères de recherche saisis</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ne modifiez pas le paramètre <strong>_searchPhrase</strong>, préférez injecter - si votre action est celle-ci - la nouvelle requête comme il suit :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">_search.setAirsRequest("&lt;new criteria&gt;")</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_result</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>com.digitech.dossier.script.model.impl.result.ScriptResultValueChecker</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>valid</strong> qui permet (<em>optionnellement</em>) d&#8217;annuler la
+requête</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemple_15"><a class="anchor" href="#_exemple_15"></a>21.3. Exemple</h3>
+<div class="listingblock">
+<div class="title">Ajout d&#8217;un critère</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.model.backend.Constants
+
+if(!_searchCriteria.contains(Constants.FIELD_CODE_D_CREAT)) {
+  _search.getAirsRequest() + " ET " + Constants.FIELD_CODE_D_CREAT + "&gt;'01/01/2020'"
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Invalidation de la requête</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">if(_searchCriteria.contains("données sensibles")) {
+  _result.valid = false
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_21_HierarchicalTreeNodeInitializer"><a class="anchor" href="#_21_HierarchicalTreeNodeInitializer"></a>22. HierarchicalTreeNodeInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_20"><a class="anchor" href="#_description_20"></a>22.1. Description</h3>
 <div class="paragraph">
 <p>Ce script est utilisé lors de l&#8217;affichage de l&#8217;arborescence dans la vue plan de classement.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_17"><a class="anchor" href="#_paramètres_17"></a>21.2. Paramètres</h3>
+<h3 id="_paramètres_18"><a class="anchor" href="#_paramètres_18"></a>22.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2429,7 +2568,7 @@ correspondent aux propriétés de l&#8217;arbre</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_15"><a class="anchor" href="#_exemple_15"></a>21.3. Exemple</h3>
+<h3 id="_exemple_16"><a class="anchor" href="#_exemple_16"></a>22.3. Exemple</h3>
 <div class="paragraph">
 <p>Personnalisation des icônes des nœuds de l&#8217;arborescence et ajout du déploiement intégral de l&#8217;arbre.</p>
 </div>
@@ -2454,16 +2593,16 @@ _result.getProperties().put(TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fa
 </div>
 </div>
 <div class="sect1">
-<h2 id="_21_Task"><a class="anchor" href="#_21_Task"></a>22. Task</h2>
+<h2 id="_22_Task"><a class="anchor" href="#_22_Task"></a>23. Task</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_20"><a class="anchor" href="#_description_20"></a>22.1. Description</h3>
+<h3 id="_description_21"><a class="anchor" href="#_description_21"></a>23.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé afin de décrire l&#8217;exécution d&#8217;une tâche.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_18"><a class="anchor" href="#_paramètres_18"></a>22.2. Paramètres</h3>
+<h3 id="_paramètres_19"><a class="anchor" href="#_paramètres_19"></a>23.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2516,7 +2655,7 @@ _result.getProperties().put(TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fa
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_16"><a class="anchor" href="#_exemple_16"></a>22.3. Exemple</h3>
+<h3 id="_exemple_17"><a class="anchor" href="#_exemple_17"></a>23.3. Exemple</h3>
 <div class="paragraph">
 <p>On peut passer un paramètre dans la configuration de la tâche (fichier <strong>task.xml</strong>) de cette façon :</p>
 </div>
@@ -2540,16 +2679,16 @@ String res = param?.getValue()</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_22_WSAttachmentInitializer"><a class="anchor" href="#_22_WSAttachmentInitializer"></a>23. WSAttachmentInitializer</h2>
+<h2 id="_23_WSAttachmentInitializer"><a class="anchor" href="#_23_WSAttachmentInitializer"></a>24. WSAttachmentInitializer</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_21"><a class="anchor" href="#_description_21"></a>23.1. Description</h3>
+<h3 id="_description_22"><a class="anchor" href="#_description_22"></a>24.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les pièces jointes (ajout ou mise à jour).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_19"><a class="anchor" href="#_paramètres_19"></a>23.2. Paramètres</h3>
+<h3 id="_paramètres_20"><a class="anchor" href="#_paramètres_20"></a>24.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2641,7 +2780,7 @@ et <strong>document</strong></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_17"><a class="anchor" href="#_exemple_17"></a>23.3. Exemple</h3>
+<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>24.3. Exemple</h3>
 <div class="paragraph">
 <p>Arrêt du chargement d&#8217;une pièce jointe si l&#8217;attribut <strong>label</strong> n&#8217;a pas été renseigné dans la requête.</p>
 </div>
@@ -2670,10 +2809,10 @@ if(att.getLabel() == null) {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_23_WSDocumentInitializer"><a class="anchor" href="#_23_WSDocumentInitializer"></a>24. WSDocumentInitializer</h2>
+<h2 id="_24_WSDocumentInitializer"><a class="anchor" href="#_24_WSDocumentInitializer"></a>25. WSDocumentInitializer</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_22"><a class="anchor" href="#_description_22"></a>24.1. Description</h3>
+<h3 id="_description_23"><a class="anchor" href="#_description_23"></a>25.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
 </div>
@@ -2693,7 +2832,7 @@ if(att.getLabel() == null) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_20"><a class="anchor" href="#_paramètres_20"></a>24.2. Paramètres</h3>
+<h3 id="_paramètres_21"><a class="anchor" href="#_paramètres_21"></a>25.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2792,7 +2931,7 @@ et <strong>document</strong></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>24.3. Exemple</h3>
+<h3 id="_exemple_19"><a class="anchor" href="#_exemple_19"></a>25.3. Exemple</h3>
 <div class="paragraph">
 <p>Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est mis à jour.</p>
 </div>
