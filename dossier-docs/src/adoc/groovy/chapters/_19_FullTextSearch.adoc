@@ -1,0 +1,72 @@
+[[_19_FullTextSearch]]
+== FullTextSearch
+
+=== Description
+
+Ce script est utilisé avant une recherche fulltext pour ajouter ou modifier les filtres de recherche.
+
+=== Paramètres
+
+cf. <<_01_CommonData,attributs communs>>.
+
+[options="noheader",cols="2a,2a,3a"]
+|===
+3+|[.header]
+Entrées|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+|*_searchPhrase*|String|Recherche entrée par l'utilisateur
+|*_filter*|IFTFilter|Filtre
+|*_contentTypes*|List<String>|Liste des types de contenus sélectionnés pour la recherche
+
+3+|[.header]
+Sortie
+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultFullTextSearch*|contient la variable *valid* qui détermine si la recherche est valide,
+ainsi que la variable *searchPhrase* qui peut être modifiée
+|===
+
+=== Exemples
+
+.Blocage d'une recherche si une certaine condition est rencontrée.
+[source,groovy]
+----
+ScriptResultModel<ScriptResultFullTextSearch> outputParam = output
+ScriptResultFullTextSearch result = new ScriptResultFullTextSearch()
+
+if(condition) {
+  result.setValid(false)
+  outputParam.setValue(result)
+}
+----
+
+.Complétion d'une recherche saisie par l'utilisateur.
+[source,groovy]
+----
+ScriptResultModel<ScriptResultFullTextSearch> outputParam = output
+ScriptResultFullTextSearch result = new ScriptResultFullTextSearch()
+String searchPhrase = _searchPhrase
+if(searchPhrase == "digi") {
+  result.setSearchPhrase("digitech")
+  outputParam.setValue(result)
+}
+----
+
+.Ajout de critères de recherche
+[source,groovy]
+----
+FTFilter filter = _filter
+String contentType = "CR"
+
+filter.addFilterValue(contentType, "CR_RESUME", "test")
+filter.addFilterDate(contentType, "D_MODIF", "01/01/2022", "dd/MM/yyyy", ILocutionModel.Operator.OPERATOR_VALUE_GREATER)
+filter.addFilterValueFromList(contentType, "PRO_APP_OS", "WINDOWS")
+filter.addFilterDates(contentType, "D_CREAT", "01/01/2019", "31/12/2019", "dd/MM/yyyy", ILocutionModel.Operator.OPERATOR_VALUE_BETWEEN)
+
+----
+
+

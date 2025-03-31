@@ -16,7 +16,7 @@ Entrées|[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-|*_search*|ISearchModel (recherche simple) ou IFtSearchModel (recherche fulltext)|Recherche
+|*_search*|ISearchModel|Recherche
 |*-parameters*|Map<String, Object>|Paramètres
 
 3+|[.header]
@@ -56,44 +56,4 @@ private static boolean userCanSeeArchiveFolder(IUserCoreContext uc) {
 }
 ----
 
-.Ajout de critères de recherche (recherche fulltext)
-[source,groovy]
-----
-import com.digitech.dossier.common.Utils
-import com.digitech.dossier.common.model.backend.AdvancedDate
-import com.digitech.dossier.common.model.backend.UserContext
-import com.digitech.dossier.common.model.backend.airs.IFtSearchModel
-import com.digitech.dossier.common.model.backend.airs.ILocutionModel
-import com.digitech.dossier.common.service.FTFilter
-import org.slf4j.Logger
-
-import java.text.SimpleDateFormat
-
-// Input parameters
-UserContext usrContext = userContext
-IFtSearchModel theSearch = search
-Logger log = scriptLogger
-FTFilter filter = theSearch.getFilter() as FTFilter
-
-String contentType = "PRO_APP_DOSSIER"
-
-if(Utils.getFullTextSearchController().getModel().getContentTypeCodeSelected().contains(contentType)) {
-
-  Utils.getFullTextSearchController().getModel().addSearchFieldToFilter(filter, contentType, "PRO_APP_OS")
-  filter.getLocutionMap().get("PRO_APP_OS").getBackendLocution().getField().setValue(74)
-
-  Utils.getFullTextSearchController().getModel().addSearchFieldToFilter(filter, contentType, "D_CREAT")
-  SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy")
-  String dateStr = "01/01/2017"
-  Date date = formatter.parse(dateStr)
-  String dateStr2 = "31/12/2017"
-  Date date2 = formatter.parse(dateStr2)
-  AdvancedDate advancedDate = new AdvancedDate()
-  advancedDate.setStartValue(date)
-  advancedDate.setFinishValue(date2)
-  filter.getLocutionMap().get("D_CREAT").getBackendLocution().getField().setValues(Collections.singletonList(advancedDate))
-  filter.getLocutionMap().get("D_CREAT").getBackendLocution().setOperator(ILocutionModel.Operator.OPERATOR_VALUE_BETWEEN)
-}
-
-----
 
