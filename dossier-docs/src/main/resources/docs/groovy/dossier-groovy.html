@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">25/03/2025 17:12:46</span>
+<span id="revdate">07/04/2025 16:32:53</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -176,32 +176,39 @@
 <li><a href="#_exemple_15">21.3. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_21_HierarchicalTreeNodeInitializer">22. HierarchicalTreeNodeInitializer</a>
+<li><a href="#_19_FullTextSearch">22. FullTextSearch</a>
 <ul class="sectlevel2">
 <li><a href="#_description_20">22.1. Description</a></li>
 <li><a href="#_paramètres_18">22.2. Paramètres</a></li>
-<li><a href="#_exemple_16">22.3. Exemple</a></li>
+<li><a href="#_exemples_2">22.3. Exemples</a></li>
 </ul>
 </li>
-<li><a href="#_22_Task">23. Task</a>
+<li><a href="#_21_HierarchicalTreeNodeInitializer">23. HierarchicalTreeNodeInitializer</a>
 <ul class="sectlevel2">
 <li><a href="#_description_21">23.1. Description</a></li>
 <li><a href="#_paramètres_19">23.2. Paramètres</a></li>
-<li><a href="#_exemple_17">23.3. Exemple</a></li>
+<li><a href="#_exemple_16">23.3. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_23_WSAttachmentInitializer">24. WSAttachmentInitializer</a>
+<li><a href="#_22_Task">24. Task</a>
 <ul class="sectlevel2">
 <li><a href="#_description_22">24.1. Description</a></li>
 <li><a href="#_paramètres_20">24.2. Paramètres</a></li>
-<li><a href="#_exemple_18">24.3. Exemple</a></li>
+<li><a href="#_exemple_17">24.3. Exemple</a></li>
 </ul>
 </li>
-<li><a href="#_24_WSDocumentInitializer">25. WSDocumentInitializer</a>
+<li><a href="#_23_WSAttachmentInitializer">25. WSAttachmentInitializer</a>
 <ul class="sectlevel2">
 <li><a href="#_description_23">25.1. Description</a></li>
 <li><a href="#_paramètres_21">25.2. Paramètres</a></li>
-<li><a href="#_exemple_19">25.3. Exemple</a></li>
+<li><a href="#_exemple_18">25.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#_24_WSDocumentInitializer">26. WSDocumentInitializer</a>
+<ul class="sectlevel2">
+<li><a href="#_description_24">26.1. Description</a></li>
+<li><a href="#_paramètres_22">26.2. Paramètres</a></li>
+<li><a href="#_exemple_19">26.3. Exemple</a></li>
 </ul>
 </li>
 </ul>
@@ -1618,7 +1625,7 @@ _result.getUnavailableActions().addAll(unavailableActions)</code></pre>
 <p><strong>_search</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>ISearchModel (recherche simple) ou IFtSearchModel (recherche fulltext)</p>
+<p>ISearchModel</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Recherche</p>
@@ -1689,46 +1696,6 @@ private static boolean checkIfSearchIsValid(def sm) {
 private static boolean userCanSeeArchiveFolder(IUserCoreContext uc) {
   // whatever...
   return uc.getProfileCodeList().contains("ARCHIVE_RIGHT")
-}</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Ajout de critères de recherche (recherche fulltext)</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.Utils
-import com.digitech.dossier.common.model.backend.AdvancedDate
-import com.digitech.dossier.common.model.backend.UserContext
-import com.digitech.dossier.common.model.backend.airs.IFtSearchModel
-import com.digitech.dossier.common.model.backend.airs.ILocutionModel
-import com.digitech.dossier.common.service.FTFilter
-import org.slf4j.Logger
-
-import java.text.SimpleDateFormat
-
-// Input parameters
-UserContext usrContext = userContext
-IFtSearchModel theSearch = search
-Logger log = scriptLogger
-FTFilter filter = theSearch.getFilter() as FTFilter
-
-String contentType = "PRO_APP_DOSSIER"
-
-if(Utils.getFullTextSearchController().getModel().getContentTypeCodeSelected().contains(contentType)) {
-
-  Utils.getFullTextSearchController().getModel().addSearchFieldToFilter(filter, contentType, "PRO_APP_OS")
-  filter.getLocutionMap().get("PRO_APP_OS").getBackendLocution().getField().setValue(74)
-
-  Utils.getFullTextSearchController().getModel().addSearchFieldToFilter(filter, contentType, "D_CREAT")
-  SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy")
-  String dateStr = "01/01/2017"
-  Date date = formatter.parse(dateStr)
-  String dateStr2 = "31/12/2017"
-  Date date2 = formatter.parse(dateStr2)
-  AdvancedDate advancedDate = new AdvancedDate()
-  advancedDate.setStartValue(date)
-  advancedDate.setFinishValue(date2)
-  filter.getLocutionMap().get("D_CREAT").getBackendLocution().getField().setValues(Collections.singletonList(advancedDate))
-  filter.getLocutionMap().get("D_CREAT").getBackendLocution().setOperator(ILocutionModel.Operator.OPERATOR_VALUE_BETWEEN)
 }</code></pre>
 </div>
 </div>
@@ -2529,16 +2496,152 @@ if(!_searchCriteria.contains(Constants.FIELD_CODE_D_CREAT)) {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_21_HierarchicalTreeNodeInitializer"><a class="anchor" href="#_21_HierarchicalTreeNodeInitializer"></a>22. HierarchicalTreeNodeInitializer</h2>
+<h2 id="_19_FullTextSearch"><a class="anchor" href="#_19_FullTextSearch"></a>22. FullTextSearch</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_description_20"><a class="anchor" href="#_description_20"></a>22.1. Description</h3>
+<div class="paragraph">
+<p>Ce script est utilisé avant une recherche fulltext pour ajouter ou modifier les filtres de recherche.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_paramètres_18"><a class="anchor" href="#_paramètres_18"></a>22.2. Paramètres</h3>
+<div class="paragraph">
+<p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Entrées</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_searchPhrase</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recherche entrée par l&#8217;utilisateur</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_filter</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>IFTFilter</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Filtre</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_contentTypes</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>List&lt;String&gt;</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des types de contenus sélectionnés pour la recherche</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
+<p>Sortie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_result</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>com.digitech.dossier.script.model.impl.result.ScriptResultFullTextSearch</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>contient la variable <strong>valid</strong> qui détermine si la recherche est valide,
+ainsi que la variable <strong>searchPhrase</strong> qui peut être modifiée</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_exemples_2"><a class="anchor" href="#_exemples_2"></a>22.3. Exemples</h3>
+<div class="listingblock">
+<div class="title">Blocage d&#8217;une recherche si une certaine condition est rencontrée.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">if (_searchPhrase == "blabla") {
+  _result.setValid(false)
+  _result.fillKOResult("Ce mot est interdit!")
+  return
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Complétion d&#8217;une recherche saisie par l&#8217;utilisateur.</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">if(_searchPhrase == "digi") {
+  _result.setSearchPhrase("digitech")
+  _result.fillOKResult("Votre recherche a été modifiée!")
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Ajout de critères de recherche</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">String contentType = "CR"
+
+_filter.addFilterValue(contentType, "CR_RESUME", "test")
+_filter.addFilterDate(contentType, "D_MODIF", "01/01/2022", ILocutionModel.Operator.OPERATOR_VALUE_GREATER)
+_filter.addFilterValueFromList(contentType, "PRO_APP_OS", "WINDOWS")
+_filter.addFilterDates(contentType, "D_CREAT", "01/01/2019", "31/12/2019", ILocutionModel.Operator.OPERATOR_VALUE_BETWEEN)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_21_HierarchicalTreeNodeInitializer"><a class="anchor" href="#_21_HierarchicalTreeNodeInitializer"></a>23. HierarchicalTreeNodeInitializer</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_21"><a class="anchor" href="#_description_21"></a>23.1. Description</h3>
 <div class="paragraph">
 <p>Ce script est utilisé lors de l&#8217;affichage de l&#8217;arborescence dans la vue plan de classement.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_18"><a class="anchor" href="#_paramètres_18"></a>22.2. Paramètres</h3>
+<h3 id="_paramètres_19"><a class="anchor" href="#_paramètres_19"></a>23.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2608,7 +2711,7 @@ correspondent aux propriétés de l&#8217;arbre</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_16"><a class="anchor" href="#_exemple_16"></a>22.3. Exemple</h3>
+<h3 id="_exemple_16"><a class="anchor" href="#_exemple_16"></a>23.3. Exemple</h3>
 <div class="paragraph">
 <p>Personnalisation des icônes des nœuds de l&#8217;arborescence et ajout du déploiement intégral de l&#8217;arbre.</p>
 </div>
@@ -2633,16 +2736,16 @@ _result.getProperties().put(TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fa
 </div>
 </div>
 <div class="sect1">
-<h2 id="_22_Task"><a class="anchor" href="#_22_Task"></a>23. Task</h2>
+<h2 id="_22_Task"><a class="anchor" href="#_22_Task"></a>24. Task</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_21"><a class="anchor" href="#_description_21"></a>23.1. Description</h3>
+<h3 id="_description_22"><a class="anchor" href="#_description_22"></a>24.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé afin de décrire l&#8217;exécution d&#8217;une tâche.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_19"><a class="anchor" href="#_paramètres_19"></a>23.2. Paramètres</h3>
+<h3 id="_paramètres_20"><a class="anchor" href="#_paramètres_20"></a>24.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2695,7 +2798,7 @@ _result.getProperties().put(TreeNodeProperty.ICON_LEAF, "/ui/common/img/alert_fa
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_17"><a class="anchor" href="#_exemple_17"></a>23.3. Exemple</h3>
+<h3 id="_exemple_17"><a class="anchor" href="#_exemple_17"></a>24.3. Exemple</h3>
 <div class="paragraph">
 <p>On peut passer un paramètre dans la configuration de la tâche (fichier <strong>task.xml</strong>) de cette façon :</p>
 </div>
@@ -2719,16 +2822,16 @@ String res = param?.getValue()</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_23_WSAttachmentInitializer"><a class="anchor" href="#_23_WSAttachmentInitializer"></a>24. WSAttachmentInitializer</h2>
+<h2 id="_23_WSAttachmentInitializer"><a class="anchor" href="#_23_WSAttachmentInitializer"></a>25. WSAttachmentInitializer</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_22"><a class="anchor" href="#_description_22"></a>24.1. Description</h3>
+<h3 id="_description_23"><a class="anchor" href="#_description_23"></a>25.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les pièces jointes (ajout ou mise à jour).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_20"><a class="anchor" href="#_paramètres_20"></a>24.2. Paramètres</h3>
+<h3 id="_paramètres_21"><a class="anchor" href="#_paramètres_21"></a>25.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2820,7 +2923,7 @@ et <strong>document</strong></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>24.3. Exemple</h3>
+<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>25.3. Exemple</h3>
 <div class="paragraph">
 <p>Arrêt du chargement d&#8217;une pièce jointe si l&#8217;attribut <strong>label</strong> n&#8217;a pas été renseigné dans la requête.</p>
 </div>
@@ -2849,10 +2952,10 @@ if(att.getLabel() == null) {
 </div>
 </div>
 <div class="sect1">
-<h2 id="_24_WSDocumentInitializer"><a class="anchor" href="#_24_WSDocumentInitializer"></a>25. WSDocumentInitializer</h2>
+<h2 id="_24_WSDocumentInitializer"><a class="anchor" href="#_24_WSDocumentInitializer"></a>26. WSDocumentInitializer</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_description_23"><a class="anchor" href="#_description_23"></a>25.1. Description</h3>
+<h3 id="_description_24"><a class="anchor" href="#_description_24"></a>26.1. Description</h3>
 <div class="paragraph">
 <p>Ce type de script est utilisé lors de l&#8217;exécution des webservices sur les documents (ajout ou mise à jour).</p>
 </div>
@@ -2872,7 +2975,7 @@ if(att.getLabel() == null) {
 </div>
 </div>
 <div class="sect2">
-<h3 id="_paramètres_21"><a class="anchor" href="#_paramètres_21"></a>25.2. Paramètres</h3>
+<h3 id="_paramètres_22"><a class="anchor" href="#_paramètres_22"></a>26.2. Paramètres</h3>
 <div class="paragraph">
 <p>cf. <a href="#_01_CommonData">attributs communs</a>.</p>
 </div>
@@ -2971,7 +3074,7 @@ et <strong>document</strong></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_19"><a class="anchor" href="#_exemple_19"></a>25.3. Exemple</h3>
+<h3 id="_exemple_19"><a class="anchor" href="#_exemple_19"></a>26.3. Exemple</h3>
 <div class="paragraph">
 <p>Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est mis à jour.</p>
 </div>

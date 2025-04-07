@@ -35,37 +35,31 @@ ainsi que la variable *searchPhrase* qui peut être modifiée
 .Blocage d'une recherche si une certaine condition est rencontrée.
 [source,groovy]
 ----
-ScriptResultModel<ScriptResultFullTextSearch> outputParam = output
-ScriptResultFullTextSearch result = new ScriptResultFullTextSearch()
-
-if(condition) {
-  result.setValid(false)
-  outputParam.setValue(result)
+if (_searchPhrase == "blabla") {
+  _result.setValid(false)
+  _result.fillKOResult("Ce mot est interdit!")
+  return
 }
 ----
 
 .Complétion d'une recherche saisie par l'utilisateur.
 [source,groovy]
 ----
-ScriptResultModel<ScriptResultFullTextSearch> outputParam = output
-ScriptResultFullTextSearch result = new ScriptResultFullTextSearch()
-String searchPhrase = _searchPhrase
-if(searchPhrase == "digi") {
-  result.setSearchPhrase("digitech")
-  outputParam.setValue(result)
+if(_searchPhrase == "digi") {
+  _result.setSearchPhrase("digitech")
+  _result.fillOKResult("Votre recherche a été modifiée!")
 }
 ----
 
 .Ajout de critères de recherche
 [source,groovy]
 ----
-FTFilter filter = _filter
 String contentType = "CR"
 
-filter.addFilterValue(contentType, "CR_RESUME", "test")
-filter.addFilterDate(contentType, "D_MODIF", "01/01/2022", "dd/MM/yyyy", ILocutionModel.Operator.OPERATOR_VALUE_GREATER)
-filter.addFilterValueFromList(contentType, "PRO_APP_OS", "WINDOWS")
-filter.addFilterDates(contentType, "D_CREAT", "01/01/2019", "31/12/2019", "dd/MM/yyyy", ILocutionModel.Operator.OPERATOR_VALUE_BETWEEN)
+_filter.addFilterValue(contentType, "CR_RESUME", "test")
+_filter.addFilterDate(contentType, "D_MODIF", "01/01/2022", ILocutionModel.Operator.OPERATOR_VALUE_GREATER)
+_filter.addFilterValueFromList(contentType, "PRO_APP_OS", "WINDOWS")
+_filter.addFilterDates(contentType, "D_CREAT", "01/01/2019", "31/12/2019", ILocutionModel.Operator.OPERATOR_VALUE_BETWEEN)
 
 ----
 
