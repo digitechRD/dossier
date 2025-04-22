@@ -125,8 +125,7 @@ Plusieurs loggers sont configurés avec des niveaux et des appenders spécifique
 
 Ce logger rassemble les logs du package com.digitech.dossier avec un niveau par défaut INFO (que l'on peut paramétrer en surchargeant la valeur de la clé
 _log_level_dossier_ dans le fichier *logback.properties*) et
-les enregistre dans
-l'appender FILE_ROLL.
+les enregistre dans l'appender FILE_ROLL.
 
 La clé *log_level* définit le niveau de log global par défaut, mais il est possible de paramétrer les clés *log_level* de certains logger :
 
@@ -198,40 +197,32 @@ Ce fichier permet par exemple d'ajouter un appender spécifique pour enregistrer
 .Exemple de fichier externalLogback.xml
 [source,xml]
 ----
+<?xml version="1.0" encoding="UTF-8" ?>
 <included>
-  <appender name="FILE_TASK_XXX" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="FILE_TASK_XXX" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${log_path}/${project_filename:-dossierweb}_task_XXX.log</file>
-    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
       <FileNamePattern>${log_path}/${project_filename:-dossierweb}_task_XXX_%i.log</FileNamePattern>
-      <MinIndex>1</MinIndex>
-      <MaxIndex>10</MaxIndex>
-    </rollingPolicy>
+			<MinIndex>1</MinIndex>
+			<MaxIndex>10</MaxIndex>
+		</rollingPolicy>
 
-    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-      <MaxFileSize>10MB</MaxFileSize>
-    </triggeringPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<MaxFileSize>10MB</MaxFileSize>
+		</triggeringPolicy>
 
-    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}:%line] %msg%n%rEx</Pattern>
-    </encoder>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}:%line] %msg%n%rEx</Pattern>
+		</encoder>
+	</appender>
 
-    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-      <level>${log_level_task_xxx:-${log_level_script}}${:-WARN}</level>
-    </filter>
+	<logger name="loggerTaskSetCountPagesModifiedDocumentsTask" additivity="false" level="${log_level_task_xxx:-${log_level_script:-WARN}}">
+		<appender-ref ref="FILE_TASK_XXX"/>
+	</logger>
 
-    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
-      <evaluator name="loggingTaskEval">
-        <expression>
-          return logger.contains("loggerTaskXXX");
-        </expression>
-      </evaluator>
-      <OnMatch>ACCEPT</OnMatch>
-      <OnMismatch>DENY</OnMismatch>
-    </filter>
-  </appender>
+	<root>
+		<appender-ref ref="FILE_TASK_XXX"/>
+	</root>
 
-  <root>
-    <appender-ref ref="FILE_TASK_XXX"/>
-  </root>
 </included>
 ----
