@@ -5,443 +5,442 @@ Ce chapitre décrit les options qui peuvent être ajoutées dans le fichier *con
 
 === Accueil
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.check.redirect.goto.home.page.if.no.result*|Rediriger les recherches par url infructueuses vers l'accueil|Boolean|true
-|*misc.home.allow.baskets.double.display*|Autoriser l'affichage double des corbeilles en page d'accueil (central et gauche)|Boolean|false
-|*misc.home.allow.panels.enabled*|Autoriser l'affichage des panneaux sur la page d'accueil|Boolean|false
-|*misc.home.allow.panels.hidden*|Autoriser l'utilisateur à masquer les panneaux de la page d'accueil|Boolean|true
-|*misc.home.always.default.flow*|Toujours afficher en page d'accueil le flux préféré|Boolean|false
-|*misc.home.display.quick.access*|Afficher en page d'accueil l'accès rapide aux derniers documents consultés|Boolean|true
-|*misc.home.drag.drop.creation*|Permettre la création de document par glisser-déposer|Boolean|true
-|*misc.home.block.custom.allowed*|Activer les panels de type "Personalisé"|Boolean|true
-|*misc.home.block.default.height*|Taille (en pixels) des blocks de la page d'accueil|Integer|250
-|*misc.home.block.max.number*|Nombre maximum de panels sur la page d'accueil|Integer|10
-|*misc.home.block.report.allowed*|Activer les panels de type "statistique"|Boolean|true
-|*misc.home.block.report.lifetime*|xxx|Integer|60
-|*misc.home.block.singledoc.allowed*|Activer les panels de type "document"|Boolean|true
-|*misc.home.block.singledoc.navigation.allowed*|Autoriser la navigation parmi les PJs sur les panels de type "document"|Boolean|true
-|*misc.home.block.search.full.result*|Afficher tous les résultats d'une recherche dans un panel de la page d'accueil|Boolean|false
-|*misc.home.block.search.row.prefetched*|Pré-calculer le contenu des cartes des panels type "recherche"|Boolean|true
-|*misc.home.block.shortcut.hide.block.allowed*|Autoriser le masquage individuel de bloc de raccourci|Boolean|true
-|*misc.home.block.shortcut.alphabetically.sorted*|Trier les raccourcis alphabétiquement|Boolean|true
-|*misc.home.block.word.cloud.html*|Afficher le nuage de mots au format HTML|Boolean|true
-|*misc.home.list.mode.enabled*|Activer/autoriser le mode 'liste' d'affichage des résultats (blocs)|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.check.redirect.goto.home.page.if.no.result*|Rediriger les recherches par url infructueuses vers l'accueil|Boolean|[green]#true#
+|*misc.home.allow.baskets.double.display*|Autoriser l'affichage double des corbeilles en page d'accueil (central et gauche)|Boolean|[red]#false#
+|*misc.home.allow.panels.enabled*|Autoriser l'affichage des panneaux sur la page d'accueil|Boolean|[red]#false#
+|*misc.home.allow.panels.hidden*|Autoriser l'utilisateur à masquer les panneaux de la page d'accueil|Boolean|[green]#true#
+|*misc.home.always.default.flow*|Toujours afficher en page d'accueil le flux préféré|Boolean|[red]#false#
+|*misc.home.display.quick.access*|Afficher en page d'accueil l'accès rapide aux derniers documents consultés|Boolean|[green]#true#
+|*misc.home.drag.drop.creation*|Permettre la création de document par glisser-déposer|Boolean|[green]#true#
+|*misc.home.block.custom.allowed*|Activer les panels de type "Personalisé"|Boolean|[green]#true#
+|*misc.home.block.default.height*|Taille (en pixels) des blocks de la page d'accueil|Integer|*250*
+|*misc.home.block.max.number*|Nombre maximum de panels sur la page d'accueil|Integer|*10*
+|*misc.home.block.report.allowed*|Activer les panels de type "statistique"|Boolean|[green]#true#
+|*misc.home.block.report.lifetime*|xxx|Integer|*60*
+|*misc.home.block.singledoc.allowed*|Activer les panels de type "document"|Boolean|[green]#true#
+|*misc.home.block.singledoc.navigation.allowed*|Autoriser la navigation parmi les PJs sur les panels de type "document"|Boolean|[green]#true#
+|*misc.home.block.search.full.result*|Afficher tous les résultats d'une recherche dans un panel de la page d'accueil|Boolean|[red]#false#
+|*misc.home.block.search.row.prefetched*|Pré-calculer le contenu des cartes des panels type "recherche"|Boolean|[green]#true#
+|*misc.home.block.shortcut.hide.block.allowed*|Autoriser le masquage individuel de bloc de raccourci|Boolean|[green]#true#
+|*misc.home.block.shortcut.alphabetically.sorted*|Trier les raccourcis alphabétiquement|Boolean|[green]#true#
+|*misc.home.block.word.cloud.html*|Afficher le nuage de mots au format HTML|Boolean|[green]#true#
+|*misc.home.list.mode.enabled*|Activer/autoriser le mode 'liste' d'affichage des résultats (blocs)|Boolean|[red]#false#
 |===
 
 === Administration
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*display.card.required.fields.only*|N'afficher que les champs requis sur les cartes|Boolean|true
-|*display.panel.operators.labeled*|Utiliser les libellés pour les opérateurs de recherche|Boolean|false
-|*display.progress.panel.on.ajax.calls*|Affichage automatique d'un panel d'attente sur chaque requête ajax|Boolean|true
-|*dossier.config.tmp.converted.folder*|Répertoire temporaire des documents convertis|String|null
-|*dossier.modes*|Modes activés|List|dossier (interconnection_courrier, parapheur, courrier)
-|*dossierweb.enable.snapshot*|Autoriser les versions SNAPSHOT de l'application|Boolean|true
-|*javamelody.jmx-expose-enabled*|Active l'exposition des métriques JavaMelody via JMX|Boolean|false
-|*misc.compatibilityVersion.IE*|Compatibilité Internet Explorer|String|null
-|*misc.config.folder.watcher*|Observer le répertoire xml pour toutes modifications (et rechargement à chaud)|Boolean|false
-|*misc.debugMessageBundleKey*|Mode DEBUG des messages i18n|Boolean|false
-|*misc.dossier.dump.threads.pool.statistics*|Statistiques pour les threads|Boolean|false
-|*misc.lazyModalPanelEnabled*|Fenêtres modales, mode "lazy" autorisé|Boolean|false
-|*pop.defaultCountryName*|Pays (par défaut) utilisé par la base population|String|France
-|*spring.profiles.active*|Surcharge des profils spring|String|scheduler,tasks,javamelody,odtGenerator,ooo.service.disabled
-|*sso.type*|Type de connexion SSO|String|SPNEGO (APACHE)
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*display.card.required.fields.only*|N'afficher que les champs requis sur les cartes|Boolean|[green]#true#
+|*display.panel.operators.labeled*|Utiliser les libellés pour les opérateurs de recherche|Boolean|[red]#false#
+|*display.progress.panel.on.ajax.calls*|Affichage automatique d'un panel d'attente sur chaque requête ajax|Boolean|[green]#true#
+|*dossier.config.tmp.converted.folder*|Répertoire temporaire des documents convertis|String|[blue]#null#
+|*dossier.modes*|Modes activés|List|*dossier (interconnection_courrier, parapheur, courrier)*
+|*dossierweb.enable.snapshot*|Autoriser les versions SNAPSHOT de l'application|Boolean|[green]#true#
+|*javamelody.jmx-expose-enabled*|Active l'exposition des métriques JavaMelody via JMX|Boolean|[red]#false#
+|*misc.compatibilityVersion.IE*|Compatibilité Internet Explorer|String|[blue]#null#
+|*misc.config.folder.watcher*|Observer le répertoire xml pour toutes modifications (et rechargement à chaud)|Boolean|[red]#false#
+|*misc.debugMessageBundleKey*|Mode DEBUG des messages i18n|Boolean|[red]#false#
+|*misc.dossier.dump.threads.pool.statistics*|Statistiques pour les threads|Boolean|[red]#false#
+|*misc.lazyModalPanelEnabled*|Fenêtres modales, mode "lazy" autorisé|Boolean|[red]#false#
+|*pop.defaultCountryName*|Pays (par défaut) utilisé par la base population|String|*France*
+|*spring.profiles.active*|Surcharge des profils spring|String|*scheduler,tasks,javamelody,odtGenerator,ooo.service.disabled*
+|*misc.dossier.system.stacktrace.display.enabled*|Autoriser les StackTraces à être affichées à l'écran (et donc à l'utilisateur)|Boolean|[red]#false#
 |===
 
 === Application
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.documentation.link.displayed*|Autoriser le lien vers la Documentation utilisateur|Boolean|false
-|*dossier.releasenote.link.displayed*|Autoriser le lien vers la releaseNote|Boolean|true
-|*jquery.pluging.mask.type*|Extension/plugin utilisé pour l'activation des masques de saisies|String|null
-|*misc.application.automatic.migrate.jsp.file*|Migration automatique des jsp personnalisées|Boolean|true
-|*misc.application.automatic.suggestion.linked.field*|Proposer (automatiquement) la suggestion sur les champs liés|Boolean|true
-|*misc.application.show.fade.icon.page.loading*|Affichage de l'icône de patience lors du chargement et transition des pages|Boolean|true
-|*misc.application.suggestion.max.results*|Nombre maximum de résultats affichés en suggestion (champs liés seulement)|Integer|20
-|*misc.autoLockedDocumentTimeout*|Délai (si positif) de déverrouillage automatique des documents|Integer|1800000
-|*misc.basketShortTitleSize*|Taille maximale des titres des corbeilles|Integer|50
-|*misc.comment.date.format*|Format de date des commentaires (tooltips)|String|dd/MM/yyyy
-|*misc.displayedBookmarksMaxNumber*|Nombre maximum de bookmarks affichés|Integer|100
-|*misc.localeDefinition*|Langues autorisées|List|null
-|*misc.notificationDaysNumberBeforePasswordExpiration*|Nombre de jours avant expiration du mot de passe|Integer|20
-|*misc.unload.browser.detection*|Détecter la fermeture du navigateur|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.documentation.link.displayed*|Autoriser le lien vers la Documentation utilisateur|Boolean|[red]#false#
+|*dossier.releasenote.link.displayed*|Autoriser le lien vers la releaseNote|Boolean|[green]#true#
+|*jquery.pluging.mask.type*|Extension/plugin utilisé pour l'activation des masques de saisies|String|[blue]#null#
+|*misc.application.automatic.migrate.jsp.file*|Migration automatique des jsp personnalisées|Boolean|[green]#true#
+|*misc.application.automatic.suggestion.linked.field*|Proposer (automatiquement) la suggestion sur les champs liés|Boolean|[green]#true#
+|*misc.application.show.fade.icon.page.loading*|Affichage de l'icône de patience lors du chargement et transition des pages|Boolean|[green]#true#
+|*misc.application.suggestion.max.results*|Nombre maximum de résultats affichés en suggestion (champs liés seulement)|Integer|*20*
+|*misc.autoLockedDocumentTimeout*|Délai (si positif) de déverrouillage automatique des documents|Integer|*1800000*
+|*misc.basketShortTitleSize*|Taille maximale des titres des corbeilles|Integer|*50*
+|*misc.comment.date.format*|Format de date des commentaires (tooltips)|String|*dd/MM/yyyy*
+|*misc.displayedBookmarksMaxNumber*|Nombre maximum de bookmarks affichés|Integer|*100*
+|*misc.localeDefinition*|Langues autorisées|List|[blue]#null#
+|*misc.notificationDaysNumberBeforePasswordExpiration*|Nombre de jours avant expiration du mot de passe|Integer|*20*
+|*misc.unload.browser.detection*|Détecter la fermeture du navigateur|Boolean|[green]#true#
 |===
 
 === Avatars
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.avatar.type*|Type d'avatars|String|INITIALS (GITHUB, SQUARE, SMILEY, EIGHT_BIT, CAT, CAT_SQUARE)
-|*misc.application.avatar.allowed*|Autoriser les avatars|Boolean|true
-|*misc.application.avatar.show.in.suggestion*|Afficher l'avatar dans les champs de type suggestion|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.avatar.type*|Type d'avatars|String|*INITIALS (GITHUB, SQUARE, SMILEY, EIGHT_BIT, CAT, CAT_SQUARE)*
+|*misc.application.avatar.allowed*|Autoriser les avatars|Boolean|[green]#true#
+|*misc.application.avatar.show.in.suggestion*|Afficher l'avatar dans les champs de type suggestion|Boolean|[green]#true#
 |===
 
 
 === Connexion
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.login.display.citation*|[Page de connexion] Afficher les citations|Boolean|true
-|*misc.login.loop.background*|[Page de connexion] Permettre un affichage aléatoire de l'image de fond|Boolean|true
-|*security.authentication.login.attempt.block.period*|Période de blocage (en minutes)|Integer|1
-|*security.authentication.login.attempt.max.tries*|Nombre maximum d'essais avant blocage temporaire du poste appelant (filtrage par IP)|Integer|3
-|*security.authentication.login.attempt.protection*|Protéger l'application contre les attaques par énumération|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.login.display.citation*|[Page de connexion] Afficher les citations|Boolean|[green]#true#
+|*misc.login.loop.background*|[Page de connexion] Permettre un affichage aléatoire de l'image de fond|Boolean|[green]#true#
+|*security.authentication.login.attempt.block.period*|Période de blocage (en minutes)|Integer|*1*
+|*security.authentication.login.attempt.max.tries*|Nombre maximum d'essais avant blocage temporaire du poste appelant (filtrage par IP)|Integer|*3*
+|*security.authentication.login.attempt.protection*|Protéger l'application contre les attaques par énumération|Boolean|[red]#false#
 |===
 
 === Content types
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.contenttypes.ui.creation.hierarchical*|[Création] Afficher la liste des content-types sous forme arborescente|Boolean|true
-|*dossier.contenttypes.ui.creation.hierarchical.mode*|[Création] Gestion des content-types apparaissant plusieurs fois|String|hidden (always, disabled)
-|*dossier.contenttypes.ui.search.hierarchical*|[Recherche] Afficher la liste des content-types sous forme arborescente|Boolean|true
-|*dossier.view.layout.saved.by.content.type*|Sauvegarder les proportions (viewer, data) par content-type|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.contenttypes.ui.creation.hierarchical*|[Création] Afficher la liste des content-types sous forme arborescente|Boolean|[green]#true#
+|*dossier.contenttypes.ui.creation.hierarchical.mode*|[Création] Gestion des content-types apparaissant plusieurs fois|String|*hidden (always, disabled)*
+|*dossier.contenttypes.ui.search.hierarchical*|[Recherche] Afficher la liste des content-types sous forme arborescente|Boolean|[green]#true#
+|*dossier.view.layout.saved.by.content.type*|Sauvegarder les proportions (viewer, data) par content-type|Boolean|[green]#true#
 |===
 
 === Courrier Express
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*courrierxp.display.change.chrono.warning*|Information en cas de changement de numéro chrono|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*courrierxp.display.change.chrono.warning*|Information en cas de changement de numéro chrono|Boolean|[green]#true#
 |===
 
 === Création de document
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*document.creation.max.file.quantity*|Nombre maximal de pièces jointes ajoutées lors de la création d'un document|Integer|10
-|*document.creation.multi.default.mode*|Mode de création par défaut selon le nombre de PJs|Boolean|false
-|*document.creation.multi.mode.choice*|Permettre à l'utilisateur de choisir le mode de création selon le nombre de PJs|Boolean|false
-|*document.creation.parent.link.use.admin.token*|Création d'un lien en tant qu'admin|Boolean|false
-|*document.creation.viewunit.edit.mode*|Rester en mode édition après création d'un document|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*document.creation.max.file.quantity*|Nombre maximal de pièces jointes ajoutées lors de la création d'un document|Integer|*10*
+|*document.creation.multi.default.mode*|Mode de création par défaut selon le nombre de PJs|Boolean|[red]#false#
+|*document.creation.multi.mode.choice*|Permettre à l'utilisateur de choisir le mode de création selon le nombre de PJs|Boolean|[red]#false#
+|*document.creation.parent.link.use.admin.token*|Création d'un lien en tant qu'admin|Boolean|[red]#false#
+|*document.creation.viewunit.edit.mode*|Rester en mode édition après création d'un document|Boolean|[red]#false#
 |===
 
 === Édition en ligne
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
 |*dossier.online.edition.allow.user.embedded.mode.selection*|Autoriser l'utilisateur à choisir si l'édition en ligne de document se fait dans un nouvel
-onglet|Boolean|true
+onglet|Boolean|[green]#true#
 |===
 
 === Email
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*email.hide.global.sender*|Masquer le compte d'envoi (générique) des mails|Boolean|true
-|*email.template.enabled*|Activer les modèles de mails|Boolean|false
-|*email.use.replyto.property*|Remplir le champ *Répondre à* au lieu du champ *De*|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*email.hide.global.sender*|Masquer le compte d'envoi (générique) des mails|Boolean|[green]#true#
+|*email.template.enabled*|Activer les modèles de mails|Boolean|[red]#false#
+|*email.use.replyto.property*|Remplir le champ *Répondre à* au lieu du champ *De*|Boolean|[red]#false#
 |===
 
 === Espace personnel
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*personalSpace.clipboardSize*|Taille du presse-papiers|Integer|10
-|*personalSpace.history.allow.deleted.document*|Autoriser les documents supprimés dans l'historique des documents consultés|Boolean|false
-|*personalSpace.historyAttachmentSize*|Taille maximale de l'historique des pièces jointes consultées|Integer|10
-|*personalSpace.historyDocumentSize*|Taille maximale de l'historique des documents consultés|Integer|10
-|*personalSpace.historySearchSize*|Taille maximale de l'historique des recherches effectuées|Integer|10
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*personalSpace.clipboardSize*|Taille du presse-papiers|Integer|*10*
+|*personalSpace.history.allow.deleted.document*|Autoriser les documents supprimés dans l'historique des documents consultés|Boolean|[red]#false#
+|*personalSpace.historyAttachmentSize*|Taille maximale de l'historique des pièces jointes consultées|Integer|*10*
+|*personalSpace.historyDocumentSize*|Taille maximale de l'historique des documents consultés|Integer|*10*
+|*personalSpace.historySearchSize*|Taille maximale de l'historique des recherches effectuées|Integer|*10*
 |===
 
 === Historique
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.document.consult.history.dina.links*|Option d'ajout à l'historique de document (Onglet Liens DINA)|String|OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)
-|*dossier.document.consult.history.full.text.result*|Option d'ajout à l'historique de document (Résultats de recherche plein texte)|String|OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)
-|*dossier.document.consult.history.links*|Option d'ajout à l'historique de document (Onglet Liens)|String|OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)
-|*dossier.document.consult.history.search.result*|Option d'ajout à l'historique de document (Résultats de recherche)|String|ON_USER (ON_FIXED, OFF_USER,
-OFF_FIXED)
-|*dossier.document.consult.history.tree*|Option d'ajout à l'historique de document (Vue Arborescente)|String|OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)
-|*dossier.document.consult.history.view.unit*|Option d'ajout à l'historique de document (ViewUnit)|String|ON_FIXED (OFF_USER, ON_USER, OFF_FIXED)
-|*dossier.document.consult.history.workbook*|Option d'ajout à l'historique de document (Classeur)|String|OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.document.consult.history.dina.links*|Option d'ajout à l'historique de document (Onglet Liens DINA)|String|*OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)*
+|*dossier.document.consult.history.full.text.result*|Option d'ajout à l'historique de document (Résultats de recherche plein texte)|String|*OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)*
+|*dossier.document.consult.history.links*|Option d'ajout à l'historique de document (Onglet Liens)|String|*OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)*
+|*dossier.document.consult.history.search.result*|Option d'ajout à l'historique de document (Résultats de recherche)|String|*ON_USER (ON_FIXED, OFF_USER, OFF_FIXED)*
+|*dossier.document.consult.history.tree*|Option d'ajout à l'historique de document (Vue Arborescente)|String|*OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)*
+|*dossier.document.consult.history.view.unit*|Option d'ajout à l'historique de document (ViewUnit)|String|*ON_FIXED (OFF_USER, ON_USER, OFF_FIXED)*
+|*dossier.document.consult.history.workbook*|Option d'ajout à l'historique de document (Classeur)|String|*OFF_USER (ON_FIXED, ON_USER, OFF_FIXED)*
 |===
 
 === JSF
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*com.sun.faces.enableRestoreView11Compatibility*|Compatibilité JSF|Boolean|true
-|*com.sun.faces.numberOfViewsInSession*|Nombre de vues stockées en session|Integer|0
-|*com.sun.faces.numberOfLogicalViews*|Nombre de versions différentes d’une même vue conservées en mémoire|Integer|1
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*com.sun.faces.enableRestoreView11Compatibility*|Compatibilité JSF|Boolean|[green]#true#
+|*com.sun.faces.numberOfViewsInSession*|Nombre de vues stockées en session|Integer|*0*
+|*com.sun.faces.numberOfLogicalViews*|Nombre de versions différentes d’une même vue conservées en mémoire|Integer|*1*
 |===
 
 === JavaWeb Start
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*applet.javaWebStart.activated*|Mode Java Web Start activé|Boolean|false
-|*applet.javaWebStart.domain*|Domaine SSL du module JWS|String|null
-|*applet.javaWebStart.editDocument.launchAuto*|Lancer automatiquement le module editDocument dès l'accès à la page d'accueil|Boolean|true
-|*applet.javaWebStart.editDocument.serverPort*|Port JWS par défaut du module editDocument|Integer|13000
-|*applet.javaWebStart.imageScan.launchAuto*|Lancer automatiquement le module imageScanApplet dès l'accès à la page d'accueil|Boolean|true
-|*applet.javaWebStart.imageScan.serverPort*|Port JWS par défaut du module imageScanApplet|Integer|18000
-|*applet.javaWebStart.override.enabled*|Autoriser la surcharge des ports JWS par l'utilisateur|Boolean|true
-|*applet.javaWebStart.print.launchAuto*|Lancer automatiquement le module PrintApplet dès l'accès à la page d'accueil|Boolean|false
-|*applet.javaWebStart.print.serverPort*|Port JWS par défaut du module PrintApplet|Integer|28000
-|*applet.javaWebStart.ssl_key.alias*|Alias du KeyStore SSL du module JWS|String|null
-|*applet.javaWebStart.ssl_keystore*|Keystore SSL du module JWS|String|null
-|*applet.javaWebStart.ssl_keystore.type*|Type de KeyStore SSL du module JWS|String|null
-|*applet.javaWebStart.ssl_password*|Mot de passe du KeyStore SSL du module JWS|String|null
-|*applet.nojavaclient.activated*|Mode NO JAVA activé|Boolean|true
-|*attachment.applet.propertiesFilePath*|Chemin (commun à tous les postes client) du Fichier properties du module editDocument|String|null
-|*configuration.virtualized.environment*|JWS Mode virtualisation ? (citrix...)|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*applet.javaWebStart.activated*|Mode Java Web Start activé|Boolean|[red]#false#
+|*applet.javaWebStart.domain*|Domaine SSL du module JWS|String|[blue]#null#
+|*applet.javaWebStart.editDocument.launchAuto*|Lancer automatiquement le module editDocument dès l'accès à la page d'accueil|Boolean|[green]#true#
+|*applet.javaWebStart.editDocument.serverPort*|Port JWS par défaut du module editDocument|Integer|*13000*
+|*applet.javaWebStart.imageScan.launchAuto*|Lancer automatiquement le module imageScanApplet dès l'accès à la page d'accueil|Boolean|[green]#true#
+|*applet.javaWebStart.imageScan.serverPort*|Port JWS par défaut du module imageScanApplet|Integer|*18000*
+|*applet.javaWebStart.override.enabled*|Autoriser la surcharge des ports JWS par l'utilisateur|Boolean|[green]#true#
+|*applet.javaWebStart.print.launchAuto*|Lancer automatiquement le module PrintApplet dès l'accès à la page d'accueil|Boolean|[red]#false#
+|*applet.javaWebStart.print.serverPort*|Port JWS par défaut du module PrintApplet|Integer|*28000*
+|*applet.javaWebStart.ssl_key.alias*|Alias du KeyStore SSL du module JWS|String|[blue]#null#
+|*applet.javaWebStart.ssl_keystore*|Keystore SSL du module JWS|String|[blue]#null#
+|*applet.javaWebStart.ssl_keystore.type*|Type de KeyStore SSL du module JWS|String|[blue]#null#
+|*applet.javaWebStart.ssl_password*|Mot de passe du KeyStore SSL du module JWS|String|[blue]#null#
+|*applet.nojavaclient.activated*|Mode NO JAVA activé|Boolean|[green]#true#
+|*attachment.applet.propertiesFilePath*|Chemin (commun à tous les postes client) du Fichier properties du module editDocument|String|[blue]#null#
+|*configuration.virtualized.environment*|JWS Mode virtualisation ? (citrix...)|Boolean|[red]#false#
 |===
 
 === Modules
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.module.cmis.enabled*|Activer le module CMIS|Boolean|false
-|*dossier.module.workbook.enabled*|Activer le module des classeurs|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.module.cmis.enabled*|Activer le module CMIS|Boolean|[red]#false#
+|*dossier.module.workbook.enabled*|Activer le module des classeurs|Boolean|[red]#false#
 |===
 
 === Multi-onglets
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.dossier.system.multi.tabs.allowed*|Activer le mode multi-onglets|Boolean|false
-|*misc.dossier.system.multi.tabs.logout.all*|[Multi-tabs] déconnecter tous les onglets à la première déconnexion|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.dossier.system.multi.tabs.allowed*|Activer le mode multi-onglets|Boolean|[red]#false#
+|*misc.dossier.system.multi.tabs.logout.all*|[Multi-tabs] déconnecter tous les onglets à la première déconnexion|Boolean|[green]#true#
 |===
 
 === Notifications
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.notificationMessageTimeoutEnabled*|Timeout d'affichage des notifications|Boolean|true
-|*misc.notification.default.mode*|Type de notification par défaut|String|original (top-left, top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right)
-|*misc.notification.user.selection.mode.enabled*|L'utilisateur peut choisir la position des notifications|Boolean|false
-|*misc.notification.show.countdown.ui*|Affichage d'une barre de progression indiquant que la notification va disparaître|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.notificationMessageTimeoutEnabled*|Timeout d'affichage des notifications|Boolean|[green]#true#
+|*misc.notification.default.mode*|Type de notification par défaut|String|*original (top-left, top-center, top-right, center-left, center-center, center-right, bottom-left, bottom-center, bottom-right)*
+|*misc.notification.user.selection.mode.enabled*|L'utilisateur peut choisir la position des notifications|Boolean|[red]#false#
+|*misc.notification.show.countdown.ui*|Affichage d'une barre de progression indiquant que la notification va disparaître|Boolean|[red]#false#
 |===
 
 === Panneau latéral gauche
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.left.panel.creation.visible*|Panel vertical visible en création|Boolean|true
-|*misc.left.panel.enable.background*|Autoriser la personnalisation du menu latéral gauche|Boolean|false
-|*misc.left.panel.search.visible*|Panel vertical visible en recherche|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.left.panel.creation.visible*|Panel vertical visible en création|Boolean|[green]#true#
+|*misc.left.panel.enable.background*|Autoriser la personnalisation du menu latéral gauche|Boolean|[red]#false#
+|*misc.left.panel.search.visible*|Panel vertical visible en recherche|Boolean|[green]#true#
 |===
 
 === Parapheur
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*signBook.autoRetrieve.folder.enabled*|Relève automatique des dossiers du parapheur|Boolean|true
-|*signBook.autoRetrive.folder.JobInterval*|Fréquence de la relève des documents dans le parapheur (en ms)|Integer|7200000
-|*signBook.emitter.force.empty*|Envoi anonyme|Boolean|false
-|*signBook.emitter.generic.email*|Configuration d'un même compte pour tous les envois|String|null
-|*signBook.enabled*|Mode parapheur activé|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*signBook.autoRetrieve.folder.enabled*|Relève automatique des dossiers du parapheur|Boolean|[green]#true#
+|*signBook.autoRetrive.folder.JobInterval*|Fréquence de la relève des documents dans le parapheur (en ms)|Integer|*7200000*
+|*signBook.emitter.force.empty*|Envoi anonyme|Boolean|[red]#false#
+|*signBook.emitter.generic.email*|Configuration d'un même compte pour tous les envois|String|[blue]#null#
+|*signBook.enabled*|Mode parapheur activé|Boolean|[red]#false#
 |===
 
 === Pièces jointes
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*attachement.allowed.edit.extensions*|Extensions de fichiers autorisés pour l'édition|String|null
-|*attachment.compute.icon.attachment.type*|Autoriser la surcharge des icônes pour les types de pièces jointes|Boolean|true
-|*attachment.max.upload.size*|Taille maximale autorisée des fichiers téléversés|Integer|20
-|*attachment.preview.thumbnail.attachment.id*|Ajouter l'attachmentID à l'url des imagettes (time-consuming...)|Boolean|true
-|*attachment.preview.thumbnail.type.file.mode*|Afficher la même imagette pour les types de fichiers en vue Imagettes|Boolean|false
-|*attachement.scan.convert.to.pdf*|Convertion des documents scannés en PDF|Boolean|true
-|*attachment.single.attachment.img.displayed*|Afficher la même imagette pour les types de fichiers en vue Résultats|Boolean|false
-|*attachment.upload.file.timeout*|Timeout (en secondes) lors d'un dépôt de fichier|Integer|60
-|*attachment.upload.check.mimetype*|Vérification du mime-type du fichier lors d'un dépôt|Boolean|true
-|*display.attachment.as.icons*|Afficher la liste des PJs d'un document sous forme d'icônes|Boolean|true
-|*display.attachment.as.icons.threshold*|Nombre de PJs à partir de laquelle la liste est affichée sous forme de liste déroulante|Integer|10
-|*display.attachment.versioned.watermark*|Ajouter un filigrane lors de la visualisation de document versionné|Boolean|true
-|*display.attachment.watermark.color*|Couleur du filigrane|String|#d3d013
-|*display.attachment.convertAuto*|Conversion automatique des pièces jointes en PDF|Boolean|true
-|*display.attachment.convertAuto.empty.folder*|Vidage du répertoire des documents convertis au démarrage de l'application|Boolean|false
-|*display.attachment.enable.notranslation.type*|Afficher les types de fichiers sans surcharge de traduction|Boolean|false
-|*display.attachment.forceConvertionAsPDF*|Forcer la conversion de tous les documents en PDF|Boolean|true
-|*display.attachment.pdf.viewer*|Composant de visualisation par défaut|String|PDF_JS
-|*display.attachment.pdfjs.default.zoom*|Niveau de zoom par défaut (PDF.js)|String|page-width (page-height, page-fit, auto)
-|*display.attachment.restrict.properties*|Restreindre les propriétés des fichiers téléversés|Boolean|false
-|*display.attachment.unmanaged.viewer.extensions*|Extensions de fichier non gérées pour l'affichage|String|zip,jar,war,class,rar,7z,tar.gz,avi,mov,mp3,mp4,mpg,mpeg,wmv
-|*display.attachment.video.viewer.enabled*|Autoriser l'affichage des vidéos|Boolean|true
-|*display.attachment.video.viewer.extensions*|Extensions de fichier gérées pour l'affichage VIDEO|String|avi,mov,mp3,mp4,mpg,mpeg,wmv
-|*display.attachment.viewer.show.navigation*|Affichage de la liste permettant de naviguer entre les documents d'une recherche|Boolean|false
-|*display.attachmentLayout.annotation.displayOwnerAndCreationDate*|Afficher l'auteur et la date sur les annotations|Boolean|true
-|*display.attachmentLayout.defaultHeight*|Hauteur (en pixels) du composant de visualisation des pièces jointes|Integer|300
-|*display.attachmentLayout.defaultHeightRatio*|Hauteur (en %) du composant de visualisation des pièces jointes|Float|0.33f
-|*display.attachmentLayout.defaultWidth*|Largeur (en pixels) du composant de visualisation des pièces jointes|Integer|600
-|*display.attachmentLayout.defaultWidthRatio*|Largeur (en %) du composant de visualisation des pièces jointes|Float|0.4f
-|*document.update.max.file.quantity*|Nombre maximal de pièces jointes ajoutées lors de la modification d'un document|Integer|10
-|*dossier.viewunit.allow.attachment.adding.all.modes*|Autoriser l'ajout de pièces jointes quel que soit le mode d'édition|Boolean|true
-|*misc.attachment.version.display.owner*|Afficher le nom de l'utilisateur ayant modifié le document dans la liste des versions|Boolean|true
-|*misc.shortcuts.download.pj*|Raccourci clavier pour télécharger la pièce jointe active|String|ctrl+alt+d
-|*misc.showAttachmentBySimpleClick*|Afficher les pièces jointes sur simple clic (vue Résultats)|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*attachement.allowed.edit.extensions*|Extensions de fichiers autorisés pour l'édition|String|[blue]#null#
+|*attachment.compute.icon.attachment.type*|Autoriser la surcharge des icônes pour les types de pièces jointes|Boolean|[green]#true#
+|*attachment.max.upload.size*|Taille maximale autorisée des fichiers téléversés|Integer|*20*
+|*attachment.preview.thumbnail.attachment.id*|Ajouter l'attachmentID à l'url des imagettes (time-consuming...)|Boolean|[green]#true#
+|*attachment.preview.thumbnail.type.file.mode*|Afficher la même imagette pour les types de fichiers en vue Imagettes|Boolean|[red]#false#
+|*attachement.scan.convert.to.pdf*|Convertion des documents scannés en PDF|Boolean|[green]#true#
+|*attachment.single.attachment.img.displayed*|Afficher la même imagette pour les types de fichiers en vue Résultats|Boolean|[red]#false#
+|*attachment.upload.file.timeout*|Timeout (en secondes) lors d'un dépôt de fichier|Integer|*60*
+|*attachment.upload.check.mimetype*|Vérification du mime-type du fichier lors d'un dépôt|Boolean|[green]#true#
+|*display.attachment.as.icons*|Afficher la liste des PJs d'un document sous forme d'icônes|Boolean|[green]#true#
+|*display.attachment.as.icons.threshold*|Nombre de PJs à partir de laquelle la liste est affichée sous forme de liste déroulante|Integer|*10*
+|*display.attachment.versioned.watermark*|Ajouter un filigrane lors de la visualisation de document versionné|Boolean|[green]#true#
+|*display.attachment.watermark.color*|Couleur du filigrane|String|*#d3d013*
+|*display.attachment.convertAuto*|Conversion automatique des pièces jointes en PDF|Boolean|[green]#true#
+|*display.attachment.convertAuto.empty.folder*|Vidage du répertoire des documents convertis au démarrage de l'application|Boolean|[red]#false#
+|*display.attachment.enable.notranslation.type*|Afficher les types de fichiers sans surcharge de traduction|Boolean|[red]#false#
+|*display.attachment.forceConvertionAsPDF*|Forcer la conversion de tous les documents en PDF|Boolean|[green]#true#
+|*display.attachment.pdf.viewer*|Composant de visualisation par défaut|String|*PDF_JS*
+|*display.attachment.pdfjs.default.zoom*|Niveau de zoom par défaut (PDF.js)|String|*page-width (page-height, page-fit, auto)*
+|*display.attachment.restrict.properties*|Restreindre les propriétés des fichiers téléversés|Boolean|[red]#false#
+|*display.attachment.unmanaged.viewer.extensions*|Extensions de fichier non gérées pour l'affichage|String|*zip,jar,war,class,rar,7z,tar.gz,avi,mov,mp3,mp4,mpg,mpeg,wmv*
+|*display.attachment.video.viewer.enabled*|Autoriser l'affichage des vidéos|Boolean|[green]#true#
+|*display.attachment.video.viewer.extensions*|Extensions de fichier gérées pour l'affichage VIDEO|String|*avi,mov,mp3,mp4,mpg,mpeg,wmv*
+|*display.attachment.viewer.show.navigation*|Affichage de la liste permettant de naviguer entre les documents d'une recherche|Boolean|[red]#false#
+|*display.attachmentLayout.annotation.displayOwnerAndCreationDate*|Afficher l'auteur et la date sur les annotations|Boolean|[green]#true#
+|*display.attachmentLayout.defaultHeight*|Hauteur (en pixels) du composant de visualisation des pièces jointes|Integer|*300*
+|*display.attachmentLayout.defaultHeightRatio*|Hauteur (en %) du composant de visualisation des pièces jointes|Float|*0.33f*
+|*display.attachmentLayout.defaultWidth*|Largeur (en pixels) du composant de visualisation des pièces jointes|Integer|*600*
+|*display.attachmentLayout.defaultWidthRatio*|Largeur (en %) du composant de visualisation des pièces jointes|Float|*0.4f*
+|*document.update.max.file.quantity*|Nombre maximal de pièces jointes ajoutées lors de la modification d'un document|Integer|*10*
+|*dossier.viewunit.allow.attachment.adding.all.modes*|Autoriser l'ajout de pièces jointes quel que soit le mode d'édition|Boolean|[green]#true#
+|*misc.attachment.version.display.owner*|Afficher le nom de l'utilisateur ayant modifié le document dans la liste des versions|Boolean|[green]#true#
+|*misc.shortcuts.download.pj*|Raccourci clavier pour télécharger la pièce jointe active|String|*ctrl+alt+d*
+|*misc.showAttachmentBySimpleClick*|Afficher les pièces jointes sur simple clic (vue Résultats)|Boolean|[green]#true#
 |===
 
 === Plein-Texte
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.full.text.input.shorten.domain.labels*|Afficher les codes des content-types dans l'historique des recherches|Boolean|false
-|*misc.fulltext.filter.compact.mode*|[Plein-Texte] Affichage compact du panel de filtre|Boolean|false
-|*misc.fulltext.suggestion.limit*|Nombre maximal de termes suggérés pour la recherche plein-texte|Integer|20
-|*misc.fulltext.thumbnail.allowed*|[Plein-Texte] Autoriser l'affichage des imagettes (preview) sur les résultats|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.full.text.input.shorten.domain.labels*|Afficher les codes des content-types dans l'historique des recherches|Boolean|[red]#false#
+|*misc.fulltext.filter.compact.mode*|[Plein-Texte] Affichage compact du panel de filtre|Boolean|[red]#false#
+|*misc.fulltext.suggestion.limit*|Nombre maximal de termes suggérés pour la recherche plein-texte|Integer|*20*
+|*misc.fulltext.thumbnail.allowed*|[Plein-Texte] Autoriser l'affichage des imagettes (preview) sur les résultats|Boolean|[green]#true#
 |===
 
 === Recherche
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.search.global.limit.result*|Nombre maximal de résultats retournés par une recherche|Integer|-1
-|*dossier.search.result.hide.preview.if.no.attachment*|[Résultat] Masquer la prévisualisation d'un document si aucune PJ n'est disponible|Boolean|true
-|*dossier.search.result.card.mode.enabled*|[Résultat] Autoriser le mode d'affichage *cartes*|Boolean|true
-|*dossier.search.result.hide.tab.if.no.result*|[Résultat] Masquer les types de contenu n'ayant pas de résultats|Boolean|true
-|*misc.deactivationSortingSearchResultNumber*|Limite autorisée pour l'activation des tris sur les résultats|Integer|5000
-|*search.cascading.mode*|Autoriser l'exécution séquentielle des recherches en cas d'absence de résultats|Boolean|true
-|*search.quick.launch.on.enter*|Lancer la recherche rapide par défaut (vs plein-texte)|Boolean|true
-|*search.quick.suggestion.enabled*|Autoriser l'activation/désactivation des suggestions de mots|Boolean|true
-|*search.similar.doc.score.as.percent*|Afficher le score des documents similaires en pourcentage|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.search.global.limit.result*|Nombre maximal de résultats retournés par une recherche|Integer|*-1*
+|*dossier.search.result.hide.preview.if.no.attachment*|[Résultat] Masquer la prévisualisation d'un document si aucune PJ n'est disponible|Boolean|[green]#true#
+|*dossier.search.result.card.mode.enabled*|[Résultat] Autoriser le mode d'affichage *cartes*|Boolean|[green]#true#
+|*dossier.search.result.hide.tab.if.no.result*|[Résultat] Masquer les types de contenu n'ayant pas de résultats|Boolean|[green]#true#
+|*misc.deactivationSortingSearchResultNumber*|Limite autorisée pour l'activation des tris sur les résultats|Integer|*5000*
+|*search.cascading.mode*|Autoriser l'exécution séquentielle des recherches en cas d'absence de résultats|Boolean|[green]#true#
+|*search.quick.launch.on.enter*|Lancer la recherche rapide par défaut (vs plein-texte)|Boolean|[green]#true#
+|*search.quick.suggestion.enabled*|Autoriser l'activation/désactivation des suggestions de mots|Boolean|[green]#true#
+|*search.similar.doc.score.as.percent*|Afficher le score des documents similaires en pourcentage|Boolean|[red]#false#
 |===
 
 === Requêtes AIRS
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*airsRequest.cache.enable*|Activation du cache des requêtes AIRS|Boolean|true
-|*airsRequest.cache.timeToIdleSeconds*|Délai de conservation des résultats des requêtes AIRS entre 2 appels|Integer|20
-|*airsRequest.cache.timeToLiveSeconds*|Délai de conservation MAXIMUM des résultats des requêtes AIRS|Integer|20
-|*misc.airs.request.cache.timeToLive*|Temps de validité des résultats de recherche des corbeilles (-1 ou 0, cache désactivé)|Integer|15 * 60 = 900
-|*misc.asynchronous.airs.request*|Chargement asynchrone des corbeilles|Boolean|true
-|*misc.navigation.airs.reloadRequest*|Rechargement des corbeilles lors de l'accès à la page d'accueil|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*airsRequest.cache.enable*|Activation du cache des requêtes AIRS|Boolean|[green]#true#
+|*airsRequest.cache.timeToIdleSeconds*|Délai de conservation des résultats des requêtes AIRS entre 2 appels|Integer|*20*
+|*airsRequest.cache.timeToLiveSeconds*|Délai de conservation MAXIMUM des résultats des requêtes AIRS|Integer|*20*
+|*misc.airs.request.cache.timeToLive*|Temps de validité des résultats de recherche des corbeilles (-1 ou 0, cache désactivé)|Integer|_(15*60=)_ *900*
+|*misc.asynchronous.airs.request*|Chargement asynchrone des corbeilles|Boolean|[green]#true#
+|*misc.navigation.airs.reloadRequest*|Rechargement des corbeilles lors de l'accès à la page d'accueil|Boolean|[red]#false#
 |===
 
 === Sécurité
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*security.authentication.user.allow.password.lost.link*|Autoriser l'utilisateur à demander son changement de passe (perdu) via la page d'accueil|Boolean|false
-|*security.authentication.user.lost.link.expiration.duration*|Temps maximum (en minute) de validité de l'URL de renouvellement de mot de passe|Integer|10
-|*security.config.skip.error.redirection*|Ignorer l'affichage de la page d'erreur de configuration de l'application|Boolean|true
-|*security.encode.document.renderer.servlet.parameters*|Encodage des paramètres de l'URL de rendu des documents (thumbnails)|Boolean|false
-|*security.force.https.scheme*|Forcer le protocole https|Boolean|false
-|*security.session.cookie.http-only*|Accès au cookie en http|Boolean|false
-|*security.session.cookie.secure*|Sécuriser le cookie de session|Boolean|true
-|*security.session.cookie.tracking.mode*|Méthode utilisée pour suivre la session utilisateur|String|COOKIE (URL, SSL)
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*security.authentication.user.allow.password.lost.link*|Autoriser l'utilisateur à demander son changement de passe (perdu) via la page d'accueil|Boolean|[red]#false#
+|*security.authentication.user.lost.link.expiration.duration*|Temps maximum (en minute) de validité de l'URL de renouvellement de mot de passe|Integer|*10*
+|*security.config.skip.error.redirection*|Ignorer l'affichage de la page d'erreur de configuration de l'application|Boolean|[green]#true#
+|*security.encode.document.renderer.servlet.parameters*|Encodage des paramètres de l'URL de rendu des documents (thumbnails)|Boolean|[red]#false#
+|*security.force.https.scheme*|Forcer le protocole https|Boolean|[red]#false#
+|*security.session.cookie.http-only*|Accès au cookie en http|Boolean|[red]#false#
+|*security.session.cookie.secure*|Sécuriser le cookie de session|Boolean|[green]#true#
+|*security.session.cookie.tracking.mode*|Méthode utilisée pour suivre la session utilisateur|String|*COOKIE (URL, SSL)*
 |===
 
 === Session
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.numberOfSessionsByUser*|Nombre maximum de sessions pour un même utilisateur|Integer|-1
-|*misc.session.idle.browser.detection*|Timeout de Session côté client (fenêtre pour rester connecté)|Boolean|false
-|*misc.sessionTimeout*|Timeout de Session|Integer|30 * 60 * 1000 = 1800000
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.numberOfSessionsByUser*|Nombre maximum de sessions pour un même utilisateur|Integer|*-1*
+|*misc.session.idle.browser.detection*|Timeout de Session côté client (fenêtre pour rester connecté)|Boolean|[red]#false#
+|*misc.sessionTimeout*|Timeout de Session|Integer|_(30 * 60 * 1000 =)_ *1800000*
 |===
 
 === Signature
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*sign.airs.signatoryField*|Code du champ AIRS rattaché à la signature|String|null
-|*sign.airs.signAttachmentIdField*|ID du champ AIRS / Pièce jointe rattaché à la signature|String|null
-|*sign.airs.signedAttachmentIdsField*|ID du champ AIRS / Pièce jointe rattaché à la signature|String|null
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*sign.airs.signatoryField*|Code du champ AIRS rattaché à la signature|String|[blue]#null#
+|*sign.airs.signAttachmentIdField*|ID du champ AIRS / Pièce jointe rattaché à la signature|String|[blue]#null#
+|*sign.airs.signedAttachmentIdsField*|ID du champ AIRS / Pièce jointe rattaché à la signature|String|[blue]#null#
 |===
 
 === Thème
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.theme*|Thème appliqué|String|AIRS_SUITE (2022_AIRS_SUITE, dark)
-|*dossier.theme.allow.user.choice*|Autoriser l'utilisateur à choisir son thème|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.theme*|Thème appliqué|String|*AIRS_SUITE (2022_AIRS_SUITE, dark)*
+|*dossier.theme.allow.user.choice*|Autoriser l'utilisateur à choisir son thème|Boolean|[red]#false#
 |*dossier.theme.user.choices*|Liste des thèmes que l'utilisateur peut sélectionner|String|
 |===
 
 === Utilisateur
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.font.allow.user.choice*|Autoriser l'utilisateur à choisir sa police de caractères|Boolean|false
-|*dossier.viewer.allow.user.choice*|Autoriser l'utilisateur à choisir son visualiseur|Boolean|false
-|*misc.user.font.size.customization.allowed*|Autoriser l'utilisateur à modifier la table GLOBALE de la police de caractères|Boolean|false
-|*misc.user.format.lastname.first*|Formater le libellé de l'utilisateur sous la forme *Nom Prénom*|Boolean|true
-|*misc.user.format.lastname.full.capitalize*|Formater le nom de l'utilisateur en MAJUSCULES|Boolean|false
-|*misc.user.request.hide.column.title*|Cacher la colonne "Requête" dans le tableau affiché à l'utilisateur|Boolean|true
-|*misc.user.save.selected.cty*|Conserver le content type sélectionné par l'utilisateur|Boolean|true
-|*user.roleEnabled*|Activer la résolution des rôles|Boolean|false
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.font.allow.user.choice*|Autoriser l'utilisateur à choisir sa police de caractères|Boolean|[red]#false#
+|*dossier.viewer.allow.user.choice*|Autoriser l'utilisateur à choisir son visualiseur|Boolean|[red]#false#
+|*misc.user.font.size.customization.allowed*|Autoriser l'utilisateur à modifier la table GLOBALE de la police de caractères|Boolean|[red]#false#
+|*misc.user.format.lastname.first*|Formater le libellé de l'utilisateur sous la forme *Nom Prénom*|Boolean|[green]#true#
+|*misc.user.format.lastname.full.capitalize*|Formater le nom de l'utilisateur en MAJUSCULES|Boolean|[red]#false#
+|*misc.user.request.hide.column.title*|Cacher la colonne "Requête" dans le tableau affiché à l'utilisateur|Boolean|[green]#true#
+|*misc.user.save.selected.cty*|Conserver le content type sélectionné par l'utilisateur|Boolean|[green]#true#
+|*user.roleEnabled*|Activer la résolution des rôles|Boolean|[red]#false#
 |===
 
 === Vue Arborescente
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*dossier.tree.filter.mode*|Mode/comportement appliqué lors du filtre du contenu de la vue arborescente|String|highlightKeepDepth (hide, highlight)
-|*misc.always.display.hierarchical.action*|Toujours afficher le bouton d'accès à la vue hiérarchique|Boolean|false
-|*misc.hierarchical.display.first.linked.document.attachment*|Afficher la PJ du 1er document lié|Boolean|false
-|*misc.hierarchical.tree.allow.leaf.label.filter*|Afficher le filtre sur le libellé des nœuds feuilles|Boolean|true
-|*misc.hierarchical.tree.check.parent.hierarchy*|Vérification de la hiérarchie pour les content types|Boolean|true
-|*misc.hierarchical.tree.enable.keyboard.navigation*|Autoriser la navigation dans l'arborescence à l'aide des flèches ↑ et ↓|Boolean|true
-|*misc.hierarchical.tree.depth*|Profondeur de l'arbre pré-calculée|Integer|10
-|*misc.hierarchical.tree.force.mode*|Mode de rendu des nœuds de l'arbre hiérarchique|String|ajax (client, server)
-|*misc.hierarchical.tree.max.attachments*|Nombre maximal de Pièces Jointes affichées dans les nœuds de l'arbre|Integer|3
-|*misc.hierarchicalTreeNodeVariableEmptyMode*|Description de nœud affichée en cas de valeur vide|String|FIELD_CODE (BLANK, FIELD_DESCRIPTION)
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.tree.filter.mode*|Mode/comportement appliqué lors du filtre du contenu de la vue arborescente|String|*highlightKeepDepth (hide, highlight)*
+|*misc.always.display.hierarchical.action*|Toujours afficher le bouton d'accès à la vue hiérarchique|Boolean|[red]#false#
+|*misc.hierarchical.display.first.linked.document.attachment*|Afficher la PJ du 1er document lié|Boolean|[red]#false#
+|*misc.hierarchical.tree.allow.leaf.label.filter*|Afficher le filtre sur le libellé des nœuds feuilles|Boolean|[green]#true#
+|*misc.hierarchical.tree.check.parent.hierarchy*|Vérification de la hiérarchie pour les content types|Boolean|[green]#true#
+|*misc.hierarchical.tree.enable.keyboard.navigation*|Autoriser la navigation dans l'arborescence à l'aide des flèches ↑ et ↓|Boolean|[green]#true#
+|*misc.hierarchical.tree.depth*|Profondeur de l'arbre pré-calculée|Integer|*10*
+|*misc.hierarchical.tree.force.mode*|Mode de rendu des nœuds de l'arbre hiérarchique|String|*ajax (client, server)*
+|*misc.hierarchical.tree.max.attachments*|Nombre maximal de Pièces Jointes affichées dans les nœuds de l'arbre|Integer|*3*
+|*misc.hierarchicalTreeNodeVariableEmptyMode*|Description de nœud affichée en cas de valeur vide|String|*FIELD_CODE (BLANK, FIELD_DESCRIPTION)*
 |===
 
 === Vue Résultats
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*display.result.enable.favorite.action*|Afficher le bouton d'ajout/suppression de favori dans le tableau des résultats|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*display.result.enable.favorite.action*|Afficher le bouton d'ajout/suppression de favori dans le tableau des résultats|Boolean|[green]#true#
 |*display.result.hide.contextual.buttons*|Masquage de certaines actions (supprimer, verrouiller, indexer) si aucun document n'est sélectionné en
-vue Résultats|Boolean|true
-|*dossier.default.max.frame.size*|Taille maximale du tableau des résultats de recherche par défaut|Integer|50
-|*misc.application.avatar.display.fullname*|En vue résultats, mode d'affichage du nom des utilisateurs (avatar, nom, les 2)|String|both (avatar, username)
-|*misc.numberOfCommentsToRetrieve*|Nombre maximum de commentaires affichés en vue Résultats|Integer|3
+vue Résultats|Boolean|[green]#true#
+|*dossier.default.max.frame.size*|Taille maximale du tableau des résultats de recherche par défaut|Integer|*50*
+|*misc.application.avatar.display.fullname*|En vue résultats, mode d'affichage du nom des utilisateurs (avatar, nom, les 2)|String|*both (avatar, username)*
+|*misc.numberOfCommentsToRetrieve*|Nombre maximum de commentaires affichés en vue Résultats|Integer|*3*
 |===
 
 === Vue Unitaire
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header""]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*misc.viewunit.tab.show.attachment.number*|Affichage du nombre de pièces jointes|Boolean|true
-|*misc.viewunit.tab.show.comment.number*|Affichage du nombre de commentaires|Boolean|false
-|*misc.viewunit.tab.show.event.number*|Affichage du nombre d'évènements (historique)|Boolean|false
-|*misc.viewunit.tab.show.link.number*|Affichage du nombre de liens|Boolean|false
-|*misc.viewunit.tab.switchtype*|Mode de rendu des onglets|String|client (server, ajax)
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.viewunit.tab.show.attachment.number*|Affichage du nombre de pièces jointes|Boolean|[green]#true#
+|*misc.viewunit.tab.show.comment.number*|Affichage du nombre de commentaires|Boolean|[red]#false#
+|*misc.viewunit.tab.show.event.number*|Affichage du nombre d'évènements (historique)|Boolean|[red]#false#
+|*misc.viewunit.tab.show.link.number*|Affichage du nombre de liens|Boolean|[red]#false#
+|*misc.viewunit.tab.switchtype*|Mode de rendu des onglets|String|*client (server, ajax)*
 |===
 
 === Workflow
 
-[cols="4a,3a,1a,2a"]
+[cols="4a,3a,1a,2a",options="header"]
 |===
-|Code|Description|Type|Valeur par défaut (autres valeurs possibles)
-|*workflow.cacheSize*|Cache du workflow|Integer|20000
-|*workflow.database.oracleUsed*|Connexion à une BDD Oracle pour le workflow|Boolean|true
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*workflow.cacheSize*|Cache du workflow|Integer|*20000*
+|*workflow.database.oracleUsed*|Connexion à une BDD Oracle pour le workflow|Boolean|[green]#true#
 |===
