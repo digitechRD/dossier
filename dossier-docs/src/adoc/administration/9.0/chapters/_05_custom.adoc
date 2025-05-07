@@ -1,0 +1,229 @@
+[[_04_custom]]
+== Personnalisation de l'application
+
+:customAction: pass:quotes[[yellow]*_action custom_*]
+
+L'application {arcadeged} peut être personnalisée de bien des manières. +
+
+Ce chapitre indique et décrit certaines des personnalisations possibles.
+
+=== [ViewUnit] ajout d'une action personnalisée
+
+==== Introduction
+
+Autrement nommée {customAction}.
+
+Les actions personnalisées en *vue unitaire* (fiche du document) permettent d'effectuer différentes actions qui ne sont pas possibles nativement dans l'application {arcadeged}.
+
+Les exemples sont infinis :
+
+* Interrogation d'un système interne au client.
+* Envoi du document (index et/ou pièces jointes) pour être traité, déposé... dans un service externe, par exemples :
+** un parapheur
+** un coffre-fort électronique
+** un système de signature électronique
+
+Une action personnalisée est appliquée à une vue selon son mode :
+
+* *read* : Mode _Consultation_
+* *update* : Mode _Édition_
+
+==== Module {adminAirs}
+
+Le module {adminAirs} permet de configurer via le paramétrage des vues les {customAction}
+
+image:05_custom/view_custom_action_01.png[]
+
+Le chapitre suivant décrit chaque propriété :
+
+[cols="2a,4a,4a,2a,1a",options="header"]
+.Description des paramètres
+|===
+|Code|Description|Xml|type|Obligatoire?
+|*ID**|Identifiant unique de {customAction}|action#id|String|[green]#true#
+|*Script*|Script associé à l'{customAction}, de type *DocumentInitializer*|action > *groovyScriptId*|String, script pré-défini|[green]#true#
+|*Clé du panneau modal*|Clé du _modalPanel_ si souhaitée|action > *modalPanelPageKey*|String, clé définie dans le fichier *custom/Pages.properties*|
+|*Initialisation du panneau modal*|Clé du _script_ d'initialisation du _modalPanel_ si souhaitée|action > *modalPanelInitGroovyScriptId*|String, script pré-défini|
+|*Script de Modalité d'affichage*|Script associé de type *DisplayRule* gérant l'affichage de l'{customAction}|action#displayRuleScriptId|String, script pré-défini|
+|*IDs à rafraichir*|*reRender* appliqué après avoir joué l'{customAction}|action#reRender|String|
+|*Désignation*|titre/label de l'{customAction}|*action#resourceKey*|String, clé définie dans le fichier *custom/Messages.properties*|
+|*Classe de style*|*styleClass* l'{customAction}|*action#styleClass*|String|
+|*Icône*|*icône* définissant l'{customAction}|*action#icon*|String, clé définie dans le fichier *custom/Images.properties*|
+|===
+
+==== [Expert] Ajout manuelle d'une {customAction}
+
+[WARNING]
+====
+Cette opération est risquée, car elle peut impacter la validité/conformité des fichiers *xml* définissant le produit.
+====
+
+L'opération d'ajout d'une {customAction} en *Vue unitaire* s'effectue en plusieurs étapes :
+
+
+. Création des scripts {groovy} nécessaires
+
+[TIP]
+====
+Ces scripts doivent être déclarés via l'{adminAirs} ou ajoutés directement dans le fichier *groovy.xml*
+====
+
+.. Le script *groovyScriptId* [underline]#*obligatoire*# de type *DocumentInitializer*
+
+```xml
+<Script id="signDoc_action">
+  <script>sign/action/signDoc_action.groovy</script>
+  <type>DocumentInitializer</type>
+</Script>
+```
+
+[start=2]
+.. Le script *modalPanelInitGroovyScriptId* [underline]#*optionnel*# de type *DocumentInitializer*
+
+```xml
+<Script id="signedDoc_panelInit">
+  <script>sign/action/signedDoc_panelInit.groovy</script>
+  <type>DocumentInitializer</type>
+</Script>
+```
+
+[start=3]
+.. Le script *displayRuleScriptId* [underline]#*optionnel*# de type *DisplayRule*
+
+```xml
+<Script id="signDoc_visibility">
+	<script>sign/action/signDoc_visibility.groovy</script>
+	<type>DisplayRule</type>
+</Script>
+```
+
+[start=2]
+. Ajout des clés complémentaires
+
+.. Fichier *custom/Images.properties*
+
+copie de votre image et désignation, ex :
+```properties
+logo_signature=./custom/ui/img/electronicSignature.svg
+```
+
+[start=2]
+.. Fichier *custom/Messages.properties*
+
+Définition du label
+
+```properties
+action_signDoc=Signer électroniquement ce document
+```
+
+[start=3]
+.. Fichier *custom/Pages.properties*
+
+Déclaration du (contenu du) *modalPanel*
+
+```properties
+signedDoc_panel=/custom/ui/jsp/sign/signDocPanel.jspx
+```
+
+[start=3]
+. Déclaration de l'action custom
+
+Dans le fichier *xml/update.xml*, veuillez ajouter le noeud suivant dans le content-type souhaité (Attention au mode, attribut *type*)
+
+```xml
+<action id="signDoc" resourceKey="action_signDoc" reRender="notifications" displayRuleScriptId="signDoc_visibility" viewUnitMustbeSaved="false"
+	styleClass="icon-pulse" icon="logo_signature">
+    <groovyScriptId>signDoc_action</groovyScriptId>
+	<modalPanelPageKey>signedDoc_panel</modalPanelPageKey>
+    <modalPanelInitGroovyScriptId>signedDoc_panelInit</modalPanelInitGroovyScriptId>
+</action>
+```
+
+
+==== Configuration script + modale
+
+Le script *modalPanelInitGroovyScriptId* est exécuté avant l'apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.
+
+L'astuce est ici d'injecter les données dans le modèle associé comme il suit :
+
+```groovy
+CustomActionModel caModel = Utils.getCustomActionController().getModel()
+
+caModel.modalPanelModel.put("MON_MSG", "Coucou!")
+// ou
+caModel.addPanelData("MON_MSG", "Coucou!")
+```
+
+Celles-ci sont alors récupérables dans la _modal_
+
+```xml
+<jsp:root version="2.0" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsp="http://java.sun.com/JSP/Page">
+
+	<h:panelGroup layout="block" styleClass="row">
+		<h:outputLabel styleClass="message" value="#{CustomActionController.model.modalPanelModel.MON_MSG}" />
+	</h:panelGroup>
+
+</jsp:root>
+```
+
+==== Quelques modèles/exemples de scripts
+
+[TIP]
+====
+Veuillez vous référer à la documentation sur les scripts {groovy} pour des détails sur leurs paramètres et utilisation
+====
+
+. Fichier *displayRuleScriptId* (*DisplayRule*)
+
+```groovy
+_logger.debug(">>> signDoc_visibility (output: '{}', result: '{}', doc:'{}')", _output, _result, _document)
+
+_result.setValid(_document?.getAttachments(_userContext)?.size > 0)
+
+_logger.debug("<<< signDoc_visibility")
+```
+
+[start=2]
+. Fichier *groovyScriptId* (*DocumentInitializer*)
+
+```groovy
+import com.digitech.common.script.model.EnumScriptStatus
+import com.digitech.dossier.common.utils.ExceptionUtils
+
+UserCoreContext ucc = _userContext as UserCoreContexts
+IDocument doc = _document as IDocument
+_scriptLogger.debug(">>> signDoc_action (doc:'{}', ucc: '{}')", doc, ucc)
+
+
+try {
+// ajouter votre code ici...
+
+} catch (Exception e) {
+_scriptLogger.error("Error while signing document: '{}'", e.getLocalizedMessage(), e)
+_result.messageSummary = "Error while signing document: " + e.getLocalizedMessage()
+_result.messageDetail = ExceptionUtils.getStackTrace(e)
+_result.status = EnumScriptStatus.KO
+}
+
+_scriptLogger.debug("<<< signDoc_action")
+```
+
+
+[start=2]
+. Fichier *modalPanelPageKey*
+
+Fichier d'extension *jspx*
+
+```xml
+<jsp:root version="2.0" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jsp="http://java.sun.com/JSP/Page">
+
+	<h:panelGroup layout="block" styleClass="row">
+		<h:outputLabel styleClass="message" value="#{CustomActionController.model.modalPanelModel.MON_MSG}" />
+	</h:panelGroup>
+
+</jsp:root>
+```

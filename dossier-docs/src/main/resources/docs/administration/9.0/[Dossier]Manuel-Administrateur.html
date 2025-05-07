@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">28/04/2025 11:06:34</span>
+<span id="revdate">07/05/2025 11:51:24</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -100,6 +100,19 @@
 <li><a href="#_appender">4.1. Appender</a></li>
 <li><a href="#_logger">4.2. Logger</a></li>
 <li><a href="#_logger_personnalisé">4.3. Logger personnalisé</a></li>
+</ul>
+</li>
+<li><a href="#_04_custom">5. Personnalisation de l&#8217;application</a>
+<ul class="sectlevel2">
+<li><a href="#_viewunit_ajout_dune_action_personnalisée">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<ul class="sectlevel3">
+<li><a href="#_introduction">5.1.1. Introduction</a></li>
+<li><a href="#_module_adminairs">5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
+<li><a href="#_expert_ajout_manuelle_dune_action_custom">5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
+<li><a href="#_configuration_script_modale">5.1.4. Configuration script + modale</a></li>
+<li><a href="#_quelques_modèlesexemples_de_scripts">5.1.5. Quelques modèles/exemples de scripts</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -7115,6 +7128,518 @@ injectée par défaut.</p>
 	&lt;/root&gt;
 
 &lt;/included&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_04_custom"><a class="anchor" href="#_04_custom"></a>5. Personnalisation de l&#8217;application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être personnalisée de bien des manières.<br></p>
+</div>
+<div class="paragraph">
+<p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
+</div>
+<div class="sect2">
+<h3 id="_viewunit_ajout_dune_action_personnalisée"><a class="anchor" href="#_viewunit_ajout_dune_action_personnalisée"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<div class="sect3">
+<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>5.1.1. Introduction</h4>
+<div class="paragraph">
+<p>Autrement nommée <strong class="yellow"><em>action custom</em></strong>.</p>
+</div>
+<div class="paragraph">
+<p>Les actions personnalisées en <strong>vue unitaire</strong> (fiche du document) permettent d&#8217;effectuer différentes actions qui ne sont pas possibles nativement dans l&#8217;application <code><span style="color:#448279">Arcade GED</span></code>.</p>
+</div>
+<div class="paragraph">
+<p>Les exemples sont infinis :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Interrogation d&#8217;un système interne au client.</p>
+</li>
+<li>
+<p>Envoi du document (index et/ou pièces jointes) pour être traité, déposé&#8230;&#8203; dans un service externe, par exemples :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>un parapheur</p>
+</li>
+<li>
+<p>un coffre-fort électronique</p>
+</li>
+<li>
+<p>un système de signature électronique</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Une action personnalisée est appliquée à une vue selon son mode :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>read</strong> : Mode <em>Consultation</em></p>
+</li>
+<li>
+<p><strong>update</strong> : Mode <em>Édition</em></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
+<div class="paragraph">
+<p>Le module <code><span style="color:#25EF72">adminAIRS</span></code> permet de configurer via le paramétrage des vues les <strong class="yellow"><em>action custom</em></strong></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/05_custom/view_custom_action_01.png" alt="view custom action 01"></span></p>
+</div>
+<div class="paragraph">
+<p>Le chapitre suivant décrit chaque propriété :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 2. Description des paramètres</caption>
+<colgroup>
+<col style="width: 15.3846%;">
+<col style="width: 30.7692%;">
+<col style="width: 30.7692%;">
+<col style="width: 15.3846%;">
+<col style="width: 7.6924%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Xml</th>
+<th class="tableblock halign-left valign-top">type</th>
+<th class="tableblock halign-left valign-top">Obligatoire?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ID</strong>*</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant unique de <strong class="yellow"><em>action custom</em></strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>action#id</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">true</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Script</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Script associé à l'<strong class="yellow"><em>action custom</em></strong>, de type <strong>DocumentInitializer</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>action &gt; <strong>groovyScriptId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String, script pré-défini</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">true</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Clé du panneau modal</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Clé du <em>modalPanel</em> si souhaitée</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>action &gt; <strong>modalPanelPageKey</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String, clé définie dans le fichier <strong>custom/Pages.properties</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Initialisation du panneau modal</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Clé du <em>script</em> d&#8217;initialisation du <em>modalPanel</em> si souhaitée</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>action &gt; <strong>modalPanelInitGroovyScriptId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String, script pré-défini</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Script de Modalité d&#8217;affichage</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Script associé de type <strong>DisplayRule</strong> gérant l&#8217;affichage de l'<strong class="yellow"><em>action custom</em></strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>action#displayRuleScriptId</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String, script pré-défini</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>IDs à rafraichir</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>reRender</strong> appliqué après avoir joué l'<strong class="yellow"><em>action custom</em></strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>action#reRender</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Désignation</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>titre/label de l'<strong class="yellow"><em>action custom</em></strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>action#resourceKey</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String, clé définie dans le fichier <strong>custom/Messages.properties</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Classe de style</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>styleClass</strong> l'<strong class="yellow"><em>action custom</em></strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>action#styleClass</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Icône</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>icône</strong> définissant l'<strong class="yellow"><em>action custom</em></strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>action#icon</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>String, clé définie dans le fichier <strong>custom/Images.properties</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Avertissement"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cette opération est risquée, car elle peut impacter la validité/conformité des fichiers <strong>xml</strong> définissant le produit.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>L&#8217;opération d&#8217;ajout d&#8217;une <strong class="yellow"><em>action custom</em></strong> en <strong>Vue unitaire</strong> s&#8217;effectue en plusieurs étapes :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Création des scripts {groovy} nécessaires</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ces scripts doivent être déclarés via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou ajoutés directement dans le fichier <strong>groovy.xml</strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Le script <strong>groovyScriptId</strong> <span class="underline"><strong>obligatoire</strong></span> de type <strong>DocumentInitializer</strong></p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Script id="signDoc_action"&gt;
+  &lt;script&gt;sign/action/signDoc_action.groovy&lt;/script&gt;
+  &lt;type&gt;DocumentInitializer&lt;/type&gt;
+&lt;/Script&gt;</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a" start="2">
+<li>
+<p>Le script <strong>modalPanelInitGroovyScriptId</strong> <span class="underline"><strong>optionnel</strong></span> de type <strong>DocumentInitializer</strong></p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Script id="signedDoc_panelInit"&gt;
+  &lt;script&gt;sign/action/signedDoc_panelInit.groovy&lt;/script&gt;
+  &lt;type&gt;DocumentInitializer&lt;/type&gt;
+&lt;/Script&gt;</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a" start="3">
+<li>
+<p>Le script <strong>displayRuleScriptId</strong> <span class="underline"><strong>optionnel</strong></span> de type <strong>DisplayRule</strong></p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Script id="signDoc_visibility"&gt;
+	&lt;script&gt;sign/action/signDoc_visibility.groovy&lt;/script&gt;
+	&lt;type&gt;DisplayRule&lt;/type&gt;
+&lt;/Script&gt;</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Ajout des clés complémentaires</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Fichier <strong>custom/Images.properties</strong></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>copie de votre image et désignation, ex :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">logo_signature=./custom/ui/img/electronicSignature.svg</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a" start="2">
+<li>
+<p>Fichier <strong>custom/Messages.properties</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Définition du label</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">action_signDoc=Signer électroniquement ce document</code></pre>
+</div>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a" start="3">
+<li>
+<p>Fichier <strong>custom/Pages.properties</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Déclaration du (contenu du) <strong>modalPanel</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">signedDoc_panel=/custom/ui/jsp/sign/signDocPanel.jspx</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="3">
+<li>
+<p>Déclaration de l&#8217;action custom</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Dans le fichier <strong>xml/update.xml</strong>, veuillez ajouter le noeud suivant dans le content-type souhaité (Attention au mode, attribut <strong>type</strong>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;action id="signDoc" resourceKey="action_signDoc" reRender="notifications" displayRuleScriptId="signDoc_visibility" viewUnitMustbeSaved="false"
+	styleClass="icon-pulse" icon="logo_signature"&gt;
+    &lt;groovyScriptId&gt;signDoc_action&lt;/groovyScriptId&gt;
+	&lt;modalPanelPageKey&gt;signedDoc_panel&lt;/modalPanelPageKey&gt;
+    &lt;modalPanelInitGroovyScriptId&gt;signedDoc_panelInit&lt;/modalPanelInitGroovyScriptId&gt;
+&lt;/action&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>5.1.4. Configuration script + modale</h4>
+<div class="paragraph">
+<p>Le script <strong>modalPanelInitGroovyScriptId</strong> est exécuté avant l&#8217;apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;astuce est ici d&#8217;injecter les données dans le modèle associé comme il suit :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">CustomActionModel caModel = Utils.getCustomActionController().getModel()
+
+caModel.modalPanelModel.put("MON_MSG", "Coucou!")
+// ou
+caModel.addPanelData("MON_MSG", "Coucou!")</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Celles-ci sont alors récupérables dans la <em>modal</em></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;jsp:root version="2.0" xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
+
+	&lt;h:panelGroup layout="block" styleClass="row"&gt;
+		&lt;h:outputLabel styleClass="message" value="#{CustomActionController.model.modalPanelModel.MON_MSG}" /&gt;
+	&lt;/h:panelGroup&gt;
+
+&lt;/jsp:root&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>5.1.5. Quelques modèles/exemples de scripts</h4>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Veuillez vous référer à la documentation sur les scripts {groovy} pour des détails sur leurs paramètres et utilisation</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Fichier <strong>displayRuleScriptId</strong> (<strong>DisplayRule</strong>)</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">_logger.debug("&gt;&gt;&gt; signDoc_visibility (output: '{}', result: '{}', doc:'{}')", _output, _result, _document)
+
+_result.setValid(_document?.getAttachments(_userContext)?.size &gt; 0)
+
+_logger.debug("&lt;&lt;&lt; signDoc_visibility")</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Fichier <strong>groovyScriptId</strong> (<strong>DocumentInitializer</strong>)</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.common.script.model.EnumScriptStatus
+import com.digitech.dossier.common.utils.ExceptionUtils
+
+UserCoreContext ucc = _userContext as UserCoreContexts
+IDocument doc = _document as IDocument
+_scriptLogger.debug("&gt;&gt;&gt; signDoc_action (doc:'{}', ucc: '{}')", doc, ucc)
+
+
+try {
+// ajouter votre code ici...
+
+} catch (Exception e) {
+_scriptLogger.error("Error while signing document: '{}'", e.getLocalizedMessage(), e)
+_result.messageSummary = "Error while signing document: " + e.getLocalizedMessage()
+_result.messageDetail = ExceptionUtils.getStackTrace(e)
+_result.status = EnumScriptStatus.KO
+}
+
+_scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Fichier <strong>modalPanelPageKey</strong></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Fichier d&#8217;extension <strong>jspx</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;jsp:root version="2.0" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
+
+	&lt;h:panelGroup layout="block" styleClass="row"&gt;
+		&lt;h:outputLabel styleClass="message" value="#{CustomActionController.model.modalPanelModel.MON_MSG}" /&gt;
+	&lt;/h:panelGroup&gt;
+
+&lt;/jsp:root&gt;</code></pre>
+</div>
 </div>
 </div>
 </div>
