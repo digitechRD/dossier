@@ -1,5 +1,5 @@
 [[_24_WSDocumentInitializer]]
-== WSDocumentInitializer
+== {WSDocumentInitializer}
 
 === Description
 
@@ -7,7 +7,7 @@ Ce type de script est utilisé lors de l'exécution des webservices sur les docu
 
 [NOTE]
 ====
-À la fois disponible pour le {webservice} *WSDocument* et *WSExtendDocument*.
+À la fois disponible pour le {webservice} *WSDocument* (endpoint */document*)
 ====
 
 === Paramètres
@@ -16,25 +16,18 @@ cf. <<_01_CommonData,attributs communs>>.
 
 [options="noheader",cols="2a,2a,3a"]
 |===
-3+|[.header]
-Entrées|[.sub-header]
-_Nom_|[.sub-header]
-_Type_|[.sub-header]
-_Description_
-|_docType|
-* *WSDocument*: *com.digitech.dossier.webservices.ws.document.type.WSDocumentType*
-* *WSExtendDocument*: *com.digitech.dossier.webservices.extend.type.WSDocumentType* ou |document structure
-|*_parentDocType*| *com.digitech.dossier.webservices.extend.type.WSDocumentType*|parent document structure (si disponible, *WSExtendDocument* seulement)
-|_mode|ScriptModeRun|Mode
-
-3+|[.header]
-Sortie
 |[.sub-header]
 _Nom_|[.sub-header]
 _Type_|[.sub-header]
 _Description_
-|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument*|contient les variables *secretLevel*, *codeFieldValues*, *ctxValues*
-et *document*
+3+|[.header]
+Entrées
+|_docType|*WSDocument*: *com.digitech.dossier.webservices.ws.document.type.WSDocumentType*|
+|_mode|ScriptModeRun|Mode (*CREATE* ou *UPDATE*)
+
+3+|[.header]
+Entrées/sorties
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument*|contient les variables *secretLevel*, *codeFieldValues*, *ctxValues* et *document*
 |===
 
 === Exemple

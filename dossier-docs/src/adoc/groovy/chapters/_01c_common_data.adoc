@@ -5,18 +5,17 @@ L'ensemble des scripts décrit dans les chapitres suivants contiennent les 2 par
 
 [options="noheader",cols="1a,2a,4a"]
 |===
+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
 3+|[.header]
-Entrées|[.sub-header]
-_Nom_|[.sub-header]
-_Type_|[.sub-header]
-_Description_
-|*_logger*|org.log4j.Logger|Logger
-|*_userContext*|IUserCoreContext|Informations relatives à l'utilisateur exécutant le script.
+Entrées
+|*_scriptLogger*|*org.log4j.Logger*|Logger par défaut pour inscrire des informations dans les fichiers de *logs*.
+|*_userContext*|*com.digitech.dossier.common.model.IUserCoreContext*|Informations relatives à l'utilisateur exécutant le script.
 
-3+|Entrées/sorties|[.sub-header]
-_Nom_|[.sub-header]
-_Type_|[.sub-header]
-_Description_
+3+|[.header]
+Entrées/sorties
 |*_output*|*com.digitech.dossier.script.model.IScriptResultModel*|_Généralement_ non utilisé directement dans les scripts. +
 La variable suivante *_result* semble convenir à la plupart des cas.
 |*_result*|*com.digitech.dossier.script.model.IScriptResultValueModel*|Structure de retour. Voir pour chaque script la liste des attributs disponibles. +
