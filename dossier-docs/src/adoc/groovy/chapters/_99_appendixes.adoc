@@ -5,7 +5,7 @@
 
 . Variables en entrée.
 
-Toutes les variables contextuelles transférées par l'application {arcadeged} sont préfixées du caractère *_*.
+Toutes les variables contextuelles transférées par l'application {arcadeged} sont préfixées du caractère '[blue-text]#*_*#'.
 
 [start=2]
 . Opérateur *elvis*
@@ -44,12 +44,21 @@ def roadNumber = person?.address?.home?.roadNumber ?: 666
 ----
 ====
 
+<<<
 
 [[_99_samples]]
 === Quelques exemples
 
-.*[displayRuleScriptId]* Rendre visible une {customAction} si une pièce jointe est disponible
+[[_99_samples_displayRule_1]]
+.*{displayRule}* Rendre visible une {customAction} si une pièce jointe est disponible
 [source, groovy]
 ----
-include::../{sourcedir}/sample_visibility.groovy[]
+include::{sourcedir}/sample_visibility.groovy[]
+----
+
+[[_99_samples_DocumentInitializer_1]]
+.*{DocumentInitializer}* script sur déclenchement d'une {customAction}
+[source, groovy]
+----
+include::{sourcedir}/sample_action.groovy[]
 ----

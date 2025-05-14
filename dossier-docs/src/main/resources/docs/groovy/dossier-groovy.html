@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">14/05/2025 15:47:27</span>
+<span id="revdate">14/05/2025 16:01:30</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -2948,7 +2948,7 @@ et <strong>document</strong></p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Toutes les variables contextuelles transférées par l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> sont préfixées du caractère <strong>_</strong>.</p>
+<p>Toutes les variables contextuelles transférées par l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> sont préfixées du caractère '<span class="blue-text"><strong>_</strong></span>'.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic" start="2">
@@ -3008,11 +3008,12 @@ def roadNumber = person?.address?.home?.roadNumber</code></pre>
 </tr>
 </table>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 <div class="sect2">
 <h3 id="_99_samples"><a class="anchor" href="#_99_samples"></a>29.2. Quelques exemples</h3>
-<div class="listingblock">
-<div class="title"><strong>[displayRuleScriptId]</strong> Rendre visible une {customAction} si une pièce jointe est disponible</div>
+<div id="_99_samples_displayRule_1" class="listingblock">
+<div class="title"><strong><code><span style="color:#11da73">DisplayRule</span></code></strong> Rendre visible une {customAction} si une pièce jointe est disponible</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">/**
  * Script de type {DisplayRule}
@@ -3024,6 +3025,30 @@ _scriptLogger.debug("&gt;&gt;&gt; sample_visibility (result: '{}', doc:'{}')", _
 _result.setValid(_document?.getAttachments(_userContext)?.size &gt; 0)
 
 _scriptLogger.debug("&lt;&lt;&lt; sample_visibility")</code></pre>
+</div>
+</div>
+<div id="_99_samples_DocumentInitializer_1" class="listingblock">
+<div class="title"><strong><code><span style="color:#11da73">DocumentInitializer</span></code></strong> script sur déclenchement d&#8217;une {customAction}</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">/**
+ * Script de type {DocumentInitializer}
+ * Variables disponible: _scriptLogger, _resultn _userContext, _document
+ */
+
+_scriptLogger.debug("&gt;&gt;&gt; sample_action (doc:'{}', ucc: '{}')", _document, _userContext)
+
+try {
+	// ajouter votre code ici...
+
+  _result.fillOKResult("We did it!")
+
+} catch (Exception e) {
+
+  _scriptLogger.error("Error while ...: '{}'", e.getLocalizedMessage(), e)
+  _result.fillKOResult("blabla error", e)
+}
+
+_scriptLogger.debug("&lt;&lt;&lt; sample_action")</code></pre>
 </div>
 </div>
 </div>

@@ -12,7 +12,7 @@ try {
 
 } catch (Exception e) {
 
-  _scriptLogger.error("Error while signing document: '{}'", e.getLocalizedMessage(), e)
+  _scriptLogger.error("Error while ...: '{}'", e.getLocalizedMessage(), e)
   _result.fillKOResult("blabla error", e)
 }
 
