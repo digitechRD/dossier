@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">14/05/2025 16:01:30</span>
+<span id="revdate">16/05/2025 16:39:45</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -215,8 +215,35 @@
 </li>
 <li><a href="#_99_appendixes">29. Annexes</a>
 <ul class="sectlevel2">
-<li><a href="#_groovy_bonnes_pratiques_astuces">29.1. <code><span style="color:#2C8470">Groovy</span></code> Bonnes pratiques, astuces, &#8230;&#8203;</a></li>
-<li><a href="#_99_samples">29.2. Quelques exemples</a></li>
+<li><a href="#_99_appendixes_groovy">29.1. <code><span style="color:#2C8470">Groovy</span></code> Bonnes pratiques, astuces, &#8230;&#8203;</a>
+<ul class="sectlevel3">
+<li><a href="#_99_appendixes_groovy_conventions">29.1.1. <code><span style="color:#448279">Arcade GED</span></code>/<code><span style="color:#2C8470">Groovy</span></code> conventions.</a></li>
+<li><a href="#_99_appendixes_groovy_elvis">29.1.2. Opérateur <strong>elvis</strong></a></li>
+<li><a href="#_99_appendixes_groovy_safeop">29.1.3. Opérateur de navigation <em>"sécurisé"</em></a></li>
+<li><a href="#_99_appendixes_groovy_scope">29.1.4. Portée des variables</a></li>
+<li><a href="#_99_appendixes_groovy_string_interpolation">29.1.5. Substitution dans les chaines de caractères</a></li>
+</ul>
+</li>
+<li><a href="#_99_appendixes_utils">29.2. Méthodes <code><span style="color:#448279">Arcade GED</span></code> utiles</a>
+<ul class="sectlevel3">
+<li><a href="#_99_appendixes_utils_conf">29.2.1. Répertoires de configuration</a></li>
+<li><a href="#_99_appendixes_utils_script_init">29.2.2. Initialisation/Finalisation de script <code><span style="color:#2C8470">Groovy</span></code></a></li>
+<li><a href="#_99_appendixes_utils_cache">29.2.3. Cache</a></li>
+<li><a href="#_99_appendixes_utils_properties">29.2.4. Lecture d&#8217;un fichier <strong>properties</strong></a></li>
+<li><a href="#_99_appendixes_utils_json_parser">29.2.5. Lecture d&#8217;un flux <strong>JSON</strong></a></li>
+<li><a href="#_99_appendixes_utils_dbpool">29.2.6. Pool de connections à une base de données</a></li>
+<li><a href="#_99_appendixes_utils_sql">29.2.7. Récupération de données en base de données</a></li>
+<li><a href="#_99_appendixes_utils_output_msg">29.2.8. Affichage d&#8217;un message en fin de traitement</a></li>
+<li><a href="#_99_appendixes_utils_services">29.2.9. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></a></li>
+</ul>
+</li>
+<li><a href="#_99_appendixes_samples">29.3. Quelques exemples</a>
+<ul class="sectlevel3">
+<li><a href="#_99_samples_displayRule_1">29.3.1. <strong><code><span style="color:#11da73">DisplayRule</span></code></strong> Rendre visible une <strong class="yellow"><em>action custom</em></strong> si une pièce jointe est disponible</a></li>
+<li><a href="#_99_samples_DocumentInitializer_1">29.3.2. <strong><code><span style="color:#11da73">DocumentInitializer</span></code></strong> script sur déclenchement d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
+<li><a href="#_autres_exemplesfichiers_divers">29.3.3. Autres exemples/fichiers divers</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -2939,24 +2966,19 @@ et <strong>document</strong></p>
 <h2 id="_99_appendixes"><a class="anchor" href="#_99_appendixes"></a>29. Annexes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_groovy_bonnes_pratiques_astuces"><a class="anchor" href="#_groovy_bonnes_pratiques_astuces"></a>29.1. <code><span style="color:#2C8470">Groovy</span></code> Bonnes pratiques, astuces, &#8230;&#8203;</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Variables en entrée.</p>
-</li>
-</ol>
+<h3 id="_99_appendixes_groovy"><a class="anchor" href="#_99_appendixes_groovy"></a>29.1. <code><span style="color:#2C8470">Groovy</span></code> Bonnes pratiques, astuces, &#8230;&#8203;</h3>
+<div class="sect3">
+<h4 id="_99_appendixes_groovy_conventions"><a class="anchor" href="#_99_appendixes_groovy_conventions"></a>29.1.1. <code><span style="color:#448279">Arcade GED</span></code>/<code><span style="color:#2C8470">Groovy</span></code> conventions.</h4>
+<div class="paragraph">
+<p>Toutes les variables contextuelles transférées par l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> (et donc disponibles dans les scripts) sont préfixées du caractère
+'<span class="blue-text"><strong>_</strong></span>'.</p>
 </div>
 <div class="paragraph">
-<p>Toutes les variables contextuelles transférées par l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> sont préfixées du caractère '<span class="blue-text"><strong>_</strong></span>'.</p>
+<p>Le point virgule '<span class="blue-text"><strong>;</strong></span>' en fin d&#8217;instruction n&#8217;est pas nécessaire.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="2">
-<li>
-<p>Opérateur <strong>elvis</strong></p>
-</li>
-</ol>
 </div>
+<div class="sect3">
+<h4 id="_99_appendixes_groovy_elvis"><a class="anchor" href="#_99_appendixes_groovy_elvis"></a>29.1.2. Opérateur <strong>elvis</strong></h4>
 <div class="paragraph">
 <p>Le langage <code><span style="color:#2C8470">Groovy</span></code> est (très) proche du langage <code><span style="color:#F24E52">Java</span></code>. En tout cas, le compilateur <code><span style="color:#2C8470">Groovy</span></code> interprète une syntaxe <strong>pure</strong> <code><span style="color:#F24E52">Java</span></code>.</p>
 </div>
@@ -2970,13 +2992,9 @@ et <strong>document</strong></p>
 displayName = user.name ?: 'Anonymous'</code></pre>
 </div>
 </div>
-<div class="olist arabic">
-<ol class="arabic" start="3">
-<li>
-<p>Opérateur de navigation <em>"sécurisé"</em></p>
-</li>
-</ol>
 </div>
+<div class="sect3">
+<h4 id="_99_appendixes_groovy_safeop"><a class="anchor" href="#_99_appendixes_groovy_safeop"></a>29.1.3. Opérateur de navigation <em>"sécurisé"</em></h4>
 <div class="paragraph">
 <p>ou dans la langue de <em>Shakespeare</em> <strong>Safe Navigation Operator</strong>.</p>
 </div>
@@ -3008,12 +3026,423 @@ def roadNumber = person?.address?.home?.roadNumber</code></pre>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_groovy_scope"><a class="anchor" href="#_99_appendixes_groovy_scope"></a>29.1.4. Portée des variables</h4>
+<div class="paragraph">
+<p>En <code><span style="color:#2C8470">Groovy</span></code>, pour déclarer une variable</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Soit vous la déclarez directement, <strong>sans préfixe/type</strong>, votre variable - <span class="underline">Quelle que soit sa position dans le fichier/la classe</span> - sera alors
+<strong>globale</strong> (<span class="underline">hors méthodes statiques !</span>)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">monText1 = "je suis une variable globale!"
+
+def localFct() {
+  monText2 = "je suis également une variable globale!"
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Soit vous la préfixez du type souhaité ou du mot clé <strong>def</strong>, celle-ci sera alors <strong>locale</strong> au contexte</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">String monText1 = "je suis une variable locale!"
+
+def localFct() {
+  def monText2 = "je suis également une variable locale!"
+  println(monText1 ?: "inconnue") // print "inconnue"
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">exemple complet</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">logger = Logger.getLogger("scopeVariables")
+y = 2
+
+class GlobalProps {
+  static def POOL_NAME = "dbName"
+}
+
+def localFunction() {
+  def q = 333
+  logger.info("y value: '{}'", y) // ok, print '2'
+  logger.info("q value: '{}'", q) // ok, print '333'
+
+  z = 666
+}
+
+static def staticFunction() {
+  logger.info("dbName value: '{}'", GlobalProps.POOL_NAME) // // ok, print 'dbName'
+  logger.info("y value: '{}'", y) // this will fail!
+}
+
+localFunction()
+staticFunction()
+
+logger.info("- Local variable doesn't exist outside")
+logger.info("y value: '{}'", y) // ok, print '2'
+logger.info("7 value: '{}'", z) // ok, print '666'
+logger.info("q value: '{}'", q) // this will fail!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_groovy_string_interpolation"><a class="anchor" href="#_99_appendixes_groovy_string_interpolation"></a>29.1.5. Substitution dans les chaines de caractères</h4>
+<div class="paragraph">
+<p>Comme indiqué dans la
+<a href="https://docs.groovy-lang.org/latest/html/documentation/index.html#_string_interpolation" target="<em>blank"><strong>documentation</strong></a>,
+il est possible de formater facilement des messages/chaines de caractères avec des données contextuelles en utilisant le _placeholder</em> '<span class="blue-text"><strong>${}</strong></span>' ou '<span class="blue-text"><strong>$</strong></span>'.</p>
+</div>
+<div class="listingblock">
+<div class="title">String interpolation</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">def who = "n.felix"
+_scriptLogger.info("hello ${who}!")
+_scriptLogger.info("hello $who!")
+
+
+def whoPerson = new PersonData(1, "n.felix")
+
+_scriptLogger.info("hello $whoPerson.login! (id: $whoPerson.id")
+
+class PersonData {
+  Integer id
+  String login
+}</code></pre>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="_99_samples"><a class="anchor" href="#_99_samples"></a>29.2. Quelques exemples</h3>
-<div id="_99_samples_displayRule_1" class="listingblock">
-<div class="title"><strong><code><span style="color:#11da73">DisplayRule</span></code></strong> Rendre visible une {customAction} si une pièce jointe est disponible</div>
+<h3 id="_99_appendixes_utils"><a class="anchor" href="#_99_appendixes_utils"></a>29.2. Méthodes <code><span style="color:#448279">Arcade GED</span></code> utiles</h3>
+<div class="paragraph">
+<p>Vous trouverez dans ce chapitre quelques exemples/méthodes récurrentes sur vos divers projets.</p>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_conf"><a class="anchor" href="#_99_appendixes_utils_conf"></a>29.2.1. Répertoires de configuration</h4>
+<div class="paragraph">
+<p>La récupération des chemins absolus vers les répertoires de configuration d'<code><span style="color:#448279">Arcade GED</span></code> s&#8217;effectue comme il suit :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.AppConfigurationUtilsCore
+
+// répertoire *xml*
+AppConfigurationUtilsCore.getXMLConfigurationFolderPath()
+// répertoire *config*
+AppConfigurationUtilsCore.getConfigFolderPath()
+// répertoire *config/script*
+AppConfigurationUtilsCore.getGroovyScriptFolderPath()</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_script_init"><a class="anchor" href="#_99_appendixes_utils_script_init"></a>29.2.2. Initialisation/Finalisation de script <code><span style="color:#2C8470">Groovy</span></code></h4>
+<div class="paragraph">
+<p>Chaque script <code><span style="color:#2C8470">Groovy</span></code> peut automatiquement appeler une méthode :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Au démarrage de l&#8217;application (ou à la recompilation du fichier). Cette méthode est nommée <span class="underline">setup</span>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.utils.ScriptUtilities
+
+/**
+ * (optional) method called when script is loaded (or reloaded)
+ * */
+void setup() {
+  // initialisation du pool de connexion (par exemple)
+  def poolJdbc = dd//
+
+  // et mise en cache (voir chapitre suivant)
+  ScriptUtilities.addToCache("poolScript", poolJdbc)
+}</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A l&#8217;arrêt de l&#8217;application (ou avant la recompilation du fichier). Cette méthode est nommée <span class="underline">tearDown</span>.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.utils.ScriptUtilities
+
+/**
+ * (optional) method called when script is unloaded (or before being reloaded)
+ * */
+void tearDown() {
+  // libération du pool de connexion (par exemple)
+  try {
+    def poolJdbc = ScriptUtilities.getFromCache("poolScript")
+    poolJdbc?.release()
+  }
+  finally{
+    ScriptUtilities.removeFromCache("poolScript")
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_cache"><a class="anchor" href="#_99_appendixes_utils_cache"></a>29.2.3. Cache</h4>
+<div class="paragraph">
+<p>Il peut être intéressant de pouvoir conserver en mémoire des données pour les traiter, récupérer, &#8230;&#8203; entre plusieurs scripts ou entre plusieurs exécutions
+d&#8217;un même script.</p>
+</div>
+<div class="paragraph">
+<p>Pour cela, les méthodes suivantes peuvent être utilisées :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.script.utils.ScriptUtilities
+
+// ajout au cache
+ScriptUtilities.addToCache("&lt;key&gt;", obj)
+
+// récupération du cache cache
+def value = ScriptUtilities.getFromCache("&lt;key&gt;")
+
+// suppression du cache
+ScriptUtilities.removeFromCache("&lt;key&gt;")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_properties"><a class="anchor" href="#_99_appendixes_utils_properties"></a>29.2.4. Lecture d&#8217;un fichier <strong>properties</strong></h4>
+<div class="paragraph">
+<p>Sur vos projets, peut-être aurez-vous besoin de lire un fichier <em>.properties</em> contenant des paramètres propres à votre environnement.</p>
+</div>
+<div class="listingblock">
+<div class="title">Sample <strong>properties</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">airs.db.class=&lt;dbDriver&gt;
+airs.db.url=&lt;dbUrl&gt;
+airs.db.user=&lt;dbUser&gt;
+airs.db.password=&lt;dbPwd&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.AppConfigurationUtilsCore
+import com.digitech.dossier.script.utils.ScriptUtilities
+
+def propFile = Paths.get(AppConfigurationUtilsCore.getXMLConfigurationFolderPath() + "ws.properties")
+
+/**
+ * Le 2ème paramètre ("wsProps") permet de mettre en cache le résultat.
+ * Celui-ci sera recalculé seulement si le fichier est modifié (chargement à chaud)
+ */
+Properties conf = ScriptUtilities.getOrLoadProperties(propFile, "wsProps"/** &lt;cacheKey&gt;*/)
+
+String driver = conf.getProperty("airs.db.class")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_json_parser"><a class="anchor" href="#_99_appendixes_utils_json_parser"></a>29.2.5. Lecture d&#8217;un flux <strong>JSON</strong></h4>
+<div class="paragraph">
+<p>Il est fréquent de devoir extraire des données d&#8217;un flux <strong>JSON</strong>,<br>
+celui pouvant provenir d&#8217;un fichier, d&#8217;une <code>API</code> <code><span style="color:#73A12E">REST</span></code>, &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p><code><span style="color:#2C8470">Groovy</span></code> fournit pour cela un <em>parser</em> très simple à utiliser :</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;exemple ci-dessous utilise pour source de données le fichier <strong>JSON</strong> disponible en <a href="#_99_samples_weather_json">annexe</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import groovy.json.JsonSlurper
+
+JsonSlurper jsonParser = new JsonSlurper()
+
+// weatherResponse a été récupéré précédemment, via un appel aux APIs *openweater*
+def parsedJson = jsonParser.parseText(weatherResponse)
+
+for(int i=0; i&lt;parsedJson.list.size; ++i) {
+  def dayData = parsedJson.list[i]
+  OpenWeatherDay newDay = new OpenWeatherDay(i)
+  newDay.desc = dayData.weather[0].description
+  newDay.icon = dayData.weather[0].icon
+  newDay.tempDay = dayData.main.temp
+  newDay.tempMin = dayData.main.temp_min
+  newDay.tempMax = dayData.main.temp_max
+  newDay.windSpeed = dayData.wind.speed
+
+  // ok, l'instance *newDay* peut être stockée pour un traitement ultérieur (affichage, ...)
+}
+
+/**
+ * inner class permettant de stocker les données relatives à la météo d'une journée
+ */
+class OpenWeatherDay {
+  final int dayIdx
+  String desc
+  String icon
+  int tempMin
+  int tempMax
+  int tempDay
+  int windSpeed
+
+  OpenWeatherDay(int dayIdx) {
+    this.dayIdx = dayIdx
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_dbpool"><a class="anchor" href="#_99_appendixes_utils_dbpool"></a>29.2.6. Pool de connections à une base de données</h4>
+<div class="paragraph">
+<p>L&#8217;instanciation d&#8217;une connection à une base de données est une opération coûteuse, c&#8217;est pourquoi un <em>pool</em> de connections est fréquemment utilisé.</p>
+</div>
+<div class="paragraph">
+<p>La classe <strong>SqlUtils</strong> permet de faciliter cette opération, comme il suit</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.sql.SqlUtils
+
+
+def POOL_NAME = "dbPool"
+
+// création ou récupération
+def dbPool1 = SqlUtils.getOrCreatePool(POOL_NAME, "jdbc:oracle:thin:@//XXX", "&lt;user&gt;", "&lt;pwd&gt;", "oracle.jdbc.OracleDriver")
+
+// récupération
+def dbPool2 = SqlUtils.getPool(POOL_NAME)
+
+// Libération
+SqlUtils.releasePool(POOL_NAME)
+
+// récupération d'une connexion à la base de données
+try(def conn = SqlUtils.getPoolConnection(POOL_NAME)) {
+  // vous pouvez alors travailler avec cette connexion à la base de données
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_sql"><a class="anchor" href="#_99_appendixes_utils_sql"></a>29.2.7. Récupération de données en base de données</h4>
+<div class="paragraph">
+<p>Opération fastidieuse et souvent redondante.</p>
+</div>
+<div class="paragraph">
+<p>Utilisez donc la classe <strong>SqlUtils</strong> comme il suit :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.sql.SqlUtils
+
+def POOL_NAME = "dbPool"
+List&lt;Map&lt;String, Object&gt;&gt; users = SqlUtils.runQuery(POOL_NAME, "select * from users")
+
+
+// Il est possible de mapper les résultats directement dans un POJO
+// soit l'attribut et le nom dans le pojo doivent correspondre
+// soit l'alias et le nom dans le pojo doivent correspondre
+List&lt;PersonData&gt; toto = SqlUtils.runQuery(POOL_NAME, "SELECT u.USR_ID, u.USR_LOGIN as \"login\" FROM users u", PersonData.class)
+
+@groovy.transform.ToString
+class PersonData {
+  Integer usr_id
+  String login
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_output_msg"><a class="anchor" href="#_99_appendixes_utils_output_msg"></a>29.2.8. Affichage d&#8217;un message en fin de traitement</h4>
+<div class="paragraph">
+<p>Les scripts qui sont exécutés manuellement (via une action utilisateur) peuvent afficher à l&#8217;écran un message de succès (ou échec) comme il suit.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.resources.BundleUtils
+
+try {
+  // opération ici
+  // ...
+  _result.fillOKResult("User '$_userContext.userFullName' successfully did the job!")
+
+} catch (Exception e) {
+  _scriptLogger.error("Error while blabla...: '{}'", e.getLocalizedMessage(), e)
+  _result.fillKOResult("Error while blabla...", e)
+}
+
+
+// Si le message doit être récupérés à partir des ressources, pour une gestion multi-langues, le code suivant doit être utilisé
+
+_result.fillOKResult(BundleUtils.getTranslation("msg_key_OK", new Objevt[]{ _userContext.userFullName }))</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_services"><a class="anchor" href="#_99_appendixes_utils_services"></a>29.2.9. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></h4>
+<div class="paragraph">
+<p>La classe <strong>com.digitech.dossier.common.service.ServiceUtils</strong> contient la liste des services principaux d'<code><span style="color:#448279">Arcade GED</span></code>.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Méthode</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>getDocumentService()</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>com.digitech.dossier.common.service.IDocument</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service d&#8217;accès au document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>getAuthorityListService()</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>com.digitech.dossier.common.service.IAuthorityList</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service d&#8217;accès aux listes d&#8217;autorité</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>getSearchService()</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>com.digitech.dossier.common.service.ISearch</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service de recherche</p></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_99_appendixes_samples"><a class="anchor" href="#_99_appendixes_samples"></a>29.3. Quelques exemples</h3>
+<div class="sect3">
+<h4 id="_99_samples_displayRule_1"><a class="anchor" href="#_99_samples_displayRule_1"></a>29.3.1. <strong><code><span style="color:#11da73">DisplayRule</span></code></strong> Rendre visible une <strong class="yellow"><em>action custom</em></strong> si une pièce jointe est disponible</h4>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">/**
  * Script de type {DisplayRule}
@@ -3027,8 +3456,10 @@ _result.setValid(_document?.getAttachments(_userContext)?.size &gt; 0)
 _scriptLogger.debug("&lt;&lt;&lt; sample_visibility")</code></pre>
 </div>
 </div>
-<div id="_99_samples_DocumentInitializer_1" class="listingblock">
-<div class="title"><strong><code><span style="color:#11da73">DocumentInitializer</span></code></strong> script sur déclenchement d&#8217;une {customAction}</div>
+</div>
+<div class="sect3">
+<h4 id="_99_samples_DocumentInitializer_1"><a class="anchor" href="#_99_samples_DocumentInitializer_1"></a>29.3.2. <strong><code><span style="color:#11da73">DocumentInitializer</span></code></strong> script sur déclenchement d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
+<div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">/**
  * Script de type {DocumentInitializer}
@@ -3049,6 +3480,90 @@ try {
 }
 
 _scriptLogger.debug("&lt;&lt;&lt; sample_action")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_autres_exemplesfichiers_divers"><a class="anchor" href="#_autres_exemplesfichiers_divers"></a>29.3.3. Autres exemples/fichiers divers</h4>
+<div id="_99_samples_weather_json" class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "cod": "200",
+  "message": 0,
+  "cnt": 5,
+  "list": [
+    {
+      "dt": 1747386000,
+      "main": {
+        "temp": 19.75,
+        "feels_like": 19.06,
+        "temp_min": 18.9,
+        "temp_max": 19.75,
+        "pressure": 1011
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "légère pluie",
+          "icon": "10d"
+        }
+      ],
+      "wind": {
+        "speed": 4.74,
+        "deg": 181,
+        "gust": 5.53
+      },
+      "visibility": 3047,
+      "pop": 0.85,
+      "rain": {
+        "3h": 0.7
+      }
+    },
+    {
+      "dt": 1747396800,
+      "main": {
+        "temp": 19.34,
+        "feels_like": 18.84,
+        "temp_min": 18.53,
+        "temp_max": 19.34,
+        "pressure": 1012
+      },
+      "weather": [
+        {
+          "id": 500,
+          "main": "Rain",
+          "description": "légère pluie",
+          "icon": "10d"
+        }
+      ],
+      "wind": {
+        "speed": 4.65,
+        "deg": 241,
+        "gust": 4.72
+      },
+      "visibility": 9707,
+      "pop": 1,
+      "rain": {
+        "3h": 2.37
+      }
+    }
+  ],
+  "city": {
+    "id": 2995469,
+    "name": "Marseille",
+    "coord": {
+      "lat": 43.2965,
+      "lon": 5.3698
+    },
+    "country": "FR",
+    "population": 794811,
+    "timezone": 7200,
+    "sunrise": 1747368811,
+    "sunset": 1747421788
+  }
+}</code></pre>
+</div>
 </div>
 </div>
 </div>
