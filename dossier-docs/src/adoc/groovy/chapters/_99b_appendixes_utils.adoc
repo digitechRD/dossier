@@ -1,0 +1,126 @@
+[[_99_appendixes_utils]]
+=== Méthodes {arcadeged} utiles
+
+Vous trouverez dans ce chapitre quelques exemples/méthodes récurrentes sur vos divers projets.
+
+[[_99_appendixes_utils_conf]]
+==== Répertoires de configuration
+
+La récupération des chemins absolus vers les répertoires de configuration d'{arcadeged} s'effectue comme il suit :
+
+[source,groovy]
+--
+include::{sourcedir}/sample_conf.groovy[]
+--
+
+[[_99_appendixes_utils_script_init]]
+==== Initialisation/Finalisation de script {groovy}
+
+Chaque script {groovy} peut automatiquement appeler une méthode :
+
+* Au démarrage de l'application (ou à la recompilation du fichier). Cette méthode est nommée [underline]#setup#.
+
+[source,groovy]
+--
+include::{sourcedir}/sample_setup.groovy[]
+--
+
+* A l'arrêt de l'application (ou avant la recompilation du fichier). Cette méthode est nommée [underline]#tearDown#.
+
+[source,groovy]
+--
+include::{sourcedir}/sample_teardown.groovy[]
+--
+
+[[_99_appendixes_utils_cache]]
+==== Cache
+
+Il peut être intéressant de pouvoir conserver en mémoire des données pour les traiter, récupérer, ... entre plusieurs scripts ou entre plusieurs exécutions
+d'un même script.
+
+Pour cela, les méthodes suivantes peuvent être utilisées :
+
+[source,groovy]
+--
+include::{sourcedir}/sample_cache.groovy[]
+--
+
+[[_99_appendixes_utils_properties]]
+==== Lecture d'un fichier *properties*
+
+Sur vos projets, peut-être aurez-vous besoin de lire un fichier _.properties_ contenant des paramètres propres à votre environnement.
+
+.Sample *properties*
+[source,properties]
+--
+include::{sourcedir}/sample_properties.properties[]
+--
+
+[source,groovy]
+--
+include::{sourcedir}/sample_properties.groovy[]
+--
+
+[[_99_appendixes_utils_json_parser]]
+==== Lecture d'un flux *JSON*
+
+Il est fréquent de devoir extraire des données d'un flux *JSON*, +
+celui pouvant provenir d'un fichier, d'une `API` {rest}, ...
+
+{groovy} fournit pour cela un _parser_ très simple à utiliser :
+
+L'exemple ci-dessous utilise pour source de données le fichier *JSON* disponible en <<_99_samples_weather_json,annexe>>.
+
+[source,groovy]
+--
+include::{sourcedir}/sample_json_slurper.groovy[]
+--
+
+[[_99_appendixes_utils_dbpool]]
+==== Pool de connections à une base de données
+
+L'instanciation d'une connection à une base de données est une opération coûteuse, c'est pourquoi un _pool_ de connections est fréquemment utilisé.
+
+La classe *SqlUtils* permet de faciliter cette opération, comme il suit
+
+[source, groovy]
+--
+include::{sourcedir}/sample_pool.groovy[]
+--
+
+[[_99_appendixes_utils_sql]]
+==== Récupération de données en base de données
+
+Opération fastidieuse et souvent redondante.
+
+Utilisez donc la classe *SqlUtils* comme il suit :
+
+[source, groovy]
+--
+include::{sourcedir}/sample_sql_query.groovy[]
+--
+
+[[_99_appendixes_utils_output_msg]]
+==== Affichage d'un message en fin de traitement
+
+Les scripts qui sont exécutés manuellement (via une action utilisateur) peuvent afficher à l'écran un message de succès (ou échec) comme il suit.
+
+[source, groovy]
+--
+include::{sourcedir}/sample_output_msg.groovy[]
+--
+
+[[_99_appendixes_utils_services]]
+==== Accès aux services communs d'{arcadeged}
+
+La classe *com.digitech.dossier.common.service.ServiceUtils* contient la liste des services principaux d'{arcadeged}.
+
+[options="header,autowidth",width=100%]
+|===
+|Méthode|Type|Description
+|*getDocumentService()*|*com.digitech.dossier.common.service.IDocument*|Service d'accès au document
+|*getAuthorityListService()*|*com.digitech.dossier.common.service.IAuthorityList*|Service d'accès aux listes d'autorité
+|*getSearchService()*|*com.digitech.dossier.common.service.ISearch*|Service de recherche
+|===
+
+<<<
