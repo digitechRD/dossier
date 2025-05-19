@@ -17,6 +17,7 @@ _Type_|[.sub-header]
 _Description_
 3+|[.header]
 Entrées
+|*_document*|*com.digitech.dossier.common.model.backend.airs.IDocument*|Document courant
 |*_fieldValueMap*|Map<String, IFieldValue>|Liste des champs
 
 3+|[.header]
@@ -30,17 +31,43 @@ Entrées/sorties
 Ajout de l'interdiction d'effectuer l'action *Verrouiller* pour un utilisateur n'ayant pas le profil _DOC_ADMIN_CLIENT_.
 
 [source, groovy]
+.Exemple : l'utilisateur courant n'est pas rattaché au profil *DOS_ADMIN_CLIENT*
 ----
-import com.digitech.dossier.common.model.backend.airs.IFieldValue
 import com.digitech.dossier.common.utils.UserUtils
-import com.digitech.dossier.script.model.impl.result.ScriptResultModel
 import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
 
-List<ScriptResultValueDocumentActions.Action> unavailableActions = new ArrayList<ScriptResultValueDocumentActions.Action>()
 if(!UserUtils.hasProfile(_userContext, "DOS_ADMIN_CLIENT")) {
-  unavailableActions.add(ScriptResultValueDocumentActions.Action.LOCK)
+  _result.addUnavailableAction(ScriptResultValueDocumentActions.Action.LOCK)
 }
-_result.getUnavailableActions().addAll(unavailableActions)
+----
+
+[source, groovy]
+.Exemple : l'utilisateur courant n'est pas le créateur du document
+----
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
+import com.digitech.dossier.common.model.backend.Constants.AdvancedAuditType
+import com.digitech.dossier.common.model.backend.airs.IDocument.IEvent
+
+List<IEvent> events = _document.getEvents(AdvancedAuditType.ADV_EVENT_DOC_CREATE)
+
+boolean canEdit = ((events?.size() ?: -1) > 0) && (events?.get(0)?.getUserId() == _userContext?.getUserId())
+_scriptLogger.info("canEdit: {}, userID: {}", canEdit, _userContext?.getUserId())
+
+if (!canEdit) {
+  _result.addUnavailableAction(ScriptResultValueDocumentActions.Action.EDIT)
+}
+----
+
+[source, groovy]
+.Exemple : l'utilisateur courant n'est pas le REDACTEUR du document
+----
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentActions
+
+def uEditorID = _document.getFieldValue("CR_REDACTEUR")
+
+if (_userContext?.getUserId() != uEditorID) {
+  _result.addUnavailableAction(ScriptResultValueDocumentActions.Action.EDIT)
+}
 ----
 
 .Exemple de résultats de recherche pour un utilisateur n'ayant pas le droit de verrouiller les documents
