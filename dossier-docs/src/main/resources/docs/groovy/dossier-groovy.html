@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">19/05/2025 13:57:56</span>
+<span id="revdate">19/05/2025 17:48:28</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -234,7 +234,9 @@
 <li><a href="#_99_appendixes_utils_dbpool">29.2.6. Pool de connections à une base de données</a></li>
 <li><a href="#_99_appendixes_utils_sql">29.2.7. Récupération de données en base de données</a></li>
 <li><a href="#_99_appendixes_utils_output_msg">29.2.8. Affichage d&#8217;un message en fin de traitement</a></li>
-<li><a href="#_99_appendixes_utils_services">29.2.9. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></a></li>
+<li><a href="#_99_appendixes_utils_search">29.2.9. Construction d&#8217;un recherche / récupération de documents.</a></li>
+<li><a href="#_99_appendixes_utils_document_index">29.2.10. document</a></li>
+<li><a href="#_99_appendixes_utils_services">29.2.11. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
 <li><a href="#_99_appendixes_samples">29.3. Quelques exemples</a>
@@ -3433,7 +3435,62 @@ _result.fillOKResult(BundleUtils.getTranslation("msg_key_OK", new Objevt[]{ _use
 </div>
 </div>
 <div class="sect3">
-<h4 id="_99_appendixes_utils_services"><a class="anchor" href="#_99_appendixes_utils_services"></a>29.2.9. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></h4>
+<h4 id="_99_appendixes_utils_search"><a class="anchor" href="#_99_appendixes_utils_search"></a>29.2.9. Construction d&#8217;un recherche / récupération de documents.</h4>
+<div class="paragraph">
+<p>Utilisation des classes <strong>DocumentUtils</strong> et <strong>ISearch</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import  com.digitech.dossier.common.model.backend.airs.LocutionModel
+import  com.digitech.dossier.common.model.backend.airs.impl.IDocument
+import  com.digitech.dossier.common.model.backend.airs.ILocutionModel.Operator
+import com.digitech.dossier.common.service.ServiceUtils
+import com.digitech.dossier.common.utils.DocumentUtils
+
+
+// construction des locutions
+def locutionModel = new LocutionModel()
+DocumentUtils.buildLocutionModelWithDate(locutionModel, "D_ECHEANCE", Operator.OPERATOR_VALUE_EQUAL, new Date())
+DocumentUtils.buildLocutionModel(locutionModel, "FIELD_CODE_D_CLOTURE", Operator.OPERATOR_ISNULL, null)
+
+// lancement de la recherche et chargement direct des documents
+List&lt;IDocument&gt; docs = DocumentUtils.search(_userContext, locutionModel, "COU_COURRIER_OUT")
+
+// ou lancement simple pour récupération des docIDs
+def searchModel = ServiceUtils.getSearchService().getSearchModel(_userContext, locutionModel, "COU_COURRIER_OUT")
+List&lt;Integer&gt; docIds =  ServiceUtils.getSearchService().getSearch(_userContext, searchModel, false)
+
+for(Integer dId : docIds) {
+  IDocument loadedDocument = ServiceUtils.getDocumentService().getDocument(_userContext, dId)
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_document_index"><a class="anchor" href="#_99_appendixes_utils_document_index"></a>29.2.10. document</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import  com.digitech.dossier.common.model.backend.airs.LocutionModel
+import  com.digitech.dossier.common.model.backend.airs.impl.IDocument
+import  com.digitech.dossier.common.model.backend.airs.ILocutionModel.Operator
+import com.digitech.dossier.common.service.ServiceUtils
+import com.digitech.dossier.common.utils.DocumentUtils
+
+// IDocument _document
+
+//  mise à jour d'un index
+_document.setFieldValue("FIELD_CODE_1", "nouvelle valeur 1")
+_document.setFieldValue("FIELD_CODE_2", "nouvelle valeur 2")
+// sauvegarde du document
+_document.save()
+
+// récupération d'un index
+def summary = _document.getFieldValue("CR_RESUME")</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_99_appendixes_utils_services"><a class="anchor" href="#_99_appendixes_utils_services"></a>29.2.11. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></h4>
 <div class="paragraph">
 <p>La classe <strong>com.digitech.dossier.common.service.ServiceUtils</strong> contient la liste des services principaux d'<code><span style="color:#448279">Arcade GED</span></code>.</p>
 </div>
