@@ -1,0 +1,41 @@
+[[_04_custom_result]]
+=== [Résultats] Personnalisation de la vue
+
+==== Styles
+
+La page de résultats peut être personnalisée via l'application de *styleClass* sur ses colonnes. Par exemple :
+
+* Modification de la couleur de fond
+* Taille min/max (en pixel)
+* Texte ajusté sur plusieurs lignes
+* Texte abrégé
+
+image:05_custom/result_custom_01.png[]
+
+Dans l'exemple ci-dessus :
+
+* La colonne *Désignation* a été _abrégée_.
+* La colonne *Résumé* a été limitée à *100px de largeur* et le retour à la ligne est activé.
+* La colonne *Thématique* a vu sa couleur de fond forcée à [text-orange]#orange#
+
+Tout se joue via l'application d'un ou plusieurs *styleClass* à la colonne. +
+La définition de ces *styles* est soit :
+
+* déjà disponible en standard, exemples :
+** *multiline* : application multi-ligne du texte des cellules de la colonne.
+** *max-w-200px* : maximum *200px* de largeur.
+* soit ajoutée via le *custom.css*, ex :
+** *bg-orange*
+
+[source, css]
+--
+.bg-orange {
+  /** ajouter !important seulement si cela ne fonctionne pas sans */
+  background-color: #ff7c1f !important;
+}
+--
+
+[IMPORTANT]
+====
+L'application de styles {css} personnalisés nécessite une connaissance et expérience dans ce domaine.
+====

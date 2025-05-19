@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">15/05/2025 10:50:30</span>
+<span id="revdate">19/05/2025 17:09:05</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -104,13 +104,18 @@
 </li>
 <li><a href="#_04_custom">5. Personnalisation de l&#8217;application</a>
 <ul class="sectlevel2">
-<li><a href="#_viewunit_ajout_dune_action_personnalisée">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<li><a href="#_04_custom_viewunit">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
 <ul class="sectlevel3">
 <li><a href="#_introduction">5.1.1. Introduction</a></li>
 <li><a href="#_module_adminairs">5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
 <li><a href="#_expert_ajout_manuelle_dune_action_custom">5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
 <li><a href="#_configuration_script_modale">5.1.4. Configuration script + modale</a></li>
 <li><a href="#_quelques_modèlesexemples_de_scripts">5.1.5. Quelques modèles/exemples de scripts</a></li>
+</ul>
+</li>
+<li><a href="#_04_custom_result">5.2. [Résultats] Personnalisation de la vue</a>
+<ul class="sectlevel3">
+<li><a href="#_styles">5.2.1. Styles</a></li>
 </ul>
 </li>
 </ul>
@@ -7171,7 +7176,7 @@ injectée par défaut.</p>
 <p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
 </div>
 <div class="sect2">
-<h3 id="_viewunit_ajout_dune_action_personnalisée"><a class="anchor" href="#_viewunit_ajout_dune_action_personnalisée"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<h3 id="_04_custom_viewunit"><a class="anchor" href="#_04_custom_viewunit"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
 <div class="sect3">
 <h4 id="_introduction"><a class="anchor" href="#_introduction"></a>5.1.1. Introduction</h4>
 <div class="paragraph">
@@ -7668,6 +7673,103 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 
 &lt;/jsp:root&gt;</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_04_custom_result"><a class="anchor" href="#_04_custom_result"></a>5.2. [Résultats] Personnalisation de la vue</h3>
+<div class="sect3">
+<h4 id="_styles"><a class="anchor" href="#_styles"></a>5.2.1. Styles</h4>
+<div class="paragraph">
+<p>La page de résultats peut être personnalisée via l&#8217;application de <strong>styleClass</strong> sur ses colonnes. Par exemple :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Modification de la couleur de fond</p>
+</li>
+<li>
+<p>Taille min/max (en pixel)</p>
+</li>
+<li>
+<p>Texte ajusté sur plusieurs lignes</p>
+</li>
+<li>
+<p>Texte abrégé</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/05_custom/result_custom_01.png" alt="result custom 01"></span></p>
+</div>
+<div class="paragraph">
+<p>Dans l&#8217;exemple ci-dessus :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La colonne <strong>Désignation</strong> a été <em>abrégée</em>.</p>
+</li>
+<li>
+<p>La colonne <strong>Résumé</strong> a été limitée à <strong>100px de largeur</strong> et le retour à la ligne est activé.</p>
+</li>
+<li>
+<p>La colonne <strong>Thématique</strong> a vu sa couleur de fond forcée à <span class="text-orange">orange</span></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Tout se joue via l&#8217;application d&#8217;un ou plusieurs <strong>styleClass</strong> à la colonne.<br>
+La définition de ces <strong>styles</strong> est soit :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>déjà disponible en standard, exemples :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>multiline</strong> : application multi-ligne du texte des cellules de la colonne.</p>
+</li>
+<li>
+<p><strong>max-w-200px</strong> : maximum <strong>200px</strong> de largeur.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>soit ajoutée via le <strong>custom.css</strong>, ex :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>bg-orange</strong></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-css hljs" data-lang="css">.bg-orange {
+  /** ajouter !important seulement si cela ne fonctionne pas sans */
+  background-color: #ff7c1f !important;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;application de styles {css} personnalisés nécessite une connaissance et expérience dans ce domaine.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
