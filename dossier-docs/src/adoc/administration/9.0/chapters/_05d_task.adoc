@@ -1,0 +1,53 @@
+[[_05_task]]
+=== [Cron] ajout d'une tâche planifiée
+
+==== Introduction
+
+Certaines actions sur la base documentaire n'ont pas besoin d'être exécutées immédiatement, +
+notamment parce que ces opérations peuvent _lourdes_, _coûteuses_ (conversion de documents, _push_ ou export vers un système externe).
+
+C'est entre autres pour ces cas-là que des *tâches planifiées* peuvent être exécutées à fréquence régulière pour effectuer les actions souhaitées.
+
+[IMPORTANT]
+====
+Le module {adminAirs} permet de configurer ces tâches facilement.
+====
+
+
+==== Déclaration
+
+Ces *tâches planifiées* consistent en :
+
+* la définition d'un script {groovy} de type *Task*
+```xml
+<Script id="BK_INTEGRATION">
+  <script>BK/Task/BK_Integration.groovy</script>
+  <type>Task</type>
+</Script>
+```
+
+[NOTE]
+====
+Veuillez svp vous référer à la documentation dédiée aux scripts {groovy} pour obtenir une description des paramètres et quelques exemples.
+====
+
+* la définition d'un intervalle/fréquence d'exécution (attribut *planning*)
+```xml
+<task code="BK_TASK_INTEGRATION" scriptId="BK_INTEGRATION" flowCodes="BK"  executeBehavior="SCHEDULED" asynchronous="true" title="Traitement des documents à
+intégrer" description="Traitement des documents à intégrer, est exécuté toutes les minutes" enabled="true" startDate="2014-01-01T12:00:00.000+01:00" planning="0 0/1 * * * ?">
+</task>
+```
+
+
+[IMPORTANT]
+====
+L'attribut *planning* n'est pas un classique/exact *cron* (_unix_) mais https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html[quartz]. +
+La documentation indiquée ci-dessus est suffisamment explicite. Cependant, n'hésitez pas à utiliser votre agent IA préféré, qui excellera probablement dans
+la définition du cron souhaité.
+====
+
+[underline]#Quelques exemples# :
+
+* toutes les 2 minutes : `0 0/2 * ? * * *`
+* toutes les 5 minutes, les lundis, mercredis et vendredis seulement : `0 0/5 * ? * MON,WED,FRI *`
+* À 6h et 21h les jours ouvrés : `0 0 6,21 ? * MON-FRI *`

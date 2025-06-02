@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">02/06/2025 15:54:26</span>
+<span id="revdate">02/06/2025 16:12:34</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -104,7 +104,7 @@
 </li>
 <li><a href="#_04_custom">5. Personnalisation de l&#8217;application</a>
 <ul class="sectlevel2">
-<li><a href="#_04_custom_viewunit">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<li><a href="#_05_custom_viewunit">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
 <ul class="sectlevel3">
 <li><a href="#_introduction">5.1.1. Introduction</a></li>
 <li><a href="#_module_adminairs">5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
@@ -113,9 +113,15 @@
 <li><a href="#_quelques_modèlesexemples_de_scripts">5.1.5. Quelques modèles/exemples de scripts</a></li>
 </ul>
 </li>
-<li><a href="#_04_custom_result">5.2. [Résultats] Personnalisation de la vue</a>
+<li><a href="#_05_custom_result">5.2. [Résultats] Personnalisation de la vue</a>
 <ul class="sectlevel3">
 <li><a href="#_styles">5.2.1. Styles</a></li>
+</ul>
+</li>
+<li><a href="#_05_task">5.3. [Cron] ajout d&#8217;une tâche planifiée</a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_2">5.3.1. Introduction</a></li>
+<li><a href="#_déclaration">5.3.2. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -7203,7 +7209,7 @@ injectée par défaut.</p>
 <p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
 </div>
 <div class="sect2">
-<h3 id="_04_custom_viewunit"><a class="anchor" href="#_04_custom_viewunit"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<h3 id="_05_custom_viewunit"><a class="anchor" href="#_05_custom_viewunit"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
 <div class="sect3">
 <h4 id="_introduction"><a class="anchor" href="#_introduction"></a>5.1.1. Introduction</h4>
 <div class="paragraph">
@@ -7704,7 +7710,7 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_04_custom_result"><a class="anchor" href="#_04_custom_result"></a>5.2. [Résultats] Personnalisation de la vue</h3>
+<h3 id="_05_custom_result"><a class="anchor" href="#_05_custom_result"></a>5.2. [Résultats] Personnalisation de la vue</h3>
 <div class="sect3">
 <h4 id="_styles"><a class="anchor" href="#_styles"></a>5.2.1. Styles</h4>
 <div class="paragraph">
@@ -7797,6 +7803,114 @@ La définition de ces <strong>styles</strong> est soit :</p>
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_05_task"><a class="anchor" href="#_05_task"></a>5.3. [Cron] ajout d&#8217;une tâche planifiée</h3>
+<div class="sect3">
+<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>5.3.1. Introduction</h4>
+<div class="paragraph">
+<p>Certaines actions sur la base documentaire n&#8217;ont pas besoin d&#8217;être exécutées immédiatement,<br>
+notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em> (conversion de documents, <em>push</em> ou export vers un système externe).</p>
+</div>
+<div class="paragraph">
+<p>C&#8217;est entre autres pour ces cas-là que des <strong>tâches planifiées</strong> peuvent être exécutées à fréquence régulière pour effectuer les actions souhaitées.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le module <code><span style="color:#25EF72">adminAIRS</span></code> permet de configurer ces tâches facilement.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>5.3.2. Déclaration</h4>
+<div class="paragraph">
+<p>Ces <strong>tâches planifiées</strong> consistent en :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la définition d&#8217;un script {groovy} de type <strong>Task</strong></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;Script id="BK_INTEGRATION"&gt;
+  &lt;script&gt;BK/Task/BK_Integration.groovy&lt;/script&gt;
+  &lt;type&gt;Task&lt;/type&gt;
+&lt;/Script&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Veuillez svp vous référer à la documentation dédiée aux scripts {groovy} pour obtenir une description des paramètres et quelques exemples.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la définition d&#8217;un intervalle/fréquence d&#8217;exécution (attribut <strong>planning</strong>)</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;task code="BK_TASK_INTEGRATION" scriptId="BK_INTEGRATION" flowCodes="BK"  executeBehavior="SCHEDULED" asynchronous="true" title="Traitement des documents à
+intégrer" description="Traitement des documents à intégrer, est exécuté toutes les minutes" enabled="true" startDate="2014-01-01T12:00:00.000+01:00" planning="0 0/1 * * * ?"&gt;
+&lt;/task&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;attribut <strong>planning</strong> n&#8217;est pas un classique/exact <strong>cron</strong> (<em>unix</em>) mais <a href="https://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html">quartz</a>.<br>
+La documentation indiquée ci-dessus est suffisamment explicite. Cependant, n&#8217;hésitez pas à utiliser votre agent IA préféré, qui excellera probablement dans
+la définition du cron souhaité.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><span class="underline">Quelques exemples</span> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>toutes les 2 minutes : <code>0 0/2 * ? * * *</code></p>
+</li>
+<li>
+<p>toutes les 5 minutes, les lundis, mercredis et vendredis seulement : <code>0 0/5 * ? * MON,WED,FRI *</code></p>
+</li>
+<li>
+<p>À 6h et 21h les jours ouvrés : <code>0 0 6,21 ? * MON-FRI *</code></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
