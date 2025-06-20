@@ -448,3 +448,22 @@ vue Résultats|Boolean|[green]#true#
 |*workflow.cacheSize*|Cache du workflow|Integer|*20000*
 |*workflow.database.oracleUsed*|Connexion à une BDD Oracle pour le workflow|Boolean|[green]#true#
 |===
+
+[[_03_options_techniques]]
+=== Options _`techniques`_
+
+[CAUTION]
+====
+Les options référencées dans ce chapitre doivent être modifiées avec [underline]#l'accord préalable# de {digitech} (le responsable du paramétrage de
+l'application)
+====
+
+[cols="4a,3a,1a,2a",options="header"]
+|===
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.clash.name.prevention.add*|Vérifier qu'il n'y pas de collisions sur les noms de fichiers à l'insertion d'une pièce
+jointe|Boolean|[green]#true#
+|*dossier.clash.name.prevention.add.version*|Vérifier qu'il n'y pas de collisions sur les noms de fichiers à l'insertion d'une nouvelle version d'une pièce
+jointe|Boolean|[red]#false#
+|*dossier.documents.remove.locks.on.start*|Déverrouiller tous les documents verrouillés au démarrage de l'application|Boolean|[red]#false#
+|===
