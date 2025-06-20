@@ -55,12 +55,6 @@ curl --location --request POST '<host>:<port>/<context>/rest/workbook' \
 }'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -95,12 +89,6 @@ Cette méthode permet de récupérer les métadonnées d'un document à partir d
 curl -X 'GET' \
   '<host>:<port>/<context>/rest/workbook/8001' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook/8001
 ----
 
 [cols="^1a,4a",options="header"]
@@ -157,12 +145,6 @@ curl -X 'GET' \
   '<host>:<port>/<context>/rest/workbook' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook
 ----
 
 [cols="^1a,4a",options="header"]
@@ -236,12 +218,6 @@ curl --location --request PATCH '<host>:<port>/<context>/rest/workbook' \
 }'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -270,12 +246,6 @@ curl -X 'DELETE' \
   '<host>:<port>/<context>/rest/workbook/8001' \
   -H 'accept: */*' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook/8001
 ----
 
 [cols="^1a,4a",options="header"]
@@ -316,12 +286,6 @@ curl -X 'PATCH' \
   -H 'Authorization: Basic <credencials>'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook/7887/add
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -358,12 +322,6 @@ curl -X 'PATCH' \
   -H 'Content-Type: application/json' \
   -d '[5555,6666]' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/workbook/7887/remove
 ----
 
 [cols="^1a,4a",options="header"]

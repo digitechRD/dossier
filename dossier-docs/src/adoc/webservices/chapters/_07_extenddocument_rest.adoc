@@ -37,12 +37,6 @@ curl -X 'DELETE' \
   -H 'Authorization: Basic <credencials>'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/extendDocument/deleteDocuments?docIds=1&docIds=2
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -100,12 +94,6 @@ curl -X 'GET' \
   -H 'Authorization: Basic <credencials>'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/extendDocument/deleteDocumentsType/DOC_REMOVE_TYPE_DOC_ONLY?docIds=1&docIds=2
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -157,12 +145,6 @@ curl -X 'PATCH' \
   '<host>:<port>/<context>/rest/extendDocument/5028' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/extendDocument/5028
 ----
 
 [cols="^1a,4a",options="header"]
@@ -299,12 +281,6 @@ curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocume
 --form 'filesData=@"/C:/2.pdf"'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/extendDocument
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -396,12 +372,6 @@ curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocum
     "docId": 7362
   }";type=application/json' \
 --form 'filesData=@"/C:/DIGITECH_20220214.pdf"'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/extendDocument
 ----
 
 [cols="^1a,4a",options="header"]

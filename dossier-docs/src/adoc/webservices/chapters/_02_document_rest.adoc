@@ -84,12 +84,6 @@ curl --location --request POST '<host>:<port>/<context>/rest/document' \
 --form 'fileData=@"/C:/TEST2.pdf"'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/document
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -125,12 +119,6 @@ curl -X 'GET' \
   '<host>:<port>/<context>/rest/document/4959' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/document/4959
 ----
 
 [cols="^1a,4a",options="header"]
@@ -239,12 +227,6 @@ curl -X 'PATCH' \
   }'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/document/4959
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -286,12 +268,6 @@ curl -X 'DELETE' \
   -H 'Authorization: Basic <credencials>'
 ----
 
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/document/4959
-----
-
 [cols="^1a,4a",options="header"]
 .Réponses
 |===
@@ -315,13 +291,13 @@ Cette méthode permet de supprimer physiquement un document.
 [NOTE]
 ====
 Les documents enfants seront aussi supprimés.
+
 ====
 [cols="1a,1a,4a,1a,2a",options="header"]
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*docId*|{path}|Identifiant du document|[red]*Oui*|4959
-
 |===
 
 [source]
@@ -331,12 +307,6 @@ curl -X 'DELETE' \
   '<host>:<port>/<context>/rest/document/remove/4959' \
   -H 'accept: text/plain' \
   -H 'Authorization: Basic <credencials>'
-----
-
-[source]
-.appel _requête_
-----
-http://<host>:<port>/<context>/rest/document/remove/4959
 ----
 
 [cols="^1a,4a",options="header"]
@@ -355,3 +325,157 @@ http://<host>:<port>/<context>/rest/document/remove/4959
 ----
 [4959, 2845]
 ----
+
+===== {PATCH} /document/unlock/{docId}
+
+Cette méthode permet de supprimer le verrou attaché à un document.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/unlock/4959' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*, [lime]*204*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+===== {PATCH} /document/unlockAll
+
+Cette méthode permet de supprimer tous les verrous en cours sur des documents
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/unlockAll' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*, [lime]*204*|Opération réussie (cf. <<documentunlockalljson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentunlockalljson_response]]
+[source,text]
+.Liste d'identifiants des documents pour lequel un verrou a été supprimé
+----
+[4959, 2845]
+----
+
+===== {PATCH} /document/lock/{docId}
+
+Cette méthode permet d'ajouter un verrou à un document.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[NOTE]
+====
+Le verrou sera associé à l'utilisateur appelant, contrairement au _endpoint_ défini dans le prochain chapitre
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/lock/4959' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*, [lime]*204*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*409*|Document déjà verrouillé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+===== {PATCH} /document/lock/{docId}/{userId}
+
+Cette méthode permet d'ajouter un verrou à un document, pour un utilisateur particulier
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*userId*|{path}|Identifiant de l'utilisateur pour lequel le verrou est souhaité|[red]*Oui*|12
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/lock/4959/12' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*, [lime]*204*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*409*|Document déjà verrouillé
+|[red]*500*|Erreur interne au serveur/service
+|===

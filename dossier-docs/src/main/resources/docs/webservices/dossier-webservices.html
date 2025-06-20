@@ -52,6 +52,10 @@
 <li><a href="#_patch_documentdocid">2.1.3.3. <strong class="patch">PATCH</strong> /document/{docId}</a></li>
 <li><a href="#_delete_documentdocid">2.1.3.4. <strong class="delete">DELETE</strong> /document/{docId}</a></li>
 <li><a href="#_delete_documentremovedocid">2.1.3.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</a></li>
+<li><a href="#_patch_documentunlockdocid">2.1.3.6. <strong class="patch">PATCH</strong> /document/unlock/{docId}</a></li>
+<li><a href="#_patch_documentunlockall">2.1.3.7. <strong class="patch">PATCH</strong> /document/unlockAll</a></li>
+<li><a href="#_patch_documentlockdocid">2.1.3.8. <strong class="patch">PATCH</strong> /document/lock/{docId}</a></li>
+<li><a href="#_patch_documentlockdociduserid">2.1.3.9. <strong class="patch">PATCH</strong> /document/lock/{docId}/{userId}</a></li>
 </ul>
 </li>
 </ul>
@@ -653,12 +657,6 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 --form 'fileData=@"/C:/TEST2.pdf"'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 3. Réponses</caption>
 <colgroup>
@@ -755,12 +753,6 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
   '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/4959' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/4959</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
@@ -980,12 +972,6 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
   }'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/4959</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 7. Réponses</caption>
 <colgroup>
@@ -1104,12 +1090,6 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
   '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/4959' \
   -H 'accept: text/plain' \
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/4959</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
@@ -1232,12 +1212,6 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/remove/4959</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
 <caption class="title">Table 11. Réponses</caption>
 <colgroup>
@@ -1291,6 +1265,496 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 <pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[4959, 2845]</code></pre>
 </div>
 </div>
+</div>
+<div class="sect4">
+<h5 id="_patch_documentunlockdocid"><a class="anchor" href="#_patch_documentunlockdocid"></a>2.1.3.6. <strong class="patch">PATCH</strong> /document/unlock/{docId}</h5>
+<div class="paragraph">
+<p>Cette méthode permet de supprimer le verrou attaché à un document.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;utilisateur connecté doit posséder le droit <strong>DOSSIER_ADM_AIRS_ADMIN</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 12. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>docId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4959</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'DELETE' \
+  '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/unlock/4959' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 13. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong>, <strong class="lime">204</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">404</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document non trouvé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_patch_documentunlockall"><a class="anchor" href="#_patch_documentunlockall"></a>2.1.3.7. <strong class="patch">PATCH</strong> /document/unlockAll</h5>
+<div class="paragraph">
+<p>Cette méthode permet de supprimer tous les verrous en cours sur des documents</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;utilisateur connecté doit posséder le droit <strong>DOSSIER_ADM_AIRS_ADMIN</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 14. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'DELETE' \
+  '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/unlockAll' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 15. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong>, <strong class="lime">204</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie (cf. <a href="#documentunlockalljson_response">Liste d&#8217;identifiants des documents pour lequel un verrou a été supprimé</a>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">404</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document non trouvé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="documentunlockalljson_response" class="listingblock">
+<div class="title">Liste d&#8217;identifiants des documents pour lequel un verrou a été supprimé</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">[4959, 2845]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_patch_documentlockdocid"><a class="anchor" href="#_patch_documentlockdocid"></a>2.1.3.8. <strong class="patch">PATCH</strong> /document/lock/{docId}</h5>
+<div class="paragraph">
+<p>Cette méthode permet d&#8217;ajouter un verrou à un document.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;utilisateur connecté doit posséder le droit <strong>DOSSIER_ADM_AIRS_ADMIN</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le verrou sera associé à l&#8217;utilisateur appelant, contrairement au <em>endpoint</em> défini dans le prochain chapitre</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 16. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>docId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4959</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'DELETE' \
+  '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/lock/4959' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 17. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong>, <strong class="lime">204</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">404</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document non trouvé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">409</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document déjà verrouillé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_patch_documentlockdociduserid"><a class="anchor" href="#_patch_documentlockdociduserid"></a>2.1.3.9. <strong class="patch">PATCH</strong> /document/lock/{docId}/{userId}</h5>
+<div class="paragraph">
+<p>Cette méthode permet d&#8217;ajouter un verrou à un document, pour un utilisateur particulier</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;utilisateur connecté doit posséder le droit <strong>DOSSIER_ADM_AIRS_ADMIN</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 18. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>docId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>4959</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>userId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant de l&#8217;utilisateur pour lequel le verrou est souhaité</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>12</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'DELETE' \
+  '&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/document/lock/4959/12' \
+  -H 'accept: text/plain' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 19. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong>, <strong class="lime">204</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">404</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document non trouvé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">409</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Document déjà verrouillé</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1356,14 +1820,8 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/authorityList</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 12. Réponses</caption>
+<caption class="title">Table 20. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1431,7 +1889,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <p>Cette méthode permet de récupérer les termes d&#8217;une liste d&#8217;autorité à partir de son code (<strong>fieldCode</strong>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 13. Paramètres en entrée</caption>
+<caption class="title">Table 21. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -1477,14 +1935,8 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/authorityList/PRO_APP_FLUX_COU</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 14. Réponses</caption>
+<caption class="title">Table 22. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1602,14 +2054,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/baskets</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 15. Réponses</caption>
+<caption class="title">Table 23. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1670,7 +2116,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des noms des bannettes à partir d&#8217;un identifiant d&#8217;organisation (<strong>orgId</strong>).</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 16. Paramètres en entrée</caption>
+<caption class="title">Table 24. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -1733,14 +2179,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/baskets/orgId/24?flowCode=PRO</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 17. Réponses</caption>
+<caption class="title">Table 25. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1805,7 +2245,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des noms des bannettes à partir d&#8217;un code identifiant de flux (<strong>flowCode</strong>).</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 18. Paramètres en entrée</caption>
+<caption class="title">Table 26. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -1851,14 +2291,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/baskets/flowCode/PRO</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 19. Réponses</caption>
+<caption class="title">Table 27. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -1923,7 +2357,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (<strong>basketName</strong>).</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 20. Paramètres en entrée</caption>
+<caption class="title">Table 28. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -2003,14 +2437,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&amp;flowCode=PRO</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 21. Réponses</caption>
+<caption class="title">Table 29. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -2069,7 +2497,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (<strong>basketName</strong>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 22. Paramètres en entrée</caption>
+<caption class="title">Table 30. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -2149,14 +2577,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&amp;flowCode=PRO</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 23. Réponses</caption>
+<caption class="title">Table 31. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -2270,7 +2692,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode renvoie le nombre de documents remontés par la requête AIRS</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 24. Paramètres en entrée</caption>
+<caption class="title">Table 32. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -2432,14 +2854,8 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/search/docCount?airsRequest=D_CREAT%3E01%2F01%2F2018&amp;ctyCodes=CR&amp;flowCode=CR</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 25. Réponses</caption>
+<caption class="title">Table 33. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -2490,7 +2906,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <p>Cette méthode permet d&#8217;obtenir les liens URL vers les documents renvoyés par la requête AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 26. Paramètres en entrée</caption>
+<caption class="title">Table 34. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -2652,14 +3068,8 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01%2F2018&amp;ctyCodes=CR&amp;flowCode=CR</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 27. Réponses</caption>
+<caption class="title">Table 35. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -2730,7 +3140,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <p>Cette méthode permet d&#8217;obtenir les métadonnées des documents renvoyés par la requête AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 28. Paramètres en entrée</caption>
+<caption class="title">Table 36. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -2892,14 +3302,8 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/search/results?airsRequest=D_CREAT%3E01%2F01%2F2018&amp;ctyCodes=CR&amp;flowCode=CR</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 29. Réponses</caption>
+<caption class="title">Table 37. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3060,7 +3464,7 @@ la requête AIRS,<br>
 <p>Ceci permet alors à l&#8217;appelant de gérer comme il le souhaite le nombre de résultats à récupérer, comme naviguer parmi ces résultats, &#8230;&#8203;</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 30. Paramètres en entrée</caption>
+<caption class="title">Table 38. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -3252,14 +3656,8 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/search/results?airsRequest=D_CREAT%3C24%2F12%2F2024&amp;ctyCodes=%2A.%2A&amp;page=1&amp;size=50</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 31. Réponses</caption>
+<caption class="title">Table 39. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3434,7 +3832,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <p>Cette méthode permet de récupérer l&#8217;arborescence d&#8217;un document.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 32. Paramètres en entrée</caption>
+<caption class="title">Table 40. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3509,7 +3907,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 33. Réponses</caption>
+<caption class="title">Table 41. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -3972,7 +4370,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;ajouter ou de mettre à jour une pièce jointe</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 34. Paramètres en entrée</caption>
+<caption class="title">Table 42. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4058,14 +4456,8 @@ de cette <strong>API</strong>.</p>
 --form 'fileData=@"/C:/PJ.pdf"'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/attachment/5072</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 35. Réponses</caption>
+<caption class="title">Table 43. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4116,7 +4508,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des informations des des pièces jointes d&#8217;un document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 36. Paramètres en entrée</caption>
+<caption class="title">Table 44. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4162,14 +4554,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/attachment/5072</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 37. Réponses</caption>
+<caption class="title">Table 45. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4246,7 +4632,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer un une pièce jointe ainsi que son document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 38. Paramètres en entrée</caption>
+<caption class="title">Table 46. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4309,14 +4695,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/attachment/5072/6703</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 39. Réponses</caption>
+<caption class="title">Table 47. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4403,7 +4783,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer une pièce jointe d&#8217;un document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 40. Paramètres en entrée</caption>
+<caption class="title">Table 48. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4466,14 +4846,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/attachment/5072/6703</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 41. Réponses</caption>
+<caption class="title">Table 49. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4536,7 +4910,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de télécharger le binaire (contenu) d&#8217;une pièce jointe.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 42. Paramètres en entrée</caption>
+<caption class="title">Table 50. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4582,14 +4956,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/attachment/download/6703</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 43. Réponses</caption>
+<caption class="title">Table 51. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4685,14 +5053,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/dossierContext/flows</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 44. Réponses</caption>
+<caption class="title">Table 52. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4783,7 +5145,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 45. Paramètres en entrée</caption>
+<caption class="title">Table 53. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4846,14 +5208,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/dossierContext/contentType/DOC_CATEGORIE?flowCode=DOCUMENTATION</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 46. Réponses</caption>
+<caption class="title">Table 54. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4943,7 +5299,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des champs obligatoires d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 47. Paramètres en entrée</caption>
+<caption class="title">Table 55. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5006,14 +5362,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/dossierContext/mandatoryFields/CR?flowCode=CR</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 48. Réponses</caption>
+<caption class="title">Table 56. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5079,7 +5429,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 49. Paramètres en entrée</caption>
+<caption class="title">Table 57. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5177,7 +5527,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 50. Réponses</caption>
+<caption class="title">Table 58. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5309,7 +5659,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer les informations sur les liens entre content-types.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 51. Paramètres en entrée</caption>
+<caption class="title">Table 59. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5387,7 +5737,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 52. Réponses</caption>
+<caption class="title">Table 60. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5499,7 +5849,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 53. Paramètres en entrée</caption>
+<caption class="title">Table 61. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5545,14 +5895,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument/deleteDocuments?docIds=1&amp;docIds=2</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 54. Réponses</caption>
+<caption class="title">Table 62. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5621,7 +5965,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 55. Paramètres en entrée</caption>
+<caption class="title">Table 63. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5686,14 +6030,8 @@ DOC_REMOVE_TYPE_FORCE</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument/deleteDocumentsType/DOC_REMOVE_TYPE_DOC_ONLY?docIds=1&amp;docIds=2</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 56. Réponses</caption>
+<caption class="title">Table 64. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5762,7 +6100,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>Cette méthode permet de récupérer la première pièce jointe d&#8217;un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 57. Paramètres en entrée</caption>
+<caption class="title">Table 65. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5808,14 +6146,8 @@ DOC_REMOVE_TYPE_FORCE</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument/5028</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 58. Réponses</caption>
+<caption class="title">Table 66. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5888,7 +6220,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>Cette méthode permet créer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 59. Paramètres en entrée</caption>
+<caption class="title">Table 67. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6039,14 +6371,8 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 --form 'filesData=@"/C:/2.pdf"'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 60. Réponses</caption>
+<caption class="title">Table 68. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6115,7 +6441,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <p>Cette méthode permet de mettre à jour des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 61. Paramètres en entrée</caption>
+<caption class="title">Table 69. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6224,14 +6550,8 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 --form 'filesData=@"/C:/DIGITECH_20220214.pdf"'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendDocument</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 62. Réponses</caption>
+<caption class="title">Table 70. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6345,7 +6665,7 @@ de cette <strong>API</strong>.</p>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 63. Paramètres en entrée</caption>
+<caption class="title">Table 71. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6465,14 +6785,6 @@ curl -X 'GET' \
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&amp;ctyCodes=CR
-
-http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&amp;ctyCodes=CR&amp;ctyCodes=PRO_CLIENT</code></pre>
-</div>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -6488,7 +6800,7 @@ http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/search4Fields
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 64. Réponses</caption>
+<caption class="title">Table 72. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6595,7 +6907,7 @@ minimiser les opérations de migration.</p>
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 65. Paramètres en entrée</caption>
+<caption class="title">Table 73. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -6681,7 +6993,7 @@ minimiser les opérations de migration.</p>
 (en lieu et place de l&#8217;utilisation du <em>continuationToken</em>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 66. Paramètres en entrée</caption>
+<caption class="title">Table 74. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -6743,12 +7055,6 @@ minimiser les opérations de migration.</p>
   'http://pc-nfe2.digitech.lan:7381/dossier81/rest/extendSearch/results?airsRequest=D_CREAT%3C24%2F12%2F2024&amp;ctyCodes=CR&amp;page=1&amp;size=25' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/extendSearch/results?airsRequest=D_CREAT%3C24%2F12%2F2024&amp;ctyCodes=CR&amp;page=1&amp;size=25</code></pre>
 </div>
 </div>
 <div id="extendedearchjson_response_results" class="listingblock">
@@ -6951,7 +7257,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de créer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 67. Paramètres en entrée</caption>
+<caption class="title">Table 75. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7015,14 +7321,8 @@ de cette <strong>API</strong>.</p>
 }'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 68. Réponses</caption>
+<caption class="title">Table 76. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7073,7 +7373,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 69. Paramètres en entrée</caption>
+<caption class="title">Table 77. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7118,14 +7418,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook/8001</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 70. Réponses</caption>
+<caption class="title">Table 78. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7226,14 +7520,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 71. Réponses</caption>
+<caption class="title">Table 79. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7300,7 +7588,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de modifier un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 72. Paramètres en entrée</caption>
+<caption class="title">Table 80. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7365,14 +7653,8 @@ de cette <strong>API</strong>.</p>
 }'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 73. Réponses</caption>
+<caption class="title">Table 81. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7417,7 +7699,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 74. Paramètres en entrée</caption>
+<caption class="title">Table 82. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7463,14 +7745,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook/8001</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 75. Réponses</caption>
+<caption class="title">Table 83. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7523,7 +7799,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;ajouter des documents à un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 76. Paramètres en entrée</caption>
+<caption class="title">Table 84. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7590,14 +7866,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook/7887/add</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 77. Réponses</caption>
+<caption class="title">Table 85. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7650,7 +7920,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de retirer des documents d&#8217;un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 78. Paramètres en entrée</caption>
+<caption class="title">Table 86. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7717,14 +7987,8 @@ de cette <strong>API</strong>.</p>
   -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">appel <em>requête</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">http://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/workbook/7887/remove</code></pre>
-</div>
-</div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 79. Réponses</caption>
+<caption class="title">Table 87. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7825,7 +8089,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 80. Paramètres en entrée</caption>
+<caption class="title">Table 88. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7853,7 +8117,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 81. Réponses</caption>
+<caption class="title">Table 89. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7921,7 +8185,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 82. Paramètres en entrée</caption>
+<caption class="title">Table 90. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7982,7 +8246,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 83. Réponses</caption>
+<caption class="title">Table 91. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8134,7 +8398,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 84. Paramètres en entrée</caption>
+<caption class="title">Table 92. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8265,7 +8529,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 85. Paramètres en entrée</caption>
+<caption class="title">Table 93. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8393,7 +8657,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 86. Paramètres en entrée</caption>
+<caption class="title">Table 94. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8527,7 +8791,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 87. Paramètres en entrée</caption>
+<caption class="title">Table 95. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8619,7 +8883,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 88. Paramètres en entrée</caption>
+<caption class="title">Table 96. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8795,7 +9059,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 89. Paramètres en entrée</caption>
+<caption class="title">Table 97. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8920,7 +9184,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 90. Paramètres en entrée</caption>
+<caption class="title">Table 98. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9003,7 +9267,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 91. Paramètres en entrée</caption>
+<caption class="title">Table 99. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9113,7 +9377,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 92. Paramètres en entrée</caption>
+<caption class="title">Table 100. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9207,7 +9471,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 93. Paramètres en entrée</caption>
+<caption class="title">Table 101. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9352,7 +9616,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 94. Paramètres en entrée</caption>
+<caption class="title">Table 102. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9481,7 +9745,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 95. Paramètres en entrée</caption>
+<caption class="title">Table 103. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9607,7 +9871,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 96. Paramètres en entrée</caption>
+<caption class="title">Table 104. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9720,7 +9984,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 97. Paramètres en entrée</caption>
+<caption class="title">Table 105. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9844,7 +10108,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 98. Paramètres en entrée</caption>
+<caption class="title">Table 106. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10008,7 +10272,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 99. Paramètres en entrée</caption>
+<caption class="title">Table 107. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10118,7 +10382,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 100. Paramètres en entrée</caption>
+<caption class="title">Table 108. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10248,7 +10512,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 101. Paramètres en entrée</caption>
+<caption class="title">Table 109. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10477,7 +10741,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 102. Paramètres en entrée</caption>
+<caption class="title">Table 110. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10597,7 +10861,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 103. Paramètres en entrée</caption>
+<caption class="title">Table 111. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10710,7 +10974,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 104. Paramètres en entrée</caption>
+<caption class="title">Table 112. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10844,7 +11108,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 105. Paramètres en entrée</caption>
+<caption class="title">Table 113. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11147,7 +11411,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 106. Paramètres en entrée</caption>
+<caption class="title">Table 114. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11257,7 +11521,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 107. Paramètres en entrée</caption>
+<caption class="title">Table 115. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11385,7 +11649,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 108. Paramètres en entrée</caption>
+<caption class="title">Table 116. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11489,7 +11753,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 109. Paramètres en entrée</caption>
+<caption class="title">Table 117. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11632,7 +11896,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 110. Paramètres en entrée</caption>
+<caption class="title">Table 118. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11827,7 +12091,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 111. Paramètres en entrée</caption>
+<caption class="title">Table 119. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 50%;">
@@ -12005,7 +12269,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <p>connectionData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 112. Paramètres en entrée</caption>
+<caption class="title">Table 120. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12075,7 +12339,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 113. Paramètres en sortie</caption>
+<caption class="title">Table 121. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12198,7 +12462,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSCommonDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 114. Paramètres en sortie</caption>
+<caption class="title">Table 122. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12297,7 +12561,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>documentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 115. Paramètres en sortie</caption>
+<caption class="title">Table 123. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12435,7 +12699,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 116. Paramètres en entrée</caption>
+<caption class="title">Table 124. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -12579,7 +12843,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 117. Paramètres en sortie</caption>
+<caption class="title">Table 125. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12647,7 +12911,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_search_results_v1"><a class="anchor" href="#appendix_search_results_v1"></a>4.4.1. <strong>WSSearchResultType</strong></h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 118. Paramètres en sortie</caption>
+<caption class="title">Table 126. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12716,7 +12980,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 119. Paramètres en sortie</caption>
+<caption class="title">Table 127. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12863,7 +13127,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 120. Paramètres en sortie</caption>
+<caption class="title">Table 128. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12909,7 +13173,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 121. Paramètres en sortie</caption>
+<caption class="title">Table 129. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13079,7 +13343,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 122. Paramètres en sortie</caption>
+<caption class="title">Table 130. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13690,7 +13954,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 123. Paramètres en sortie</caption>
+<caption class="title">Table 131. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13884,7 +14148,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 124. Paramètres en sortie</caption>
+<caption class="title">Table 132. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13960,7 +14224,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 125. Paramètres en sortie</caption>
+<caption class="title">Table 133. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14061,7 +14325,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 126. Paramètres en entrée</caption>
+<caption class="title">Table 134. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14371,7 +14635,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 127. Paramètres en sortie</caption>
+<caption class="title">Table 135. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14445,7 +14709,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 128. Paramètres en entrée</caption>
+<caption class="title">Table 136. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14612,7 +14876,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 129. Paramètres en sortie</caption>
+<caption class="title">Table 137. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14687,7 +14951,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 130. Paramètres en entrée</caption>
+<caption class="title">Table 138. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -14842,7 +15106,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 131. Paramètres en sortie</caption>
+<caption class="title">Table 139. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14912,7 +15176,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>attachmentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 132. Paramètres en sortie</caption>
+<caption class="title">Table 140. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15059,7 +15323,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 133. Paramètres en sortie</caption>
+<caption class="title">Table 141. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15330,7 +15594,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 134. Paramètres en sortie</caption>
+<caption class="title">Table 142. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15427,7 +15691,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 135. Paramètres en sortie</caption>
+<caption class="title">Table 143. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
