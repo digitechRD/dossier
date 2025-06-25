@@ -33,6 +33,7 @@ Modification de la liste des choix pour le champ _Plan de classement_ lorsque la
 
 [source, groovy]
 ----
+import com.digitech.dossier.common.utils.JSFUtils
 
 List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(_fieldToUpdate.getConfigField())
 Term updatedFieldCode = getAuthorityListService().getTerm((Integer) _updatedField.getValue())
@@ -48,8 +49,17 @@ for(items in selectItems) {
   }
 }
 List<SelectItem> filteredItems = test.findAll({it.getValue().startsWith(updatedFieldCode.getCode() as String)})
-_updateFieldValues.clear()
-_updateFieldValues.addAll(filteredItems)
+
+if(binding.variables.containsKey("_updateFieldValues")) { // cas search/suggestion list
+  _updateFieldValues.clear()
+  _updateFieldValues.addAll(filteredItems)
+}
+else if(binding.variables.containsKey("_fieldToUpdate")) { // cas list component
+  JSFUtils.setSelectOneMenuListValues(_fieldToUpdate?.getComponent(), filteredItems)
+}
+else {
+  _scriptLogger.warn("neither '_fieldToUpdate' nor '_updateFieldValues' variable is available?!?")
+}
 
 /**
  * @return IAuthorityList the Authority List
