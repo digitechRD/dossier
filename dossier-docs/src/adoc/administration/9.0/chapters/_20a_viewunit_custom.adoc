@@ -1,4 +1,4 @@
-[[_05_custom_viewunit]]
+[[_20_custom_viewunit]]
 === [ViewUnit] ajout d'une action personnalisée
 
 ==== Introduction
@@ -24,7 +24,7 @@ Une action personnalisée est appliquée à une vue selon son mode :
 
 Le module {adminAirs} permet de configurer via le paramétrage des vues les {customAction}
 
-image:05_custom/view_custom_action_01.png[]
+image:20_custom/view_custom_action_01.png[]
 
 Le chapitre suivant décrit chaque propriété :
 
@@ -57,7 +57,7 @@ L'opération d'ajout d'une {customAction} en *Vue unitaire* s'effectue en plusie
 
 [TIP]
 ====
-Ces scripts doivent être déclarés via l'{adminAirs} ou ajoutés directement dans le fichier *groovy.xml*
+Ces scripts doivent être déclarés via l'{adminAirs} ou ajoutés directement dans le fichier {groovyXml}
 ====
 
 .. Le script *groovyScriptId* [underline]#*obligatoire*# de type *DocumentInitializer*
@@ -120,7 +120,7 @@ signedDoc_panel=/custom/ui/jsp/sign/signDocPanel.jspx
 [start=3]
 . Déclaration de l'action custom
 
-Dans le fichier *xml/update.xml*, veuillez ajouter le noeud suivant dans le content-type souhaité (Attention au mode, attribut *type*)
+Dans le fichier *xml/{updateXml}*, veuillez ajouter le noeud suivant dans le content-type souhaité (Attention au mode, attribut *type*)
 
 ```xml
 <action id="signDoc" resourceKey="action_signDoc" reRender="notifications" displayRuleScriptId="signDoc_visibility" viewUnitMustbeSaved="false"

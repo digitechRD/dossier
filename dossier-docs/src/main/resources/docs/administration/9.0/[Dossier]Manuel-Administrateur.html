@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">20/06/2025 11:02:47</span>
+<span id="revdate">25/06/2025 10:45:48</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -103,26 +103,39 @@
 <li><a href="#_logger_personnalisé">4.3. Logger personnalisé</a></li>
 </ul>
 </li>
-<li><a href="#_04_custom">5. Personnalisation de l&#8217;application</a>
+<li><a href="#_06_mail">5. Configuration de l&#8217;envoi de mails</a>
 <ul class="sectlevel2">
-<li><a href="#_05_custom_viewunit">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<li><a href="#_paramètres_additionnels">5.1. Paramètres additionnels</a></li>
+<li><a href="#_certificats">5.2. Certificats</a></li>
+<li><a href="#_examples">5.3. Examples</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction">5.1.1. Introduction</a></li>
-<li><a href="#_module_adminairs">5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
-<li><a href="#_expert_ajout_manuelle_dune_action_custom">5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
-<li><a href="#_configuration_script_modale">5.1.4. Configuration script + modale</a></li>
-<li><a href="#_quelques_modèlesexemples_de_scripts">5.1.5. Quelques modèles/exemples de scripts</a></li>
+<li><a href="#_gmail">5.3.1. <span style="color: #185abc">gmail</span></a></li>
+<li><a href="#_office_365">5.3.2. <span style="color: #a84d58">Office 365</span></a></li>
+<li><a href="#_ovh">5.3.3. <span style="color: #46caf6">OVH</span></a></li>
 </ul>
 </li>
-<li><a href="#_05_custom_result">5.2. [Résultats] Personnalisation de la vue</a>
-<ul class="sectlevel3">
-<li><a href="#_styles">5.2.1. Styles</a></li>
 </ul>
 </li>
-<li><a href="#_05_task">5.3. [Cron] ajout d&#8217;une tâche planifiée</a>
+<li><a href="#_20_custom">6. Personnalisation de l&#8217;application</a>
+<ul class="sectlevel2">
+<li><a href="#_20_custom_viewunit">6.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction_2">5.3.1. Introduction</a></li>
-<li><a href="#_déclaration">5.3.2. Déclaration</a></li>
+<li><a href="#_introduction">6.1.1. Introduction</a></li>
+<li><a href="#_module_adminairs">6.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
+<li><a href="#_expert_ajout_manuelle_dune_action_custom">6.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
+<li><a href="#_configuration_script_modale">6.1.4. Configuration script + modale</a></li>
+<li><a href="#_quelques_modèlesexemples_de_scripts">6.1.5. Quelques modèles/exemples de scripts</a></li>
+</ul>
+</li>
+<li><a href="#_20_custom_result">6.2. [Résultats] Personnalisation de la vue</a>
+<ul class="sectlevel3">
+<li><a href="#_styles">6.2.1. Styles</a></li>
+</ul>
+</li>
+<li><a href="#_20_task">6.3. [Cron] ajout d&#8217;une tâche planifiée</a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_2">6.3.1. Introduction</a></li>
+<li><a href="#_déclaration">6.3.2. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -7281,7 +7294,268 @@ injectée par défaut.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_04_custom"><a class="anchor" href="#_04_custom"></a>5. Personnalisation de l&#8217;application</h2>
+<h2 id="_06_mail"><a class="anchor" href="#_06_mail"></a>5. Configuration de l&#8217;envoi de mails</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce paramétrage permet aux utilisateurs d'<code><span style="color:#448279">Arcade GED</span></code> d&#8217;envoyer des mails à d&#8217;autres utilisateurs ou à des personnes externes.</p>
+</div>
+<div class="paragraph">
+<p>Il permet également l&#8217;envoi de notifications (<em>si paramétrées</em>) dans l&#8217;application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le paramétrage se fait via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou directement dans le fichier <strong class="green-bg">params.xml</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
+  &lt;defaultMailSender&gt;dossier@___.fr&lt;/defaultMailSender&gt;
+  &lt;defaultMailSenderPwd&gt;ENC(XXX)&lt;/defaultMailSenderPwd&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+  &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 57.1428%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribut</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Obligatoire?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>protocol</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Protocole: <strong>smtp</strong> (défaut) ou <strong>smtps</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>smtp</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Host/adresse du serveur d&#8217;envoi de mails</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>smtpPort</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Port du serveur d&#8217;envoi de mails</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>defaultMailSender</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si le serveur <strong>smtp</strong> nécessite une authentification, renseigner ici l&#8217;émetteur par défaut à utiliser</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>defaultMailSenderPwd</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si le serveur <strong>smtp</strong> nécessite une authentification, renseigner ici le mot de passe de l&#8217;émetteur défini dans la balise <strong>defaultMailSender</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>SSLActivated</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activation du mode <strong>SSL</strong> (<strong>true</strong> / <strong>false</strong>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>TLSActivated</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activation du mode <strong>TLS</strong> (<strong>true</strong> / <strong>false</strong>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>mailAuthentication</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>L&#8217;envoi de mail nécessite une authentification. Si activé, le mot de passe de l&#8217;utilisateur est alors nécessaire.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>5.1. Paramètres additionnels</h3>
+<div class="paragraph">
+<p>Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier <strong>WEB-INF/classes/mail/mail-additional
+.properties</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Par exemple</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">mail.smtp.ssl.trust=smtp.gmail.com</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_certificats"><a class="anchor" href="#_certificats"></a>5.2. Certificats</h3>
+<div class="paragraph">
+<p>Si vous avez un souci d&#8217;envoi de mail relatif à un certificat (erreur <strong>pkix</strong>, &#8230;&#8203;), veuillez intégrer le certificat dans le magasin de la {jdk}.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si l&#8217;envoi concerne un compte <span style="color: #185abc">gmail</span>, l&#8217;ajout de la propriété <strong>mail.smtp.ssl.trust=smtp.gmail.com</strong> peut résoudre également le problème (cf. chapitre
+précédent).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_examples"><a class="anchor" href="#_examples"></a>5.3. Examples</h3>
+<div class="sect3">
+<h4 id="_gmail"><a class="anchor" href="#_gmail"></a>5.3.1. <span style="color: #185abc">gmail</span></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si un compte est défini (<em>defaultMailSender</em> et <em>defaultMailSenderPwd</em>), <strong>attention</strong>, le mot de passe attaché au compte n&#8217;est pas celui utilisé lors de
+l&#8217;authentification à l&#8217;interface <span style="color: #185abc">gmail</span>.</p>
+</div>
+<div class="paragraph">
+<p>Il faut alors :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>activer la <strong>double authentification</strong></p>
+</li>
+<li>
+<p>générer un mot de passe <span class="underline">dédié</span> via la <a href="https://myaccount.google.com/apppasswords">page suivante</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
+  &lt;SSLActivated&gt;true&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;false&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_office_365"><a class="anchor" href="#_office_365"></a>5.3.2. <span style="color: #a84d58">Office 365</span></h4>
+<div class="paragraph">
+<p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft" class="bare">https://learn.microsoft</a>
+.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes[ici])</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtp&lt;/protocol&gt;
+  &lt;smtp&gt;smtp.office365.com&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>À partir de septembre 2025, <strong>Microsoft</strong> a désactivé cette fonctionnalité.<br>
+Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ovh"><a class="anchor" href="#_ovh"></a>5.3.3. <span style="color: #46caf6">OVH</span></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_20_custom"><a class="anchor" href="#_20_custom"></a>6. Personnalisation de l&#8217;application</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être personnalisée de bien des manières.<br></p>
@@ -7290,9 +7564,9 @@ injectée par défaut.</p>
 <p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
 </div>
 <div class="sect2">
-<h3 id="_05_custom_viewunit"><a class="anchor" href="#_05_custom_viewunit"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>6.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
 <div class="sect3">
-<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>5.1.1. Introduction</h4>
+<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>6.1.1. Introduction</h4>
 <div class="paragraph">
 <p>Autrement nommée <strong class="yellow"><em>action custom</em></strong>.</p>
 </div>
@@ -7340,12 +7614,12 @@ injectée par défaut.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
+<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>6.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
 <div class="paragraph">
 <p>Le module <code><span style="color:#25EF72">adminAIRS</span></code> permet de configurer via le paramétrage des vues les <strong class="yellow"><em>action custom</em></strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/05_custom/view_custom_action_01.png" alt="view custom action 01"></span></p>
+<p><span class="image"><img src="images/20_custom/view_custom_action_01.png" alt="view custom action 01"></span></p>
 </div>
 <div class="paragraph">
 <p>Le chapitre suivant décrit chaque propriété :</p>
@@ -7512,7 +7786,7 @@ injectée par défaut.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
+<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>6.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -7545,7 +7819,7 @@ injectée par défaut.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Ces scripts doivent être déclarés via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou ajoutés directement dans le fichier <strong>groovy.xml</strong></p>
+<p>Ces scripts doivent être déclarés via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou ajoutés directement dans le fichier <strong class="green-bg">groovy.xml</strong></p>
 </div>
 </td>
 </tr>
@@ -7656,7 +7930,7 @@ injectée par défaut.</p>
 </ol>
 </div>
 <div class="paragraph">
-<p>Dans le fichier <strong>xml/update.xml</strong>, veuillez ajouter le noeud suivant dans le content-type souhaité (Attention au mode, attribut <strong>type</strong>)</p>
+<p>Dans le fichier <strong>xml/<strong class="green-bg">update.xml</strong></strong>, veuillez ajouter le noeud suivant dans le content-type souhaité (Attention au mode, attribut <strong>type</strong>)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7670,7 +7944,7 @@ injectée par défaut.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>5.1.4. Configuration script + modale</h4>
+<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.1.4. Configuration script + modale</h4>
 <div class="paragraph">
 <p>Le script <strong>modalPanelInitGroovyScriptId</strong> est exécuté avant l&#8217;apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.</p>
 </div>
@@ -7704,7 +7978,7 @@ xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>5.1.5. Quelques modèles/exemples de scripts</h4>
+<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.1.5. Quelques modèles/exemples de scripts</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -7791,9 +8065,9 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_05_custom_result"><a class="anchor" href="#_05_custom_result"></a>5.2. [Résultats] Personnalisation de la vue</h3>
+<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>6.2. [Résultats] Personnalisation de la vue</h3>
 <div class="sect3">
-<h4 id="_styles"><a class="anchor" href="#_styles"></a>5.2.1. Styles</h4>
+<h4 id="_styles"><a class="anchor" href="#_styles"></a>6.2.1. Styles</h4>
 <div class="paragraph">
 <p>La page de résultats peut être personnalisée via l&#8217;application de <strong>styleClass</strong> sur ses colonnes. Par exemple :</p>
 </div>
@@ -7814,7 +8088,7 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/05_custom/result_custom_01.png" alt="result custom 01"></span></p>
+<p><span class="image"><img src="images/20_custom/result_custom_01.png" alt="result custom 01"></span></p>
 </div>
 <div class="paragraph">
 <p>Dans l&#8217;exemple ci-dessus :</p>
@@ -7888,9 +8162,9 @@ La définition de ces <strong>styles</strong> est soit :</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_05_task"><a class="anchor" href="#_05_task"></a>5.3. [Cron] ajout d&#8217;une tâche planifiée</h3>
+<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>6.3. [Cron] ajout d&#8217;une tâche planifiée</h3>
 <div class="sect3">
-<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>5.3.1. Introduction</h4>
+<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>6.3.1. Introduction</h4>
 <div class="paragraph">
 <p>Certaines actions sur la base documentaire n&#8217;ont pas besoin d&#8217;être exécutées immédiatement,<br>
 notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em> (conversion de documents, <em>push</em> ou export vers un système externe).</p>
@@ -7914,7 +8188,7 @@ notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>5.3.2. Déclaration</h4>
+<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>6.3.2. Déclaration</h4>
 <div class="paragraph">
 <p>Ces <strong>tâches planifiées</strong> consistent en :</p>
 </div>

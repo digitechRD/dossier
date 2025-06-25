@@ -1,0 +1,179 @@
+[[_06_mail]]
+== Configuration de l'envoi de mails
+
+:ovh:  pass:[<span style="color: #46caf6">OVH</span>]
+:gmail:  pass:[<span style="color: #185abc">gmail</span>]
+:gworkspace:  pass:[<span style="color: #185abc">Google Workspace</span>]
+:o365:  pass:[<span style="color: #a84d58">Office 365</span>]
+
+[NOTE]
+====
+Ce paramétrage permet aux utilisateurs d'{arcadeged} d'envoyer des mails à d'autres utilisateurs ou à des personnes externes.
+
+Il permet également l'envoi de notifications (_si paramétrées_) dans l'application.
+====
+
+Le paramétrage se fait via l'{adminAirs} ou directement dans le fichier {paramsXml}.
+
+[source,xml]
+----
+<mailConfig>
+  <protocol>smtps</protocol>
+  <smtp>ssl0.ovh.net</smtp>
+  <defaultMailSender>dossier@___.fr</defaultMailSender>
+  <defaultMailSenderPwd>ENC(XXX)</defaultMailSenderPwd>
+  <SSLActivated>false</SSLActivated>
+  <TLSActivated>true</TLSActivated>
+  <smtpPort>465</smtpPort>
+  <mailAuthentication>true</mailAuthentication>
+</mailConfig>
+----
+
+[cols="2a,4a,1a",options="header"]
+|===
+|Attribut|Description|Obligatoire?
+|*protocol*|Protocole: *smtp* (défaut) ou *smtps*|[green]#Oui#
+|*smtp*|Host/adresse du serveur d'envoi de mails|[green]#Oui#
+|*smtpPort*|Port du serveur d'envoi de mails|[green]#Oui#
+|*defaultMailSender*|Si le serveur *smtp* nécessite une authentification, renseigner ici l'émetteur par défaut à utiliser|
+|*defaultMailSenderPwd*|Si le serveur *smtp* nécessite une authentification, renseigner ici le mot de passe de l'émetteur défini dans la balise *defaultMailSender*|
+|*SSLActivated*|Activation du mode *SSL* (*true* / *false*)|
+|*TLSActivated*|Activation du mode *TLS* (*true* / *false*)|
+|*mailAuthentication*|L'envoi de mail nécessite une authentification. Si activé, le mot de passe de l'utilisateur est alors nécessaire.|
+|===
+
+ifdef::includeHiddenChapters[]
+=== Authentification moderne OAuth
+
+Pour activer ce mode dâ€™authentification, il faut ajouter la balise *oauth* Ã  l'intérieur de la balise *smtp*.
+
+Dans la version actuelle, lâ€™application implÃ©mente lâ€™authentification moderne pour {o365} et {gworkspace}.
+
+
+==== {o365}
+
+Configuration {arcadeged} ::
+
+Configuration de la balise *OAuth* :
+
+[source,xml,subs="normal,quotes"]
+----
+<oauth impl="MSOfficeOAuthAccess" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+       scope="https://outlook.office.com/.default" tenantId="" clientId="" secret=""/>
+----
+
+La configuration est identique Ã  ce qui est dÃ©crit dans le chapitre dÃ©diÃ© Ã  l'intÃ©gration de mails link:#config_ms_office_365[POP/IMAP] oÃ¹ toutes les Ã©tapes dÃ©crites sont indispensables. La seule diffÃ©rence rÃ©side dans les APIs autorisÃ©es qui dans ce cas devront Ãªtre :
+
+.Microsoft Graph
+[%autowidth,cols="<s,<,<"]
+|===
+|email |DÃ©lÃ©guÃ©e |Afficher l'adresse e-mail des utilisateurs
+|Mail.ReadWrite |Application |Read and write mail in all mailboxes
+|Mail.Send |Application |Send mail as any user
+|offline_access |DÃ©lÃ©guÃ©e |Conserver l'accÃ¨s aux donnÃ©es auxquelles vous lui avez donnÃ© accÃ¨s
+|openid |DÃ©lÃ©guÃ©e |Connecter les utilisateurs
+|profile |DÃ©lÃ©guÃ©e |Afficher le profil de base des utilisateurs
+|===
+
+.Office 365 Exchange Online
+[%autowidth,cols="<s,<,<"]
+|===
+|full_access_as_app |Application |Use Exchange WEB Services with full access to all mailboxes
+|Mail.ReadWrite |Application |Read and write mail in all mailboxes
+|Mail.Send |Application |Send mail as any user
+|SMTP.SendAsApp |Application |Application access for sending emails via SMTP AUTH
+|===
+
+Si l'aspiration et l'envoi de mail sont tous deux paramÃ©trÃ©s, toutes APIs autorisÃ©es nÃ©cessaires Ã  chaque mode devront Ãªtre prÃ©sentes.
+
+endif::[]
+
+=== Paramètres additionnels
+
+Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier *WEB-INF/classes/mail/mail-additional
+.properties*.
+
+Par exemple
+[source,properties]
+----
+mail.smtp.ssl.trust=smtp.gmail.com
+----
+
+=== Certificats
+
+Si vous avez un souci d'envoi de mail relatif à un certificat (erreur *pkix*, ...), veuillez intégrer le certificat dans le magasin de la {jdk}.
+
+[TIP]
+====
+Si l'envoi concerne un compte {gmail}, l'ajout de la propriété *mail.smtp.ssl.trust=smtp.gmail.com* peut résoudre également le problème (cf. chapitre
+précédent).
+====
+
+=== Examples
+
+==== {gmail}
+
+[source,xml]
+----
+<mailConfig>
+  <protocol>smtps</protocol>
+  <smtp>smtp.gmail.com</smtp>
+  <SSLActivated>false</SSLActivated>
+  <TLSActivated>true</TLSActivated>
+  <smtpPort>587</smtpPort>
+</mailConfig>
+----
+
+Si un compte est défini (_defaultMailSender_ et _defaultMailSenderPwd_), *attention*, le mot de passe attaché au compte n'est pas celui utilisé lors de
+l'authentification à l'interface {gmail}.
+
+Il faut alors :
+
+* activer la *double authentification*
+* générer un mot de passe [underline]#dédié# via la https://myaccount.google.com/apppasswords[page suivante]
+
+[source,xml]
+----
+<mailConfig>
+  <protocol>smtps</protocol>
+  <smtp>smtp.gmail.com</smtp>
+  <SSLActivated>true</SSLActivated>
+  <TLSActivated>false</TLSActivated>
+  <smtpPort>465</smtpPort>
+</mailConfig>
+----
+
+==== {o365}
+
+Attention, cela ne fonctionne que si *SMTP* est activé sur le compte *Microsoft* associé (cf. procédure https://learn.microsoft
+.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes[ici])
+
+[source,xml]
+----
+<mailConfig>
+  <protocol>smtp</protocol>
+  <smtp>smtp.office365.com</smtp>
+  <SSLActivated>false</SSLActivated>
+  <TLSActivated>true</TLSActivated>
+  <smtpPort>587</smtpPort>
+</mailConfig>
+----
+
+[IMPORTANT]
+====
+À partir de septembre 2025, *Microsoft* a désactivé cette fonctionnalité. +
+Une authentification via *OAuth* est alors obligatoire.
+====
+
+==== {ovh}
+
+[source,xml]
+----
+<mailConfig>
+  <protocol>smtps</protocol>
+  <smtp>ssl0.ovh.net</smtp>
+  <SSLActivated>false</SSLActivated>
+  <TLSActivated>true</TLSActivated>
+  <smtpPort>465</smtpPort>
+</mailConfig>
+----
