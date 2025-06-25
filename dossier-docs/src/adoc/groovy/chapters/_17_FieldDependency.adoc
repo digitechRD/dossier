@@ -20,7 +20,7 @@ Entrées
 |*_fieldToUpdate*|IField|Champ à mettre à jour
 |*_fieldMap*|Map<String, IField>|Liste des champs
 |*_updatedField*|IField|Champ que l'on modifie
-|*_updateFieldValues*|Object|
+|*_updateFieldValues*|Object|List des SelectItem en entrée/sortie
 |*_parameterMap*|List<IParameter>|
 3+|[.header]
 Entrées/sorties
@@ -34,28 +34,28 @@ Modification de la liste des choix pour le champ _Plan de classement_ lorsque la
 [source, groovy]
 ----
 
-List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(_fieldToUpdate.getConfigField());
+List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(_fieldToUpdate.getConfigField())
 Term updatedFieldCode = getAuthorityListService().getTerm((Integer) _updatedField.getValue())
 
-List<SelectItem> test = new ArrayList<>();
+List<SelectItem> test = new ArrayList<>()
 for(items in selectItems) {
   if(items.getValue() != null) {
-    Term code = getAuthorityListService().getTerm((Integer) items.getValue());
+    Term code = getAuthorityListService().getTerm((Integer) items.getValue())
     SelectItem item = new SelectItem()
     item.setLabel(code.getValues()[0] as String)
     item.setValue(code.getCode())
     test.add(item)
   }
 }
-List<SelectItem> filteredList = test.findAll({it.getValue().startsWith(updatedFieldCode.getCode() as String)})
-HtmlSelectOneMenu component = ((HtmlSelectOneMenu)  ((UIComponent) _fieldToUpdate.getComponent()));
-component.getChildren().get(0).setValue(filteredList);
+List<SelectItem> filteredItems = test.findAll({it.getValue().startsWith(updatedFieldCode.getCode() as String)})
+_updateFieldValues.clear()
+_updateFieldValues.addAll(filteredItems)
 
 /**
  * @return IAuthorityList the Authority List
  */
 public static IAuthorityList getAuthorityListService() {
-  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+  return (IAuthorityList) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_AUTHORITYLIST_MGR)
 }
 ----
 
