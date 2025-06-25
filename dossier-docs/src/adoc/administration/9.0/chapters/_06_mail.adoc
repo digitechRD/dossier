@@ -25,7 +25,7 @@ Le paramétrage se fait via l'{adminAirs} ou directement dans le fichier {params
   <SSLActivated>false</SSLActivated>
   <TLSActivated>true</TLSActivated>
   <smtpPort>465</smtpPort>
-  <mailAuthentication>true</mailAuthentication>
+  <mailAuthentication>false</mailAuthentication>
 </mailConfig>
 ----
 
@@ -39,7 +39,8 @@ Le paramétrage se fait via l'{adminAirs} ou directement dans le fichier {params
 |*defaultMailSenderPwd*|Si le serveur *smtp* nécessite une authentification, renseigner ici le mot de passe de l'émetteur défini dans la balise *defaultMailSender*|
 |*SSLActivated*|Activation du mode *SSL* (*true* / *false*)|
 |*TLSActivated*|Activation du mode *TLS* (*true* / *false*)|
-|*mailAuthentication*|L'envoi de mail nécessite une authentification. Si activé, le mot de passe de l'utilisateur est alors nécessaire.|
+|*mailAuthentication*|L'envoi de mail nécessite une authentification. Si activé, la demande de mot de passe (mail) de l'utilisateur sera disponible dans la
+fenêtre d'envoi de mail.|
 |===
 
 ifdef::includeHiddenChapters[]
