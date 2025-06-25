@@ -50,22 +50,20 @@ curl -X 'DELETE' \
 [source,json]
 .Liste de WSDeleteReportItemType
 ----
-{
-  "ArrayList": [
-    {
-      "docId": 1,
-      "state": "OK",
-      "children": [],
-      "errMessage": ""
-    },
-    {
-      "docId": 2,
-      "state": "ERROR",
-      "children": [],
-      "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
-    }
-  ]
-}
+[
+  {
+    "docId": 1,
+    "state": "OK",
+    "children": [],
+    "errMessage": ""
+  },
+  {
+    "docId": 2,
+    "state": "ERROR",
+    "children": [],
+    "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
+  }
+]
 ----
 
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour.
@@ -107,22 +105,20 @@ curl -X 'GET' \
 [source,json]
 .Liste de WSDeleteReportItemType
 ----
-{
-  "ArrayList": [
-    {
-      "docId": 1,
-      "state": "OK",
-      "children": [],
-      "errMessage": ""
-    },
-    {
-      "docId": 2,
-      "state": "ERROR",
-      "children": [],
-      "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
-    }
-  ]
-}
+[
+  {
+    "docId": 1,
+    "state": "OK",
+    "children": [],
+    "errMessage": ""
+  },
+  {
+    "docId": 2,
+    "state": "ERROR",
+    "children": [],
+    "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
+  }
+]
 ----
 
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure de retour.
@@ -294,22 +290,20 @@ curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocume
 [source,json]
 .Liste de WSInsertReportItemType
 ----
-{
-  "ArrayList": [
-    {
-      "docId": 6935,
-      "state": "OK",
-      "message": "",
-      "parentState": "NONE"
-    },
-    {
-      "docId": 6936,
-      "state": "OK",
-      "message": "",
-      "parentState": "NONE"
-    }
-  ]
-}
+[
+  {
+    "docId": 6935,
+    "state": "OK",
+    "message": "",
+    "parentState": "NONE"
+  },
+  {
+    "docId": 6936,
+    "state": "OK",
+    "message": "",
+    "parentState": "NONE"
+  }
+]
 ----
 
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSInsertReportItemType.
@@ -387,20 +381,18 @@ curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocum
 [source,json]
 .Liste de WSUpdateReportItemType
 ----
-{
-  "ArrayList": [
-    {
-      "docId": 6935,
-      "state": "OK",
-      "errMessage": ""
-    },
-    {
-      "docId": 6936,
-      "state": "OK",
-      "errMessage": ""
-    }
-  ]
-}
+[
+  {
+    "docId": 6935,
+    "state": "OK",
+    "errMessage": ""
+  },
+  {
+    "docId": 6936,
+    "state": "OK",
+    "errMessage": ""
+  }
+]
 ----
 
 cf le chapitre <<appendix_extenddocument>> pour une description de la structure WSUpdateReportItemType.

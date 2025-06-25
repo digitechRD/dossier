@@ -25,3 +25,13 @@ http(s)://<hostname>:<port>/<context>/services
 La plupart des {webservices} sont également accessibles en *{rest}*. +
 Si disponibles, il est conseillé d'utiliser ces *APIs*
 ====
+
+[CAUTION]
+====
+À partir de la version *9* d'{arcadeged}, la valeur racine (encapsulant les réponses {rest} de type [underline]#liste#) a été *[underline]#supprimée#* (pour
+des raisons techniques, logiques et de données transitées).
+
+L'ancien comportement peut être ré-activée en précisant l'option *dossier.ws.rest.jackson.serialize.wrap.root.value=true* au démarrage d'{arcadeged}.
+
+Si vous n'utilisez pas le client {java} fourni, il vous est conseillé de générer de nouveau vos _stubs_.
+====

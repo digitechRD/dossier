@@ -51,16 +51,14 @@ curl -X 'GET' \
 [source,json]
 .Structure de retour
 ----
-{
-  "ArrayList": [
-    "DEX_TYPE_DOSSIER",
-    "AL_DOC_LINK",
-    "PRO_APP_FLUX_COU",
-    "PRO_AFF_TYPE",
-    "PRO_DOC_CATEGORIE",
-    "PRO_DOC_CLASSEMENT"
-  ]
-}
+[
+  "DEX_TYPE_DOSSIER",
+  "AL_DOC_LINK",
+  "PRO_APP_FLUX_COU",
+  "PRO_AFF_TYPE",
+  "PRO_DOC_CATEGORIE",
+  "PRO_DOC_CLASSEMENT"
+]
 ----
 
 ===== {GET} /authorityList/{fieldCode}
@@ -98,20 +96,18 @@ curl -X 'GET' \
 [source,json]
 .Structure de retour
 ----
-{
-  "ArrayList": [
-    {
-      "id": 3,
-      "code": "NO",
-      "label": "Non"
-    },
-    {
-      "id": 4,
-      "code": "YES",
-      "label": "Oui"
-    }
-  ]
-}
+[
+  {
+    "id": 3,
+    "code": "NO",
+    "label": "Non"
+  },
+  {
+    "id": 4,
+    "code": "YES",
+    "label": "Oui"
+  }
+]
 ----
 
 cf le chapitre <<appendix_authoritylist>> pour une description de la structure de retour.

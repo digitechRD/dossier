@@ -104,22 +104,20 @@ curl -X 'GET' \
 [source,json]
 .Liste de WSAttachmentType
 ----
-{
-  "ArrayList": [
-    {
-      "id": 5220,
-      "airsType": "ORIGINAL",
-      "label": "viroflay7àé.pdf",
-      "fileName": "viroflay7àé.pdf"
-    },
-    {
-      "id": 6703,
-      "airsType": "ORIGINAL",
-      "label": "PJ de test",
-      "fileName": "PJ.pdf"
-    }
-  ]
-}
+[
+  {
+    "id": 5220,
+    "airsType": "ORIGINAL",
+    "label": "viroflay7àé.pdf",
+    "fileName": "viroflay7àé.pdf"
+  },
+  {
+    "id": 6703,
+    "airsType": "ORIGINAL",
+    "label": "PJ de test",
+    "fileName": "PJ.pdf"
+  }
+]
 ----
 
 cf le chapitre <<appendix_document>> pour une description de la structure de retour.
@@ -225,11 +223,9 @@ curl -X 'DELETE' \
 .Liste d'identifiants des pièces jointes supprimées
 [source,json]
 ----
-{
-  "ArrayList": [
-    6703
-  ]
-}
+[
+  6703
+]
 ----
 
 ===== {GET} /attachment/download/{attachmentId}

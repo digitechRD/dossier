@@ -433,6 +433,27 @@ Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
 </tr>
 </table>
 </div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Attention"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>À partir de la version <strong>9</strong> d'<code><span style="color:#448279">Arcade GED</span></code>, la valeur racine (encapsulant les réponses <code><span style="color:#73A12E">REST</span></code> de type <span class="underline">liste</span>) a été <strong><span class="underline">supprimée</span></strong> (pour
+des raisons techniques, logiques et de données transitées).</p>
+</div>
+<div class="paragraph">
+<p>L&#8217;ancien comportement peut être ré-activée en précisant l&#8217;option <strong>dossier.ws.rest.jackson.serialize.wrap.root.value=true</strong> au démarrage d'<code><span style="color:#448279">Arcade GED</span></code>.</p>
+</div>
+<div class="paragraph">
+<p>Si vous n&#8217;utilisez pas le client <code><span style="color:#F24E52">Java</span></code> fourni, il vous est conseillé de générer de nouveau vos <em>stubs</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div style="page-break-after: always;"></div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -809,6 +830,8 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
   "WSDocumentType": {
     "contentType": "CR",
     "secretLevel": 10,
+    "filename": "1.doc",
+    "data":"&lt;base64&gt;",
     "fields": [
       {
         "code": "D_MODIF",
@@ -1870,16 +1893,14 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div id="authoritylist_getcodejson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "DEX_TYPE_DOSSIER",
-    "AL_DOC_LINK",
-    "PRO_APP_FLUX_COU",
-    "PRO_AFF_TYPE",
-    "PRO_DOC_CATEGORIE",
-    "PRO_DOC_CLASSEMENT"
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "DEX_TYPE_DOSSIER",
+  "AL_DOC_LINK",
+  "PRO_APP_FLUX_COU",
+  "PRO_AFF_TYPE",
+  "PRO_DOC_CATEGORIE",
+  "PRO_DOC_CLASSEMENT"
+]</code></pre>
 </div>
 </div>
 </div>
@@ -1985,20 +2006,18 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div id="authoritylist_gettermsjson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "id": 3,
-      "code": "NO",
-      "label": "Non"
-    },
-    {
-      "id": 4,
-      "code": "YES",
-      "label": "Oui"
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "id": 3,
+    "code": "NO",
+    "label": "Non"
+  },
+  {
+    "id": 4,
+    "code": "YES",
+    "label": "Oui"
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2096,17 +2115,15 @@ de cette <strong>API</strong>.</p>
 <div id="baskets_getbasketListjson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "Documents charte officielle",
-    "Documents du service intégration",
-    "Mes projets au SCLI",
-    "Mes projets dirigés",
-    "xml_configuration_basket_global_documents",
-    "Derniers compte rendus",
-    "Mes projets en cours"
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "Documents charte officielle",
+  "Documents du service intégration",
+  "Mes projets au SCLI",
+  "Mes projets dirigés",
+  "xml_configuration_basket_global_documents",
+  "Derniers compte rendus",
+  "Mes projets en cours"
+]</code></pre>
 </div>
 </div>
 </div>
@@ -2229,13 +2246,11 @@ de cette <strong>API</strong>.</p>
 <div id="baskets_getbasketListOrgjson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "Mes projets au SCLI",
-    "Mes projets dirigés",
-    "Mes projets en cours"
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "Mes projets au SCLI",
+  "Mes projets dirigés",
+  "Mes projets en cours"
+]</code></pre>
 </div>
 </div>
 </div>
@@ -2341,13 +2356,11 @@ de cette <strong>API</strong>.</p>
 <div id="baskets_getbasketListFlowjson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "Mes projets au SCLI",
-    "Mes projets dirigés",
-    "Mes projets en cours"
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "Mes projets au SCLI",
+  "Mes projets dirigés",
+  "Mes projets en cours"
+]</code></pre>
 </div>
 </div>
 </div>
@@ -2627,13 +2640,10 @@ de cette <strong>API</strong>.</p>
 <div id="baskets_geDocLinkNamejson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "faces/redirect.jsp?authentication=HPa4o3rdP3jo%2FTvySbkDVZMK%2FYuCpRx%2BjOSv5Tp0t9z%2BdIpmSlbBGpgF4ZT9SjaaM5yiNjYtgZ4kuNmMit%2F2LyaaTta6zfYjRsEnfVqCIaXfQqrdxfjVXQNcpILl0f2I1L%2F%2Bovj2AsDD9r3x127k36wMF8MTOW3K8NMG5ouxH8k%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR",
-    "faces/redirect.jsp?authentication=qJoexW7AAhobyxEaEGCpYq77hjkdaayibx%2B5CiCHmX3JD5PbX%2FNtkSQG%2B38CNrNezmUjKGQc7uBjazIzQZwMAeQcgv7dhrpeJH64jAtkBbM37j279eWg2lcQltrqWGF2wqPXrsIejkUGwMqa4S3AQR1CSGHitW9owSwqmuFWXwM%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR",
-    ...
-    ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "faces/redirect.jsp?authentication=HPa4o3rdP3jo%2FTvySbkDVZMK%2FYuCpRx%2BjOSv5Tp0t9z%2BdIpmSlbBGpgF4ZT9SjaaM5yiNjYtgZ4kuNmMit%2F2LyaaTta6zfYjRsEnfVqCIaXfQqrdxfjVXQNcpILl0f2I1L%2F%2Bovj2AsDD9r3x127k36wMF8MTOW3K8NMG5ouxH8k%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR",
+  "faces/redirect.jsp?authentication=qJoexW7AAhobyxEaEGCpYq77hjkdaayibx%2B5CiCHmX3JD5PbX%2FNtkSQG%2B38CNrNezmUjKGQc7uBjazIzQZwMAeQcgv7dhrpeJH64jAtkBbM37j279eWg2lcQltrqWGF2wqPXrsIejkUGwMqa4S3AQR1CSGHitW9owSwqmuFWXwM%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR"
+]</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -3110,13 +3120,10 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <div id="search_getdocLinkjson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "faces/redirect.jsp?authentication=HPa4o3rdP3jo%2FTvySbkDVZMK%2FYuCpRx%2BjOSv5Tp0t9z%2BdIpmSlbBGpgF4ZT9SjaaM5yiNjYtgZ4kuNmMit%2F2LyaaTta6zfYjRsEnfVqCIaXfQqrdxfjVXQNcpILl0f2I1L%2F%2Bovj2AsDD9r3x127k36wMF8MTOW3K8NMG5ouxH8k%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR",
-    "faces/redirect.jsp?authentication=qJoexW7AAhobyxEaEGCpYq77hjkdaayibx%2B5CiCHmX3JD5PbX%2FNtkSQG%2B38CNrNezmUjKGQc7uBjazIzQZwMAeQcgv7dhrpeJH64jAtkBbM37j279eWg2lcQltrqWGF2wqPXrsIejkUGwMqa4S3AQR1CSGHitW9owSwqmuFWXwM%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR",
-    ...
-    ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "faces/redirect.jsp?authentication=HPa4o3rdP3jo%2FTvySbkDVZMK%2FYuCpRx%2BjOSv5Tp0t9z%2BdIpmSlbBGpgF4ZT9SjaaM5yiNjYtgZ4kuNmMit%2F2LyaaTta6zfYjRsEnfVqCIaXfQqrdxfjVXQNcpILl0f2I1L%2F%2Bovj2AsDD9r3x127k36wMF8MTOW3K8NMG5ouxH8k%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6868&amp;flowCode=CR",
+  "faces/redirect.jsp?authentication=qJoexW7AAhobyxEaEGCpYq77hjkdaayibx%2B5CiCHmX3JD5PbX%2FNtkSQG%2B38CNrNezmUjKGQc7uBjazIzQZwMAeQcgv7dhrpeJH64jAtkBbM37j279eWg2lcQltrqWGF2wqPXrsIejkUGwMqa4S3AQR1CSGHitW9owSwqmuFWXwM%3D&amp;outcome=gotoDocumentUnitaire&amp;docId=6867&amp;flowCode=CR"
+]</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -3344,109 +3351,106 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <div id="search_getresultsjson_response" class="listingblock">
 <div class="title">WSSearchResultType</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "refAirsId": 4372,
-      "fields": [
-        {
-          "code": "D_MODIF",
-          "field": "04/02/2021 17:04:36"
-        },
-        {
-          "code": "CR_THEME",
-          "field": "172"
-        },
-        {
-          "code": "D_CREAT",
-          "field": "13/01/2020 16:51:20"
-        },
-        {
-          "code": "CR_DES",
-          "field": "CR réu. transverse du lundi 13 janvier 2020-1"
-        },
-        {
-          "code": "CR_REDACTEUR",
-          "field": "7"
-        },
-        {
-          "code": "CR_DATE",
-          "field": "01/01/2022 0:00:00"
-        },
-        {
-          "code": "CR_RESUME",
-          "field": "CR réu. transverse du lundi 13 janvier 2020"
-        },
-        {
-          "code": "T_PRIOR",
-          "field": ""
-        },
-        {
-          "code": "MULTI",
-          "field": ""
-        },
-        {
-          "code": "CORRES",
-          "field": ""
-        },
-        {
-          "code": "MASQUE_NUM",
-          "field": ""
-        }
-      ]
-    },
-    {
-      "refAirsId": 4473,
-      "fields": [
-        {
-          "code": "D_MODIF",
-          "field": "31/01/2020 14:20:19"
-        },
-        {
-          "code": "CR_THEME",
-          "field": "174"
-        },
-        {
-          "code": "D_CREAT",
-          "field": "31/01/2020 14:20:19"
-        },
-        {
-          "code": "CR_DES",
-          "field": "Café Sideral 3"
-        },
-        {
-          "code": "CR_REDACTEUR",
-          "field": "11"
-        },
-        {
-          "code": "CR_DATE",
-          "field": "31/01/2020 0:00:00"
-        },
-        {
-          "code": "CR_RESUME",
-          "field": "Compte rendu du 3ème café SIDERAL"
-        },
-        {
-          "code": "T_PRIOR",
-          "field": ""
-        },
-        {
-          "code": "MULTI",
-          "field": ""
-        },
-        {
-          "code": "CORRES",
-          "field": ""
-        },
-        {
-          "code": "MASQUE_NUM",
-          "field": ""
-        }
-      ]
-    },
-...
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "refAirsId": 4372,
+    "fields": [
+      {
+        "code": "D_MODIF",
+        "field": "04/02/2021 17:04:36"
+      },
+      {
+        "code": "CR_THEME",
+        "field": "172"
+      },
+      {
+        "code": "D_CREAT",
+        "field": "13/01/2020 16:51:20"
+      },
+      {
+        "code": "CR_DES",
+        "field": "CR réu. transverse du lundi 13 janvier 2020-1"
+      },
+      {
+        "code": "CR_REDACTEUR",
+        "field": "7"
+      },
+      {
+        "code": "CR_DATE",
+        "field": "01/01/2022 0:00:00"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "CR réu. transverse du lundi 13 janvier 2020"
+      },
+      {
+        "code": "T_PRIOR",
+        "field": ""
+      },
+      {
+        "code": "MULTI",
+        "field": ""
+      },
+      {
+        "code": "CORRES",
+        "field": ""
+      },
+      {
+        "code": "MASQUE_NUM",
+        "field": ""
+      }
+    ]
+  },
+  {
+    "refAirsId": 4473,
+    "fields": [
+      {
+        "code": "D_MODIF",
+        "field": "31/01/2020 14:20:19"
+      },
+      {
+        "code": "CR_THEME",
+        "field": "174"
+      },
+      {
+        "code": "D_CREAT",
+        "field": "31/01/2020 14:20:19"
+      },
+      {
+        "code": "CR_DES",
+        "field": "Café Sideral 3"
+      },
+      {
+        "code": "CR_REDACTEUR",
+        "field": "11"
+      },
+      {
+        "code": "CR_DATE",
+        "field": "31/01/2020 0:00:00"
+      },
+      {
+        "code": "CR_RESUME",
+        "field": "Compte rendu du 3ème café SIDERAL"
+      },
+      {
+        "code": "T_PRIOR",
+        "field": ""
+      },
+      {
+        "code": "MULTI",
+        "field": ""
+      },
+      {
+        "code": "CORRES",
+        "field": ""
+      },
+      {
+        "code": "MASQUE_NUM",
+        "field": ""
+      }
+    ]
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3699,91 +3703,89 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <div class="title">PageableSearchResults</div>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "results": {
-    "documents": [
-      {
-        "id": 1040,
-        "ctCode": "PRO_CLIENT",
-        "fields": [
-          {
-            "code": "PRO_DETAILS",
-            "field": ""
-          },
-          {
-            "code": "D_MODIF",
-            "field": "14/11/2018 11:16:07"
-          },
-          {
-            "code": "PRO_CLI_SATISF",
-            "field": ""
-          },
-          {
-            "code": "PRO_CLI_CONTACT10",
-            "field": ""
-          },
-          {
-            "code": "PRO_CLI_INES",
-            "field": "Non défini"
-          },
-          {
-            "code": "PRO_CLI_CONTACT9",
-            "field": ""
-          },
-          {
-            "code": "PRO_CLI_CONTACT8",
-            "field": ""
-          },
-          {
-            "code": "PRO_CLI_CONTACT7",
-            "field": ""
-          },
-          {
-            "code": "D_CREAT",
-            "field": "25/04/2017 17:02:43"
-          },
-          {
-            "code": "PRO_CLI_ENT",
-            "field": "153"
-          }
-        ]
-      },
-      {
-        "id": 1153,
-        "ctCode": "PRO_AFFAIRE",
-        "fields": [
-          {
-            "code": "PRO_AFF_TYPE",
-            "field": "7"
-          },
-          {
-            "code": "PRO_DETAILS",
-            "field": "Commande via UGAP des licences : Délib + eDélib + Webdélib + Mobilité sous Windows (pour remplacer Qualigraf, notez que cette partie a été mise à part avec un délai de livraison fixé au 28/02/2018 afin de nous laisser le temps de développer l'outil attendu pour fin d'année, cela permettra de ne pas bloquer la facturation sur le reste). \nLa commande SCC inclut également les prestations permettant d'initialiser le projet et de facturer : RLC, etude et cr + installation pour 7 K€\n\nLe client est en train de préparer un marché négocié en direct avec nous pour le reste des prestations"
-          },
-          {
-            "code": "D_MODIF",
-            "field": "15/06/2017 11:11:38"
-          },
-          {
-            "code": "PRO_APP_MEP_SRV_HEBERG",
-            "field": ""
-          },
-          {
-            "code": "PRO_AFF_COM_NUM",
-            "field": ""
-          },
-          {
-            "code": "PRO_AFF_NOM",
-            "field": "Délib"
-          }
-        ]
-      }
-    ],
-    "page": {
-      "size": 50,
-      "number": 1,
-      "totalResults": 3544,
-      "totalPages": 71
+  "documents": [
+    {
+      "id": 1040,
+      "ctCode": "PRO_CLIENT",
+      "fields": [
+        {
+          "code": "PRO_DETAILS",
+          "field": ""
+        },
+        {
+          "code": "D_MODIF",
+          "field": "14/11/2018 11:16:07"
+        },
+        {
+          "code": "PRO_CLI_SATISF",
+          "field": ""
+        },
+        {
+          "code": "PRO_CLI_CONTACT10",
+          "field": ""
+        },
+        {
+          "code": "PRO_CLI_INES",
+          "field": "Non défini"
+        },
+        {
+          "code": "PRO_CLI_CONTACT9",
+          "field": ""
+        },
+        {
+          "code": "PRO_CLI_CONTACT8",
+          "field": ""
+        },
+        {
+          "code": "PRO_CLI_CONTACT7",
+          "field": ""
+        },
+        {
+          "code": "D_CREAT",
+          "field": "25/04/2017 17:02:43"
+        },
+        {
+          "code": "PRO_CLI_ENT",
+          "field": "153"
+        }
+      ]
+    },
+    {
+      "id": 1153,
+      "ctCode": "PRO_AFFAIRE",
+      "fields": [
+        {
+          "code": "PRO_AFF_TYPE",
+          "field": "7"
+        },
+        {
+          "code": "PRO_DETAILS",
+          "field": "Commande via UGAP des licences : Délib + eDélib + Webdélib + Mobilité sous Windows (pour remplacer Qualigraf, notez que cette partie a été mise à part avec un délai de livraison fixé au 28/02/2018 afin de nous laisser le temps de développer l'outil attendu pour fin d'année, cela permettra de ne pas bloquer la facturation sur le reste). \nLa commande SCC inclut également les prestations permettant d'initialiser le projet et de facturer : RLC, etude et cr + installation pour 7 K€\n\nLe client est en train de préparer un marché négocié en direct avec nous pour le reste des prestations"
+        },
+        {
+          "code": "D_MODIF",
+          "field": "15/06/2017 11:11:38"
+        },
+        {
+          "code": "PRO_APP_MEP_SRV_HEBERG",
+          "field": ""
+        },
+        {
+          "code": "PRO_AFF_COM_NUM",
+          "field": ""
+        },
+        {
+          "code": "PRO_AFF_NOM",
+          "field": "Délib"
+        }
+      ]
     }
+  ],
+  "page": {
+    "size": 50,
+    "number": 1,
+    "totalResults": 3544,
+    "totalPages": 71
   }
 }</code></pre>
 </div>
@@ -4604,22 +4606,20 @@ de cette <strong>API</strong>.</p>
 <div id="attachmentlistgetjson_response" class="listingblock">
 <div class="title">Liste de WSAttachmentType</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "id": 5220,
-      "airsType": "ORIGINAL",
-      "label": "viroflay7àé.pdf",
-      "fileName": "viroflay7àé.pdf"
-    },
-    {
-      "id": 6703,
-      "airsType": "ORIGINAL",
-      "label": "PJ de test",
-      "fileName": "PJ.pdf"
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "id": 5220,
+    "airsType": "ORIGINAL",
+    "label": "viroflay7àé.pdf",
+    "fileName": "viroflay7àé.pdf"
+  },
+  {
+    "id": 6703,
+    "airsType": "ORIGINAL",
+    "label": "PJ de test",
+    "fileName": "PJ.pdf"
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4896,11 +4896,9 @@ de cette <strong>API</strong>.</p>
 <div id="attachmentdeletejson_response" class="listingblock">
 <div class="title">Liste d&#8217;identifiants des pièces jointes supprimées</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    6703
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  6703
+]</code></pre>
 </div>
 </div>
 </div>
@@ -5095,30 +5093,28 @@ de cette <strong>API</strong>.</p>
 <div id="dossiercontext_getflowsjson_response" class="listingblock">
 <div class="title">Liste des flux</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "code": "DOCUMENTATION",
-      "label": "Flow created in simplified mode"
-    },
-    {
-      "code": "REF",
-      "label": "Flow created in simplified mode"
-    },
-    {
-      "code": "CPA",
-      "label": "Flow created in simplified mode"
-    },
-    {
-      "code": "PRO",
-      "label": "Flux Projet"
-    },
-    {
-      "code": "CR",
-      "label": "Flow created in simplified mode"
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "code": "DOCUMENTATION",
+    "label": "Flow created in simplified mode"
+  },
+  {
+    "code": "REF",
+    "label": "Flow created in simplified mode"
+  },
+  {
+    "code": "CPA",
+    "label": "Flow created in simplified mode"
+  },
+  {
+    "code": "PRO",
+    "label": "Flux Projet"
+  },
+  {
+    "code": "CR",
+    "label": "Flow created in simplified mode"
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -5412,14 +5408,12 @@ de cette <strong>API</strong>.</p>
 <div id="dossiercontext_getmandatoryfieldsjson_response" class="listingblock">
 <div class="title">Structure de retour</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    "CR_THEME",
-    "CR_DES",
-    "CR_REDACTEUR",
-    "CR_DATE"
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  "CR_THEME",
+  "CR_DES",
+  "CR_REDACTEUR",
+  "CR_DATE"
+]</code></pre>
 </div>
 </div>
 </div>
@@ -5937,22 +5931,20 @@ de cette <strong>API</strong>.</p>
 <div id="extenddocument_delete_rest_response" class="listingblock">
 <div class="title">Liste de WSDeleteReportItemType</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "docId": 1,
-      "state": "OK",
-      "children": [],
-      "errMessage": ""
-    },
-    {
-      "docId": 2,
-      "state": "ERROR",
-      "children": [],
-      "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "docId": 1,
+    "state": "OK",
+    "children": [],
+    "errMessage": ""
+  },
+  {
+    "docId": 2,
+    "state": "ERROR",
+    "children": [],
+    "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6072,22 +6064,20 @@ DOC_REMOVE_TYPE_FORCE</p>
 <div id="extenddocument_deletetype_rest_response" class="listingblock">
 <div class="title">Liste de WSDeleteReportItemType</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "docId": 1,
-      "state": "OK",
-      "children": [],
-      "errMessage": ""
-    },
-    {
-      "docId": 2,
-      "state": "ERROR",
-      "children": [],
-      "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "docId": 1,
+    "state": "OK",
+    "children": [],
+    "errMessage": ""
+  },
+  {
+    "docId": 2,
+    "state": "ERROR",
+    "children": [],
+    "errMessage": "com.digitech.jcorbairs.exception.ServerException: Le document de référence 2 n'existe pas"
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6413,22 +6403,20 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div id="extenddocument_insert_rest_response" class="listingblock">
 <div class="title">Liste de WSInsertReportItemType</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "docId": 6935,
-      "state": "OK",
-      "message": "",
-      "parentState": "NONE"
-    },
-    {
-      "docId": 6936,
-      "state": "OK",
-      "message": "",
-      "parentState": "NONE"
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "docId": 6935,
+    "state": "OK",
+    "message": "",
+    "parentState": "NONE"
+  },
+  {
+    "docId": 6936,
+    "state": "OK",
+    "message": "",
+    "parentState": "NONE"
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6592,20 +6580,18 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div id="extenddocument_update_rest_response" class="listingblock">
 <div class="title">Liste de WSUpdateReportItemType</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    {
-      "docId": 6935,
-      "state": "OK",
-      "errMessage": ""
-    },
-    {
-      "docId": 6936,
-      "state": "OK",
-      "errMessage": ""
-    }
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "docId": 6935,
+    "state": "OK",
+    "errMessage": ""
+  },
+  {
+    "docId": 6936,
+    "state": "OK",
+    "errMessage": ""
+  }
+]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7562,23 +7548,21 @@ de cette <strong>API</strong>.</p>
 <div id="workbookgetalljson_response" class="listingblock">
 <div class="title">Liste d&#8217;Integer</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "ArrayList": [
-    7968,
-    7981,
-    7961,
-    7970,
-    7973,
-    7939,
-    7959,
-    7887,
-    7972,
-    7980,
-    7899,
-    7965,
-    7969
-  ]
-}</code></pre>
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  7968,
+  7981,
+  7961,
+  7970,
+  7973,
+  7939,
+  7959,
+  7887,
+  7972,
+  7980,
+  7899,
+  7965,
+  7969
+]</code></pre>
 </div>
 </div>
 </div>
