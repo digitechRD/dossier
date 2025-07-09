@@ -370,3 +370,270 @@ curl -X 'GET' \
 ----
 
 cf le chapitre <<appendix_dossiercontext_WSContentTypeLinkInfo, en annexe>> pour une description de la structure de retour.
+
+===== {GET} /dossierContext/contentTypes
+
+Cette méthode permet de récupérer la liste des content-types, pour chaque *flow*
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*hierarchy*|{query}|Est-ce que la hiérarchie entre content-types doit être calculée|[green]*Non*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/dossierContext/contentTypes?hierarchy=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<dossiercontext_contentTypes_json_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Type de contenu non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+
+[[dossiercontext_contentTypes_json_response]]
+[source,json]
+----
+{
+  "MONTEE_SUR_CALE": [
+    {
+      "code": "ARMATEUR",
+      "label": "Armateur",
+      "children": [
+        {
+          "code": "NAVIRE",
+          "label": "Navire",
+          "children": [
+            {
+              "code": "MONTEE_SUR_CALE",
+              "label": "Montée sur cale",
+              "children": [
+                {
+                  "code": "DOC_MONTEE",
+                  "label": "Documents"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ARMATEUR",
+      "label": "Armateur",
+      "children": [
+        {
+          "code": "NAVIRE",
+          "label": "Navire",
+          "children": [
+            {
+              "code": "MONTEE_SUR_CALE",
+              "label": "Montée sur cale",
+              "children": [
+                {
+                  "code": "DOC_MONTEE",
+                  "label": "Documents"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ARMATEUR",
+      "label": "Armateur",
+      "children": [
+        {
+          "code": "NAVIRE",
+          "label": "Navire",
+          "children": [
+            {
+              "code": "MONTEE_SUR_CALE",
+              "label": "Montée sur cale",
+              "children": [
+                {
+                  "code": "DOC_MONTEE",
+                  "label": "Documents"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "ARMATEUR",
+      "label": "Armateur",
+      "children": [
+        {
+          "code": "NAVIRE",
+          "label": "Navire",
+          "children": [
+            {
+              "code": "MONTEE_SUR_CALE",
+              "label": "Montée sur cale",
+              "children": [
+                {
+                  "code": "DOC_MONTEE",
+                  "label": "Documents"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "COURRIER": [
+    {
+      "code": "DCOU_COURRIER",
+      "label": "Courriers"
+    }
+  ],
+  "REF_DOCUMENT": [
+    {
+      "code": "DOC_TECH",
+      "label": "Documentations techniques"
+    }
+  ]
+}
+----
+
+===== {GET} /dossierContext/contentTypes/{flowCode}
+
+Cette méthode permet de récupérer la liste des content-types, pour un *flow/flux* précisé.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*flowCode*|{path}|Code du flux|[red]*Oui*|*TADA*
+|*hierarchy*|{query}|Est-ce que la hiérarchie entre content-types doit être calculée|[green]*Non*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/dossierContext/contentTypes/MONTEE_SUR_CALE?hierarchy=true' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<dossiercontext_contentTypes_flowcode_json_response>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*404*|Flux non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+
+[[dossiercontext_contentTypes_flowcode_json_response]]
+[source,json]
+----
+[
+  {
+    "code": "ARMATEUR",
+    "label": "Armateur",
+    "children": [
+      {
+        "code": "NAVIRE",
+        "label": "Navire",
+        "children": [
+          {
+            "code": "MONTEE_SUR_CALE",
+            "label": "Montée sur cale",
+            "children": [
+              {
+                "code": "DOC_MONTEE",
+                "label": "Documents"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "ARMATEUR",
+    "label": "Armateur",
+    "children": [
+      {
+        "code": "NAVIRE",
+        "label": "Navire",
+        "children": [
+          {
+            "code": "MONTEE_SUR_CALE",
+            "label": "Montée sur cale",
+            "children": [
+              {
+                "code": "DOC_MONTEE",
+                "label": "Documents"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "ARMATEUR",
+    "label": "Armateur",
+    "children": [
+      {
+        "code": "NAVIRE",
+        "label": "Navire",
+        "children": [
+          {
+            "code": "MONTEE_SUR_CALE",
+            "label": "Montée sur cale",
+            "children": [
+              {
+                "code": "DOC_MONTEE",
+                "label": "Documents"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "ARMATEUR",
+    "label": "Armateur",
+    "children": [
+      {
+        "code": "NAVIRE",
+        "label": "Navire",
+        "children": [
+          {
+            "code": "MONTEE_SUR_CALE",
+            "label": "Montée sur cale",
+            "children": [
+              {
+                "code": "DOC_MONTEE",
+                "label": "Documents"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
+----
