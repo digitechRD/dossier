@@ -42,3 +42,31 @@ Celle-ci contient les informations suivantes :
 |*totalResults*|Nombre total de résultats||_integer_
 |*totalPages*|Nombre total de page||_integer_
 |===
+
+[[appendix_fulltext_search_results]]
+==== *PageableFullTextSearchResults*
+
+La réponse est retournée sous forme de chaîne de caractères, au format {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+4+^|*documents*
+|*id*|Identifiant AIRS du document||_integer_
+|*ctCode*|Type de contenu||_string_
+4+^|*documents* > *fields*
+|*code*|code du champ||_string_
+|*field*|valeur du champ||_string_
+|*attachmentId*|Identifiant de la pièce jointe contenant le fragment de texte identifié||_integer_
+|*score*|Score|Valeur numérique ([underline]#à titre indicatif#)|_float_
+|*fragment*|Fragment de texte du document contenant les critères recherchés|[red]*Attention*, au format *html*|_string_
+|*missingTerms*|[underline]#à titre indicatif#, Liste des mots +non trouvés+ non trouvés dans le fragment||_string_
+4+^|*page*
+|*size*|Taille de la page (demandée/retournée)||_integer_
+|*number*|Numéro de page (demandée/retournée)||_integer_
+|*totalResults*|Nombre total de résultats||_integer_
+|*totalPages*|Nombre total de page||_integer_
+|===

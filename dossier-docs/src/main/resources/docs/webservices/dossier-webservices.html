@@ -97,6 +97,7 @@
 <li><a href="#_get_searchdoclink">2.4.3.2. <strong class="get">GET</strong> /search/docLink</a></li>
 <li><a href="#rest_search_results">2.4.3.3. <strong class="get">GET</strong> /search/results</a></li>
 <li><a href="#rest_search_results_v2">2.4.3.4. <strong class="get">GET</strong> /search/v2/results</a></li>
+<li><a href="#rest_full_text_search_results">2.4.3.5. <strong class="get">GET</strong> /search/fullTextResults</a></li>
 </ul>
 </li>
 </ul>
@@ -270,6 +271,7 @@
 <ul class="sectlevel3">
 <li><a href="#appendix_search_results_v1">4.4.1. <strong>WSSearchResultType</strong></a></li>
 <li><a href="#appendix_search_results_v2">4.4.2. <strong>PageableSearchResults</strong></a></li>
+<li><a href="#appendix_fulltext_search_results">4.4.3. <strong>PageableFullTextSearchResults</strong></a></li>
 </ul>
 </li>
 <li><a href="#appendix_dossiercontext">4.5. DossierContext modèles</a>
@@ -3795,6 +3797,323 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <div class="paragraph">
 <p>cf le chapitre <a href="#appendix_search_results_v2">Section 4.4.2, &#8220;<strong>PageableSearchResults</strong>&#8221;</a> pour une description de la structure de retour.</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="rest_full_text_search_results"><a class="anchor" href="#rest_full_text_search_results"></a>2.4.3.5. <strong class="get">GET</strong> /search/fullTextResults</h5>
+<div class="paragraph">
+<p>Cette méthode permet d&#8217;obtenir les métadonnées des documents renvoyés par une requête <strong>full-text</strong> / <strong>Plein-texte</strong>.<br>
+Cette recherche peut être complétée avec des critères de recherche <strong>AIRS</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Tout comme l'<a href="#rest_search_results_v2">API</a> décrite précédemment, les résultats sont <span class="underline">paginées</span>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Attention"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Dans la réponse, l&#8217;attribut <strong>page.totalResults</strong> (et donc <strong>page.totalPages</strong>) comptabilise <span class="underline">seulment</span> les résultats bruts de la recherche
+<strong>full-text</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Ce résultat est potentiellement erroné/surévalué car :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>les droits documentaires ne sont calculés qu&#8217;au fil de l&#8217;eau (de la récupération des résultats)</p>
+</li>
+<li>
+<p>les critères additionnels (attribut <strong>airsRequest</strong>) ne sont appliqués également qu&#8217;à chaque récupération unitaire.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>En cas d&#8217;appel de l&#8217;API sur une <strong>page</strong> (<em>attribut</em>) trop éloignée, les 2 attributs (<strong>totalResults</strong> et <strong>totalPages</strong>) seront ré-évaluées à leur valeur réelle.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 40. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 9.0909%;">
+<col style="width: 9.0909%;">
+<col style="width: 36.3636%;">
+<col style="width: 18.1818%;">
+<col style="width: 27.2728%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>query</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Requête <strong>full-text</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>Digitech entreprise</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ctyCodes</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des types de contenu dans lesquels la recherche est exécutée</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pour effectuer une recherche sur tous les types de contnues, vous pouvez spécifier *.* .<br>
+La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant au <strong>flowCode</strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>CR</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>flowCode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code du flux dans lequel la recherche est effectué</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>DEM_CONGE</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>airsRequest</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Requête AIRS</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>D_CREAT&gt;01/01/2018</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>page</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Numéro de page souhaitée (voir la</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong>, défaut : <strong>0</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>size</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>nombre de résultats maximum renvoyés</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong>, défaut : <strong>20</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>delegated</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>login</strong> de l&#8217;utilisateur pour lequel la recherche sera réellement jouée (déléguée).</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Attention"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>L&#8217;utilisateur <strong><span class="underline">authentifié</span></strong> doit posséder le droit <strong>DOSSIERS_DELEGATE_SEARCH_APIS</strong> pour pouvoir effectuer une recherche <em>"déléguée"</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">Non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>n.felix</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/search/fullTextResults?query=digitech%20entreprise&amp;ctyCodes=%2A.%2A&amp;flowCode=CR&amp;airsRequest=CR_DES%20%3D%20%22Sideral%20Ecologie%22&amp;page=0' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 41. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie (cf. <a href="#search_getresultsjson_response_v2">PageableSearchResults</a>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">503</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si le service <strong>full-text</strong> n&#8217;est pas disponible</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="search_getfulltextresultsjson_response" class="listingblock">
+<div class="title">PageableFullTextSearchResults</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "documents": [
+    {
+      "id": 2724,
+      "ctCode": "CR",
+      "fields": [
+        {
+          "code": "D_MODIF",
+          "field": "28/09/2018 16:33:13"
+        },
+        {
+          "code": "CR_THEME",
+          "field": "173"
+        },
+        {
+          "code": "D_CREAT",
+          "field": "28/09/2018 16:33:13"
+        },
+        {
+          "code": "CR_DES",
+          "field": "Sideral Ecologie"
+        },
+        {
+          "code": "CR_REDACTEUR",
+          "field": "7"
+        },
+        {
+          "code": "CR_DATE",
+          "field": "28/09/2018 0:00:00"
+        },
+        {
+          "code": "CR_RESUME",
+          "field": "CR de la 1e réunion du groupe"
+        }
+      ],
+      "attachmentId": 2585,
+      "score": 5.2279444,
+      "fragment": "Quelques propositions Application directe N&amp;eacute;cessitant &amp;eacute;changes avec la direction (et avec les DP) Disposer pour &lt;span class=\"highlight highlight1\"&gt;Digitech&lt;/span&gt; d&amp;rsquo;un container ext&amp;eacute;rieur pour les papiers X - si non propos&amp;eacute; par la ville, recourir &amp;agrave; une association pour la r&amp;eacute;cup&amp;eacute;ration..."
+    }
+  ],
+  "page": {
+    "size": 1,
+    "number": 0,
+    "totalResults": 1,
+    "totalPages": 1
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>cf le chapitre <a href="#appendix_fulltext_search_results">Section 4.4.3, &#8220;<strong>PageableFullTextSearchResults</strong>&#8221;</a> pour une description de la structure de retour.</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -3836,7 +4155,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <p>Cette méthode permet de récupérer l&#8217;arborescence d&#8217;un document.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 40. Paramètres en entrée</caption>
+<caption class="title">Table 42. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -3911,7 +4230,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 41. Réponses</caption>
+<caption class="title">Table 43. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4374,7 +4693,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;ajouter ou de mettre à jour une pièce jointe</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 42. Paramètres en entrée</caption>
+<caption class="title">Table 44. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4461,7 +4780,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 43. Réponses</caption>
+<caption class="title">Table 45. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4512,7 +4831,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des informations des des pièces jointes d&#8217;un document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 44. Paramètres en entrée</caption>
+<caption class="title">Table 46. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4559,7 +4878,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 45. Réponses</caption>
+<caption class="title">Table 47. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4634,7 +4953,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer un une pièce jointe ainsi que son document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 46. Paramètres en entrée</caption>
+<caption class="title">Table 48. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4698,7 +5017,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 47. Réponses</caption>
+<caption class="title">Table 49. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4785,7 +5104,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer une pièce jointe d&#8217;un document AIRS.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 48. Paramètres en entrée</caption>
+<caption class="title">Table 50. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4849,7 +5168,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 49. Réponses</caption>
+<caption class="title">Table 51. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -4910,7 +5229,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de télécharger le binaire (contenu) d&#8217;une pièce jointe.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 50. Paramètres en entrée</caption>
+<caption class="title">Table 52. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -4957,7 +5276,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 51. Réponses</caption>
+<caption class="title">Table 53. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5054,7 +5373,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 52. Réponses</caption>
+<caption class="title">Table 54. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5143,7 +5462,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 53. Paramètres en entrée</caption>
+<caption class="title">Table 55. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5207,7 +5526,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 54. Réponses</caption>
+<caption class="title">Table 56. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5297,7 +5616,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des champs obligatoires d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 55. Paramètres en entrée</caption>
+<caption class="title">Table 57. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5361,7 +5680,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 56. Réponses</caption>
+<caption class="title">Table 58. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5425,7 +5744,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 57. Paramètres en entrée</caption>
+<caption class="title">Table 59. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5526,7 +5845,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 58. Réponses</caption>
+<caption class="title">Table 60. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5658,7 +5977,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer les informations sur les liens entre content-types.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 59. Paramètres en entrée</caption>
+<caption class="title">Table 61. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5736,7 +6055,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 60. Réponses</caption>
+<caption class="title">Table 62. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -5815,7 +6134,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des content-types, pour chaque <strong>flow</strong></p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 61. Paramètres en entrée</caption>
+<caption class="title">Table 63. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -5860,7 +6179,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 62. Réponses</caption>
+<caption class="title">Table 64. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6021,7 +6340,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer la liste des content-types, pour un <strong>flow/flux</strong> précisé.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 63. Paramètres en entrée</caption>
+<caption class="title">Table 65. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6083,7 +6402,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 64. Réponses</caption>
+<caption class="title">Table 66. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6263,7 +6582,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 65. Paramètres en entrée</caption>
+<caption class="title">Table 67. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6310,7 +6629,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 66. Réponses</caption>
+<caption class="title">Table 68. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6377,7 +6696,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 67. Paramètres en entrée</caption>
+<caption class="title">Table 69. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6443,7 +6762,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 68. Réponses</caption>
+<caption class="title">Table 70. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6510,7 +6829,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>Cette méthode permet de récupérer la première pièce jointe d&#8217;un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 69. Paramètres en entrée</caption>
+<caption class="title">Table 71. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6557,7 +6876,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 70. Réponses</caption>
+<caption class="title">Table 72. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6630,7 +6949,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>Cette méthode permet créer des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 71. Paramètres en entrée</caption>
+<caption class="title">Table 73. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6782,7 +7101,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 72. Réponses</caption>
+<caption class="title">Table 74. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -6849,7 +7168,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <p>Cette méthode permet de mettre à jour des documents par lot.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 73. Paramètres en entrée</caption>
+<caption class="title">Table 75. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -6959,7 +7278,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 74. Réponses</caption>
+<caption class="title">Table 76. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7071,7 +7390,7 @@ de cette <strong>API</strong>.</p>
 </ul>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 75. Paramètres en entrée</caption>
+<caption class="title">Table 77. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7206,7 +7525,7 @@ curl -X 'GET' \
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 76. Réponses</caption>
+<caption class="title">Table 78. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7313,7 +7632,7 @@ minimiser les opérations de migration.</p>
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 77. Paramètres en entrée</caption>
+<caption class="title">Table 79. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -7399,7 +7718,7 @@ minimiser les opérations de migration.</p>
 (en lieu et place de l&#8217;utilisation du <em>continuationToken</em>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 78. Paramètres en entrée</caption>
+<caption class="title">Table 80. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 9.0909%;">
 <col style="width: 9.0909%;">
@@ -7663,7 +7982,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de créer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 79. Paramètres en entrée</caption>
+<caption class="title">Table 81. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7728,7 +8047,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 80. Réponses</caption>
+<caption class="title">Table 82. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7779,7 +8098,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 81. Paramètres en entrée</caption>
+<caption class="title">Table 83. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -7825,7 +8144,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 82. Réponses</caption>
+<caption class="title">Table 84. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7927,7 +8246,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 83. Réponses</caption>
+<caption class="title">Table 85. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -7992,7 +8311,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de modifier un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 84. Paramètres en entrée</caption>
+<caption class="title">Table 86. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -8058,7 +8377,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 85. Réponses</caption>
+<caption class="title">Table 87. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8103,7 +8422,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de supprimer un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 86. Paramètres en entrée</caption>
+<caption class="title">Table 88. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -8150,7 +8469,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 87. Réponses</caption>
+<caption class="title">Table 89. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8203,7 +8522,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet d&#8217;ajouter des documents à un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 88. Paramètres en entrée</caption>
+<caption class="title">Table 90. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -8271,7 +8590,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 89. Réponses</caption>
+<caption class="title">Table 91. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8324,7 +8643,7 @@ de cette <strong>API</strong>.</p>
 <p>Cette méthode permet de retirer des documents d&#8217;un classeur</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 90. Paramètres en entrée</caption>
+<caption class="title">Table 92. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -8392,7 +8711,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 91. Réponses</caption>
+<caption class="title">Table 93. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8493,7 +8812,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 92. Paramètres en entrée</caption>
+<caption class="title">Table 94. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -8521,7 +8840,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 93. Réponses</caption>
+<caption class="title">Table 95. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8589,7 +8908,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 94. Paramètres en entrée</caption>
+<caption class="title">Table 96. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 11.1111%;">
 <col style="width: 11.1111%;">
@@ -8650,7 +8969,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 95. Réponses</caption>
+<caption class="title">Table 97. Réponses</caption>
 <colgroup>
 <col style="width: 20%;">
 <col style="width: 80%;">
@@ -8802,7 +9121,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 96. Paramètres en entrée</caption>
+<caption class="title">Table 98. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -8933,7 +9252,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 97. Paramètres en entrée</caption>
+<caption class="title">Table 99. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9061,7 +9380,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 98. Paramètres en entrée</caption>
+<caption class="title">Table 100. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9195,7 +9514,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 99. Paramètres en entrée</caption>
+<caption class="title">Table 101. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9287,7 +9606,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 100. Paramètres en entrée</caption>
+<caption class="title">Table 102. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9463,7 +9782,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 101. Paramètres en entrée</caption>
+<caption class="title">Table 103. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9588,7 +9907,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 102. Paramètres en entrée</caption>
+<caption class="title">Table 104. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9671,7 +9990,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 103. Paramètres en entrée</caption>
+<caption class="title">Table 105. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9781,7 +10100,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 104. Paramètres en entrée</caption>
+<caption class="title">Table 106. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9875,7 +10194,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 105. Paramètres en entrée</caption>
+<caption class="title">Table 107. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10020,7 +10339,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 106. Paramètres en entrée</caption>
+<caption class="title">Table 108. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10149,7 +10468,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 107. Paramètres en entrée</caption>
+<caption class="title">Table 109. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10275,7 +10594,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 108. Paramètres en entrée</caption>
+<caption class="title">Table 110. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10388,7 +10707,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 109. Paramètres en entrée</caption>
+<caption class="title">Table 111. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10512,7 +10831,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 110. Paramètres en entrée</caption>
+<caption class="title">Table 112. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10676,7 +10995,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 111. Paramètres en entrée</caption>
+<caption class="title">Table 113. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10786,7 +11105,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 112. Paramètres en entrée</caption>
+<caption class="title">Table 114. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10916,7 +11235,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 113. Paramètres en entrée</caption>
+<caption class="title">Table 115. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11145,7 +11464,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 114. Paramètres en entrée</caption>
+<caption class="title">Table 116. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11265,7 +11584,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 115. Paramètres en entrée</caption>
+<caption class="title">Table 117. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11378,7 +11697,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 116. Paramètres en entrée</caption>
+<caption class="title">Table 118. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11512,7 +11831,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 117. Paramètres en entrée</caption>
+<caption class="title">Table 119. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11815,7 +12134,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 118. Paramètres en entrée</caption>
+<caption class="title">Table 120. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11925,7 +12244,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 119. Paramètres en entrée</caption>
+<caption class="title">Table 121. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12053,7 +12372,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 120. Paramètres en entrée</caption>
+<caption class="title">Table 122. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12157,7 +12476,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 121. Paramètres en entrée</caption>
+<caption class="title">Table 123. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12300,7 +12619,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 122. Paramètres en entrée</caption>
+<caption class="title">Table 124. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12495,7 +12814,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 123. Paramètres en entrée</caption>
+<caption class="title">Table 125. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 50%;">
@@ -12673,7 +12992,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <p>connectionData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 124. Paramètres en entrée</caption>
+<caption class="title">Table 126. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12743,7 +13062,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 125. Paramètres en sortie</caption>
+<caption class="title">Table 127. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12866,7 +13185,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSCommonDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 126. Paramètres en sortie</caption>
+<caption class="title">Table 128. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -12965,7 +13284,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>documentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 127. Paramètres en sortie</caption>
+<caption class="title">Table 129. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13103,7 +13422,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 128. Paramètres en entrée</caption>
+<caption class="title">Table 130. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -13247,7 +13566,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 129. Paramètres en sortie</caption>
+<caption class="title">Table 131. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13315,7 +13634,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_search_results_v1"><a class="anchor" href="#appendix_search_results_v1"></a>4.4.1. <strong>WSSearchResultType</strong></h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 130. Paramètres en sortie</caption>
+<caption class="title">Table 132. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13384,7 +13703,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 131. Paramètres en sortie</caption>
+<caption class="title">Table 133. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13513,6 +13832,197 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect3">
+<h4 id="appendix_fulltext_search_results"><a class="anchor" href="#appendix_fulltext_search_results"></a>4.4.3. <strong>PageableFullTextSearchResults</strong></h4>
+<div class="paragraph">
+<p>La réponse est retournée sous forme de chaîne de caractères, au format <code><span style="color:#FF7C29">json</span></code> (<code><span style="color:#73A12E">REST</span></code>)</p>
+</div>
+<div class="paragraph">
+<p>Celle-ci contient les informations suivantes :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 134. Paramètres en sortie</caption>
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Observations</th>
+<th class="tableblock halign-left valign-top">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4"><div class="content"><div class="paragraph">
+<p><strong>documents</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>id</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant AIRS du document</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ctCode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type de contenu</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4"><div class="content"><div class="paragraph">
+<p><strong>documents</strong> &gt; <strong>fields</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>code</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>code du champ</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>field</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>valeur du champ</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>attachmentId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant de la pièce jointe contenant le fragment de texte identifié</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>score</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Score</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valeur numérique (<span class="underline">à titre indicatif</span>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>float</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>fragment</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Fragment de texte du document contenant les critères recherchés</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Attention</strong>, au format <strong>html</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>missingTerms</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="underline">à titre indicatif</span>, Liste des mots non trouvés non trouvés dans le fragment</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>string</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top" colspan="4"><div class="content"><div class="paragraph">
+<p><strong>page</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>size</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Taille de la page (demandée/retournée)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>number</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Numéro de page (demandée/retournée)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>totalResults</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre total de résultats</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>totalPages</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre total de page</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>integer</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -13531,7 +14041,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 132. Paramètres en sortie</caption>
+<caption class="title">Table 135. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13577,7 +14087,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 133. Paramètres en sortie</caption>
+<caption class="title">Table 136. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13747,7 +14257,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 134. Paramètres en sortie</caption>
+<caption class="title">Table 137. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14358,7 +14868,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 135. Paramètres en sortie</caption>
+<caption class="title">Table 138. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14552,7 +15062,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 136. Paramètres en sortie</caption>
+<caption class="title">Table 139. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14628,7 +15138,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 137. Paramètres en sortie</caption>
+<caption class="title">Table 140. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14729,7 +15239,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 138. Paramètres en entrée</caption>
+<caption class="title">Table 141. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15039,7 +15549,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 139. Paramètres en sortie</caption>
+<caption class="title">Table 142. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15113,7 +15623,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 140. Paramètres en entrée</caption>
+<caption class="title">Table 143. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15280,7 +15790,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 141. Paramètres en sortie</caption>
+<caption class="title">Table 144. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15355,7 +15865,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 142. Paramètres en entrée</caption>
+<caption class="title">Table 145. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -15510,7 +16020,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 143. Paramètres en sortie</caption>
+<caption class="title">Table 146. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15580,7 +16090,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>attachmentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 144. Paramètres en sortie</caption>
+<caption class="title">Table 147. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15727,7 +16237,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 145. Paramètres en sortie</caption>
+<caption class="title">Table 148. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15998,7 +16508,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 146. Paramètres en sortie</caption>
+<caption class="title">Table 149. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16095,7 +16605,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 147. Paramètres en sortie</caption>
+<caption class="title">Table 150. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">

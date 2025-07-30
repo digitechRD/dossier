@@ -459,3 +459,121 @@ curl -X 'GET' \
 }
 ----
 cf le chapitre <<appendix_search_results_v2>> pour une description de la structure de retour.
+
+[[rest_full_text_search_results]]
+===== {GET} /search/fullTextResults
+
+Cette méthode permet d'obtenir les métadonnées des documents renvoyés par une requête *full-text* / *Plein-texte*. +
+Cette recherche peut être complétée avec des critères de recherche *AIRS*.
+
+Tout comme l'<<rest_search_results_v2,API>> décrite précédemment, les résultats sont [underline]#paginées#.
+
+[CAUTION]
+====
+Dans la réponse, l'attribut *page.totalResults* (et donc *page.totalPages*) comptabilise [underline]#seulment# les résultats bruts de la recherche
+*full-text*.
+
+Ce résultat est potentiellement erroné/surévalué car :
+
+* les droits documentaires ne sont calculés qu'au fil de l'eau (de la récupération des résultats)
+* les critères additionnels (attribut *airsRequest*) ne sont appliqués également qu'à chaque récupération unitaire.
+
+En cas d'appel de l'API sur une *page* (_attribut_) trop éloignée, les 2 attributs (*totalResults* et *totalPages*) seront ré-évaluées à leur valeur réelle.
+====
+
+[cols="1a,1a,4a,2a,3a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*query*|{query}|Requête *full-text*|[red]*Oui*|_Digitech entreprise_
+|*ctyCodes*|{query}|Liste des types de contenu dans lesquels la recherche est exécutée
+[TIP]
+====
+Pour effectuer une recherche sur tous les types de contnues, vous pouvez spécifier \*.* . +
+La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant au *flowCode*
+====
+|[red]*Oui*|CR
+|*flowCode*|{query}|Code du flux dans lequel la recherche est effectué|[green]*Non*|DEM_CONGE
+|*airsRequest*|{query}|Requête AIRS|[green]*Non*|D_CREAT>01/01/2018
+|*page*|{query}|Numéro de page souhaitée (voir la |[green]*Non*, défaut : *0*|
+|*size*|{query}|nombre de résultats maximum renvoyés|[green]*Non*, défaut : *20*|
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_n.felix_
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/search/fullTextResults?query=digitech%20entreprise&ctyCodes=%2A.%2A&flowCode=CR&airsRequest=CR_DES%20%3D%20%22Sideral%20Ecologie%22&page=0' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie (cf. <<search_getresultsjson_response_v2>>)
+^|[red]*401*|Authentification non fournie
+^|[red]*500*|Erreur interne au serveur/service
+^|[red]*503*|Si le service *full-text* n'est pas disponible
+|===
+
+[[search_getfulltextresultsjson_response]]
+[source,json]
+.PageableFullTextSearchResults
+----
+{
+  "documents": [
+    {
+      "id": 2724,
+      "ctCode": "CR",
+      "fields": [
+        {
+          "code": "D_MODIF",
+          "field": "28/09/2018 16:33:13"
+        },
+        {
+          "code": "CR_THEME",
+          "field": "173"
+        },
+        {
+          "code": "D_CREAT",
+          "field": "28/09/2018 16:33:13"
+        },
+        {
+          "code": "CR_DES",
+          "field": "Sideral Ecologie"
+        },
+        {
+          "code": "CR_REDACTEUR",
+          "field": "7"
+        },
+        {
+          "code": "CR_DATE",
+          "field": "28/09/2018 0:00:00"
+        },
+        {
+          "code": "CR_RESUME",
+          "field": "CR de la 1e réunion du groupe"
+        }
+      ],
+      "attachmentId": 2585,
+      "score": 5.2279444,
+      "fragment": "Quelques propositions Application directe N&eacute;cessitant &eacute;changes avec la direction (et avec les DP) Disposer pour <span class=\"highlight highlight1\">Digitech</span> d&rsquo;un container ext&eacute;rieur pour les papiers X - si non propos&eacute; par la ville, recourir &agrave; une association pour la r&eacute;cup&eacute;ration..."
+    }
+  ],
+  "page": {
+    "size": 1,
+    "number": 0,
+    "totalResults": 1,
+    "totalPages": 1
+  }
+}
+----
+cf le chapitre <<appendix_fulltext_search_results>> pour une description de la structure de retour.
