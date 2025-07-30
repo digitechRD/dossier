@@ -137,7 +137,7 @@
 <li><a href="#_get_dossiercontextflows">2.7.3.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
 <li><a href="#dossierContext_contentType_ctycode_old">2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
 <li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.7.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
-<li><a href="#dossierContext_contentType_ctycode_new">2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}/{mode}</a></li>
+<li><a href="#dossierContext_contentType_ctycode_new">2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctCode}/{mode}</a></li>
 <li><a href="#dossierContext_contentType_links">2.7.3.5. <strong class="get">GET</strong> /dossierContext/contentType/links/{ctCode}</a></li>
 <li><a href="#_get_dossiercontextcontenttypes">2.7.3.6. <strong class="get">GET</strong> /dossierContext/contentTypes</a></li>
 <li><a href="#_get_dossiercontextcontenttypesflowcode">2.7.3.7. <strong class="get">GET</strong> /dossierContext/contentTypes/{flowCode}</a></li>
@@ -5739,7 +5739,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="dossierContext_contentType_ctycode_new"><a class="anchor" href="#dossierContext_contentType_ctycode_new"></a>2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}/{mode}</h5>
+<h5 id="dossierContext_contentType_ctycode_new"><a class="anchor" href="#dossierContext_contentType_ctycode_new"></a>2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctCode}/{mode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
@@ -5871,6 +5871,14 @@ de cette <strong>API</strong>.</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">403</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Type de contenu non autorisé pour l&#8217;utilisateur</p>
 </div></div></td>
 </tr>
 <tr>

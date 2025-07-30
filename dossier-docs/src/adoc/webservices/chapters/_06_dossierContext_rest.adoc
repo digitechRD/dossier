@@ -188,7 +188,7 @@ curl -X 'GET' \
 ----
 
 [[dossierContext_contentType_ctycode_new]]
-===== {GET} /dossierContext/contentType/{ctyCode}/{mode}
+===== {GET} /dossierContext/contentType/{ctCode}/{mode}
 
 Cette méthode permet de récupérer la liste des informations d'un type de contenu.
 
@@ -225,6 +225,7 @@ curl -X 'GET' \
 ^|[lime]*200*|Opération réussie (cf. exemple <<dossiercontext_getcontenttypejson_new_response1, ici>> ou <<dossiercontext_getcontenttypejson_new_response2,
 là>> ou <<dossiercontext_getcontenttypejson_new_response3,encore là>>)
 ^|[red]*401*|Authentification non fournie
+^|[red]*403*|Type de contenu non autorisé pour l'utilisateur
 ^|[red]*404*|Type de contenu non trouvé
 ^|[red]*500*|Erreur interne au serveur/service
 |===
