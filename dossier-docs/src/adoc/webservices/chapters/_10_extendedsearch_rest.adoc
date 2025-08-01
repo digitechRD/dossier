@@ -132,7 +132,6 @@ La raison pour laquelle la méthode précédente n'est pas simplement utilisée 
 minimiser les opérations de migration.
 ====
 
-
 [cols="1a,1a,4a,2a,3a",options="header"]
 .Paramètres en entrée
 |===
@@ -164,6 +163,14 @@ Cette méthode est similaire à la <<extended_search_rest_v2, précédente>> en 
 5+|voir paramètres définis au chapitre <<extended_search_rest_v2,précédent>>
 |*page*|{query}|Numéro de page souhaitée (voir la |[green]*Non*, défaut : *0*|
 |*size*|{query}|nombre de résultats maximum renvoyés|[green]*Non*, défaut : *20*|
+|*disableCache*|{query}|Permet de désactiver le cache de la requête si elle a été précédemment exécutée.
+
+[NOTE]
+====
+En effet, pour des raisons de performances, lorsque vous souhaitez naviguer entre les différentes pages de résultats (à l'aide l'attribut *page*), la
+recherche n'est pas (_par défaut_) rejouée, mais seul l'intervalle de résultats (_documents_) est générée.
+====
+|[green]*Non*, défaut : *false*|
 |===
 
 [source]
