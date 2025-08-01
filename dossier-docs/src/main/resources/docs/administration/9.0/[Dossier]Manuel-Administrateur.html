@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">29/07/2025 08:55:33</span>
+<span id="revdate">01/08/2025 17:14:57</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -136,6 +136,12 @@
 <ul class="sectlevel3">
 <li><a href="#_introduction_2">6.3.1. Introduction</a></li>
 <li><a href="#_déclaration">6.3.2. Déclaration</a></li>
+</ul>
+</li>
+<li><a href="#_20_custom_masks">6.4. Ajout de masques de saisie sur les champs de type <strong>input</strong></a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_3">6.4.1. Introduction</a></li>
+<li><a href="#_déclaration_2">6.4.2. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -8280,6 +8286,129 @@ la définition du cron souhaité.</p>
 <p>À 6h et 21h les jours ouvrés : <code>0 0 6,21 ? * MON-FRI *</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_20_custom_masks"><a class="anchor" href="#_20_custom_masks"></a>6.4. Ajout de masques de saisie sur les champs de type <strong>input</strong></h3>
+<div class="sect3">
+<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>6.4.1. Introduction</h4>
+<div class="paragraph">
+<p>Selon la configuration, il peut être intéressant d&#8217;appliquer un masque de saisie sur certains champs, dans le but de faciliter l&#8217;expérience utilisateur.</p>
+</div>
+<div class="paragraph">
+<p>Cela est déjà <em>automatiquement</em> appliqué pour les champs de type <strong>date</strong>, mais d&#8217;autres champs peuvent avoir des règles, par exemple :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>un numéro de série (Numéro de <strong>Sécurité Sociale</strong>, numéro de <strong>facture</strong>, &#8230;&#8203;)</p>
+</li>
+<li>
+<p>un numéro de <strong>téléphone</strong></p>
+</li>
+<li>
+<p>un champ <strong>date</strong> spécial (c&#8217;est-à-dire un autre format que celui appliqué par défaut)</p>
+</li>
+<li>
+<p>un <strong>email</strong></p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.4.2. Déclaration</h4>
+<div class="paragraph">
+<p>La déclaration s&#8217;effectue en 2 actions :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ajout d&#8217;un <strong>styleClass</strong> dédié au format sur chaque champ concerné</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce paramétrage peut être défini via le module <code><span style="color:#25EF72">adminAIRS</span></code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>en <strong>recherche</strong>, élément <strong>cssClass</strong></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;input main="false"&gt;
+  &lt;operator&gt;=&lt;/operator&gt;
+  &lt;label&gt;Numéro d'affaire&lt;/label&gt;
+  &lt;airsfield&gt;
+    &lt;codeField&gt;PRO_AFF_NUM&lt;/codeField&gt;
+  &lt;/airsfield&gt;
+  ...
+  &lt;cssClass&gt;coucou maskNumAffaire&lt;/cssClass&gt;
+&lt;/input&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>en <strong>édition/consultation</strong>, attribut <strong>cssClass</strong></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;input readonly="false" required="false" display="true" cssClass="dateInversee"&gt;
+  &lt;label&gt;Date de naissance (AAAA-MM-JJ)&lt;/label&gt;
+  &lt;airsfield&gt;ACT_DATE_NAI&lt;/airsfield&gt;
+&lt;/ns2:input&gt;</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ajout d&#8217;une méthode nommée <strong><span class="underline">obligatoirement</span></strong> <strong>customExternalFunction</strong> dans le fichier <strong>custom/ui/js/custom.js</strong></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">let customExternalFunction = function applyInputMasksFct() {
+  $jQ(".maskNumAffaire").inputmask({mask: "9999/99999"});
+  $jQ(".dateInversee").inputmask({alias: "datetime", inputFormat: "yyyy-MM-dd", placeholder: '_'});
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Les masques sont appliqués grâce au plugin <em>javascript</em> <a href="https://robinherbots.github.io/Inputmask/#/documentation" target="_blank" rel="noopener"><strong>inputMask</strong></a>.<br>
+Veuillez vous référencer à la documentation pour obtenir l&#8217;éventail des possibilités.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>

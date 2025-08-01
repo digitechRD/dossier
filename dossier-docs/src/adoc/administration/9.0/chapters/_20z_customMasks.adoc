@@ -1,0 +1,62 @@
+[[_20_custom_masks]]
+=== Ajout de masques de saisie sur les champs de type *input*
+
+==== Introduction
+
+Selon la configuration, il peut être intéressant d'appliquer un masque de saisie sur certains champs, dans le but de faciliter l'expérience utilisateur.
+
+Cela est déjà _automatiquement_ appliqué pour les champs de type *date*, mais d'autres champs peuvent avoir des règles, par exemple :
+
+* un numéro de série (Numéro de *Sécurité Sociale*, numéro de *facture*, ...)
+* un numéro de *téléphone*
+* un champ *date* spécial (c'est-à-dire un autre format que celui appliqué par défaut)
+* un *email*
+* ...
+
+==== Déclaration
+
+La déclaration s'effectue en 2 actions :
+
+* ajout d'un *styleClass* dédié au format sur chaque champ concerné
+
+[TIP]
+====
+Ce paramétrage peut être défini via le module {adminAirs}
+====
+** en *recherche*, élément *cssClass*
+
+```xml
+<input main="false">
+  <operator>=</operator>
+  <label>Numéro d'affaire</label>
+  <airsfield>
+    <codeField>PRO_AFF_NUM</codeField>
+  </airsfield>
+  ...
+  <cssClass>coucou maskNumAffaire</cssClass>
+</input>
+```
+
+** en *édition/consultation*, attribut *cssClass*
+
+```xml
+<input readonly="false" required="false" display="true" cssClass="dateInversee">
+  <label>Date de naissance (AAAA-MM-JJ)</label>
+  <airsfield>ACT_DATE_NAI</airsfield>
+</ns2:input>
+```
+
+* ajout d'une méthode nommée *[underline]#obligatoirement#* *customExternalFunction* dans le fichier *custom/ui/js/custom.js*
+
+```javascript
+let customExternalFunction = function applyInputMasksFct() {
+  $jQ(".maskNumAffaire").inputmask({mask: "9999/99999"});
+  $jQ(".dateInversee").inputmask({alias: "datetime", inputFormat: "yyyy-MM-dd", placeholder: '_'});
+}
+```
+
+[IMPORTANT]
+====
+Les masques sont appliqués grâce au plugin _javascript_ https://robinherbots.github.io/Inputmask/#/documentation[*inputMask*, window="_blank"]. +
+Veuillez vous référencer à la documentation pour obtenir l'éventail des possibilités.
+====
