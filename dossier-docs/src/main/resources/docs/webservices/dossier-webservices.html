@@ -41,163 +41,154 @@
 <li><a href="#introduction">1. Introduction</a></li>
 <li><a href="#rest">2. <code><span style="color:#73A12E">REST</span></code></a>
 <ul class="sectlevel2">
-<li><a href="#document_rest">2.1. Document</a>
+<li><a href="#rest_athentication">2.1. Authentification</a></li>
+<li><a href="#rest_language">2.2. Langues</a></li>
+<li><a href="#document_rest">2.3. Document</a>
 <ul class="sectlevel3">
-<li><a href="#_client">2.1.1. Client</a></li>
-<li><a href="#_authentification">2.1.2. Authentification</a></li>
-<li><a href="#_méthodes">2.1.3. Méthodes</a>
+<li><a href="#_client">2.3.1. Client</a></li>
+<li><a href="#_méthodes">2.3.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_post_document">2.1.3.1. <strong class="post">POST</strong> /document</a></li>
-<li><a href="#_get_documentdocid">2.1.3.2. <strong class="get">GET</strong> /document/{docId}</a></li>
-<li><a href="#_patch_documentdocid">2.1.3.3. <strong class="patch">PATCH</strong> /document/{docId}</a></li>
-<li><a href="#_delete_documentdocid">2.1.3.4. <strong class="delete">DELETE</strong> /document/{docId}</a></li>
-<li><a href="#_delete_documentremovedocid">2.1.3.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</a></li>
-<li><a href="#_patch_documentunlockdocid">2.1.3.6. <strong class="patch">PATCH</strong> /document/unlock/{docId}</a></li>
-<li><a href="#_patch_documentunlockall">2.1.3.7. <strong class="patch">PATCH</strong> /document/unlockAll</a></li>
-<li><a href="#_patch_documentlockdocid">2.1.3.8. <strong class="patch">PATCH</strong> /document/lock/{docId}</a></li>
-<li><a href="#_patch_documentlockdociduserid">2.1.3.9. <strong class="patch">PATCH</strong> /document/lock/{docId}/{userId}</a></li>
+<li><a href="#_post_document">2.3.2.1. <strong class="post">POST</strong> /document</a></li>
+<li><a href="#_get_documentdocid">2.3.2.2. <strong class="get">GET</strong> /document/{docId}</a></li>
+<li><a href="#_patch_documentdocid">2.3.2.3. <strong class="patch">PATCH</strong> /document/{docId}</a></li>
+<li><a href="#_delete_documentdocid">2.3.2.4. <strong class="delete">DELETE</strong> /document/{docId}</a></li>
+<li><a href="#_delete_documentremovedocid">2.3.2.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</a></li>
+<li><a href="#_patch_documentunlockdocid">2.3.2.6. <strong class="patch">PATCH</strong> /document/unlock/{docId}</a></li>
+<li><a href="#_patch_documentunlockall">2.3.2.7. <strong class="patch">PATCH</strong> /document/unlockAll</a></li>
+<li><a href="#_patch_documentlockdocid">2.3.2.8. <strong class="patch">PATCH</strong> /document/lock/{docId}</a></li>
+<li><a href="#_patch_documentlockdociduserid">2.3.2.9. <strong class="patch">PATCH</strong> /document/lock/{docId}/{userId}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#authority_list_rest">2.2. AuthorityList</a>
+<li><a href="#authority_list_rest">2.4. AuthorityList</a>
 <ul class="sectlevel3">
-<li><a href="#_client_2">2.2.1. Client</a></li>
-<li><a href="#_authentification_2">2.2.2. Authentification</a></li>
-<li><a href="#_méthodes_2">2.2.3. Méthodes</a>
+<li><a href="#_client_2">2.4.1. Client</a></li>
+<li><a href="#_méthodes_2">2.4.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_authoritylist">2.2.3.1. <strong class="get">GET</strong> /authorityList</a></li>
-<li><a href="#_get_authoritylistfieldcode">2.2.3.2. <strong class="get">GET</strong> /authorityList/{fieldCode}</a></li>
+<li><a href="#_get_authoritylist">2.4.2.1. <strong class="get">GET</strong> /authorityList</a></li>
+<li><a href="#_get_authoritylistfieldcode">2.4.2.2. <strong class="get">GET</strong> /authorityList/{fieldCode}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#baskets_rest">2.3. Baskets</a>
+<li><a href="#baskets_rest">2.5. Baskets</a>
 <ul class="sectlevel3">
-<li><a href="#_client_3">2.3.1. Client</a></li>
-<li><a href="#_authentification_3">2.3.2. Authentification</a></li>
-<li><a href="#_méthodes_3">2.3.3. Méthodes</a>
+<li><a href="#_client_3">2.5.1. Client</a></li>
+<li><a href="#_méthodes_3">2.5.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_baskets">2.3.3.1. <strong class="get">GET</strong> /baskets</a></li>
-<li><a href="#_get_basketsorgidorgid">2.3.3.2. <strong class="get">GET</strong> /baskets/orgId/{orgId}</a></li>
-<li><a href="#_get_basketsflowcodeflowcode">2.3.3.3. <strong class="get">GET</strong> /baskets/flowCode/{flowCode}</a></li>
-<li><a href="#_get_basketsdoccountbasketname">2.3.3.4. <strong class="get">GET</strong> /baskets/docCount/{basketName}</a></li>
-<li><a href="#_get_basketsdoclinkbasketname">2.3.3.5. <strong class="get">GET</strong> /baskets/docLink/{basketName}</a></li>
+<li><a href="#_get_baskets">2.5.2.1. <strong class="get">GET</strong> /baskets</a></li>
+<li><a href="#_get_basketsorgidorgid">2.5.2.2. <strong class="get">GET</strong> /baskets/orgId/{orgId}</a></li>
+<li><a href="#_get_basketsflowcodeflowcode">2.5.2.3. <strong class="get">GET</strong> /baskets/flowCode/{flowCode}</a></li>
+<li><a href="#_get_basketsdoccountbasketname">2.5.2.4. <strong class="get">GET</strong> /baskets/docCount/{basketName}</a></li>
+<li><a href="#_get_basketsdoclinkbasketname">2.5.2.5. <strong class="get">GET</strong> /baskets/docLink/{basketName}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#search_rest">2.4. Search</a>
+<li><a href="#search_rest">2.6. Search</a>
 <ul class="sectlevel3">
-<li><a href="#_client_4">2.4.1. Client</a></li>
-<li><a href="#_authentification_4">2.4.2. Authentification</a></li>
-<li><a href="#_méthodes_4">2.4.3. Méthodes</a>
+<li><a href="#_client_4">2.6.1. Client</a></li>
+<li><a href="#_méthodes_4">2.6.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_searchdoccount">2.4.3.1. <strong class="get">GET</strong> /search/docCount</a></li>
-<li><a href="#_get_searchdoclink">2.4.3.2. <strong class="get">GET</strong> /search/docLink</a></li>
-<li><a href="#rest_search_results">2.4.3.3. <strong class="get">GET</strong> /search/results</a></li>
-<li><a href="#rest_search_results_v2">2.4.3.4. <strong class="get">GET</strong> /search/v2/results</a></li>
-<li><a href="#rest_full_text_search_results">2.4.3.5. <strong class="get">GET</strong> /search/fullTextResults</a></li>
+<li><a href="#_get_searchdoccount">2.6.2.1. <strong class="get">GET</strong> /search/docCount</a></li>
+<li><a href="#_get_searchdoclink">2.6.2.2. <strong class="get">GET</strong> /search/docLink</a></li>
+<li><a href="#rest_search_results">2.6.2.3. <strong class="get">GET</strong> /search/results</a></li>
+<li><a href="#rest_search_results_v2">2.6.2.4. <strong class="get">GET</strong> /search/v2/results</a></li>
+<li><a href="#rest_full_text_search_results">2.6.2.5. <strong class="get">GET</strong> /search/fullTextResults</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#hierarchy_rest">2.5. Hiérarchie</a>
+<li><a href="#hierarchy_rest">2.7. Hiérarchie</a>
 <ul class="sectlevel3">
-<li><a href="#_client_5">2.5.1. Client</a></li>
-<li><a href="#_authentification_5">2.5.2. Authentification</a></li>
-<li><a href="#_méthodes_5">2.5.3. Méthodes</a>
+<li><a href="#_client_5">2.7.1. Client</a></li>
+<li><a href="#_méthodes_5">2.7.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_hierarchy">2.5.3.1. <strong class="get">GET</strong> /hierarchy</a></li>
+<li><a href="#_get_hierarchy">2.7.2.1. <strong class="get">GET</strong> /hierarchy</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#attachment_rest">2.6. Attachment</a>
+<li><a href="#attachment_rest">2.8. Attachment</a>
 <ul class="sectlevel3">
-<li><a href="#_client_6">2.6.1. Client</a></li>
-<li><a href="#_authentification_6">2.6.2. Authentification</a></li>
-<li><a href="#_méthodes_6">2.6.3. Méthodes</a>
+<li><a href="#_client_6">2.8.1. Client</a></li>
+<li><a href="#_méthodes_6">2.8.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_post_attachmentdocid">2.6.3.1. <strong class="post">POST</strong> /attachment/{docId}</a></li>
-<li><a href="#_get_attachmentdocid">2.6.3.2. <strong class="get">GET</strong> /attachment/{docId}</a></li>
-<li><a href="#_get_attachmentdocidattachmentid">2.6.3.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</a></li>
-<li><a href="#_delete_attachmentdocid">2.6.3.4. <strong class="delete">DELETE</strong> /attachment/{docId}</a></li>
-<li><a href="#_get_attachmentdownloadattachmentid">2.6.3.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</a></li>
+<li><a href="#_post_attachmentdocid">2.8.2.1. <strong class="post">POST</strong> /attachment/{docId}</a></li>
+<li><a href="#_get_attachmentdocid">2.8.2.2. <strong class="get">GET</strong> /attachment/{docId}</a></li>
+<li><a href="#_get_attachmentdocidattachmentid">2.8.2.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</a></li>
+<li><a href="#_delete_attachmentdocid">2.8.2.4. <strong class="delete">DELETE</strong> /attachment/{docId}</a></li>
+<li><a href="#_get_attachmentdownloadattachmentid">2.8.2.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#dossierContext_rest">2.7. DossierContext</a>
+<li><a href="#dossierContext_rest">2.9. DossierContext</a>
 <ul class="sectlevel3">
-<li><a href="#_client_7">2.7.1. Client</a></li>
-<li><a href="#_authentification_7">2.7.2. Authentification</a></li>
-<li><a href="#_méthodes_7">2.7.3. Méthodes</a>
+<li><a href="#_client_7">2.9.1. Client</a></li>
+<li><a href="#_méthodes_7">2.9.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_dossiercontextflows">2.7.3.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
-<li><a href="#dossierContext_contentType_ctycode_old">2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
-<li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.7.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
-<li><a href="#dossierContext_contentType_ctycode_new">2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctCode}/{mode}</a></li>
-<li><a href="#dossierContext_contentType_links">2.7.3.5. <strong class="get">GET</strong> /dossierContext/contentType/links/{ctCode}</a></li>
-<li><a href="#_get_dossiercontextcontenttypes">2.7.3.6. <strong class="get">GET</strong> /dossierContext/contentTypes</a></li>
-<li><a href="#_get_dossiercontextcontenttypesflowcode">2.7.3.7. <strong class="get">GET</strong> /dossierContext/contentTypes/{flowCode}</a></li>
+<li><a href="#_get_dossiercontextflows">2.9.2.1. <strong class="get">GET</strong> /dossierContext/flows</a></li>
+<li><a href="#dossierContext_contentType_ctycode_old">2.9.2.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</a></li>
+<li><a href="#_get_dossiercontextmandatoryfieldsctycode">2.9.2.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</a></li>
+<li><a href="#dossierContext_contentType_ctycode_new">2.9.2.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctCode}/{mode}</a></li>
+<li><a href="#dossierContext_contentType_links">2.9.2.5. <strong class="get">GET</strong> /dossierContext/contentType/links/{ctCode}</a></li>
+<li><a href="#_get_dossiercontextcontenttypes">2.9.2.6. <strong class="get">GET</strong> /dossierContext/contentTypes</a></li>
+<li><a href="#_get_dossiercontextcontenttypesflowcode">2.9.2.7. <strong class="get">GET</strong> /dossierContext/contentTypes/{flowCode}</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#extenddocument_rest">2.8. ExtendDocument</a>
+<li><a href="#extenddocument_rest">2.10. ExtendDocument</a>
 <ul class="sectlevel3">
-<li><a href="#_client_8">2.8.1. Client</a></li>
-<li><a href="#_authentification_8">2.8.2. Authentification</a></li>
-<li><a href="#_méthodes_8">2.8.3. Méthodes</a>
+<li><a href="#_client_8">2.10.1. Client</a></li>
+<li><a href="#_méthodes_8">2.10.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_delete_extenddocumentdeletedocuments">2.8.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</a></li>
-<li><a href="#_delete_deletedocumentstypedeletetype">2.8.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</a></li>
-<li><a href="#_get_extenddocumentdocid">2.8.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</a></li>
-<li><a href="#_post_extenddocument">2.8.3.4. <strong class="post">POST</strong> /extendDocument</a></li>
-<li><a href="#_patch_extenddocument">2.8.3.5. <strong class="patch">PATCH</strong> /extendDocument</a></li>
+<li><a href="#_delete_extenddocumentdeletedocuments">2.10.2.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</a></li>
+<li><a href="#_delete_deletedocumentstypedeletetype">2.10.2.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</a></li>
+<li><a href="#_get_extenddocumentdocid">2.10.2.3. <strong class="get">GET</strong> /extendDocument/{docId}</a></li>
+<li><a href="#_post_extenddocument">2.10.2.4. <strong class="post">POST</strong> /extendDocument</a></li>
+<li><a href="#_patch_extenddocument">2.10.2.5. <strong class="patch">PATCH</strong> /extendDocument</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#extended_search_rest">2.9. ExtendSearch</a>
+<li><a href="#extended_search_rest">2.11. ExtendSearch</a>
 <ul class="sectlevel3">
-<li><a href="#_client_9">2.9.1. Client</a></li>
-<li><a href="#_authentification_9">2.9.2. Authentification</a></li>
-<li><a href="#_méthodes_9">2.9.3. Méthodes</a>
+<li><a href="#_client_9">2.11.1. Client</a></li>
+<li><a href="#_méthodes_9">2.11.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#extended_search_rest_v1">2.9.3.1. <strong class="get">GET</strong> /search4FieldsAndAttachments</a></li>
-<li><a href="#extended_search_rest_v2">2.9.3.2. <strong class="get">GET</strong> /v2/search4FieldsAndAttachments</a></li>
-<li><a href="#extended_search_rest_v3">2.9.3.3. <strong class="get">GET</strong> /results</a></li>
+<li><a href="#extended_search_rest_v1">2.11.2.1. <strong class="get">GET</strong> /search4FieldsAndAttachments</a></li>
+<li><a href="#extended_search_rest_v2">2.11.2.2. <strong class="get">GET</strong> /v2/search4FieldsAndAttachments</a></li>
+<li><a href="#extended_search_rest_v3">2.11.2.3. <strong class="get">GET</strong> /results</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#workbook_rest">2.10. Workbook</a>
+<li><a href="#workbook_rest">2.12. Workbook</a>
 <ul class="sectlevel3">
-<li><a href="#_client_10">2.10.1. Client</a></li>
-<li><a href="#_authentification_10">2.10.2. Authentification</a></li>
-<li><a href="#_méthodes_10">2.10.3. Méthodes</a>
+<li><a href="#_client_10">2.12.1. Client</a></li>
+<li><a href="#_méthodes_10">2.12.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_post_workbook">2.10.3.1. <strong class="post">POST</strong> /workbook</a></li>
-<li><a href="#_get_workbookid">2.10.3.2. <strong class="get">GET</strong> /workbook/{id}</a></li>
-<li><a href="#_get_workbook">2.10.3.3. <strong class="get">GET</strong> /workbook</a></li>
-<li><a href="#_patch_workbook">2.10.3.4. <strong class="patch">PATCH</strong> /workbook</a></li>
-<li><a href="#_delete_workbookid">2.10.3.5. <strong class="delete">DELETE</strong> /workbook/{id}</a></li>
-<li><a href="#_patch_workbookidadd">2.10.3.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</a></li>
-<li><a href="#_patch_workbookidremove">2.10.3.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</a></li>
+<li><a href="#_post_workbook">2.12.2.1. <strong class="post">POST</strong> /workbook</a></li>
+<li><a href="#_get_workbookid">2.12.2.2. <strong class="get">GET</strong> /workbook/{id}</a></li>
+<li><a href="#_get_workbook">2.12.2.3. <strong class="get">GET</strong> /workbook</a></li>
+<li><a href="#_patch_workbook">2.12.2.4. <strong class="patch">PATCH</strong> /workbook</a></li>
+<li><a href="#_delete_workbookid">2.12.2.5. <strong class="delete">DELETE</strong> /workbook/{id}</a></li>
+<li><a href="#_patch_workbookidadd">2.12.2.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</a></li>
+<li><a href="#_patch_workbookidremove">2.12.2.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#security_rest">2.11. Sécurité</a>
+<li><a href="#security_rest">2.13. Sécurité</a>
 <ul class="sectlevel3">
-<li><a href="#_client_11">2.11.1. Client</a></li>
-<li><a href="#_authentification_11">2.11.2. Authentification</a></li>
-<li><a href="#_méthodes_11">2.11.3. Méthodes</a>
+<li><a href="#_client_11">2.13.1. Client</a></li>
+<li><a href="#_méthodes_11">2.13.2. Méthodes</a>
 <ul class="sectlevel4">
-<li><a href="#_get_securityipblocked">2.11.3.1. <strong class="get">GET</strong> /security/ip/blocked</a></li>
-<li><a href="#_delete_securityipblockeddocid">2.11.3.2. <strong class="delete">DELETE</strong> /security/ip/blocked/{docId}</a></li>
+<li><a href="#_get_securityipblocked">2.13.2.1. <strong class="get">GET</strong> /security/ip/blocked</a></li>
+<li><a href="#_delete_securityipblockeddocid">2.13.2.2. <strong class="delete">DELETE</strong> /security/ip/blocked/{docId}</a></li>
 </ul>
 </li>
 </ul>
@@ -216,7 +207,7 @@
 <ul class="sectlevel3">
 <li><a href="#_client_13">3.2.1. Client</a></li>
 <li><a href="#_méthodes_13">3.2.2. Méthodes</a></li>
-<li><a href="#_authentification_12">3.2.3. Authentification</a></li>
+<li><a href="#_authentification">3.2.3. Authentification</a></li>
 </ul>
 </li>
 <li><a href="#baskets_soap">3.3. Baskets</a>
@@ -252,7 +243,7 @@
 <li><a href="#extended_search_soap">3.8. ExtendSearch</a>
 <ul class="sectlevel3">
 <li><a href="#_client_19">3.8.1. Client</a></li>
-<li><a href="#_authentification_13">3.8.2. Authentification</a></li>
+<li><a href="#_authentification_2">3.8.2. Authentification</a></li>
 <li><a href="#_méthodes_19">3.8.3. Méthodes</a></li>
 </ul>
 </li>
@@ -476,8 +467,17 @@ des raisons techniques, logiques et de données transitées).</p>
 <div class="ulist">
 <ul>
 <li>
-<p>La définition <strong>openapi</strong> peut être récupérée à l&#8217;adresse <strong><a href="http://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/rest/openapi.json" class="bare">http://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/rest/openapi.json</a></strong></p>
+<p>La définition <strong>openapi</strong> peut être récupérée à l&#8217;adresse</p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>http://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/rest/openapi.json</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>une interface <strong>swagger</strong> (permettant également de tester les <code><span style="color:#0099ff">Web Services</span></code>) est disponible à l&#8217;adresse</p>
 </li>
@@ -507,7 +507,7 @@ des raisons techniques, logiques et de données transitées).</p>
 <dl>
 <dt class="hdlist1"><code><span style="color:#4DEFE9">query</span></code></dt>
 <dd>
-<p>Paramètre ajouté à l&#8217;url (sous forme &amp;*&lt;Code&gt;=&lt;Valeur&gt;*)</p>
+<p>Paramètre ajouté à l&#8217;url (sous forme &amp;<strong>&lt;Code&gt;=&lt;Valeur&gt;</strong>)</p>
 </dd>
 <dt class="hdlist1"><code><span style="color:#36D74F">path</span></code></dt>
 <dd>
@@ -519,7 +519,7 @@ des raisons techniques, logiques et de données transitées).</p>
 </dd>
 <dt class="hdlist1"><code><span style="color:#996d27">multipart</span></code></dt>
 <dd>
-<p>Multiple données envoyées, de différents types, en un seul appel <code><span style="color:#f39c12">http</span></code>.</p>
+<p>Multiples données envoyées, de différents types, en un seul appel <code><span style="color:#f39c12">http</span></code>.</p>
 </dd>
 </dl>
 </div>
@@ -527,9 +527,27 @@ des raisons techniques, logiques et de données transitées).</p>
 </tr>
 </table>
 </div>
-<div style="page-break-after: always;"></div>
 <div class="sect2">
-<h3 id="document_rest"><a class="anchor" href="#document_rest"></a>2.1. Document</h3>
+<h3 id="rest_athentication"><a class="anchor" href="#rest_athentication"></a>2.1. Authentification</h3>
+<div class="paragraph">
+<p>les <code><span style="color:#0099ff">Web Services</span></code> décrits par la suite requièrent tous une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="rest_language"><a class="anchor" href="#rest_language"></a>2.2. Langues</h3>
+<div class="paragraph">
+<p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être paramétrée en plusieurs langues.</p>
+</div>
+<div class="paragraph">
+<p>Les <code><span style="color:#0099ff">Web Services</span></code> peuvent alors précisés la <em>locale</em>/<em>langue</em> via le paramètre d&#8217;entête <strong>Accept-language</strong>.</p>
+</div>
+<div class="paragraph">
+<p>La réponse indiquera la locale utilisée (via l&#8217;attribut <strong>Content-language</strong>).</p>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+<div class="sect2">
+<h3 id="document_rest"><a class="anchor" href="#document_rest"></a>2.3. Document</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -545,7 +563,7 @@ des raisons techniques, logiques et de données transitées).</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client"><a class="anchor" href="#_client"></a>2.1.1. Client</h4>
+<h4 id="_client"><a class="anchor" href="#_client"></a>2.3.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -553,15 +571,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification"><a class="anchor" href="#_authentification"></a>2.1.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes"><a class="anchor" href="#_méthodes"></a>2.1.3. Méthodes</h4>
+<h4 id="_méthodes"><a class="anchor" href="#_méthodes"></a>2.3.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_post_document"><a class="anchor" href="#_post_document"></a>2.1.3.1. <strong class="post">POST</strong> /document</h5>
+<h5 id="_post_document"><a class="anchor" href="#_post_document"></a>2.3.2.1. <strong class="post">POST</strong> /document</h5>
 <div class="paragraph">
 <p>Cette méthode permet de créer un document</p>
 </div>
@@ -729,7 +741,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_documentdocid"><a class="anchor" href="#_get_documentdocid"></a>2.1.3.2. <strong class="get">GET</strong> /document/{docId}</h5>
+<h5 id="_get_documentdocid"><a class="anchor" href="#_get_documentdocid"></a>2.3.2.2. <strong class="get">GET</strong> /document/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
 </div>
@@ -875,7 +887,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_documentdocid"><a class="anchor" href="#_patch_documentdocid"></a>2.1.3.3. <strong class="patch">PATCH</strong> /document/{docId}</h5>
+<h5 id="_patch_documentdocid"><a class="anchor" href="#_patch_documentdocid"></a>2.3.2.3. <strong class="patch">PATCH</strong> /document/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de mettre à jour les métadonnées d&#8217;un document</p>
 </div>
@@ -1054,7 +1066,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_documentdocid"><a class="anchor" href="#_delete_documentdocid"></a>2.1.3.4. <strong class="delete">DELETE</strong> /document/{docId}</h5>
+<h5 id="_delete_documentdocid"><a class="anchor" href="#_delete_documentdocid"></a>2.3.2.4. <strong class="delete">DELETE</strong> /document/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer logiquement un document.</p>
 </div>
@@ -1174,7 +1186,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_documentremovedocid"><a class="anchor" href="#_delete_documentremovedocid"></a>2.1.3.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</h5>
+<h5 id="_delete_documentremovedocid"><a class="anchor" href="#_delete_documentremovedocid"></a>2.3.2.5. <strong class="delete">DELETE</strong> /document/remove/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer physiquement un document.</p>
 </div>
@@ -1294,7 +1306,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_documentunlockdocid"><a class="anchor" href="#_patch_documentunlockdocid"></a>2.1.3.6. <strong class="patch">PATCH</strong> /document/unlock/{docId}</h5>
+<h5 id="_patch_documentunlockdocid"><a class="anchor" href="#_patch_documentunlockdocid"></a>2.3.2.6. <strong class="patch">PATCH</strong> /document/unlock/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer le verrou attaché à un document.</p>
 </div>
@@ -1408,7 +1420,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </table>
 </div>
 <div class="sect4">
-<h5 id="_patch_documentunlockall"><a class="anchor" href="#_patch_documentunlockall"></a>2.1.3.7. <strong class="patch">PATCH</strong> /document/unlockAll</h5>
+<h5 id="_patch_documentunlockall"><a class="anchor" href="#_patch_documentunlockall"></a>2.3.2.7. <strong class="patch">PATCH</strong> /document/unlockAll</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer tous les verrous en cours sur des documents</p>
 </div>
@@ -1509,7 +1521,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_documentlockdocid"><a class="anchor" href="#_patch_documentlockdocid"></a>2.1.3.8. <strong class="patch">PATCH</strong> /document/lock/{docId}</h5>
+<h5 id="_patch_documentlockdocid"><a class="anchor" href="#_patch_documentlockdocid"></a>2.3.2.8. <strong class="patch">PATCH</strong> /document/lock/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;ajouter un verrou à un document.</p>
 </div>
@@ -1645,7 +1657,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </table>
 </div>
 <div class="sect4">
-<h5 id="_patch_documentlockdociduserid"><a class="anchor" href="#_patch_documentlockdociduserid"></a>2.1.3.9. <strong class="patch">PATCH</strong> /document/lock/{docId}/{userId}</h5>
+<h5 id="_patch_documentlockdociduserid"><a class="anchor" href="#_patch_documentlockdociduserid"></a>2.3.2.9. <strong class="patch">PATCH</strong> /document/lock/{docId}/{userId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;ajouter un verrou à un document, pour un utilisateur particulier</p>
 </div>
@@ -1787,7 +1799,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 </div>
 <div class="sect2">
-<h3 id="authority_list_rest"><a class="anchor" href="#authority_list_rest"></a>2.2. AuthorityList</h3>
+<h3 id="authority_list_rest"><a class="anchor" href="#authority_list_rest"></a>2.4. AuthorityList</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -1803,7 +1815,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_2"><a class="anchor" href="#_client_2"></a>2.2.1. Client</h4>
+<h4 id="_client_2"><a class="anchor" href="#_client_2"></a>2.4.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IAuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -1811,15 +1823,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_2"><a class="anchor" href="#_authentification_2"></a>2.2.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_2"><a class="anchor" href="#_méthodes_2"></a>2.2.3. Méthodes</h4>
+<h4 id="_méthodes_2"><a class="anchor" href="#_méthodes_2"></a>2.4.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_authoritylist"><a class="anchor" href="#_get_authoritylist"></a>2.2.3.1. <strong class="get">GET</strong> /authorityList</h5>
+<h5 id="_get_authoritylist"><a class="anchor" href="#_get_authoritylist"></a>2.4.2.1. <strong class="get">GET</strong> /authorityList</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer tous les codes de liste d&#8217;autorité disponibles. Ces codes peuvent ensuite être utilisés au sein de la methode suivante afin de
 récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
@@ -1909,7 +1915,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_authoritylistfieldcode"><a class="anchor" href="#_get_authoritylistfieldcode"></a>2.2.3.2. <strong class="get">GET</strong> /authorityList/{fieldCode}</h5>
+<h5 id="_get_authoritylistfieldcode"><a class="anchor" href="#_get_authoritylistfieldcode"></a>2.4.2.2. <strong class="get">GET</strong> /authorityList/{fieldCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer les termes d&#8217;une liste d&#8217;autorité à partir de son code (<strong>fieldCode</strong>)</p>
 </div>
@@ -2032,7 +2038,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="baskets_rest"><a class="anchor" href="#baskets_rest"></a>2.3. Baskets</h3>
+<h3 id="baskets_rest"><a class="anchor" href="#baskets_rest"></a>2.5. Baskets</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2048,7 +2054,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_3"><a class="anchor" href="#_client_3"></a>2.3.1. Client</h4>
+<h4 id="_client_3"><a class="anchor" href="#_client_3"></a>2.5.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IBasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -2056,15 +2062,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_3"><a class="anchor" href="#_authentification_3"></a>2.3.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_3"><a class="anchor" href="#_méthodes_3"></a>2.3.3. Méthodes</h4>
+<h4 id="_méthodes_3"><a class="anchor" href="#_méthodes_3"></a>2.5.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_baskets"><a class="anchor" href="#_get_baskets"></a>2.3.3.1. <strong class="get">GET</strong> /baskets</h5>
+<h5 id="_get_baskets"><a class="anchor" href="#_get_baskets"></a>2.5.2.1. <strong class="get">GET</strong> /baskets</h5>
 <div class="paragraph">
 <p>Récupère la liste des noms des bannettes paramétrées pour l&#8217;application.</p>
 </div>
@@ -2132,7 +2132,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_basketsorgidorgid"><a class="anchor" href="#_get_basketsorgidorgid"></a>2.3.3.2. <strong class="get">GET</strong> /baskets/orgId/{orgId}</h5>
+<h5 id="_get_basketsorgidorgid"><a class="anchor" href="#_get_basketsorgidorgid"></a>2.5.2.2. <strong class="get">GET</strong> /baskets/orgId/{orgId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des noms des bannettes à partir d&#8217;un identifiant d&#8217;organisation (<strong>orgId</strong>).</p>
 </div>
@@ -2259,7 +2259,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_basketsflowcodeflowcode"><a class="anchor" href="#_get_basketsflowcodeflowcode"></a>2.3.3.3. <strong class="get">GET</strong> /baskets/flowCode/{flowCode}</h5>
+<h5 id="_get_basketsflowcodeflowcode"><a class="anchor" href="#_get_basketsflowcodeflowcode"></a>2.5.2.3. <strong class="get">GET</strong> /baskets/flowCode/{flowCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des noms des bannettes à partir d&#8217;un code identifiant de flux (<strong>flowCode</strong>).</p>
 </div>
@@ -2369,7 +2369,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_basketsdoccountbasketname"><a class="anchor" href="#_get_basketsdoccountbasketname"></a>2.3.3.4. <strong class="get">GET</strong> /baskets/docCount/{basketName}</h5>
+<h5 id="_get_basketsdoccountbasketname"><a class="anchor" href="#_get_basketsdoccountbasketname"></a>2.5.2.4. <strong class="get">GET</strong> /baskets/docCount/{basketName}</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (<strong>basketName</strong>).</p>
 </div>
@@ -2509,7 +2509,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_basketsdoclinkbasketname"><a class="anchor" href="#_get_basketsdoclinkbasketname"></a>2.3.3.5. <strong class="get">GET</strong> /baskets/docLink/{basketName}</h5>
+<h5 id="_get_basketsdoclinkbasketname"><a class="anchor" href="#_get_basketsdoclinkbasketname"></a>2.5.2.5. <strong class="get">GET</strong> /baskets/docLink/{basketName}</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (<strong>basketName</strong>)</p>
 </div>
@@ -2669,7 +2669,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="search_rest"><a class="anchor" href="#search_rest"></a>2.4. Search</h3>
+<h3 id="search_rest"><a class="anchor" href="#search_rest"></a>2.6. Search</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2685,7 +2685,7 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_4"><a class="anchor" href="#_client_4"></a>2.4.1. Client</h4>
+<h4 id="_client_4"><a class="anchor" href="#_client_4"></a>2.6.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.ISearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -2693,15 +2693,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_4"><a class="anchor" href="#_authentification_4"></a>2.4.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_4"><a class="anchor" href="#_méthodes_4"></a>2.4.3. Méthodes</h4>
+<h4 id="_méthodes_4"><a class="anchor" href="#_méthodes_4"></a>2.6.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_searchdoccount"><a class="anchor" href="#_get_searchdoccount"></a>2.4.3.1. <strong class="get">GET</strong> /search/docCount</h5>
+<h5 id="_get_searchdoccount"><a class="anchor" href="#_get_searchdoccount"></a>2.6.2.1. <strong class="get">GET</strong> /search/docCount</h5>
 <div class="paragraph">
 <p>Cette méthode renvoie le nombre de documents remontés par la requête AIRS</p>
 </div>
@@ -2915,7 +2909,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_searchdoclink"><a class="anchor" href="#_get_searchdoclink"></a>2.4.3.2. <strong class="get">GET</strong> /search/docLink</h5>
+<h5 id="_get_searchdoclink"><a class="anchor" href="#_get_searchdoclink"></a>2.6.2.2. <strong class="get">GET</strong> /search/docLink</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;obtenir les liens URL vers les documents renvoyés par la requête AIRS.</p>
 </div>
@@ -3146,7 +3140,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </div>
 </div>
 <div class="sect4">
-<h5 id="rest_search_results"><a class="anchor" href="#rest_search_results"></a>2.4.3.3. <strong class="get">GET</strong> /search/results</h5>
+<h5 id="rest_search_results"><a class="anchor" href="#rest_search_results"></a>2.6.2.3. <strong class="get">GET</strong> /search/results</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;obtenir les métadonnées des documents renvoyés par la requête AIRS.</p>
 </div>
@@ -3462,9 +3456,9 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </div>
 </div>
 <div class="sect4">
-<h5 id="rest_search_results_v2"><a class="anchor" href="#rest_search_results_v2"></a>2.4.3.4. <strong class="get">GET</strong> /search/v2/results</h5>
+<h5 id="rest_search_results_v2"><a class="anchor" href="#rest_search_results_v2"></a>2.6.2.4. <strong class="get">GET</strong> /search/v2/results</h5>
 <div class="paragraph">
-<p>Tout comme l&#8217;API décrite dans le chapitre précédent (<a href="#rest_search_results">Section 2.4.3.3, &#8220;<strong class="get">GET</strong> /search/results&#8221;</a>), cette méthode permet d&#8217;obtenir les métadonnées des documents renvoyés par
+<p>Tout comme l&#8217;API décrite dans le chapitre précédent (<a href="#rest_search_results">Section 2.6.2.3, &#8220;<strong class="get">GET</strong> /search/results&#8221;</a>), cette méthode permet d&#8217;obtenir les métadonnées des documents renvoyés par
 la requête AIRS,<br>
 <span class="underline">mais</span> les résultats sont désormais paginées.</p>
 </div>
@@ -3799,7 +3793,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </div>
 </div>
 <div class="sect4">
-<h5 id="rest_full_text_search_results"><a class="anchor" href="#rest_full_text_search_results"></a>2.4.3.5. <strong class="get">GET</strong> /search/fullTextResults</h5>
+<h5 id="rest_full_text_search_results"><a class="anchor" href="#rest_full_text_search_results"></a>2.6.2.5. <strong class="get">GET</strong> /search/fullTextResults</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;obtenir les métadonnées des documents renvoyés par une requête <strong>full-text</strong> / <strong>Plein-texte</strong>.<br>
 Cette recherche peut être complétée avec des critères de recherche <strong>AIRS</strong>.</p>
@@ -4119,7 +4113,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </div>
 </div>
 <div class="sect2">
-<h3 id="hierarchy_rest"><a class="anchor" href="#hierarchy_rest"></a>2.5. Hiérarchie</h3>
+<h3 id="hierarchy_rest"><a class="anchor" href="#hierarchy_rest"></a>2.7. Hiérarchie</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4135,22 +4129,16 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_5"><a class="anchor" href="#_client_5"></a>2.5.1. Client</h4>
+<h4 id="_client_5"><a class="anchor" href="#_client_5"></a>2.7.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IHierarchyClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_5"><a class="anchor" href="#_authentification_5"></a>2.5.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_5"><a class="anchor" href="#_méthodes_5"></a>2.5.3. Méthodes</h4>
+<h4 id="_méthodes_5"><a class="anchor" href="#_méthodes_5"></a>2.7.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_hierarchy"><a class="anchor" href="#_get_hierarchy"></a>2.5.3.1. <strong class="get">GET</strong> /hierarchy</h5>
+<h5 id="_get_hierarchy"><a class="anchor" href="#_get_hierarchy"></a>2.7.2.1. <strong class="get">GET</strong> /hierarchy</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer l&#8217;arborescence d&#8217;un document.</p>
 </div>
@@ -4656,7 +4644,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <div class="sect2">
-<h3 id="attachment_rest"><a class="anchor" href="#attachment_rest"></a>2.6. Attachment</h3>
+<h3 id="attachment_rest"><a class="anchor" href="#attachment_rest"></a>2.8. Attachment</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -4672,7 +4660,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_6"><a class="anchor" href="#_client_6"></a>2.6.1. Client</h4>
+<h4 id="_client_6"><a class="anchor" href="#_client_6"></a>2.8.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IAttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -4680,15 +4668,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_6"><a class="anchor" href="#_authentification_6"></a>2.6.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_6"><a class="anchor" href="#_méthodes_6"></a>2.6.3. Méthodes</h4>
+<h4 id="_méthodes_6"><a class="anchor" href="#_méthodes_6"></a>2.8.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_post_attachmentdocid"><a class="anchor" href="#_post_attachmentdocid"></a>2.6.3.1. <strong class="post">POST</strong> /attachment/{docId}</h5>
+<h5 id="_post_attachmentdocid"><a class="anchor" href="#_post_attachmentdocid"></a>2.8.2.1. <strong class="post">POST</strong> /attachment/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;ajouter ou de mettre à jour une pièce jointe</p>
 </div>
@@ -4826,7 +4808,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_attachmentdocid"><a class="anchor" href="#_get_attachmentdocid"></a>2.6.3.2. <strong class="get">GET</strong> /attachment/{docId}</h5>
+<h5 id="_get_attachmentdocid"><a class="anchor" href="#_get_attachmentdocid"></a>2.8.2.2. <strong class="get">GET</strong> /attachment/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des informations des des pièces jointes d&#8217;un document AIRS.</p>
 </div>
@@ -4948,7 +4930,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_attachmentdocidattachmentid"><a class="anchor" href="#_get_attachmentdocidattachmentid"></a>2.6.3.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</h5>
+<h5 id="_get_attachmentdocidattachmentid"><a class="anchor" href="#_get_attachmentdocidattachmentid"></a>2.8.2.3. <strong class="get">GET</strong> /attachment/{docId}/{attachmentId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer un une pièce jointe ainsi que son document AIRS.</p>
 </div>
@@ -5099,7 +5081,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_attachmentdocid"><a class="anchor" href="#_delete_attachmentdocid"></a>2.6.3.4. <strong class="delete">DELETE</strong> /attachment/{docId}</h5>
+<h5 id="_delete_attachmentdocid"><a class="anchor" href="#_delete_attachmentdocid"></a>2.8.2.4. <strong class="delete">DELETE</strong> /attachment/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer une pièce jointe d&#8217;un document AIRS.</p>
 </div>
@@ -5224,7 +5206,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_attachmentdownloadattachmentid"><a class="anchor" href="#_get_attachmentdownloadattachmentid"></a>2.6.3.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</h5>
+<h5 id="_get_attachmentdownloadattachmentid"><a class="anchor" href="#_get_attachmentdownloadattachmentid"></a>2.8.2.5. <strong class="get">GET</strong> /attachment/download/{attachmentId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de télécharger le binaire (contenu) d&#8217;une pièce jointe.</p>
 </div>
@@ -5327,7 +5309,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="dossierContext_rest"><a class="anchor" href="#dossierContext_rest"></a>2.7. DossierContext</h3>
+<h3 id="dossierContext_rest"><a class="anchor" href="#dossierContext_rest"></a>2.9. DossierContext</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -5343,7 +5325,7 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_7"><a class="anchor" href="#_client_7"></a>2.7.1. Client</h4>
+<h4 id="_client_7"><a class="anchor" href="#_client_7"></a>2.9.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IDossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -5351,15 +5333,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_7"><a class="anchor" href="#_authentification_7"></a>2.7.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_7"><a class="anchor" href="#_méthodes_7"></a>2.7.3. Méthodes</h4>
+<h4 id="_méthodes_7"><a class="anchor" href="#_méthodes_7"></a>2.9.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_dossiercontextflows"><a class="anchor" href="#_get_dossiercontextflows"></a>2.7.3.1. <strong class="get">GET</strong> /dossierContext/flows</h5>
+<h5 id="_get_dossiercontextflows"><a class="anchor" href="#_get_dossiercontextflows"></a>2.9.2.1. <strong class="get">GET</strong> /dossierContext/flows</h5>
 <div class="paragraph">
 <p>Cette méthode renvoie la liste des flux paramétrés au sein de l&#8217;application.</p>
 </div>
@@ -5443,7 +5419,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="dossierContext_contentType_ctycode_old"><a class="anchor" href="#dossierContext_contentType_ctycode_old"></a>2.7.3.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</h5>
+<h5 id="dossierContext_contentType_ctycode_old"><a class="anchor" href="#dossierContext_contentType_ctycode_old"></a>2.9.2.2. <strong class="get">GET</strong> /dossierContext/contentType/{ctyCode}</h5>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -5611,7 +5587,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_dossiercontextmandatoryfieldsctycode"><a class="anchor" href="#_get_dossiercontextmandatoryfieldsctycode"></a>2.7.3.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</h5>
+<h5 id="_get_dossiercontextmandatoryfieldsctycode"><a class="anchor" href="#_get_dossiercontextmandatoryfieldsctycode"></a>2.9.2.3. <strong class="get">GET</strong> /dossierContext/mandatoryFields/{ctyCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des champs obligatoires d&#8217;un type de contenu.</p>
 </div>
@@ -5739,7 +5715,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="dossierContext_contentType_ctycode_new"><a class="anchor" href="#dossierContext_contentType_ctycode_new"></a>2.7.3.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctCode}/{mode}</h5>
+<h5 id="dossierContext_contentType_ctycode_new"><a class="anchor" href="#dossierContext_contentType_ctycode_new"></a>2.9.2.4. <strong class="get">GET</strong> /dossierContext/contentType/{ctCode}/{mode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des informations d&#8217;un type de contenu.</p>
 </div>
@@ -5980,7 +5956,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="dossierContext_contentType_links"><a class="anchor" href="#dossierContext_contentType_links"></a>2.7.3.5. <strong class="get">GET</strong> /dossierContext/contentType/links/{ctCode}</h5>
+<h5 id="dossierContext_contentType_links"><a class="anchor" href="#dossierContext_contentType_links"></a>2.9.2.5. <strong class="get">GET</strong> /dossierContext/contentType/links/{ctCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer les informations sur les liens entre content-types.</p>
 </div>
@@ -6137,7 +6113,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_dossiercontextcontenttypes"><a class="anchor" href="#_get_dossiercontextcontenttypes"></a>2.7.3.6. <strong class="get">GET</strong> /dossierContext/contentTypes</h5>
+<h5 id="_get_dossiercontextcontenttypes"><a class="anchor" href="#_get_dossiercontextcontenttypes"></a>2.9.2.6. <strong class="get">GET</strong> /dossierContext/contentTypes</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des content-types, pour chaque <strong>flow</strong></p>
 </div>
@@ -6343,7 +6319,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_dossiercontextcontenttypesflowcode"><a class="anchor" href="#_get_dossiercontextcontenttypesflowcode"></a>2.7.3.7. <strong class="get">GET</strong> /dossierContext/contentTypes/{flowCode}</h5>
+<h5 id="_get_dossiercontextcontenttypesflowcode"><a class="anchor" href="#_get_dossiercontextcontenttypesflowcode"></a>2.9.2.7. <strong class="get">GET</strong> /dossierContext/contentTypes/{flowCode}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des content-types, pour un <strong>flow/flux</strong> précisé.</p>
 </div>
@@ -6555,7 +6531,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="extenddocument_rest"><a class="anchor" href="#extenddocument_rest"></a>2.8. ExtendDocument</h3>
+<h3 id="extenddocument_rest"><a class="anchor" href="#extenddocument_rest"></a>2.10. ExtendDocument</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -6571,21 +6547,15 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_8"><a class="anchor" href="#_client_8"></a>2.8.1. Client</h4>
+<h4 id="_client_8"><a class="anchor" href="#_client_8"></a>2.10.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IExte,dDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_8"><a class="anchor" href="#_authentification_8"></a>2.8.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_8"><a class="anchor" href="#_méthodes_8"></a>2.8.3. Méthodes</h4>
+<h4 id="_méthodes_8"><a class="anchor" href="#_méthodes_8"></a>2.10.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_delete_extenddocumentdeletedocuments"><a class="anchor" href="#_delete_extenddocumentdeletedocuments"></a>2.8.3.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</h5>
+<h5 id="_delete_extenddocumentdeletedocuments"><a class="anchor" href="#_delete_extenddocumentdeletedocuments"></a>2.10.2.1. <strong class="delete">DELETE</strong> /extendDocument/deleteDocuments</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer des documents par lot.</p>
 </div>
@@ -6699,7 +6669,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_deletedocumentstypedeletetype"><a class="anchor" href="#_delete_deletedocumentstypedeletetype"></a>2.8.3.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</h5>
+<h5 id="_delete_deletedocumentstypedeletetype"><a class="anchor" href="#_delete_deletedocumentstypedeletetype"></a>2.10.2.2. <strong class="delete">DELETE</strong> /deleteDocumentsType/{deleteType}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer des documents par lot en spécifiant le type de suppression.</p>
 </div>
@@ -6832,7 +6802,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_extenddocumentdocid"><a class="anchor" href="#_get_extenddocumentdocid"></a>2.8.3.3. <strong class="get">GET</strong> /extendDocument/{docId}</h5>
+<h5 id="_get_extenddocumentdocid"><a class="anchor" href="#_get_extenddocumentdocid"></a>2.10.2.3. <strong class="get">GET</strong> /extendDocument/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la première pièce jointe d&#8217;un document ainsi que la liste des identifiants des autres eventuelles pièces jointes.</p>
 </div>
@@ -6952,7 +6922,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_post_extenddocument"><a class="anchor" href="#_post_extenddocument"></a>2.8.3.4. <strong class="post">POST</strong> /extendDocument</h5>
+<h5 id="_post_extenddocument"><a class="anchor" href="#_post_extenddocument"></a>2.10.2.4. <strong class="post">POST</strong> /extendDocument</h5>
 <div class="paragraph">
 <p>Cette méthode permet créer des documents par lot.</p>
 </div>
@@ -7171,7 +7141,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_extenddocument"><a class="anchor" href="#_patch_extenddocument"></a>2.8.3.5. <strong class="patch">PATCH</strong> /extendDocument</h5>
+<h5 id="_patch_extenddocument"><a class="anchor" href="#_patch_extenddocument"></a>2.10.2.5. <strong class="patch">PATCH</strong> /extendDocument</h5>
 <div class="paragraph">
 <p>Cette méthode permet de mettre à jour des documents par lot.</p>
 </div>
@@ -7349,7 +7319,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 </div>
 <div class="sect2">
-<h3 id="extended_search_rest"><a class="anchor" href="#extended_search_rest"></a>2.9. ExtendSearch</h3>
+<h3 id="extended_search_rest"><a class="anchor" href="#extended_search_rest"></a>2.11. ExtendSearch</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -7365,22 +7335,16 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_9"><a class="anchor" href="#_client_9"></a>2.9.1. Client</h4>
+<h4 id="_client_9"><a class="anchor" href="#_client_9"></a>2.11.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_9"><a class="anchor" href="#_authentification_9"></a>2.9.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_9"><a class="anchor" href="#_méthodes_9"></a>2.9.3. Méthodes</h4>
+<h4 id="_méthodes_9"><a class="anchor" href="#_méthodes_9"></a>2.11.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="extended_search_rest_v1"><a class="anchor" href="#extended_search_rest_v1"></a>2.9.3.1. <strong class="get">GET</strong> /search4FieldsAndAttachments</h5>
+<h5 id="extended_search_rest_v1"><a class="anchor" href="#extended_search_rest_v1"></a>2.11.2.1. <strong class="get">GET</strong> /search4FieldsAndAttachments</h5>
 <div class="paragraph">
 <p>Cette méthode permet à partir d&#8217;une requête <code><span style="color:#25EF72">Airs</span></code> de récupérer</p>
 </div>
@@ -7619,7 +7583,7 @@ curl -X 'GET' \
 </div>
 </div>
 <div class="sect4">
-<h5 id="extended_search_rest_v2"><a class="anchor" href="#extended_search_rest_v2"></a>2.9.3.2. <strong class="get">GET</strong> /v2/search4FieldsAndAttachments</h5>
+<h5 id="extended_search_rest_v2"><a class="anchor" href="#extended_search_rest_v2"></a>2.11.2.2. <strong class="get">GET</strong> /v2/search4FieldsAndAttachments</h5>
 <div class="paragraph">
 <p>Cette méthode est identique à la <a href="#extended_search_rest_v1">précédente</a>, mais permet en plus de déléguer la recherche effectuée sur un compte différent de
 celui authentifié à l&#8217;API.</p>
@@ -7720,7 +7684,7 @@ minimiser les opérations de migration.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="extended_search_rest_v3"><a class="anchor" href="#extended_search_rest_v3"></a>2.9.3.3. <strong class="get">GET</strong> /results</h5>
+<h5 id="extended_search_rest_v3"><a class="anchor" href="#extended_search_rest_v3"></a>2.11.2.3. <strong class="get">GET</strong> /results</h5>
 <div class="paragraph">
 <p>Cette méthode est similaire à la <a href="#extended_search_rest_v2">précédente</a> en permettant en sus de naviguer (<em>bidirectionnellement</em>) parmi la plage de résultats
 (en lieu et place de l&#8217;utilisation du <em>continuationToken</em>)</p>
@@ -7983,7 +7947,7 @@ recherche n&#8217;est pas (<em>par défaut</em>) rejouée, mais seul l&#8217;int
 </div>
 </div>
 <div class="sect2">
-<h3 id="workbook_rest"><a class="anchor" href="#workbook_rest"></a>2.10. Workbook</h3>
+<h3 id="workbook_rest"><a class="anchor" href="#workbook_rest"></a>2.12. Workbook</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -7999,7 +7963,7 @@ recherche n&#8217;est pas (<em>par défaut</em>) rejouée, mais seul l&#8217;int
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_10"><a class="anchor" href="#_client_10"></a>2.10.1. Client</h4>
+<h4 id="_client_10"><a class="anchor" href="#_client_10"></a>2.12.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.IWorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation
@@ -8007,15 +7971,9 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_10"><a class="anchor" href="#_authentification_10"></a>2.10.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_10"><a class="anchor" href="#_méthodes_10"></a>2.10.3. Méthodes</h4>
+<h4 id="_méthodes_10"><a class="anchor" href="#_méthodes_10"></a>2.12.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_post_workbook"><a class="anchor" href="#_post_workbook"></a>2.10.3.1. <strong class="post">POST</strong> /workbook</h5>
+<h5 id="_post_workbook"><a class="anchor" href="#_post_workbook"></a>2.12.2.1. <strong class="post">POST</strong> /workbook</h5>
 <div class="paragraph">
 <p>Cette méthode permet de créer un classeur</p>
 </div>
@@ -8131,7 +8089,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_workbookid"><a class="anchor" href="#_get_workbookid"></a>2.10.3.2. <strong class="get">GET</strong> /workbook/{id}</h5>
+<h5 id="_get_workbookid"><a class="anchor" href="#_get_workbookid"></a>2.12.2.2. <strong class="get">GET</strong> /workbook/{id}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer les métadonnées d&#8217;un document à partir de son identifiant</p>
 </div>
@@ -8270,7 +8228,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_get_workbook"><a class="anchor" href="#_get_workbook"></a>2.10.3.3. <strong class="get">GET</strong> /workbook</h5>
+<h5 id="_get_workbook"><a class="anchor" href="#_get_workbook"></a>2.12.2.3. <strong class="get">GET</strong> /workbook</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer tous les classeurs visibles par l&#8217;utilisateur</p>
 </div>
@@ -8344,7 +8302,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_patch_workbook"><a class="anchor" href="#_patch_workbook"></a>2.10.3.4. <strong class="patch">PATCH</strong> /workbook</h5>
+<h5 id="_patch_workbook"><a class="anchor" href="#_patch_workbook"></a>2.12.2.4. <strong class="patch">PATCH</strong> /workbook</h5>
 <div class="paragraph">
 <p>Cette méthode permet de modifier un classeur</p>
 </div>
@@ -8455,7 +8413,7 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_delete_workbookid"><a class="anchor" href="#_delete_workbookid"></a>2.10.3.5. <strong class="delete">DELETE</strong> /workbook/{id}</h5>
+<h5 id="_delete_workbookid"><a class="anchor" href="#_delete_workbookid"></a>2.12.2.5. <strong class="delete">DELETE</strong> /workbook/{id}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de supprimer un classeur</p>
 </div>
@@ -8555,7 +8513,7 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_patch_workbookidadd"><a class="anchor" href="#_patch_workbookidadd"></a>2.10.3.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</h5>
+<h5 id="_patch_workbookidadd"><a class="anchor" href="#_patch_workbookidadd"></a>2.12.2.6. <strong class="patch">PATCH</strong> /workbook/{id}/add</h5>
 <div class="paragraph">
 <p>Cette méthode permet d&#8217;ajouter des documents à un classeur</p>
 </div>
@@ -8676,7 +8634,7 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_patch_workbookidremove"><a class="anchor" href="#_patch_workbookidremove"></a>2.10.3.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</h5>
+<h5 id="_patch_workbookidremove"><a class="anchor" href="#_patch_workbookidremove"></a>2.12.2.7. <strong class="patch">PATCH</strong> /workbook/{id}/remove</h5>
 <div class="paragraph">
 <p>Cette méthode permet de retirer des documents d&#8217;un classeur</p>
 </div>
@@ -8800,7 +8758,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="security_rest"><a class="anchor" href="#security_rest"></a>2.11. Sécurité</h3>
+<h3 id="security_rest"><a class="anchor" href="#security_rest"></a>2.13. Sécurité</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -8816,16 +8774,10 @@ de cette <strong>API</strong>.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_client_11"><a class="anchor" href="#_client_11"></a>2.11.1. Client</h4>
+<h4 id="_client_11"><a class="anchor" href="#_client_11"></a>2.13.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.rest.ws.ISecurityClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:1.2.4</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_authentification_11"><a class="anchor" href="#_authentification_11"></a>2.11.2. Authentification</h4>
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -8843,9 +8795,9 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_11"><a class="anchor" href="#_méthodes_11"></a>2.11.3. Méthodes</h4>
+<h4 id="_méthodes_11"><a class="anchor" href="#_méthodes_11"></a>2.13.2. Méthodes</h4>
 <div class="sect4">
-<h5 id="_get_securityipblocked"><a class="anchor" href="#_get_securityipblocked"></a>2.11.3.1. <strong class="get">GET</strong> /security/ip/blocked</h5>
+<h5 id="_get_securityipblocked"><a class="anchor" href="#_get_securityipblocked"></a>2.13.2.1. <strong class="get">GET</strong> /security/ip/blocked</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
 </div>
@@ -8941,7 +8893,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 </div>
 <div class="sect4">
-<h5 id="_delete_securityipblockeddocid"><a class="anchor" href="#_delete_securityipblockeddocid"></a>2.11.3.2. <strong class="delete">DELETE</strong> /security/ip/blocked/{docId}</h5>
+<h5 id="_delete_securityipblockeddocid"><a class="anchor" href="#_delete_securityipblockeddocid"></a>2.13.2.2. <strong class="delete">DELETE</strong> /security/ip/blocked/{docId}</h5>
 <div class="paragraph">
 <p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
 </div>
@@ -9763,7 +9715,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_12"><a class="anchor" href="#_authentification_12"></a>3.2.3. Authentification</h4>
+<h4 id="_authentification"><a class="anchor" href="#_authentification"></a>3.2.3. Authentification</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -12823,7 +12775,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_13"><a class="anchor" href="#_authentification_13"></a>3.8.2. Authentification</h4>
+<h4 id="_authentification_2"><a class="anchor" href="#_authentification_2"></a>3.8.2. Authentification</h4>
 <div class="paragraph">
 <p>Ce <code><span style="color:#0099ff">Web Service</span></code> requiert une <a href="https://tools.ietf.org/html/rfc7617" target="_blank" rel="noopener"><strong>authentification basique</strong></a>.</p>
 </div>

@@ -6,7 +6,11 @@
 [TIP]
 .Définitions *openapi*
 ====
-* La définition *openapi* peut être récupérée à l'adresse *http://<hostname>:<port>/<context>/rest/openapi.json*
+* La définition *openapi* peut être récupérée à l'adresse
+[source]
+----
+http://<hostname>:<port>/<context>/rest/openapi.json
+----
 * une interface *swagger* (permettant également de tester les {webservices}) est disponible à l'adresse
 [source]
 ----
@@ -20,7 +24,7 @@ http://<hostname>:<port>/<context>/swagger-ui/index.html
 Les paramètres transmis aux appels _http_ des web services seront d'un des types suivants :
 
 {query}::
-Paramètre ajouté à l'url (sous forme &*<Code>=<Valeur>*)
+Paramètre ajouté à l'url (sous forme &**<Code>=<Valeur>**)
 
 {path}::
 Paramètre ajouté à la construction de l'url
@@ -29,8 +33,22 @@ Paramètre ajouté à la construction de l'url
 Paramètre ajouté en tant que _body_
 
 {multipart}::
-Multiple données envoyées, de différents types, en un seul appel {http}.
+Multiples données envoyées, de différents types, en un seul appel {http}.
 ====
+
+[[rest_athentication]]
+=== Authentification
+
+les {webservices} décrits par la suite requièrent tous une https://tools.ietf.org/html/rfc7617[*authentification basique*^].
+
+[[rest_language]]
+=== Langues
+
+L'application {arcadeged} peut être paramétrée en plusieurs langues.
+
+Les {webservices} peuvent alors précisés la _locale_/_langue_ via le paramètre d'entête *Accept-language*.
+
+La réponse indiquera la locale utilisée (via l'attribut *Content-language*).
 
 <<<
 include::_02_document_rest.adoc[]
