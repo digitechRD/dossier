@@ -25,11 +25,10 @@ Entrées/sorties
 |*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentInitializer*|contient la variable *documentList*
 |===
 
-=== Exemple
-
-Affichage d'un message à la fin d'une action personnalisée.
+=== Exemples
 
 [source, groovy]
+.Affichage d'un message à la fin d'une action personnalisée.
 ----
 import com.digitech.dossier.script.model.impl.result.ScriptResultValueDocumentInitializer
 import com.digitech.dossier.script.model.IScriptResultValueModel.Severity
@@ -40,3 +39,13 @@ _result.setMessageSummary("Action personnalisée sur le document '" + _document?
 
 .Exemple de message
 image:examples/document_initializer_example.png[]
+
+[source, groovy]
+.Paramètres ajoutés en entrée (_initialisation_) d'un script avant affichage d'une _modale_
+----
+_customModel.setModalPanelWidth(PANEL_WIDTH)
+_customModel.setModalPanelHeight(PANEL_HEIGHT)
+_customModel.addPanelData("afficheEmail", isEmailAvailable())
+List<IAttachment> availableAtts = getAttachments()
+_customModel.addPanelData("attachments", availableAtts)
+----
