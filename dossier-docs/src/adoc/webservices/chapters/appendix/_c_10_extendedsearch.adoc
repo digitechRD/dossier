@@ -14,22 +14,22 @@ Celle-ci contient les informations suivantes :
 |===
 |Paramètre|Description|Observations|Type
 |*resultNumber*|Nombre total de résultats||_string_
-4+^|*documents*
+4+|[orange-text]#*_documents_*#
 |*refAirs*|Référence {airs} du document||_integer_
 |*secretLevel*|Niveau de secret||_integer_
 |*contentType*|Type de contenu||_string_
 |*continuationToken*|Clé de _continuation_|Absent si l'intégralité des documents a été retourné|_string_
-4+^|*documents > fields*
+4+|[orange-text]#*_documents > fields_*#
 |*code*|Code du champ||_string_
 |*label*|Libellé du champ||_string_
 |*value*|Valeur du champ||_string_
 |*refValue*|Identifiant du champ *référence* {airs}|Nœud absent si le champ n'est pas un champ _référence_|_string_
-4+^|*documents > attachments*
+4+|[orange-text]#*_documents > attachments_*#
 |*id*|Référence {airs} de la pièce jointe||_integer_
 |*label*|Libellé de la pièce jointe||_string_
 |*fileName*|Nom de la pièce jointe||_string_
 |*airsType*|Type de pièce jointe||_string_
-4+^|*documents > attachments > versions*
+4+|[orange-text]#*_documents > attachments > versions_*#
 |*id*|Référence {airs} de la `version` de la pièce jointe||_integer_
 |*label*|Libellé de la `version` de la pièce jointe||_string_
 |*fileName*|Nom de la `version` de la pièce jointe||_string_
@@ -49,9 +49,9 @@ Celle-ci contient les informations suivantes :
 .Paramètres en sortie
 |===
 |Paramètre|Description|Observations|Type
-4+^|*results > documents*
+4+|[orange-text]#*_results > documents_*#
 4+|cf. description au <<appendix_extendsearch_wsextendsearchresult,chapitre précédent>> (nœud *documents*)
-4+^|*results > page*
+4+|[orange-text]#*_results > page_*#
 |*size*|Taille de la page (demandée/retournée)||_integer_
 |*number*|Numéro de page (demandée/retournée)||_integer_
 |*totalResults*|Nombre total de résultats||_integer_
