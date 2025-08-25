@@ -16,7 +16,9 @@ WSDocumentType ({rest})
 |*data*|données du document principal en bytes||_string_
 |*filename*|nom du fichier||_string_
 |*flowCode*|code du flux||_string_
-|*scriptCode*|code du script||_string_
+|*scriptCode*|code du script|Si un script est défini (de type *WSDocumentInitializer* ou *WSExtendDocumentInitializer* selon le _endpoint_ appelé), celui-ci
+sera appliqué pour _"modifier"_ le comportement nominal du service. +
+Veuillez vous référer aux chapitres correspondants dans la documentation dédiée aux scripts.|_string_
 4+^|*fields > field*
 |*code*|code du champ||_string_
 |*field*|valeur du champ||_integer_
