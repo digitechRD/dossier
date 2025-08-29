@@ -43,52 +43,6 @@ Le paramétrage se fait via l'{adminAirs} ou directement dans le fichier {params
 fenêtre d'envoi de mail.|
 |===
 
-ifdef::includeHiddenChapters[]
-=== Authentification moderne OAuth
-
-Pour activer ce mode dâ€™authentification, il faut ajouter la balise *oauth* Ã  l'intérieur de la balise *smtp*.
-
-Dans la version actuelle, lâ€™application implÃ©mente lâ€™authentification moderne pour {o365} et {gworkspace}.
-
-
-==== {o365}
-
-Configuration {arcadeged} ::
-
-Configuration de la balise *OAuth* :
-
-[source,xml,subs="normal,quotes"]
-----
-<oauth impl="MSOfficeOAuthAccess" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
-       scope="https://outlook.office.com/.default" tenantId="" clientId="" secret=""/>
-----
-
-La configuration est identique Ã  ce qui est dÃ©crit dans le chapitre dÃ©diÃ© Ã  l'intÃ©gration de mails link:#config_ms_office_365[POP/IMAP] oÃ¹ toutes les Ã©tapes dÃ©crites sont indispensables. La seule diffÃ©rence rÃ©side dans les APIs autorisÃ©es qui dans ce cas devront Ãªtre :
-
-.Microsoft Graph
-[%autowidth,cols="<s,<,<"]
-|===
-|email |DÃ©lÃ©guÃ©e |Afficher l'adresse e-mail des utilisateurs
-|Mail.ReadWrite |Application |Read and write mail in all mailboxes
-|Mail.Send |Application |Send mail as any user
-|offline_access |DÃ©lÃ©guÃ©e |Conserver l'accÃ¨s aux donnÃ©es auxquelles vous lui avez donnÃ© accÃ¨s
-|openid |DÃ©lÃ©guÃ©e |Connecter les utilisateurs
-|profile |DÃ©lÃ©guÃ©e |Afficher le profil de base des utilisateurs
-|===
-
-.Office 365 Exchange Online
-[%autowidth,cols="<s,<,<"]
-|===
-|full_access_as_app |Application |Use Exchange WEB Services with full access to all mailboxes
-|Mail.ReadWrite |Application |Read and write mail in all mailboxes
-|Mail.Send |Application |Send mail as any user
-|SMTP.SendAsApp |Application |Application access for sending emails via SMTP AUTH
-|===
-
-Si l'aspiration et l'envoi de mail sont tous deux paramÃ©trÃ©s, toutes APIs autorisÃ©es nÃ©cessaires Ã  chaque mode devront Ãªtre prÃ©sentes.
-
-endif::[]
-
 === Paramètres additionnels
 
 Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier *WEB-INF/classes/mail/mail-additional
@@ -111,6 +65,19 @@ précédent).
 ====
 
 === Examples
+
+==== {ovh}
+
+[source,xml]
+----
+<mailConfig>
+  <protocol>smtps</protocol>
+  <smtp>ssl0.ovh.net</smtp>
+  <SSLActivated>false</SSLActivated>
+  <TLSActivated>true</TLSActivated>
+  <smtpPort>465</smtpPort>
+</mailConfig>
+----
 
 ==== {gmail}
 
@@ -146,8 +113,7 @@ Il faut alors :
 
 ==== {o365}
 
-Attention, cela ne fonctionne que si *SMTP* est activé sur le compte *Microsoft* associé (cf. procédure https://learn.microsoft
-.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes[ici])
+Attention, cela ne fonctionne que si *SMTP* est activé sur le compte *Microsoft* associé (cf. procédure https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes[ici])
 
 [source,xml]
 ----
@@ -166,15 +132,224 @@ Attention, cela ne fonctionne que si *SMTP* est activé sur le compte *Microsoft
 Une authentification via *OAuth* est alors obligatoire.
 ====
 
-==== {ovh}
+=== Authentification moderne OAuth
+
+Pour activer ce mode d'authentification, il faut ajouter la balise *oauth* à l'intérieur de la balise *mailConfig*.
+
+Si cette configuration est activée, le mot de passe de la balise *defaultMailSenderPwd* sera ignoré.
+
+Dans la version actuelle, l'application implémente l'authentification moderne pour {o365} et {gworkspace}.
+
+==== {o365}
+
+===== Configuration Microsoft Office 365 / Azure AD
+
+Pour ce mode de fonctionnement, une *application d’entreprise* doit être créée (ou exister) dans *Microsoft Azure Active Directory*. Elle devra posséder les
+autorisations d'API suivantes :
+
+.Microsoft Graph
+[%autowidth,cols="<s,<,<"]
+|===
+|email |Déléguée |Afficher l'adresse e-mail des utilisateurs
+|Mail.ReadWrite |Application |Read and write mail in all mailboxes
+|Mail.Send |Application |Send mail as any user
+|offline_access |Déléguée |Conserver l'accès aux données auxquelles vous lui avez donné accès
+|openid |Déléguée |Connecter les utilisateurs
+|profile |Déléguée |Afficher le profil de base des utilisateurs
+|===
+
+.Office 365 Exchange Online
+[%autowidth,cols="<s,<,<"]
+|===
+|full_access_as_app |Application |Use Exchange WEB Services with full access to all mailboxes
+|Mail.ReadWrite |Application |Read and write mail in all mailboxes
+|Mail.Send |Application |Send mail as any user
+|SMTP.SendAsApp |Application |Application access for sending emails via SMTP AUTH
+|===
+
+Il faut ensuite récupérer ces 2 informations depuis la *Vue d'ensemble* :
+
+* tenantId : ID de l'annuaire
+* clientId : ID d'application
+
+image::./06_mail/application_infos.png[]
+
+Enfin, depuis le menu *Certificats et secrets*, créez un secret client dont vous récupèrerez la *valeur* (à ne pas confondre avec l'ID du secret).
+
+image::./06_mail/add_secret.png[]
+
+Attention au bout d'un certain temps après sa création, il n'est plus possible de copier la *valeur* du secret, il faut donc bien la récupérer la 1ère fois et la conserver.
+
+image::./06_mail/copy_secret.png[]
+
+Pour envoyer des mails via Microsoft Exchange Online / Office 365 avec une application (sans mot de passe utilisateur), il faut créer/configurer un service
+principal dans Azure AD et lui attribuer les permissions nécessaires. Le service principal peut être créé à l’aide des commandes PowerShell ci-dessous (s’il n’existe pas déjà) :
+
+[source, cmd]
+----
+Connect-AzureAD
+----
+
+→ S’authentifier dans la fenêtre qui s’ouvre.
+
+Récupération des identifiants de l’application d’entreprise (Dossier est le nom de l’application
+dans Microsoft Azure AD) :
+
+[source, cmd]
+----
+Get-AzureADServicePrincipal -SearchString Dossier
+----
+
+Résultat :
+
+[source, cmd]
+----
+ObjectId AppId DisplayName
+-------- ----- -----------
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Courrier
+----
+
+« CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC » ce sera le tenantId (ou id du locataire) évoqué précédemment.
+
+Avec ces 3 informations, on peut procéder à l’enregistrement du service principal :
+
+[source, cmd]
+----
+Connect-ExchangeOnline
+----
+
+→ S’authentifier dans la fenêtre qui s’ouvre.
+
+[source, cmd]
+----
+New-ServicePrincipal -AppId BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -ServiceId
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -Organization
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC
+----
+
+[source, cmd]
+----
+Get-ServicePrincipal -Organization AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | fl
+Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -AccessRights FullAccess
+----
+
+Le service principal est maintenant créé et possède les droits d'accès à la boîte mail de l'utilisateur.
+
+===== Configuration {arcadeged}
+
+Configuration de la balise *oauth* :
+
+[source,xml,subs="normal,quotes"]
+----
+<oauth impl="MSOfficeOAuthAccess" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+       scope="https://outlook.office.com/.default" tenantId="tenantId" clientId="clientId" secret="secret"/>
+----
+
+==== {gworkspace}
+
+Pour permettre à l’application d’aspirer les emails via un compte de service Google, il est nécessaire de configurer à la fois Google Cloud et la console d’administration Google Workspace.
+
+Prérequis :
+
+* Un projet Google Cloud existe déjà (ou devra être créé), et vous y avez les droits d’administration.
+* L’API Gmail est activée (Console Google Cloud → API et services → Bibliothèque).
+* Le compte Google Workspace dispose des droits pour la délégation au niveau du domaine.
+
+===== Configuration dans Google Cloud Console
+
+Rendez vous sur la console https://console.cloud.google.com/welcome[Google Cloud] et allez dans votre projet.
+
+* Écran de consentement OAuth
+
+1) À partir du menu latéral, naviguez vers *API et services* → Écran de consentement OAuth.
+
+image::./06_mail/api_services.png[]
+
+2) Vérifiez via le menu *Audience* que le type d’utilisateur est *Interne* (usage au sein de l’organisation) ou *Externe* (accès public).
+
+image::./06_mail/audience.png[]
+
+3) Naviguez ensuite dans *Accès aux données*, cliquez sur *Ajouter ou supprimer des niveaux d'accès*, puis ajoutez *https://mail.google.com/*
+
+image::./06_mail/data_access.png[]
+
+* Comptes de service
+
+1) Rendez-vous dans IAM et administration → Comptes de service.
+
+image::./06_mail/service_accounts.png[]
+
+2) Si besoin, créez un compte de service.
+
+3) Pour ce compte, générez une clé privée au format JSON (Actions → Gérer les clés → Ajouter une clé → JSON) et conservez le fichier. Ce fichier JSON de
+configuration doit être mentionné dans l'attribut *confFile* de la balise *oauth*.
+
+4) Relevez l’ID client du compte de service pour l’étape suivante.
+
+image::./06_mail/account_id.png[]
+
+===== Configuration dans la console d’administration Google Workspace
+
+* Délégation au niveau du domaine
+
+1) Connectez-vous à admin.google.com.
+
+2) Allez dans Sécurité → Contrôles d’accès et des données → Commandes des API.
+
+3) Ouvrez Délégation au niveau du domaine.
+
+4) Si l’ID client du compte de service n’apparaît pas, cliquez sur Ajouter un client API.
+
+5) Saisissez l’ID client récupéré précédemment.
+
+6) Dans Champs d’application OAuth (virgule‐séparés), entrez : https://mail.google.com/
+
+7) Cliquez sur Autoriser.
+
+Une fois ces étapes accomplies, l’application pourra utiliser le compte de service pour aspirer les emails des utilisateurs du domaine Google Workspace, sans nécessiter leurs mots de passe individuels.
+
+===== Configuration {arcadeged}
+
+Configuration de la balise *oauth* :
+
+[source,xml,subs="normal,quotes"]
+----
+<oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="digi-office-gsuite-1a1111111111 1.json"/>
+----
+
+==== Exemples de configuration avec la balise oauth
+
+===== {o365}
 
 [source,xml]
 ----
 <mailConfig>
-  <protocol>smtps</protocol>
-  <smtp>ssl0.ovh.net</smtp>
-  <SSLActivated>false</SSLActivated>
-  <TLSActivated>true</TLSActivated>
-  <smtpPort>465</smtpPort>
+    <smtp>smtp.office365.com</smtp>
+    <defaultMailSender>prenom.nom@xxxxx.onmicrosoft.com</defaultMailSender>
+    <SSLActivated>false</SSLActivated>
+    <TLSActivated>true</TLSActivated>
+    <SSLPort>-1</SSLPort>
+    <smtpPort>587</smtpPort>
+    <mailAuthentication>true</mailAuthentication>
+    <protocol>smtp</protocol>
+    <oauth impl="MSOfficeOAuthAccess" scope="https://outlook.office.com/.default" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+           tenantId="tenantId" clientId="clientId" secret="secret"/>
+</mailConfig>
+----
+
+===== {gworkspace}
+
+[source,xml]
+----
+<mailConfig>
+    <smtp>smtp.gmail.com</smtp>
+    <defaultMailSender>prenom.nom@gmail.com</defaultMailSender>
+    <SSLActivated>false</SSLActivated>
+    <TLSActivated>true</TLSActivated>
+    <SSLPort>-1</SSLPort>
+    <smtpPort>587</smtpPort>
+    <mailAuthentication>true</mailAuthentication>
+    <protocol>smtp</protocol>
+    <oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="confFile.json"/>
 </mailConfig>
 ----
