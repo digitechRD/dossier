@@ -151,6 +151,22 @@ répertoire *custom/ui/images/login* (d'extension *jpg* ou *png*)|Boolean|[green
 |*email.use.replyto.property*|Remplir le champ *Répondre à* au lieu du champ *De*|Boolean|[red]#false#
 |===
 
+=== Contact
+
+[cols="4a,3a,1a,2a",options="header"]
+|===
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*contact.automatically.add.new.email*|Ajouter automatiquement les (nouveaux) emails en tant que nouveau contact|Boolean|[green]#true#
+|*contact.phone.numbers.available.countries*|Codes (ISO) des pays pouvant être utilisés pour l'ajout de numéros de téléphone|List|[green]#Locale.getDefault
+().getCountry()#
+|*contact.phone.numbers.use.libphone.pattern*|Utiliser les *regex* fournies par la libraire *libPhone* de *Google*|Boolean|[red]#false#
+
+[CAUTION]
+====
+*Attention* les *regex* fournies ne semblent pas être adaptées à tous les cas (_selon nos tests_)
+====
+|===
+
 === Espace personnel
 
 [cols="4a,3a,1a,2a",options="header"]
