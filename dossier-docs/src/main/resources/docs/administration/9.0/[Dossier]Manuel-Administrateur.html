@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">02/09/2025 16:01:23</span>
+<span id="revdate">02/09/2025 16:04:49</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -110,9 +110,32 @@
 <li><a href="#_certificats">5.2. Certificats</a></li>
 <li><a href="#_examples">5.3. Examples</a>
 <ul class="sectlevel3">
-<li><a href="#_gmail">5.3.1. <span style="color: #185abc">gmail</span></a></li>
-<li><a href="#_office_365">5.3.2. <span style="color: #a84d58">Office 365</span></a></li>
-<li><a href="#_ovh">5.3.3. <span style="color: #46caf6">OVH</span></a></li>
+<li><a href="#_ovh">5.3.1. <span style="color: #46caf6">OVH</span></a></li>
+<li><a href="#_gmail">5.3.2. <span style="color: #185abc">gmail</span></a></li>
+<li><a href="#_office_365">5.3.3. <span style="color: #a84d58">Office 365</span></a></li>
+</ul>
+</li>
+<li><a href="#_authentification_moderne_oauth">5.4. Authentification moderne OAuth</a>
+<ul class="sectlevel3">
+<li><a href="#_office_365_2">5.4.1. <span style="color: #a84d58">Office 365</span></a>
+<ul class="sectlevel4">
+<li><a href="#_configuration_microsoft_office_365_azure_ad">5.4.1.1. Configuration Microsoft Office 365 / Azure AD</a></li>
+<li><a href="#_configuration_arcade_ged">5.4.1.2. Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
+</ul>
+</li>
+<li><a href="#_google_workspace">5.4.2. <span style="color: #185abc">Google Workspace</span></a>
+<ul class="sectlevel4">
+<li><a href="#_configuration_dans_google_cloud_console">5.4.2.1. Configuration dans Google Cloud Console</a></li>
+<li><a href="#_configuration_dans_la_console_dadministration_google_workspace">5.4.2.2. Configuration dans la console d’administration Google Workspace</a></li>
+<li><a href="#_configuration_arcade_ged_2">5.4.2.3. Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
+</ul>
+</li>
+<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">5.4.3. Exemples de configuration avec la balise oauth</a>
+<ul class="sectlevel4">
+<li><a href="#_office_365_3">5.4.3.1. <span style="color: #a84d58">Office 365</span></a></li>
+<li><a href="#_google_workspace_2">5.4.3.2. <span style="color: #185abc">Google Workspace</span></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -7605,7 +7628,21 @@ précédent).</p>
 <div class="sect2">
 <h3 id="_examples"><a class="anchor" href="#_examples"></a>5.3. Examples</h3>
 <div class="sect3">
-<h4 id="_gmail"><a class="anchor" href="#_gmail"></a>5.3.1. <span style="color: #185abc">gmail</span></h4>
+<h4 id="_ovh"><a class="anchor" href="#_ovh"></a>5.3.1. <span style="color: #46caf6">OVH</span></h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gmail"><a class="anchor" href="#_gmail"></a>5.3.2. <span style="color: #185abc">gmail</span></h4>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -7647,10 +7684,9 @@ l&#8217;authentification à l&#8217;interface <span style="color: #185abc">gmail
 </div>
 </div>
 <div class="sect3">
-<h4 id="_office_365"><a class="anchor" href="#_office_365"></a>5.3.2. <span style="color: #a84d58">Office 365</span></h4>
+<h4 id="_office_365"><a class="anchor" href="#_office_365"></a>5.3.3. <span style="color: #a84d58">Office 365</span></h4>
 <div class="paragraph">
-<p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft" class="bare">https://learn.microsoft</a>
-.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes[ici])</p>
+<p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes">ici</a>)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7679,17 +7715,376 @@ Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
 </table>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>5.4. Authentification moderne OAuth</h3>
+<div class="paragraph">
+<p>Pour activer ce mode d&#8217;authentification, il faut ajouter la balise <strong>oauth</strong> à l&#8217;intérieur de la balise <strong>mailConfig</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Si cette configuration est activée, le mot de passe de la balise <strong>defaultMailSenderPwd</strong> sera ignoré.</p>
+</div>
+<div class="paragraph">
+<p>Dans la version actuelle, l&#8217;application implémente l&#8217;authentification moderne pour <span style="color: #a84d58">Office 365</span> et <span style="color: #185abc">Google Workspace</span>.</p>
+</div>
 <div class="sect3">
-<h4 id="_ovh"><a class="anchor" href="#_ovh"></a>5.3.3. <span style="color: #46caf6">OVH</span></h4>
+<h4 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>5.4.1. <span style="color: #a84d58">Office 365</span></h4>
+<div class="sect4">
+<h5 id="_configuration_microsoft_office_365_azure_ad"><a class="anchor" href="#_configuration_microsoft_office_365_azure_ad"></a>5.4.1.1. Configuration Microsoft Office 365 / Azure AD</h5>
+<div class="paragraph">
+<p>Pour ce mode de fonctionnement, une <strong>application d’entreprise</strong> doit être créée (ou exister) dans <strong>Microsoft Azure Active Directory</strong>. Elle devra posséder les
+autorisations d&#8217;API suivantes :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even fit-content">
+<caption class="title">Table 2. Microsoft Graph</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>email</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Afficher l&#8217;adresse e-mail des utilisateurs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.ReadWrite</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read and write mail in all mailboxes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.Send</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send mail as any user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offline_access</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conserver l&#8217;accès aux données auxquelles vous lui avez donné accès</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openid</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connecter les utilisateurs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>profile</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Afficher le profil de base des utilisateurs</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stripes-even fit-content">
+<caption class="title">Table 3. Office 365 Exchange Online</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>full_access_as_app</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Exchange WEB Services with full access to all mailboxes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.ReadWrite</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read and write mail in all mailboxes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.Send</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send mail as any user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SMTP.SendAsApp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application access for sending emails via SMTP AUTH</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Il faut ensuite récupérer ces 2 informations depuis la <strong>Vue d&#8217;ensemble</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tenantId : ID de l&#8217;annuaire</p>
+</li>
+<li>
+<p>clientId : ID d&#8217;application</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/application_infos.png" alt="application infos">
+</div>
+</div>
+<div class="paragraph">
+<p>Enfin, depuis le menu <strong>Certificats et secrets</strong>, créez un secret client dont vous récupèrerez la <strong>valeur</strong> (à ne pas confondre avec l&#8217;ID du secret).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/add_secret.png" alt="add secret">
+</div>
+</div>
+<div class="paragraph">
+<p>Attention au bout d&#8217;un certain temps après sa création, il n&#8217;est plus possible de copier la <strong>valeur</strong> du secret, il faut donc bien la récupérer la 1ère fois et la conserver.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/copy_secret.png" alt="copy secret">
+</div>
+</div>
+<div class="paragraph">
+<p>Pour envoyer des mails via Microsoft Exchange Online / Office 365 avec une application (sans mot de passe utilisateur), il faut créer/configurer un service
+principal dans Azure AD et lui attribuer les permissions nécessaires. Le service principal peut être créé à l’aide des commandes PowerShell ci-dessous (s’il n’existe pas déjà) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Connect-AzureAD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ S’authentifier dans la fenêtre qui s’ouvre.</p>
+</div>
+<div class="paragraph">
+<p>Récupération des identifiants de l’application d’entreprise (Dossier est le nom de l’application
+dans Microsoft Azure AD) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Get-AzureADServicePrincipal -SearchString Dossier</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Résultat :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">ObjectId AppId DisplayName
+-------- ----- -----------
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Courrier</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>« CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC » ce sera le tenantId (ou id du locataire) évoqué précédemment.</p>
+</div>
+<div class="paragraph">
+<p>Avec ces 3 informations, on peut procéder à l’enregistrement du service principal :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Connect-ExchangeOnline</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ S’authentifier dans la fenêtre qui s’ouvre.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">New-ServicePrincipal -AppId BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -ServiceId
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -Organization
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Get-ServicePrincipal -Organization AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | fl
+Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -AccessRights FullAccess</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le service principal est maintenant créé et possède les droits d&#8217;accès à la boîte mail de l&#8217;utilisateur.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configuration_arcade_ged"><a class="anchor" href="#_configuration_arcade_ged"></a>5.4.1.2. Configuration <code><span style="color:#448279">Arcade GED</span></code></h5>
+<div class="paragraph">
+<p>Configuration de la balise <strong>oauth</strong> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oauth impl="MSOfficeOAuthAccess" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+       scope="https://outlook.office.com/.default" tenantId="tenantId" clientId="clientId" secret="secret"/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>5.4.2. <span style="color: #185abc">Google Workspace</span></h4>
+<div class="paragraph">
+<p>Pour permettre à l’application d’aspirer les emails via un compte de service Google, il est nécessaire de configurer à la fois Google Cloud et la console d’administration Google Workspace.</p>
+</div>
+<div class="paragraph">
+<p>Prérequis :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Un projet Google Cloud existe déjà (ou devra être créé), et vous y avez les droits d’administration.</p>
+</li>
+<li>
+<p>L’API Gmail est activée (Console Google Cloud → API et services → Bibliothèque).</p>
+</li>
+<li>
+<p>Le compte Google Workspace dispose des droits pour la délégation au niveau du domaine.</p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="_configuration_dans_google_cloud_console"><a class="anchor" href="#_configuration_dans_google_cloud_console"></a>5.4.2.1. Configuration dans Google Cloud Console</h5>
+<div class="paragraph">
+<p>Rendez vous sur la console <a href="https://console.cloud.google.com/welcome">Google Cloud</a> et allez dans votre projet.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Écran de consentement OAuth</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) À partir du menu latéral, naviguez vers <strong>API et services</strong> → Écran de consentement OAuth.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/api_services.png" alt="api services">
+</div>
+</div>
+<div class="paragraph">
+<p>2) Vérifiez via le menu <strong>Audience</strong> que le type d’utilisateur est <strong>Interne</strong> (usage au sein de l’organisation) ou <strong>Externe</strong> (accès public).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/audience.png" alt="audience">
+</div>
+</div>
+<div class="paragraph">
+<p>3) Naviguez ensuite dans <strong>Accès aux données</strong>, cliquez sur <strong>Ajouter ou supprimer des niveaux d&#8217;accès</strong>, puis ajoutez <strong><a href="https://mail.google.com/" class="bare">https://mail.google.com/</a></strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/data_access.png" alt="data access">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Comptes de service</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) Rendez-vous dans IAM et administration → Comptes de service.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/service_accounts.png" alt="service accounts">
+</div>
+</div>
+<div class="paragraph">
+<p>2) Si besoin, créez un compte de service.</p>
+</div>
+<div class="paragraph">
+<p>3) Pour ce compte, générez une clé privée au format JSON (Actions → Gérer les clés → Ajouter une clé → JSON) et conservez le fichier. Ce fichier JSON de
+configuration doit être mentionné dans l&#8217;attribut <strong>confFile</strong> de la balise <strong>oauth</strong>.</p>
+</div>
+<div class="paragraph">
+<p>4) Relevez l’ID client du compte de service pour l’étape suivante.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/06_mail/account_id.png" alt="account id">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configuration_dans_la_console_dadministration_google_workspace"><a class="anchor" href="#_configuration_dans_la_console_dadministration_google_workspace"></a>5.4.2.2. Configuration dans la console d’administration Google Workspace</h5>
+<div class="ulist">
+<ul>
+<li>
+<p>Délégation au niveau du domaine</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) Connectez-vous à admin.google.com.</p>
+</div>
+<div class="paragraph">
+<p>2) Allez dans Sécurité → Contrôles d’accès et des données → Commandes des API.</p>
+</div>
+<div class="paragraph">
+<p>3) Ouvrez Délégation au niveau du domaine.</p>
+</div>
+<div class="paragraph">
+<p>4) Si l’ID client du compte de service n’apparaît pas, cliquez sur Ajouter un client API.</p>
+</div>
+<div class="paragraph">
+<p>5) Saisissez l’ID client récupéré précédemment.</p>
+</div>
+<div class="paragraph">
+<p>6) Dans Champs d’application OAuth (virgule‐séparés), entrez : <a href="https://mail.google.com/" class="bare">https://mail.google.com/</a></p>
+</div>
+<div class="paragraph">
+<p>7) Cliquez sur Autoriser.</p>
+</div>
+<div class="paragraph">
+<p>Une fois ces étapes accomplies, l’application pourra utiliser le compte de service pour aspirer les emails des utilisateurs du domaine Google Workspace, sans nécessiter leurs mots de passe individuels.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_configuration_arcade_ged_2"><a class="anchor" href="#_configuration_arcade_ged_2"></a>5.4.2.3. Configuration <code><span style="color:#448279">Arcade GED</span></code></h5>
+<div class="paragraph">
+<p>Configuration de la balise <strong>oauth</strong> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="digi-office-gsuite-1a1111111111 1.json"/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>5.4.3. Exemples de configuration avec la balise oauth</h4>
+<div class="sect4">
+<h5 id="_office_365_3"><a class="anchor" href="#_office_365_3"></a>5.4.3.1. <span style="color: #a84d58">Office 365</span></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-  &lt;protocol&gt;smtps&lt;/protocol&gt;
-  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
-  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+    &lt;smtp&gt;smtp.office365.com&lt;/smtp&gt;
+    &lt;defaultMailSender&gt;prenom.nom@xxxxx.onmicrosoft.com&lt;/defaultMailSender&gt;
+    &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+    &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+    &lt;SSLPort&gt;-1&lt;/SSLPort&gt;
+    &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+    &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
+    &lt;protocol&gt;smtp&lt;/protocol&gt;
+    &lt;oauth impl="MSOfficeOAuthAccess" scope="https://outlook.office.com/.default" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+           tenantId="tenantId" clientId="clientId" secret="secret"/&gt;
 &lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_google_workspace_2"><a class="anchor" href="#_google_workspace_2"></a>5.4.3.2. <span style="color: #185abc">Google Workspace</span></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+    &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
+    &lt;defaultMailSender&gt;prenom.nom@gmail.com&lt;/defaultMailSender&gt;
+    &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+    &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+    &lt;SSLPort&gt;-1&lt;/SSLPort&gt;
+    &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+    &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
+    &lt;protocol&gt;smtp&lt;/protocol&gt;
+    &lt;oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="confFile.json"/&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -7767,7 +8162,7 @@ Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
 <p>Le chapitre suivant décrit chaque propriété :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 2. Description des paramètres</caption>
+<caption class="title">Table 4. Description des paramètres</caption>
 <colgroup>
 <col style="width: 15.3846%;">
 <col style="width: 30.7692%;">
