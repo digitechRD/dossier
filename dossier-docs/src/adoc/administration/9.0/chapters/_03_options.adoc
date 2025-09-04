@@ -48,8 +48,25 @@ Ce chapitre décrit les options qui peuvent être ajoutées dans le fichier *con
 |*misc.dossier.dump.threads.pool.statistics*|Statistiques pour les threads|Boolean|[red]#false#
 |*misc.lazyModalPanelEnabled*|Fenêtres modales, mode "lazy" autorisé|Boolean|[red]#false#
 |*pop.defaultCountryName*|Pays (par défaut) utilisé par la base population|String|*France*
-|*spring.profiles.active*|Surcharge des profils spring|String|*scheduler,tasks,javamelody,odtGenerator,ooo.service.disabled*
+|*spring.profiles.active*|Surcharge des profils spring|String|*scheduler,tasks,javamelody,odtGenerator* (cf. <<options_admin_spring_profile,description des profiles>> )
 |*misc.dossier.system.stacktrace.display.enabled*|Autoriser les StackTraces à être affichées à l'écran (et donc à l'utilisateur)|Boolean|[red]#false#
+|===
+
+[[options_admin_spring_profile]]
+Les profiles disponibles sont :
+
+[cols="2a,4a,3a",options="header"]
+|===
+|Valeur|Description|Observations
+|*scheduler*|Permet l'activation des *Jobs* périodiques (_déverrouillage_ automatique des documents, _relève_ automatique des parapheurs, .
+..|*[underline]#doit#* être activé pour {arcadeged} (et automatiquement désactivé pour {dataloader})
+|*tasks*|Permet l'activation des *taskExecutor*|*[underline]#doit#* être activé pour {arcadeged} (et automatiquement désactivé pour {dataloader})
+|*odtGenerator*|Mise à disposition du service *ODT*|*[underline]#doit#* être activé pour {arcadeged} (et automatiquement désactivé pour {dataloader})
+|*javamelody*|Activation de https://github.com/javamelody/javamelody[*JavaMelody*, window="_blank"]|Accès ensuite sécurisé via l'URL */monitoring*
+|*ooo.service.enabled*|Utilisation des services de conversion de documents (vers le format *PDF*) basés sur *OpenOffice*|Profile désactivé par défaut, les
+conversions sont effectuées directement en *java* (librairie *Aspose*), sans aucuns modules externes.
+|*ooo.service.backup*|Activer le service *OpenOffice* en _backup_|Si la conversion via *Aspose* échoue, une nouvelle tentative sera effectuée à l'aide
+d'*OpenOffice*
 |===
 
 === Application

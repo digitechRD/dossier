@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">02/09/2025 16:04:49</span>
+<span id="revdate">04/09/2025 16:06:30</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -2943,7 +2943,7 @@ recherche plein texte</p>
 <p>String</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>scheduler,tasks,javamelody,odtGenerator,ooo.service.disabled</strong></p>
+<p><strong>scheduler,tasks,javamelody,odtGenerator</strong> (cf. <a href="#options_admin_spring_profile">description des profiles</a> )</p>
 </div></div></td>
 </tr>
 <tr>
@@ -2958,6 +2958,94 @@ recherche plein texte</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="red">false</span></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="options_admin_spring_profile" class="paragraph">
+<p>Les profiles disponibles sont :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 44.4444%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Valeur</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Observations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>scheduler</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Permet l&#8217;activation des <strong>Jobs</strong> périodiques (<em>déverrouillage</em> automatique des documents, <em>relève</em> automatique des parapheurs, .
+..</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong><span class="underline">doit</span></strong> être activé pour <code><span style="color:#448279">Arcade GED</span></code> (et automatiquement désactivé pour <code><span style="color:#448279">Dataloader</span></code>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>tasks</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Permet l&#8217;activation des <strong>taskExecutor</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong><span class="underline">doit</span></strong> être activé pour <code><span style="color:#448279">Arcade GED</span></code> (et automatiquement désactivé pour <code><span style="color:#448279">Dataloader</span></code>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>odtGenerator</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mise à disposition du service <strong>ODT</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong><span class="underline">doit</span></strong> être activé pour <code><span style="color:#448279">Arcade GED</span></code> (et automatiquement désactivé pour <code><span style="color:#448279">Dataloader</span></code>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>javamelody</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activation de <a href="https://github.com/javamelody/javamelody" target="_blank" rel="noopener"><strong>JavaMelody</strong></a></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Accès ensuite sécurisé via l&#8217;URL <strong>/monitoring</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ooo.service.enabled</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Utilisation des services de conversion de documents (vers le format <strong>PDF</strong>) basés sur <strong>OpenOffice</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Profile désactivé par défaut, les
+conversions sont effectuées directement en <strong>java</strong> (librairie <strong>Aspose</strong>), sans aucuns modules externes.</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ooo.service.backup</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activer le service <strong>OpenOffice</strong> en <em>backup</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si la conversion via <strong>Aspose</strong> échoue, une nouvelle tentative sera effectuée à l&#8217;aide
+d'<strong>OpenOffice</strong></p>
 </div></div></td>
 </tr>
 </tbody>
