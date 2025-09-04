@@ -1,0 +1,38 @@
+[[_01_Developper]]
+== Mode développeur
+
+Lorsque vous (*développeur*) êtes en phase de création/modification de scripts, il apparait intéressant d'activer le *rechargement à chaud* de ceux-ci.
+
+Celui s'active via la clé *script.debug=true* à inscrire dans le fichier *xml/config.properties*.
+
+[IMPORTANT]
+====
+Les scripts *globaux* font partie du processus de rechargement à chaud. +
+Cependant, il peut arriver que la version précédente soit toujours utilisée après rechargement (_problématique classloader du moteur {groovy} non corrigée_)
+====
+
+De manière identique, si vous concevez une page *jspx* (_modale_, _widget custom_ ou autre), le rechargement de ces fichiers peut également être activé.
+
+Cela est réalisé via la modification du fichier *WEB-INF/web.xml* avec les 2 clés suivantes :
+
+```xml
+<context-param>
+  <param-name>facelets.DEVELOPMENT</param-name>
+  <param-value>true</param-value> <!-- false par défaut -->
+</context-param>
+
+<context-param>
+  <param-name>facelets.REFRESH_PERIOD</param-name>
+  <param-value>2</param-value> <!-- -1 par défaut -->
+</context-param>
+```
+
+[WARNING]
+====
+Une [underline]#mauvaise manipulation# dans ce fichier peut empêcher le démarrage de l'application {arcadeged}!
+====
+
+[IMPORTANT]
+====
+Une fois vos travaux terminés, ces paramètres *[underline]#doivent être réinitialisés#*.
+====

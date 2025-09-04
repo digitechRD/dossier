@@ -33,13 +33,13 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">25/08/2025 09:27:10</span>
+<span id="revdate">04/09/2025 17:01:36</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
 <ul class="sectlevel1">
 <li><a href="#_01_intro">1. Introduction</a></li>
-<li><a href="#_01_Which_scripts">2. Quel script pour quelle action ?</a></li>
+<li><a href="#_01_Developper">2. Mode développeur</a></li>
 <li><a href="#_01_CommonData">3. Données communes à chaque script</a></li>
 <li><a href="#_02_AttachmentDisplaySorting">4. <code><span style="color:#11da73">AttachmentDisplaySorting</span></code></a>
 <ul class="sectlevel2">
@@ -335,37 +335,76 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_01_Which_scripts"><a class="anchor" href="#_01_Which_scripts"></a>2. Quel script pour quelle action ?</h2>
+<h2 id="_01_Developper"><a class="anchor" href="#_01_Developper"></a>2. Mode développeur</h2>
 <div class="sectionbody">
-<div class="admonitionblock tip">
+<div class="paragraph">
+<p>Lorsque vous (<strong>développeur</strong>) êtes en phase de création/modification de scripts, il apparait intéressant d&#8217;activer le <strong>rechargement à chaud</strong> de ceux-ci.</p>
+</div>
+<div class="paragraph">
+<p>Celui s&#8217;active via la clé <strong>script.debug=true</strong> à inscrire dans le fichier <strong>xml/config.properties</strong>.</p>
+</div>
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Astuce"></i>
+<i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Le nombre de types de scripts étant important, il peut paraître difficile de détecter quel type de script s&#8217;applique dans quel cas.<br>
-Ce chapitre permet d&#8217;identifier rapidement les cas d&#8217;utilisation.</p>
+<p>Les scripts <strong>globaux</strong> font partie du processus de rechargement à chaud.<br>
+Cependant, il peut arriver que la version précédente soit toujours utilisée après rechargement (<em>problématique classloader du moteur <code><span style="color:#2C8470">Groovy</span></code> non corrigée</em>)</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<thead>
+<div class="paragraph">
+<p>De manière identique, si vous concevez une page <strong>jspx</strong> (<em>modale</em>, <em>widget custom</em> ou autre), le rechargement de ces fichiers peut également être activé.</p>
+</div>
+<div class="paragraph">
+<p>Cela est réalisé via la modification du fichier <strong>WEB-INF/web.xml</strong> avec les 2 clés suivantes :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;context-param&gt;
+  &lt;param-name&gt;facelets.DEVELOPMENT&lt;/param-name&gt;
+  &lt;param-value&gt;true&lt;/param-value&gt; &lt;!-- false par défaut --&gt;
+&lt;/context-param&gt;
+
+&lt;context-param&gt;
+  &lt;param-name&gt;facelets.REFRESH_PERIOD&lt;/param-name&gt;
+  &lt;param-value&gt;2&lt;/param-value&gt; &lt;!-- -1 par défaut --&gt;
+&lt;/context-param&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
 <tr>
-<th class="tableblock halign-left valign-top">Action souhaitée</th>
-<th class="tableblock halign-left valign-top">Type de Script</th>
-<th class="tableblock halign-left valign-top">Observation</th>
+<td class="icon">
+<i class="fa icon-warning" title="Avertissement"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Une <span class="underline">mauvaise manipulation</span> dans ce fichier peut empêcher le démarrage de l&#8217;application <code><span style="color:#448279">Arcade GED</span></code>!</p>
+</div>
+</td>
 </tr>
-</thead>
 </table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Une fois vos travaux terminés, ces paramètres <strong><span class="underline">doivent être réinitialisés</span></strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
