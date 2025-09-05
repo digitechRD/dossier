@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">04/09/2025 17:01:36</span>
+<span id="revdate">05/09/2025 16:45:59</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -362,44 +362,23 @@ Cependant, il peut arriver que la version précédente soit toujours utilisée a
 <p>De manière identique, si vous concevez une page <strong>jspx</strong> (<em>modale</em>, <em>widget custom</em> ou autre), le rechargement de ces fichiers peut également être activé.</p>
 </div>
 <div class="paragraph">
-<p>Cela est réalisé via la modification du fichier <strong>WEB-INF/web.xml</strong> avec les 2 clés suivantes :</p>
+<p>Cela est réalisé également via la modification du fichier <strong>xml/config.properties</strong> avec les 2 clés suivantes :</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;context-param&gt;
-  &lt;param-name&gt;facelets.DEVELOPMENT&lt;/param-name&gt;
-  &lt;param-value&gt;true&lt;/param-value&gt; &lt;!-- false par défaut --&gt;
-&lt;/context-param&gt;
-
-&lt;context-param&gt;
-  &lt;param-name&gt;facelets.REFRESH_PERIOD&lt;/param-name&gt;
-  &lt;param-value&gt;2&lt;/param-value&gt; &lt;!-- -1 par défaut --&gt;
-&lt;/context-param&gt;</code></pre>
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">facelets.DEVELOPMENT=true
+facelets.REFRESH_PERIOD=2</code></pre>
 </div>
 </div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-warning" title="Avertissement"></i>
+<i class="fa icon-note" title="Information"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Une <span class="underline">mauvaise manipulation</span> dans ce fichier peut empêcher le démarrage de l&#8217;application <code><span style="color:#448279">Arcade GED</span></code>!</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Une fois vos travaux terminés, ces paramètres <strong><span class="underline">doivent être réinitialisés</span></strong>.</p>
+<p>Ces paramètres ne sont disponibles qu&#8217;à partir de la version <strong>9.0.0</strong> d'<code><span style="color:#448279">Arcade GED</span></code></p>
 </div>
 </td>
 </tr>

@@ -13,26 +13,14 @@ Cependant, il peut arriver que la version précédente soit toujours utilisée a
 
 De manière identique, si vous concevez une page *jspx* (_modale_, _widget custom_ ou autre), le rechargement de ces fichiers peut également être activé.
 
-Cela est réalisé via la modification du fichier *WEB-INF/web.xml* avec les 2 clés suivantes :
+Cela est réalisé également via la modification du fichier *xml/config.properties* avec les 2 clés suivantes :
 
-```xml
-<context-param>
-  <param-name>facelets.DEVELOPMENT</param-name>
-  <param-value>true</param-value> <!-- false par défaut -->
-</context-param>
-
-<context-param>
-  <param-name>facelets.REFRESH_PERIOD</param-name>
-  <param-value>2</param-value> <!-- -1 par défaut -->
-</context-param>
+```properties
+facelets.DEVELOPMENT=true
+facelets.REFRESH_PERIOD=2
 ```
 
-[WARNING]
+[NOTE]
 ====
-Une [underline]#mauvaise manipulation# dans ce fichier peut empêcher le démarrage de l'application {arcadeged}!
-====
-
-[IMPORTANT]
-====
-Une fois vos travaux terminés, ces paramètres *[underline]#doivent être réinitialisés#*.
+Ces paramètres ne sont disponibles qu'à partir de la version *9.0.0* d'{arcadeged}
 ====
