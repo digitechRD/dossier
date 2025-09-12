@@ -54,5 +54,29 @@ documentData ({soap})
 |*field*|valeur du champ||_integer_
 |===
 
+[[appendix_document_client_samples]]
+==== Utilisation du client {java} fourni par {arcadeged}
+
+.Création d'un document dans le type de contenu *CR* à l'aide du client.
+```groovy
+IDocumentClient docClientSvc = new DocumentClient(<url_arcadeged>)
+// authentification basique ici
+docClientSvc.setUsername(<username>)
+docClientSvc.setPassword(<password>)
+
+// création data
+WSDocumentType docData = new WSDocumentType()
+docData.setContentType("CR")
+
+// champs
+List<IFieldType> fields = new ArrayList<>()
+fields.add(WSFieldType.build("CR_DES", "coucou"))
+// et autres champs...
+docData.setFieldsArray(fields);
+
+// appel avec dépôt d'un fichier
+Integer newDocId = docClientSvc.create(docData, Collections.singletonList(<file>))
+```
+
 [[appendix_document_script]]
 include::_c_02a_document_script.adoc[]
