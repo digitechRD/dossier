@@ -13423,7 +13423,13 @@ Veuillez vous référer aux chapitres correspondants dans la documentation dédi
 <div class="listingblock">
 <div class="title">Création d&#8217;un document dans le type de contenu <strong>CR</strong> à l&#8217;aide du client.</div>
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">IDocumentClient docClientSvc = new DocumentClient(&lt;url_arcadeged&gt;)
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.rest.ws.IDocumentClient
+import com.digitech.dossier.rest.ws.impl.DocumentClient
+import com.digitech.dossier.webservices.IFieldType
+import com.digitech.dossier.webservices.ws.document.type.WSFieldType
+import com.digitech.dossier.webservices.ws.document.type.WSDocumentType
+
+IDocumentClient docClientSvc = new DocumentClient(&lt;url_arcadeged&gt;)
 // authentification basique ici
 docClientSvc.setUsername(&lt;username&gt;)
 docClientSvc.setPassword(&lt;password&gt;)

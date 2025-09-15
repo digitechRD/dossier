@@ -59,6 +59,12 @@ documentData ({soap})
 
 .Création d'un document dans le type de contenu *CR* à l'aide du client.
 ```groovy
+import com.digitech.dossier.rest.ws.IDocumentClient
+import com.digitech.dossier.rest.ws.impl.DocumentClient
+import com.digitech.dossier.webservices.IFieldType
+import com.digitech.dossier.webservices.ws.document.type.WSFieldType
+import com.digitech.dossier.webservices.ws.document.type.WSDocumentType
+
 IDocumentClient docClientSvc = new DocumentClient(<url_arcadeged>)
 // authentification basique ici
 docClientSvc.setUsername(<username>)
