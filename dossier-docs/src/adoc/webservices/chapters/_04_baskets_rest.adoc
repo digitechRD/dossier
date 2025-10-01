@@ -17,11 +17,23 @@ de cette *API*.
 
 Récupère la liste des noms des bannettes paramétrées pour l'application.
 
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_nfe_
+|===
+
 [source]
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets' \
+  'http://<host>:<port>/<context>/rest/baskets?delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -60,13 +72,19 @@ Cette méthode permet de récupérer la liste des noms des bannettes à partir d
 |Paramètre|Type|Description|Requis|Exemple
 |*orgId*|{path}|Identifiant de l'organisation|[red]*Oui*|24
 |*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_nfe_
 |===
 
 [source]
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO' \
+  'http://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO?delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -101,13 +119,19 @@ Cette méthode permet de récupérer la liste des noms des bannettes à partir d
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*flowcode*|{path}|Code du flux|[red]*Oui*|PRO
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_nfe_
 |===
 
 [source]
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/flowCode/PRO' \
+  'http://<host>:<port>/<context>/rest/baskets/flowCode/PRO?delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -144,13 +168,19 @@ Cette méthode permet d'obtenir le nombre de documents que contient la bannette 
 |*basketName*|{path}|Nom de la bannette|[red]*Oui*|Mes projets dirigés
 |*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
 |*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_nfe_
 |===
 
 [source]
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO' \
+  'http://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO&delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -183,13 +213,19 @@ Cette méthode permet d'obtenir les liens URL vers les documents de la bannette 
 |*basketName*|{path}|Nom de la bannette|[red]*Oui*|Mes projets dirigés
 |*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
 |*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_nfe_
 |===
 
 [source]
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO' \
+  'http://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO&delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
