@@ -174,9 +174,7 @@ répertoire *custom/ui/images/login* (d'extension *jpg* ou *png*)|Boolean|[green
 |===
 |Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
 |*contact.automatically.add.new.email*|Ajouter automatiquement les (nouveaux) emails en tant que nouveau contact|Boolean|[green]#true#
-|*contact.phone.numbers.available.countries*|Codes (*ISO*) des pays pouvant être utilisés pour l'ajout de numéros de téléphone|List|[green]#Locale.getDefault
-().getCountry()#. +
-*+++*+++.+++*+++* permet d'indiquer tous les pays _"disponibles"_.
+|*contact.phone.numbers.available.countries*|Codes (*ISO*) des pays pouvant être utilisés pour l'ajout de numéros de téléphone|List|*[green]#+++*+++.+++*+++#*
 |*contact.phone.numbers.use.libphone.pattern*|Utiliser les *regex* fournies par la libraire *libPhone* de *Google*|Boolean|[red]#false#
 
 [CAUTION]
@@ -288,11 +286,13 @@ répertoire *custom/ui/images/login* (d'extension *jpg* ou *png*)|Boolean|[green
 [cols="4a,3a,1a,2a",options="header"]
 |===
 |Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*sign.airs.signature.enabled*|Mode parapheur/signature OTP activé|Boolean|[red]#false#
+|*sign.airs.signature.auto.create.fields*|Création automatique des champs nécessaires à la signature/parapheur|Boolean|[green]#true#
+|*sign.airs.signature.allow.multiple.files*|Autoriser l'envoi multiple de documents en signature|Boolean|[green]#true#
 |*signBook.autoRetrieve.folder.enabled*|Relève automatique des dossiers du parapheur|Boolean|[green]#true#
 |*signBook.autoRetrive.folder.JobInterval*|Fréquence de la relève des documents dans le parapheur (en ms)|Integer|*7200000*
 |*signBook.emitter.force.empty*|Envoi anonyme|Boolean|[red]#false#
 |*signBook.emitter.generic.email*|Configuration d'un même compte pour tous les envois|String|[blue]#null#
-|*signBook.enabled*|Mode parapheur activé|Boolean|[red]#false#
 |===
 
 === Pièces jointes
