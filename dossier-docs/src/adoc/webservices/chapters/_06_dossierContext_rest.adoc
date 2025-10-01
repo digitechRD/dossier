@@ -21,7 +21,7 @@ Cette méthode renvoie la liste des flux paramétrés au sein de l'application.
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/dossierContext/flows' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/flows' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -87,7 +87,7 @@ Cette méthode permet de récupérer la liste des informations d'un type de cont
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flowCode=DOCUMENTATION' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/contentType/DOC_CATEGORIE?flowCode=DOCUMENTATION' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -155,7 +155,7 @@ Cette méthode permet de récupérer la liste des champs obligatoires d'un type 
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/dossierContext/mandatoryFields/CR?flowCode=CR' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/mandatoryFields/CR?flowCode=CR' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -208,7 +208,7 @@ Cette méthode permet de récupérer la liste des informations d'un type de cont
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/dossierContext/contentType/CR/UPDATE' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/contentType/CR/UPDATE' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -327,7 +327,7 @@ Quel que soit le content-type que vous précisez, la hiérarchie complète sera 
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/dossierContext/contentType/links/DOC_DOCUMENT' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/contentType/links/DOC_DOCUMENT' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -383,7 +383,7 @@ Cette méthode permet de récupérer la liste des content-types, pour chaque *fl
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/dossierContext/contentTypes?hierarchy=false' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/contentTypes?hierarchy=false' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -524,7 +524,7 @@ Cette méthode permet de récupérer la liste des content-types, pour un *flow/f
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/dossierContext/contentTypes/MONTEE_SUR_CALE?hierarchy=true' \
+  'http[s]://<host>:<port>/<context>/rest/dossierContext/contentTypes/MONTEE_SUR_CALE?hierarchy=true' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----

@@ -1,0 +1,23 @@
+[[appendix_basket]]
+=== Basket modèles
+
+[[appendix_basket_document_result]]
+==== *PageableExtendSearchResults*
+
+La réponse est retournée sous forme de chaîne de caractères,
+au format {xml} ({soap}) ou {json} ({rest})
+
+Celle-ci contient les informations suivantes :
+
+[cols="2a,3a,3a,1a",options="header"]
+.Paramètres en sortie
+|===
+|Paramètre|Description|Observations|Type
+4+|[orange-text]#*_results > documents_*#
+4+|cf. description au <<appendix_extendsearch_wsextendsearchresult,chapitre précédent>> (nœud *documents*)
+4+|[orange-text]#*_results > page_*#
+|*size*|Taille de la page (demandée/retournée)||_integer_
+|*number*|Numéro de page (demandée/retournée)||_integer_
+|*totalResults*|Nombre total de résultats||_integer_
+|*totalPages*|Nombre total de page||_integer_
+|===

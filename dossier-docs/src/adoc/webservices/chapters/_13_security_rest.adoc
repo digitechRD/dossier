@@ -32,7 +32,7 @@ Cette méthode permet de récupérer la liste des IPs couramment bloquées.
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/security/ip/blocked/ \
+  'http[s]://<host>:<port>/<context>/rest/security/ip/blocked/ \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -84,7 +84,7 @@ Si `\*.*` est transmis, toutes les IPs seront déverrouillées
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/security/ip/blocked/1.1.1.1 \
+  'http[s]://<host>:<port>/<context>/rest/security/ip/blocked/1.1.1.1 \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----

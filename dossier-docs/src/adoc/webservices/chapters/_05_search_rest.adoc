@@ -52,7 +52,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/search/docCount?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
+  'http[s]://<host>:<port>/<context>/rest/search/docCount?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -112,7 +112,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
+  'http[s]://<host>:<port>/<context>/rest/search/docLink?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -138,7 +138,7 @@ curl -X 'GET' \
 
 [IMPORTANT]
 ====
-Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+Les URL doivent être ajoutés à l'adresse http[s]://<host>:<port>/<context>/ pour pouvoir être utilisées.
 ====
 
 [[rest_search_results]]
@@ -181,7 +181,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
+  'http[s]://<host>:<port>/<context>/rest/search/results?airsRequest=D_CREAT%3E01%2F01%2F2018&ctyCodes=CR&flowCode=CR' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -348,7 +348,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/search/v2/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=%2A.%2A&page=1&size=50' \
+  'http[s]://<host>:<port>/<context>/rest/search/v2/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=%2A.%2A&page=1&size=50' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -504,7 +504,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7390/arcadeged90/rest/search/fullTextResults?query=digitech%20entreprise&ctyCodes=%2A.%2A&flowCode=CR&airsRequest=CR_DES%20%3D%20%22Sideral%20Ecologie%22&page=0' \
+  'http[s]://<host>:<port>/<context>/rest/search/fullTextResults?query=digitech%20entreprise&ctyCodes=%2A.%2A&flowCode=CR&airsRequest=CR_DES%20%3D%20%22Sideral%20Ecologie%22&page=0' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----

@@ -45,12 +45,12 @@ Si vous souhaitez plus de résultats, le {webservice} doit être rappelé en ajo
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR' \
+  'http[s]://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR&ctyCodes=PRO_CLIENT' \
+  'http[s]://<host>:<port>/<context>/rest/extendSearch/search4FieldsAndAttachments?airsRequest=D_CREAT%20%3E%3D%20%2201%2F01%2F2020%22&ctyCodes=CR&ctyCodes=PRO_CLIENT' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -172,7 +172,7 @@ recherche n'est pas (_par défaut_) rejouée, mais seul l'intervalle de résulta
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://pc-nfe2.digitech.lan:7381/dossier81/rest/extendSearch/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=CR&page=1&size=25' \
+  'http[s]://<host>:<port>/<context>/rest/extendSearch/results?airsRequest=D_CREAT%3C24%2F12%2F2024&ctyCodes=CR&page=1&size=25' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----

@@ -13,6 +13,8 @@ l'utilisation
 de cette *API*.
 
 ==== Méthodes
+
+[[baskets_rest_baskets]]
 ===== {GET} /baskets
 
 Récupère la liste des noms des bannettes paramétrées pour l'application.
@@ -33,7 +35,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets?delegated=nfe' \
+  'http[s]://<host>:<port>/<context>/rest/baskets?delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -62,6 +64,7 @@ curl -X 'GET' \
 ]
 ----
 
+[[baskets_rest_baskets_orgid]]
 ===== {GET} /baskets/orgId/{orgId}
 
 Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un identifiant d'organisation (*orgId*).
@@ -71,7 +74,7 @@ Cette méthode permet de récupérer la liste des noms des bannettes à partir d
 |===
 |Paramètre|Type|Description|Requis|Exemple
 |*orgId*|{path}|Identifiant de l'organisation|[red]*Oui*|24
-|*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|*flowCode*|{query}|Code du flux|[green]*Non*|PRO
 |*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
 [CAUTION]
 ====
@@ -84,7 +87,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO?delegated=nfe' \
+  'http[s]://<host>:<port>/<context>/rest/baskets/orgId/24?flowCode=PRO?delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -110,6 +113,7 @@ curl -X 'GET' \
 ]
 ----
 
+[[baskets_rest_flowcode]]
 ===== {GET} /baskets/flowCode/{flowCode}
 
 Cette méthode permet de récupérer la liste des noms des bannettes à partir d'un code identifiant de flux (*flowCode*).
@@ -118,7 +122,7 @@ Cette méthode permet de récupérer la liste des noms des bannettes à partir d
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
-|*flowcode*|{path}|Code du flux|[red]*Oui*|PRO
+|*flowCode*|{path}|Code du flux|[red]*Oui*|PRO
 |*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
 [CAUTION]
 ====
@@ -131,7 +135,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/flowCode/PRO?delegated=nfe' \
+  'http[s]://<host>:<port>/<context>/rest/baskets/flowCode/PRO?delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -157,6 +161,7 @@ curl -X 'GET' \
 ]
 ----
 
+[[baskets_rest_baskets_doccount]]
 ===== {GET} /baskets/docCount/{basketName}
 
 Cette méthode permet d'obtenir le nombre de documents que contient la bannette de travail identifiée par son nom (*basketName*).
@@ -167,7 +172,7 @@ Cette méthode permet d'obtenir le nombre de documents que contient la bannette 
 |Paramètre|Type|Description|Requis|Exemple
 |*basketName*|{path}|Nom de la bannette|[red]*Oui*|Mes projets dirigés
 |*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
-|*flowcode*|{query}|Code du flux|[green]*Non*|PRO
+|*flowCode*|{query}|Code du flux|[green]*Non*|PRO
 |*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
 [CAUTION]
 ====
@@ -180,7 +185,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO&delegated=nfe' \
+  'http[s]://<host>:<port>/<context>/rest/baskets/docCount/Derniers%20compte%20rendus?orgId=24&flowCode=PRO&delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -202,6 +207,7 @@ curl -X 'GET' \
 415
 ----
 
+[[baskets_rest_baskets_doclink]]
 ===== {GET} /baskets/docLink/{basketName}
 
 Cette méthode permet d'obtenir les liens URL vers les documents de la bannette de travail identifiée par son nom (*basketName*)
@@ -210,9 +216,9 @@ Cette méthode permet d'obtenir les liens URL vers les documents de la bannette 
 .Paramètres en entrée
 |===
 |Paramètre|Type|Description|Requis|Exemple
-|*basketName*|{path}|Nom de la bannette|[red]*Oui*|Mes projets dirigés
+|*basketName*|{path}|Nom de la bannette|[red]*Oui*|*Derniers comptes rendus*
+|*flowCode*|{query}|Code du flux|[green]*Non*|PRO
 |*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
-|*flowcode*|{query}|Code du flux|[green]*Non*|PRO
 |*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
 [CAUTION]
 ====
@@ -225,7 +231,7 @@ L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELE
 .appel _curl_
 ----
 curl -X 'GET' \
-  'http://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO&delegated=nfe' \
+  'http[s]://<host>:<port>/<context>/rest/baskets/docLink/Derniers%20compte%20rendus?orgId=24&flowCode=PRO&delegated=nfe' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -252,5 +258,163 @@ curl -X 'GET' \
 
 [IMPORTANT]
 ====
-Les URL doivent être ajoutés à l'adresse http://<host>:<port>/<context>/ pour pouvoir être utilisées.
+Les URL doivent être ajoutés à l'adresse http[s]://<host>:<port>/<context>/ pour pouvoir être utilisées.
 ====
+
+
+[[baskets_rest_basket_documents]]
+===== {GET} /baskets/documents/{basketName}
+
+Cette méthode permet à partir du nom du *corbeille* de récupérer :
+
+* l'ensemble de ses documents
+* leurs _metadata_ (champs)
+* et les informations sur les pièces jointes de chaque document
+
+Le nombre de résultats pouvant être conséquent, les résultats sont paginés, permettant ainsi de naviguer
+(_bidirectionnellement_) parmi la plage de résultats.
+
+[cols="1a,1a,4a,2a,3a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*basketName*|{path}|Nom de la bannette|[red]*Oui*|*Derniers comptes rendus*
+|*flowCode*|{query}|Code du flux|[green]*Non*|PRO
+|*orgId*|{query}|Identifiant de l'organisation|[green]*Non*|24
+|*page*|{query}|Numéro de page souhaitée (voir la |[green]*Non*, défaut : *0*|
+|*size*|{query}|nombre de résultats maximum renvoyés|[green]*Non*, défaut : *20*|
+|*delegated*|{query}|*login* de l'utilisateur pour lequel la recherche sera réellement jouée (déléguée).
+[CAUTION]
+====
+L'utilisateur *[underline]#authentifié#* doit posséder le droit *DOSSIERS_DELEGATE_SEARCH_APIS* pour pouvoir effectuer une recherche _"déléguée"_.
+====
+|[green]*Non*|_nfe_
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http[s]://<host>:<port>/<context>/rest/baskets/documents/Derniers%20comptes%20rendus?page=1&size=25&delegated=nfe' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<basket_document_response_results>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Corbeille non trouvée
+|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[basket_document_response_results]]
+[source,json]
+.Structure de retour
+----
+{
+  "results": {
+    "documents": [
+      {
+        "refAirs": 10926,
+        "secretLevel": 10,
+        "contentType": "CR",
+        "fields": [
+          {
+            "code": "D_MODIF",
+            "label": "Date de modification",
+            "value": "01/10/2025 15:15:48"
+          },
+          {
+            "code": "CR_THEME",
+            "label": "Thématique"
+          },
+          {
+            "code": "D_CREAT",
+            "label": "Date de création",
+            "value": "01/10/2025 15:15:48"
+          },
+          {
+            "code": "CR_DES",
+            "label": "Désignation"
+          },
+          {
+            "code": "CR_REDACTEUR",
+            "label": "Rédacteur"
+          },
+          {
+            "code": "CR_DATE",
+            "label": "Date événement"
+          },
+          {
+            "code": "CR_RESUME",
+            "label": "Résumé"
+          }
+        ]
+      },
+      {
+        "refAirs": 10925,
+        "secretLevel": 10,
+        "contentType": "CR",
+        "fields": [
+          {
+            "code": "D_MODIF",
+            "label": "Date de modification",
+            "value": "25/09/2025 15:22:16"
+          },
+          {
+            "code": "CR_THEME",
+            "label": "Thématique",
+            "value": "Comité Stratégique",
+            "refValue": "176"
+          },
+          {
+            "code": "D_CREAT",
+            "label": "Date de création",
+            "value": "25/09/2025 15:21:36"
+          },
+          {
+            "code": "CR_DES",
+            "label": "Désignation",
+            "value": "qsd"
+          },
+          {
+            "code": "CR_REDACTEUR",
+            "label": "Rédacteur",
+            "value": "Felix Nicolas",
+            "refValue": "97"
+          },
+          {
+            "code": "CR_DATE",
+            "label": "Date événement",
+            "value": "25/09/2025 0:00:00"
+          },
+          {
+            "code": "CR_RESUME",
+            "label": "Résumé"
+          }
+        ],
+        "attachments": [
+          {
+            "id": 7670,
+            "label": "certifcat_medical_2024.pdf",
+            "fileName": "certifcat_medical_2024.pdf",
+            "airsType": "ORIGINAL"
+          }
+        ]
+      }
+    ],
+    "page": {
+      "size": 2,
+      "number": 0,
+      "totalResults": 2,
+      "totalPages": 1
+    }
+  }
+}
+----
+
+cf. le chapitre <<appendix_basket_document_result>> pour une description de la structure de retour.

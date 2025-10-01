@@ -27,7 +27,7 @@ Cette méthode permet de supprimer des documents par lot.
 .appel _curl_
 ----
 curl -X 'DELETE' \
-  'http://<host>:<port>/<context>/rest/extendDocument/deleteDocuments?docIds=1&docIds=2' \
+  'http[s]://<host>:<port>/<context>/rest/extendDocument/deleteDocuments?docIds=1&docIds=2' \
   -H 'accept: application/json' \
   -H 'Authorization: Basic <credencials>'
 ----
@@ -196,7 +196,7 @@ Par exemple si *filesData* possède 3 pièces jointes (A, B et C) et que le docu
 [source]
 .appel _curl_
 ----
-curl --location --request POST 'http://<host>:<port>/<context>/rest/extendDocument' \
+curl --location --request POST 'http[s]://<host>:<port>/<context>/rest/extendDocument' \
 --header 'Authorization: Basic <credencials>' \
 --header 'Cookie: JSESSIONID=38558D0584562F70C045F65639F98D3E' \
 --form 'documentsData="{
@@ -332,7 +332,7 @@ cf le chapitre <<appendix_extenddocument>> pour une description de la structure 
 [source]
 .appel _curl_
 ----
-curl --location --request PATCH 'http://<host>:<port>/<context>/rest/extendDocument' \
+curl --location --request PATCH 'http[s]://<host>:<port>/<context>/rest/extendDocument' \
 --header 'Authorization: Basic <credencials>' \
 --header 'Cookie: JSESSIONID=9AF46F86AAE176E787C1BCF0F1B6FDFB' \
 --form 'documentsData="{
