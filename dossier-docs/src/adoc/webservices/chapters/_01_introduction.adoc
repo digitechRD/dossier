@@ -21,7 +21,10 @@ http(s)://<hostname>:<port>/<context>/services
 [IMPORTANT]
 ====
 La plupart des {webservices} sont également accessibles en *{rest}*. +
-Si disponibles, il est conseillé d'utiliser ces *APIs*
+Si disponibles, il est conseillé d'utiliser ces *APIs*.
+
+Les {webservices} *{soap}* n'évoluent d'ailleurs plus. Compte-tenu de l'essor des APIs de type {rest} (facilité d'utilisation, consommation mémoire et cpu moindres...),
+ceux-ci sont sujets à disparaitre dans une prochaine version.
 ====
 
 .breaking changes
@@ -33,4 +36,9 @@ des raisons techniques, logiques et de données transitées).
 L'ancien comportement peut être ré-activée en précisant l'option *dossier.ws.rest.jackson.serialize.wrap.root.value=true* au démarrage d'{arcadeged}.
 
 Si vous n'utilisez pas le client {java} fourni, il vous est conseillé de générer de nouveau vos _stubs_.
+====
+
+[NOTE]
+====
+Sauf indication contraire, les APIs {rest} sont disponibles (_par défaut donc_) à partir de la version {8_0} d'{arcadeged}.
 ====

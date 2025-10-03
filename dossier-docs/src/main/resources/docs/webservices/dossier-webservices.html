@@ -437,7 +437,11 @@ des intégrateurs de s&#8217;interfacer avec l&#8217;application <code><span sty
 <td class="content">
 <div class="paragraph">
 <p>La plupart des <code><span style="color:#0099ff">Web Services</span></code> sont également accessibles en <strong><code><span style="color:#73A12E">REST</span></code></strong>.<br>
-Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong></p>
+Si disponibles, il est conseillé d&#8217;utiliser ces <strong>APIs</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Les <code><span style="color:#0099ff">Web Services</span></code> <strong><code><span style="color:#6666ff">SOAP</span></code></strong> n&#8217;évoluent d&#8217;ailleurs plus. Compte-tenu de l&#8217;essor des APIs de type <code><span style="color:#73A12E">REST</span></code> (facilité d&#8217;utilisation, consommation mémoire et cpu moindres&#8230;&#8203;),
+ceux-ci sont sujets à disparaitre dans une prochaine version.</p>
 </div>
 </td>
 </tr>
@@ -460,6 +464,20 @@ des raisons techniques, logiques et de données transitées).</p>
 </div>
 <div class="paragraph">
 <p>Si vous n&#8217;utilisez pas le client <code><span style="color:#F24E52">Java</span></code> fourni, il vous est conseillé de générer de nouveau vos <em>stubs</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Sauf indication contraire, les APIs <code><span style="color:#73A12E">REST</span></code> sont disponibles (<em>par défaut donc</em>) à partir de la version <strong class="res">8.0</strong> d'<code><span style="color:#448279">Arcade GED</span></code>.</p>
 </div>
 </td>
 </tr>
@@ -564,24 +582,10 @@ des raisons techniques, logiques et de données transitées).</p>
 </div>
 <div class="sect2">
 <h3 id="document_rest"><a class="anchor" href="#document_rest"></a>2.3. Document</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client"><a class="anchor" href="#_client"></a>2.3.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 <div class="paragraph">
@@ -1818,24 +1822,10 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 </div>
 <div class="sect2">
 <h3 id="authority_list_rest"><a class="anchor" href="#authority_list_rest"></a>2.4. AuthorityList</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client_2"><a class="anchor" href="#_client_2"></a>2.4.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IAuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IAuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -2065,7 +2055,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
+<p>La notion de <strong>délégation</strong> sur ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong class="res">8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
 </div>
 </td>
 </tr>
@@ -2074,7 +2064,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div class="sect3">
 <h4 id="_client_3"><a class="anchor" href="#_client_3"></a>2.5.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IBasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IBasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -2861,6 +2851,20 @@ de cette <strong>API</strong>.</p>
 </div>
 <div class="sect4">
 <h5 id="baskets_rest_basket_documents"><a class="anchor" href="#baskets_rest_basket_documents"></a>2.5.2.6. <strong class="get">GET</strong> /baskets/documents/{basketName}</h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong class="res">8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Cette méthode permet à partir du nom du <strong>corbeille</strong> de récupérer :</p>
 </div>
@@ -3192,24 +3196,10 @@ de cette <strong>API</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="search_rest"><a class="anchor" href="#search_rest"></a>2.6. Search</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client_4"><a class="anchor" href="#_client_4"></a>2.6.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.ISearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.ISearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -4652,7 +4642,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
+<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong class="res">8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
 </div>
 </td>
 </tr>
@@ -4661,7 +4651,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <div class="sect3">
 <h4 id="_client_5"><a class="anchor" href="#_client_5"></a>2.7.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IHierarchyClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IHierarchyClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
 </div>
 </div>
@@ -5175,24 +5165,10 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </div>
 <div class="sect2">
 <h3 id="attachment_rest"><a class="anchor" href="#attachment_rest"></a>2.8. Attachment</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client_6"><a class="anchor" href="#_client_6"></a>2.8.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IAttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IAttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -5840,24 +5816,10 @@ de cette <strong>API</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="dossierContext_rest"><a class="anchor" href="#dossierContext_rest"></a>2.9. DossierContext</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client_7"><a class="anchor" href="#_client_7"></a>2.9.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IDossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IDossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -7062,24 +7024,10 @@ de cette <strong>API</strong>.</p>
 </div>
 <div class="sect2">
 <h3 id="extenddocument_rest"><a class="anchor" href="#extenddocument_rest"></a>2.10. ExtendDocument</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client_8"><a class="anchor" href="#_client_8"></a>2.10.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IExte,dDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
+<p>La classe <code>com.digitech.dossier.rest.ws.IExte,dDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7850,24 +7798,10 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 </div>
 <div class="sect2">
 <h3 id="extended_search_rest"><a class="anchor" href="#extended_search_rest"></a>2.11. ExtendSearch</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce { webservice} n&#8217;est disponible qu&#8217;à partir de la version <strong>7.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="sect3">
 <h4 id="_client_9"><a class="anchor" href="#_client_9"></a>2.11.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait l&#8217;utilisation
+<p>La classe <code>com.digitech.dossier.rest.ws.IExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
@@ -8495,7 +8429,7 @@ recherche n&#8217;est pas (<em>par défaut</em>) rejouée, mais seul l&#8217;int
 <div class="sect3">
 <h4 id="_client_10"><a class="anchor" href="#_client_10"></a>2.12.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IWorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.IWorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -9297,7 +9231,7 @@ de cette <strong>API</strong>.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
+<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong class="res">8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
 </div>
 </td>
 </tr>
@@ -9306,7 +9240,7 @@ de cette <strong>API</strong>.</p>
 <div class="sect3">
 <h4 id="_client_11"><a class="anchor" href="#_client_11"></a>2.13.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.ISecurityClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.1</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.ISecurityClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
 </div>
 <div class="admonitionblock important">
@@ -13272,20 +13206,6 @@ DOC_REMOVE_TYPE_FORCE</p>
 </div>
 <div class="sect2">
 <h3 id="extended_search_soap"><a class="anchor" href="#extended_search_soap"></a>3.8. ExtendSearch</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong>7.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>La <strong>wsdl</strong> est accessible à l&#8217;adresse suivante :</p>
 </div>
