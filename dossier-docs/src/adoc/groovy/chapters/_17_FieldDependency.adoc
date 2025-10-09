@@ -3,7 +3,13 @@
 
 === Description
 
-Ce script est déclenché lorsque l'on souhaite avoir une dépendance entre les valeurs de certains champs.
+Ce script est déclenché lorsque l'on souhaite avoir une *dépendance* entre les valeurs de certains champs.
+
+Les exemples les plus courants sont :
+
+* La mise à jour d'une liste de valeurs lorsqu'un utilisateur a précédemment sélectionné un élément dans une autre liste/champ.
+* Le calcul de la valeur d'un champ lorsqu'une donnée est saisie dans un ou plusieurs autres champs (tel le calcul automatique d'une durée ou de l'âge d'une
+personne)
 
 === Paramètres
 
@@ -22,6 +28,11 @@ Entrées
 |*_updatedField*|IField|Champ que l'on modifie
 |*_updateFieldValues*|Object|List des SelectItem en entrée/sortie
 |*_parameterMap*|List<IParameter>|
+|*_mode*|*com.digitech.dossier.script.model.impl.result.ScriptModeRun*|Contexte d'exécution du script (page en cours), parmi les valeurs :
+
+* *CREATE*: création d'un document
+* *UPDATE*: mise à jour d'un document
+* *SEARCH*: écran de saisie de critères de recherche
 3+|[.header]
 Entrées/sorties
 |*_result*|*com.digitech.dossier.script.model.impl.result.IScriptResultModel<T>*|

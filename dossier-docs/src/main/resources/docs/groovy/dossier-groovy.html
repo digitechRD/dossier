@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">05/09/2025 16:45:59</span>
+<span id="revdate">09/10/2025 11:45:49</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -1960,7 +1960,21 @@ _result.setFileResultName("fileResultName")</code></pre>
 <div class="sect2">
 <h3 id="_description_16"><a class="anchor" href="#_description_16"></a>19.1. Description</h3>
 <div class="paragraph">
-<p>Ce script est déclenché lorsque l&#8217;on souhaite avoir une dépendance entre les valeurs de certains champs.</p>
+<p>Ce script est déclenché lorsque l&#8217;on souhaite avoir une <strong>dépendance</strong> entre les valeurs de certains champs.</p>
+</div>
+<div class="paragraph">
+<p>Les exemples les plus courants sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La mise à jour d&#8217;une liste de valeurs lorsqu&#8217;un utilisateur a précédemment sélectionné un élément dans une autre liste/champ.</p>
+</li>
+<li>
+<p>Le calcul de la valeur d&#8217;un champ lorsqu&#8217;une donnée est saisie dans un ou plusieurs autres champs (tel le calcul automatique d&#8217;une durée ou de l&#8217;âge d&#8217;une
+personne)</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -2043,6 +2057,30 @@ _result.setFileResultName("fileResultName")</code></pre>
 <p>List&lt;IParameter&gt;</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>_mode</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>com.digitech.dossier.script.model.impl.result.ScriptModeRun</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contexte d&#8217;exécution du script (page en cours), parmi les valeurs :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>CREATE</strong>: création d&#8217;un document</p>
+</li>
+<li>
+<p><strong>UPDATE</strong>: mise à jour d&#8217;un document</p>
+</li>
+<li>
+<p><strong>SEARCH</strong>: écran de saisie de critères de recherche</p>
+</li>
+</ul>
+</div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph header">
