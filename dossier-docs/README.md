@@ -6,10 +6,18 @@ Ce projet regroupe les documentations du produit _Dossier_.
 
 Les documentations disponibles sont :
 
+* [Manuel utilisateur](src/adoc/user-guide/9.0/dossier-user-guide.adoc) (versions 
+[PDF](src/main/resources/docs/user-guide/9.0/[Dossier]Manuel-Utilisateur.pdf) et 
+[HTML](src/main/resources/docs/user-guide/9.0/[Dossier]Manuel-Utilisateur.html))
+* [Manuel Administration](src/adoc/administration/9.0/dossier-admin-guide.adoc) (versions
+    [PDF](src/main/resources/docs/administration/9.0/[Dossier]Manuel-Administrateur.pdf) et
+    [HTML](src/main/resources/docs/administration/9.0/[Dossier]Manuel-Administrateur.html))
+* [Groovy / Scripts](src/adoc/groovy/dossier-groovy.adoc) (versions [PDF](src/main/resources/docs/groovy/dossier-groovy.pdf) et
+  [HTML](src/main/resources/docs/groovy/dossier-groovy.html))
+* [Web Services](src/adoc/webservices/dossier-webservices.adoc) (versions [PDF](src/main/resources/docs/webservices/dossier-webservices.pdf) et 
+ [HTML](src/main/resources/docs/webservices/dossier-webservices.html))
 * [installation sso](src/adoc/sso/dossier-sso.adoc) (versions [PDF](src/main/resources/docs/sso/dossier-sso.pdf) et
   [HTML](src/main/resources/docs/sso/dossier-sso.html))
-* [Web Services](src/adoc/webservices/dossier-webservices.adoc) (versions [PDF](src/main/resources/docs/webservices/dossier-webservices.pdf),
-  et [HTML](src/main/resources/docs/webservices/dossier-webservices.html))
 * [cmis](src/adoc/cmis/dossier-cmis.adoc) (versions [PDF](src/main/resources/docs/cmis/dossier-cmis.pdf)
   et [HTML](src/main/resources/docs/cmis/dossier-cmis.html))
 * [parapheur](src/adoc/signature-book/dossier-signature-book.adoc) (versions [PDF](src/main/resources/docs/signature-book/dossier-signature-book.pdf) et 
