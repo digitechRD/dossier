@@ -183,69 +183,58 @@
 </li>
 </ul>
 </li>
-<li><a href="#security_rest">2.13. Sécurité</a>
-<ul class="sectlevel3">
-<li><a href="#_client_11">2.13.1. Client</a></li>
-<li><a href="#_méthodes_11">2.13.2. Méthodes</a>
-<ul class="sectlevel4">
-<li><a href="#_get_securityipblocked">2.13.2.1. <strong class="get">GET</strong> /security/ip/blocked</a></li>
-<li><a href="#_delete_securityipblockeddocid">2.13.2.2. <strong class="delete">DELETE</strong> /security/ip/blocked/{docId}</a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 <li><a href="#soap">3. <code><span style="color:#6666ff">SOAP</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#document_soap">3.1. Document</a>
 <ul class="sectlevel3">
-<li><a href="#_client_12">3.1.1. Client</a></li>
-<li><a href="#_méthodes_12">3.1.2. Méthodes</a></li>
+<li><a href="#_client_11">3.1.1. Client</a></li>
+<li><a href="#_méthodes_11">3.1.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#autority_list_soap">3.2. AuthorityList</a>
 <ul class="sectlevel3">
-<li><a href="#_client_13">3.2.1. Client</a></li>
-<li><a href="#_méthodes_13">3.2.2. Méthodes</a></li>
+<li><a href="#_client_12">3.2.1. Client</a></li>
+<li><a href="#_méthodes_12">3.2.2. Méthodes</a></li>
 <li><a href="#_authentification">3.2.3. Authentification</a></li>
 </ul>
 </li>
 <li><a href="#baskets_soap">3.3. Baskets</a>
 <ul class="sectlevel3">
-<li><a href="#_client_14">3.3.1. Client</a></li>
-<li><a href="#_méthodes_14">3.3.2. Méthodes</a></li>
+<li><a href="#_client_13">3.3.1. Client</a></li>
+<li><a href="#_méthodes_13">3.3.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#search_soap">3.4. Search</a>
 <ul class="sectlevel3">
-<li><a href="#_client_15">3.4.1. Client</a></li>
-<li><a href="#_méthodes_15">3.4.2. Méthodes</a></li>
+<li><a href="#_client_14">3.4.1. Client</a></li>
+<li><a href="#_méthodes_14">3.4.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#attachment_soap">3.5. Attachment</a>
 <ul class="sectlevel3">
-<li><a href="#_client_16">3.5.1. Client</a></li>
-<li><a href="#_méthodes_16">3.5.2. Méthodes</a></li>
+<li><a href="#_client_15">3.5.1. Client</a></li>
+<li><a href="#_méthodes_15">3.5.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#dossierContext_soap">3.6. DossierContext</a>
 <ul class="sectlevel3">
-<li><a href="#_client_17">3.6.1. Client</a></li>
-<li><a href="#_méthodes_17">3.6.2. Méthodes</a></li>
+<li><a href="#_client_16">3.6.1. Client</a></li>
+<li><a href="#_méthodes_16">3.6.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#extenddocument_soap">3.7. ExtendDocument</a>
 <ul class="sectlevel3">
-<li><a href="#_client_18">3.7.1. Client</a></li>
-<li><a href="#_méthodes_18">3.7.2. Méthodes</a></li>
+<li><a href="#_client_17">3.7.1. Client</a></li>
+<li><a href="#_méthodes_17">3.7.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#extended_search_soap">3.8. ExtendSearch</a>
 <ul class="sectlevel3">
-<li><a href="#_client_19">3.8.1. Client</a></li>
+<li><a href="#_client_18">3.8.1. Client</a></li>
 <li><a href="#_authentification_2">3.8.2. Authentification</a></li>
-<li><a href="#_méthodes_19">3.8.3. Méthodes</a></li>
+<li><a href="#_méthodes_18">3.8.3. Méthodes</a></li>
 </ul>
 </li>
 </ul>
@@ -585,7 +574,7 @@ des raisons techniques, logiques et de données transitées).</p>
 <div class="sect3">
 <h4 id="_client"><a class="anchor" href="#_client"></a>2.3.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.DocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 <div class="paragraph">
@@ -1825,7 +1814,7 @@ Pour ajouter plusieurs fichiers au document, il suffit d&#8217;envoyer plusieurs
 <div class="sect3">
 <h4 id="_client_2"><a class="anchor" href="#_client_2"></a>2.4.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IAuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.AuthorityListClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -2064,7 +2053,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <div class="sect3">
 <h4 id="_client_3"><a class="anchor" href="#_client_3"></a>2.5.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IBasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.BasketsClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -3199,7 +3188,7 @@ de cette <strong>API</strong>.</p>
 <div class="sect3">
 <h4 id="_client_4"><a class="anchor" href="#_client_4"></a>2.6.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.ISearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.SearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -4651,7 +4640,7 @@ La recherche sera alors jouée sur tous les types de contenu ou ceux appartenant
 <div class="sect3">
 <h4 id="_client_5"><a class="anchor" href="#_client_5"></a>2.7.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IHierarchyClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.HierarchyClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
 </div>
 </div>
@@ -5168,7 +5157,7 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 <div class="sect3">
 <h4 id="_client_6"><a class="anchor" href="#_client_6"></a>2.8.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IAttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.AttachmentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -5819,7 +5808,7 @@ de cette <strong>API</strong>.</p>
 <div class="sect3">
 <h4 id="_client_7"><a class="anchor" href="#_client_7"></a>2.9.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IDossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.DossierContextClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -7027,7 +7016,8 @@ de cette <strong>API</strong>.</p>
 <div class="sect3">
 <h4 id="_client_8"><a class="anchor" href="#_client_8"></a>2.10.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IExte,dDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.ExtendDocumentClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+ l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
@@ -7801,7 +7791,7 @@ Par exemple si <strong>filesData</strong> possède 3 pièces jointes (A, B et C)
 <div class="sect3">
 <h4 id="_client_9"><a class="anchor" href="#_client_9"></a>2.11.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait l&#8217;utilisation
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.ExtendedSearchClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
@@ -8429,7 +8419,7 @@ recherche n&#8217;est pas (<em>par défaut</em>) rejouée, mais seul l&#8217;int
 <div class="sect3">
 <h4 id="_client_10"><a class="anchor" href="#_client_10"></a>2.12.1. Client</h4>
 <div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.IWorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
+<p>La classe <code>com.digitech.dossier.rest.ws.impl.WorkbookClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
 l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
@@ -9218,266 +9208,6 @@ de cette <strong>API</strong>.</p>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="security_rest"><a class="anchor" href="#security_rest"></a>2.13. Sécurité</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce <code><span style="color:#0099ff">Web Service</span></code> n&#8217;est disponible qu&#8217;à partir de la version <strong class="res">8.1</strong> de <code><span style="color:#448279">Arcade GED</span></code></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="_client_11"><a class="anchor" href="#_client_11"></a>2.13.1. Client</h4>
-<div class="paragraph">
-<p>La classe <code>com.digitech.dossier.rest.ws.ISecurityClient</code> de la librairie <strong>com.digitech.airs:dossier-rest-client:2.0.3</strong> abstrait
-l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24E52">Java</span></code> seulement)</p>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>L&#8217;utilisateur connecté doit posséder le droit <strong>DOSSIER_ADM_AIRS_ADMIN</strong>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_méthodes_11"><a class="anchor" href="#_méthodes_11"></a>2.13.2. Méthodes</h4>
-<div class="sect4">
-<h5 id="_get_securityipblocked"><a class="anchor" href="#_get_securityipblocked"></a>2.13.2.1. <strong class="get">GET</strong> /security/ip/blocked</h5>
-<div class="paragraph">
-<p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
-</div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 97. Paramètres en entrée</caption>
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 11.1111%;">
-<col style="width: 44.4444%;">
-<col style="width: 11.1111%;">
-<col style="width: 22.2223%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Paramètre</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Requis</th>
-<th class="tableblock halign-left valign-top">Exemple</th>
-</tr>
-</thead>
-</table>
-<div class="listingblock">
-<div class="title">appel <em>curl</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'GET' \
-  'http[s]://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/security/ip/blocked/ \
-  -H 'accept: application/json' \
-  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 98. Réponses</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Code Http</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="lime">200</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Opération réussie (cf. <a href="#security_rest_response1">Retour, IPs bloquées</a>)</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">401</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Authentification non fournie</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">403</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Utilisateur non autorisé à effectuer cette action</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">500</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Erreur interne au serveur/service</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div id="security_rest_response1" class="listingblock">
-<div class="title">Retour, IPs bloquées</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
-  "BlockedIPList": {
-    "blockedIPs": [
-      {
-        "ip": "fe80:0:0:0:e02:215a:c52f:3531",
-        "blockedStartDate": "2025-05-20T13:36:35.035Z"
-      }
-    ]
-  }
-}</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_delete_securityipblockeddocid"><a class="anchor" href="#_delete_securityipblockeddocid"></a>2.13.2.2. <strong class="delete">DELETE</strong> /security/ip/blocked/{docId}</h5>
-<div class="paragraph">
-<p>Cette méthode permet de récupérer la liste des IPs couramment bloquées.</p>
-</div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 99. Paramètres en entrée</caption>
-<colgroup>
-<col style="width: 11.1111%;">
-<col style="width: 11.1111%;">
-<col style="width: 44.4444%;">
-<col style="width: 11.1111%;">
-<col style="width: 22.2223%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Paramètre</th>
-<th class="tableblock halign-left valign-top">Type</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Requis</th>
-<th class="tableblock halign-left valign-top">Exemple</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>ip</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>String</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>IP devant être débloquée/déverrouillée.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Astuce"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Si <code>*.*</code> est transmis, toutes les IPs seront déverrouillées</p>
-</div>
-</td>
-</tr>
-</table>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">Oui</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><em>1.1.1.1</em></p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div class="listingblock">
-<div class="title">appel <em>curl</em></div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'GET' \
-  'http[s]://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/security/ip/blocked/1.1.1.1 \
-  -H 'accept: application/json' \
-  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 100. Réponses</caption>
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Code Http</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="lime">200</strong> / <strong class="lime">204</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Opération réussie</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">401</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Authentification non fournie</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">403</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Utilisateur non autorisé à effectuer cette action</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">404</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>IP bloquée non trouvée</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
-<p><strong class="red">500</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Erreur interne au serveur/service</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-<div style="page-break-after: always;"></div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -9558,14 +9288,14 @@ fichier. La génération de ces <em>"stubs"</em>) facilite votre dévelopement m
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_12"><a class="anchor" href="#_client_12"></a>3.1.1. Client</h4>
+<h4 id="_client_11"><a class="anchor" href="#_client_11"></a>3.1.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IDocumentWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_12"><a class="anchor" href="#_méthodes_12"></a>3.1.2. Méthodes</h4>
+<h4 id="_méthodes_11"><a class="anchor" href="#_méthodes_11"></a>3.1.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">create</dt>
@@ -9575,7 +9305,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 101. Paramètres en entrée</caption>
+<caption class="title">Table 97. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9706,7 +9436,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 102. Paramètres en entrée</caption>
+<caption class="title">Table 98. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9834,7 +9564,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 103. Paramètres en entrée</caption>
+<caption class="title">Table 99. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -9968,7 +9698,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 104. Paramètres en entrée</caption>
+<caption class="title">Table 100. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10060,7 +9790,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 105. Paramètres en entrée</caption>
+<caption class="title">Table 101. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10160,14 +9890,14 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_13"><a class="anchor" href="#_client_13"></a>3.2.1. Client</h4>
+<h4 id="_client_12"><a class="anchor" href="#_client_12"></a>3.2.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IAuthorityListWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_13"><a class="anchor" href="#_méthodes_13"></a>3.2.2. Méthodes</h4>
+<h4 id="_méthodes_12"><a class="anchor" href="#_méthodes_12"></a>3.2.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getAuthorityListCodes</dt>
@@ -10236,7 +9966,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 106. Paramètres en entrée</caption>
+<caption class="title">Table 102. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10344,14 +10074,14 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_14"><a class="anchor" href="#_client_14"></a>3.3.1. Client</h4>
+<h4 id="_client_13"><a class="anchor" href="#_client_13"></a>3.3.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IBasketsWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_14"><a class="anchor" href="#_méthodes_14"></a>3.3.2. Méthodes</h4>
+<h4 id="_méthodes_13"><a class="anchor" href="#_méthodes_13"></a>3.3.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getBasketsList</dt>
@@ -10361,7 +10091,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 107. Paramètres en entrée</caption>
+<caption class="title">Table 103. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10444,7 +10174,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 108. Paramètres en entrée</caption>
+<caption class="title">Table 104. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10554,7 +10284,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 109. Paramètres en entrée</caption>
+<caption class="title">Table 105. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10648,7 +10378,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 110. Paramètres en entrée</caption>
+<caption class="title">Table 106. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10793,7 +10523,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 111. Paramètres en entrée</caption>
+<caption class="title">Table 107. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -10922,7 +10652,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 112. Paramètres en entrée</caption>
+<caption class="title">Table 108. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11048,7 +10778,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 113. Paramètres en entrée</caption>
+<caption class="title">Table 109. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11161,7 +10891,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 114. Paramètres en entrée</caption>
+<caption class="title">Table 110. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11285,7 +11015,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 115. Paramètres en entrée</caption>
+<caption class="title">Table 111. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11432,14 +11162,14 @@ un jeton (authentication).</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_15"><a class="anchor" href="#_client_15"></a>3.4.1. Client</h4>
+<h4 id="_client_14"><a class="anchor" href="#_client_14"></a>3.4.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.ISearchWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_15"><a class="anchor" href="#_méthodes_15"></a>3.4.2. Méthodes</h4>
+<h4 id="_méthodes_14"><a class="anchor" href="#_méthodes_14"></a>3.4.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getResultNumberFromAirsRequest</dt>
@@ -11449,7 +11179,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 116. Paramètres en entrée</caption>
+<caption class="title">Table 112. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11559,7 +11289,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 117. Paramètres en entrée</caption>
+<caption class="title">Table 113. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11689,7 +11419,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 118. Paramètres en entrée</caption>
+<caption class="title">Table 114. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -11902,13 +11632,13 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_16"><a class="anchor" href="#_client_16"></a>3.5.1. Client</h4>
+<h4 id="_client_15"><a class="anchor" href="#_client_15"></a>3.5.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IAttachmentWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_16"><a class="anchor" href="#_méthodes_16"></a>3.5.2. Méthodes</h4>
+<h4 id="_méthodes_15"><a class="anchor" href="#_méthodes_15"></a>3.5.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">addOrUpdate</dt>
@@ -11918,7 +11648,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 119. Paramètres en entrée</caption>
+<caption class="title">Table 115. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12038,7 +11768,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 120. Paramètres en entrée</caption>
+<caption class="title">Table 116. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12151,7 +11881,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 121. Paramètres en entrée</caption>
+<caption class="title">Table 117. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12285,7 +12015,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 122. Paramètres en entrée</caption>
+<caption class="title">Table 118. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12400,14 +12130,14 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_17"><a class="anchor" href="#_client_17"></a>3.6.1. Client</h4>
+<h4 id="_client_16"><a class="anchor" href="#_client_16"></a>3.6.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IDossierContextWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_17"><a class="anchor" href="#_méthodes_17"></a>3.6.2. Méthodes</h4>
+<h4 id="_méthodes_16"><a class="anchor" href="#_méthodes_16"></a>3.6.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getFlows</dt>
@@ -12571,14 +12301,14 @@ de cette <strong>API</strong>.</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_18"><a class="anchor" href="#_client_18"></a>3.7.1. Client</h4>
+<h4 id="_client_17"><a class="anchor" href="#_client_17"></a>3.7.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IExtendDocumentWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_18"><a class="anchor" href="#_méthodes_18"></a>3.7.2. Méthodes</h4>
+<h4 id="_méthodes_17"><a class="anchor" href="#_méthodes_17"></a>3.7.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">deleteDocuments</dt>
@@ -12588,7 +12318,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 123. Paramètres en entrée</caption>
+<caption class="title">Table 119. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12698,7 +12428,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 124. Paramètres en entrée</caption>
+<caption class="title">Table 120. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12826,7 +12556,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 125. Paramètres en entrée</caption>
+<caption class="title">Table 121. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -12930,7 +12660,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 126. Paramètres en entrée</caption>
+<caption class="title">Table 122. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13073,7 +12803,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 127. Paramètres en entrée</caption>
+<caption class="title">Table 123. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13218,7 +12948,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 <p>L&#8217;encodage des requêtes et des réponses est <strong>UTF-8</strong>.</p>
 </div>
 <div class="sect3">
-<h4 id="_client_19"><a class="anchor" href="#_client_19"></a>3.8.1. Client</h4>
+<h4 id="_client_18"><a class="anchor" href="#_client_18"></a>3.8.1. Client</h4>
 <div class="paragraph">
 <p>La classe <code>com.digitech.dossier.ws.IExtendSearchWSClient</code> de la librairie <strong>com.digitech.airs:dossier-ws-stubs:2.0.0</strong> abstrait l&#8217;utilisation
 de cette <strong>API</strong>.</p>
@@ -13231,7 +12961,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_19"><a class="anchor" href="#_méthodes_19"></a>3.8.3. Méthodes</h4>
+<h4 id="_méthodes_18"><a class="anchor" href="#_méthodes_18"></a>3.8.3. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">search4FieldsAndAttachments</dt>
@@ -13254,7 +12984,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 128. Paramètres en entrée</caption>
+<caption class="title">Table 124. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 50%;">
@@ -13432,7 +13162,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <p>connectionData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 129. Paramètres en entrée</caption>
+<caption class="title">Table 125. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13502,7 +13232,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 130. Paramètres en sortie</caption>
+<caption class="title">Table 126. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13629,7 +13359,7 @@ Veuillez vous référer aux chapitres correspondants dans la documentation dédi
 <p>WSCommonDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 131. Paramètres en sortie</caption>
+<caption class="title">Table 127. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13728,7 +13458,7 @@ Veuillez vous référer aux chapitres correspondants dans la documentation dédi
 <p>documentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 132. Paramètres en sortie</caption>
+<caption class="title">Table 128. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -13897,7 +13627,7 @@ Integer newDocId = docClientSvc.create(docData, Collections.singletonList(&lt;fi
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 133. Paramètres en entrée</caption>
+<caption class="title">Table 129. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -14041,7 +13771,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 134. Paramètres en sortie</caption>
+<caption class="title">Table 130. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14109,7 +13839,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_search_results_v1"><a class="anchor" href="#appendix_search_results_v1"></a>4.4.1. <strong>WSSearchResultType</strong></h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 135. Paramètres en sortie</caption>
+<caption class="title">Table 131. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14178,7 +13908,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 136. Paramètres en sortie</caption>
+<caption class="title">Table 132. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14317,7 +14047,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 137. Paramètres en sortie</caption>
+<caption class="title">Table 133. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14540,7 +14270,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 138. Paramètres en sortie</caption>
+<caption class="title">Table 134. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14586,7 +14316,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 139. Paramètres en sortie</caption>
+<caption class="title">Table 135. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -14756,7 +14486,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 140. Paramètres en sortie</caption>
+<caption class="title">Table 136. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15367,7 +15097,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 141. Paramètres en sortie</caption>
+<caption class="title">Table 137. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15561,7 +15291,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 142. Paramètres en sortie</caption>
+<caption class="title">Table 138. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15637,7 +15367,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 143. Paramètres en sortie</caption>
+<caption class="title">Table 139. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -15738,7 +15468,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 144. Paramètres en entrée</caption>
+<caption class="title">Table 140. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16048,7 +15778,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 145. Paramètres en sortie</caption>
+<caption class="title">Table 141. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16122,7 +15852,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 146. Paramètres en entrée</caption>
+<caption class="title">Table 142. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16289,7 +16019,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 147. Paramètres en sortie</caption>
+<caption class="title">Table 143. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16364,7 +16094,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 148. Paramètres en entrée</caption>
+<caption class="title">Table 144. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -16519,7 +16249,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 149. Paramètres en sortie</caption>
+<caption class="title">Table 145. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16589,7 +16319,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>attachmentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 150. Paramètres en sortie</caption>
+<caption class="title">Table 146. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -16736,7 +16466,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 151. Paramètres en sortie</caption>
+<caption class="title">Table 147. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17007,7 +16737,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 152. Paramètres en sortie</caption>
+<caption class="title">Table 148. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17103,7 +16833,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 153. Paramètres en sortie</caption>
+<caption class="title">Table 149. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17200,7 +16930,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 154. Paramètres en sortie</caption>
+<caption class="title">Table 150. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">

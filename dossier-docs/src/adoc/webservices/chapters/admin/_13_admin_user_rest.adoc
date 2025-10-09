@@ -1,0 +1,101 @@
+[[admin_user_rest]]
+==== Utilisateurs
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version {9_0} de {arcadeged}
+====
+
+===== Client
+
+La classe `com.digitech.dossier.rest.ws.admin.impl.UserClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation de cette *API* ({java} seulement)
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+===== Méthodes
+
+====== {GET} /security/ip/blocked
+
+Cette méthode permet de récupérer la liste des IPs couramment bloquées.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http[s]://<host>:<port>/<context>/rest/security/ip/blocked/ \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<security_rest_response1>>)
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[security_rest_response1]]
+[source,json]
+.Retour, IPs bloquées
+----
+{
+  "BlockedIPList": {
+    "blockedIPs": [
+      {
+        "ip": "fe80:0:0:0:e02:215a:c52f:3531",
+        "blockedStartDate": "2025-05-20T13:36:35.035Z"
+      }
+    ]
+  }
+}
+----
+
+====== {DELETE} /security/ip/blocked/{docId}
+
+Cette méthode permet de récupérer la liste des IPs couramment bloquées.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*ip*|String|IP devant être débloquée/déverrouillée.
+
+[TIP]
+====
+Si `\*.*` est transmis, toutes les IPs seront déverrouillées
+====
+|[red]*Oui*|_1.1.1.1_
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http[s]://<host>:<port>/<context>/rest/security/ip/blocked/1.1.1.1 \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200* / [lime]*204*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*404*|IP bloquée non trouvée
+|[red]*500*|Erreur interne au serveur/service
+|===
