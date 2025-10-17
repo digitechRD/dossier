@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">01/10/2025 09:52:58</span>
+<span id="revdate">17/10/2025 12:41:24</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -97,75 +97,87 @@
 <li><a href="#_03_options_techniques">3.34. Options <em>`techniques`</em></a></li>
 </ul>
 </li>
-<li><a href="#_04_logs">4. Configuration des logs</a>
+<li><a href="#_04_exploitation">4. Configuration / Exploitation</a>
 <ul class="sectlevel2">
-<li><a href="#_appender">4.1. Appender</a></li>
-<li><a href="#_logger">4.2. Logger</a></li>
-<li><a href="#_logger_personnalisé">4.3. Logger personnalisé</a></li>
+<li><a href="#_04_logs">4.1. Configuration des logs</a>
+<ul class="sectlevel3">
+<li><a href="#_configuration_générale">4.1.1. Configuration générale</a></li>
+<li><a href="#_appender">4.1.2. Appender</a></li>
+<li><a href="#_logger">4.1.3. Logger</a></li>
+<li><a href="#_logger_personnalisé">4.1.4. Logger personnalisé</a></li>
 </ul>
 </li>
-<li><a href="#_06_mail">5. Configuration de l&#8217;envoi de mails</a>
+<li><a href="#_06_mail">4.2. Configuration de l&#8217;envoi de mails</a>
+<ul class="sectlevel3">
+<li><a href="#_paramètres_additionnels">4.2.1. Paramètres additionnels</a></li>
+<li><a href="#_certificats">4.2.2. Certificats</a></li>
+<li><a href="#_examples">4.2.3. Examples</a>
+<ul class="sectlevel4">
+<li><a href="#_ovh">4.2.3.1. <span style="color: #46caf6">OVH</span></a></li>
+<li><a href="#_gmail">4.2.3.2. <span style="color: #185abc">gmail</span></a></li>
+<li><a href="#_office_365">4.2.3.3. <span style="color: #a84d58">Office 365</span></a></li>
+</ul>
+</li>
+<li><a href="#_authentification_moderne_oauth">4.2.4. Authentification moderne OAuth</a>
+<ul class="sectlevel4">
+<li><a href="#_office_365_2">4.2.4.1. <span style="color: #a84d58">Office 365</span></a>
+<ul class="sectlevel5">
+<li><a href="#_configuration_microsoft_office_365_azure_ad">Configuration Microsoft Office 365 / Azure AD</a></li>
+<li><a href="#_configuration_arcade_ged">Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
+</ul>
+</li>
+<li><a href="#_google_workspace">4.2.4.2. <span style="color: #185abc">Google Workspace</span></a>
+<ul class="sectlevel5">
+<li><a href="#_configuration_dans_google_cloud_console">Configuration dans Google Cloud Console</a></li>
+<li><a href="#_configuration_dans_la_console_dadministration_google_workspace">Configuration dans la console d’administration Google Workspace</a></li>
+<li><a href="#_configuration_arcade_ged_2">Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
+</ul>
+</li>
+<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">4.2.4.3. Exemples de configuration avec la balise oauth</a>
+<ul class="sectlevel5">
+<li><a href="#_office_365_3"><span style="color: #a84d58">Office 365</span></a></li>
+<li><a href="#_google_workspace_2"><span style="color: #185abc">Google Workspace</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_04_javamelody">4.3. <code><span style="color:#609dff">Javamelody</span></code></a>
+<ul class="sectlevel3">
+<li><a href="#_configuration">4.3.1. Configuration</a></li>
+<li><a href="#_exploitation">4.3.2. Exploitation</a></li>
+</ul>
+</li>
+<li><a href="#_04_temp_folders">4.4. Autres données d&#8217;exploitation</a></li>
+</ul>
+</li>
+<li><a href="#_20_custom">5. Personnalisation de l&#8217;application</a>
 <ul class="sectlevel2">
-<li><a href="#_paramètres_additionnels">5.1. Paramètres additionnels</a></li>
-<li><a href="#_certificats">5.2. Certificats</a></li>
-<li><a href="#_examples">5.3. Examples</a>
+<li><a href="#_20_custom_viewunit">5.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
 <ul class="sectlevel3">
-<li><a href="#_ovh">5.3.1. <span style="color: #46caf6">OVH</span></a></li>
-<li><a href="#_gmail">5.3.2. <span style="color: #185abc">gmail</span></a></li>
-<li><a href="#_office_365">5.3.3. <span style="color: #a84d58">Office 365</span></a></li>
+<li><a href="#_introduction">5.1.1. Introduction</a></li>
+<li><a href="#_module_adminairs">5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
+<li><a href="#_expert_ajout_manuelle_dune_action_custom">5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
+<li><a href="#_configuration_script_modale">5.1.4. Configuration script + modale</a></li>
+<li><a href="#_quelques_modèlesexemples_de_scripts">5.1.5. Quelques modèles/exemples de scripts</a></li>
 </ul>
 </li>
-<li><a href="#_authentification_moderne_oauth">5.4. Authentification moderne OAuth</a>
+<li><a href="#_20_custom_result">5.2. [Résultats] Personnalisation de la vue</a>
 <ul class="sectlevel3">
-<li><a href="#_office_365_2">5.4.1. <span style="color: #a84d58">Office 365</span></a>
-<ul class="sectlevel4">
-<li><a href="#_configuration_microsoft_office_365_azure_ad">5.4.1.1. Configuration Microsoft Office 365 / Azure AD</a></li>
-<li><a href="#_configuration_arcade_ged">5.4.1.2. Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
+<li><a href="#_styles">5.2.1. Styles</a></li>
 </ul>
 </li>
-<li><a href="#_google_workspace">5.4.2. <span style="color: #185abc">Google Workspace</span></a>
-<ul class="sectlevel4">
-<li><a href="#_configuration_dans_google_cloud_console">5.4.2.1. Configuration dans Google Cloud Console</a></li>
-<li><a href="#_configuration_dans_la_console_dadministration_google_workspace">5.4.2.2. Configuration dans la console d’administration Google Workspace</a></li>
-<li><a href="#_configuration_arcade_ged_2">5.4.2.3. Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
-</ul>
-</li>
-<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">5.4.3. Exemples de configuration avec la balise oauth</a>
-<ul class="sectlevel4">
-<li><a href="#_office_365_3">5.4.3.1. <span style="color: #a84d58">Office 365</span></a></li>
-<li><a href="#_google_workspace_2">5.4.3.2. <span style="color: #185abc">Google Workspace</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#_20_custom">6. Personnalisation de l&#8217;application</a>
-<ul class="sectlevel2">
-<li><a href="#_20_custom_viewunit">6.1. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<li><a href="#_20_task">5.3. [Cron] ajout d&#8217;une tâche planifiée</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction">6.1.1. Introduction</a></li>
-<li><a href="#_module_adminairs">6.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
-<li><a href="#_expert_ajout_manuelle_dune_action_custom">6.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
-<li><a href="#_configuration_script_modale">6.1.4. Configuration script + modale</a></li>
-<li><a href="#_quelques_modèlesexemples_de_scripts">6.1.5. Quelques modèles/exemples de scripts</a></li>
+<li><a href="#_introduction_2">5.3.1. Introduction</a></li>
+<li><a href="#_déclaration">5.3.2. Déclaration</a></li>
 </ul>
 </li>
-<li><a href="#_20_custom_result">6.2. [Résultats] Personnalisation de la vue</a>
+<li><a href="#_20_custom_masks">5.4. Ajout de masques de saisie sur les champs de type <strong>input</strong></a>
 <ul class="sectlevel3">
-<li><a href="#_styles">6.2.1. Styles</a></li>
-</ul>
-</li>
-<li><a href="#_20_task">6.3. [Cron] ajout d&#8217;une tâche planifiée</a>
-<ul class="sectlevel3">
-<li><a href="#_introduction_2">6.3.1. Introduction</a></li>
-<li><a href="#_déclaration">6.3.2. Déclaration</a></li>
-</ul>
-</li>
-<li><a href="#_20_custom_masks">6.4. Ajout de masques de saisie sur les champs de type <strong>input</strong></a>
-<ul class="sectlevel3">
-<li><a href="#_introduction_3">6.4.1. Introduction</a></li>
-<li><a href="#_déclaration_2">6.4.2. Déclaration</a></li>
+<li><a href="#_introduction_3">5.4.1. Introduction</a></li>
+<li><a href="#_déclaration_2">5.4.2. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -2425,7 +2437,7 @@ recherche plein texte</p>
 </div>
 </div>
 </div>
-<div class="sect1">
+<div class="sect1 landscape">
 <h2 id="_03_options"><a class="anchor" href="#_03_options"></a>3. Options</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -3832,12 +3844,6 @@ répertoire <strong>custom/ui/images/login</strong> (d&#8217;extension <strong>j
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Utiliser les <strong>regex</strong> fournies par la libraire <strong>libPhone</strong> de <strong>Google</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Boolean</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="red">false</span></p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -3852,6 +3858,12 @@ répertoire <strong>custom/ui/images/login</strong> (d&#8217;extension <strong>j
 </td>
 </tr>
 </table>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Boolean</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="red">false</span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -4952,6 +4964,20 @@ répertoire <strong>custom/ui/images/login</strong> (d&#8217;extension <strong>j
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Vidage du répertoire des documents convertis au démarrage de l&#8217;application</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Boolean</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="red">false</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>display.attachment.downloaded.empty.folder</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Vidage du répertoire des documents téléchargés au démarrage de l&#8217;application</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>Boolean</p>
@@ -6529,10 +6555,49 @@ jointe</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_04_logs"><a class="anchor" href="#_04_logs"></a>4. Configuration des logs</h2>
+<h2 id="_04_exploitation"><a class="anchor" href="#_04_exploitation"></a>4. Configuration / Exploitation</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Ce chapitre décrit les données, paramètres, outils,&#8230;&#8203; pouvant être utile lors de l&#8217;exploitation d'<code><span style="color:#448279">Arcade GED</span></code> afin d&#8217;analyser les performances et autres
+métriques de l&#8217;application.</p>
+</div>
+<div class="sect2">
+<h3 id="_04_logs"><a class="anchor" href="#_04_logs"></a>4.1. Configuration des logs</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Les fichiers de <strong>logs</strong> sont primordiaux pour analyser <em>a posteriori</em> un comportement non souhaité de l&#8217;application.<br>
+L&#8217;équipe en charge de la maintenance du produit <code><span style="color:#448279">Arcade GED</span></code> vous demandera de les fournir dans le but d&#8217;identifier plus aiséent la source du
+dysfonctionnement relevé.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_configuration_générale"><a class="anchor" href="#_configuration_générale"></a>4.1.1. Configuration générale</h4>
+<div class="paragraph">
 <p>Le fichier <strong>WEB-INF/classes/logback.properties</strong> est utilisé pour personnaliser les niveaux de logs.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Pas défaut, les fichiers de <strong>logs</strong> seront générés dans le répertoire <strong>./logs</strong> de l&#8217;application.<br>
+Ce répertoire peut également être modifié via la clé <strong>log_path</strong>, définie dans ce même fichier de configuration.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Les différents niveaux de logs possibles sont :</p>
@@ -6621,8 +6686,9 @@ de logs que l&#8217;on souhaite dans <strong>WEB-INF/classes/logback.properties<
 <div class="paragraph">
 <p>La clé <strong>log_path</strong> peut être définie pour désigner le répertoire où seront déposés les fichiers de log.</p>
 </div>
-<div class="sect2">
-<h3 id="_appender"><a class="anchor" href="#_appender"></a>4.1. Appender</h3>
+</div>
+<div class="sect3">
+<h4 id="_appender"><a class="anchor" href="#_appender"></a>4.1.2. Appender</h4>
 <div class="paragraph">
 <p>Un appender est un composant responsable de l&#8217;écriture des logs vers une destination spécifique, comme un fichier ou encore la console.</p>
 </div>
@@ -6832,8 +6898,8 @@ personnaliser dans le fichier
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_logger"><a class="anchor" href="#_logger"></a>4.2. Logger</h3>
+<div class="sect3">
+<h4 id="_logger"><a class="anchor" href="#_logger"></a>4.1.3. Logger</h4>
 <div class="paragraph">
 <p>Un logger est un composant qui génère et envoie des messages de log à un ou plusieurs appenders. Il permet de catégoriser et de filtrer les logs en fonction du niveau de sévérité et du contexte de l&#8217;application.</p>
 </div>
@@ -7519,8 +7585,8 @@ les enregistre dans l&#8217;appender <strong>FILE_ROLL</strong>.</p>
 </tbody>
 </table>
 </div>
-<div class="sect2">
-<h3 id="_logger_personnalisé"><a class="anchor" href="#_logger_personnalisé"></a>4.3. Logger personnalisé</h3>
+<div class="sect3">
+<h4 id="_logger_personnalisé"><a class="anchor" href="#_logger_personnalisé"></a>4.1.4. Logger personnalisé</h4>
 <div class="paragraph">
 <p>Il est possible d&#8217;ajouter un fichier nommé <strong>externalLogback.xml</strong> dans le répertoire <strong>xml</strong> afin d&#8217;étendre la configuration
 injectée par défaut.</p>
@@ -7571,10 +7637,8 @@ injectée par défaut.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_06_mail"><a class="anchor" href="#_06_mail"></a>5. Configuration de l&#8217;envoi de mails</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_06_mail"><a class="anchor" href="#_06_mail"></a>4.2. Configuration de l&#8217;envoi de mails</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -7704,8 +7768,8 @@ fenêtre d&#8217;envoi de mail.</p>
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>5.1. Paramètres additionnels</h3>
+<div class="sect3">
+<h4 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>4.2.1. Paramètres additionnels</h4>
 <div class="paragraph">
 <p>Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier <strong>WEB-INF/classes/mail/mail-additional
 .properties</strong>.</p>
@@ -7719,8 +7783,8 @@ fenêtre d&#8217;envoi de mail.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_certificats"><a class="anchor" href="#_certificats"></a>5.2. Certificats</h3>
+<div class="sect3">
+<h4 id="_certificats"><a class="anchor" href="#_certificats"></a>4.2.2. Certificats</h4>
 <div class="paragraph">
 <p>Si vous avez un souci d&#8217;envoi de mail relatif à un certificat (erreur <strong>pkix</strong>, &#8230;&#8203;), veuillez intégrer le certificat dans le magasin de la {jdk}.</p>
 </div>
@@ -7740,10 +7804,10 @@ précédent).</p>
 </table>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_examples"><a class="anchor" href="#_examples"></a>5.3. Examples</h3>
 <div class="sect3">
-<h4 id="_ovh"><a class="anchor" href="#_ovh"></a>5.3.1. <span style="color: #46caf6">OVH</span></h4>
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>4.2.3. Examples</h4>
+<div class="sect4">
+<h5 id="_ovh"><a class="anchor" href="#_ovh"></a>4.2.3.1. <span style="color: #46caf6">OVH</span></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -7756,8 +7820,8 @@ précédent).</p>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_gmail"><a class="anchor" href="#_gmail"></a>5.3.2. <span style="color: #185abc">gmail</span></h4>
+<div class="sect4">
+<h5 id="_gmail"><a class="anchor" href="#_gmail"></a>4.2.3.2. <span style="color: #185abc">gmail</span></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -7798,8 +7862,8 @@ l&#8217;authentification à l&#8217;interface <span style="color: #185abc">gmail
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_office_365"><a class="anchor" href="#_office_365"></a>5.3.3. <span style="color: #a84d58">Office 365</span></h4>
+<div class="sect4">
+<h5 id="_office_365"><a class="anchor" href="#_office_365"></a>4.2.3.3. <span style="color: #a84d58">Office 365</span></h5>
 <div class="paragraph">
 <p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes">ici</a>)</p>
 </div>
@@ -7831,8 +7895,8 @@ Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>5.4. Authentification moderne OAuth</h3>
+<div class="sect3">
+<h4 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>4.2.4. Authentification moderne OAuth</h4>
 <div class="paragraph">
 <p>Pour activer ce mode d&#8217;authentification, il faut ajouter la balise <strong>oauth</strong> à l&#8217;intérieur de la balise <strong>mailConfig</strong>.</p>
 </div>
@@ -7842,10 +7906,10 @@ Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
 <div class="paragraph">
 <p>Dans la version actuelle, l&#8217;application implémente l&#8217;authentification moderne pour <span style="color: #a84d58">Office 365</span> et <span style="color: #185abc">Google Workspace</span>.</p>
 </div>
-<div class="sect3">
-<h4 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>5.4.1. <span style="color: #a84d58">Office 365</span></h4>
 <div class="sect4">
-<h5 id="_configuration_microsoft_office_365_azure_ad"><a class="anchor" href="#_configuration_microsoft_office_365_azure_ad"></a>5.4.1.1. Configuration Microsoft Office 365 / Azure AD</h5>
+<h5 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>4.2.4.1. <span style="color: #a84d58">Office 365</span></h5>
+<div class="sect5">
+<h6 id="_configuration_microsoft_office_365_azure_ad"><a class="anchor" href="#_configuration_microsoft_office_365_azure_ad"></a>Configuration Microsoft Office 365 / Azure AD</h6>
 <div class="paragraph">
 <p>Pour ce mode de fonctionnement, une <strong>application d’entreprise</strong> doit être créée (ou exister) dans <strong>Microsoft Azure Active Directory</strong>. Elle devra posséder les
 autorisations d&#8217;API suivantes :</p>
@@ -7935,7 +7999,7 @@ autorisations d&#8217;API suivantes :</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/application_infos.png" alt="application infos">
+<img src="images/04_mail/application_infos.png" alt="application infos">
 </div>
 </div>
 <div class="paragraph">
@@ -7943,7 +8007,7 @@ autorisations d&#8217;API suivantes :</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/add_secret.png" alt="add secret">
+<img src="images/04_mail/add_secret.png" alt="add secret">
 </div>
 </div>
 <div class="paragraph">
@@ -7951,7 +8015,7 @@ autorisations d&#8217;API suivantes :</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/copy_secret.png" alt="copy secret">
+<img src="images/04_mail/copy_secret.png" alt="copy secret">
 </div>
 </div>
 <div class="paragraph">
@@ -8016,8 +8080,8 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 <p>Le service principal est maintenant créé et possède les droits d&#8217;accès à la boîte mail de l&#8217;utilisateur.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_configuration_arcade_ged"><a class="anchor" href="#_configuration_arcade_ged"></a>5.4.1.2. Configuration <code><span style="color:#448279">Arcade GED</span></code></h5>
+<div class="sect5">
+<h6 id="_configuration_arcade_ged"><a class="anchor" href="#_configuration_arcade_ged"></a>Configuration <code><span style="color:#448279">Arcade GED</span></code></h6>
 <div class="paragraph">
 <p>Configuration de la balise <strong>oauth</strong> :</p>
 </div>
@@ -8029,8 +8093,8 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>5.4.2. <span style="color: #185abc">Google Workspace</span></h4>
+<div class="sect4">
+<h5 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>4.2.4.2. <span style="color: #185abc">Google Workspace</span></h5>
 <div class="paragraph">
 <p>Pour permettre à l’application d’aspirer les emails via un compte de service Google, il est nécessaire de configurer à la fois Google Cloud et la console d’administration Google Workspace.</p>
 </div>
@@ -8050,8 +8114,8 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </li>
 </ul>
 </div>
-<div class="sect4">
-<h5 id="_configuration_dans_google_cloud_console"><a class="anchor" href="#_configuration_dans_google_cloud_console"></a>5.4.2.1. Configuration dans Google Cloud Console</h5>
+<div class="sect5">
+<h6 id="_configuration_dans_google_cloud_console"><a class="anchor" href="#_configuration_dans_google_cloud_console"></a>Configuration dans Google Cloud Console</h6>
 <div class="paragraph">
 <p>Rendez vous sur la console <a href="https://console.cloud.google.com/welcome">Google Cloud</a> et allez dans votre projet.</p>
 </div>
@@ -8067,7 +8131,7 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/api_services.png" alt="api services">
+<img src="images/04_mail/api_services.png" alt="api services">
 </div>
 </div>
 <div class="paragraph">
@@ -8075,7 +8139,7 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/audience.png" alt="audience">
+<img src="images/04_mail/audience.png" alt="audience">
 </div>
 </div>
 <div class="paragraph">
@@ -8083,7 +8147,7 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/data_access.png" alt="data access">
+<img src="images/04_mail/data_access.png" alt="data access">
 </div>
 </div>
 <div class="ulist">
@@ -8098,7 +8162,7 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/service_accounts.png" alt="service accounts">
+<img src="images/04_mail/service_accounts.png" alt="service accounts">
 </div>
 </div>
 <div class="paragraph">
@@ -8113,12 +8177,12 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/06_mail/account_id.png" alt="account id">
+<img src="images/04_mail/account_id.png" alt="account id">
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_configuration_dans_la_console_dadministration_google_workspace"><a class="anchor" href="#_configuration_dans_la_console_dadministration_google_workspace"></a>5.4.2.2. Configuration dans la console d’administration Google Workspace</h5>
+<div class="sect5">
+<h6 id="_configuration_dans_la_console_dadministration_google_workspace"><a class="anchor" href="#_configuration_dans_la_console_dadministration_google_workspace"></a>Configuration dans la console d’administration Google Workspace</h6>
 <div class="ulist">
 <ul>
 <li>
@@ -8151,8 +8215,8 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 <p>Une fois ces étapes accomplies, l’application pourra utiliser le compte de service pour aspirer les emails des utilisateurs du domaine Google Workspace, sans nécessiter leurs mots de passe individuels.</p>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_configuration_arcade_ged_2"><a class="anchor" href="#_configuration_arcade_ged_2"></a>5.4.2.3. Configuration <code><span style="color:#448279">Arcade GED</span></code></h5>
+<div class="sect5">
+<h6 id="_configuration_arcade_ged_2"><a class="anchor" href="#_configuration_arcade_ged_2"></a>Configuration <code><span style="color:#448279">Arcade GED</span></code></h6>
 <div class="paragraph">
 <p>Configuration de la balise <strong>oauth</strong> :</p>
 </div>
@@ -8163,10 +8227,10 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>5.4.3. Exemples de configuration avec la balise oauth</h4>
 <div class="sect4">
-<h5 id="_office_365_3"><a class="anchor" href="#_office_365_3"></a>5.4.3.1. <span style="color: #a84d58">Office 365</span></h5>
+<h5 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>4.2.4.3. Exemples de configuration avec la balise oauth</h5>
+<div class="sect5">
+<h6 id="_office_365_3"><a class="anchor" href="#_office_365_3"></a><span style="color: #a84d58">Office 365</span></h6>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -8184,8 +8248,8 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_google_workspace_2"><a class="anchor" href="#_google_workspace_2"></a>5.4.3.2. <span style="color: #185abc">Google Workspace</span></h5>
+<div class="sect5">
+<h6 id="_google_workspace_2"><a class="anchor" href="#_google_workspace_2"></a><span style="color: #185abc">Google Workspace</span></h6>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -8205,9 +8269,274 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_04_javamelody"><a class="anchor" href="#_04_javamelody"></a>4.3. <code><span style="color:#609dff">Javamelody</span></code></h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><a href="https://github.com/javamelody/javamelody" target="_blank" rel="noopener"><code><span style="color:#609dff">Javamelody</span></code></a> est un outil de <span class="underline">monitoring</span> embarqué dans <code><span style="color:#448279">Arcade GED</span></code>.<br>
+<span class="underline">Ce n&#8217;est pas</span> un outil de monitoring <strong>temps réel</strong>, mais il permet néanmoins d&#8217;obtenir des métriques intéressantes relatives à l&#8217;utilisation de
+l&#8217;application, le bon dimensionnement des machines, &#8230;&#8203;</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_configuration"><a class="anchor" href="#_configuration"></a>4.3.1. Configuration</h4>
+<div class="paragraph">
+<p>La page principale de <code><span style="color:#609dff">Javamelody</span></code> est disponible à l&#8217;url <code>http[s]://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/monitoring</code>.</p>
+</div>
+<div class="paragraph">
+<p>Cette page est sécurisée par <strong>tomcat</strong>, via un utilisateur possédant le rôle <strong>monitoring</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Ce compte doit donc être déclaré dans le fichier tomcat-users.xml</p>
+</div>
+<div class="listingblock">
+<div class="title">Exemple <strong>tomcat-users.xml</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version='1.0' encoding='utf-8'?&gt;
+&lt;tomcat-users&gt;
+  &lt;role rolename="monitoring"/&gt;
+  &lt;user username="javamelody" password="Qsq$d3!:dqsqs" roles="monitoring"/&gt;
+&lt;/tomcat-users&gt;</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/04_javamelody/javamelody.png" alt="javamelody">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_exploitation"><a class="anchor" href="#_exploitation"></a>4.3.2. Exploitation</h4>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce document n&#8217;a pas pour but de décrire de manière exhaustive le fonctionnement du module <code><span style="color:#609dff">Javamelody</span></code>.<br>
+Veuillez vous référer à sa <a href="https://github.com/javamelody/javamelody/wiki/UserGuide" target="_blank" rel="noopener">documentation officielle</a> pour plus de détails.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Les fonctionnalités intéressantes (<em>d&#8217;un point de vue <code><span style="color:#EF2547">Digitech</span></code></em>) sont :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>l&#8217;export au format <strong>PDF</strong>, sur une période donnée, via les liens en haut de page. Le document <strong>PDF</strong> ainsi extrait peut être transmis à l&#8217;équipe de
+développement pour une analyse plus poussée.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/04_javamelody/export.png" alt="export">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>la possibilité d&#8217;identifier les sessions en cours.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/04_javamelody/sessions1.png" alt="sessions1">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/04_javamelody/sessions2.png" alt="sessions2">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>De nombreuses autres métriques sont intéressantes pour les développeurs, mais ne nécessitent pas une description dans ce document.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_04_temp_folders"><a class="anchor" href="#_04_temp_folders"></a>4.4. Autres données d&#8217;exploitation</h3>
+<div class="paragraph">
+<p>Afin d&#8217;optimiser ce fonctionnement, notamment dans ces échanges avec la base de données et le serveur <code><span style="color:#25EF72">Airs</span></code>,
+{arcadegd} met en cache de nombreuses données.</p>
+</div>
+<div class="paragraph">
+<p>Ces caches peuvent être de type :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong><em>mémoire</em></strong>: ces données mises en cache permettent d&#8217;éviter des appels vers le serveur <code><span style="color:#25EF72">Airs</span></code>. ces caches ont pour propriétés d&#8217;être :</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>limités</strong> <span class="underline">en taille</span> (nombre d&#8217;éléments dans le cache). En cas de dépassement, les éléments les plus anciens sont supprimés du cache
+avant ajout
+ des nouveaux éléments.</p>
+</li>
+<li>
+<p><strong>initialisés</strong> <span class="underline">au démarrage</span> de l&#8217;application pour les données de paramétrage.</p>
+</li>
+<li>
+<p><strong>remplis</strong> <span class="underline">au fil de l&#8217;eau</span> pour les données contextuelles (résultats de recherche, derniers documents consultés, &#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong><em>fichiers</em></strong>: ces caches permettent également d&#8217;éviter :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>de trop nombreux échanges avec le serveur de stockage de fichiers,</p>
+</li>
+<li>
+<p>des conversions incessantes d&#8217;un format de fichier vers un autre (ex : <strong>doc</strong> vers <strong>pdf</strong>, <strong>pdf</strong> vers <strong>png</strong>, &#8230;&#8203;)</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>L&#8217;ensemble des fichiers mis en cache sont inscrits dans le répertoire <strong>&lt;install_tomcat&gt;/webapps/&lt;arcadeged&gt;/tmp</strong>.<br>
+Ce répertoire contient des sous-répertoires dont la description est la suivante :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 16.6666%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 16.6668%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Répertoire</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Peut être supprimé ?</th>
+<th class="tableblock halign-left valign-top">Limitation en taille/nombre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>avatars</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contient les <strong>avatars</strong> des utilisateurs (auto-générés ou uploadés par les utilisateurs)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="blue"><strong>Oui</strong></span> (automatique, à chaque démarrage)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>aucune</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>converted</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contient les documents convertis en <strong>PDF</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="blue"><strong>Oui</strong></span>. Peut être automatiquement vidé à l&#8217;arrêt et au démarrage si la clé<br>
+<strong>display.attachment.convertAuto.empty.folder=true</strong> est renseignée dans le fichier <strong>config.properties</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>aucune</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>documents[/cache]</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Contient les documents téléchargés du filesystem <code><span style="color:#25EF72">Airs</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="blue"><strong>Oui</strong></span>. Peut être automatiquement vidé à l&#8217;arrêt et au démarrage si la clé<br>
+<strong>display.attachment.downloaded.empty.folder=true</strong> est renseignée dans le fichier <strong>config.properties</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>dossier.cache.attachments.max=2048</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>downloaded</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Répertoire temporaire par session utilisateur</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="blue"><strong>Oui</strong></span> (automatique, à chaque démarrage)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>aucune</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>uploaded</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Répertoire temporaire par session utilisateur, lorsque des documents sont téléversés</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="blue"><strong>Oui</strong></span> (automatique, à chaque démarrage)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>aucune</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>documentViewer[/cache]</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Répertoire stockant les imagettes (<em>thumbnails</em>) générées</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="blue"><strong>Oui</strong></span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>10_000</em></p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div class="sect1">
-<h2 id="_20_custom"><a class="anchor" href="#_20_custom"></a>6. Personnalisation de l&#8217;application</h2>
+<h2 id="_20_custom"><a class="anchor" href="#_20_custom"></a>5. Personnalisation de l&#8217;application</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être personnalisée de bien des manières.<br></p>
@@ -8216,9 +8545,9 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 <p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>6.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>5.1. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
 <div class="sect3">
-<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>6.1.1. Introduction</h4>
+<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>5.1.1. Introduction</h4>
 <div class="paragraph">
 <p>Autrement nommée <strong class="yellow"><em>action custom</em></strong>.</p>
 </div>
@@ -8266,7 +8595,7 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 </div>
 <div class="sect3">
-<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>6.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
+<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>5.1.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
 <div class="paragraph">
 <p>Le module <code><span style="color:#25EF72">adminAIRS</span></code> permet de configurer via le paramétrage des vues les <strong class="yellow"><em>action custom</em></strong></p>
 </div>
@@ -8438,7 +8767,7 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>6.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
+<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>5.1.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -8596,7 +8925,7 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.1.4. Configuration script + modale</h4>
+<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>5.1.4. Configuration script + modale</h4>
 <div class="paragraph">
 <p>Le script <strong>modalPanelInitGroovyScriptId</strong> est exécuté avant l&#8217;apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.</p>
 </div>
@@ -8630,7 +8959,7 @@ xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.1.5. Quelques modèles/exemples de scripts</h4>
+<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>5.1.5. Quelques modèles/exemples de scripts</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -8717,9 +9046,9 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>6.2. [Résultats] Personnalisation de la vue</h3>
+<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>5.2. [Résultats] Personnalisation de la vue</h3>
 <div class="sect3">
-<h4 id="_styles"><a class="anchor" href="#_styles"></a>6.2.1. Styles</h4>
+<h4 id="_styles"><a class="anchor" href="#_styles"></a>5.2.1. Styles</h4>
 <div class="paragraph">
 <p>La page de résultats peut être personnalisée via l&#8217;application de <strong>styleClass</strong> sur ses colonnes. Par exemple :</p>
 </div>
@@ -8814,9 +9143,9 @@ La définition de ces <strong>styles</strong> est soit :</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>6.3. [Cron] ajout d&#8217;une tâche planifiée</h3>
+<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>5.3. [Cron] ajout d&#8217;une tâche planifiée</h3>
 <div class="sect3">
-<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>6.3.1. Introduction</h4>
+<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>5.3.1. Introduction</h4>
 <div class="paragraph">
 <p>Certaines actions sur la base documentaire n&#8217;ont pas besoin d&#8217;être exécutées immédiatement,<br>
 notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em> (conversion de documents, <em>push</em> ou export vers un système externe).</p>
@@ -8840,7 +9169,7 @@ notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>6.3.2. Déclaration</h4>
+<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>5.3.2. Déclaration</h4>
 <div class="paragraph">
 <p>Ces <strong>tâches planifiées</strong> consistent en :</p>
 </div>
@@ -8922,9 +9251,9 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_masks"><a class="anchor" href="#_20_custom_masks"></a>6.4. Ajout de masques de saisie sur les champs de type <strong>input</strong></h3>
+<h3 id="_20_custom_masks"><a class="anchor" href="#_20_custom_masks"></a>5.4. Ajout de masques de saisie sur les champs de type <strong>input</strong></h3>
 <div class="sect3">
-<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>6.4.1. Introduction</h4>
+<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>5.4.1. Introduction</h4>
 <div class="paragraph">
 <p>Selon la configuration, il peut être intéressant d&#8217;appliquer un masque de saisie sur certains champs, dans le but de faciliter l&#8217;expérience utilisateur.</p>
 </div>
@@ -8952,7 +9281,7 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.4.2. Déclaration</h4>
+<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>5.4.2. Déclaration</h4>
 <div class="paragraph">
 <p>La déclaration s&#8217;effectue en 2 actions :</p>
 </div>

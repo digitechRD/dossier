@@ -1,0 +1,55 @@
+[[_04_javamelody]]
+:javamelody: pass:quotes[`<span style="color:#609dff">Javamelody</span>`]
+=== {javamelody}
+
+[NOTE]
+====
+https://github.com/javamelody/javamelody[{javamelody}, window="_blank"] est un outil de [underline]#monitoring# embarqué dans {arcadeged}. +
+[underline]#Ce n'est pas# un outil de monitoring *temps réel*, mais il permet néanmoins d'obtenir des métriques intéressantes relatives à l'utilisation de
+l'application, le bon dimensionnement des machines, ...
+====
+
+==== Configuration
+
+La page principale de {javamelody} est disponible à l'url `http[s]://<host>:<port>/<context>/monitoring`.
+
+Cette page est sécurisée par *tomcat*, via un utilisateur possédant le rôle *monitoring*.
+
+Ce compte doit donc être déclaré dans le fichier tomcat-users.xml
+
+[source,xml]
+.Exemple *tomcat-users.xml*
+----
+<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+  <role rolename="monitoring"/>
+  <user username="javamelody" password="Qsq$d3!:dqsqs" roles="monitoring"/>
+</tomcat-users>
+----
+
+image::./04_javamelody/javamelody.png[]
+
+==== Exploitation
+
+[IMPORTANT]
+====
+Ce document n'a pas pour but de décrire de manière exhaustive le fonctionnement du module {javamelody}. +
+Veuillez vous référer à sa https://github.com/javamelody/javamelody/wiki/UserGuide[documentation officielle, window="_blank"] pour plus de détails.
+====
+
+Les fonctionnalités intéressantes (_d'un point de vue {digitech}_) sont :
+
+* l'export au format *PDF*, sur une période donnée, via les liens en haut de page. Le document *PDF* ainsi extrait peut être transmis à l'équipe de
+développement pour une analyse plus poussée.
+
+image::./04_javamelody/export.png[]
+
+* la possibilité d'identifier les sessions en cours.
+
+image::./04_javamelody/sessions1.png[]
+image::./04_javamelody/sessions2.png[]
+
+[NOTE]
+====
+De nombreuses autres métriques sont intéressantes pour les développeurs, mais ne nécessitent pas une description dans ce document.
+====

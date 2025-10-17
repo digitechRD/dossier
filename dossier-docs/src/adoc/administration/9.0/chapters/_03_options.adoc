@@ -1,3 +1,4 @@
+[.landscape]
 [[_03_options]]
 == Options
 
@@ -175,12 +176,13 @@ répertoire *custom/ui/images/login* (d'extension *jpg* ou *png*)|Boolean|[green
 |Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
 |*contact.automatically.add.new.email*|Ajouter automatiquement les (nouveaux) emails en tant que nouveau contact|Boolean|[green]#true#
 |*contact.phone.numbers.available.countries*|Codes (*ISO*) des pays pouvant être utilisés pour l'ajout de numéros de téléphone|List|*[green]#+++*+++.+++*+++#*
-|*contact.phone.numbers.use.libphone.pattern*|Utiliser les *regex* fournies par la libraire *libPhone* de *Google*|Boolean|[red]#false#
+|*contact.phone.numbers.use.libphone.pattern*|Utiliser les *regex* fournies par la libraire *libPhone* de *Google*
 
 [CAUTION]
 ====
 *Attention* les *regex* fournies ne semblent pas être adaptées à tous les cas (_selon nos tests_)
 ====
+|Boolean|[red]#false#
 |===
 
 === Espace personnel
@@ -315,6 +317,7 @@ répertoire *custom/ui/images/login* (d'extension *jpg* ou *png*)|Boolean|[green
 |*display.attachment.watermark.color*|Couleur du filigrane|String|*#d3d013*
 |*display.attachment.convertAuto*|Conversion automatique des pièces jointes en PDF|Boolean|[green]#true#
 |*display.attachment.convertAuto.empty.folder*|Vidage du répertoire des documents convertis au démarrage de l'application|Boolean|[red]#false#
+|*display.attachment.downloaded.empty.folder*|Vidage du répertoire des documents téléchargés au démarrage de l'application|Boolean|[red]#false#
 |*display.attachment.enable.notranslation.type*|Afficher les types de fichiers sans surcharge de traduction|Boolean|[red]#false#
 |*display.attachment.forceConvertionAsPDF*|Forcer la conversion de tous les documents en PDF|Boolean|[green]#true#
 |*display.attachment.pdf.viewer*|Composant de visualisation par défaut|String|*PDF_JS*
