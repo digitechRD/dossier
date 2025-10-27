@@ -1,0 +1,21 @@
+=== Sécurité
+
+[IMPORTANT]
+====
+Ces options doivent être validées avec l'équipe projet de {digitech}.
+====
+
+[cols="4a,4a,1a,2a",options="header"]
+|===
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*dossier.security.cache.control.allowed*|Activer les directives d'entêtes *no-cache*|Boolean|[green]#true#
+|*dossier.security.header.xss.protection*|Activer les directives de sécurité *XSS*|Boolean|[green]#true#
+|*dossier.security.cors.activated*|Activer les directives de sécurité *CORS*|Boolean|[green]#true#
+|*dossier.security.header.csp.protection*|Activer les directives de sécurité *CSP*. +
+[underline]#Note# : Les urls des applications {digitech} (telles {dina}, {digioffice}, ...) sont automatiquement ajoutées|Boolean|[green]#true#
+|*dossier.security.header.csp.safe.urls*|URLs d'applications externes pouvant être intégrées, et donc autorisées (séparateur *;*)|String|
+4+|*Kerberos*
+|*dossier.security.kerberos.use.referer.header*|Utiliser la balise *Referer* dans l'entête d'authentification|Boolean|[red]#false#
+|*dossier.security.kerberos.skip.if.already.authenticated*|Ne pas vérifier l'authentification si le le _Principal_ semble déjà connecter|Boolean|[green]#true#
+
+|===
