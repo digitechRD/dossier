@@ -11,18 +11,38 @@
 [IMPORTANT]
 ====
 Les fichiers de *logs* sont primordiaux pour analyser _a posteriori_ un comportement non souhaité de l'application. +
-L'équipe en charge de la maintenance du produit {arcadeged} vous demandera de les fournir dans le but d'identifier plus aiséent la source du
+L'équipe en charge de la maintenance du produit {arcadeged} vous demandera de les fournir dans le but d'identifier plus aisément la source du
 dysfonctionnement relevé.
 ====
 
 ==== Configuration générale
 
+[NOTE]
+====
+La librairie utilisée pour _"écrire"_ les logs est https://logback.qos.ch/[*logback*, window="_blank"]
+====
+
+Le fichier *xml/DOSSIER_logback.xml* contient la définition globale des logs.
+
+[IMPORTANT]
+====
+Ce fichier est écrasé / ré-écrit à chaque démarrage de l'application
+====
+
 Le fichier *WEB-INF/classes/logback.properties* est utilisé pour personnaliser les niveaux de logs.
 
 [IMPORTANT]
 ====
+Concernant la définition des logs, c'est le *[underline]#seul# fichier* devant être modifié.
+
 Pas défaut, les fichiers de *logs* seront générés dans le répertoire *./logs* de l'application. +
 Ce répertoire peut également être modifié via la clé *log_path*, définie dans ce même fichier de configuration.
+====
+
+[TIP]
+====
+Nul besoin de redémarrer l'application pour que les modifications soient appliquées, le fichier *logback.properties* est scruté pour tout changement, avec un
+ délai maximum de *1 minute*.  
 ====
 
 Les différents niveaux de logs possibles sont :
@@ -58,9 +78,16 @@ de logs que l'on souhaite dans *WEB-INF/classes/logback.properties*.
 
 La clé *log_path* peut être définie pour désigner le répertoire où seront déposés les fichiers de log.
 
-==== Appender
+==== Description détaillée
 
-Un appender est un composant responsable de l'écriture des logs vers une destination spécifique, comme un fichier ou encore la console.
+[NOTE]
+====
+Ce chapitre n'a pas pour but de se substituer à la https://logback.qos.ch/documentation.html[documentation officielle de *logback*, window="_blank"]
+====
+
+===== Appender
+
+Un *appender* est un composant responsable de l'écriture des logs vers une (ou plusieurs) destination(s) spécifique(s), comme un _fichier_ ou encore la _console_.
 
 .Exemple d'appender Console
 [source,xml]
@@ -131,7 +158,7 @@ Liste des appenders avec leurs clés personnalisables :
 |*POPULATION*|ch.qos.logback.core.rolling.RollingFileAppender|log_level_pop|{warn}|dossierweb_pop.log
 |===
 
-==== Logger
+===== Logger
 
 Un logger est un composant qui génère et envoie des messages de log à un ou plusieurs appenders. Il permet de catégoriser et de filtrer les logs en fonction du niveau de sévérité et du contexte de l'application.
 
