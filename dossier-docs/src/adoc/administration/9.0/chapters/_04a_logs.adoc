@@ -78,6 +78,35 @@ de logs que l'on souhaite dans *WEB-INF/classes/logback.properties*.
 
 La clé *log_path* peut être définie pour désigner le répertoire où seront déposés les fichiers de log.
 
+==== Modification directe via les préférences
+
+Disponible directement dans l'application {arcadeged}, via les préférences, onglet *Administration*, il vous est possible de modifier les logs de
+l'application ({arcadeged} et {airs}).
+
+image::./04_logs/preference_log_setup.png[]
+
+[NOTE]
+====
+Cette page n'est disponible que si l'utilisateur connecté possède le droit *ADMINISTRER*
+====
+
+Après sauvegarde - et application d'un nouveau niveau de logs parmi ceux proposés - les clés suivantes seront modifiées avec cette valeur :
+
+* *log_level*
+* *log_level_digitech*
+* *log_level_dosser*
+* *log_level_script*
+* *log_level_security*
+
+[IMPORTANT]
+====
+Ces modifications seront appliquées jusqu'au prochain *[underline]#redémarrage#* de l'application. +
+Les valeurs appliquées seront alors soit :
+
+* celles par défaut
+* celles inscrites dans le fichier *WEB-INF/classes/logback.properties*.
+====
+
 ==== Description détaillée
 
 [NOTE]

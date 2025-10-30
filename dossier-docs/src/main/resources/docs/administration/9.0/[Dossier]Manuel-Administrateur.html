@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">29/10/2025 17:05:52</span>
+<span id="revdate">30/10/2025 15:47:34</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -103,13 +103,14 @@
 <li><a href="#_04_logs">4.1. Configuration des logs</a>
 <ul class="sectlevel3">
 <li><a href="#_configuration_générale">4.1.1. Configuration générale</a></li>
-<li><a href="#_description_détaillée">4.1.2. Description détaillée</a>
+<li><a href="#_modification_directe_via_les_préférences">4.1.2. Modification directe via les préférences</a></li>
+<li><a href="#_description_détaillée">4.1.3. Description détaillée</a>
 <ul class="sectlevel4">
-<li><a href="#_appender">4.1.2.1. Appender</a></li>
-<li><a href="#_logger">4.1.2.2. Logger</a></li>
+<li><a href="#_appender">4.1.3.1. Appender</a></li>
+<li><a href="#_logger">4.1.3.2. Logger</a></li>
 </ul>
 </li>
-<li><a href="#_logger_personnalisé">4.1.3. Logger personnalisé</a></li>
+<li><a href="#_logger_personnalisé">4.1.4. Logger personnalisé</a></li>
 </ul>
 </li>
 <li><a href="#_06_mail">4.2. Configuration de l&#8217;envoi de mails</a>
@@ -6865,7 +6866,80 @@ de logs que l&#8217;on souhaite dans <strong>WEB-INF/classes/logback.properties<
 </div>
 </div>
 <div class="sect3">
-<h4 id="_description_détaillée"><a class="anchor" href="#_description_détaillée"></a>4.1.2. Description détaillée</h4>
+<h4 id="_modification_directe_via_les_préférences"><a class="anchor" href="#_modification_directe_via_les_préférences"></a>4.1.2. Modification directe via les préférences</h4>
+<div class="paragraph">
+<p>Disponible directement dans l&#8217;application <code><span style="color:#448279">Arcade GED</span></code>, via les préférences, onglet <strong>Administration</strong>, il vous est possible de modifier les logs de
+l&#8217;application (<code><span style="color:#448279">Arcade GED</span></code> et <code><span style="color:#25EF72">Airs</span></code>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/04_logs/preference_log_setup.png" alt="preference log setup">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Cette page n&#8217;est disponible que si l&#8217;utilisateur connecté possède le droit <strong>ADMINISTRER</strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Après sauvegarde - et application d&#8217;un nouveau niveau de logs parmi ceux proposés - les clés suivantes seront modifiées avec cette valeur :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>log_level</strong></p>
+</li>
+<li>
+<p><strong>log_level_digitech</strong></p>
+</li>
+<li>
+<p><strong>log_level_dosser</strong></p>
+</li>
+<li>
+<p><strong>log_level_script</strong></p>
+</li>
+<li>
+<p><strong>log_level_security</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ces modifications seront appliquées jusqu&#8217;au prochain <strong><span class="underline">redémarrage</span></strong> de l&#8217;application.<br>
+Les valeurs appliquées seront alors soit :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>celles par défaut</p>
+</li>
+<li>
+<p>celles inscrites dans le fichier <strong>WEB-INF/classes/logback.properties</strong>.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_description_détaillée"><a class="anchor" href="#_description_détaillée"></a>4.1.3. Description détaillée</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -6881,7 +6955,7 @@ de logs que l&#8217;on souhaite dans <strong>WEB-INF/classes/logback.properties<
 </table>
 </div>
 <div class="sect4">
-<h5 id="_appender"><a class="anchor" href="#_appender"></a>4.1.2.1. Appender</h5>
+<h5 id="_appender"><a class="anchor" href="#_appender"></a>4.1.3.1. Appender</h5>
 <div class="paragraph">
 <p>Un <strong>appender</strong> est un composant responsable de l&#8217;écriture des logs vers une (ou plusieurs) destination(s) spécifique(s), comme un <em>fichier</em> ou encore la <em>console</em>.</p>
 </div>
@@ -7092,7 +7166,7 @@ personnaliser dans le fichier
 </table>
 </div>
 <div class="sect4">
-<h5 id="_logger"><a class="anchor" href="#_logger"></a>4.1.2.2. Logger</h5>
+<h5 id="_logger"><a class="anchor" href="#_logger"></a>4.1.3.2. Logger</h5>
 <div class="paragraph">
 <p>Un logger est un composant qui génère et envoie des messages de log à un ou plusieurs appenders. Il permet de catégoriser et de filtrer les logs en fonction du niveau de sévérité et du contexte de l&#8217;application.</p>
 </div>
@@ -7780,7 +7854,7 @@ les enregistre dans l&#8217;appender <strong>FILE_ROLL</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logger_personnalisé"><a class="anchor" href="#_logger_personnalisé"></a>4.1.3. Logger personnalisé</h4>
+<h4 id="_logger_personnalisé"><a class="anchor" href="#_logger_personnalisé"></a>4.1.4. Logger personnalisé</h4>
 <div class="paragraph">
 <p>Il est possible d&#8217;ajouter un fichier nommé <strong>externalLogback.xml</strong> dans le répertoire <strong>xml</strong> afin d&#8217;étendre la configuration
 injectée par défaut.</p>
