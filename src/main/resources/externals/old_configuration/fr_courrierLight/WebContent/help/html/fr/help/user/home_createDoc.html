@@ -1,0 +1,123 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>5.2.&nbsp;Création de courrier</title><link rel="stylesheet" type="text/css" href="style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1-RC2"><link rel="home" href="index.html" title="Manuel Utilisateur"><link rel="up" href="create.html" title="Chapitre&nbsp;5.&nbsp;Indexation/Création de courrier"><link rel="prev" href="home_indexDoc.html" title="5.1.&nbsp;Indexation de courrier"><link rel="next" href="processing.html" title="Chapitre&nbsp;6.&nbsp;Traitement des courriers"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section" title="5.2.&nbsp;Création de courrier"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="home_createDoc"></a>5.2.&nbsp;Création de courrier</h2></div></div></div><div class="figure"><a name="img_createDoc1"></a><p class="title"><b>Figure&nbsp;5.2.&nbsp;Création de courrier</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/documentAdd01.jpg" alt="Création de courrier"></div></div></div><br class="figure-break"><p>Depuis la page d'Accueil de l'application, si l'utilisateur connecté possède les
+            droits suffisants pour ajouter un courrier, l'action <span class="guilabel">Créer un
+                Courrier</span> est disponible depuis le bloc fonctionnel
+                <span class="guilabel">Courriers</span> ou en cliquant sur l'action
+                <span class="guimenuitem">Courriers</span> &gt; <span class="guimenuitem">Création</span> depuis la
+            barre de navigation. </p><p>Dans un premier temps, l'utilisateur renseigne les champs propres à la pièce jointe et
+            cliquer sur le bouton <span class="guibutton">Ajouter...</span> afin de sélectionner le fichier
+            à attacher ; une prévisualisation de la pièce jointe est affichée. Ensuite, il est
+            nécessaire de sélectionner le <span class="guilabel">Type de Contenu</span> du courrier à
+            ajouter. Dés lors, l'utilisateur renseigne les champs du nouveau courrier et
+            éventuellement saisit un commentaire. Un fichier attaché peut être supprimé en cliquant
+            sur l'icône <span class="inlinemediaobject"><img src="images/btn_delete01.jpg"></span>. Un clic sur l'action <span class="inlinemediaobject"><img src="images/btn_createDoc01.jpg"></span> permet alors de créer le courrier. A l'issu de la création du
+            courrier, sa fiche est affichée. Selon les indexes renseignés, le courrier est envoyé au
+            valideur ou diffusé au service/utilisateur traitant.</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/admon/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Un clic sur l'action <span class="inlinemediaobject"><img src="images/btn_createDoc02.jpg"></span> permet de créer plusieurs courriers à l'affilé. Il peut être
+                intéressant de cocher la case <span class="guibutton">Conserver les index</span> de façon à
+                ce que les index des courriers créés soient conservés entre chaque création.</p></td></tr></table></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/admon/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Si plusieurs fichiers sont attachés, l'utilisateur peut alors choisir de créer un
+                courrier pour chaque fichier. Par défaut, un seul courrier est créé avec tous les
+                fichiers attachés.</p></td></tr></table></div><p>Les indexes du courrier sont affichés par thématiques. Les indexes suivis d'une étoile
+            rouge sont requis, et implique donc que la fiche pourra être enregistrée si et seulement
+            si ceux ci sont remplis.</p><p>Pour un courrier arrivé, les indexes suivants sont affichés :</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+                     <span class="guilabel">Numéro chrono</span> : indexe automatiquement généré lorsque
+                        l'indexe <span class="guilabel">Service traitant</span> est alimenté. Le format du
+                        numéro chrono dépend d'une règle métier définit comme suit :
+                        &lt;DATE&gt;/&lt;SERVICE&gt;/&lt;NUMERO&gt;.</p><p>&lt;DATE&gt; : la date au format JJMMAAAA (jour sur 2 digits, mois sur 2
+                        digits et année sur 4 digits)</p><p>&lt;SERVICE&gt; : le code du service traitant</p><p>&lt;NUMERO&gt; : un numéro unique par service basé sur un compteur
+                        auto-incrémenté</p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/admon/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Le numéro chrono affiché est un numéro temporaire. Lors de
+                            l'enregistrement de la fiche, le numéro chrono définitif basé sur la
+                            même règle métier est utilisé. </p></td></tr></table></div></li><li class="listitem"><p>
+                     <span class="guilabel">Type</span> : type du courrier. Cette indexe est primordial
+                        ; il conditionne le calcul automatique de la <span class="guilabel">Date
+                            d'échéance</span> et peut rendre requis l'indexe
+                            <span class="guilabel">Valideur</span> (selon la configuration mise en place). En
+                        effet, certains types de courrier, de part leur nature, peuvent rendre
+                        obligatoire la phase de validation et peuvent avoir une date d'échéance
+                        automatiquement calculée selon une règle métier.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Priorité</span> : priorité du courrier. La priorité est une
+                        information à l'intention du destinataire, qui indique l'urgence du
+                        courrier. Elle sert avant tout à attirer l'attention du destinataire.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Date d'envoi</span> : date à laquelle le courrier a été
+                        envoyé par l'émetteur.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Date de réception</span> : date à laquelle le courrier a été
+                        reçu par le destinataire.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Emetteur</span> : émetteur du courrier. Il s'agit d'un
+                        correspondant : utilisateur, service, personne physique ou personne morale
+                        (organisme). Pour de plus amples informations au sujet des correspondants,
+                        se référer au chapitre <a class="link" href="common_picker.html#picker_correspondant">Picker de
+                            correspondant</a>.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Nature</span> : donnée caractérisant la nature du
+                        courrier.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Objet</span> : titre du courrier.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Date d'échéance</span> : définit la date butoir avant
+                        laquelle la réponse au courrier doit être envoyée. Si une date déchéance est
+                        définit sur un courrier, l'utilisateur traitant sera relancé par mail de
+                        l'arrivée à échéance de ce courrier mais aussi des courriers dont la date
+                        d'échéance est dépassée (courriers en retard).</p></li><li class="listitem"><p>
+                     <span class="guilabel">Valideur</span> : utilisateur validant le contenu du nouveau
+                        courrier ainsi que sa diffusion. Les utilisateurs disponibles s'affichent au
+                        fur et à mesure de la saisie ; il est alors possible de sélectionner
+                        l'utilisateur souhaité.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Utilisateur viseur</span> : utilisateur ayant droit de
+                        regard et d'approbation/rejet sur les réponses au courrier. Les utilisateurs
+                        disponibles s'affichent au fur et à mesure de la saisie ; il est alors
+                        possible de sélectionner l'utilisateur souhaité.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Service traitant</span> : service désigné pour traiter le
+                        courrier et y apporter une ou plusieurs réponses. Les services disponibles
+                        s'affichent au fur et à mesure de la saisie ; il est alors possible de
+                        sélectionner le service souhaité.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Utilisateur traitant</span> : utilisateur membre du service
+                        traitant désigné pour traiter le courrier et y apporter une ou plusieurs
+                        réponses. Les utilisateurs disponibles s'affichent au fur et à mesure de la
+                        saisie ; il est alors possible de sélectionner l'utilisateur
+                        souhaité.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Services en copie</span> : un ou plusieurs services qui
+                        peuvent consulter (lecture seulement) le courrier. Pour de plus amples
+                        informations au sujet du picker d'organisation, se référer au chapitre <a class="link" href="common_picker.html#picker_organization">Picker d'organisation</a>.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Utilisateurs en copie</span> : un ou plusieurs utilisateurs
+                        qui peuvent consulter (lecture seulement) le courrier. Pour de plus amples
+                        informations au sujet du picker d'utilisateur, se référer au chapitre <a class="link" href="common_picker.html#picker_user">Picker d'utilisateur</a>.</p></li></ul></div><p>
+         </p><p>Pour un courrier départ, les indexes suivants sont affichés :</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+                     <span class="guilabel">Numéro chrono</span> : indexe automatiquement généré lorsque
+                        l'indexe <span class="guilabel">Type</span> est alimenté. Le format du numéro chrono
+                        est identique à celui d'un courrier arrivé.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Type</span> : type du courrier. Cette indexe est primordial
+                        ; il conditionne le calcul automatique de la <span class="guilabel">Date
+                            d'échéance</span> et peut rendre requis l'indexe
+                            <span class="guilabel">Valideur</span> (selon la configuration mise en place). En
+                        effet, certains types de courrier, de part leur nature, peuvent avoir une
+                        date d'échéance automatiquement calculée selon une règle métier.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Priorité</span> : priorité du courrier. La priorité est une
+                        information à l'intention du destinataire, qui indique l'urgence du
+                        courrier. Elle sert avant tout à attirer l'attention du destinataire.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Nature</span> : donnée caractérisant la nature du
+                        courrier.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Objet</span> : titre du courrier.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Date d'échéance</span> : définit la date butoir avant
+                        laquelle le courrier à émettre doit être envoyé. Si une date déchéance est
+                        définit sur un courrier, l'utilisateur traitant sera relancé par mail de
+                        l'arrivée à échéance de ce courrier mais aussi des courriers dont la date
+                        d'échéance est dépassée (courriers en retard).</p></li><li class="listitem"><p>
+                     <span class="guilabel">Emetteur</span> : émetteur du courrier. Il s'agit d'un
+                        correspondant : utilisateur, service, personne physique ou personne morale
+                        (organisme). Pour de plus amples informations au sujet des correspondants,
+                        se référer au chapitre <a class="link" href="common_picker.html#picker_correspondant">Picker de
+                            correspondant</a>.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Destinataire</span> : destinataire du courrier. Il s'agit
+                        d'un correspondant : utilisateur, service, personne physique ou personne
+                        morale (organisme). Pour de plus amples informations au sujet des
+                        correspondants, se référer au chapitre <a class="link" href="common_picker.html#picker_correspondant">Picker de correspondant</a>.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Utilisateur traitant</span> : utilisateur désigné pour
+                        rédiger le courrier. Les utilisateurs disponibles s'affichent au fur et à
+                        mesure de la saisie ; il est alors possible de sélectionner l'utilisateur
+                        souhaité.</p></li><li class="listitem"><p>
+                     <span class="guilabel">Utilisateur viseur</span> : utilisateur ayant droit de
+                        regard et d'approbation/rejet sur les réponses au courrier. Les utilisateurs
+                        disponibles s'affichent au fur et à mesure de la saisie ; il est alors
+                        possible de sélectionner l'utilisateur souhaité.</p></li></ul></div><p>
+         </p><p>Tout au long du processus de traitement, l'utilisateur a la possibilité, depuis la
+            fiche de suivi, de déposer des commentaires et lire ceux qui ont été écrits.</p><p>Ils permettent, comme lors de la validation, de donner des directives de traitement,
+            d'expliquer pourquoi le traitement d'une affaire est au point mort (utile pour ceux qui
+            sont en copie), ou tout autres commentaires sur le courrier.</p><p>Pour de plus amples informations au sujet des commentaires, se référer au chapitre
+                <a class="link" href="unitView_comment.html" title="6.2.7.&nbsp;Onglet commentaire">Commentaire</a>.</p></div></body></html>

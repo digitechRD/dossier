@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<%-- tpl:metadata --%>
+
+<%-- jsf:pagecode language="java" location="/JavaSource/pagecode/GeneralTemplate.java" --%><%-- /jsf:pagecode --%><%-- /tpl:metadata --%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.ibm.com/jsf/html_extended" prefix="hx"%>
+<%@taglib uri="http://java.sun.com/jsf/html" prefix="h"%>
+<%@taglib uri="http://java.sun.com/jsf/core" prefix="f"%>
+<HTML>
+<HEAD>
+	<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<META name="GENERATOR" content="IBM Software Development Platform">
+	<META http-equiv="Content-Style-Type" content="text/css">
+	<LINK href="../theme/dossiers.css" rel="stylesheet" type="text/css">
+		<%-- tpl:insert attribute="headarea" --%>
+		<TITLE>GeneralTemplate.jtpl</TITLE>
+		<%-- /tpl:insert --%>
+	<LINK rel="stylesheet" type="text/css" href="../theme/stylesheet.css" title="Style">
+    <SCRIPT type="text/javascript" src="js/overlib.js"><!-- overLIB (c) http://www.bosrup.com/web/overlib/ --></SCRIPT>
+<LINK rel="stylesheet" type="text/css"
+	href="/Papyrus/theme/stylesheet.css" title="Style">
+</HEAD>
+
+<SCRIPT src="js/dossiers.js" type="text/javascript"></SCRIPT>
+    
+<f:view>
+	<f:loadBundle basename="com.digitech.airs3dossiers.messageressource.MessageRessource" var="msg"/>
+	<BODY onunload="window.parent.autoLogout.fermerDocument();"><hx:scriptCollector id="scriptCollector1">
+	 <DIV id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></DIV>
+		<%@include file="/WEB-INF/jspf/header.jsf"%>
+	    <h:form styleClass="form" id="form1">
+			<BR>
+			<h:panelGrid styleClass="panelGrid" id="grid1" width="100%" columns="2">
+				<h:panelGrid styleClass="panelGrid" id="grid2" columns="1">
+					<h:commandLink id="pilotparam" action="#{pc_Pilotage.doPilotParamAction}">						
+						<hx:graphicImageEx styleClass="graphicImageEx" id="imageEx1" value="../theme/Images/action.enrichissement.gif" style="border:0px"></hx:graphicImageEx>
+						<h:outputText styleClass="outputText" id="text1" value="Monitoring"></h:outputText>
+					</h:commandLink>
+					<h:commandLink id="pilotmonitor" action="#{pc_Pilotage.doPilotMonitorAction}">
+								<hx:graphicImageEx styleClass="graphicImageEx" id="imageEx2" value="../theme/Images/v8_webmaster.gif" width="32" height="32" style="border:0px"></hx:graphicImageEx>
+						<h:outputText styleClass="outputText" id="text2" value="Paramétrage"></h:outputText>
+					</h:commandLink>
+					<h:commandLink id="pilottransf" action="#{pc_Pilotage.doPilotTransfAction}">
+					<hx:graphicImageEx styleClass="graphicImageEx" id="imageEx3" value="/Papyrus/theme/Images/f_right.gif" style="border:0px" width="32" height="32"></hx:graphicImageEx>
+						<h:outputText styleClass="outputText" id="text3" value="Transfert"></h:outputText>
+					</h:commandLink>
+				</h:panelGrid>
+				<%-- tpl:insert attribute="bodyarea" --%>Contenu par défaut de bodyarea<%-- /tpl:insert --%>
+			</h:panelGrid>
+		</h:form>
+		<%@include file="/WEB-INF/jspf/footer.jsf"%>
+	</hx:scriptCollector></BODY>
+</f:view>
+
+</HTML>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" customerName="@CUSTOMERNAME@" version="5.0.0">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">srv-scli-01</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs415</password>
+        </userAdmin>
+    </airsConfig>
+    <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>false</contentTypeFilter>
+        <flowmind>
+            <server port="0"></server>
+            <dbConnection maxconn="2" pool="digiflow">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1099"></server>
+                <instance></instance>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+                <login></login>
+                <password></password>
+            </dbConnection>
+        </flowmind>
+    </workFlow>
+    <mailConfig>
+        <smtp>AIRSSERVER</smtp>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>365</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>1</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>0</isoxDisabled>
+        <isoxFileAssociation>.tif</isoxFileAssociation>
+        <isoxFileAssociation>.TIF</isoxFileAssociation>
+        <isoxFileAssociation>.tiff</isoxFileAssociation>
+        <isoxFileAssociation>.jpg</isoxFileAssociation>
+        <isoxFileAssociation>.jpeg</isoxFileAssociation>
+        <isoxFileAssociation>.jp2</isoxFileAssociation>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+    </appConfig>
+    <birt webAppUrl="http://srv-scli-01:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">srv-ged-08</server>
+            <instance>pfa</instance>
+            <login>naftal_24122010</login>
+            <password>naftal_24122010</password>
+        </dbConnection>
+    </birt>
+</params>

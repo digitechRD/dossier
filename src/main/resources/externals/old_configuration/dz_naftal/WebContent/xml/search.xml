@@ -1,0 +1,3538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@CUSTOMERNAME@" version="5.0.0">
+    <organization id="0" name="DEFAULT">
+        <globalSearch>
+            <ns2:dossierrequest name="globalSearch">
+                <ns2:contentType>DOCPENAL</ns2:contentType>
+                <ns2:airsvalue>D_CREAT = #VALUE#</ns2:airsvalue>
+            </ns2:dossierrequest>
+        </globalSearch>
+        <contentType name="DOCPENAL">
+            <input>
+                <operator>=</operator>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                    <parentContentType>DOSSPENAL</parentContentType>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>true</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <required>
+                <codeField>D_CREAT</codeField>
+            </required>
+        </contentType>
+        <contentType name="DOCCCOM">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCADM">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Organismes :</label>
+                <airsfield>
+                    <codeField>ORGANISME</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSPENAL">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCSIND">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCCIVIL">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSADASC">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de naissance:</label>
+                <airsfield>
+                    <codeField>DATNAIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Statut:</label>
+                <airsfield>
+                    <codeField>STATUT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCSG">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCSIND">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom :</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSADM">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de naissance:</label>
+                <airsfield>
+                    <codeField>DATNAIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Statut:</label>
+                <airsfield>
+                    <codeField>STATUT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSADAG">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de naissance:</label>
+                <airsfield>
+                    <codeField>DATNAIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Statut:</label>
+                <airsfield>
+                    <codeField>STATUT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSIDG">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro:</label>
+                <airsfield>
+                    <codeField>NUMIDG</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Titre Instruction:</label>
+                <airsfield>
+                    <codeField>TITIDG</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet Instruction:</label>
+                <airsfield>
+                    <codeField>OBJIDG</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Structure Emetrice:</label>
+                <airsfield>
+                    <codeField>STREME</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nombre Annexes:</label>
+                <airsfield>
+                    <codeField>NBRANX</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Domaine d'Activité:</label>
+                <airsfield>
+                    <codeField>DOMACT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date d'émission:</label>
+                <airsfield>
+                    <codeField>DATEEMI</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de mise en vigueur:</label>
+                <airsfield>
+                    <codeField>DATEVIG</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de révision:</label>
+                <airsfield>
+                    <codeField>DATEREV</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCACTE">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro:</label>
+                <airsfield>
+                    <codeField>NUM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_DOC_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de creation:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSDIS">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCFONC">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCDIS">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_DIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCCIVIL">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom du Dossier</label>
+                <airsfield>
+                    <codeField>NOMDOSS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSACTE">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro Acte:</label>
+                <airsfield>
+                    <codeField>NUM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Désignation:</label>
+                <airsfield>
+                    <codeField>DES_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Lieu:</label>
+                <airsfield>
+                    <codeField>LIEU_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type d'Acte:</label>
+                <airsfield>
+                    <codeField>TYPE_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Wilaya:</label>
+                <airsfield>
+                    <codeField>WIL_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Societé:</label>
+                <airsfield>
+                    <codeField>SOC_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date d'élaboration:</label>
+                <airsfield>
+                    <codeField>DATE_ACTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Localisation:</label>
+                <airsfield>
+                    <codeField>LOCAL</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCADM">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCSG">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCCOM">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom du Dossier</label>
+                <airsfield>
+                    <codeField>NOMDOSS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCTEST">
+            <input>
+                <operator>=</operator>
+                <label>Numéro</label>
+                <airsfield>
+                    <codeField>NUM</codeField>
+                    <parentContentType>DOSSTEST</parentContentType>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>true</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>DAte création</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                    <parentContentType>DOSSTEST</parentContentType>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro</label>
+                <airsfield>
+                    <codeField>NUM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>true</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <required>
+                <codeField>D_CREAT</codeField>
+            </required>
+        </contentType>
+        <contentType name="DOCADASC">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCADAG">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSTEST">
+            <input>
+                <operator>=</operator>
+                <label>Nom</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value>dupont</initial-value>
+                <inputHelper autoTab="false"/>
+                <required>true</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro</label>
+                <airsfield>
+                    <codeField>NUM</codeField>
+                </airsfield>
+                <initial-value>0</initial-value>
+                <inputHelper autoTab="false"/>
+                <required>true</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <required>
+                <codeField>D_MODIF</codeField>
+            </required>
+        </contentType>
+        <contentType name="DOSSCFONC">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Organismes :</label>
+                <airsfield>
+                    <codeField>ORGANISME</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCADM">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCIDG">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Muméro:</label>
+                <airsfield>
+                    <codeField>NUMIDG</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOCIDG</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de creation:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="2" name="EXT">
+        <contentType name="DOSSADM">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de naissance:</label>
+                <airsfield>
+                    <codeField>DATNAIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Statut:</label>
+                <airsfield>
+                    <codeField>STATUT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSDIS">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCDIS">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_DIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCADM">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="7" name="DAG">
+        <contentType name="DOSSADAG">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de naissance:</label>
+                <airsfield>
+                    <codeField>DATNAIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Statut:</label>
+                <airsfield>
+                    <codeField>STATUT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCADAG">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="9" name="DASC">
+        <contentType name="DOSSADASC">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom:</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de naissance:</label>
+                <airsfield>
+                    <codeField>DATNAIS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Statut:</label>
+                <airsfield>
+                    <codeField>STATUT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCADASC">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Matricule:</label>
+                <airsfield>
+                    <codeField>MATRIC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="10" name="JUR">
+        <contentType name="DOCCCOM">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCPENAL">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCADM">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Organismes :</label>
+                <airsfield>
+                    <codeField>ORGANISME</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSPENAL">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCSIND">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCCIVIL">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCSG">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCSIND">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom :</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prénom:</label>
+                <airsfield>
+                    <codeField>PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCFONC">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCCIVIL">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom du Dossier</label>
+                <airsfield>
+                    <codeField>NOMDOSS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCSG">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCCOM">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom du Dossier</label>
+                <airsfield>
+                    <codeField>NOMDOSS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSCFONC">
+            <input>
+                <operator>=</operator>
+                <label>ID de dossier:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de Dossier:</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Objet de l'Affaire:</label>
+                <airsfield>
+                    <codeField>OBJETAFFAIRE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Juridiction:</label>
+                <airsfield>
+                    <codeField>JURIDICTION</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Organismes :</label>
+                <airsfield>
+                    <codeField>ORGANISME</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de versement:</label>
+                <airsfield>
+                    <codeField>NUMVERS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de boite:</label>
+                <airsfield>
+                    <codeField>NBBOITE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOCCADM">
+            <input>
+                <operator>=</operator>
+                <label>ID du document:</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro du dossier</label>
+                <airsfield>
+                    <codeField>NUMDOS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document:</label>
+                <airsfield>
+                    <codeField>TYPE_CONT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Texte pièces jointes:</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création:</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+</searchForm>

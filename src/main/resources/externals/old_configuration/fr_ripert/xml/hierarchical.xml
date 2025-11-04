@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:hierarchique xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/hierarchical" customerName="Digitech" version="5.1-SNAPSHOT">
+    <ns2:organization id="0" name="DEFAULT">
+        <ns2:contentType name="DOSSIER" visible="true">
+            <ns2:libelle>Dossier {NUM_DOSSIER}</ns2:libelle>
+            <ns2:sorting/>
+        </ns2:contentType>
+        
+        <ns2:contentType name="DOCUMENT" visible="true">
+            <ns2:libelle dateFormat="dd/MM/yyyy">{TYP_DOC} {D_CREAT}</ns2:libelle>
+            <ns2:field_hier>NUM_CONT</ns2:field_hier>
+            <ns2:field_hier>TYP_DOC</ns2:field_hier>
+            <ns2:sorting>
+                <sortingPolicy>
+                    <direction>DICREASING</direction>
+                    <codeField>D_CREAT</codeField>
+                </sortingPolicy>
+            </ns2:sorting>
+        </ns2:contentType>
+        
+    </ns2:organization>
+</ns2:hierarchique>

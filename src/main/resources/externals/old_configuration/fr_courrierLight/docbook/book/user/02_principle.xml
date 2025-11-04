@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" type="xml"?>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
+    version="5.0" xml:id="principle" xml:lang="fr">
+    <title>Principe</title>
+    <section xml:id="lifeCycle">
+        <title>Cycle de vie</title>
+        <para>
+            <figure xml:id="img_lifeCycle">
+                <title>Cycle de vie</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/lifeCycle01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+        </para>
+        <para>Le cycle de vie d’un courrier suit un processus simplifié. Chaque étape du cycle de
+            vie d'un courrier est accessible aux utilisateurs qui disposent des accréditations
+            suffisantes. </para>
+        <para>Dans un premier temps, un utilisateur (gestionnaire) dispose dans ses bannettes des
+            courriers qui ont été scannés. Un utilisateur (gestionnaire), peut aussi créer un
+            courrier.</para>
+        <para>Un courrier indexé/créé est ensuite envoyé en validation. L'utilisateur valideur peut
+            alors accepter ou rejeter le courrier. Un courrier accepté est alors affecté à un
+            service/utilisateur pour traitement avec envoi simultané en copie à d’autres
+            utilisateurs. Un courrier rejeté retourne dans la bannette de l'utilisateur
+            "indexeur"/"créateur" du courrier.</para>
+        <para>Une fois l’étape de validation passée, l’utilisateur propriétaire peut génèrer une
+            réponse.</para>
+        <para>Cette réponse peut être « visée » par un utilisateur viseur. L'utilisateur viseur peut
+            accepter ou refuser la réponse.</para>
+        <para>Lorsque la réponse est envoyée le courrier peut être clôturé. Un courrier clôturé
+            n'apparait plus dans les bannettes et peut être retrouvé grâce à l’outil
+            recherche.</para>
+    </section>
+    <section xml:id="profiles">
+        <title>Généralités sur la visibilité des courriers</title>
+        <para>On distingue les profils d’utilisation suivants : </para>
+        <para><emphasis role="bold">Profil Agent </emphasis>: de part ses attributions, ce profil a
+            accès aux fonctionnalités suivantes :<itemizedlist>
+                <listitem>
+                    <para>Afficher des bannettes contenant les courriers,</para>
+                </listitem>
+                <listitem>
+                    <para>Rechercher des courriers,</para>
+                </listitem>
+                <listitem>
+                    <para>Afficher la fiche d'un courrier et toutes les informations qui s'y
+                        rapportent : commentaires, liens, pièces jointes,...</para>
+                </listitem>
+                <listitem>
+                    <para>Modifier des index d'un courrier (gestion des correspondants),</para>
+                </listitem>
+                <listitem>
+                    <para>Affecter un courrier : responsable, copie et valideur,</para>
+                </listitem>
+                <listitem>
+                    <para>Modifier l'état d'un courrier: à indexer, indexé, à valider, validé, à
+                        viser, visé, clôturé, état propre à l'utilisateur : lu/non lu,</para>
+                </listitem>
+                <listitem>
+                    <para>Répondre à un courrier,</para>
+                </listitem>
+                <listitem>
+                    <para>Supprimer un courrier : suppression temporaire (ajout dans la bannette de
+                        suppression),</para>
+                </listitem>
+                <listitem>
+                    <para>Afficher des états statistiques,</para>
+                </listitem>
+                <listitem>
+                    <para>Modifier « Mes Préférences »,</para>
+                </listitem>
+                <listitem>
+                    <para>Déléguer mes accréditations.</para>
+                </listitem>
+            </itemizedlist>
+            <emphasis role="bold">Profil Gestionnaire</emphasis> (service courrier). Ce profil a
+            accès aux fonctionnalités de l'agent mais aussi aux fonctionnalités suivantes : <itemizedlist>
+                <listitem>
+                    <para>Indexer des courriers,</para>
+                </listitem>
+                <listitem>
+                    <para>Créer un nouveau courrier.</para>
+                </listitem>
+            </itemizedlist>
+            <emphasis role="bold">Profil Direction</emphasis> : Ce profil a accès aux
+            fonctionnalités du gestionnaire mais aussi à certaines fonctionnalités d'administration
+            : <itemizedlist>
+                <listitem>
+                    <para>Administration Courrier Express.</para>
+                </listitem>
+            </itemizedlist>
+            <emphasis role="bold">Profil Administrateur</emphasis> : Ce profil a accès aux
+            fonctionnalités : <itemizedlist>
+                <listitem>
+                    <para>Administration AIRS</para>
+                </listitem>
+                <listitem>
+                    <para>Administration Courrier Express</para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <note>
+            <para> Chaque utilisateur de <productname>Courrier Express</productname> peut être associé
+                à un ou plusieurs profils.</para>
+        </note>
+    </section>
+    <section xml:id="contentTypes">
+        <title>Flux du courrier</title>
+        <para><application>Courrier Express</application> permet de manipuler 2 flux de courrier :<itemizedlist>
+                <listitem>
+                    <para>Courrier arrivé : un courrier arrivé est un courrier reçu pour lequel une réponse peut être apportée/émise,</para>
+                </listitem>
+                <listitem>
+                    <para>Courrier départ : un courrier départ est un courrier à rédiger non
+                        rattaché à un courrier reçu.</para>
+                </listitem>
+            </itemizedlist>
+        </para>
+    </section>
+</chapter>

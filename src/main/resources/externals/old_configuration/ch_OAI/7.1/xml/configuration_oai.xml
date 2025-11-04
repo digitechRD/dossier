@@ -1,0 +1,111 @@
+<configuration>
+
+	<!-- Global -->
+	<global>
+        <champ_demande_utilise>1</champ_demande_utilise>
+		<defaut_champ_demande></defaut_champ_demande>
+		<liste_numeros_demande>0001::2222::3333::4444::5555::6666::7777::8888::9999</liste_numeros_demande>
+    </global>
+	
+	<!-- Indexation champs pour profil consultation  -->
+    <indexation>
+        <champs>N_DEM::D_VALEUR::N_NSS::AL_ASSURE_GROUPE_DOC::AL_ASSURE_TYPE_DOC</champs>
+    </indexation>
+	
+	<!-- Export PDF -->
+	<export_documents>
+		<profil></profil>
+        <filtre>
+            <champ_code>N_DEM</champ_code>
+            <code>0001::2222::3333::4444::5555::6666::7777::8888::9999</code>
+			<inclus>1</inclus>
+        </filtre>
+		<sommaire>
+			<code>D_VALEUR::N_NSS::N_DEM::AL_ASSURE_TYPE_DOC</code>
+			<colonneTri>
+                <code>N_DEM::D_VALEUR</code>
+                <!-- ASC : trie croissant  ou DESC : trie décroissant   -->
+                <ordre>ASC::ASC</ordre>
+            </colonneTri>
+		</sommaire>
+    </export_documents>
+
+    <!-- Gestion du graveur : ExportPDFForEngravingSimpleView -->
+    <gravage>
+		<date_export>D_EMISSION</date_export>
+        <admin_password>export4OAITI</admin_password>
+        <owner_password>Gilai</owner_password>
+        <filtres>
+            <champ_code>N_DEM</champ_code>
+            <filtre id="1" dossier_complet="0">
+                <libelle>xml_configuration_engraving_filtre_1</libelle>
+                <code>0001::2222::6666::7777:8888::9999</code>
+                <check></check>
+            </filtre>
+			<filtre id="2" dossier_complet="1">
+                <libelle>xml_configuration_engraving_filtre_2</libelle>
+                <code>0001::2222::6666::7777:8888::9999</code>
+                <check></check>
+            </filtre>
+			<filtre id="3" dossier_complet="1">
+                <libelle>xml_configuration_engraving_filtre_3</libelle>
+                <code>0001::9999</code>
+                <check></check>
+            </filtre>
+			<filtre id="4" dossier_complet="1">
+                <libelle>xml_configuration_engraving_filtre_4</libelle>
+                <code>0001</code>
+                <check></check>
+            </filtre>
+			<filtre id="5" dossier_complet="1">
+                <libelle>xml_configuration_engraving_filtre_5</libelle>
+                <code>0001::2222::9999</code>
+                <check></check>
+            </filtre>
+			<filtre id="6" dossier_complet="1">
+                <libelle>xml_configuration_engraving_filtre_6</libelle>
+                <code>2222</code>
+                <check></check>
+            </filtre>
+        </filtres>
+        <graveurs>
+            <graveur id="1">
+                <libelle>xml_configuration_burn_1</libelle>
+                <chemin_pdf>/data/eduvsairs/gedpdf/burn_1/data/</chemin_pdf>
+                <chemin_jdf>/data/eduvsairs/gedpdf/burn_1/</chemin_jdf>
+                <chemin_dat>/data/eduvsairs/gedpdf/burn_1/dat/</chemin_dat>
+            </graveur>
+        </graveurs>
+    </gravage>
+
+    <!-- Gestion de l'export vers Web@AI : ExportDocumentsToWebAISimpleView -->
+	<!-- 
+		Inclus = 0 ==> Exclus tous les documents dont le type est égal au code et garde les autres
+		Inclus = 1 ==> Inclus tous les documents dont le type est égal au code et ne prend pas les autres
+    -->
+    <export_webai>
+        <filtres>
+            <champ_code>N_DEM</champ_code>
+            <filtre id="1" dossier_complet="0">
+                <libelle>xml_configuration_export_webai_filtre_1</libelle>
+                <code>0001::2222::4444::5555::6666::7777::8888::9999</code>
+				<inclus>1</inclus>
+            </filtre>
+			<filtre id="2" dossier_complet="1">
+                <libelle>xml_configuration_export_webai_filtre_2</libelle>
+                <code>0001::2222::4444::5555::6666::7777::8888::9999</code>
+				<inclus>1</inclus>
+            </filtre>
+			<filtre id="3" dossier_complet="1">
+                <libelle>xml_configuration_export_webai_filtre_3</libelle>
+                <code>0001</code>
+				<inclus>1</inclus>
+            </filtre>
+			<filtre id="4" dossier_complet="1">
+                <libelle>xml_configuration_export_webai_filtre_4</libelle>
+                <code>0001::2222::6666::7777::8888::9999</code>
+				<inclus>1</inclus>
+            </filtre>
+        </filtres>
+    </export_webai>
+</configuration>

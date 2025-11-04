@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="5.3.8" customerName="OAINE">
+    <organization name="DEFAULT" id="0"/>
+    <organization name="OAI" id="1">
+        <globalSearch>
+            <ns2:dossierrequest name="globalSearch">
+                <ns2:contentType>DOCUMENT_ASSURE</ns2:contentType>
+                <ns2:airsvalue>N_NSS=&quot;#VALUE#&quot;</ns2:airsvalue>
+            </ns2:dossierrequest>
+            <flowCode>FLOW_OAI</flowCode>
+        </globalSearch>
+        <contentType name="DOCUMENT_ASSURE" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_nss</label>
+                <airsfield>
+                    <codeField>N_NSS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+				<format>(\d{3})\.(\d{4})\.(\d{4})\.(\d{2})</format>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>xml_configuration_label_document_date</label>
+                <airsfield>
+                    <codeField>D_VALEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+				<format>dd.MM.yyyy</format>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>xml_configuration_label_creator_date</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+				<format>dd.MM.yyyy</format>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>xml_configuration_label_update_date</label>
+                <airsfield>
+                    <codeField>D_MODIF</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+				<format>dd.MM.yyyy</format>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_group</label>
+                <airsfield>
+                    <codeField>AL_ASSURE_GROUPE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_type</label>
+                <airsfield>
+                    <codeField>AL_ASSURE_TYPE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_users</label>
+                <airsfield>
+                    <codeField>U_GESTS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_history_users</label>
+                <airsfield>
+                    <codeField>U_GESTS_HISTO</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <airsProfiles>11</airsProfiles>
+                <airsProfiles>13</airsProfiles>
+                <airsProfilesCode>ADMIN_OFFICE</airsProfilesCode>
+                <airsProfilesCode>SCAN</airsProfilesCode>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_status</label>
+                <airsfield>
+                    <codeField>AL_WKF_STATUT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_request_number</label>
+                <airsfield>
+                    <codeField>N_DEM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_creator</label>
+                <airsfield>
+                    <codeField>U_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_id_document</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <airsProfiles>13</airsProfiles>
+                <airsProfiles>1</airsProfiles>
+                <airsProfilesCode>SCAN</airsProfilesCode>
+                <airsProfilesCode>ADMINISTRATEUR</airsProfilesCode>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_mail_number</label>
+                <airsfield>
+                    <codeField>N_COUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <airsProfiles>13</airsProfiles>
+                <airsProfilesCode>SCAN</airsProfilesCode>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_user</label>
+                <airsfield>
+                    <codeField>U_GEST</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>xml_configuration_label_name</label>
+                <airsfield>
+                    <codeField>NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <locutionsChecker groovyScriptId="ExecuteInSearch"/>
+        </contentType>
+    </organization>
+</searchForm>

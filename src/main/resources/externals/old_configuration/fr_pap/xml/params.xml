@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<par:params version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:par="http://www.digitech.com/dossiers/params">
+    <par:airsConfig>
+        <par:appName>AIRS</par:appName>
+        <par:server port="5200">10.1.4.64</par:server>
+        <par:userAdmin>
+            <par:login>adm_airs3</par:login>
+            <par:password>ENC(OpG8/qUIetoGNZrx7GLzPoIsKnP42ENTx8JyNt+JP+KFRKZcrF6A2xxU/pED+UqGIIDkGPW6UBuvizTqua2HFPlQ7jj4wDIhXk9Jez5IoLeW5dEKX7M0Wwj9rDEy5nO8+ZGol3NEvz0s6rgVdfXP8DbmQ2yfBPbCzy/OpNFnYM0=)</par:password>
+        </par:userAdmin>
+        <par:adminWebappURL>http://srv-prod-04:9390/adminAirs</par:adminWebappURL>
+    </par:airsConfig>
+    <par:workFlow>
+        <par:workflowType>FLOWMIND</par:workflowType>
+        <par:actorFilter>false</par:actorFilter>
+        <par:userFilter>false</par:userFilter>
+        <par:contentTypeFilter>false</par:contentTypeFilter>
+        <par:flowmind>
+            <par:server port="0"/>
+            <par:dbConnection maxconn="2">
+                <par:driver/>
+                <par:server port="1099"/>
+            </par:dbConnection>
+        </par:flowmind>
+    </par:workFlow>
+    <par:mailConfig>
+        <par:smtp>ssl0.ovh.net</par:smtp>
+        <par:defaultMailSender>dossier@digitech.fr</par:defaultMailSender>
+        <par:defaultMailSenderPwd>ENC(PsPqBEW1EA4mcGmaX2rMI+WC8PDo34pyV4XcevBVSdYDSoWOMAFZVjgB2Dq7Wgc6JzPZ0Y9rL20h63e/g3/NVznbdl+gpQgpDpBK1azswf4YvpqJ7HAipnKqapaMM46orq90DHYqA+jH2l4oLVlRJRBtBCb/IE8ZryqxI0MOBnA=)</par:defaultMailSenderPwd>
+        <par:SSLActivated>false</par:SSLActivated>
+        <par:TLSActivated>true</par:TLSActivated>
+        <par:SSLPort>-1</par:SSLPort>
+        <par:smtpPort>465</par:smtpPort>
+        <par:mailAuthentication>true</par:mailAuthentication>
+        <par:protocol>smtps</par:protocol>
+    </par:mailConfig>
+    <par:appConfig>
+        <par:configurationStateDisplayed>true</par:configurationStateDisplayed>
+        <par:expiredPassword>-1</par:expiredPassword>
+        <par:expiredPasswordAfterCreation>0</par:expiredPasswordAfterCreation>
+        <par:passwordMinSize>3</par:passwordMinSize>
+        <par:passwordLetterNumber>0</par:passwordLetterNumber>
+        <par:passwordDigitNumber>0</par:passwordDigitNumber>
+        <par:passwordSpecialCharacterNumber>0</par:passwordSpecialCharacterNumber>
+        <par:autoDisconnection>0</par:autoDisconnection>
+        <par:searchJocker>*</par:searchJocker>
+        <par:documentViewerEnabled>true</par:documentViewerEnabled>
+        <par:documentViewerToolBarMode>DISPLAY_ON_MOUSEOVER</par:documentViewerToolBarMode>
+        <par:defaultPushpinActivated>false</par:defaultPushpinActivated>
+        <par:windowFocused>0</par:windowFocused>
+        <par:validatorActivate>true</par:validatorActivate>
+        <par:autoOpenPJ>true</par:autoOpenPJ>
+        <par:displayPJ>VERTICAL_RIGHT</par:displayPJ>
+        <par:autoReloadBaskets>true</par:autoReloadBaskets>
+        <par:autoDeleteDoc>NO_DELETE</par:autoDeleteDoc>
+        <par:defaultDeleteType>DOC_CHILD</par:defaultDeleteType>
+        <par:alerteDeleteInfo>true</par:alerteDeleteInfo>
+        <par:oneSearchResult>gotoSimpleView</par:oneSearchResult>
+        <par:defaultSearchResultView>SIMPLE</par:defaultSearchResultView>
+        <par:nbDocPage>10</par:nbDocPage>
+        <par:nbMaxSearchDoc>100</par:nbMaxSearchDoc>
+        <par:displayMode>BASIC</par:displayMode>
+        <par:uploadAcceptedTypes>pdf,doc,docx,xls,xlsx,txt,odt,jpg,jpeg,png</par:uploadAcceptedTypes>
+        <par:forbiddenExtensions>bat;bin;class;cmd;com;cpl;csh;dll;exe;inf;ins;inx;ius;jar;job;js;jse;jsf;jsp;ksh;lnk;msc;msi;msp;msp;out;paf;pif;ps1;reg;rgs;run;scr;sct;sh;shb;shs;sql;vb;vbe;vbs;vbscript;ws;wsf;wsh</par:forbiddenExtensions>
+        <par:ssoActivated>false</par:ssoActivated>
+        <par:authenticationMode>LOGIN</par:authenticationMode>
+        <par:webAppURL>http://srv-prod-04:9390/ArcadeGed</par:webAppURL>
+        <par:stayInHierachicalViewAfterCreate>true</par:stayInHierachicalViewAfterCreate>
+        <par:encryptAuthentication>true</par:encryptAuthentication>
+        <par:redirectUrlLoginOnly>false</par:redirectUrlLoginOnly>
+        <par:sizeSaveInCookie>true</par:sizeSaveInCookie>
+        <par:timeoutSuccessNotif>5</par:timeoutSuccessNotif>
+        <par:timeoutWarnNotif>6</par:timeoutWarnNotif>
+        <par:timeoutErrorNotif>8</par:timeoutErrorNotif>
+    </par:appConfig>
+    <par:birt webAppUrl="http://srv-prod-04:9390/AirsStat">
+        <par:dbConnection>
+            <par:driver url="jdbc:postgresql">org.postgresql.Driver</par:driver>
+            <par:server port="6970">SRV-PROD-38</par:server>
+            <par:instance>airs</par:instance>
+            <par:login>airsuser</par:login>
+            <par:password>ENC(NjwneGXkeEdL3XuWHbDO8xGgHGd0/dhnr9km4BNOjR3718cQUyKL/hrBHWwZ2OTr28KzObrRlx9SGbyT3FvVwO6IVlEUbHOaYuGVKhlLhdZM3zU4mEW3sRU/VJ+c3XU8gLhqUahXE01l63JRq1ZZVIe/FDgb7d4FBHIWeqGH/RE=)</par:password>
+        </par:dbConnection>
+    </par:birt>
+    <par:versionning>
+        <par:activated>true</par:activated>
+        <par:rollingNumber>0</par:rollingNumber>
+    </par:versionning>
+    <par:oooConfig autoStart="true">
+        <par:officeHome>E:/Arcade_PAP/arcadeged/OpenOfficePortable/App/openoffice</par:officeHome>
+        <par:executableName>soffice.exe</par:executableName>
+        <par:portNumbers>2045</par:portNumbers>
+        <par:taskQueueTimeout>60000</par:taskQueueTimeout>
+        <par:taskExecutionTimeout>120000</par:taskExecutionTimeout>
+        <par:maxTasksPerProcess>200</par:maxTasksPerProcess>
+        <par:taskQueueFair>true</par:taskQueueFair>
+    </par:oooConfig>
+    <par:ftConfig url="http://localhost:9923" maxResultsPerPage="20" fragmentLength="200" maxSuggestedTerms="10" maxDocLinks="20" minDocLinksScore="-1" automaticallyDisplayPJ="true" suggestionEnabled="true" searchOnAllTextFields="true" debugMode="false"/>
+    <par:onlineEditorConfigs collaboration="false">
+        <par:onlineEditorConfig url="http://10.1.4.202:9595/digiOffice" username="digioffice" password="ENC(tqacdcY3kXnVrVgTnfVTCpOzWtck8imzrrsCiFmGjXB10CX2dTUc+wmmNDuhpdlVEiJb6Y99UnquKt4kQYLhhQcyRVYpnBk1k99ZsWycjPSi8pAhzPlcOBKUrjErJe+hetKgFM3DLFarHzLdoRkELewteqjcCtSFiE7ooowMZrc=)" context="ArcadeGEDPAP" userShareProperty="ONLINE_EMAIL" authorizedSharePattern=".*@digitech13\.onmicrosoft\.com$" onlineEditorEngine="office365" engineSetup="o365" connectionTimeOut="30" requestTimeOut="30" enableModuleConversion="true" activated="true" debugMode="false"/>
+        <par:onlineEditorConfig url="http://10.1.4.202:9595/digiOffice/" username="digioffice" password="ENC(rgoTvDS62jit80Ig5Khzw9ZzjT/ItTzqKIJVSnktGlouaL9mEGeFAnumsygbJaR35OrrOfXz1KUbSpfFVvuH8itZG3yC9mGBcKCfBkMk91W9yyLl2ZxlTeVhWNcNJ994SNijHcfYkAOIRtGnqqR/258BsK3YWdrkU1pfV0FA3Yw=)" context="ArcadeGEDPAP" onlineEditorEngine="onlyOffice" secretKey="ENC(REx7adl/qJRFLJRHPBMbmdSxq3trTWh/4JZa8jZSlKlHLAdXvMOBe0HBIx/ZaiK/U48k8p3aH67fbqcHonyAicG6BiwcP13+31hYkmlmAuBFMSZ2zHpPwa/zJ8i0AYIP5o2a+f8JpgTByIwqLWH2MQipTXEqmakzC1dloj/W16w=)" engineSetup="onlyOffice" connectionTimeOut="30" requestTimeOut="30" enableModuleConversion="true" activated="true" debugMode="false"/>
+    </par:onlineEditorConfigs>
+    <par:fieldsEnvFile/>
+</par:params>

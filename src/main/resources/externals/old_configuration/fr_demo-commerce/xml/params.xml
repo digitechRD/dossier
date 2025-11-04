@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" version="6.0.6-RC4" customerName="@CUSTOMERNAME@">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">localhost</server>
+        <userAdmin>
+            <login>adm</login>
+            <password>adm</password>
+        </userAdmin>
+      <adminWebappURL>http://localhost:9090/AirsAdmin</adminWebappURL>
+    </airsConfig>
+    <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>false</contentTypeFilter>
+        <flowmind>
+            <server port="0"/>
+            <dbConnection maxconn="-1">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1099"/>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+            </dbConnection>
+        </flowmind>
+    </workFlow>
+    <mailConfig>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+        <smtpPort>25</smtpPort>
+        <mailAuthentication>false</mailAuthentication>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>1</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+        <uniqueFolder>true</uniqueFolder>
+        <displayMode>ADVANCED</displayMode>
+        <ssoActivated>false</ssoActivated>
+        <flowSelectionEnabled>true</flowSelectionEnabled>
+    </appConfig>
+    <birt webAppUrl="http://localhost:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1535">localhost</server>
+            <instance>CIRI</instance>
+            <login>DEMO_DO_AIRSUSER</login>
+            <password>DEMO_DO_AIRSUSER</password>
+        </dbConnection>
+    </birt>
+    <versionning>
+        <activated>true</activated>
+        <rollingNumber>3</rollingNumber>
+    </versionning>
+    <oooConfig autoStart="true">
+        <officeHome>C:\Program Files\OpenOffice.org 3</officeHome>
+        <executableName>soffice.exe</executableName>
+        <portNumbers>2123</portNumbers>
+        <taskQueueTimeout>30000</taskQueueTimeout>
+        <taskExecutionTimeout>120000</taskExecutionTimeout>
+        <maxTasksPerProcess>200</maxTasksPerProcess>
+    </oooConfig>
+   <popConfig>
+      <dbConnection>
+         <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+         <server port="1535">@localhost</server>
+         <instance>CIRI</instance>
+         <login>cou_light_popuser</login>
+         <password>cou_light_popuser</password>
+      </dbConnection>
+   </popConfig>
+</params>

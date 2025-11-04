@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" version="6.0.7.10-1" customerName="GEOCEAN">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">pc-cle3</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+        <adminWebappURL>http://pc-cle3:9090/AirsDossier/</adminWebappURL>
+    </airsConfig>
+    <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>false</contentTypeFilter>
+        <flowmind>
+            <server port="0"/>
+            <dbConnection pool="digiflow" maxconn="2">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1099"/>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+            </dbConnection>
+        </flowmind>
+    </workFlow>
+    <mailConfig>
+        <smtp>pc-cle3</smtp>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+        <smtpPort>25</smtpPort>
+        <mailAuthentication>false</mailAuthentication>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>2</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>1</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <documentViewerToolBarMode>DISPLAY_ON_MOUSEOVER</documentViewerToolBarMode>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoUnitView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+        <displayMode>ADVANCED</displayMode>
+        <ssoActivated>false</ssoActivated>
+        <flowSelectionEnabled>false</flowSelectionEnabled>
+    </appConfig>
+    <birt webAppUrl="http://pc-cle3:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">pc-cle3</server>
+            <instance>AIRS</instance>
+            <login>airsuser_geocean</login>
+            <password>airsuser_geocean</password>
+        </dbConnection>
+    </birt>
+    <versionning>
+        <activated>false</activated>
+        <rollingNumber>-1</rollingNumber>
+    </versionning>
+    <oooConfig autoStart="false">
+        <taskQueueTimeout>30000</taskQueueTimeout>
+        <taskExecutionTimeout>120000</taskExecutionTimeout>
+        <maxTasksPerProcess>200</maxTasksPerProcess>
+    </oooConfig>
+</params>

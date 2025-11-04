@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preference xmlns="http://www.digitech.com/dossiers/preference">
+	<organization name="DEFAULT" id="0" titre="Accueil Experian"
+		workflowCorbeille="1" copyRefButton="1">
+		<indexation contentType="COURRIERS">
+			<dossierrequest name=""
+				xmlns="http://www.digitech.com/dossiers/common">
+				<contentType>COURRIERS</contentType>
+				<workflowvalue>WFALLTASKS</workflowvalue>
+			</dossierrequest>
+		</indexation>
+		<SubmitWorkflow alert="1" onclick="gotoDocumentUnitaire" />
+  
+   <reporting>
+   <file value="Mss_General.rptdesign" titre="Mss-General" />
+   <file value="MSS_Modulaire.rptdesign" titre="MSS_Modulaire" />
+   <file value="StatspreRoutage.rptdesign" titre="Stats pré-Routage" />
+   <file value="StatsRoutage.rptdesign" titre="StatsRoutage" />
+   <file value="StatsCourrierSortant.rptdesign" titre="StatsCourrierSortant" />
+   </reporting>
+  
+		<afterLoginElement direction="gotoDocumentUnitaire">
+			<dossierrequest name=""
+				xmlns="http://www.digitech.com/dossiers/common">
+				<contentType>COURRIERS</contentType>
+				<workflowvalue>A prendre en charge</workflowvalue>
+				<sortingPolicy
+					xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>D_ENTREE</codeField>
+				</sortingPolicy>
+			</dossierrequest>
+		</afterLoginElement>
+	</organization>
+</preference>

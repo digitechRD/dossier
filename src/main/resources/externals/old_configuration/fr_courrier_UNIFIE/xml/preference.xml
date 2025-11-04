@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preference xmlns="http://www.digitech.com/dossiers/preference" xmlns:ns2="http://www.digitech.com/dossiers/common"
+            xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="6.2" customerName="CIRIL">
+  <organization name="DEFAULT" id="0" copyRefButton="0" numberOfHomeBasketRow="15" creationMode="ADVANCED" defaultAttachmentType="COU_RECU">
+    <indexation contentType="COU_COURRIER_IN">
+    </indexation>
+    <treeAccess/>
+    <SubmitWorkflow alert="0"/>
+    <reporting>
+      <file value="suivi_courriers_entrants.rptdesign" titre="Suivi des courriers entrants" flowCode="COURRIER"/>
+      <file value="suivi_courriers_sortants.rptdesign" titre="Suivi des courriers sortants" flowCode="COURRIER"/>
+      <file value="suivi_courriers_retard.rptdesign" titre="Suivi des courriers en retard" flowCode="COURRIER"/>
+      <file value="suivi_courriers_repondus.rptdesign" titre="Suivi des courriers répondus" flowCode="COURRIER"/>
+      <file value="suivi_courriers_delai_moyen_reponse.rptdesign" titre="Délai moyen de réponse" flowCode="COURRIER"/>
+      <file value="suivi_courrier_annee_mois.rptdesign" titre="Suivi des courriers par mois/année" flowCode="COURRIER"/>
+    </reporting>
+    <champWorkflow editable="0" contentType="GEN_DOC">
+      <champs/>
+      <taches/>
+    </champWorkflow>
+    <champWorkflow editable="0" contentType="COU_COURRIER_IN">
+      <champs/>
+      <taches/>
+    </champWorkflow>
+        <champWorkflow editable="0" contentType="COU_COURRIER_OUT">
+            <champs/>
+            <taches/>
+        </champWorkflow>
+        <champWorkflow editable="0" contentType="COU_REPONSE">
+            <champs/>
+            <taches/>
+        </champWorkflow>
+    <newDocument>
+      <inMenu/>
+      <inFolder/>
+    </newDocument>
+    <contentType name="GEN_DOC">
+      <displayPJ>VERTICAL_RIGHT</displayPJ>
+      <advancedAudit>
+        <activatedAudit>ADV_EVENT_DOC_CREATE</activatedAudit>
+        <activatedAudit>ADV_EVENT_DOC_DELETE</activatedAudit>
+        <activatedAudit>ADV_EVENT_COMMENT</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_UPDATE</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_INSERT</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_DELETE</activatedAudit>
+      </advancedAudit>
+      <multipleCreationEnable>ENABLE</multipleCreationEnable>
+      <advancedDownLoadRights/>
+    </contentType>
+    <contentType name="COU_COURRIER_IN">
+      <displayPJ>VERTICAL_RIGHT</displayPJ>
+      <advancedAudit>
+        <activatedAudit>ADV_EVENT_DOC_CREATE</activatedAudit>
+        <activatedAudit>ADV_EVENT_DOC_DELETE</activatedAudit>
+        <activatedAudit>ADV_EVENT_DOC_LOCK</activatedAudit>
+        <activatedAudit>ADV_EVENT_COMMENT</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_UPDATE</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_INSERT</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_DELETE</activatedAudit>
+        <activatedAudit>ADV_EVENT_SIGNATURE_REQUEST</activatedAudit>
+        <activatedAudit>ADV_EVENT_SIGNATURE</activatedAudit>
+      </advancedAudit>
+      <multipleCreationEnable>ENABLE</multipleCreationEnable>
+      <advancedDownLoadRights/>
+    </contentType>
+    <contentType name="COU_COURRIER_OUT">
+      <displayPJ>VERTICAL_RIGHT</displayPJ>
+      <advancedAudit>
+        <activatedAudit>ADV_EVENT_DOC_CREATE</activatedAudit>
+        <activatedAudit>ADV_EVENT_DOC_DELETE</activatedAudit>
+        <activatedAudit>ADV_EVENT_DOC_LOCK</activatedAudit>
+        <activatedAudit>ADV_EVENT_COMMENT</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_UPDATE</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_INSERT</activatedAudit>
+        <activatedAudit>ADV_EVENT_ATTACHMENT_DELETE</activatedAudit>
+        <activatedAudit>ADV_EVENT_SIGNATURE_REQUEST</activatedAudit>
+        <activatedAudit>ADV_EVENT_SIGNATURE</activatedAudit>
+      </advancedAudit>
+      <multipleCreationEnable>ENABLE</multipleCreationEnable>
+      <advancedDownLoadRights/>
+    </contentType>
+    <contentType name="COU_REPONSE">
+      <advancedAudit>
+        <activatedAudit>ADV_EVENT_DOC_CREATE</activatedAudit>
+      </advancedAudit>
+      <multipleCreationEnable>ENABLE</multipleCreationEnable>
+      <advancedDownLoadRights/>
+    </contentType>
+  </organization>
+</preference>

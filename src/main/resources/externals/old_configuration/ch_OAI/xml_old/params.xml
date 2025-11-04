@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" version="5.3.8" customerName="OAINE">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">172.16.1.237</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+    </airsConfig>
+    <mailConfig>
+        <smtp>smtp.vtxnet.ch</smtp>
+        <defaultMailSender></defaultMailSender>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+    </mailConfig>
+	<!--workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <flowmind>
+	<server port="1099">ai0airs1</server>      	
+    </flowmind>
+  </workFlow-->
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>0</isoxDisabled>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <readOnlyPJTypeDisplayed></readOnlyPJTypeDisplayed>
+        <basketPJTypeDisplayed></basketPJTypeDisplayed>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_LEFT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+        <displayMode>BASIC</displayMode>
+        <uploadAcceptedTypes></uploadAcceptedTypes>
+        <ssoActivated>false</ssoActivated>
+    </appConfig>
+    <birt webAppUrl="">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="8080"></server>
+            <instance></instance>
+            <login></login>
+            <password></password>
+        </dbConnection>
+    </birt>
+    <versionning>
+        <activated>true</activated>
+        <rollingNumber>20</rollingNumber>
+    </versionning>
+<!--     <oooConfig autoStart="true">
+        <officeHome></officeHome>
+        <portNumbers>2002</portNumbers>
+        <portNumbers>2003</portNumbers>
+        <portNumbers>2004</portNumbers>
+        <portNumbers>2005</portNumbers>
+        <executableName></executableName>
+        <taskQueueTimeout>30000</taskQueueTimeout>
+        <taskExecutionTimeout>120000</taskExecutionTimeout>
+        <maxTasksPerProcess>200</maxTasksPerProcess>
+    </oooConfig> -->
+</params>

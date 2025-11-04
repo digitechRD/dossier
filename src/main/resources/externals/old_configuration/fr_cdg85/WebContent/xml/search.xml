@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<searchForm  xmlns="http://www.digitech.com/dossiers/search">
+	<organization name="DEFAULT" id="0">
+		<contentType name="DOC_AGENT">
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<label>Date de création du dossier:</label>
+				<airsfield>
+					<codeField>D_CREAT</codeField>
+					<parentContentType>DOS_AGENT</parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<label>Contenu :</label>
+				<airsfield>
+					<codeField>DOCS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+		
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<label>ID du document:</label>
+				<airsfield>
+					<codeField>REFAIRS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value>123456</initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>			
+			
+			<input>
+				<operator>=</operator>
+				<label>Code Agent:</label>
+				<airsfield>
+					<codeField>NUM_MAT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<allowJoker>true</allowJoker>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>JDB Organization:</label>
+				<airsfield>
+					<codeField>JDB_ORGA</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>		
+			
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>&#62;</operator>
+				<operator>&#60;</operator>
+				<label>Date du document:</label>
+				<airsfield>
+					<codeField>DATE_DOC</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value>#TODAY#</initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Type du document:</label>
+				<airsfield>
+					<codeField>TYPE_DOC_AGENT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Libellé:</label>
+				<airsfield>
+					<codeField>LIBELLE_AGENT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value>#LOGIN#</initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Responsable du traitement:</label>
+				<airsfield>
+					<codeField>USER_REF</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+				<input>
+				<operator>=</operator>
+				<label>Statut:</label>
+				<airsfield>
+					<codeField>STATUT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Texte pièces jointes:</label>
+				<airsfield>
+					<codeField>DOCS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>&#62;</operator>
+				<operator>&#60;</operator>
+				<label>Date de création:</label>
+				<airsfield>
+					<codeField>D_CREAT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Etape:</label>
+				<airsfield>
+					<codeField>WFTASK</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<!-- required>
+				<codeField>REFAIRS</codeField>
+			</required-->
+			
+			
+			<sorting>
+			   <sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>NUM_MAT</codeField>
+				</sortingPolicy>
+			   <sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>DATE_DOC</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+		
+		<contentType name="DOS_AGENT">
+			<input>
+				<operator>=</operator>
+				<label>ID de dossier:</label>
+				<airsfield>
+					<codeField>REFAIRS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>			
+			
+			<input>
+				<operator>=</operator>
+				<label>Code Agent:</label>
+				<airsfield>
+					<codeField>NUM_MAT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			<sorting>
+			   <sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction></direction>
+					<codeField></codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+
+
+		<contentType name="DOC_COLL">
+			<input>
+				<operator>=</operator>
+				<label>ID du document:</label>
+				<airsfield>
+					<codeField>REFAIRS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Code Etablissement:</label>
+				<airsfield>
+					<codeField>CODE_ETAB</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+		
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>&#62;</operator>
+				<operator>&#60;</operator>
+				<label>Date du document:</label>
+				<airsfield>
+					<codeField>DATE_DOC</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Type du document:</label>
+				<airsfield>
+					<codeField>TYPE_DOC_COLL</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Libellé:</label>
+				<airsfield>
+					<codeField>LIBELLE_COLL</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Responsable du traitement:</label>
+				<airsfield>
+					<codeField>USER_REF</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+				<input>
+				<operator>=</operator>
+				<label>Statut:</label>
+				<airsfield>
+					<codeField>STATUT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Texte pièces jointes:</label>
+				<airsfield>
+					<codeField>DOCS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>&#62;</operator>
+				<operator>&#60;</operator>
+				<label>Date de création:</label>
+				<airsfield>
+					<codeField>D_CREAT</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<input>
+				<operator>=</operator>
+				<label>Etape:</label>
+				<airsfield>
+					<codeField>WFTASK</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			
+			<sorting>
+			   <sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>CODE_ETAB</codeField>
+				</sortingPolicy>
+			   <sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>DATE_DOC</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+		
+		<contentType name="DOS_COLL">
+			<input>
+				<operator>=</operator>
+				<label>ID de dossier:</label>
+				<airsfield>
+					<codeField>REFAIRS</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Code Etablissement:</label>
+				<airsfield>
+					<codeField>CODE_ETAB</codeField>
+					<parentContentType></parentContentType>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper promptCharacter="" autoTab="true"></inputHelper>
+				<convertMask></convertMask>
+			</input>
+			<sorting>
+			   <sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction></direction>
+					<codeField></codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+	</organization>
+</searchForm>
+
+
+

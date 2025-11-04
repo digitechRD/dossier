@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<corbeille xmlns="http://www.digitech.com/dossiers/baskets" xmlns:ns2="http://www.digitech.com/dossiers/common"
+   customerName="CIRIL" version="6.0.0">
+   <organization id="0" name="DEFAULT" titre="Accueil">
+   <!-- COURRIER EXPRESS DEBUT -->
+      <basketRequest name="basket_mailToIndex" indexation="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;122&quot;</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest name="basket_mailRejected" inHeaderMenu="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>U_CREAT.USR=&quot;#LOGIN_ID#&quot; ET T_ETAT_COURRIER.ROOTITEM=&quot;125&quot;</ns2:airsvalue>
+         <ns2:airsProfile>11</ns2:airsProfile>
+      </basketRequest>
+
+      <basketRequest name="basket_mailRefused" inHeaderMenu="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>(U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET
+            U_PROPRIETAIRE IS NULL)) ET T_ETAT_VISA.ROOTITEM=&quot;131&quot; ET T_ETAT_COURRIER.ROOTITEM=&quot;127&quot;</ns2:airsvalue>
+      </basketRequest>
+
+	  <basketRequest name="basket_mailAccepted" inHeaderMenu="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>(U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET
+            U_PROPRIETAIRE IS NULL)) ET T_ETAT_VISA.ROOTITEM=&quot;130&quot; ET T_ETAT_COURRIER.ROOTITEM=&quot;127&quot;</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest name="basket_mailToValidate" inHeaderMenu="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;123&quot; ET U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot;</ns2:airsvalue>
+		 <ns2:airsProfile>109</ns2:airsProfile>
+      </basketRequest>
+
+      <basketRequest name="basket_mailToCheck" inHeaderMenu="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;127&quot; ET U_VISEUR.USR=&quot;#LOGIN_ID#&quot; ET
+            (T_ETAT_VISA.ROOTITEM=&quot;129&quot; OU T_ETAT_VISA IS NULL)</ns2:airsvalue>
+			<ns2:airsProfile>110</ns2:airsProfile>
+      </basketRequest>
+
+      <basketRequest name="basket_mailLate" inHeaderMenu="true">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;126&quot; ET (U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU
+            (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL)) ET
+            D_ECHEANCE&lt;=&quot;#TODAY#&quot;</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest indexation="false" inHeaderMenu="true" name="basket_mailToProcess">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;126&quot; ET (U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU
+            (O_PROPRIETAIRE.ORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL))</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest indexation="false" inHeaderMenu="true" name="basket_mailToProcessForServicesUnderMe">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;126&quot; ET
+            (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL SAUF O_PROPRIETAIRE.ORG=&quot;#ORG_ID#&quot;)</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest name="basket_mailProcessed">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;127&quot; ET (U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU
+            (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL)) ET( T_ETAT_VISA.ROOTITEM=&quot;129&quot; OU T_ETAT_VISA IS NULL)</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest name="basket_mailInCopy">
+         <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+         <ns2:airsvalue>(U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;) SAUF U_COPIES_LUES.USR=&quot;#LOGIN_ID#&quot;</ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest name="basket_mailToSendRefused">
+         <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+         <ns2:airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; ET T_ETAT_VISA.ROOTITEM=&quot;131&quot; SAUF T_ETAT_COURRIER.ROOTITEM=&quot;128&quot;
+         </ns2:airsvalue>
+      </basketRequest>
+
+	  <basketRequest name="basket_mailToSendToCheck">
+         <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+         <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;127&quot; ET U_VISEUR.USR=&quot;#LOGIN_ID#&quot; ET
+            (T_ETAT_VISA.ROOTITEM=&quot;129&quot; OU T_ETAT_VISA IS NULL)</ns2:airsvalue>
+		 <ns2:airsProfile>110</ns2:airsProfile>
+      </basketRequest>
+
+	  	  <basketRequest name="basket_mailToSendAccepted" inHeaderMenu="true">
+        <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+         <ns2:airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; ET T_ETAT_VISA.ROOTITEM=&quot;130&quot; SAUF T_ETAT_COURRIER.ROOTITEM=&quot;128&quot;
+         </ns2:airsvalue>
+      </basketRequest>
+
+      <basketRequest name="basket_mailToSend">
+         <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+         <ns2:airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; ET D_ENVOI IS NULL</ns2:airsvalue>
+      </basketRequest>
+	<!-- COURRIER EXPRESS FIN -->
+	<!-- GF DEBUT -->
+      <basketRequest indexation="false" inHeaderMenu="false"  name="Documents 'Tiers' créés aujourd'hui">
+          <ns2:contentType>GF_TIERS</ns2:contentType>
+          <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+      </basketRequest>
+      <basketRequest indexation="false" inHeaderMenu="false"  name="Documents 'Mouvement' créés aujourd'hui">
+          <ns2:contentType>GF_MOUVEMENT</ns2:contentType>
+          <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+      </basketRequest>
+      <basketRequest indexation="false" inHeaderMenu="false"  name="Documents 'Marche' créés aujourd'hui">
+          <ns2:contentType>GF_MARCHE</ns2:contentType>
+          <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+      </basketRequest>
+      <basketRequest indexation="false" inHeaderMenu="false"  name="Documents 'PES' créés aujourd'hui">
+          <ns2:contentType>GF_PES</ns2:contentType>
+          <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+      </basketRequest>
+	<!-- GF FIN -->
+	<!-- RH DEBUT -->
+      <basketRequest indexation="false" inHeaderMenu="false"  name="Documents 'RH' créés aujourd'hui">
+          <ns2:contentType>RH_DOCUMENT_EXTERNE</ns2:contentType>
+          <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+      </basketRequest>
+	<!-- RH FIN -->
+	<!-- URBANISME DEBUT -->
+        <basketRequest indexation="false" inHeaderMenu="false" flowCode="AOS" basket-properties-scriptId="" name="Documents créés aujourd'hui">
+            <ns2:contentType>DOC_AOS</ns2:contentType>
+            <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="false" flowCode="FONCIER" basket-properties-scriptId="" name="Documents créés aujourd'hui">
+            <ns2:contentType>DOC_FON</ns2:contentType>
+            <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="false" flowCode="Parcelle" basket-properties-scriptId="" name="Documents ajoutés aujourd'hui">
+            <ns2:contentType>DOC_PAR</ns2:contentType>
+            <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="false" flowCode="PLU" basket-properties-scriptId="" name="Documents créés aujourd'hui">
+            <ns2:contentType>DOC_PLU</ns2:contentType>
+            <ns2:airsvalue>D_CREAT=#TODAY#</ns2:airsvalue>
+        </basketRequest>
+	<!-- URBANISME FIN -->
+   </organization>
+</corbeille>

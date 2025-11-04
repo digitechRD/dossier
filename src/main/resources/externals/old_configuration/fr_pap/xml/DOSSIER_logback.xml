@@ -1,0 +1,445 @@
+<configuration debug="true" scan="true" scanPeriod="1 minute">
+  <property resource="logback.properties"/>
+  <!-- This file can be temporary created when changing log level from preferences' page -->
+  <property file="${dossier_app}xml/logback-overridden.properties"/>
+  <!-- the next line is just here to make reloadable workedn when modifying logback.properties -->
+  <include optional="true" file="${dossier_app}WEB-INF/classes/logback.properties"/>
+  <include optional="true" file="${dossier_app}xml/externalLogback.xml"/>
+
+  <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <resetJUL>true</resetJUL>
+  </contextListener>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${log_level_stdout:-OFF}</level>
+    </filter>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%file:%line] %msg%n%rEx</Pattern>
+    </encoder>
+    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+      <evaluator name="loggingTaskEval">
+        <expression>
+          return (logger.contains("groovyLog") || logger.contains("scriptLog"));
+        </expression>
+      </evaluator>
+      <OnMatch>DENY</OnMatch>
+      <OnMismatch>ACCEPT</OnMismatch>
+    </filter>
+  </appender>
+
+  <appender name="FILE_ROLL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+      <FileNamePattern>${log_path}/${project_filename:-dossierweb}_%d{yyyy-MM-dd}_%i.log.zip</FileNamePattern>
+      <!-- each file should be at most 10MB, keep 10 periods -->
+      <maxFileSize>${log_max_rolling_size:-50MB}</maxFileSize>
+      <maxHistory>${log_max_rolling_idx:-20}</maxHistory>
+      <totalSizeCap>${log_total_size_cap:-4}GB</totalSizeCap>
+    </rollingPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%X{username}][%logger{24}:%line] %msg%n%rEx</Pattern>
+    </encoder>
+
+    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+      <evaluator name="loggingTaskEval">
+        <expression>
+          return logger.contains("scriptLog");
+        </expression>
+      </evaluator>
+      <OnMatch>DENY</OnMatch>
+      <OnMismatch>ACCEPT</OnMismatch>
+    </filter>
+  </appender>
+
+  <appender name="FILE_AIRS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+      <file>${log_path}/${project_filename:-dossierweb-airs}.log</file>
+      <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <FileNamePattern>${log_path}/${project_filename:-dossierweb-airs}_%d{yyyy-MM-dd}_%i.log.zip</FileNamePattern>
+        <!-- each file should be at most 10MB, keep 10 periods -->
+        <maxFileSize>${log_max_rolling_size:-50MB}</maxFileSize>
+        <maxHistory>${log_max_rolling_idx:-20}</maxHistory>
+        <totalSizeCap>${log_total_size_cap:-4}GB</totalSizeCap>
+      </rollingPolicy>
+
+      <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+        <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%X{username}][%logger{24}:%line] %msg%n%rEx</Pattern>
+      </encoder>
+
+      <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+        <evaluator name="loggingTaskEval">
+          <expression>
+            return logger.contains("scriptLog");
+          </expression>
+        </evaluator>
+        <OnMatch>DENY</OnMatch>
+        <OnMismatch>ACCEPT</OnMismatch>
+      </filter>
+    </appender>
+
+  <appender name="FILE_CMIS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}_cmis.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>${log_path}/${project_filename:-dossierweb}_cmis_%i.log</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>20</MaxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>50MB</MaxFileSize>
+    </triggeringPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger:%line] %msg%n%rEx</Pattern>
+    </encoder>
+  </appender>
+
+  <appender name="FILE_SCRIPT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}_scripts.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>${log_path}/${project_filename:-dossierweb}_scripts_%i.log</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>10</MaxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>10MB</MaxFileSize>
+    </triggeringPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}:%line] %msg%n%rEx</Pattern>
+    </encoder>
+
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${log_level_script:-WARN}</level>
+    </filter>
+
+    <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+      <evaluator name="loggingTaskEval">
+        <expression>
+          return logger.contains("scriptLog");
+        </expression>
+      </evaluator>
+      <OnMatch>ACCEPT</OnMatch>
+      <OnMismatch>DENY</OnMismatch>
+    </filter>
+  </appender>
+
+  <appender name="SCHEDULER_SCRIPT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}_scheduler.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>${log_path}/${project_filename:-dossierweb}_scheduler_%i.log</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>10</MaxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>50MB</MaxFileSize>
+    </triggeringPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}:%line] %msg%n%rEx</Pattern>
+    </encoder>
+
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${log_scheduler_level:-WARN}</level>
+    </filter>
+  </appender>
+
+  <appender name="POPULATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log_path}/${project_filename:-dossierweb}_pop.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <FileNamePattern>${log_path}/${project_filename:-dossierweb}_pop_%i.log</FileNamePattern>
+      <MinIndex>1</MinIndex>
+      <MaxIndex>10</MaxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <MaxFileSize>50MB</MaxFileSize>
+    </triggeringPolicy>
+
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread][%logger{0}:%line] %msg%n%rEx</Pattern>
+    </encoder>
+
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+      <level>${log_level_pop:-WARN}</level>
+    </filter>
+  </appender>
+
+  <!-- sortie console pour démarrage applicatif -->
+  <logger name="com.digitech.dossier.servlet.SimpleStartCloseListener" additivity="false" level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.servlet.StartCloseUtils" additivity="false" level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.common.utils.AppConfigurationUtils" additivity="false" level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.listener.CustomContextLoaderListener" additivity="false" level="DEBUG">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.common.service.CacheManager" additivity="false" level="INFO">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <logger name="com.digitech.dossier.common.service.params.impl" additivity="false" level="WARN">
+    <appender-ref ref="STDOUT"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier" additivity="false" level="${log_level_dossier:-${log_level:-INFO}}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <!-- Fin Sortie console démarrage applicatif -->
+ <logger name="com.digitech.dossier.listener.LogbackConfigurer" additivity="false" level="DEBUG">
+   <appender-ref ref="STDOUT"/>
+   <appender-ref ref="FILE_ROLL"/>
+ </logger>
+
+  <logger name="com.digitech.dossier.page" additivity="false" level="${log_level_dossier_jsp_page:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.common.service.impl" additivity="false"
+  level="${log_level_dossier_services:-${log_level_dossier:-${log_level:-INFO}}}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.airsweb" additivity="false" level="${log_level_airsweb:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.airs" additivity="false" level="${log_level_airs:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <!-- (almost) disable LockOnValueManager -->
+  <logger name="com.digitech.common.thread.lock" additivity="false" level="${log_level_lock:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <logger name="com.digitech.dossier.rest" additivity="false" level="${log_level_rest:-INFO}">
+     <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.webservices.rest" additivity="false" level="${log_level_rest:-INFO}">
+     <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.commons.rest" additivity="false" level="${log_level_rest_client:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+   <logger name="com.digitech.ai.client" additivity="false" level="${log_level_ai_client:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.ged.http" additivity="false" level="${log_level_ged_http:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <logger name="com.digitech" additivity="false" level="${log_level_digitech:-${log_level:-INFO}}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <logger name="com.digitech.dossier.script" additivity="false" level="${log_level_script:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+    <appender-ref ref="FILE_SCRIPT"/>
+  </logger>
+  <logger name="com.digitech.dossier.cmis" additivity="false" level="${log_level_dossier_cmis:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+    <appender-ref ref="FILE_CMIS"/>
+  </logger>
+  <!-- STARTING doc viewer -->
+  <logger name="com.digitech.faces.servlet" additivity="false" level="${log_level_viewer:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.faces.model" additivity="false" level="${log_level_viewer:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.faces.listener.ResourcePhaseListener" additivity="false" level="${log_level_viewer:-OFF}">
+      <appender-ref ref="FILE_ROLL"/>
+    </logger>
+  <logger name="com.digitech.common.image" additivity="false" level="${log_level_viewer:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.servlet.DossierDocumentRendererServlet" additivity="false" level="${log_level_viewer:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.common.lib.utils" additivity="false" level="${log_level_digitech_lib:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <!-- END doc viewer -->
+
+  <logger name="com.digitech.dossier.common.SessionManager" additivity="false" level="${log_level_security:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.jcorbairs.utils.BundleUtils" additivity="false" level="OFF">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.application.ViewHandlerImpl" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.hibernate" additivity="false" level="${log_level_hibernate:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.hibernate.orm" additivity="false" level="${log_level_hibernate:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.sun" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="sun.rmi" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="sun.net" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.kennycason" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="javax" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.dossier.security" additivity="false" level="${log_level_security:-${log_level_dossier:-${log_level:-WARN}}}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="javax.security" additivity="false" level="${log_level_security:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.springframework.security" additivity="false" level="${log_level_security:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.springframework.security.kerberos" additivity="false" level="${log_level_security_kerberos:-${log_level_security:-WARN}}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.keycloak" additivity="false" level="${log_level_security_keycloak:-${log_level_security:-WARN}}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="javax.servlet" additivity="false" level="${log_level_servlet:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.github" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.codehaus.groovy.vmplugin" additivity="false" level="ERROR">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <logger name="com.mchange" additivity="false" level="WARN">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.zaxxer.hikari" additivity="false" level="${log_level_hikari:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="net.bull" additivity="false" level="${log_level_javamelody:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="net.sf.ehcache" additivity="false" level="${log_level_cache:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+   <logger name="org.ehcache" additivity="false" level="${log_level_cache:-WARN}">
+      <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="net.sourceforge" additivity="false" level="WARN">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.springframework" additivity="false" level="${log_level_spring:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="airs" additivity="false" level="${log_level_airs:-INFO}">
+    <appender-ref ref="FILE_AIRS"/>
+  </logger>
+  <logger name="com.digitech.jcorbairs" additivity="false" level="${log_level_airs:-INFO}">
+    <appender-ref ref="FILE_AIRS"/>
+  </logger>
+  <!-- rest / reactive -->
+  <logger name="com.digitech.commons.rest" additivity="false" level="${log_level_rest:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.springframework.web.reactive" additivity="false" level="${log_level_rest:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="reactor.netty" additivity="false" level="${log_level_rest:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="io.netty" additivity="false" level="${log_level_rest:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.richfaces" additivity="false" level="${log_level_jsf:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.ajax4jsf" additivity="false" level="${log_level_jsf:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="facelets" additivity="false" level="${log_level_facelets:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.sun.faces" additivity="false" level="${log_level_facelets:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.apache.el" additivity="false" level="${log_level_facelets:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="javax.el" additivity="false" level="${log_level_facelets:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.apache" additivity="false" level="${log_level_apache:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.apache.pdfbox" additivity="false" level="${log_level_apache:-ERROR}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <!-- WS services -->
+  <logger name="org.apache.cxf" additivity="false" level="${log_level_cxf:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.apache.cxf.services" additivity="false" level="${log_level_cxf_services:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="reactor.netty" additivity="false" level="${log_level_netty:-INFO}">
+      <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="io.netty" additivity="false" level="${log_level_netty:-INFO}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.artofsolving" additivity="false" level="WARN">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="io.swagger" additivity="false" level="${log_level_swagger:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <logger name="org.quartz" additivity="false" level="WARN">
+    <appender-ref ref="SCHEDULER_SCRIPT"/>
+  </logger>
+  <logger name="com.digitech.dossier.common.model.backend.job" additivity="false" level="${log_level_job:-WARN}">
+    <appender-ref ref="SCHEDULER_SCRIPT"/>
+  </logger>
+  <logger name="com.digitech.dossier.common.model.backend.airs.impl.Task" additivity="false" level="${log_level_task:-WARN}">
+    <appender-ref ref="SCHEDULER_SCRIPT"/>
+  </logger>
+
+  <logger name="com.digitech.common.dal.sgbd" additivity="false" level="${log_level_pop:-WARN}">
+    <appender-ref ref="POPULATION"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="com.digitech.population" additivity="false" level="${log_level_pop:-WARN}">
+    <appender-ref ref="POPULATION"/>
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+  <logger name="org.postgresql" additivity="false" level="${log_level_jdbc:-WARN}">
+    <appender-ref ref="FILE_ROLL"/>
+  </logger>
+
+  <root level="${log_level}">
+    <appender-ref ref="FILE_ROLL"/>
+    <appender-ref ref="FILE_AIRS"/>
+    <appender-ref ref="FILE_SCRIPT"/>
+    <appender-ref ref="FILE_CMIS"/>
+    <appender-ref ref="POPULATION"/>
+    <appender-ref ref="SCHEDULER_SCRIPT"/>
+    <appender-ref ref="STDOUT"/>
+  </root>
+
+</configuration>

@@ -1,0 +1,1328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update" xmlns:ns2="http://www.digitech.com/dossiers/common">
+  <organization name="DEFAULT" id="0">
+  </organization>
+   <organization id="1" name="Socredo">
+        <!--<contentType type="insert" name="D_DOS_IMGCHQ_SOC">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>           
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+        </contentType>-->
+        <contentType type="update" name="D_DOS_IMGCHQ_SOC">
+            <input display="true" required="true" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>                       
+            <ns2:export type="SCRIPT" renderer="" id="GenerateFolder" resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <contentType type="update" name="D_DOC_IMGCHQ_SOC">
+            <!--<ns2:link direction="child" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ_SOC">Recto</ns2:link>
+            <ns2:link direction="parent" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ_SOC">Verso</ns2:link>   -->
+            <ns2:link contentTypeCode="D_DOC_OVC" name="CHQ_CART" direction="child"/> 
+            <input display="true" required="false" readonly="true" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+             <input display="true" required="false" readonly="false" type="list">
+                <label>Etat Con. Regl</label>
+                <airsfield>CHQ_ETAT_REGL</airsfield>
+            </input>
+             <input display="true" required="false" readonly="false" type="list">
+                <label>Etat Con. Sign</label>
+                <airsfield>CHQ_ETAT_SIGN</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="list">
+                <label>Prestataire de démat.</label>
+                <airsfield>CHQ_PRESTATAIRE_DEMAT</airsfield>
+            </input>            
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_GCH</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de traitement</label>
+                <airsfield>DAT_TMT</airsfield>
+                <initial-value>
+                </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Banque remettante</label>
+                <airsfield>BNK_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Banque tirée</label>
+                <airsfield>BNK_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Devise</label>
+                <airsfield>DEV_ZIB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Indice CRC</label>
+                <airsfield>IND_CRC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro MRQ</label>
+                <airsfield>NUM_MRQ</airsfield>
+            </input>  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Commentaire</label>
+                <airsfield>COMMENTAIRE</airsfield>
+            </input>                                                                                    
+             <!--<ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF" resourceKey="generate_document_pdf_tooltip" image="icon_generate_doc" id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--<ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  resourceKey="generate_rectoVerso_pdf_tooltip" image="icon_generate_recto_verso" id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--<ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" id="GenerateFolder" >
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--<ns2:export type="SCRIPT" renderer="" id="GenerateRectoVerso" resourceKey="generate_rectoVerso_pdf_tooltip" image="icon_generate_recto_verso" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+        	  </ns2:export>-->
+        </contentType>
+        <!--<contentType type="insert" name="D_DOC_IMGCHQ_SOC">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_GCH</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Commentaire</label>
+                <airsfield>COMMENTAIRE</airsfield>
+            </input>              
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>-->
+    </organization>
+ 
+    
+   <organization id="23" name="IEOM">
+        <!--<contentType type="insert" name="D_DOS_IMGCHQ_IEOM">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>-->
+        <contentType type="update" name="D_DOS_IMGCHQ_IEOM">
+            <input display="true" required="true" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+             <ns2:export type="SCRIPT" renderer="" id="GenerateFolder" resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+       
+        <contentType type="update" name="D_DOC_IMGCHQ_IEOM">
+            <ns2:link direction="child" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ_IEOM">Recto</ns2:link>
+            <ns2:link direction="parent" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ_IEOM">Verso</ns2:link>
+            <input display="true" required="false" readonly="true" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="list">
+                <label>Prestataire de démat.</label>
+                <airsfield>CHQ_PRESTATAIRE_DEMAT</airsfield>
+            </input>               
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_GCH</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de traitement</label>
+                <airsfield>DAT_TMT</airsfield>
+                <initial-value>
+                </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Banque remettante</label>
+                <airsfield>BNK_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Banque tirée</label>
+                <airsfield>BNK_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Devise</label>
+                <airsfield>DEV_ZIB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Indice CRC</label>
+                <airsfield>IND_CRC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro MRQ</label>
+                <airsfield>NUM_MRQ</airsfield>
+            </input>                                                                        
+            <!-- <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF" resourceKey="generate_document_pdf_tooltip" image="icon_generate_doc" id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  resourceKey="generate_rectoVerso_pdf_tooltip" image="icon_generate_recto_verso" id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" id="GenerateFolder" >
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>-->
+             <!--<ns2:export type="SCRIPT" renderer="" id="GenerateRectoVerso" resourceKey="generate_rectoVerso_pdf_tooltip" image="icon_generate_recto_verso" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+        	  </ns2:export>-->
+        </contentType>
+    </organization>
+    
+    
+    <organization id="24" name="CCP">
+        <contentType type="update" name="D_DOS_IMGCHQ_CCP">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <ns2:export type="SCRIPT" renderer="" id="GenerateFolder" resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <!--<contentType type="insert" name="D_DOS_IMGCHQ_CCP">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>-->
+        <contentType type="update" name="D_DOC_IMGCHQ_CCP">
+            <ns2:link direction="child" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ_CCP">Recto</ns2:link>
+            <ns2:link direction="parent" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ_CCP">Verso</ns2:link>
+            <input display="true" required="false" readonly="true" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="list">
+                <label>Prestataire de démat.</label>
+                <airsfield>CHQ_PRESTATAIRE_DEMAT</airsfield>
+            </input>               
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_GCH</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de traitement</label>
+                <airsfield>DAT_TMT</airsfield>            
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Banque remettante</label>
+                <airsfield>BNK_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Banque tirée</label>
+                <airsfield>BNK_CHQ</airsfield>               
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Devise</label>
+                <airsfield>DEV_ZIB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Indice CRC</label>
+                <airsfield>IND_CRC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro MRQ</label>
+                <airsfield>NUM_MRQ</airsfield>
+            </input>                                                                        
+             <!--<ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF" resourceKey="generate_document_pdf_tooltip" image="icon_generate_doc" id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  resourceKey="generate_rectoVerso_pdf_tooltip" image="icon_generate_recto_verso" id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" id="GenerateFolder" >
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--<ns2:export type="SCRIPT" renderer="" id="GenerateRectoVerso" resourceKey="generate_rectoVerso_pdf_tooltip" image="icon_generate_recto_verso" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+        	  </ns2:export>-->
+        </contentType>
+        <!--<contentType type="insert" name="D_DOC_IMGCHQ_CCP">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code REV</label>
+                <airsfield>COD_REV</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_GCH</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>-->
+    </organization>
+    
+    <organization id="25" name="SOCREDO DPC">  
+        <contentType type="insert" name="D_DOS_DPC">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom</label>
+                <airsfield>DPC_NOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom de jeune fille</label>
+                <airsfield>DPC_NOM_JF</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Prénom</label>
+                <airsfield>DPC_PRENOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de naissance</label>
+                <format>dd/MM/yyyy</format>      
+                <airsfield>DPC_DATE_NAISSANCE</airsfield>
+            </input>
+             <input display="true" required="false" readonly="false" type="">
+                <label>Agence</label>
+                <airsfield>DPC_AGENCE</airsfield>
+            </input>          
+        </contentType>    
+        <contentType type="update" name="D_DOS_DPC">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom</label>
+                <airsfield>DPC_NOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom de jeune fille</label>
+                <airsfield>DPC_NOM_JF</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Prénom</label>
+                <airsfield>DPC_PRENOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de naissance</label>
+                <format>dd/MM/yyyy</format>      
+                <airsfield>DPC_DATE_NAISSANCE</airsfield>
+            </input>
+             <input display="true" required="false" readonly="false" type="">
+                <label>Agence</label>
+                <airsfield>DPC_AGENCE</airsfield>
+            </input> 
+            <!--<ns2:export type="SCRIPT" renderer="" id="GenerateFolder" resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+            </ns2:export>-->          
+        </contentType>
+        <contentType type="insert" name="D_DOC_DCC">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>DCC_TYPE_DOSSIER</airsfield>
+                <initial-value>Connaissance client</initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>DCC_TYPE_DOCUMENT</airsfield>
+            </input>            
+            <input display="true" required="false" readonly="false" type="">
+                <label>Zone de commentaire</label>
+                <airsfield>DCC_ZONE_COMMENTAIRE</airsfield>
+            </input>      
+             <input display="true" required="false" readonly="false" type="">
+                <label>Date de numerisation</label>
+                <format>dd/MM/yyyy</format>                
+                <airsfield>DCC_DATE_NUMERISATION</airsfield>
+            </input>       
+        </contentType>          
+        <contentType type="update" name="D_DOC_DCC">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>DCC_TYPE_DOSSIER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>DCC_TYPE_DOCUMENT</airsfield>
+            </input>            
+            <input display="true" required="false" readonly="false" type="">
+                <label>Zone de commentaire</label>
+                <airsfield>DCC_ZONE_COMMENTAIRE</airsfield>
+            </input>      
+             <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <format>dd/MM/yyyy</format>                
+                <airsfield>DCC_DATE_NUMERISATION</airsfield>
+            </input>       
+        </contentType>
+        <contentType type="insert" name="D_DOC_OVC">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>OVC_TYPE_DOSSIER</airsfield>
+                <initial-value>OVC</initial-value>
+            </input>            
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero de compte</label>
+                <airsfield>OVC_NUM_COMPTE</airsfield>
+            </input>         
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom du signataire</label>
+                <airsfield>OVC_NOM_SIGNATAIRE</airsfield>
+            </input>               
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>OVC_TYPE_DOCUMENT</airsfield>
+            </input>                
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de debut</label>
+                <format>dd/MM/yyyy</format>
+                <airsfield>OVC_DATE_DEBUT</airsfield>
+            </input>  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de fin</label>
+                <format>dd/MM/yyyy</format>
+                <airsfield>OVC_DATE_FIN</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de compte</label>
+                <airsfield>OVC_TYPE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Etat</label>
+                <airsfield>OVC_ETAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Devise</label>
+                <airsfield>OVC_DEVISE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant Minimal</label>
+                <airsfield>OVC_MONTANT_MIN</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant Maximal</label>
+                <airsfield>OVC_MONTANT_MAX</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Commentaire</label>
+                <airsfield>OVC_COMMENTAIRE</airsfield>
+            </input>
+        </contentType>        
+        <contentType type="update" name="D_DOC_OVC">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>OVC_TYPE_DOSSIER</airsfield>
+            </input>            
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero de compte</label>
+                <airsfield>OVC_NUM_COMPTE</airsfield>
+            </input>         
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom du signataire</label>
+                <airsfield>OVC_NOM_SIGNATAIRE</airsfield>
+            </input>               
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>OVC_TYPE_DOCUMENT</airsfield>
+            </input>                
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de debut</label>
+                <format>dd/MM/yyyy</format>
+                <airsfield>OVC_DATE_DEBUT</airsfield>
+            </input>  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de fin</label>
+                <format>dd/MM/yyyy</format>
+                <airsfield>OVC_DATE_FIN</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type de compte</label>
+                <airsfield>OVC_TYPE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Etat</label>
+                <airsfield>OVC_ETAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Devise</label>
+                <airsfield>OVC_DEVISE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant Minimal</label>
+                <airsfield>OVC_MONTANT_MIN</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant Maximal</label>
+                <airsfield>OVC_MONTANT_MAX</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Commentaire</label>
+                <airsfield>OVC_COMMENTAIRE</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOC_RISQUE">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>RISQUE_TYPE_DOSSIER</airsfield>
+                <initial-value>Dossier risques</initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type</label>
+                <airsfield>RISQUE_TYPE_SOUS_DOSSIER</airsfield>
+            </input>                        
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>RISQUE_TYPE_DOC</airsfield>
+            </input>    
+             <input display="true" required="false" readonly="false" type="">
+                <label>Date de numerisation</label>
+                <format>dd/MM/yyyy</format>                
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>       
+        </contentType>            
+        <contentType type="update" name="D_DOC_RISQUE">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>RISQUE_TYPE_DOSSIER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type</label>
+                <airsfield>RISQUE_TYPE_SOUS_DOSSIER</airsfield>
+            </input>                        
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>RISQUE_TYPE_DOC</airsfield>
+            </input>    
+             <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <format>dd/MM/yyyy</format>                
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>       
+        </contentType>
+        <contentType type="update" name="D_DOC_PRET">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>PRET_TYPE_DOSSIER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de crédit</label>
+                <airsfield>PRET_NUM_CREDIT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>PRET_TYPE_DOC</airsfield>
+            </input>                  
+             <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <format>dd/MM/yyyy</format>                
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>       
+        </contentType>    
+        <contentType type="update" name="D_DOC_ADD">
+           <input display="true" required="false" readonly="false" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de dossier</label>
+                <airsfield>ADD_TYPE_DOSSIER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro</label>
+                <airsfield>ADD_NUM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>ADD_TYPE_DOC</airsfield>
+            </input>                  
+             <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <format>dd/MM/yyyy</format>                
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>       
+        </contentType>                                           
+    </organization>
+  
+   <!-- OFINA -->
+      <organization id="26" name="OFINA">  
+        <contentType type="update" name="D_DOS_OFINA_CLT_PORTEUR">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom du client</label>
+                <airsfield>OFINA_CLT_NOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Prénom du client</label>
+                <airsfield>OFINA_CLT_PRENOM_CLIENT</airsfield>
+            </input>                  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de naissance</label>
+                <airsfield>OFINA_CLT_DATE_NAISSANCE</airsfield>
+            </input>                  
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type de client</label>
+                <airsfield>OFINA_CLT_TYPE_CLIENT</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de porteur</label>
+                <airsfield>OFINA_CLT_TYPE_PORTEUR</airsfield>
+            </input>                                                 
+        </contentType>
+        <contentType type="insert" name="D_DOS_OFINA_CLT_PORTEUR">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom du client</label>
+                <airsfield>OFINA_CLT_NOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Prénom du client</label>
+                <airsfield>OFINA_CLT_PRENOM_CLIENT</airsfield>
+            </input>                  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de naissance</label>
+                <airsfield>OFINA_CLT_DATE_NAISSANCE</airsfield>
+            </input>                  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de client</label>
+                <airsfield>OFINA_CLT_TYPE_CLIENT</airsfield>
+                <initial-value>Porteur</initial-value>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de porteur</label>
+                <airsfield>OFINA_CLT_TYPE_PORTEUR</airsfield>
+            </input>                                                 
+        </contentType>
+        <contentType type="update" name="D_DOS_OFINA_CLT_ACQUER">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>OFINA_CLT_ENSEIGNE</airsfield>
+            </input>          
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type de client</label>
+                <airsfield>OFINA_CLT_TYPE_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de creation</label>
+                <airsfield>OFINA_CLT_DATE_CREATION</airsfield>
+            </input>                                                       
+        </contentType>   
+        <contentType type="insert" name="D_DOS_OFINA_CLT_ACQUER">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>OFINA_CLT_ENSEIGNE</airsfield>
+            </input>          
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de client</label>
+                <airsfield>OFINA_CLT_TYPE_CLIENT</airsfield>
+                <initial-value>Acquereur</initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de creation</label>
+                <airsfield>OFINA_CLT_DATE_CREATION</airsfield>
+            </input>                                                       
+        </contentType>             
+        <contentType type="update" name="D_DOC_OFINA_CLT_PRODUIT">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>   
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de produit</label>
+                <airsfield>OFINA_CLT_TYPE_PRODUIT_2</airsfield>
+            </input>                                       
+            <input display="true" required="false" readonly="false" type="">
+                <label>Etat du produit</label>
+                <airsfield>OFINA_CLT_ETAT_PRODUIT</airsfield>
+            </input>                                              
+        </contentType>
+        <contentType type="insert" name="D_DOC_OFINA_CLT_PRODUIT">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>   
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de produit</label>
+                <airsfield>OFINA_CLT_TYPE_PRODUIT_2</airsfield>
+            </input>                                       
+            <input display="true" required="false" readonly="false" type="">
+                <label>Etat du produit</label>
+                <airsfield>OFINA_CLT_ETAT_PRODUIT</airsfield>
+            </input>                                              
+        </contentType>           
+        <contentType type="update" name="D_DOC_OFINA_CLT_PORTEUR">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>OFINA_CLT_PORTEUR_TYPE_DOC</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de produit</label>
+                <airsfield>OFINA_CLT_TYPE_PRODUIT</airsfield>                
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Type de produit 2</label>
+                <airsfield>OFINA_CLT_TYPE_PRODUIT_2</airsfield>
+                <ns2:dependInput type="MULTIPLE" fieldKey="OFINA_CLT_TYPE_PRODUIT">
+                  <ns2:scriptId>DependanceOfinaTypeProduit</ns2:scriptId>              
+                </ns2:dependInput>                                            
+            </input>                
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>                         
+        </contentType>
+        <contentType type="insert" name="D_DOC_OFINA_CLT_PORTEUR">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>OFINA_CLT_PORTEUR_TYPE_DOC</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de produit</label>
+                <airsfield>OFINA_CLT_TYPE_PRODUIT</airsfield>                
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Type de produit 2</label>
+                <airsfield>OFINA_CLT_TYPE_PRODUIT_2</airsfield>
+                <ns2:dependInput type="MULTIPLE" fieldKey="OFINA_CLT_TYPE_PRODUIT">
+                  <ns2:scriptId>DependanceOfinaTypeProduit</ns2:scriptId>              
+                </ns2:dependInput>                                            
+            </input>                
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>                         
+        </contentType>             
+        <contentType type="update" name="D_DOC_OFINA_CLT_ACQ">       
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro SE</label>
+                <airsfield>OFINA_CLT_NUM_SE</airsfield>
+            </input>             
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type d'acquisition</label>
+                <airsfield>OFINA_CLT_TYPE_ACQUISITION_2</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Etat de l'acquisition</label>
+                <airsfield>OFINA_CLT_ETAT_ACQUISITION</airsfield>
+            </input>                                       
+        </contentType>  
+        <contentType type="insert" name="D_DOC_OFINA_CLT_ACQ">       
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro SE</label>
+                <airsfield>OFINA_CLT_NUM_SE</airsfield>
+            </input>             
+            <input display="true" required="true" readonly="false" type="">
+                <label>Type d'acquisition</label>
+                <airsfield>OFINA_CLT_TYPE_ACQUISITION_2</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Etat de l'acquisition</label>
+                <airsfield>OFINA_CLT_ETAT_ACQUISITION</airsfield>
+            </input>                                       
+        </contentType>                
+        <contentType type="update" name="D_DOC_OFINA_CLT_ACQUER">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro SE</label>
+                <airsfield>OFINA_CLT_NUM_SE</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type d'acquisition</label>
+                <airsfield>OFINA_CLT_TYPE_ACQUISITION</airsfield>
+            </input>        
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>OFINA_CLT_ACQUER_TYPE_DOC</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>                  
+        </contentType>
+        <contentType type="insert" name="D_DOC_OFINA_CLT_ACQUER">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro SE</label>
+                <airsfield>OFINA_CLT_NUM_SE</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type d'acquisition</label>
+                <airsfield>OFINA_CLT_TYPE_ACQUISITION</airsfield>
+            </input>        
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>OFINA_CLT_ACQUER_TYPE_DOC</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>                  
+        </contentType>
+        <contentType type="update" name="D_DOS_OFINA_ADM">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Nom du fournisseur</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>         
+        </contentType> 
+        <contentType type="insert" name="D_DOS_OFINA_ADM">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom du fournisseur</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>         
+        </contentType>          
+        <contentType type="update" name="D_DOC_OFINA_ADM_FACTURE">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Nom du fournisseur</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de facture</label>
+                <airsfield>OFINA_ADM_NUM_FACTURE</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de la facture</label>
+                <airsfield>OFINA_ADM_DATE_FACTURE</airsfield>
+            </input>      
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>            
+        </contentType>
+        <contentType type="insert" name="D_DOC_OFINA_ADM_FACTURE">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Nom du fournisseur</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de facture</label>
+                <airsfield>OFINA_ADM_NUM_FACTURE</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de la facture</label>
+                <airsfield>OFINA_ADM_DATE_FACTURE</airsfield>
+            </input>      
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>            
+        </contentType>     
+        <contentType type="update" name="D_DOC_OFINA_ADM_CONV">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de convention</label>
+                <airsfield>OFINA_ADM_TYPE_CONVENTION</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Contenant de la convention</label>
+                <airsfield>OFINA_ADM_CONTENANT</airsfield>
+            </input>             
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de la signature</label>
+                <airsfield>OFINA_ADM_DATE_SIGNATURE</airsfield>
+            </input>  
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>                
+        </contentType>
+        <contentType type="insert" name="D_DOC_OFINA_ADM_CONV">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de client</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de convention</label>
+                <airsfield>OFINA_ADM_TYPE_CONVENTION</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Contenant de la convention</label>
+                <airsfield>OFINA_ADM_CONTENANT</airsfield>
+            </input>             
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de la signature</label>
+                <airsfield>OFINA_ADM_DATE_SIGNATURE</airsfield>
+            </input>  
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de numerisation</label>
+                <airsfield>DATE_NUMERISATION</airsfield>
+            </input>                
+        </contentType>        
+    </organization>
+    
+
+      <!-- ARCHIVISTE -->
+      <organization id="27" name="ARCHIVISTE">  
+        <contentType type="update" name="D_DOS_OFINA_CLT_PORTEUR">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>                 
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de carton</label>
+                <airsfield>NUM_CARTON</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de boite</label>
+                <airsfield>NUM_BOITE</airsfield>
+            </input>                                                 
+        </contentType>
+        <contentType type="update" name="D_DOS_OFINA_CLT_ACQUER">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro client</label>
+                <airsfield>OFINA_CLT_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numéro SE</label>
+                <airsfield>OFINA_CLT_NUM_SE</airsfield>
+            </input>        
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de carton</label>
+                <airsfield>NUM_CARTON</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de boite</label>
+                <airsfield>NUM_BOITE</airsfield>
+            </input>                                                      
+        </contentType>                             
+        <contentType type="update" name="D_DOS_OFINA_ADM">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Nom du fournisseur</label>
+                <airsfield>OFINA_ADM_NOM_FOURNISSEUR</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de carton</label>
+                <airsfield>NUM_CARTON</airsfield>
+            </input>    
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro de boite</label>
+                <airsfield>NUM_BOITE</airsfield>
+            </input>             
+        </contentType> 
+        <contentType type="update" name="D_DOS_DPC">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Nom</label>
+                <airsfield>DPC_NOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Nom de jeune fille</label>
+                <airsfield>DPC_NOM_JF</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Prénom</label>
+                <airsfield>DPC_PRENOM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de naissance</label>
+                <format>dd/MM/yyyy</format>      
+                <airsfield>DPC_DATE_NAISSANCE</airsfield>
+            </input>
+             <input display="true" required="false" readonly="true" type="">
+                <label>Agence</label>
+                <airsfield>DPC_AGENCE</airsfield>
+            </input> 
+            <!--<ns2:export type="SCRIPT" renderer="" id="GenerateFolder" resourceKey="generate_folder_pdf_tooltip" image="icon_generate_folder" >
+                <ns2:groovyScriptId>export_PDF_Listing</ns2:groovyScriptId>
+            </ns2:export>-->          
+        </contentType>
+        <contentType type="update" name="D_DOC_OVC">
+           <input display="true" required="false" readonly="true" type="">
+                <label>Numero client</label>
+                <airsfield>DPC_NUM_CLIENT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type de dossier</label>
+                <airsfield>OVC_TYPE_DOSSIER</airsfield>
+            </input>            
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero de compte</label>
+                <airsfield>OVC_NUM_COMPTE</airsfield>
+            </input>         
+            <input display="true" required="false" readonly="true" type="">
+                <label>Nom du signataire</label>
+                <airsfield>OVC_NOM_SIGNATAIRE</airsfield>
+            </input>               
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type de document</label>
+                <airsfield>OVC_TYPE_DOCUMENT</airsfield>
+            </input>                
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de debut</label>
+                <format>dd/MM/yyyy</format>
+                <airsfield>OVC_DATE_DEBUT</airsfield>
+            </input>  
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de fin</label>
+                <format>dd/MM/yyyy</format>
+                <airsfield>OVC_DATE_FIN</airsfield>
+            </input> 
+            <input display="true" required="false" readonly="true" type="">
+                <label>Type de compte</label>
+                <airsfield>OVC_TYPE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Etat</label>
+                <airsfield>OVC_ETAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Devise</label>
+                <airsfield>OVC_DEVISE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant Minimal</label>
+                <airsfield>OVC_MONTANT_MIN</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant Maximal</label>
+                <airsfield>OVC_MONTANT_MAX</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Commentaire</label>
+                <airsfield>OVC_COMMENTAIRE</airsfield>
+            </input>
+        </contentType>          
+    </organization> 
+</formulaire>

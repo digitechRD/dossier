@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@FKG@" version="5.2.2">
+  
+  <organization id="0" name="DEFAULT" />
+  
+  <organization id="4" name="SDEPT_NORME_QUALITE">
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch">
+        <ns2:contentType>DOC_NORME</ns2:contentType>
+        <ns2:airsvalue>NORME_NUMERO="#VALUE#"</ns2:airsvalue>
+      </ns2:dossierrequest>
+    </globalSearch>
+	
+		
+	<contentType name="DOS_CLASSEUR">
+      <input>
+        <operator>=</operator>
+        <label>Classeur</label>
+        <airsfield>
+          <codeField>AL_CLASSEUR</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+    </contentType>
+	
+    <contentType name="DOC_NORME">
+      <input>
+        <operator>=</operator>
+        <label>Classeur</label>
+        <airsfield>
+          <codeField>AL_CLASSEUR</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>false</allowJoker>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Numéro</label>
+        <airsfield>
+          <codeField>NORME_NUMERO</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Version</label>
+        <airsfield>
+          <codeField>NORME_VERSION</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	  
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Plein texte</label>
+        <airsfield>
+          <codeField>DOCS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>false</allowJoker>
+      </input>
+	  
+    </contentType>
+  </organization>
+  
+  <organization id="3" name="SDEPT_SYS_QUALITE">
+  
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch">
+        <ns2:contentType>DOC_PROCESSUS</ns2:contentType>
+        <ns2:airsvalue>AL_DIRECTIVE="#VALUE#"</ns2:airsvalue>
+      </ns2:dossierrequest>
+    </globalSearch>
+	
+    <contentType name="DOC_PROCESSUS">
+	
+	<input>
+        <operator>=</operator>
+        <label>Document id.</label>
+        <airsfield>
+          <codeField>REFAIRS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	  <input>
+        <operator>=</operator>
+        <label>Directive</label>
+        <airsfield>
+          <codeField>AL_DIRECTIVE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+        <type></type>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Identifiant processus</label>
+        <airsfield>
+          <codeField>ID_PROCESSUS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Nom document</label>
+        <airsfield>
+          <codeField>PROC_NAME</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	 
+	  <input>
+        <operator>=</operator>
+        <label>Date d'échéance</label>
+        <airsfield>
+          <codeField>PROC_DATE_ECHEANCE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+  </organization>
+ 
+ <organization id="5" name="SDEPT_SYS_QUALITE_GEST">
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch">
+        <ns2:contentType>DOC_PROCESSUS</ns2:contentType>
+        <ns2:airsvalue>AL_DIRECTIVE="#VALUE#"</ns2:airsvalue>
+      </ns2:dossierrequest>
+    </globalSearch>
+	
+    <contentType name="DOC_PROCESSUS">
+	
+	  <input>
+        <operator>=</operator>
+        <label>Document id.</label>
+        <airsfield>
+          <codeField>REFAIRS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	
+      <input>
+        <operator>=</operator>
+        <label>Directive</label>
+        <airsfield>
+          <codeField>AL_DIRECTIVE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+        <type></type>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Identifiant processus</label>
+        <airsfield>
+          <codeField>ID_PROCESSUS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Nom document</label>
+        <airsfield>
+          <codeField>PROC_NAME</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+	  
+	  <input>
+        <operator>=</operator>
+        <label>Date d échéance</label>
+        <airsfield>
+          <codeField>PROC_DATE_ECHEANCE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false" />
+        <required>false</required>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+  </organization>
+ 
+  
+</searchForm>

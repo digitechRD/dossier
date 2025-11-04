@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hierarchique xmlns="http://www.digitech.com/dossiers/hierarchical" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.6-RC4" customerName="@CUSTOMERNAME@">
+    <organization name="DEFAULT" id="0">
+        <contentType name="RH_AGENT" visible="true">
+            <libelle>{RH_MATRICULE}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="RH_ARRETE" visible="true">
+            <libelle>{RH_DATEFF_EVE} - {RH_LIB_EVE} - {RH_LIB_ARRETE}</libelle>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_LIB_ARRETE</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+        </contentType>
+        <!--FLUX COURRIER-->
+        <contentType icon="" name="COU_COURRIER_IN" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{C_OBJET}</libelle>
+            <field_hier>RH_DOC_CAT</field_hier>
+            <field_hier>RH_TYPE_DOC</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_DOC_CAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_TYPE_DOC</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+           <!-- <filterField>
+                <operator>=</operator>
+                <label>Catégorie</label>
+                <airsField>RH_DOC_CAT</airsField>
+            </filterField> -->
+        </contentType>
+        <contentType icon="" name="COU_COURRIER_OUT" visible="false">
+            <libelle dateFormat="dd/MM/yyyy">{N_CHRONO} - {C_OBJET}</libelle>
+            <field_hier>D_ENVOI</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_ENVOI</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filter></filter>
+        </contentType>
+        
+        <!--FLUX CIRIL GF-->
+        <contentType name="GF_TIERS" visible="true">
+            <libelle>{GEDGF_NOMTIE} / {GEDGF_NUMTIE}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="GF_PIECE" visible="true">
+            <libelle>{GEDGF_NUMFAC} / {GEDGF_NUMTIE}</libelle>
+            <field_hier>GEDGF_DOMAINE</field_hier>
+            <sorting/>
+        </contentType>
+        
+        <!--FLUX ORDRE DE BOURSE-->
+         <contentType name="DOSSIER_OB" visible="true">
+            <libelle>Compte client {OB_CPTECLIENT}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="DOCUMENT_OB" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">ordre de bourse {OB_NUMOB}</libelle>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+        </contentType>
+        <contentType name="PJ_OB" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{OB_TYPEDOC} {D_CREAT}</libelle>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+        </contentType>
+        
+        <!--FLUX RH-->
+        <contentType name="DOCUMENT_RH" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{RH_LIBELLE} {RH_DATE_DOC}</libelle>
+            <field_hier>RH_DOC_CAT</field_hier>
+            <field_hier>RH_TYPE_DOC</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_DOC_CAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_TYPE_DOC</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filterField>
+                <operator>=</operator>
+                <label>Catégorie</label>
+                <airsField>RH_DOC_CAT</airsField>
+            </filterField>
+        </contentType>
+         <contentType name="DOSSIER_RH" visible="true">
+            <libelle>{RH_NOM} {RH_PRENOM}</libelle>
+            <sorting/>
+        </contentType>
+        
+        <!--FLUX COMMERCIAL-->
+         <contentType name="DOCUMENT_COM" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{COM_LIBELLE} {COM_DATEDOC}</libelle>
+            <field_hier>COM_PRODUIT</field_hier>
+            <field_hier>COM_TYPEDOC</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>COM_PRODUIT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>COM_TYPEDOC</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filterField>
+                <operator>=</operator>
+                <label>Type de document</label>
+                <airsField>COM_TYPEDOC</airsField>
+            </filterField>
+        </contentType>
+        <contentType name="DOSSIER_COM" visible="true">
+            <libelle>{COM_NOM} - {COM_NUMCLIENT}</libelle>
+            <sorting/>
+        </contentType>
+        
+        <!--FLUX FACTURE-->
+        <contentType name="DOSSIER_FACT" visible="true">
+            <libelle>{FACT_FOURNISSEUR} - {FACT_NUMINTRACOM}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="DOCUMENT_FACT" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{FACT_DATE} - {FACT_NUM}</libelle>
+            <field_hier>FACT_TYPE_DOC</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FACT_TYPE_DOC</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filterField>
+                <operator>=</operator>
+                <label>Type de pièce</label>
+                <airsField>FACT_TYPE_DOC</airsField>
+            </filterField>
+        </contentType>
+        
+        <!--FLUX FOURNISSEUR-->
+        <contentType name="DOSSIER_FOU" visible="true">
+            <libelle>{FACT_FOURNISSEUR}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="DOCUMENT_FOU" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{FACT_TYPE_DOC} {FACT_DATE}</libelle>
+            <field_hier>FACT_COMMANDE</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FACT_DATE</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filterField>
+                <operator>=</operator>
+                <label>Type de pièce</label>
+                <airsField>FACT_TYPE_DOC</airsField>
+            </filterField>
+        </contentType>
+        
+        <!--FLUX CIRIL RH-->
+         <contentType name="RH_AGENT" visible="true">
+            <libelle>{RH_NOM} {RH_PRENOM} ({RH_MATRICULE})</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="RH_ARRETE" visible="true">
+            <libelle>Arrêté {RH_LIB_ARRETE} au {RH_DATEFF_EVE}</libelle>
+            <field_hier>RH_CATEGORIE</field_hier>
+            <field_hier>RH_TYPEDOC</field_hier>
+            <sorting/>
+        </contentType>
+        <contentType name="RH_BULLETIN_PAIE" visible="true">
+            <libelle>Bulletin du {RH_MOIS_PAIE}</libelle>
+            <field_hier>RH_CATEGORIE</field_hier>
+            <field_hier>RH_TYPEDOC</field_hier>
+            <sorting/>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE" visible="true">
+            <libelle>{D_MODIF} - {RH_INFO}</libelle>
+            <field_hier>RH_CATEGORIE</field_hier>
+            <field_hier>RH_TYPE_DOC_EXT</field_hier>
+            <sorting/>
+        </contentType>
+        <contentType name="RH_FICHIER_EVAL_ANNU" visible="true">
+            <libelle>Evaluation annuelle {RH_ANNEE_EXERCICE}</libelle>
+            <field_hier>RH_CATEGORIE</field_hier>
+            <field_hier>RH_TYPEDOC</field_hier>
+            <sorting/>
+        </contentType>
+    </organization>
+    
+    <!-- EN SUSPEND
+    <organization name="RH_GEST" id="3">
+        <contentType name="DOSSIER_RH" visible="true">
+            <libelle>{RH_MATRICULE} - {RH_NOM} {RH_PRENOM}</libelle>
+            <sorting/>
+        </contentType>
+    </organization>
+    
+    <organization name="FOU_CONS" id="19">    
+        <contentType name="DOCUMENT_FOU" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{FACT_NUM}</libelle>
+            <field_hier>FACT_TYPE_DOC</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FACT_TYPE_DOC</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filterField>
+                <operator>=</operator>
+                <label>Type de pièce</label>
+                <airsField>FACT_TYPE_DOC</airsField>
+            </filterField>
+        </contentType>
+    </organization>
+    -->
+    
+    <organization name="WKF" id="21">
+        <contentType name="WKF_PES_FAST_DOSSIER" visible="true">
+            <libelle>{WKF_NOMFIC}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="WKF_PES_FAST_DOCUMENT" visible="true">
+            <libelle>{WKF_NOMFIC}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="GF_PES_SRCI_BUDGET" visible="true">
+            <libelle>{WKF_BUDGET} - {WKF_EXERCICE}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="GF_PES_SRCI" visible="true">
+            <libelle>{WKF_BUDGET} - {WKF_EXERCICE}</libelle>
+            <sorting/>
+        </contentType>
+    </organization>
+   
+</hierarchique>

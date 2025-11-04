@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="SMC" version="5.1-SNAPSHOT">
+    <organization id="0" name="DEFAULT">
+        <contentType name="DOSSIER">
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Nom de l'entreprise :">
+                <airsField>NOM_ENTREPRISE</airsField>
+            </column>
+            <column label="Compte :">
+                <airsField>CPTE_ENTREPRISE</airsField>
+            </column>
+            <column label="N° de guichet">
+                <airsField>NUM_GUICHET</airsField>
+            </column>
+            <column label="Code APE :">
+                <airsField>CODE_APE</airsField>
+            </column>
+            <column label="Code NAF :">
+                <airsField>STATUT</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>SIREN</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOCUMENT">
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Exercice :">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_CLOTURE</airsField>
+            </column>
+            <column label="Code de l'agence">
+                <airsField>CODE_AGENCE</airsField>
+            </column>
+            <column label="Type de document">
+                <airsField>TYPE_DOC</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>SIREN</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOSCLI">
+            <column label="Nom ou raison sociale :">
+                <airsField>NOM</airsField>
+            </column>
+            <column label="Prénom">
+                <airsField>PRENOM</airsField>
+            </column>
+            <column label="Nom de jeune fille :">
+                <airsField>NOMJF</airsField>
+            </column>
+            <column label="N° Compte Réf. :">
+                <airsField>NUMCPTREF</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>NOM</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOCJUR">
+            <column label="Type de document :">
+                <airsField>TYPEDOCJUR</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="5" name="SMC Gestionnaire">
+        <contentType name="DOSCLI">
+            <column label="Nom ou raison sociale :">
+                <airsField>NOM</airsField>
+            </column>
+            <column label="Prénom">
+                <airsField>PRENOM</airsField>
+            </column>
+            <column label="Nom de jeune fille :">
+                <airsField>NOMJF</airsField>
+            </column>
+            <column label="N° Compte Réf. :">
+                <airsField>NUMCPTREF</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="Etat du dossier :">
+                <airsField>ETAT_DOSCLI</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>REFMARCO</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOCJUR">
+            <column label="Type de document :">
+                <airsField>TYPEDOCJUR</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Nom controle :">
+                <airsField>NOMCTRL</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="Etat du document :">
+                <airsField>ETAT_DOCJUR</airsField>
+            </column>
+            <column label="Indexeur :">
+                <airsField>INDEXEUR</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="8" name="SMC Gestionnaire MSS">
+        <contentType name="DOSCLI">
+            <column label="Nom ou raison sociale :">
+                <airsField>NOM</airsField>
+            </column>
+            <column label="Prénom">
+                <airsField>PRENOM</airsField>
+            </column>
+            <column label="Nom de jeune fille :">
+                <airsField>NOMJF</airsField>
+            </column>
+            <column label="N° Compte Réf. :">
+                <airsField>NUMCPTREF</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>REFMARCO</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOCJUR">
+            <column label="Type de document :">
+                <airsField>TYPEDOCJUR</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="Etat du document MSS :">
+                <airsField>ETAT_DOCJURMSS</airsField>
+            </column>
+            <column label="Flux import :">
+                <airsField>FLUX_IMPORT</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="7" name="SMC Admin">
+        <contentType name="DOSSIER">
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Nom de l'entreprise :">
+                <airsField>NOM_ENTREPRISE</airsField>
+            </column>
+            <column label="Compte :">
+                <airsField>CPTE_ENTREPRISE</airsField>
+            </column>
+            <column label="N° de guichet :">
+                <airsField>NUM_GUICHET</airsField>
+            </column>
+            <column label="Code APE :">
+                <airsField>CODE_APE</airsField>
+            </column>
+            <column label="Code NAF :">
+                <airsField>STATUT</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Date modif. :">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>SIREN</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOCUMENT">
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Exercice :">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_CLOTURE</airsField>
+            </column>
+            <column label="Code de l'agence">
+                <airsField>CODE_AGENCE</airsField>
+            </column>
+            <column label="Type de document">
+                <airsField>TYPE_DOC</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Date modif. :">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_CLOTURE</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOSCLI">
+            <column label="Nom ou raison sociale :">
+                <airsField>NOM</airsField>
+            </column>
+            <column label="Prénom">
+                <airsField>PRENOM</airsField>
+            </column>
+            <column label="Nom de jeune fille :">
+                <airsField>NOMJF</airsField>
+            </column>
+            <column label="N° Compte Réf. :">
+                <airsField>NUMCPTREF</airsField>
+            </column>
+            <column label="SIREN :">
+                <airsField>SIREN</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="Etat du dossier :">
+                <airsField>ETAT_DOSCLI</airsField>
+            </column>
+            <column label="Date de naissance :">
+                <airsField>DATNAI</airsField>
+            </column>
+            <column label="Clé B.D.F. :">
+                <airsField>CLEBDF</airsField>
+            </column>
+            <column label="Date d'entrée en relation :">
+                <airsField>DATENT</airsField>
+            </column>
+            <column label="Date modif. :">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>REFMARCO</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOSJUR">
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Type de sous dossier :">
+                <airsField>GENRE</airsField>
+            </column>
+            <column label="Etat du sous dossier :">
+                <airsField>ETAT_DOSJUR</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Date modif. :">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="DOCJUR">
+            <column label="Type de document :">
+                <airsField>TYPEDOCJUR</airsField>
+            </column>
+            <column label="Date créat. :">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column label="Réf Marco :">
+                <airsField>REFMARCO</airsField>
+            </column>
+            <column label="Type de sous dossier :">
+                <airsField>GENRE</airsField>
+            </column>
+            <column label="Nom controle :">
+                <airsField>NOMCTRL</airsField>
+            </column>
+            <column label="Indexeur :">
+                <airsField>INDEXEUR</airsField>
+            </column>
+            <column label="Etat du document :">
+                <airsField>ETAT_DOCJUR</airsField>
+            </column>
+            <column label="Id :">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <column label="Présent à l'entrée en relation :">
+                <airsField>PRESENTREREL</airsField>
+            </column>
+            <column label="Nr du dossier démat. :">
+                <airsField>NRDOSSDEMAT</airsField>
+            </column>
+            <column label="Agent de démat. :">
+                <airsField>AGENTDEMAT</airsField>
+            </column>
+            <column label="Guichet de démat :">
+                <airsField>GUICHETDEMAT</airsField>
+            </column>
+            <column label="Date de Démat :">
+                <airsField>DATEHEUREDEMAT</airsField>
+            </column>
+            <column label="Date modif. :">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+</listview>

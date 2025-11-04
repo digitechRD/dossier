@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets" customerName="Digitech" version="5.1-SNAPSHOT">
+    <ns2:organization id="0" name="DEFAULT" titre="Accueil Tout Service">
+        <!--<dossierrequest name="Liste des documents {à répartir}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;202&quot;</airsvalue>
+            <airsProfile>7</airsProfile>
+        </dossierrequest>-->
+        <dossierrequest name="Liste de tous les documents {à traiter}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;203&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste de mes documents {à traiter}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;203&quot; ET TRAIT_AGENT.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste des documents {En Instance}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>INS_EN_INSTANCE.ROOTITEM=&quot;302&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste des documents {En Instance RAPPEL}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>INS_EN_INSTANCE.ROOTITEM=&quot;302&quot; ET (INS_BESOIN_RAPPEL.ROOTITEM=&quot;307&quot; OU INS_BESOIN_RAPPEL.ROOTITEM=&quot;402&quot; OU INS_BESOIN_RAPPEL.ROOTITEM=&quot;403&quot;) ET INS_DATE_RAPPEL&lt;&quot;#TODAY#&quot;</airsvalue>
+        </dossierrequest>
+    </ns2:organization>
+    <ns2:organization id="2" name="" titre="Accueil Direction">
+        <dossierrequest name="Liste des documents {à répartir}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;202&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste de tous les documents {à traiter}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;203&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste de mes documents {à traiter}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;203&quot; ET TRAIT_AGENT.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste des documents {En Instance}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>INS_EN_INSTANCE.ROOTITEM=&quot;302&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="Liste des documents {En Instance RAPPEL}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>INS_EN_INSTANCE.ROOTITEM=&quot;302&quot; ET (INS_BESOIN_RAPPEL.ROOTITEM=&quot;307&quot; OU INS_BESOIN_RAPPEL.ROOTITEM=&quot;402&quot; OU INS_BESOIN_RAPPEL.ROOTITEM=&quot;403&quot;) ET INS_DATE_RAPPEL&lt;&quot;#TODAY#&quot;</airsvalue>
+        </dossierrequest>
+    </ns2:organization>
+    <ns2:organization id="7" name="" titre="Accueil du dispatcher">
+        <dossierrequest name="Liste des documents {à répartir}">
+            <contentType>DOCUMENT</contentType>
+            <airsvalue>ETAT_TRAIT.ROOTITEM=&quot;202&quot;</airsvalue>
+        </dossierrequest>
+    </ns2:organization>
+</ns2:corbeille>

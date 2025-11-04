@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" customerName="Digitech" version="5.1-SNAPSHOT">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">PC-AKO</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+    </airsConfig>
+    <workFlow/>
+    <mailConfig>
+        <smtp></smtp>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>365</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>1</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>0</isoxDisabled>
+        <isoxFileAssociation>.tif</isoxFileAssociation>
+        <isoxFileAssociation>.tiff</isoxFileAssociation>
+        <isoxFileAssociation>.jpg</isoxFileAssociation>
+        <isoxFileAssociation>.jpeg</isoxFileAssociation>
+        <isoxFileAssociation>.jp2</isoxFileAssociation>
+        <documentViewerEnabled>false</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <updateSecretLevel></updateSecretLevel>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>false</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>100</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+    </appConfig>
+    <birt webAppUrl="http://pc-ako:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">srv-prod-06</server>
+            <instance>PFA</instance>
+            <login>rdg_do_airsuser</login>
+            <password>rdg_do_airsuser</password>
+        </dbConnection>
+    </birt>
+</params>

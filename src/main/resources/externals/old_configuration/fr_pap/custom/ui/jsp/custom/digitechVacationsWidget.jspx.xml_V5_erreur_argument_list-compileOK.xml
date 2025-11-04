@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:panelGroup layout="block" styleClass="row container-fluid px-0 d-flex justify-content-center h-100">
+    <h:panelGroup layout="block" styleClass="card w-100 h-100 border-0">
+
+      <c:if test="#{empty item.groovyResults['occupations']}">
+        <h:outputText value="#{MessageBundleModel.home_chart_no_data}"
+                      styleClass="description row alert alert-info alert-message justify-content-center mt-2 text-center"/>
+      </c:if>
+
+      <c:if test="#{not empty item.groovyResults['occupations']}">
+
+        <script type="text/javascript" src="#{ScriptBundleModel.charts}"/>
+
+        <h:selectOneMenu id="rangePeriods#{item.cleanedId}"
+                         value="#{item.userParamsWrapper['rangeDate']}"
+                         styleClass="form-control form-control-sm small xs-small ml-auto py-0 mr-1 mt-0 max-w-200px"
+                         title="Période">
+          <f:selectItems value="#{item.groovyResults['rangeOptions']}"/>
+          <a4j:support event="onchange" ajaxSingle="true" ignoreDupResponses="true" oncomplete="refreshAsynchronousBlocks()"
+                       reRender="notifications, result#{item.cleanedId}Panel" action="#{item.refreshAndSave}"/>
+        </h:selectOneMenu>
+
+        <!-- Zone du graphique -->
+        <h:panelGroup layout="block" styleClass="chartPanelHtml">
+          <div id="#{item.cleanedId}OccupationChart" style="width: 100%;height:100%"></div>
+        </h:panelGroup>
+
+        <script type="text/javascript">
+//<![CDATA[
+// Fonction pour debugger les données Groovy
+function debugGroovyData#{item.cleanedId}() {
+  console.log('=== DONNÉES GROOVY - TIMELINE NAVIRES ===');
+  console.log('ID du widget:', '#{item.cleanedId}');
+  
+  // Récupération des données depuis le serveur
+  var xCategoriesData = #{item.groovyResults['XCategories']};
+  var yCategoriesData = #{item.groovyResults['YCategories']};
+  var occupationsData = #{item.groovyResults['occupations']};
+  var lengthsData = #{item.groovyResults['OccupationLengths']};
+  var offsetsData = #{item.groovyResults['OccupationOffsets']};
+  
+  console.log('Type de xCategoriesData:', typeof xCategoriesData, Array.isArray(xCategoriesData) ? '(Array)' : '(Not Array)');
+  console.log('Type de yCategoriesData:', typeof yCategoriesData, Array.isArray(yCategoriesData) ? '(Array)' : '(Not Array)');
+  console.log('Type de occupationsData:', typeof occupationsData, Array.isArray(occupationsData) ? '(Array)' : '(Not Array)');
+  console.log('Type de lengthsData:', typeof lengthsData, Array.isArray(lengthsData) ? '(Array)' : '(Not Array)');
+  console.log('Type de offsetsData:', typeof offsetsData, Array.isArray(offsetsData) ? '(Array)' : '(Not Array)');
+  
+  console.log('--- xCategoriesData (Dates) ---');
+  console.log('Valeur complète:', xCategoriesData);
+  if (Array.isArray(xCategoriesData)) {
+    console.log('Nombre de jours:', xCategoriesData.length);
+    if (xCategoriesData.length > 0) {
+      console.log('Première date:', xCategoriesData[0]);
+      console.log('Dernière date:', xCategoriesData[xCategoriesData.length - 1]);
+    }
+  }
+  
+  console.log('--- yCategoriesData (Navires) ---');
+  console.log('Valeur complète:', yCategoriesData);
+  if (Array.isArray(yCategoriesData)) {
+    console.log('Nombre de navires:', yCategoriesData.length);
+    yCategoriesData.forEach(function(navire, index) {
+      console.log('Navire[' + index + ']:', navire);
+    });
+  }
+  
+  console.log('--- lengthsData (Longueurs) ---');
+  console.log('Valeur complète:', lengthsData);
+  if (Array.isArray(lengthsData)) {
+    console.log('Nombre de longueurs:', lengthsData.length);
+    lengthsData.forEach(function(length, index) {
+      console.log('Longueur[' + index + ']:', length, 'jours');
+    });
+  }
+  
+  console.log('--- offsetsData (Décalages) ---');
+  console.log('Valeur complète:', offsetsData);
+  if (Array.isArray(offsetsData)) {
+    console.log('Nombre de décalages:', offsetsData.length);
+    offsetsData.forEach(function(offset, index) {
+      console.log('Décalage[' + index + ']:', offset, 'jours');
+    });
+  }
+  
+  console.log('=== FIN DONNÉES GROOVY ===');
+  
+  return {
+    xCategories: xCategoriesData,
+    yCategories: yCategoriesData,
+    occupations: occupationsData,
+    lengths: lengthsData,
+    offsets: offsetsData
+  };
+}
+
+function #{item.cleanedId}initOccupationChart(dataXAxis, dataYAxis, occupations, lengths, offsets) {
+  console.log('=== INITIALISATION TIMELINE NAVIRES ===');
+  console.log('Paramètres reçus:', {dataXAxis: dataXAxis, dataYAxis: dataYAxis, occupations: occupations, lengths: lengths, offsets: offsets});
+  
+  var itemContainer = document.getElementById('#{item.cleanedId}OccupationChart');
+  if (itemContainer === undefined || itemContainer === null) {
+    console.error('Container not found (id=#{item.cleanedId}OccupationChart) !');
+    return;
+  }
+  
+  console.log('Dimensions container:', {
+    width: itemContainer.offsetWidth, 
+    height: itemContainer.offsetHeight
+  });
+  
+  if (itemContainer.offsetWidth <= 0 || itemContainer.offsetHeight <= 0) {
+    console.warn('Container pas encore prêt, dimensions invalides');
+    return;
+  }
+
+  try {
+    var occupationChart = echarts.init(itemContainer);
+    console.log('Graphique ECharts initialisé');
+  } catch (e) {
+    console.error('Erreur ECharts:', e);
+    return;
+  }
+
+  // Préparation des données pour le graphique
+  var seriesData = [
+    {
+      name: 'Offset',
+      type: 'bar',
+      stack: 'Total',
+      silent: true,
+      itemStyle: {
+        borderColor: 'transparent',
+        color: 'transparent'
+      },
+      emphasis: {
+        itemStyle: {
+          borderColor: 'transparent',
+          color: 'transparent'
+        }
+      },
+      data: offsets
+    },
+    {
+      name: 'Occupation',
+      type: 'bar',
+      stack: 'Total',
+      itemStyle: {
+        borderColor: 'transparent',
+        color: '#5470c6'
+      },
+      label: {
+        show: true,
+        fontSize: 10,
+        fontStyle: 'italic',
+        formatter: function (params) {
+          if (params.value > 0 && dataYAxis && dataYAxis[params.dataIndex]) {
+            return dataYAxis[params.dataIndex][0];
+          }
+          return '';
+        }
+      },
+      data: lengths
+    }
+  ];
+
+  console.log('Séries préparées:', seriesData);
+
+  var options = {
+    animationDuration: 250,
+    animation: true,
+    title: {
+      text: 'Planning des occupations des navires',
+      show: true,
+      left: 'center',
+      textStyle: {
+        fontSize: 16,
+        fontWeight: 'bold'
+      }
+    },
+    dataZoom: [
+      {
+        type: 'slider',
+        xAxisIndex: 0,
+        filterMode: 'filter',
+        height: 16,
+        bottom: 4,
+        start: 0,
+        end: 100,
+        handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+        handleSize: '80%',
+        showDetail: false
+      },
+      {
+        type: 'inside',
+        id: 'insideX',
+        xAxisIndex: 0,
+        filterMode: 'filter',
+        start: 0,
+        end: 100,
+        zoomOnMouseWheel: false,
+        moveOnMouseMove: true
+      },
+      {
+        type: 'slider',
+        filterMode: 'empty',
+        yAxisIndex: 0,
+        width: 12,
+        right: 10,
+        height: '87%',
+        start: 0,
+        end: 100,
+        handleIcon: 'M10.7,11.9H9.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4h1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+        handleSize: '80%',
+        showDetail: false
+      },
+      {
+        type: 'inside',
+        id: 'insideY',
+        yAxisIndex: 0,
+        start: 0,
+        end: 100,
+        zoomOnMouseWheel: false,
+        moveOnMouseMove: true,
+        moveOnMouseWheel: true
+      }
+    ],
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      },
+      formatter: function (params) {
+        var occupationParam = params[1];
+        if (occupationParam && occupationParam.value > 0) {
+          var navireName = dataYAxis[occupationParam.dataIndex][0];
+          var startDate = dataXAxis[Math.floor(offsets[occupationParam.dataIndex])];
+          var endDateIndex = Math.floor(offsets[occupationParam.dataIndex] + lengths[occupationParam.dataIndex] - 1);
+          var endDate = dataXAxis[endDateIndex >= dataXAxis.length ? dataXAxis.length - 1 : endDateIndex];
+          return navireName + '<br/>' +
+                 'Du: ' + startDate + '<br/>' +
+                 'Au: ' + endDate + '<br/>' +
+                 'Durée: ' + lengths[occupationParam.dataIndex] + ' jours';
+        }
+        return '';
+      }
+    },
+    grid: {
+      top: 60,
+      left: 5,
+      right: 25,
+      bottom: 20,
+      containLabel: true,
+      borderWidth: 0
+    },
+    xAxis: {
+      type: 'category',
+      data: dataXAxis,
+      axisLabel: {
+        rotate: 45,
+        interval: function(index, value) {
+          return index % 5 === 0;
+        },
+        formatter: function(value) {
+          return value.substring(0, 10);
+        }
+      },
+      axisTick: {
+        show: true,
+        alignWithLabel: false
+      }
+    },
+    yAxis: {
+      type: 'category',
+      axisTick: { show: false },
+      splitLine: { show: false },
+      axisLine: { show: false },
+      axisLabel: { 
+        show: true,
+        fontSize: 10
+      },
+      data: dataYAxis.map(function(y) { return y[0]; })
+    },
+    series: seriesData
+  };
+
+  console.log('Options ECharts configurées');
+
+  try {
+    occupationChart.setOption(options);
+    console.log('Options appliquées avec succès');
+  } catch (e) {
+    console.error('Erreur setOption:', e);
+  }
+
+  return occupationChart;
+}
+
+// Utilisation de jQuery
+jQuery(document).ready(function () {
+  console.log('Document ready pour timeline navires #{item.cleanedId}');
+  
+  // Debug des données Groovy
+  var groovyData = debugGroovyData#{item.cleanedId}();
+  
+  try {
+    console.log('Début initialisation timeline...');
+    var occupationChart = #{item.cleanedId}initOccupationChart(
+      groovyData.xCategories,
+      groovyData.yCategories,
+      groovyData.occupations,
+      groovyData.lengths,
+      groovyData.offsets
+    );
+    
+    if (occupationChart !== undefined) {
+      window.addEventListener('resize', function () {
+        console.log('Redimensionnement de la fenêtre');
+        occupationChart.resize();
+      });
+      
+      // Fonction pour observer les resize du conteneur
+      if (typeof initResizeObserver4Chart === 'function') {
+        initResizeObserver4Chart('contentForm:custom_#{item.cleanedId}Panel', occupationChart);
+      }
+      
+      console.log('Timeline des navires initialisée avec succès');
+    } else {
+      console.error('Échec de la création du graphique');
+    }
+  } catch (error) {
+    console.error('Erreur critique lors de l\\'initialisation:', error);
+    console.error('Stack trace:', error.stack);
+  }
+});
+//]]>
+        </script>
+      </c:if>
+    </h:panelGroup>
+  </h:panelGroup>
+
+</ui:composition>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<formulaire  xmlns="http://www.digitech.com/dossiers/update">
+	<organization name="DEFAULT" id="0">
+		<contentType name="DOC_AGENT" type="update">
+			<link  xmlns="http://www.digitech.com/dossiers/common" contentTypeCode="DOS_AGENT" name="pere-fils" direction="parent">Dossier {REFAIRS}</link>
+			<input type="" readonly="1">
+				<label>Identifiant</label>
+				<airsfield>REFAIRS</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Etape</label>
+				<airsfield>WFTASK</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="secretLevel" >
+				<label>Niveau de secret</label>
+				<airsfield></airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="textarea">
+				<label>Code Agent</label>
+				<airsfield>NUM_MAT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Date du document</label>
+				<airsfield>DATE_DOC</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Type de document</label>
+				<airsfield>TYPE_DOC_AGENT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Libellé</label>
+				<airsfield>LIBELLE_AGENT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Responsable</label>
+				<airsfield>USER_REF</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<!-- input type="" readonly="1">
+				<label>Statut</label>
+				<airsfield>STATUT</airsfield>
+				<initial-value></initial-value>
+			</input-->
+			<input type="" readonly="1">
+				<label>Date de création</label>
+				<airsfield>D_CREAT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="workflowairs">
+				<label>Statut</label>
+				<airsfield>STATUT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="processWorkflow">
+				<label></label>
+				<airsfield></airsfield>
+				<initial-value></initial-value>
+			</input>
+			
+			<action id="duplicate" xmlns="http://www.digitech.com/dossiers/common"
+				link="#{pc_AffichageDocument.duplicateDocument}" airsRight="" 
+				resourceKey="document_addbutton_duplicateDocument" target="viewUnit" styleClass="">
+					<param name="typelink" value="ENTRANT-SORTANT"/>
+					<param name="withFiles" value="1"/>
+			</action>
+			<!-- image="./ui/default/img/iconCustomAction48x48.png"  -->
+			
+		</contentType>
+		
+		<contentType name="DOS_AGENT" type="update">
+			<link xmlns="http://www.digitech.com/dossiers/common" contentTypeCode="DOC_AGENT" name="pere-fils" direction="child">Document {REFAIRS} [Responsable : {USER_REF}]</link>
+		  <input type="">
+				<label>Code Agent</label>
+				<airsfield>NUM_MAT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Date de création</label>
+				<airsfield>D_CREAT</airsfield>
+				<initial-value></initial-value>
+			</input>			
+    	</contentType>
+    	
+    	<contentType name="DOS_AGENT" type="insert">
+			<input type="">
+				<label>Code Agent</label>
+				<airsfield>NUM_MAT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Date de création</label>
+				<airsfield>D_CREAT</airsfield>
+				<initial-value>#TODAY#</initial-value>
+			</input>			
+    	</contentType>
+    
+    		<contentType name="DOC_COLL" type="update">
+			<input type="" readonly="1">
+				<label>Identifiant</label>
+				<airsfield>REFAIRS</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Etape</label>
+				<airsfield>WFTASK</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Code Etablissement</label>
+				<airsfield>CODE_ETAB</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Date du document</label>
+				<airsfield>DATE_DOC</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Type de document</label>
+				<airsfield>TYPE_DOC_COLL</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Libellé</label>
+				<airsfield>LIBELLE_COLL</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="">
+				<label>Responsable</label>
+				<airsfield>USER_REF</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Statut</label>
+				<airsfield>STATUT</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Date de création</label>
+				<airsfield>D_CREAT</airsfield>
+				<initial-value></initial-value>
+			</input>
+		</contentType>
+		
+		<contentType name="DOS_COLL" type="update">
+		  <input type="">
+				<label>Code Etablissement</label>
+				<airsfield>CODE_ETAB</airsfield>
+				<initial-value></initial-value>
+			</input>
+			<input type="" readonly="1">
+				<label>Date de création</label>
+				<airsfield>D_CREAT</airsfield>
+				<initial-value></initial-value>
+			</input>			
+    </contentType>
+    
+	</organization>
+</formulaire>

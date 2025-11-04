@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sea:searchForm version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:sea="http://www.digitech.com/dossiers/search">
+    <sea:organization name="DEFAULT">
+        <sea:flow flowCode="REF_DOCUMENT"/>
+        <sea:flow flowCode="COURRIER"/>
+        <sea:flow flowCode="MONTEE_SUR_CALE">
+            <sea:globalSearch multiCriteriaAllowed="false" automaticallyRemoveJoker="false" emptyQueryWithJokerAllowed="true" criteriaPattern="" unexpectedPatternMsgKey="" scriptId="" helperMessage="" naturalSearch="false">
+                <com:dossierrequest name="GLOBAL_SEARCH_MSC">
+                    <com:contentType>ARMATEUR,MONTEE_SUR_CALE,DOC_MONTEE,NAVIRE</com:contentType>
+                    <com:airsvalue>MSC_IMMAT_NAVIRE="+#VALUE#+" OU MSC_NOM_ARMATEUR="+#VALUE#+" OU MSC_NOM_CLIENT="+#VALUE#+" OU MSC_NOM_NAVIRE="+#VALUE#+" OU MSC_NUM_MONTEE="#VALUE#"</com:airsvalue>
+                    <com:format></com:format>
+                </com:dossierrequest>
+                <sea:initial-value></sea:initial-value>
+            </sea:globalSearch>
+            <sea:contentType name="ARMATEUR" profileCode="PF_MONTEE_SUR_CALE" selected="false">
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:label>Nom armateur</sea:label>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_ARMATEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:label>Adresse</sea:label>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_ADRESSE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:label>Mail</sea:label>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_MAIL</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:label>Agent maritime</sea:label>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_AGENT_MARITIME</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:label>Localisation</sea:label>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_LOCALISATION_ARMATEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>list</sea:type>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:label>Pays</sea:label>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_PAYS</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_DEMANDEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:deletionDate>true</sea:deletionDate>
+                <sea:deletionUser>true</sea:deletionUser>
+            </sea:contentType>
+            <sea:contentType name="NAVIRE" profileCode="PF_MONTEE_SUR_CALE" selected="false">
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_ARMATEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>suggestion</sea:type>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_NAVIRE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_IMMAT_NAVIRE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_DEMANDEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>suggestion</sea:type>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:deletionDate>true</sea:deletionDate>
+                <sea:deletionUser>true</sea:deletionUser>
+            </sea:contentType>
+            <sea:contentType name="MONTEE_SUR_CALE" profileCode="PF_MONTEE_SUR_CALE" selected="false">
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_NAVIRE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NUM_MONTEE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_AGENT_MARITIME</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:operator>&gt;</sea:operator>
+                    <sea:operator>&lt;</sea:operator>
+                    <sea:operator>{}</sea:operator>
+                    <sea:defaultOperator>=</sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_DATE_DEBUT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_DATE_FIN</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_DATE_SOUHAITEE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_ETAT_MONTEE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>list</sea:type>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_ETAPE_EN_COURS</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>list</sea:type>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_TRAVAUX</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>list</sea:type>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:defaultOperator></sea:defaultOperator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_CLIENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_PRENOM_CLIENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_REPRESENTE_PAR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NUM_TAHITI</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_BP</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_CODE_POSTAL</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_COMMUNE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_MAIL_CLIENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_TEL_CLIENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_ASSUREUR_CLIENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_MAIL_ASSUREUR_CLIENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_ATTINEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_ATTINEUR_LIST</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_MAIL_ATTINEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_IMMAT_NAVIRE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>suggestion</sea:type>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_DUREE_SEJOUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_TRAVAUX_SOUHAITES</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_ARMATEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_DEMANDEUR</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:deletionDate>true</sea:deletionDate>
+                <sea:deletionUser>true</sea:deletionUser>
+            </sea:contentType>
+            <sea:contentType name="DOC_MONTEE" profileCode="PF_MONTEE_SUR_CALE" selected="false">
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NUM_MONTEE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_TYPE_DOCUMENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:type>list</sea:type>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_DOCUMENT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>true</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:deletionDate>true</sea:deletionDate>
+                <sea:deletionUser>true</sea:deletionUser>
+            </sea:contentType>
+        </sea:flow>
+    </sea:organization>
+</sea:searchForm>

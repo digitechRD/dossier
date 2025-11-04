@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets" customerName="@CUSTOMERNAME@" version="5.1.0">
+    <ns2:organization id="0" name="DEFAULT" titre="Accueil Tout Service"/>
+    <ns2:organization id="3" name="RH_GEST" titre="Accueil">
+        <dossierrequest name="basket_to_register_key">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;727&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="basket_to_validate_key">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;728&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="basket_last_added_key">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+        </dossierrequest>
+    </ns2:organization>
+    <ns2:organization id="8" name="RH_CONS" titre="Mes documents">
+        <dossierrequest name="basket_notified_key">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;729&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+        </dossierrequest>
+    </ns2:organization>
+    
+    <ns2:organization id="9" name="COM_GEST" titre="Mes banettes">
+        <dossierrequest name="basket_last_added_key">
+            <contentType>DOCUMENT_COM</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="basket_processing_key">
+            <contentType>DOCUMENT_COM</contentType>
+            <airsvalue>COM_ETAT.ROOTITEM=&quot;1203&quot;</airsvalue>
+        </dossierrequest>
+    </ns2:organization>    
+    
+    <ns2:organization id="10" name="FACT_GEST" titre="Mes banettes">
+        <dossierrequest name="basket_invoices_to_validate_key">
+            <contentType>DOCUMENT_FACT</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;1609&quot; ET FACT_ACTEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+        </dossierrequest>
+        <dossierrequest name="basket_last_added_key">
+            <contentType>DOCUMENT_FACT</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+        </dossierrequest>
+    </ns2:organization>   
+    
+</ns2:corbeille>

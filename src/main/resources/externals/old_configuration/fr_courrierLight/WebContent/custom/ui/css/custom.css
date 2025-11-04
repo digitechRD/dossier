@@ -1,0 +1,293 @@
+/* Surchargez vos styles CSS dans ce fichier */
+
+/* Uncomment the following style to define your login product image */
+/*
+.connexion {
+    background-image: url("../img/customImage.png");
+}
+*/
+
+/* Uncomment the following style to define your header product image */
+/*
+.headerPanel {
+    background-image: url("../img/customImage.jpg");
+}
+*/
+
+.dataTable th.searchResultState {
+  width: 30px;
+}
+
+/** Home */
+form.home .today .content .documentsToProcess {
+  padding: 4px 10px 4px 12px;
+}
+
+form.home .today .content .basketTable tr.first {
+  background-image: url(../../../ui/courrierLight/img/today_bg.png);
+}
+
+form.home .today .content .basketTable tr.second {
+  background-image: url(../../../ui/courrierLight/img/today_bg2.jpg);
+}
+
+form.home .today .content .basketTable td.colNumberOfDocuments {
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+form.home .today .content .basketTable td.indexing.colNumberOfDocuments {
+  background-image: url("../img/indexing01.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: transparent;
+}
+
+form.home .today .content .basketTable tr.second td.indexing.colNumberOfDocuments {
+  background-image: url("../img/indexing02.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: transparent;
+}
+
+form.home .today .content .basketTable td.basket_mailLate.colNumberOfDocuments.notEmpty {
+  background-image: url("../img/warn01.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: transparent;
+}
+
+form.home .today .content .basketTable tr.second td.basket_mailLate.colNumberOfDocuments.notEmpty {
+  background-image: url("../img/warn02.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: transparent;
+}
+
+form.home .today .content .basketTable td.basket_mailToSendToCheck {
+  border-top: solid 2px #544d1b;  
+}
+
+form.home .today .content .basketTable td.basket_mailRejected.notEmpty,
+form.home .today .content .basketTable td.basket_mailRefused.notEmpty,
+form.home .today .content .basketTable td.basket_mailToSendRefused.notEmpty {
+  color: #c90f0f;
+  font-weight: bold;
+}
+
+form.home .today .content .basketTable td.basket_mailRejected.notEmpty a,
+form.home .today .content .basketTable td.basket_mailRefused.notEmpty a,
+form.home .today .content .basketTable td.basket_mailToSendRefused.notEmpty a {
+  color: #c90f0f;
+}
+
+/** Search result */
+.simpleResult td.T_ETAT_VISA {
+  font-size: 0;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.simpleResult td.T_ETAT_VISA.ACCEPTE {
+  background-image: url("../img/visa_ok.png");
+}
+
+.simpleResult td.T_ETAT_VISA.REFUSE {
+  background-image: url("../img/visa_ko.png");
+}
+
+.simpleResult td.courrierNotRead {
+  font-weight: bold;
+}
+
+/** Custom action */
+.actionBar .secondaryActionPanel .exportCSV {
+  background-image: url(../../../ui/courrierLight/img/actionBar/sec_exportCSV.png);
+}
+
+.actionBar .secondaryActionPanel .exportCSV_all {
+  background-image: url(../../../ui/courrierLight/img/actionBar/sec_exportAllCSV.png);
+}
+
+.actionBar .secondaryActionPanel .closeMail {
+  background-image: url("../img/actionBar/sec_closeMail.png");
+}
+
+.actionBar .secondaryActionPanel .restoreMail {
+  background-image: url("../img/actionBar/sec_restoreMail.png");
+}
+
+.actionBar .mainActionPanel .addMailResponse {
+  background-image: url("../img/actionBar/main_addMailResponse.png");
+}
+
+.actionBar .mainActionPanel .signMail {
+  background-image: url("../img/actionBar/main_signMail.png");
+}
+
+.actionBar .mainActionPanel .validateMail {
+  background-image: url("../img/actionBar/main_validateMail.png");
+}
+
+.actionBar .mainActionPanel .refuseMail {
+  background-image: url("../img/actionBar/main_refuseMail.png");
+}
+
+.modalPanel .documentViewer {
+  height: 1px;
+  width: 1px;
+}
+
+.modalPanel .documentViewer .document {
+  margin-top: -4px;
+}
+
+.modalPanel .documentViewer .togglePanel1 {
+  top: 120px;
+}
+
+.modalPanel .documentViewer .togglePanel2 {
+  top: 170px;
+}
+
+.modalPanel .documentViewer .togglePanel3 {
+  top: 220px;
+}
+
+.answer .buttons,
+.visaIn .buttons,
+.visaOut .buttons {
+  margin-right: 10px;
+}
+
+.answer .responsePanel,
+.visaIn .visaPanel,
+.visaOut .visaPanel {
+  width: 100%;
+}
+
+.answer .responsePanel td,
+.visaIn .visaPanel td,
+.visaOut .visaPanel td {
+  vertical-align: top;
+}
+
+.answer .responsePanel .attachment,
+.visaIn .visaPanel .attachment,
+.visaOut .visaPanel .attachment {
+  width: auto;
+}
+
+.answer .responsePanel .notification div.error,
+.visaIn .visaPanel .notification div.error,
+.visaOut .visaPanel .notification div.error {
+  width: 450px;
+  height: 600px;
+  overflow: auto;
+}
+
+.answer .responsePanel iframe.attachment,
+.visaIn .visaPanel iframe.attachment,
+.visaOut .visaPanel iframe.attachment {
+  display: block;
+  position: relative;
+  top: auto;
+  left: auto;
+}
+
+.answer .responsePanel .documentViewer .toolbarDisplayer,
+.visaIn .visaPanel .documentViewer .toolbarDisplayer,
+.visaOut .visaPanel .documentViewer .toolbarDisplayer {
+  background-color: #EEEEEE;
+  float: none;
+  height: 10px;
+  position: relative;
+  z-index: 1010;
+}
+
+.answer .responsePanel .documentViewer .toolbar,
+.visaIn .visaPanel .documentViewer .toolbar,
+.visaOut .visaPanel .documentViewer .toolbar {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #EEEEEE;
+  float: left;
+  padding: 0 4px;
+  position: absolute;
+  z-index: 1010;
+}
+
+.visaIn .visaPanel .switch,
+.visaOut .visaPanel .switch {
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.visaIn .visaPanel textarea,
+.visaOut .visaPanel textarea {
+  clear: left;
+}
+
+.textAreaModalPanelComment {
+  width: 450px;
+  height: 200px;
+}
+
+/* CSS bouton style iphone*/
+.cb-enable, .cb-disable, .cb-enable span, .cb-disable span {
+  background: url(../img/switch.gif) repeat-x;
+  display: block;
+  float: left;
+}
+
+.cb-enable span, .cb-disable span {
+  line-height: 30px;
+  display: block;
+  background-repeat: no-repeat;
+  font-weight: bold;
+}
+
+.cb-enable span {
+  background-position: left -90px;
+  padding: 0 10px;
+}
+
+.cb-disable span {
+  background-position: right -180px;
+  padding: 0 10px;
+}
+
+.cb-disable.selected {
+  background-position: 0 -30px;
+}
+
+.cb-disable.selected span {
+  background-position: right -210px;
+  color: #fff;
+}
+
+.cb-enable.selected {
+  background-position: 0 -60px;
+}
+
+.cb-enable.selected span {
+  background-position: left -150px;
+  color: #fff;
+}
+
+.switch label {
+  clear: none;
+  cursor: pointer;
+  padding-right: 0;
+  width: auto;
+}
+
+.switch input {
+  display: none;
+}
+
+/* Pour cacher le choix du niveau de secret */
+select#contentForm\3AsecretLevel
+{display: none; padding: 0px; margin: 0px;}
+
+label[for=contentForm\3AsecretLevel]
+{display: none; padding: 0px; margin: 0px;}

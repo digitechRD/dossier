@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="Digitech" version="5.1-SNAPSHOT">
+    <organization id="0" name="DEFAULT">
+        <contentType name="DOSSIER" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Adresse du risque</label>
+                <airsfield>ADR_RISQUE</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOSSIER" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier :</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Adresse du risque :</label>
+                <airsfield>ADR_RISQUE</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCUMENT" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de contrat</label>
+                <airsfield>NUM_CONT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Produit</label>
+                <airsfield>NOM_PRODUIT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Syndic</label>
+                <airsfield>NOM_SYNDIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="true" required="false" type="list">
+                <label>Agent affecté</label>
+                <airsfield>TRAIT_AGENT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du traitement</label>
+                <airsfield>ETAT_TRAIT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Boîte d'archive</label>
+                <airsfield>REF_BA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Document en instance</label>
+                <airsfield>INS_EN_INSTANCE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Besoin d'un rappel</label>
+                <airsfield>INS_BESOIN_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date rappel</label>
+                <airsfield>INS_DATE_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <!--<input display="true" readonly="true" required="false" type="">
+                <label>Date de numérisation</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>-->
+            <ns2:action displayRule="VIEW" id="AFFECT_TRAIT1" image="icon_update_doc_traite" resourceKey="update_document_Traite">
+                <ns2:groovyScriptId>Change_Etat_Affecte_Trait</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" id="METTRE_INSTANCE1" image="icon_update_doc_mettre_en_instance" resourceKey="update_doc_mettre_en_instance">
+                <ns2:groovyScriptId>Change_Etat_Mettre_Instance</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" id="ENLEVER_INSTANCE" image="icon_update_doc_enlever_en_instance" resourceKey="update_doc_enlever_en_instance">
+                <ns2:groovyScriptId>Change_Etat_Enlever_Instance</ns2:groovyScriptId>
+            </ns2:action>
+            
+            <!--<ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF" id="GenerateFolder" image="icon_generate_folder" resourceKey="generate_folder_pdf_tooltip">
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>-->
+
+            <ns2:scriptedAction groovyScriptId="OnSaveDoc" id="tcheckSave" type="before">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="DOCUMENT" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier :</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de contrat :</label>
+                <airsfield>NUM_CONT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYP_DOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Produit :</label>
+                <airsfield>NOM_PRODUIT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Syndic :</label>
+                <airsfield>NOM_SYNDIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Agent affecté :</label>
+                <airsfield>TRAIT_AGENT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du traitement</label>
+                <airsfield>ETAT_TRAIT</airsfield>
+                <initial-value>202</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Boîte d'archive :</label>
+                <airsfield>REF_BA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Document en instance</label>
+                <airsfield>INS_EN_INSTANCE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Besoin d'un rappel</label>
+                <airsfield>INS_BESOIN_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date rappel</label>
+                <airsfield>INS_DATE_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <!--<input display="true" readonly="false" required="false" type="">
+                <label>Date de numérisation :</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>-->
+        </contentType>
+    </organization>
+    <organization id="2" name="">
+        <contentType name="DOSSIER" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Adresse du risque</label>
+                <airsfield>ADR_RISQUE</airsfield>
+                <initial-value></initial-value>
+            </input>   
+               <ns2:export renderer="arboExport" type="ARBO" id="GenerateARBO" image="icon_export_arbo" resourceKey="fct_export_arbo">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="ListeFinal.rptdesign" type="BIRT_PDF" id="DocInstanceClient" image="icon_get_liste_instance" resourceKey="get_liste_instance_label">
+                <ns2:groovyScriptId>getDocInstanceClient</ns2:groovyScriptId>
+            </ns2:export>  
+  
+           
+        </contentType>
+        <contentType name="DOSSIER" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier :</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Adresse du risque :</label>
+                <airsfield>ADR_RISQUE</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCUMENT" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de contrat</label>
+                <airsfield>NUM_CONT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Produit</label>
+                <airsfield>NOM_PRODUIT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Syndic</label>
+                <airsfield>NOM_SYNDIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Agent affecté</label>
+                <airsfield>TRAIT_AGENT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du traitement</label>
+                <airsfield>ETAT_TRAIT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Boîte d'archive</label>
+                <airsfield>REF_BA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Document en instance</label>
+                <airsfield>INS_EN_INSTANCE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Besoin d'un rappel</label>
+                <airsfield>INS_BESOIN_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date rappel</label>
+                <airsfield>INS_DATE_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            
+            <ns2:scriptedAction groovyScriptId="OnSaveDoc" id="tcheckSave" type="before">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            
+            <ns2:action displayRule="VIEW" id="AFFECT_TRAIT" image="icon_update_doc_traite" resourceKey="update_document_Traite">
+                <ns2:groovyScriptId>Change_Etat_Affecte_Trait</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" id="METTRE_INSTANCE" image="icon_update_doc_mettre_en_instance" resourceKey="update_doc_mettre_en_instance">
+                <ns2:groovyScriptId>Change_Etat_Mettre_Instance</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" id="ENLEVER_INSTANCE" image="icon_update_doc_enlever_en_instance" resourceKey="update_doc_enlever_en_instance">
+                <ns2:groovyScriptId>Change_Etat_Enlever_Instance</ns2:groovyScriptId>
+            </ns2:action>                  
+        </contentType>
+        <contentType name="DOCUMENT" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de dossier :</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Numéro de contrat :</label>
+                <airsfield>NUM_CONT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYP_DOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Produit :</label>
+                <airsfield>NOM_PRODUIT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Syndic :</label>
+                <airsfield>NOM_SYNDIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Agent affecté :</label>
+                <airsfield>TRAIT_AGENT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du traitement</label>
+                <airsfield>ETAT_TRAIT</airsfield>
+                <initial-value>202</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Boîte d'archive :</label>
+                <airsfield>REF_BA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Document en instance</label>
+                <airsfield>INS_EN_INSTANCE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Besoin d'un rappel</label>
+                <airsfield>INS_BESOIN_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date rappel</label>
+                <airsfield>INS_DATE_RAPPEL</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="7" name="DISPATCH">
+        <contentType name="DOCUMENT" type="update">
+            <input display="true" readonly="true" required="false" type="">
+                <label>Numéro de dossier</label>
+                <airsfield>NUM_DOSSIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Numéro de contrat</label>
+                <airsfield>NUM_CONT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="true" required="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Agent affecté</label>
+                <airsfield>TRAIT_AGENT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <ns2:scriptedAction groovyScriptId="OnSaveDoc" id="tcheckSave" type="before">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+    </organization>
+</formulaire>

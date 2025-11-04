@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workflow  xmlns="http://www.digitech.com/dossiers/workflow">
+	<tache name="TraitementAVerifier" id="">
+		<valueSortie value="">
+			<airsfield name="STATUT" value="101"></airsfield>
+		</valueSortie>
+	</tache>
+	<airs2workflow>
+		<value>CODEFOUR</value>
+		<value>TYPEFAC</value>
+		<mapping variable="Societe" field="CODESOCIETE" refdata="Code" />
+		<mapping variable="TypeFacture" field="TYPEFAC" refdata="Code" />
+		<mapping variable="orgidrespservice" field="DESTINATAIRE" refdata="Id"/>
+		<mapping variable="emailrespservice" field="DESTINATAIRE" refdata="Mail"/>
+	</airs2workflow>
+</workflow>

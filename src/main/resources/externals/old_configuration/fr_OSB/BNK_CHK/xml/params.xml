@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params"
+	customerName="ocsd_bnk" version="6.0.9">
+
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">172.17.40.10</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+        <adminWebappURL>http://172.17.40.10/generalAdminAirs</adminWebappURL>
+    </airsConfig>
+    <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>false</contentTypeFilter>
+        <flowmind>
+            <server port="0"/>
+            <dbConnection maxconn="-1">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1099"/>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+            </dbConnection>
+        </flowmind>
+    </workFlow>
+    <mailConfig>
+        <smtp>mail.osb.pf</smtp>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+        <smtpPort>25</smtpPort>
+        <mailAuthentication>false</mailAuthentication>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>182</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>1</isoxDisabled>
+        <!-- add this line in order to view specified extensions   
+        <isoxFileAssociation>.tif</isoxFileAssociation>
+        <isoxFileAssociation>.tiff</isoxFileAssociation>
+        <isoxFileAssociation>.jpg</isoxFileAssociation>
+        <isoxFileAssociation>.jpeg</isoxFileAssociation>
+        <isoxFileAssociation>.jp2</isoxFileAssociation>-->            
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <updateSecretLevel></updateSecretLevel>
+        <validatorActivate>false</validatorActivate>
+        <autoOpenPJ>false</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>100</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>        
+        <uniqueFolder>true</uniqueFolder>
+		
+		<displayMode>ADVANCED</displayMode>
+		<!--<displayMode>BASIC</displayMode>-->
+		<ssoActivated>false</ssoActivated>
+        <webAppURL>https://172.17.40.10/AirsDossier</webAppURL>
+        <flowSelectionEnabled>true</flowSelectionEnabled>
+    </appConfig>       
+    <versioning>
+         <activated>false</activated>
+         <rollingNumber>5</rollingNumber>
+    </versioning>                                 
+    <oooConfig autoStart="false">
+        <officeHome>C:\Program Files (x86)\OpenOffice 4</officeHome>
+        <executableName>soffice.exe</executableName>
+        <portNumbers>2005</portNumbers>
+        <taskQueueTimeout>60000</taskQueueTimeout>
+        <taskExecutionTimeout>120000</taskExecutionTimeout>
+        <maxTasksPerProcess>200</maxTasksPerProcess>
+    </oooConfig>
+    <birt webAppUrl="http://172.17.40.10/AirsStat/">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1522">172.17.40.43</server>
+            <instance>OCSDBNK</instance>
+            <login>ocsd_bnk_do_airsuser</login>
+            <password>airsuserdoocsdbnk</password>
+        </dbConnection>
+    </birt>
+</params>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ct:rootFlow version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:ct="http://www.digitech.com/dossiers/contenttype">
+    <ct:flow code="MONTEE_SUR_CALE" label="Montée sur cale" order="9999" priorityField="" priorityDefaultValue="" system="false">
+        <ct:contentType isFlowParent="true" code="ARMATEUR" appName="AIRS" system="false">
+            <ct:contentType isFlowParent="false" code="NAVIRE" appName="AIRS" system="false">
+                <ct:codeLinkedField parentField="MSC_NOM_DEMANDEUR" childField="MSC_NOM_DEMANDEUR" multiple="false" suggestion="true"/>
+                <ct:contentType isFlowParent="false" code="MONTEE_SUR_CALE" appName="AIRS" system="false">
+                    <ct:codeLinkedField parentField="MSC_IMMAT_NAVIRE" childField="MSC_IMMAT_NAVIRE" multiple="false" suggestion="true"/>
+                    <ct:contentType isFlowParent="false" code="DOC_MONTEE" appName="AIRS" system="false">
+                        <ct:codeLinkedField parentField="MSC_NUM_MONTEE" childField="MSC_NUM_MONTEE" multiple="false" suggestion="false"/>
+                        <ct:extraFilter>
+                            <com:dossierrequest name="FILTER_CREANCE_CLIENT">
+                                <com:contentType>DOC_MONTEE</com:contentType>
+                                <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL)</com:airsvalue>
+                                <com:workflowvalue></com:workflowvalue>
+                                <com:airsProfileCode>PF_VUE_CREANCE_CLIENT</com:airsProfileCode>
+                            </com:dossierrequest>
+                            <com:dossierrequest name="FILTER_SAUF_CREANCE_CLIENT">
+                                <com:contentType>DOC_MONTEE</com:contentType>
+                                <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL) SAUF MSC_TYPE_DOCUMENT.ITEM.CODE="CREANCE_CLIENT"</com:airsvalue>
+                                <com:workflowvalue></com:workflowvalue>
+                                <com:airsProfileCode>PF_MONTEE_SUR_CALE</com:airsProfileCode>
+                            </com:dossierrequest>
+                        </ct:extraFilter>
+                    </ct:contentType>
+                </ct:contentType>
+            </ct:contentType>
+        </ct:contentType>
+        <ct:contentType isFlowParent="false" code="NAVIRE" appName="AIRS" system="false">
+            <ct:contentType isFlowParent="false" code="MONTEE_SUR_CALE" appName="AIRS" system="false">
+                <ct:codeLinkedField parentField="MSC_IMMAT_NAVIRE" childField="MSC_IMMAT_NAVIRE" multiple="false" suggestion="true"/>
+                <ct:contentType isFlowParent="false" code="DOC_MONTEE" appName="AIRS" system="false">
+                    <ct:codeLinkedField parentField="MSC_NUM_MONTEE" childField="MSC_NUM_MONTEE" multiple="false" suggestion="false"/>
+                    <ct:extraFilter>
+                        <com:dossierrequest name="FILTER_CREANCE_CLIENT">
+                            <com:contentType>DOC_MONTEE</com:contentType>
+                            <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL)</com:airsvalue>
+                            <com:workflowvalue></com:workflowvalue>
+                            <com:airsProfileCode>PF_VUE_CREANCE_CLIENT</com:airsProfileCode>
+                        </com:dossierrequest>
+                        <com:dossierrequest name="FILTER_SAUF_CREANCE_CLIENT">
+                            <com:contentType>DOC_MONTEE</com:contentType>
+                            <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL) SAUF MSC_TYPE_DOCUMENT.ITEM.CODE="CREANCE_CLIENT"</com:airsvalue>
+                            <com:workflowvalue></com:workflowvalue>
+                            <com:airsProfileCode>PF_MONTEE_SUR_CALE</com:airsProfileCode>
+                        </com:dossierrequest>
+                    </ct:extraFilter>
+                </ct:contentType>
+            </ct:contentType>
+        </ct:contentType>
+        <ct:contentType isFlowParent="false" code="MONTEE_SUR_CALE" appName="AIRS" system="false">
+            <ct:contentType isFlowParent="false" code="DOC_MONTEE" appName="AIRS" system="false">
+                <ct:codeLinkedField parentField="MSC_NUM_MONTEE" childField="MSC_NUM_MONTEE" multiple="false" suggestion="false"/>
+                <ct:extraFilter>
+                    <com:dossierrequest name="FILTER_CREANCE_CLIENT">
+                        <com:contentType>DOC_MONTEE</com:contentType>
+                        <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL)</com:airsvalue>
+                        <com:workflowvalue></com:workflowvalue>
+                        <com:airsProfileCode>PF_VUE_CREANCE_CLIENT</com:airsProfileCode>
+                    </com:dossierrequest>
+                    <com:dossierrequest name="FILTER_SAUF_CREANCE_CLIENT">
+                        <com:contentType>DOC_MONTEE</com:contentType>
+                        <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL) SAUF MSC_TYPE_DOCUMENT.ITEM.CODE="CREANCE_CLIENT"</com:airsvalue>
+                        <com:workflowvalue></com:workflowvalue>
+                        <com:airsProfileCode>PF_MONTEE_SUR_CALE</com:airsProfileCode>
+                    </com:dossierrequest>
+                </ct:extraFilter>
+            </ct:contentType>
+        </ct:contentType>
+        <ct:contentType isFlowParent="false" code="DOC_MONTEE" appName="AIRS" system="false">
+            <ct:extraFilter>
+                <com:dossierrequest name="FILTER_CREANCE_CLIENT">
+                    <com:contentType>DOC_MONTEE</com:contentType>
+                    <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL)</com:airsvalue>
+                    <com:workflowvalue></com:workflowvalue>
+                    <com:airsProfileCode>PF_VUE_CREANCE_CLIENT</com:airsProfileCode>
+                </com:dossierrequest>
+                <com:dossierrequest name="FILTER_SAUF_CREANCE_CLIENT">
+                    <com:contentType>DOC_MONTEE</com:contentType>
+                    <com:airsvalue>(MSC_TYPE_DOCUMENT IS NOT NULL OU MSC_TYPE_DOCUMENT IS NULL) SAUF MSC_TYPE_DOCUMENT.ITEM.CODE="CREANCE_CLIENT"</com:airsvalue>
+                    <com:workflowvalue></com:workflowvalue>
+                    <com:airsProfileCode>PF_MONTEE_SUR_CALE</com:airsProfileCode>
+                </com:dossierrequest>
+            </ct:extraFilter>
+        </ct:contentType>
+        <ct:description>Flux créé en mode simplifié</ct:description>
+        <ct:organization name="DEFAULT"/>
+        <ct:airsProfilesCode>PF_MONTEE_SUR_CALE</ct:airsProfilesCode>
+    </ct:flow>
+    <ct:flow code="COURRIER" label="COURRIER" order="2" system="false">
+        <ct:description>Flux détaillé</ct:description>
+        <ct:organization name="DEFAULT"/>
+        <ct:airsProfilesCode>PF_DOCTEC</ct:airsProfilesCode>
+    </ct:flow>
+    <ct:flow code="REF_DOCUMENT" label="Documentations Techniques" order="2" system="false">
+        <ct:description>Flux détaillé</ct:description>
+        <ct:organization name="DEFAULT"/>
+        <ct:airsProfilesCode>PF_DOCTEC</ct:airsProfilesCode>
+    </ct:flow>
+</ct:rootFlow>

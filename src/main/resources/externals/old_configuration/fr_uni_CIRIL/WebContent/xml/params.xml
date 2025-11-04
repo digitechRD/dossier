@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<params xmlns="http://www.digitech.com/dossiers/params" customerName="CIRIL" version="6.0.0">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <server port="5000">SRV-GED-16</server>
+    <userAdmin>
+      <login>adm_airs3</login>
+      <password>adm_airs3</password>
+    </userAdmin>
+    <adminWebappURL>http://localhost:8080/adminAirs</adminWebappURL>
+  </airsConfig>
+  <mailConfig>
+    <smtp>smtp.digitech.fr</smtp>
+    <defaultMailSender/>
+    <SSLActivated>false</SSLActivated>
+    <SSLPort>0</SSLPort>
+  </mailConfig>
+  <appConfig>
+    <webAppURL>http://localhost:8080/dossierweb</webAppURL>
+    <configurationStateDisplayed>true</configurationStateDisplayed>
+    <expiredPassword>-1</expiredPassword>
+    <expiredPasswordAfterCreation>-1</expiredPasswordAfterCreation>
+    <passwordMinSize>3</passwordMinSize>
+    <passwordLetterNumber>0</passwordLetterNumber>
+    <passwordDigitNumber>0</passwordDigitNumber>
+    <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+    <autoDisconnection>0</autoDisconnection>
+    <searchJocker>*</searchJocker>
+    <documentViewerEnabled>true</documentViewerEnabled>
+    <defaultPushpinActivated>false</defaultPushpinActivated>
+    <windowFocused>0</windowFocused>
+    <validatorActivate>true</validatorActivate>
+    <autoOpenPJ>true</autoOpenPJ>
+    <displayPJ>VERTICAL_RIGHT</displayPJ>
+    <autoReloadBaskets>true</autoReloadBaskets>
+    <oneSearchResult>gotoSimpleView</oneSearchResult>
+    <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+    <nbDocPage>10</nbDocPage>
+    <nbMaxSearchDoc>100</nbMaxSearchDoc>
+    <displayMode>ADVANCED</displayMode>
+    <ssoActivated>false</ssoActivated>
+    <flowSelectionEnabled>true</flowSelectionEnabled>
+    <documentViewerToolBarMode>DISPLAY_ON_MOUSEOVER</documentViewerToolBarMode>
+  </appConfig>
+  <birt webAppUrl="http://localhost:8080/AirsStat">
+    <dbConnection>
+      <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+      <server port="1521">srv-ged-08-new</server>
+      <instance>PFADOS</instance>
+      <login>airsuser_uni</login>
+      <password>airsuser_uni</password>
+    </dbConnection>
+  </birt>
+  <versionning>
+    <activated>1</activated>
+  </versionning>
+  <oooConfig autoStart="true">
+    <officeHome>C:\\Program Files (x86)\\OpenOffice.org 3</officeHome>
+    <executableName>soffice.exe</executableName>
+    <portNumbers>2002</portNumbers>
+    <taskQueueTimeout>60000</taskQueueTimeout>
+    <taskExecutionTimeout>120000</taskExecutionTimeout>
+    <maxTasksPerProcess>200</maxTasksPerProcess>
+  </oooConfig>
+  <popConfig>
+    <dbConnection>
+      <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+      <server port="1521">@srv-ged-08-new</server>
+      <instance>PFADOS</instance>
+      <login>cou_light_pop_uni</login>
+      <password>cou_light_pop_uni</password>
+    </dbConnection>
+  </popConfig>
+</params>

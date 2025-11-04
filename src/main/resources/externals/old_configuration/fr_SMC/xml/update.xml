@@ -1,0 +1,906 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="SMC" version="5.1-SNAPSHOT">
+    <organization id="0" name="DEFAULT">
+        <contentType name="DOSSIER" type="update">
+            <input display="true" readonly="true" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Compte :</label>
+                <airsfield>CPTE_ENTREPRISE</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Nom de l'entreprise :</label>
+                <airsfield>NOM_ENTREPRISE</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>N° de guichet</label>
+                <airsfield>NUM_GUICHET</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Code NAF :</label>
+                <airsfield>STATUT</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOCUMENT" type="update">
+            <input display="true" readonly="true" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Exercice :</label>
+                <airsfield>DATE_CLOTURE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Type de document</label>
+                <airsfield>TYPE_DOC</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Code de l'agence</label>
+                <airsfield>CODE_AGENCE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOSJUR" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>                
+        </contentType>
+        <contentType name="DOSJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+                <initial-value>213</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>200</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom ou raison sociale :</label>
+                <airsfield>NOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Prénom :</label>
+                <airsfield>PRENOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom de jeune fille :</label>
+                <airsfield>NOMJF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>N° Compte Réf. :</label>
+                <airsfield>NUMCPTREF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date d'entrée en relation :</label>
+                <airsfield>DATENT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date de naissance :</label>
+                <airsfield>DATNAI</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Clé B.D.F. :</label>
+                <airsfield>CLEBDF</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+                <initial-value>211</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>100</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCJUR" type="update">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+           <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du document :</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+            </input>
+             <ns2:scriptedAction groovyScriptId="OnSaveDoc" id="tcheckSave" type="before">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="DOCJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+                <initial-value>222</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+                <initial-value>221</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du document Numlot:</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+                <initial-value>214</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Etat du document mss:</label>
+                <airsfield>ETAT_DOCJURMSS</airsfield>
+                <initial-value>226</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+                <initial-value>227</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Présent à l'entrée en relation (-) :</label>
+                <airsfield>PRESENTREREL</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>201</initial-value>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="5" name="SMC Gestionnaire">
+        <contentType name="DOSJUR" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+                <initial-value>213</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>200</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom ou raison sociale :</label>
+                <airsfield>NOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Prénom :</label>
+                <airsfield>PRENOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom de jeune fille :</label>
+                <airsfield>NOMJF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>N° Compte Réf. :</label>
+                <airsfield>NUMCPTREF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date d'entrée en relation :</label>
+                <airsfield>DATENT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date de naissance :</label>
+                <airsfield>DATNAI</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Clé B.D.F. :</label>
+                <airsfield>CLEBDF</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+                <initial-value>211</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>100</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCJUR" type="update">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom Controle :</label>
+                <airsfield>NOMCTRL</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <!--<input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du document :</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+            </input>-->
+            <input display="true" readonly="false" required="false" type="">
+                <label>Indexeur :</label>
+                <airsfield>INDEXEUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+            </input>
+            <input display="true" id="secret_level" readonly="true" required="false" type="secretLevel">
+                <label>Confidentialité :</label>
+            </input>  
+             <ns2:scriptedAction groovyScriptId="OnSaveDoc" id="tcheckSave" type="before">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="DOCJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+                <initial-value>222</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+                <initial-value>221</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du document Numlot:</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+                <initial-value>214</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Etat du document mss:</label>
+                <airsfield>ETAT_DOCJURMSS</airsfield>
+                <initial-value>226</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+                <initial-value>227</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Présent à l'entrée en relation (-) :</label>
+                <airsfield>PRESENTREREL</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>201</initial-value>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="8" name="SMC Gestionnaire MSS">
+        <contentType name="DOSJUR" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+                <initial-value>213</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>200</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom ou raison sociale :</label>
+                <airsfield>NOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Prénom :</label>
+                <airsfield>PRENOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom de jeune fille :</label>
+                <airsfield>NOMJF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>N° Compte Réf. :</label>
+                <airsfield>NUMCPTREF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date d'entrée en relation :</label>
+                <airsfield>DATENT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date de naissance :</label>
+                <airsfield>DATNAI</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Clé B.D.F. :</label>
+                <airsfield>CLEBDF</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+                <initial-value>211</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>100</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCJUR" type="update">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="true" required="false" type="">
+                <label>Id :</label>
+                <airsfield>REFAIRS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="workflowairs">
+                <label>Etat du document MSS:</label>
+                <airsfield>ETAT_DOCJURMSS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nr du dossier de Démat :</label>
+                <airsfield>NRDOSSDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Agent de démat :</label>
+                <airsfield>AGENTDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Guichet de démat :</label>
+                <airsfield>GUICHETDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+            </input>
+            <input display="true" id="secret_level" readonly="true" required="false" type="secretLevel">
+                <label>Confidentialité :</label>
+            </input>
+        </contentType>
+        <contentType name="DOCJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+                <initial-value>222</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+                <initial-value>221</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du document Numlot:</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+                <initial-value>214</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Etat du document mss:</label>
+                <airsfield>ETAT_DOCJURMSS</airsfield>
+                <initial-value>226</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+                <initial-value>227</initial-value>
+            </input>
+            <input display="false" readonly="false" required="false" type="list">
+                <label>Présent à l'entrée en relation (-) :</label>
+                <airsfield>PRESENTREREL</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input display="false" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>201</initial-value>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="7" name="SMC Admin">
+        <contentType name="DOSSIER" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Compte :</label>
+                <airsfield>CPTE_ENTREPRISE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom de l'entreprise :</label>
+                <airsfield>NOM_ENTREPRISE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>N° de guichet</label>
+                <airsfield>NUM_GUICHET</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Code NAF :</label>
+                <airsfield>STATUT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Code APE :</label>
+                <airsfield>CODE_APE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSSIER" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Compte :</label>
+                <airsfield>CPTE_ENTREPRISE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom de l'entreprise :</label>
+                <airsfield>NOM_ENTREPRISE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>N° de guichet</label>
+                <airsfield>NUM_GUICHET</airsfield>
+            </input>
+            <input display="true" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>910</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCUMENT" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Exercice :</label>
+                <airsfield>DATE_CLOTURE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYPE_DOC</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Code de l'agence</label>
+                <airsfield>CODE_AGENCE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOCUMENT" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYPE_DOC</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Exercice :</label>
+                <airsfield>DATE_CLOTURE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>911</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom ou raison sociale :</label>
+                <airsfield>NOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Prénom :</label>
+                <airsfield>PRENOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom de jeune fille :</label>
+                <airsfield>NOMJF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>N° Compte Réf. :</label>
+                <airsfield>NUMCPTREF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>SIREN :</label>
+                <airsfield>SIREN</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date d'entrée en relation :</label>
+                <airsfield>DATENT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date de naissance :</label>
+                <airsfield>DATNAI</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Clé B.D.F. :</label>
+                <airsfield>CLEBDF</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSCLI" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom ou raison sociale :</label>
+                <airsfield>NOM</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du dossier :</label>
+                <airsfield>ETAT_DOSCLI</airsfield>
+                <initial-value>211</initial-value>
+            </input>
+            <input display="true" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>100</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOSJUR" type="update">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+        </contentType>
+        <contentType name="DOSJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du sous dossier :</label>
+                <airsfield>ETAT_DOSJUR</airsfield>
+                <initial-value>213</initial-value>
+            </input>
+            <input display="true" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>200</initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOCJUR" type="update">
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date créat. :</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nom controle :</label>
+                <airsfield>NOMCTRL</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Indexeur :</label>
+                <airsfield>INDEXEUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Etat du document :</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du document mss:</label>
+                <airsfield>ETAT_DOCJURMSS</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Présent à l'entrée en relation :</label>
+                <airsfield>PRESENTREREL</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Nr du dossier démat. :</label>
+                <airsfield>NRDOSSDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Agent de démat. :</label>
+                <airsfield>AGENTDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Guichet de démat :</label>
+                <airsfield>GUICHETDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date de Démat :</label>
+                <airsfield>DATEHEUREDEMAT</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Date modif :</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input display="true" readonly="false" required="false" type="">
+                <label>Flux d'import</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOCJUR" type="insert">
+            <input display="true" readonly="false" required="false" type="">
+                <label>Réf Marco :</label>
+                <airsfield>REFMARCO</airsfield>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de sous dossier :</label>
+                <airsfield>GENRE</airsfield>
+                <initial-value>222</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Type de document :</label>
+                <airsfield>TYPEDOCJUR</airsfield>
+                <initial-value>221</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du document Numlot:</label>
+                <airsfield>ETAT_DOCJUR</airsfield>
+                <initial-value>214</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Etat du document mss:</label>
+                <airsfield>ETAT_DOCJURMSS</airsfield>
+                <initial-value>226</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Flux d'origine :</label>
+                <airsfield>FLUX_IMPORT</airsfield>
+                <initial-value>227</initial-value>
+            </input>
+            <input display="true" readonly="false" required="false" type="list">
+                <label>Présent à l'entrée en relation (-) :</label>
+                <airsfield>PRESENTREREL</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input display="true" id="secret_level" readonly="false" required="false" type="secretLevel">
+                <initial-value>201</initial-value>
+            </input>
+        </contentType>
+    </organization>
+</formulaire>

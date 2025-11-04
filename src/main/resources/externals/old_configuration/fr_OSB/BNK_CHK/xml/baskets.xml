@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets"
+	customerName="ocsd_bnk" version="6.0.9">
+
+    <ns2:organization titre="DEFAULT" id="0" name="DEFAULT"/>
+    <ns2:organization titre="SOCREDO" id="1" name="SOCREDO"/>
+    <ns2:organization titre="IEOM" id="23" name="IEOM"/>
+    <ns2:organization titre="CCP" id="24" name="CCP"/>
+    <ns2:organization titre="Socredo DPC" id="25" name="Socredo DPC">
+		  <basketRequest name="DCC a indexer" flowCode="FLOW_BNK" >
+			 <contentType>D_DOC_DCC</contentType>
+			 <airsvalue>DPC_NUM_CLIENT=&quot;X+&quot;</airsvalue>
+			 <airsRight></airsRight>
+			 <airsProfile>442</airsProfile>
+		  </basketRequest>
+		  <basketRequest name="OVC a indexer" flowCode="FLOW_BNK">
+			 <contentType>D_DOC_OVC</contentType>
+			 <airsvalue>DPC_NUM_CLIENT=&quot;X+&quot;</airsvalue>
+			 <airsRight></airsRight>
+			 <airsProfile>442</airsProfile>
+		  </basketRequest>
+	</ns2:organization>
+	<ns2:organization titre="OFINA" id="26" name="OFINA" flowCode="FLOW_BNK">
+		<basketRequest name="Dossiers a indexer">
+			<contentType>D_DOS_OFINA_CLT_PORTEUR</contentType>
+			<airsvalue>OFINA_CLT_NUM_CLIENT=&quot;+X&quot;</airsvalue>
+			<airsRight></airsRight>
+			<airsProfile>23</airsProfile>
+		</basketRequest>
+	</ns2:organization>    
+</ns2:corbeille>

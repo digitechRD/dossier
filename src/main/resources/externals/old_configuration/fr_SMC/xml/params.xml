@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" customerName="SMC" version="5.1-SNAPSHOT">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5100">srv-prod-11</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+    </airsConfig>
+    <workFlow/>
+    <mailConfig>
+        <smtp>smtp.digitech.fr</smtp>
+        <defaultMailSender>AirsDossier.prod@smc.fr</defaultMailSender>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>1</expiredPasswordAfterCreation>
+        <passwordMinSize>3</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>1</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>1</isoxDisabled>
+        <documentViewerEnabled>false</documentViewerEnabled>   <!-- active/desactive le document viewer-->
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <updateSecretLevel></updateSecretLevel>
+        <validatorActivate>false</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>viewUnit</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+        <uniqueFolder>true</uniqueFolder>
+    </appConfig>
+    <birt webAppUrl="http://numelia-airs:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">numelia-mss</server>
+            <instance>AIRSTEST</instance>
+            <login>airsuser</login>
+            <password>airsuser</password>
+        </dbConnection>
+    </birt>
+</params>

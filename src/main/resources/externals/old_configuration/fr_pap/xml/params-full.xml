@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><params xmlns="http://www.digitech.com/dossiers/params" customerName="" version="7">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <server port="5000">SRV-ABO-01</server>
+    <userAdmin>
+      <login>adm_airs3</login>
+      <password>U8bhHCsYP5z+KVV8Bj7ngBJA9M2mkyFe2p9f5FfPhi5GatLujNxGehukrV1oLZQ5UCFV+PUfPxgXSpIiDp0Foj9g0y5lxbE2bUgy1mLqQH3+JzmUscMgpltx4lrC7vfJgym6Qk4Wyl7xASjAfCF+B/PgLcYty+dIu07MPUqvfvA=</password>
+    </userAdmin>
+    <adminWebappURL>http://localhost:9797/adminAirs</adminWebappURL>
+  </airsConfig>
+  <workFlow>
+    <workflowType>FLOWMIND</workflowType>
+    <actorFilter>false</actorFilter>
+    <userFilter>false</userFilter>
+    <contentTypeFilter>false</contentTypeFilter>
+    <flowmind>
+      <server port="0"/>
+      <dbConnection maxconn="2">
+        <driver/>
+        <server port="0"/>
+      </dbConnection>
+    </flowmind>
+  </workFlow>
+  <mailConfig>
+    <smtp>localhost</smtp>
+    <SSLActivated>false</SSLActivated>
+    <TLSActivated>false</TLSActivated>
+    <smtpPort>0</smtpPort>
+    <mailAuthentication>false</mailAuthentication>
+  </mailConfig>
+  <appConfig>
+    <configurationStateDisplayed>true</configurationStateDisplayed>
+    <expiredPassword>-1</expiredPassword>
+    <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+    <passwordMinSize>3</passwordMinSize>
+    <autoDeleteDoc>NO_DELETE</autoDeleteDoc>
+    <alerteDeleteInfo>true</alerteDeleteInfo>
+    <passwordLetterNumber>0</passwordLetterNumber>
+    <passwordDigitNumber>0</passwordDigitNumber>
+    <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+    <autoDisconnection>0</autoDisconnection>
+    <searchJocker>*</searchJocker>
+    <documentViewerEnabled>true</documentViewerEnabled>
+    <defaultPushpinActivated>false</defaultPushpinActivated>
+    <windowFocused>0</windowFocused>
+    <validatorActivate>true</validatorActivate>
+    <autoOpenPJ>true</autoOpenPJ>
+    <displayPJ>VERTICAL_RIGHT</displayPJ>
+    <autoReloadBaskets>true</autoReloadBaskets>
+    <oneSearchResult>gotoSimpleView</oneSearchResult>
+    <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+    <nbDocPage>10</nbDocPage>
+    <nbMaxSearchDoc>100</nbMaxSearchDoc>
+    <encryptAuthentication>false</encryptAuthentication>
+    <displayMode>BASIC</displayMode>
+    <uploadAcceptedTypes>pdf,doc,docx,xls,xlsx,txt,odt</uploadAcceptedTypes>
+    <ssoActivated>false</ssoActivated>
+    <webAppURL>http://localhost:9797/dossier</webAppURL>
+    <flowSelectionEnabled>true</flowSelectionEnabled>
+  </appConfig>
+  <birt webAppUrl="http://localhost:9797/AirsStat">
+    <dbConnection>
+      <driver url="jdbc:postgresql">org.postgresql.Driver</driver>
+      <server port="5430">SRV-ABO-01</server>
+      <instance>airs</instance>
+      <login>airsuser</login>
+      <password>sWtvjGrYXr2bSAduPDN9UKvX3gv/K51fCx4pNELqOvpxU4hO54p2i+gHTsRDuFIHLt48AHYNcpIUbY7Rk9dR+OO1BMD/WjedVXDaH0Ly1d/azZ65dFSNEuOZe/6Oz9EAaTd26qTuDGYlNnU/tastk5uaey5Cd/UnyeUN3Magcm0=</password>
+    </dbConnection>
+  </birt>
+  <versionning>
+    <activated>true</activated>
+    <rollingNumber>0</rollingNumber>
+  </versionning>
+  <oooConfig autoStart="false">
+    <officeHome>D:/ArcadeGED/OpenOfficePortable/App/openoffice</officeHome>
+    <executableName>soffice.exe</executableName>
+    <portNumbers>2045</portNumbers>
+    <taskQueueTimeout>60000</taskQueueTimeout>
+    <taskExecutionTimeout>120000</taskExecutionTimeout>
+    <maxTasksPerProcess>200</maxTasksPerProcess>
+  </oooConfig>
+  <popConfig>
+    <dbConnection>
+      <driver url="jdbc:postgresql">org.postgresql.Driver</driver>
+      <server port="0">@localhost</server>
+      <instance>instance</instance>
+      <login>login</login>
+      <password>password</password>
+    </dbConnection>
+  </popConfig>
+</params>

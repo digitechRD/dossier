@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sea:searchForm version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:sea="http://www.digitech.com/dossiers/search">
+    <sea:organization name="DEFAULT">
+        <sea:flow flowCode="REF_DOCUMENT">
+            <sea:contentType selected="false">
+                <sea:deletionDate>true</sea:deletionDate>
+                <sea:deletionUser>true</sea:deletionUser>
+            </sea:contentType>
+        </sea:flow>
+        <sea:flow flowCode="COURRIER">
+            <sea:contentType selected="false">
+                <sea:deletionDate>false</sea:deletionDate>
+                <sea:deletionUser>false</sea:deletionUser>
+            </sea:contentType>
+        </sea:flow>
+        <sea:flow flowCode="MONTEE_SUR_CALE">
+            <sea:contentType name="ARMATEUR" selected="false">
+                <sea:deletionDate>false</sea:deletionDate>
+                <sea:deletionUser>false</sea:deletionUser>
+            </sea:contentType>
+            <sea:contentType name="NAVIRE" selected="false">
+                <sea:deletionDate>false</sea:deletionDate>
+                <sea:deletionUser>false</sea:deletionUser>
+            </sea:contentType>
+            <sea:contentType name="MONTEE_SUR_CALE" profileCode="PF_MONTEE_SUR_CALE" selected="false">
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NOM_NAVIRE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_NUM_MONTEE</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_DATE_DEBUT</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:input main="false">
+                    <sea:operator>=</sea:operator>
+                    <sea:airsfield>
+                        <sea:codeField>MSC_DATE_FIN</sea:codeField>
+                    </sea:airsfield>
+                    <sea:inputHelper autoTab="false"/>
+                    <sea:required>false</sea:required>
+                    <sea:readOnly>false</sea:readOnly>
+                    <sea:allowJoker>false</sea:allowJoker>
+                    <sea:searchAlwaysWithJocker>false</sea:searchAlwaysWithJocker>
+                    <sea:format></sea:format>
+                    <sea:allChildrenUsed>true</sea:allChildrenUsed>
+                    <sea:visible>true</sea:visible>
+                </sea:input>
+                <sea:deletionDate>true</sea:deletionDate>
+                <sea:deletionUser>true</sea:deletionUser>
+            </sea:contentType>
+            <sea:contentType name="DOC_MONTEE" selected="false">
+                <sea:deletionDate>false</sea:deletionDate>
+                <sea:deletionUser>false</sea:deletionUser>
+            </sea:contentType>
+        </sea:flow>
+    </sea:organization>
+</sea:searchForm>

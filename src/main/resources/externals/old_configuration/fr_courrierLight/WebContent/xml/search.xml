@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common"
+   customerName="CIRIL" version="6.0.0">
+   <organization id="0" name="DEFAULT">
+      <globalSearch>
+         <ns2:dossierrequest name="Num Chrono">
+            <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+            <ns2:airsvalue>N_CHRONO=&quot;#VALUE#&quot; OU C_OBJET=&quot;+#VALUE#+&quot;</ns2:airsvalue>
+         </ns2:dossierrequest>
+         <ns2:flowCode>COURRIER</ns2:flowCode>
+      </globalSearch>
+      <contentType name="COU_COURRIER_IN" selected="true">         
+         <input main="true">
+            <operator>=</operator>
+            <label>Numéro chrono</label>
+            <airsfield>
+               <codeField>N_CHRONO</codeField>
+            </airsfield>
+            <allowJoker>true</allowJoker>
+         </input>
+         <input main="true">
+            <operator>=</operator>
+            <label>Type</label>
+            <airsfield>
+               <codeField>T_TYPE</codeField>
+            </airsfield>
+            <type>list</type>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Priorité</label>
+            <airsfield>
+               <codeField>T_PRIORITE</codeField>
+            </airsfield>
+            <type>list</type>
+         </input>
+         <input>
+            <operator>=</operator>
+            <operator>&gt;</operator>
+            <operator>&lt;</operator>
+            <operator>{}</operator>
+            <operator>}{</operator>
+            <label>Date de réception</label>
+            <airsfield>
+               <codeField>D_RECEPTION</codeField>
+            </airsfield>
+         </input>
+         <input>
+            <operator>=</operator>
+            <operator>&gt;</operator>
+            <operator>&lt;</operator>
+            <operator>{}</operator>
+            <operator>}{</operator>
+            <label>Date d'échéance</label>
+            <airsfield>
+               <codeField>D_ECHEANCE</codeField>
+            </airsfield>
+            <airsProfiles>12</airsProfiles>
+         </input>
+         <input main="true">
+            <operator>=</operator>
+            <label>Emetteur</label>
+            <airsfield>
+               <codeField>C_EMETTEUR</codeField>
+            </airsfield>
+            <type>correspondent</type>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Nature</label>
+            <airsfield>
+               <codeField>T_NATURE</codeField>
+            </airsfield>
+            <type>list</type>
+         </input>
+         <input main="true">
+            <operator>=</operator>
+            <label>Objet</label>
+            <airsfield>
+               <codeField>C_OBJET</codeField>
+            </airsfield>
+            <inputHelper autoTab="false" />
+            <required>false</required>
+            <allowJoker>true</allowJoker>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Contenu des documents</label>
+            <airsfield>
+               <codeField>DOCS</codeField>
+            </airsfield>
+            <inputHelper autoTab="false" />
+            <required>false</required>
+            <allowJoker>false</allowJoker>
+         </input>
+      </contentType>
+      <contentType name="COU_COURRIER_OUT">
+         <input main="true">
+            <operator>=</operator>
+            <label>Numéro chrono</label>
+            <airsfield>
+               <codeField>N_CHRONO</codeField>
+            </airsfield>
+            <allowJoker>true</allowJoker>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Type</label>
+            <airsfield>
+               <codeField>T_TYPE</codeField>
+            </airsfield>
+            <type>list</type>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Priorité</label>
+            <airsfield>
+               <codeField>T_PRIORITE</codeField>
+            </airsfield>
+            <type>list</type>
+         </input>
+         <input>
+            <operator>=</operator>
+            <operator>&gt;</operator>
+            <operator>&lt;</operator>
+            <operator>{}</operator>
+            <operator>}{</operator>
+            <label>Date d'échéance</label>
+            <airsfield>
+               <codeField>D_ECHEANCE</codeField>
+            </airsfield>
+            <airsProfiles>12</airsProfiles>
+         </input>
+         <input main="true">
+            <operator>=</operator>
+            <label>Emetteur</label>
+            <airsfield>
+               <codeField>C_EMETTEUR</codeField>
+            </airsfield>
+            <type>correspondent</type>
+         </input>
+         <input main="true">
+            <operator>=</operator>
+            <label>Destinataire</label>
+            <airsfield>
+               <codeField>C_DESTINATAIRE</codeField>
+            </airsfield>
+            <type>correspondent</type>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Nature</label>
+            <airsfield>
+               <codeField>T_NATURE</codeField>
+            </airsfield>
+            <type>list</type>
+         </input>
+         <input main="true">
+            <operator>=</operator>
+            <label>Objet</label>
+            <airsfield>
+               <codeField>C_OBJET</codeField>
+            </airsfield>
+            <inputHelper autoTab="false" />
+            <required>false</required>
+            <allowJoker>true</allowJoker>
+         </input>
+         <input>
+            <operator>=</operator>
+            <label>Contenu des documents</label>
+            <airsfield>
+               <codeField>DOCS</codeField>
+            </airsfield>
+            <inputHelper autoTab="false" />
+            <required>false</required>
+            <allowJoker>false</allowJoker>
+         </input>
+      </contentType>
+   </organization>
+</searchForm>

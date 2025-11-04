@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hierarchique xmlns="http://www.digitech.com/dossiers/hierarchical" xmlns:ns2="http://www.digitech.com/dossiers/common"
+	customerName="ocsd_bnk" version="6.0.9">
+
+    <organization id="0" name="DEFAULT">
+    </organization>
+    
+    <organization id="1" name="Socredo">      
+        <contentType visible="true" name="D_DOS_IMGCHQ_SOC">
+            <libelle>Remise {NUM_REM}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_IMGCHQ_SOC">
+            <libelle dateFormat="dd/MM/yyyy">{TYP_DOC} ( {D_CREAT} - {NUM_CHQ} )</libelle>
+            <sorting/>
+        </contentType>
+       <contentType visible="true" name="D_DOC_OVC">
+          <libelle>{OVC_TYPE_DOCUMENT}</libelle>
+       </contentType>
+    </organization>
+
+    <organization id="23" name="IEOM">      
+        <contentType visible="true" name="D_DOS_IMGCHQ_IEOM">
+            <libelle>Remise {NUM_REM}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_IMGCHQ_IEOM">
+            <libelle dateFormat="dd/MM/yyyy">{TYP_DOC} ( {D_CREAT} - {NUM_CHQ} )</libelle>
+            <sorting/>
+        </contentType>
+    </organization>
+    
+    <organization id="24" name="CCP">      
+        <contentType visible="true" name="D_DOS_IMGCHQ_CCP">
+            <libelle>Remise {NUM_REM}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_IMGCHQ_CCP">
+            <libelle dateFormat="dd/MM/yyyy">{TYP_DOC} ( {D_CREAT} - {NUM_CHQ} )</libelle>
+            <sorting/>
+        </contentType>
+		
+		<!-- CCP - DSF -->
+		<contentType visible="true" name="D_DOS_CCP_DSF">
+            <libelle  dateFormat="dd/MM/yyyy">{CCP_NUM_CLIENT} - {CCP_NOM} - {CCP_PRENOM} - {CCP_DATE_NAISSANCE}</libelle>
+            <sorting/>
+        </contentType>
+		<contentType visible="true" name="D_CPT_CCP_DSF">
+            <libelle>{CCP_NUM_COMPTE} - {CCP_LIBELLE} - {CCP_ETAT} - {CCP_TYPE_COMPTE}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_CCP_DSF">
+            <libelle>{CCP_TYPE_DOC}</libelle>
+			<field_hier>CCP_TYPE_DOSSIER</field_hier> 
+            <sorting/>
+        </contentType>
+
+		<!-- ATD -->
+		<contentType visible="true" name="D_DOS_ATD">
+            <libelle  dateFormat="dd/MM/yyyy">{ATD_REF} - {ATD_INTITULE_COMPTE_G} - {ATD_DATE_NAISSANCE} - {ATD_NUM_COMPTE_G} - {ATD_DATE_DSB} - {ATD_DATE_ODI} - {ATD_NOM_CREANCIER} - {ATD_MONTANT_TOTAL} - {ATD_MONTANT_RESERVE} - {ATD_DATE_REGLEMENT} - {ATD_REF_LETTRAGE} - {ATD_DATE_MLV} - {ATD_MONTANT_MLV} - {ATD_SOLDE_APRES_MLV}</libelle>
+            <sorting/>
+        </contentType>
+		<contentType visible="true" name="D_DOC_ATD">
+            <libelle>{TYPE_DOC_AFFICHE} - {ATD_REF}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_ATD_MAINLEVEE">
+            <libelle>{TYPE_DOC_AFFICHE} - {ATD_REF} - {ATD_INTITULE_COMPTE_O} - {ATD_NUM_COMPTE_O}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_ATD_COURRIER">
+            <libelle>{TYPE_DOC_AFFICHE} - {ATD_REF} - {ATD_INTITULE_COMPTE_O} - {ATD_NUM_COMPTE_O}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType visible="true" name="D_DOC_ATD_TB">
+            <libelle>{TYPE_DOC_AFFICHE} - {ATD_REF} - {ATD_INTITULE_COMPTE_O} - {ATD_NUM_COMPTE_O}</libelle>
+			<sorting/>
+        </contentType>
+		
+
+		
+    </organization> 
+ 
+   <organization id="25" name="SOCREDO DPC">
+     <contentType visible="true" name="D_DOS_DPC">
+            <libelle>Client {DPC_NOM_CLIENT} {DPC_PRENOM_CLIENT} - {DPC_NUM_CLIENT}</libelle>
+            <sorting/>
+      </contentType>
+      
+      <!-- Conaisssance client-->
+      <contentType visible="true" name="D_DOC_DCC">
+          <libelle>{DCC_TYPE_DOCUMENT}</libelle> 
+          <field_hier>DCC_TYPE_DOSSIER</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>DCC_TYPE_DOCUMENT</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>
+      
+      <!-- OVC -->
+      <contentType visible="true" name="D_DOC_OVC">
+          <libelle>{OVC_TYPE_DOCUMENT}</libelle> 
+          <field_hier>OVC_TYPE_DOSSIER</field_hier>
+          <field_hier>OVC_NUM_COMPTE</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OVC_NUM_COMPTE</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>
+      
+      <!-- CASDEN -->
+	    <contentType visible="true" name="D_DOC_CAS">
+          <libelle>{CAS_TYPE_DOCUMENT}</libelle> 
+          <field_hier>CAS_TYPE_DOSSIER</field_hier>
+          <field_hier>OVC_NUM_COMPTE</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OVC_NUM_COMPTE</ns2:codeField>
+              </ns2:sortingPolicy>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>CAS_TYPE_DOCUMENT</ns2:codeField>
+              </ns2:sortingPolicy>              
+           </sorting>
+      </contentType>
+      
+      <!-- Dossiers risques-->
+      <contentType visible="true" name="D_DOC_RISQUE">
+          <libelle>{RISQUE_TYPE_DOC}</libelle> 
+          <field_hier>RISQUE_TYPE_DOSSIER</field_hier>
+          <field_hier>RISQUE_TYPE_SOUS_DOSSIER</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>RISQUE_TYPE_DOC</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>
+      
+      <!-- Dossier credit -->
+      <contentType visible="true" name="D_DOC_CREDITS">
+          <libelle>{CREDITS_TYP_DOC}</libelle> 
+          <field_hier>CREDITS_TYP_DOS</field_hier>
+          <field_hier>CREDITS_NUM</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>CREDITS_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>
+      
+      <!-- Autorisation de decouverte -->
+      <contentType visible="true" name="D_DOC_ADD">
+          <libelle>{ADD_TYPE_DOC}</libelle> 
+          <field_hier>ADD_TYPE_DOSSIER</field_hier>
+          <field_hier>ADD_NUM</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ADD_TYPE_DOC</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType> 
+
+		<!-- chantier DCC - Services -->
+	    <contentType visible="true" name="D_DOC_OP_GUI">
+          <libelle>{OP_GUI_TYP_DOC}</libelle> 
+          <field_hier>OP_GUI_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OP_GUI_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+    <!-- Banque a distance-->
+	    <contentType visible="true" name="D_DOC_BANK_DIST">
+          <libelle>{BANK_DIST_TYP_DOC}</libelle> 
+          <field_hier>BANK_DIST_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>BANK_DIST_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+
+		<!-- chantier DCC - Activités -->		
+	    <contentType visible="true" name="D_DOC_ACT_LOCAL">
+          <libelle>{ACT_LOCAL_TYP_DOC}</libelle> 
+          <field_hier>ACT_LOCAL_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ACT_LOCAL_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+    <!-- 02.2_Etrangere - Europe -->
+	  <contentType visible="true" name="D_DOC_ETR_EUR">
+          <libelle>{ETR_EUR_TYP_DOC}</libelle> 
+          <field_hier>ETR_EUR_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ETR_EUR_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+		
+		<!-- 02.3_Etrangere - Hors Europe -->
+	  <contentType visible="true" name="D_DOC_ETR_HORS_EUR">
+          <libelle>{ETR_HORS_EUR_TYP_DOC}</libelle> 
+          <field_hier>ETR_HORS_EUR_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ETR_HORS_EUR_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+		<!-- chantier DCC - Echelles -->	
+	    <contentType visible="true" name="D_DOC_ECHELLE">
+          <libelle>{ECHELLE_TYP_DOC}</libelle> 
+          <field_hier>ECHELLE_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ECHELLE_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+		
+		<!-- chantier DCC - Cartes -->	
+	    <contentType visible="true" name="D_DOC_CARTES">
+          <libelle>{CARTE_TYP_DOC}</libelle> 
+          <field_hier>CARTE_TYP_DOS</field_hier>
+          <field_hier>CARTE_TYP</field_hier>		  
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>CARTE_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+		
+		<!-- chantier DCC - Chèques -->	
+	    <contentType visible="true" name="D_DOC_CHQ">
+          <libelle>{CHQ_TYP_DOC}</libelle> 
+          <field_hier>CHQ_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>CHQ_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+		<!-- chantier DCC - GRC -->	
+	    <contentType visible="true" name="D_DOC_GRC">
+          <libelle>{GRC_TYP_DOC}</libelle> 
+          <field_hier>GRC_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>GRC_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>	
+		
+		<!-- chantier DCC - Epargnes - Bancaire -->	
+	    <contentType visible="true" name="D_DOC_EPAR_BANC">
+          <libelle>{EPAR_BANC_TYP_DOC}</libelle> 
+          <field_hier>EPAR_BANC_TYP_DOS</field_hier>
+          <field_hier>EPAR_BANC_NUM</field_hier>		  
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>EPAR_BANC_NUM</ns2:codeField>
+              </ns2:sortingPolicy>			
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>EPAR_BANC_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+
+		<!-- chantier DCC - Epargnes - Règlementée -->	
+	    <contentType visible="true" name="D_DOC_EPAR_REGL">
+          <libelle>{EPAR_REGL_TYP_DOC}</libelle> 
+          <field_hier>EPAR_REGL_TYP_DOS</field_hier>
+          <field_hier>EPAR_REGL_NUM</field_hier>		  
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>EPAR_REGL_NUM</ns2:codeField>
+              </ns2:sortingPolicy>			
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>EPAR_REGL_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>	
+		
+		<!-- chantier DCC - IARD -->	
+	    <contentType visible="true" name="D_DOC_ASS_IARD">
+          <libelle>{ASS_IARD_TYP_DOC}</libelle> 
+          <field_hier>ASS_IARD_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ASS_IARD_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+		<!-- chantier DCC - Assurance Vie -->	
+	    <contentType visible="true" name="D_DOC_ASS_VIE">
+          <libelle>{ASS_VIE_TYP_DOC}</libelle> 
+          <field_hier>ASS_VIE_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ASS_VIE_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+		<!-- chantier DCC - GTG -->	
+	    <contentType visible="true" name="D_DOC_GTG">
+          <libelle>{GTG_TYP_DOC}</libelle> 
+          <field_hier>GTG_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>GTG_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+		<!-- chantier DCC - MON -->	
+	    <contentType visible="true" name="D_DOC_MON">
+          <libelle>{MON_TYP_DOC}</libelle> 
+          <field_hier>MON_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>MON_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>	
+		
+		<!-- chantier DCC - Gestion salle de marché -->	
+	    <contentType visible="true" name="D_DOC_GEST">
+          <libelle>{GEST_TYP_DOC}</libelle> 
+          <field_hier>GEST_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>GEST_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - libre - Import -->	
+	    <contentType visible="true" name="D_DOC_LIBR_IMP">
+          <libelle>{LIBR_IMP_TYP_DOC}</libelle> 
+          <field_hier>LIBR_IMP_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>LIBR_IMP_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - libre - Export -->	
+	    <contentType visible="true" name="D_DOC_LIBR_EXP">
+          <libelle>{LIBR_EXP_TYP_DOC}</libelle> 
+          <field_hier>LIBR_EXP_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>LIBR_EXP_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>
+
+		<!-- chantier DCC - Portefeuilles - Documentaire - Import -->	
+	    <contentType visible="true" name="D_DOC_DOC_IMP">
+          <libelle>{DOC_IMP_TYP_DOC}</libelle> 
+          <field_hier>DOC_IMP_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>DOC_IMP_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+
+		<!-- chantier DCC - Portefeuilles - Documentaire - Export -->	
+	    <contentType visible="true" name="D_DOC_DOC_EXP">
+          <libelle>{DOC_EXP_TYP_DOC}</libelle> 
+          <field_hier>DOC_EXP_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>DOC_EXP_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>	
+		
+		<!-- chantier DCC - Crédit documentaire -->	
+	    <contentType visible="true" name="D_DOC_CRE_DOC">
+          <libelle>{CRE_DOC_TYP_DOC}</libelle> 
+          <field_hier>CRE_DOC_TYP_DOS</field_hier>
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>CRE_DOC_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+		
+		<!-- chantier DCC - Placements financiers -->	
+	    <contentType visible="true" name="D_DOC_FIN">
+          <libelle>{FIN_TYP_DOC}</libelle> 
+          <field_hier>FIN_TYP_DOS</field_hier>
+            <sorting>			
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>FIN_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+		
+		<!-- chantier DCC - Engagements -->	
+	    <contentType visible="true" name="D_DOC_ENG">
+          <libelle>{ENG_TYP_DOC}</libelle> 
+          <field_hier>ENG_TYP_DOS</field_hier>
+          <field_hier>ENG_NUM</field_hier>		  		  
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ENG_NUM</ns2:codeField>
+              </ns2:sortingPolicy>			
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>ENG_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>		  
+           </sorting>
+		</contentType>		
+		
+		<!-- chantier DCC - Conventions -->	
+	    <contentType visible="true" name="D_DOC_CONV">
+          <libelle>{CONV_TYP_DOC}</libelle> 
+          <field_hier>CONV_TYP_DOS</field_hier>		  
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>CONV_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>			  
+           </sorting>
+		</contentType>		
+		
+		<!-- chantier DCC - Dossiers LAB -->	
+	    <contentType visible="true" name="D_DOC_LAB">
+          <libelle>{LAB_TYP_DOC}</libelle> 
+          <field_hier>LAB_TYP_DOS</field_hier>
+          <field_hier>NUM_DAV</field_hier>		  
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>NUM_DAV</ns2:codeField>
+              </ns2:sortingPolicy>			
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>LAB_TYP_DOC</ns2:codeField>
+              </ns2:sortingPolicy>		  
+           </sorting>
+		</contentType>		
+		
+    </organization>   
+    
+    <!-- OFINA -->
+    <organization id="26" name="OFINA">
+      <contentType visible="true" name="D_DOS_OFINA_CLT_PORTEUR">
+          <libelle>No client : {OFINA_CLT_NUM_CLIENT} - {OFINA_CLT_NOM_CLIENT} {OFINA_CLT_PRENOM_CLIENT} - {OFINA_CLT_TYPE_CLIENT} {OFINA_CLT_TYPE_PORTEUR} - {NUM_CARTON} {NUM_BOITE}</libelle>            
+      </contentType>
+      <contentType visible="true" name="D_DOC_OFINA_CLT_PRODUIT">
+          <libelle>{OFINA_CLT_TYPE_PRODUIT_2} {OFINA_CLT_ETAT_PRODUIT}</libelle> 
+           <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_CLT_TYPE_PRODUIT_2</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>       
+      </contentType>       
+      <contentType visible="true" name="D_DOC_OFINA_CLT_PORTEUR">
+          <libelle>{OFINA_CLT_PORTEUR_TYPE_DOC}</libelle>
+          <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_CLT_PORTEUR_TYPE_DOC</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>       
+      
+      <contentType visible="true" name="D_DOS_OFINA_CLT_ACQUER">
+          <libelle>No client : {OFINA_CLT_NUM_CLIENT} - {OFINA_CLT_ENSEIGNE} - {OFINA_CLT_TYPE_CLIENT}</libelle>            
+      </contentType>
+      <contentType visible="true" name="D_DOC_OFINA_CLT_ACQ">
+          <libelle>{OFINA_CLT_TYPE_ACQUISITION_2} {OFINA_CLT_ETAT_ACQUISITION}</libelle>
+          <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_CLT_TYPE_ACQUISITION_2</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>         
+      </contentType> 
+      <contentType visible="true" name="D_DOC_OFINA_CLT_ACQUER">
+          <libelle>{OFINA_CLT_ACQUER_TYPE_DOC}</libelle>
+          <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_CLT_ACQUER_TYPE_DOC</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>    
+      
+        <contentType visible="true" name="D_DOS_OFINA_ADM">
+            <libelle>{OFINA_ADM_NOM_FOURNISSEUR}</libelle>
+            <sorting/>
+        </contentType>       
+        
+      <contentType visible="true" name="D_DOC_OFINA_ADM_FACTURE">
+           <libelle>{OFINA_ADM_NUM_FACTURE}</libelle> 
+           <field_hier>OFINA_ADM_AFF_FACTURE</field_hier> 
+             <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_ADM_NUM_FACTURE</ns2:codeField>
+              </ns2:sortingPolicy>
+             </sorting>
+      </contentType>
+      
+      <contentType visible="true" name="D_DOC_OFINA_ADM_CONV">
+          <libelle>{OFINA_ADM_TYPE_CONVENTION}</libelle> 
+          <field_hier>OFINA_ADM_AFF_CONVENTION</field_hier> 
+             <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_ADM_TYPE_CONVENTION</ns2:codeField>
+              </ns2:sortingPolicy>
+             </sorting>
+      </contentType>
+    </organization>
+           
+           
+    <!-- ARCHIVISTE -->
+    <organization id="27" name="ARCHIVISTE">
+      <contentType visible="true" name="D_DOS_OFINA_CLT_PORTEUR">
+          <libelle>No client : {OFINA_CLT_NUM_CLIENT} - CM / Boite : {NUM_CARTON} / {NUM_BOITE}</libelle>  
+		  <sorting/>          
+      </contentType>
+      
+	  <contentType visible="true" name="D_DOC_OFINA_CLT_PRODUIT">
+          <libelle>{OFINA_CLT_TYPE_PRODUIT_2} {OFINA_CLT_ETAT_PRODUIT}</libelle> 
+           <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_CLT_TYPE_PRODUIT_2</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>       
+      </contentType>       
+      <contentType visible="true" name="D_DOC_OFINA_CLT_PORTEUR">
+          <libelle>{OFINA_CLT_PORTEUR_TYPE_DOC}</libelle>
+          <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OFINA_CLT_PORTEUR_TYPE_DOC</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>     
+	    
+	  
+      <contentType visible="true" name="D_DOS_OFINA_CLT_ACQUER">
+          <libelle>No client : {OFINA_CLT_NUM_CLIENT} - No SE : {OFINA_CLT_NUM_SE} - CM / Boite : {NUM_CARTON} / {NUM_BOITE}</libelle>            
+		  <sorting/>          		  
+      </contentType>   
+      
+      <contentType visible="true" name="D_DOS_OFINA_ADM">
+          <libelle>{OFINA_ADM_NOM_FOURNISSEUR} - CM / Boite : {NUM_CARTON} / {NUM_BOITE}</libelle>
+		  <sorting/>          		  
+      </contentType>
+
+	  <contentType visible="true" name="D_DOS_DPC">
+            <libelle>Client {DPC_NOM_CLIENT} {DPC_PRENOM_CLIENT} - {DPC_NUM_CLIENT}</libelle>
+            <sorting/>
+      </contentType>
+      <contentType visible="true" name="D_DOC_OVC">
+          <libelle>{OVC_TYPE_DOCUMENT}</libelle> 
+          <field_hier>OVC_TYPE_DOSSIER</field_hier>
+          <field_hier>OVC_NUM_COMPTE</field_hier> 
+            <sorting>
+              <ns2:sortingPolicy>
+              <ns2:direction>ASCENDING</ns2:direction>
+              <ns2:codeField>OVC_NUM_COMPTE</ns2:codeField>
+              </ns2:sortingPolicy>
+           </sorting>
+      </contentType>
+	  
+    </organization> 
+         
+</hierarchique>

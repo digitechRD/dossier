@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hierarchique xmlns="http://www.digitech.com/dossiers/hierarchical" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.5.1" customerName="LAPROVENCE">
+    <organization name="DEFAULT" id="0">
+        <contentType name="D_DOS_FOUR" visible="true">
+            <libelle>{FOUR_NOM} - {FOUR_MAT}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="D_DOC_FAC" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{FAC_TYPE_DOC} - {FAC_DATE} - {FAC_ETAT} </libelle>
+            <field_hier>ENG_NUM</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>ENG_NUM</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filter></filter>
+            <!--<filterField>
+                <label>Montant TTC</label>
+                <airsField>FAC_TTC</airsField>
+            </filterField>-->
+        </contentType>
+        <contentType name="D_DOC_ENG" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{ENG_TYPE_DOC} - {ENG_DATE} - {ENG_ETAT} - ({ENG_HT})</libelle>
+            <field_hier>ENG_NUM</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>ENG_NUM</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <filter></filter>
+	     <filterField>
+		  <operator>=</operator>
+                <label>Verrou Eng.</label>
+                <airsField>ENG_VERROU</airsField>
+            </filterField>
+        </contentType>
+    </organization>
+</hierarchique>

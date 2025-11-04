@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <!-- Zone "head" avec ui:define -->
+  <ui:define name="head">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script type="text/javascript" src="#{ScriptBundleModel.charts}"></script>
+  </ui:define>
+
+  <h:panelGroup layout="block" styleClass="row container-fluid px-0 d-flex justify-content-center h-100">
+    <h:panelGroup layout="block" styleClass="card w-100 h-100 border-0">
+
+      <!-- Message si aucune occupation -->
+      <c:if test="#{empty item.groovyResults['occupations']}">
+        <h:outputText value="#{MessageBundleModel.home_chart_no_data}"
+                      styleClass="description row alert alert-info alert-message justify-content-center mt-2 text-center"/>
+      </c:if>
+
+      <!-- Graphique si occupations -->
+      <c:if test="#{not empty item.groovyResults['occupations']}">
+
+        <!-- Menu période par mois -->
+        <h:selectOneMenu id="rangePeriods#{item.cleanedId}"
+                         value="#{item.userParamsWrapper['rangeDate']}"
+                         styleClass="form-control form-control-sm small xs-small ml-auto py-0 mr-1 mt-0 max-w-200px"
+                         title="période">
+          <f:selectItems value="#{item.groovyResults['rangeOptions']}"/>
+          <a4j:support event="onchange" ajaxSingle="true" ignoreDupResponses="true"
+                       oncomplete="refreshAsynchronousBlocks()"
+                       reRender="notifications, result#{item.cleanedId}Panel"
+                       action="#{item.refreshAndSave}"/>
+        </h:selectOneMenu>
+
+        <!-- Zone du graphique -->
+        <h:panelGroup layout="block" styleClass="chartPanelHtml">
+          <div id="#{item.cleanedId}Chart" style="width:100%;height:400px;"></div>
+        </h:panelGroup>
+
+        <!-- Script ECharts avec console log pour debug -->
+        <script type="text/javascript">
+          console.log("digitechVacationsWidget - planning par mois chargé (JSF1.2 compat) !");
+          console.log("XCategories :", #{item.groovyResults['XCategories']});
+          console.log("YCategories :", #{item.groovyResults['YCategories']});
+          console.log("OccupationLengths :", #{item.groovyResults['OccupationLengths']});
+          console.log("OccupationOffsets :", #{item.groovyResults['OccupationOffsets']});
+
+          $jQ(document).ready(function () {
+            let shipChart = #{item.cleanedId}initShipChart(
+              #{item.groovyResults['XCategories']},
+              #{item.groovyResults['YCategories']},
+              #{item.groovyResults['OccupationLengths']},
+              #{item.groovyResults['OccupationOffsets']}
+            );
+            if(shipChart) {
+              window.onresize = function () { shipChart.resize(); }
+              initResizeObserver4Chart('contentForm:custom_#{item.cleanedId}Panel', shipChart);
+            }
+          });
+        </script>
+
+      </c:if>
+    </h:panelGroup>
+  </h:panelGroup>
+</ui:composition>

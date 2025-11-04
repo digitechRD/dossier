@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preference>
+	<organization name="DEFAULT" id="-1" titre="Accueil IAS"
+		workflowCorbeille="1">
+		<indexation contentType="DOCSAL">
+			<airsrequest name="">
+				<value>WFTASK=indexationIAS</value>
+			</airsrequest>
+			<airsrequest name="">
+				<value>WFTASK=indexationApresEnrichissementIAS</value>
+			</airsrequest>
+		</indexation>
+		<SubmitWorkflow alert="1" onclick="gotoSimpleView" />
+		<reporting>
+			<file value="ias_receptions.rptdesign"
+				titre="Suivi des réceptions" />
+			<file value="ias_suivi_activites.rptdesign"
+				titre="Suivi des activités" />
+			<file value="ias_suivi_stock.rptdesign"
+				titre="Suivi du stock" />
+			<file value="ias_le_suivi_des_clotures.rptdesign"
+				titre="Suivi des clôtures" />
+		</reporting>
+	</organization>
+</preference>

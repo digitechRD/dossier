@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<listview  xmlns="http://www.digitech.com/dossiers/view">
+	<organization name="DEFAULT" id="0">
+		<contentType name="PIECECOMP">
+   		<column label="Code fournisseur">
+				<format></format>
+				<airsField parentContentType="">CODEFOUR</airsField>
+			</column>
+			<column label="Nom fournisseur">
+				<format></format>
+				<airsField parentContentType="">NOMFOUR</airsField>
+			</column>								
+      <column label="Type de facture">
+       <format></format>
+       <airsField parentContentType="">TYPEFAC</airsField>
+      </column>        
+     <column label="Montant HT">
+       <format></format>
+       <airsField parentContentType="">MONTANTTTC</airsField>
+      </column>        
+     <column label="Montant TTC">
+       <format></format>
+       <airsField parentContentType="">MONTANTDEV</airsField>
+      </column>        
+     <column label="Devise">
+       <format></format>
+       <airsField parentContentType="">DEVISE</airsField>
+      </column>        
+      <column label="Date d'intégration">
+       <format></format>
+       <airsField parentContentType="">D_CREAT</airsField>
+      </column>        
+			<nbDocMax>10</nbDocMax>
+			<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>D_CREAT</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+		<contentType name="DOSSIER">
+   		<column label="Code fournisseur">
+				<format></format>
+				<airsField parentContentType="">CODEFOUR</airsField>
+			</column>
+			<column label="Nom fournisseur">
+				<format></format>
+				<airsField parentContentType="">NOMFOUR</airsField>
+			</column>								
+      <column label="Date d'intégration">
+       <format></format>
+       <airsField parentContentType="">D_CREAT</airsField>
+      </column>        
+			<nbDocMax>10</nbDocMax>
+			<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>D_CREAT</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+	</organization>
+	
+</listview>

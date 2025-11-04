@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype" xmlns:ns2="http://www.digitech.com/dossiers/common" xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="6.0.6-RC4" customerName="@CUSTOMERNAME@">
+    <parentContentType appName="AIRS" name="COU_COURRIER_IN" isFlowParent="true">
+        <flow code="COURRIER" label="Gestion du courrier">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <extraFilter>
+            <ns2:dossierrequest name="agent">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>U_CREAT.USR=&quot;#LOGIN_ID#&quot; OU (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;</ns2:airsvalue>
+               <ns2:airsProfile>10</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="gestionnaire">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;122&quot; OU U_CREAT.USR=&quot;#LOGIN_ID#&quot; OU (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;</ns2:airsvalue>
+               <ns2:airsProfile>11</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="direction">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;122&quot; OU U_CREAT.USR=&quot;#LOGIN_ID#&quot; OU O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; OU U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;</ns2:airsvalue>
+               <ns2:airsProfile>12</ns2:airsProfile>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="COU_COURRIER_OUT" isFlowParent="true">
+        <flow code="COURRIER" label="Gestion du courrier">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <extraFilter>
+            <ns2:dossierrequest name="agent">
+               <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+               <ns2:airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot;</ns2:airsvalue>
+               <ns2:airsProfile>10</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="gestionnaire">
+               <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+               <ns2:airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot; OU C_EMETTEUR=&quot;AIRS=#LOGIN_ID#&quot;</ns2:airsvalue>
+               <ns2:airsProfile>11</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="direction">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot; OU C_EMETTEUR=&quot;AIRS=#LOGIN_ID#&quot;</ns2:airsvalue>
+               <ns2:airsProfile>12</ns2:airsProfile>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="COU_REPONSE" isFlowParent="true">
+        <flow code="COURRIER" label="Gestion du courrier">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+    </parentContentType>
+    
+     <parentContentType isFlowParent="true" name="DOSSIER_OB" appName="AIRS">
+        <flow code="FLOW_1" label="Flux Ordre de bourse">
+            <description>Flux_1 migré le 29-06-2012</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOCUMENT_OB" appName="AIRS">
+            <codeLinkedField parentField="OB_CPTECLIENT" childField="OB_CPTECLIENT" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="false" name="DOCUMENT_OB" appName="AIRS">
+        <flow code="FLOW_1" label="Flux Ordre de bourse">
+            <description>Flux_1 migré le 29-06-2012</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="PJ_OB" appName="AIRS">
+            <codeLinkedField parentField="OB_CPTECLIENT" childField="OB_CPTECLIENT" multiple="false"/>
+            <codeLinkedField parentField="OB_NUMOB" childField="OB_NUMOB" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    
+    <parentContentType isFlowParent="true" name="DOSSIER_FACT" appName="AIRS">
+        <flow code="FLOW_2" label="Flux Facture">
+            <description>Flux_2 migré le 29-06-2012</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOCUMENT_FACT" appName="AIRS">
+            <codeLinkedField parentField="FACT_NUMINTRACOM" childField="FACT_NUMINTRACOM" multiple="false"/>
+            <codeLinkedField parentField="FACT_FOURNISSEUR" childField="FACT_FOURNISSEUR" multiple="false"/>
+            <codeLinkedField parentField="FACT_SIREN" childField="FACT_SIREN" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    
+    <parentContentType isFlowParent="true" name="DOSSIER_FOU" appName="AIRS">
+        <flow code="FLOW_3" label="Flux Fournisseur">
+            <description>Flux_3 migré le 29-06-2012</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOCUMENT_FOU" appName="AIRS">
+            <codeLinkedField parentField="FACT_FOURNISSEUR" childField="FACT_FOURNISSEUR" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    
+     <parentContentType isFlowParent="true" name="DOSSIER_COM" appName="AIRS">
+        <flow code="FLOW_4" label="Flux Commercial">
+            <description>Flux_4 migré le 29-06-2012</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOCUMENT_COM" appName="AIRS">
+            <codeLinkedField parentField="COM_NUMCLIENT" childField="COM_NUMCLIENT" multiple="false"/>
+            <codeLinkedField parentField="COM_NOM" childField="COM_NOM" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    
+     <parentContentType isFlowParent="true" name="DOSSIER_RH" appName="AIRS">
+        <flow code="FLOW_5" label="Flux RH">
+            <description>Flux_5 migré le 29-06-2012</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOCUMENT_RH" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="RH_NOM" childField="RH_NOM" multiple="false"/>
+        </childContentType>
+        <!-- Aadd rkr-->
+         <childContentType name="COU_COURRIER_IN" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="RH_NOM" childField="RH_NOM" multiple="false"/>
+        </childContentType>
+        <!-- - -->
+    </parentContentType>
+    
+     <parentContentType isFlowParent="true" name="GF_TIERS" appName="AIRS">
+        <flow code="CIRIL GF" label="CIRIL GF">
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="GF_PIECE" appName="AIRS">
+            <codeLinkedField parentField="GEDGF_NUMTIE" childField="GEDGF_NUMTIE" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    
+     <parentContentType isFlowParent="true" name="RH_AGENT" appName="AIRS">
+        <flow code="RH_FLUX_AGENT" label="CIRIL RH">
+            <description>Flux des documents archivés de l'agent</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="RH_BULLETIN_PAIE" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="GEN_SCHEMA" childField="GEN_SCHEMA" multiple="false"/>
+        </childContentType>
+        <childContentType name="RH_FICHIER_EVAL_ANNU" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="GEN_SCHEMA" childField="GEN_SCHEMA" multiple="false"/>
+        </childContentType>
+        <childContentType name="RH_ARRETE" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="GEN_SCHEMA" childField="GEN_SCHEMA" multiple="false"/>
+        </childContentType>
+        <childContentType name="RH_DOCUMENT_EXTERNE" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="GEN_SCHEMA" childField="GEN_SCHEMA" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    
+    <parentContentType isFlowParent="true" name="GF_PES_SRCI_BUDGET" appName="AIRS">
+        <flow code="GF_PES_SRCI" label="Création de PES SRCI">
+            <organization name="WKF" id="21"/>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="GF_PES_SRCI" appName="AIRS">
+            <codeLinkedField parentField="WKF_BUDGET" childField="WKF_BUDGET" multiple="false"/>
+            <codeLinkedField parentField="WKF_EXERCICE" childField="WKF_EXERCICE" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+   
+    <parentContentType isFlowParent="true" name="WKF_PES_FAST_DOSSIER" appName="AIRS">
+        <flow code="FLUX_WKF_PES_FAST" label="Création de PES FAST via le workflow">
+            <organization name="WKF" id="21"/>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="WKF_PES_FAST_DOCUMENT" appName="AIRS">
+            <codeLinkedField parentField="WKF_NOMFIC" childField="WKF_NOMFIC" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+     
+</rootContentType>

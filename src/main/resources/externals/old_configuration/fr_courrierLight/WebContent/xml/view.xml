@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common"
+   customerName="CIRIL" version="6.0.0">
+   <organization id="0" name="DEFAULT">
+      <contentType name="COU_COURRIER_IN">
+         <column label="ID">
+            <format></format>
+            <airsField>REFAIRS</airsField>
+            <airsProfiles>7</airsProfiles>
+         </column>
+         <column label="Numéro chrono" main="true">
+            <format></format>
+            <airsField>N_CHRONO</airsField>
+         </column>
+         <column label="Date de réception">
+            <format>dd/MM/yyyy</format>
+            <airsField>D_RECEPTION</airsField>
+         </column>
+         <column label="Type de courrier">
+            <format></format>
+            <airsField>T_TYPE</airsField>
+         </column>
+         <column label="Service traitant">
+            <format></format>
+            <airsField>O_PROPRIETAIRE</airsField>
+         </column>
+         <column label="Utilisateur traitant">
+            <format></format>
+            <airsField>U_PROPRIETAIRE</airsField>
+         </column>
+         <column label="Emetteur" main="true">
+            <type>correspondent</type>
+            <format></format>
+            <airsField>C_EMETTEUR</airsField>
+         </column>
+         <column label="Objet" main="true">
+            <format></format>
+            <airsField>C_OBJET</airsField>
+         </column>
+         <column label="Date d'échéance">
+            <format>dd/MM/yyyy</format>
+            <airsField>D_ECHEANCE</airsField>
+         </column>
+         <column label="Etat">
+            <format></format>
+            <airsField>T_ETAT_COURRIER</airsField>
+         </column>
+         <column label="Visé">
+            <format></format>
+            <airsField>T_ETAT_VISA</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>E_LU</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_CREAT</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VALIDEUR</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VALIDEURS</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VISEUR</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VISEURS</airsField>
+         </column>
+      <ns2:export renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress"
+        styleClass="exportCSV" link=""/>
+         <actionColumnPosition>1</actionColumnPosition>
+         <rowStyleClass>#{row.valueMap['E_LU'].value == 1 ? ' courrierRead' : ' courrierNotRead'}</rowStyleClass>
+         <rowActions-scriptId>courrierIn_unavailableActions</rowActions-scriptId>
+        <sorting>
+          <ns2:sortingPolicy>
+            <ns2:direction>DICREASING</ns2:direction>
+            <ns2:codeField>D_RECEPTION</ns2:codeField>
+          </ns2:sortingPolicy>
+        </sorting>
+      </contentType>
+      <contentType name="COU_COURRIER_OUT">
+         <column label="ID">
+            <format></format>
+            <airsField>REFAIRS</airsField>
+            <airsProfiles>7</airsProfiles>
+         </column>
+         <column label="Numéro chrono" main="true">
+            <format></format>
+            <airsField>N_CHRONO</airsField>
+         </column>
+         <column label="Type de courrier">
+            <format></format>
+            <airsField>T_TYPE</airsField>
+         </column>
+         <column label="Utilisateur traitant">
+            <format></format>
+            <airsField>U_PROPRIETAIRE</airsField>
+         </column>
+         <column label="Emetteur" main="true">
+            <type>correspondent</type>
+            <format></format>
+            <airsField>C_EMETTEUR</airsField>
+         </column>
+         <column label="Destinataire" main="true">
+            <type>correspondent</type>
+            <format></format>
+            <airsField>C_DESTINATAIRE</airsField>
+         </column>
+         <column label="Objet" main="true">
+            <format></format>
+            <airsField>C_OBJET</airsField>
+         </column>
+         <column label="Date d'échéance">
+            <format>dd/MM/yyyy</format>
+            <airsField>D_ECHEANCE</airsField>
+         </column>
+         <column label="Etat">
+            <format></format>
+            <airsField>T_ETAT_COURRIER</airsField>
+         </column>
+         <column label="Visé">
+            <format></format>
+            <airsField>T_ETAT_VISA</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VISEUR</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VISEURS</airsField>
+         </column>
+      <ns2:export renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress"
+        styleClass="exportCSV" link=""/>
+         <actionColumnPosition>1</actionColumnPosition>
+         <rowActions-scriptId>courrierOut_unavailableActions</rowActions-scriptId>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>DICREASING</ns2:direction>
+          <ns2:codeField>D_CREAT</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+      </contentType>
+   </organization>
+</listview>

@@ -1,0 +1,310 @@
+import java.util.List;
+import java.util.Map;
+import java.lang.Double;
+
+// import standart pour un script de type AIRSFLOW
+import org.slf4j.Logger;
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.UserCoreContext;
+import com.digitech.dossier.script.model.IScriptResultModel;
+import com.digitech.dossier.script.model.impl.ScriptResultModel;;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+
+import com.digitech.airs3dossiers.airs.AirsFolder;
+import com.digitech.dossier.script.model.onsave.ScriptResultBefore;
+import com.digitech.dossier.common.model.backend.airs.IField;
+import org.apache.commons.lang.StringUtils;
+
+
+
+//champs AIRS concernés
+C_ETAT_DOC 					= "C_ETAT_DOC";
+C_ETAT_DOSS 				= "C_ETAT_DOSS";
+C_STATUS_DOSS 				= "C_STATUS";
+
+
+//initialisation des valeurs à testes
+//pour le document
+DOC_VALUE_LINKED 				= "119"; // lie au formulaire
+DOC_VALUE_NOT_LINKED 			= "120"; // non lie au formulaire
+
+//pour le dossier : ETAT
+ETAT_VALUE_CONTROL_OK 			= "102"; // validé au controle
+ETAT_VALUE_DMD_ENQ 				= "103"; // demande d'enquete
+ETAT_VALUE_ENQ_IN 				= "104"; // enquete en cours
+ETAT_VALUE_WAITING_COM 			= "105"; // en attente d'export commission
+ETAT_VALUE_COM_EXAM_IN 			= "106"; // en cours d'examen par la commision
+ETAT_VALUE_STATUED_OFFICE 		= "107"; // statué d'office
+ETAT_VALUE_STATUED_COM 			= "108"; // statué par la commission
+ETAT_VALUE_FINALIZED 			= "109"; // finalisé
+ETAT_VALUE_DMD_ENQ_SIC 			= "203"; // demande d'enquete SIC
+
+//pour le dossier : statut
+STATU_VALUE_VALIDE 				= "110"; // validé
+STATU_VALUE_WAITING_ENQ 		= "111"; // en attente d'enquete
+STATU_VALUE_REJECTED 			= "112"; // rejeté
+STATU_VALUE_NO_PJ 				= "113"; // validé sans pj
+
+//messages renvoyés
+TEST_KO_SUM 					= "infos_test_script_saveOni_summary_KO";
+TEST_KO_CAS_1_DETAIL 			= "warn_script_saveOni_cas_1_detail"; // TODO : a definir
+TEST_KO_CAS_2_DETAIL 			= "warn_script_saveOni_cas_2_detail"; // TODO : a definir
+TEST_KO_CAS_3_DETAIL 			= "warn_script_saveOni_cas_3_detail"; // TODO : a definir
+TEST_KO_CAS_4_DETAIL 			= "warn_script_saveOni_cas_4_detail"; // TODO : a definir
+
+TEST_OK_SUM 					= "infos_test_script_saveOni_summary_OK";
+TEST_OK_CAS_1BIS_DETAIL 		= "infos_script_saveOni_cas_1BIS_detail_OK"; // TODO : a definir
+
+TEST_OK_DETAIL 					= "infos_test_script_saveOni_detail_OK"; 
+TEST_KO_DETAIL 					= "warn_test_script_saveOni_detail_KO";
+
+
+//IScriptResultModel<> ouput = new ScriptResultModel<List<IDocument>>()
+ScriptResultBefore result = new ScriptResultBefore();
+
+
+if(airsDocument != null) 
+{
+	if(airsDocument.isFolder()) 
+	{
+		AirsFolder airsFolder = (AirsFolder) airsDocument.getAirsDocument();
+		
+		// testing folder state
+		IField fieldDoss_STATUT = airsDocument.getField(C_STATUS_DOSS);
+		IField fieldDoss_ETAT = airsDocument.getField(C_ETAT_DOSS);
+		String fieldStatutvalue = getFieldValue( fieldDoss_STATUT );
+		String fieldEtatvalue = getFieldValue( fieldDoss_ETAT );
+				 
+		if( StringUtils.isNotBlank( fieldEtatvalue ) && StringUtils.isNotBlank( fieldStatutvalue ) )		
+		{			
+			if( fieldEtatvalue.equalsIgnoreCase( ETAT_VALUE_WAITING_COM ) || fieldEtatvalue.equalsIgnoreCase( ETAT_VALUE_STATUED_COM )  )			
+			{// etat : en attente d'export commission OU statué par la commission
+							
+				if( fieldStatutvalue.equalsIgnoreCase( STATU_VALUE_WAITING_ENQ ) )
+				{// statu en attente d'enquete
+					result = traitementCASE1(result);
+				}
+				else if( fieldStatutvalue.equalsIgnoreCase( STATU_VALUE_VALIDE )  )
+				{// statu validé
+					result = traitementCASE2(airsFolder, result);
+				}
+				else if( fieldStatutvalue.equalsIgnoreCase( STATU_VALUE_REJECTED ) || fieldStatutvalue.equalsIgnoreCase(STATU_VALUE_NO_PJ ) )
+				{// statu : rejete OU validé sans piece jointe
+					result = traitementCASE3(airsFolder,result);					
+				}
+			}
+			else if(  fieldEtatvalue.equalsIgnoreCase( ETAT_VALUE_DMD_ENQ ) || fieldEtatvalue.equalsIgnoreCase( ETAT_VALUE_ENQ_IN )   )
+			{// etat : demande d'enquete OU enquete en cours
+				if( fieldStatutvalue.equalsIgnoreCase( STATU_VALUE_WAITING_ENQ ) )
+				{// statu en attente d'enquete
+					result = traitementCASE3(airsFolder,result);
+				}
+				else
+				{
+					result = traitementCASE1(result);
+				}
+			}
+			else if(  fieldEtatvalue.equalsIgnoreCase( ETAT_VALUE_DMD_ENQ_SIC ) )
+			{// etat : enquete SIC
+				result = traitementCASE1BIS(result);
+			}
+			else if(  fieldEtatvalue.equalsIgnoreCase( ETAT_VALUE_CONTROL_OK ) )
+			{//etat : validé au controle
+				if( fieldStatutvalue.equalsIgnoreCase( STATU_VALUE_VALIDE ) )
+				{// statu validé
+					result = traitementCASE4(airsFolder,result);
+				}
+				else
+				{
+					result = traitementCASE1(result);
+				}					
+			}
+			else
+			{
+				result = traitementCASE1(result);
+			}
+			
+		}
+		else
+		{
+			result.setResult( false );
+			result.setMessageSummary(TEST_KO_SUM);
+			result.setMessageDetail(TEST_KO_CAS_1_DETAIL);
+			scriptLogger.warn("fields values are null");
+		}
+		
+		
+	}
+}
+else
+{
+	
+	result.setResult( false );
+	result.setMessageSummary(TEST_KO_SUM);
+	result.setMessageDetail(TEST_KO_CAS_1_DETAIL);
+	scriptLogger.warn("airsDocument is null");
+}
+
+output.setValue( result );
+
+//**************************************************************************************************************************************************************//
+// cas 1
+ScriptResultBefore traitementCASE1( ScriptResultBefore result )
+{	
+	scriptLogger.warn("Groovy : CASE 1");	
+	
+	result.setResult( false ); // on ne sauve pas					
+	result.setMessageSummary(TEST_KO_SUM);
+	result.setMessageDetail( TEST_KO_CAS_1_DETAIL );
+	return result;
+	
+}
+
+ScriptResultBefore traitementCASE1BIS( ScriptResultBefore result )
+{
+	scriptLogger.warn("Groovy : CASE 1 BIS");
+	result.setResult( true ); // on ne sauve pas					
+	result.setMessageSummary(TEST_OK_SUM);
+	result.setMessageDetail(TEST_OK_CAS_1BIS_DETAIL );
+	return result;
+}
+
+// cas 2
+ScriptResultBefore traitementCASE2(AirsFolder airsFolder, ScriptResultBefore result)
+{
+	scriptLogger.warn("Groovy : CASE 2");
+	// compte le nombre de document liés
+	int nlinkedDoc = countLinkedDoc(airsFolder);
+	
+	if( nlinkedDoc == 1 )
+	{
+		result.setResult( true );
+		result.setMessageSummary(TEST_OK_SUM);
+		result.setMessageDetail(TEST_OK_DETAIL);					
+	}
+	else
+	{
+		result.setResult( false ); // on ne sauve pas					
+		result.setMessageSummary(TEST_KO_SUM);
+		result.setMessageDetail(TEST_KO_CAS_2_DETAIL );
+	}
+	
+	return result;
+}
+
+// cas 3
+ScriptResultBefore traitementCASE3(AirsFolder airsFolder, ScriptResultBefore result)
+{
+	scriptLogger.warn("Groovy : CASE 3");
+	// compte le nombre de document liés
+	int nlinkedDoc = countLinkedDoc(airsFolder);
+	
+	if( nlinkedDoc == 0 )
+	{
+		result.setResult( true );
+		result.setMessageSummary(TEST_OK_SUM);
+		result.setMessageDetail(TEST_OK_DETAIL);					
+	}
+	else
+	{
+		result.setResult( false ); // on ne sauve pas					
+		result.setMessageSummary(TEST_KO_SUM);
+		result.setMessageDetail(TEST_KO_CAS_3_DETAIL );
+	}
+	
+	return result;
+}
+
+// cas 4
+ScriptResultBefore traitementCASE4(AirsFolder airsFolder, ScriptResultBefore result)
+{
+	scriptLogger.warn("Groovy : CASE 4");
+	
+	int nlinkedDoc = countLinkedDoc(airsFolder);
+	
+	if( nlinkedDoc > 0 )
+	{
+		result.setResult( true );
+		result.setMessageSummary(TEST_OK_SUM);
+		result.setMessageDetail(TEST_OK_DETAIL);					
+	}
+	else
+	{
+		result.setResult( false ); // on ne sauve pas					
+		result.setMessageSummary(TEST_KO_SUM);
+		result.setMessageDetail(TEST_KO_CAS_4_DETAIL );
+	}
+	
+	return result;
+	
+}
+
+// cas 5
+void traitementCASE5()
+{
+	scriptLogger.warn("Groovy : CASE 5");
+	
+}
+
+
+String getFieldValue( IField field )
+{
+	List<?> values = field.getValues();
+	String fieldvalue;
+	if(values != null && !values.isEmpty()) {
+		fieldvalue =getServerMgr().getFieldValues(values, field.getAirsField());   
+		scriptLogger.warn("Field Value : " + field.getCode() + " - " + fieldvalue );
+	}else
+	{
+		scriptLogger.warn("the field value is null or empty");
+	}
+	
+	return fieldvalue;
+}
+
+int countLinkedDoc(AirsFolder airsFolder)
+{ // compte les documents fils lié au formulaire
+	List<Integer> childIds;
+	int nLinkedDOc = 0;
+	try {
+		childIds = airsFolder.getChildListId();
+		boolean docAllReadyLinked = false;
+		boolean mustBeSave = true;
+		if(childIds != null) {
+			
+			for(Integer childId : childIds) {					
+				
+				IDocument docToTrait = getDocumentMgr().getDocument(userContext.getJeton(), childId);
+				
+				IField field = docToTrait.getField(C_ETAT_DOC );
+				
+				
+				String fieldvalue = getFieldValue( field );	
+				
+				if(fieldvalue != null && fieldvalue.equalsIgnoreCase( DOC_VALUE_LINKED ) )
+				{// doc linked
+					nLinkedDOc++;
+				}					
+			}			
+		}
+		else
+			scriptLogger.warn("childIds is null");
+	}
+	catch(Exception e) {		
+		scriptLogger.error(e.getLocalizedMessage(), e);
+	}
+	
+	scriptLogger.warn( nLinkedDOc + " child linked");
+	return nLinkedDOc;
+	
+}
+
+private IServer getServerMgr() {
+	return (IServer) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_SERVER_MGR);
+}
+
+private com.digitech.dossier.common.service.IDocument getDocumentMgr() {
+		return (com.digitech.dossier.common.service.IDocument) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_DOCUMENT_MGR);
+	}
+

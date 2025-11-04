@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update">
+  <!-- Organisation Par defaut : Externe et Courtage -->
+  <organization name="DEFAULT" id="0">
+    <contentType name="DDOS_DOSSIER">
+      <input type="" readonly="1">
+        <label>Libellé</label>
+        <airsfield>DOS_LIBELLE</airsfield>
+        <initial-value></initial-value>
+      </input>
+    </contentType>
+
+    <contentType name="DCOU_COURRIER" type="update">
+      <input type="" readonly="1">
+        <label>Flux</label>
+        <airsfield>COU_TYPFLUX</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="0">
+        <label>Objet</label>
+        <airsfield>COU_OBJET</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Priorité</label>
+        <airsfield>COU_PRIO</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Numéro chrono</label>
+        <airsfield>COU_IDENT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Etat</label>
+        <airsfield>COU_ETAT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Nature</label>
+        <airsfield>COU_NATURE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Type</label>
+        <airsfield>COU_TYPE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Date d'enregistrement</label>
+        <airsfield>COU_D_RECP</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Statut</label>
+        <airsfield>COU_STATUT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="textarea" readonly="0">
+        <label>Résumé</label>
+        <airsfield>COU_RESUME</airsfield>
+        <initial-value></initial-value>
+      </input>
+	<action xmlns="http://www.digitech.com/dossiers/common" id="fsCourrier" 
+			link="window.open('http://pc-lgu:8080/Courrier/jsp/index.jsp', 'Courrier', 'width=800,height=470,toolbar=no,scrollbars=yes,resizable=yes');"
+			image="icon_customAction_display_fsCourrier"
+			resourceKey="action_custom_display_fsCourrier"
+			target="_blank">	
+		<param name="idCourrier" value="{REFAIRS}"/>
+		<param name="id" value="#AIRS_AUTHENTICATION#"/>
+		<param name="cfs" value="true"/>	 
+	</action>
+
+    </contentType>
+
+    <contentType name="DCOU_ARCHIVE" type="update">
+      <input type="" readonly="1">
+        <label>Flux</label>
+        <airsfield>COU_TYPFLUX</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="0">
+        <label>Objet</label>
+        <airsfield>COU_OBJET</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Priorité</label>
+        <airsfield>COU_PRIO</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Numéro chrono</label>
+        <airsfield>COU_IDENT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Etat</label>
+        <airsfield>COU_ETAT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Nature</label>
+        <airsfield>COU_NATURE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Type</label>
+        <airsfield>COU_TYPE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Date d'enregistrement</label>
+        <airsfield>COU_D_RECP</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Statut</label>
+        <airsfield>COU_STATUT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="textarea" readonly="0">
+        <label>Résumé</label>
+        <airsfield>COU_RESUME</airsfield>
+        <initial-value></initial-value>
+      </input>
+      		<action xmlns="http://www.digitech.com/dossiers/common" id="fsCourrier" 
+				link="window.open('http://pc-lgu:8080/Courrier/jsp/index.jsp', 'Courrier', 'width=800,height=470,toolbar=no,scrollbars=yes,resizable=yes');"
+				image="icon_customAction_display_fsCourrier"
+				resourceKey="action_custom_display_fsCourrier"
+				target="_blank">	
+			<param name="idCourrier" value="{REFAIRS}"/>
+			<param name="id" value="#AIRS_AUTHENTICATION#"/>
+			<param name="cfs" value="true"/>	 
+		</action>
+    </contentType>
+  </organization>
+</formulaire>

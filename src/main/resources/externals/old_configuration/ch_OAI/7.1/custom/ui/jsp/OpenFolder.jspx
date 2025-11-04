@@ -1,0 +1,34 @@
+<jsp:root version="2.0" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:jsp="http://java.sun.com/JSP/Page">
+  
+  <f:view>
+    <html>
+    <head id="head">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>
+        <h:outputText value="ExportToEdit"/>
+      </title>
+      <script type="text/javascript">
+        function redirect(url, label) {
+          var myshell = new ActiveXObject("Shell.Application");
+          myshell.ShellExecute("iexplore.exe", " -nomerge -noframemerging " + url, "", "open", 1);
+        }
+      </script>
+    </head>
+    <body id="body">
+    
+    <h:panelGroup layout="block">
+      <script type="text/javascript">
+        if ("#{CustomActionModel.modalPanelModel.STATE}" == "OK") {
+          window.open('#{CustomActionModel.modalPanelModel.LINK}', 'AirsDossier', 'status=yes, scrollbars=yes, menubar=yes, resizable=yes, width=1300, height=750');
+        }
+        setTimeout('window.close()', 500);
+      </script>
+    </h:panelGroup>
+    
+    </body>
+    </html>
+  </f:view>
+
+</jsp:root>

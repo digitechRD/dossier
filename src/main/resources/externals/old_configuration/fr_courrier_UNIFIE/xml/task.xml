@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tasks xmlns="http://www.digitech.com/dossiers/task" version="6.2" customerName="CIRIL">
+    <task code="DUE_DATE_BEFORE_5" title="Vérification de la date d'échéance des courriers (relance à J - 5)" 
+          description="Cette tâche vérifie la date d'échéance de chaque courrier afin d'envoyer un mail de relance au propriétaire du courrier quand la date d'échéance est dans 5 jours" 
+          enabled="true" startDate="2011-12-01T09:00:00.000+01:00" planning="0 0 1 * * ?" flowCodes="COURRIER" scriptId="task_checker_dueDate">
+        <parameter name="interval" type="INTEGER" value="-5"/>
+    </task>
+    <task code="DUE_DATE_TODAY" title="Vérification de la date d'échéance des courriers (relance à jour J)" 
+          description="Cette tâche vérifie la date d'échéance de chaque courrier afin d'envoyer un mail de relance au propriétaire du courrier quand la date d'échéance est aujourd'hui" 
+          enabled="true" startDate="2011-12-01T09:00:00.000+01:00" planning="0 0 1 * * ?" flowCodes="COURRIER" scriptId="task_checker_dueDate">
+        <parameter name="interval" type="INTEGER" value="0"/>
+    </task>
+    <task code="DUE_DATE_AFTER_1" title="Vérification de la date d'échéance des courriers (relance à jour J + 1)" 
+          description="Cette tâche vérifie la date d'échéance de chaque courrier afin d'envoyer un mail de relance au propriétaire du courrier quand la date d'échéance est passée d'un jour" 
+          enabled="true" startDate="2011-12-01T09:00:00.000+01:00" planning="0 0 1 * * ?" flowCodes="COURRIER" scriptId="task_checker_dueDate">
+        <parameter name="interval" type="INTEGER" value="1"/>
+    </task>
+    <task code="RELOAD_POPULATION_CACHE" title="reload population cache" description="reload population cache" enabled="true" 
+          startDate="2011-12-01T09:00:00.000+01:00" planning="0 0/2 * * * ?" flowCodes="COURRIER" scriptId="reloadPopCache_Courrier">
+        <parameter name="interval" type="INTEGER" value="1"/>
+    </task>
+    <task code="SEND_WAITING_MAIL" title="envoi du courrier en attente" description="envoi du courrier en attente" enabled="true" 
+          startDate="2011-12-01T09:00:00.000+01:00" planning="0 0 0/4 * * ?" flowCodes="COURRIER" scriptId="sendWaitingMail">
+        <parameter name="interval" type="INTEGER" value="1"/>
+    </task>
+    <task code="UPDATE_ZIP_CODES" title="mise a jour des codes postaux" description="mise a jour des codes postaux" enabled="true" 
+          startDate="2011-12-01T09:00:00.000+01:00" planning="0 0/2 * * * ?" flowCodes="COURRIER" scriptId="updateZipCodes">
+        <parameter name="interval" type="INTEGER" value="1"/>
+    </task>
+</tasks>

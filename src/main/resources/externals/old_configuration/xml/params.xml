@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params customerName="@CUSTOMERNAME@" version="4.0" xmlns="http://www.digitech.com/dossiers/params">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <server port="5000">Srv-Prod-14</server>
+    <userAdmin>
+      <login>ReadLDAP</login>
+      <password>ReadLDAP</password>
+    </userAdmin>
+  </airsConfig>
+      <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>true</contentTypeFilter>
+        <flowmind>
+            <server port="1199">srv-prod-14</server>
+            <dbConnection maxconn="-1">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1199"></server>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+            </dbConnection>
+        </flowmind>
+    </workFlow>  <mailConfig/>
+    <!--<smtp>mailprod.provence-mrs.fr</smtp>
+    <defaultmailsender>AirsDossier_Recette@provence-mrs.fr</defaultmailsender>
+  </mailConfig>-->
+  <appConfig>
+  	<configurationStateDisplayed>false</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+        <displayMode>ADVANCED</displayMode>
+        <uploadAcceptedTypes></uploadAcceptedTypes>
+        <ssoActivated>false</ssoActivated>
+        <webAppURL></webAppURL>  </appConfig>
+    <birt webAppUrl="http://Srv-Prod-08:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">Srv-Prod-06</server>
+            <instance>PFA</instance>
+            <login>laprovence_do_airsuser</login>
+            <password>laprovence_do_airsuser</password>
+        </dbConnection>
+    </birt>
+</params>

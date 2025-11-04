@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:panelGroup layout="block" styleClass="row container-fluid px-0 d-flex justify-content-center h-100">
+    <h:panelGroup layout="block" styleClass="card w-100 h-100 border-0">
+
+      <!-- Si aucune occupation -->
+      <c:if test="#{empty item.groovyResults['occupations']}">
+        <h:outputText value="#{MessageBundleModel.home_chart_no_data}"
+                      styleClass="description row alert alert-info alert-message justify-content-center mt-2 text-center"/>
+      </c:if>
+
+      <!-- Si occupations disponibles -->
+      <c:if test="#{not empty item.groovyResults['occupations']}">
+
+        <script type="text/javascript" src="#{ScriptBundleModel.charts}"/>
+
+        <!-- Menu période -->
+        <h:selectOneMenu id="rangePeriods#{item.cleanedId}"
+                         value="#{item.userParamsWrapper['rangeDate']}"
+                         styleClass="form-control form-control-sm small xs-small ml-auto py-0 mr-1 mt-0 max-w-200px"
+                         title="période">
+          <f:selectItems value="#{item.groovyResults['rangeOptions']}"/>
+          <a4j:support event="onchange" ajaxSingle="true" ignoreDupResponses="true"
+                       oncomplete="refreshAsynchronousBlocks()"
+                       reRender="notifications, result#{item.cleanedId}Panel"
+                       action="#{item.refreshAndSave}"/>
+        </h:selectOneMenu>
+
+        <!-- Zone du graphique -->
+        <h:panelGroup layout="block" styleClass="chartPanelHtml">
+          <div id="#{item.cleanedId}Chart" style="width: 100%;height:100%"/>
+        </h:panelGroup>
+
+        <!-- Script ECharts -->
+        <script type="text/javascript">
+          function #{item.cleanedId}initShipChart(dataXAxis, dataYAxis, occData, offsetData) {
+            var itemContainer = document.getElementById('#{item.cleanedId}Chart');
+            if(itemContainer === undefined || itemContainer.offsetWidth <= 0 || itemContainer.offsetHeight <= 0) {
+              return;
+            }
+
+            // Associer directement le nom du navire à chaque donnée
+            const formattedOccData = occData.map((val, i) => ({
+              value: val,
+              navire: dataYAxis[i][0]
+            }));
+
+            const formattedOffsetData = offsetData.map((val, i) => ({
+              value: val,
+              navire: dataYAxis[i][0]
+            }));
+
+            const shipCharts = echarts.init(itemContainer);
+            const options = {
+              animationDuration: 250,
+              animation: true,
+              dataZoom: [
+                { type: 'slider', xAxisIndex: 0, filterMode: 'filter', height: 16, bottom: 4, start: 0, end: 100, showDetail: false },
+                { type: 'inside', id: 'insideX', xAxisIndex: 0, filterMode: 'filter', start: 0, end: 100, zoomOnMouseWheel: false, moveOnMouseMove: true },
+                { type: 'slider', filterMode: 'empty', yAxisIndex: 0, width: 12, right: 10, height: '87%', start: 0, end: 100, showDetail: false },
+                { type: 'inside', id: 'insideY', yAxisIndex: 0, start: 0, end: 100, zoomOnMouseWheel: false, moveOnMouseMove: true, moveOnMouseWheel: true }
+              ],
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'shadow' },
+                formatter: function (params) {
+                  let tar = params[1];
+                  return tar && '<b>' + tar.data.navire + '</b><br/>' + tar.seriesName + ' : <b>' + tar.value + '</b>';
+                }
+              },
+              grid: { top: 5, left: 5, right: 25, bottom: 20, containLabel: true, borderWidth: 0 },
+              xAxis: {
+                type: 'value',
+                axisTick: { show: true },
+                axisLabel: {
+                  formatter: function (value, index) { return dataXAxis[index]; },
+                  align: 'left'
+                }
+              },
+              yAxis: {
+                type: 'category',
+                axisTick: { show: false },
+                splitLine: { show: false },
+                axisLine: { show: false },
+                axisLabel: { show: false },
+                data: dataYAxis
+              },
+              series: [
+                {
+                  name: 'Offset',
+                  type: 'bar',
+                  stack: 'Total',
+                  silent: true,
+                  itemStyle: { borderColor: 'transparent', color: 'transparent' },
+                  data: formattedOffsetData
+                },
+                {
+                  name: 'Occupations',
+                  type: 'bar',
+                  stack: 'Total',
+                  itemStyle: { borderColor: 'transparent', color: '#4e79a7' },
+                  label: {
+                    show: true,
+                    fontSize: 10,
+                    fontStyle: 'italic',
+                    formatter: function (params) { return params.data.navire; },
+                    padding: [0, -160, 0, -148]
+                  },
+                  data: formattedOccData
+                }
+              ]
+            };
+
+            shipCharts.setOption(options);
+            return shipCharts;
+          }
+
+          $jQ(document).ready(function () {
+            let shipChart = #{item.cleanedId}initShipChart(
+              #{item.groovyResults['XCategories']},
+              #{item.groovyResults['YCategories']},
+              #{item.groovyResults['OccupationLengths']},
+              #{item.groovyResults['OccupationOffsets']}
+            );
+            if(shipChart !== undefined) {
+              window.onresize = function () { shipChart.resize(); }
+              initResizeObserver4Chart('contentForm:custom_#{item.cleanedId}Panel', shipChart);
+            }
+          });
+        </script>
+      </c:if>
+    </h:panelGroup>
+  </h:panelGroup>
+
+</ui:composition>

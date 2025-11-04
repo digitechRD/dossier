@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Console output -->
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-5p %d{HH:mm:ss.SSS} %m  (%F:%L) \n" />
+		</layout>
+	</appender>
+
+	<appender name="FILE"
+		class="org.apache.log4j.rolling.RollingFileAppender">
+		<rollingPolicy
+			class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+			<param name="FileNamePattern"
+				value="${dossier_app}/logs/webApp_Dossier_%d{yyyy-MM-dd}.zip" />
+		</rollingPolicy>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="%-5p %d{dd/MM/yyyy HH:mm:ss} (%F:%L) %m \n" />
+		</layout>
+	</appender>
+
+	<!-- mail tracing -->
+	<appender name="EMAIL" class="org.apache.log4j.net.SMTPAppender">
+		<param name="BufferSize" value="512" />
+		<param name="SMTPHost" value="" />
+		<param name="From" value="" />
+		<param name="To" value="" />
+		<param name="Subject"
+			value="[Application Dossier Version 4] Application message" />
+		<param name="locationInfo" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<!--[2008-05-16 16:57:33,776]ERROR  1641[main](exempleXML.java:44) - Mr. Hutz, are you aware you're not wearing pants?-->
+			<param name="ConversionPattern"
+				value="[%d{ISO8601}] - type - %p %n[%t]%x(%F:%L)%nServeur demarre depuis %rms%nMessage %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMin" value="ERROR" />
+			<param name="LevelMax" value="FATAL" />
+		</filter>
+	</appender>
+
+  <logger name="com.digitech.airsweb">
+    <level value="ERROR"/>
+    <appender-ref ref="FILE"/>
+  </logger>
+
+  <logger name="org.jacorb.orb">
+    <level value="ERROR"/>
+    <appender-ref ref="FILE"/>
+  </logger>
+  
+  <logger name="org.artofsolving">
+    <level value="ERROR"/>
+    <appender-ref ref="FILE"/>
+  </logger>
+
+	<!-- defining root category -->
+	<root>
+		<level value="error" />
+		<appender-ref ref="FILE" />
+		<!--<appender-ref ref="STDOUT" />-->
+		<!--<appender-ref ref="EMAIL"/>-->
+	</root>
+
+</log4j:configuration>

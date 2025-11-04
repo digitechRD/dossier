@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" version="5.3.8" customerName="OAINE">
+    <organization name="DEFAULT" id="0"/>
+    <organization name="OAI" id="1">
+        <contentType name="DOCUMENT_ASSURE" flowCode="FLOW_OAI">
+            <column main="false" label="xml_configuration_label_document_date" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd.MM.yyyy</format>
+                <airsField>D_VALEUR</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_group" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>AL_ASSURE_GROUPE_DOC</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_type" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>AL_ASSURE_TYPE_DOC</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_count_pages" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>NOMBRE_PAGES</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_request_number" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>N_DEM</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_name" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false" recycleBin="ALL">
+                <airsField>NOM</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_nss" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="false" recycleBin="ALL">
+                <airsField>N_NSS</airsField>
+				<format>(\d{3})\.(\d{4})\.(\d{4})\.(\d{2})</format>
+            </column>
+            <column main="false" label="xml_configuration_label_creator_date" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false" recycleBin="ALL">
+                <format>dd.MM.yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_creator" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_CREAT</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_status" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>AL_WKF_STATUT</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_users" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_GESTS</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_update_date" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false" recycleBin="ALL">
+                <format>dd.MM.yyyy</format>
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="xml_configuration_label_id_document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>REFAIRS</airsField>
+            </column>
+            <ns2:action id="TTPostman" resourceKey="messagePostman" target="gotoSimpleView" styleClass="postman_icon">
+                <ns2:groovyScriptId>PostmanSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>PostmanPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>PostmanSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="openFolder" link="window.open('custom/ui/jsp/openFolder.jspx', 'Dossier', 'width=300,height=300,toolbar=no,scrollbars=no,resizable=no');" resourceKey="messageViewInsuredFolder" target="_blank" styleClass="viewInsuredFolder_icon">
+                <ns2:modalPanelInitGroovyScriptId>DossierYRelatif</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTComment" resourceKey="messageComment" target="gotoSimpleView" styleClass="comment_icon">
+                <ns2:groovyScriptId>AddCommentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>AddCommentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>AddCommentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTDeleteComment" resourceKey="messageCommentDelete" target="gotoSimpleView" styleClass="commentDelete_icon">
+                <ns2:groovyScriptId>DeleteCommentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>DeleteCommentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>DeleteCommentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTExportForEngraving" resourceKey="messageExportForEngraving" target="gotoSimpleView" styleClass="exportBurn_icon">
+                <ns2:groovyScriptId>ExportPDFForEngravingSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>ExportPDFForEngravingPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>ExportPDFForEngravingSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTExportToWebAI" resourceKey="messageExportDocumentToWebAI" target="gotoSimpleView" styleClass="exportWebAI_icon">
+                <ns2:groovyScriptId>ExportDocumentsToWebAISimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>ExportDocumentsToWEBAIPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>ExportDocumentsToWebAISimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTChangeViewer" airsProfile="13" airsProfileCode="SCAN" resourceKey="messageChangeViewer" target="gotoSimpleView" styleClass="changeViewer_icon">
+                <ns2:groovyScriptId>ChangeViewerSimpleViewExec</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTCopyPaste10" airsProfile="10" airsProfileCode="EDITION" resourceKey="messageCopy" target="gotoSimpleView" styleClass="copy_icon">
+                <ns2:groovyScriptId>CopyPasteDocumentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>CopyPasteDocumentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>CopyPasteDocumentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTCopyPaste16" airsProfile="16" airsProfileCode="CONSULTATION_PLUS" resourceKey="messageCopy" target="gotoSimpleView" styleClass="copy_icon">
+                <ns2:groovyScriptId>CopyPasteDocumentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>CopyPasteDocumentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>CopyPasteDocumentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTMove" airsProfile="10" airsProfileCode="EDITION" resourceKey="messageMoveDocument" target="gotoSimpleView" styleClass="moveDocument_icon">
+                <ns2:groovyScriptId>MoveDocumentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>MoveDocumentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>MoveDocumentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTEditAttachment" airsProfile="10" airsProfileCode="EDITION" resourceKey="messageEditAttachment" target="gotoSimpleView" styleClass="editAttachment_icon">
+                <ns2:groovyScriptId>EditAttachmentDocumentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>EditAttachmentDocumentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>EditAttachmentDocumentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTCheckSedex" airsProfile="13" airsProfileCode="SCAN" resourceKey="messageCheckDocuments" target="gotoSimpleView" styleClass="check_icon">
+                <ns2:groovyScriptId>CheckSedexDocumentsSimpleViewExec</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTExportToEdit" link="window.open('custom/ui/jsp/EditOfficeFilePanel.jspx', 'Export', 'width=650,height=130,toolbar=no,scrollbars=no,resizable=no');" airsProfile="11" airsProfileCode="ADMIN_OFFICE" resourceKey="messageExportToEdit" target="_blank" styleClass="edit_icon">
+                <ns2:modalPanelInitGroovyScriptId>EditOfficeFileSimpleViewExec</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTEditIndex" airsProfile="1" airsProfileCode="ADMINISTRATEUR" resourceKey="messageEditIndexDocument" target="gotoSimpleView" styleClass="editIndex_icon">
+                <ns2:groovyScriptId>EditIndexDocumentSimpleViewExec</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>EditIndexDocumentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>EditIndexDocumentSimpleViewInit</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="TTAdmin" airsProfile="1" airsProfileCode="ADMINISTRATEUR" resourceKey="messageAdministration" target="gotoSimpleView" styleClass="administrator_icon">
+                <ns2:groovyScriptId>Administration</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:export type="SCRIPT" id="TTExport" progressionModalPanelId="modalPanelProgress">
+                <ns2:groovyScriptId>ExportPDFSimpleViewExec</ns2:groovyScriptId>
+            </ns2:export>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_VALEUR</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>N_DEM</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>100</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+    </organization>
+</listview>

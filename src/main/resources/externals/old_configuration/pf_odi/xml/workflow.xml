@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://www.digitech.com/dossiers/workflow" customerName="@ODI@" version="4.1.9 RC7">
+    <tache name="Refusée">
+        <valueSortie value="Renvoyer la facture à un valideur">
+            <airsfield value="En validation valideur" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="En validation Valideur">
+        <valueSortie value="Bon pour accord">
+            <airsfield value="En validation comptable" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Refuser">
+            <airsfield value="Refusée" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="En erreur d'exportation">
+        <valueSortie value="Envoyer la facture en exportation vers SAP pour paiement">
+            <airsfield value="En attente exportation" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="Traitement sans BPA">
+        <valueSortie value="Envoyer la facture à un valideur">
+            <airsfield value="En validation valideur" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Envoyer la facture à la poubelle">
+            <airsfield value="Supprimée" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="Traitement avec BPA">
+        <valueSortie value="Envoyer la facture en exportation vers SAP pour paiement">
+            <airsfield value="En attente exportation" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Envoyer la facture à la poubelle">
+            <airsfield value="Supprimée" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="En validation Comptable">
+        <valueSortie value="Envoyer la facture en exportation vers SAP pour paiement">
+            <airsfield value="En attente exportation" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Envoyer la facture à la poubelle">
+            <airsfield value="Supprimée" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="En attente d'exportation">
+        <valueSortie value="OK">
+            <airsfield value="Finalisée" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Erreur">
+            <airsfield value="En erreur d'exportation" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <tache name="Traitement retour controle">
+        <valueSortie value="Envoyer la facture à un valideur">
+            <airsfield value="En validation valideur" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Envoyer la facture à la poubelle">
+            <airsfield value="Supprimée" name="D_ETAT"/>
+        </valueSortie>
+        <valueSortie value="Envoyer la facture en exportation vers SAP pour paiement">
+            <airsfield value="En attente exportation" name="D_ETAT"/>
+        </valueSortie>
+    </tache>
+    <airs2workflow>
+        <mapping processStarting="true" refdata="value" field="D_ACCORD_PAIEMENT" variable="airsAccordPaiement"/>
+        <mapping processStarting="true" refdata="value" field="D_NBR_ALERTES" variable="airsRetourControle"/>
+        <mapping processStarting="false" refdata="id" field="D_VALIDEUR" variable="userValideur"/>
+    </airs2workflow>
+</workflow>

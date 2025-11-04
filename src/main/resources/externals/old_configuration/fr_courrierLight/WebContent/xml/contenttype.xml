@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="CIRIL" version="6.0.0">
+    <!-- COURRIER EXPRESS DEBUT -->
+	<parentContentType appName="AIRS" name="COU_COURRIER_IN" isFlowParent="true">
+        <flow code="COURRIER" label="Gestion du courrier">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <extraFilter>
+            <ns2:dossierrequest name="agent">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>
+                  (T_ETAT_COURRIER.ITEM=&quot;123&quot; ET U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;126&quot; ET ((O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;127&quot; ET ((O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;128&quot; ET ((O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;128&quot; ET (U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;) SAUF U_COPIES_LUES.USR=&quot;#LOGIN_ID#&quot;)
+                </ns2:airsvalue>
+               <ns2:airsProfile>10</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="gestionnaire">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>
+                  (T_ETAT_COURRIER.ITEM=&quot;122&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;123&quot; ET U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;125&quot; ET U_CREAT.USR=&quot;#LOGIN_ID#&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;126&quot; ET ((O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;127&quot; ET ((O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;128&quot; ET ((O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot;)) OU
+                 (T_ETAT_COURRIER.ITEM=&quot;128&quot; ET (U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;) SAUF U_COPIES_LUES.USR=&quot;#LOGIN_ID#&quot;)
+               </ns2:airsvalue>
+               <ns2:airsProfile>11</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="direction">
+               <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+               <ns2:airsvalue>
+                  (T_ETAT_COURRIER.ITEM=&quot;122&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;123&quot; ET U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;125&quot; ET U_CREAT.USR=&quot;#LOGIN_ID#&quot;) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;126&quot; ET (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;127&quot; ET (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; OU U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot; OU U_VISEUR.USR=&quot;#LOGIN_ID#&quot;)) OU
+                  (T_ETAT_COURRIER.ITEM=&quot;128&quot; ET O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot;) OU 
+                  (T_ETAT_COURRIER.ITEM=&quot;128&quot; ET (U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;) SAUF U_COPIES_LUES.USR=&quot;#LOGIN_ID#&quot;)
+               </ns2:airsvalue>
+               <ns2:airsProfile>12</ns2:airsProfile>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="COU_COURRIER_OUT" isFlowParent="true">
+        <flow code="COURRIER" label="Gestion du courrier">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <extraFilter>
+            <ns2:dossierrequest name="agent">
+                <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+                <ns2:airsvalue>U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_VISEUR.USR="#LOGIN_ID#" OU C_EMETTEUR="AIRS=#LOGIN_ID#"</ns2:airsvalue>
+                <ns2:airsProfile>10</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="gestionnaire">
+                <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+                <ns2:airsvalue>O_PROPRIETAIRE.ORG="#ORG_ID#" OU  U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_VISEUR.USR="#LOGIN_ID#" OU C_EMETTEUR="AIRS=#LOGIN_ID#"</ns2:airsvalue>
+                <ns2:airsProfile>11</ns2:airsProfile>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="direction">
+                <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+                <ns2:airsvalue>                            
+                   O_PROPRIETAIRE.ROOTORG="#ORG_ID#" OU U_VISEUR.USR="#LOGIN_ID#" OU C_EMETTEUR="AIRS=#LOGIN_ID#" OU U_PROPRIETAIRE.USR="#LOGIN_ID#"
+				</ns2:airsvalue>
+                <ns2:airsProfile>12</ns2:airsProfile>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="COU_REPONSE" isFlowParent="true">
+        <flow code="COURRIER" label="Gestion du courrier">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+    </parentContentType>
+	<!-- COURRIER EXPRESS FIN -->
+	<!-- GF DEBUT -->
+	 <parentContentType isFlowParent="true" name="GF_TIERS" appName="AIRS">
+        <flow code="GF_TIERS" label="GF - Tiers">
+            <description>Permet de consulter toutes les pièces comptables rattachées à un tiers.</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="GF_MOUVEMENT" appName="AIRS">
+            <codeLinkedField parentField="GF_TI_NUMTIE" childField="GF_TI_NUMTIE" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="GF_PES_EXE" appName="AIRS">
+        <flow code="GF_PES" label="GF - PES">
+            <description>Permet de consulter les flux PES transmis au trésor public avec tous les documents s'y rattachant.</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="GF_PES" appName="AIRS">
+            <codeLinkedField parentField="GF_PES_EXE" childField="GF_PES_EXE" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+       <parentContentType isFlowParent="true" name="GF_MARCHE" appName="AIRS">
+        <flow code="GF_TIERS" label="GF Tiers">
+            <description>Permet de consulter toutes les pièces comptables rattachées à un tiers.</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="GF_MOUVEMENT" appName="AIRS">
+            <codeLinkedField parentField="GF_MA_NUMMAR" childField="GF_MA_NUMMAR" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+	<!-- GF FIN -->
+	<!-- RH DEBUT -->
+	<parentContentType isFlowParent="true" name="RH_AGENT" appName="AIRS">
+        <flow code="RH_AGENT" label="RH - AGENT">
+            <description>Flux contenant la grande majorité des documents propres à l'agent.</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="RH_DOCUMENT_EXTERNE" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="GEN_SCHEMA" childField="GEN_SCHEMA" multiple="false"/>
+        </childContentType>
+		<extraFilter>
+            <ns2:dossierrequest name="Filtre sur le dossier de l'utilisateur">
+                <ns2:contentType>RH_AGENT</ns2:contentType>
+                <ns2:airsvalue>RH_MATRICULE=&quot;#USER_OPT_MATRICULE#&quot;</ns2:airsvalue>
+                <ns2:airsProfile>409</ns2:airsProfile>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+	<!-- RH FIN -->
+	<!-- URBANISME DEBUT -->
+	<parentContentType isFlowParent="true" name="DOS_AOS" appName="AIRS">
+        <flow code="AOS" label="Urbanisme - Dossier AOS">
+            <description>Dossier Autorisation d'Occupation des Sols</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOC_AOS" appName="AIRS">
+            <codeLinkedField parentField="AOS_NUMDOS" childField="AOS_NUMDOS" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="DOS_FON" appName="AIRS">
+        <flow code="FONCIER" label="Urbanisme - Gestion des biens fonciers">
+            <description>Gestion des biens fonciers</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOC_FON" appName="AIRS">
+            <codeLinkedField parentField="FON_NUMDOS" childField="FON_NUMDOS" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="DOS_PAR" appName="AIRS">
+        <flow code="Parcelle" label="Urbanisme - Parcelle">
+            <description>Parcelle</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOC_PAR" appName="AIRS">
+            <codeLinkedField parentField="PAR_CODEPCL" childField="PAR_CODEPCL" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="DOS_PLU" appName="AIRS">
+        <flow code="PLU" label="Urbanisme - Dossier PLU">
+            <description>Dossier Plan Local d'Urbanisme</description>
+            <organization name="DEFAULT" id="0"/>
+        </flow>
+        <childContentType name="DOC_PLU" appName="AIRS">
+            <codeLinkedField parentField="PLU_CODERGT" childField="PLU_CODERGT" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+	<!-- URBANISME FIN -->
+</rootContentType>

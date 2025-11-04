@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" type="xml"?>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
+    version="5.0" xml:id="common" xml:lang="fr">
+    <title>Structure générale</title>
+    <section xml:id="common_template">
+        <title>Modèle de page</title>
+        <section xml:id="common_template_header">
+            <title>En-tête</title>
+            <figure xml:id="img_header">
+                <title>En-tête de page</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/header01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>Le bandeau d'en-tête est identique sur toutes les pages de l'application. Il
+                affiche les informations relatives à l'utilisateur connecté et l'organisation
+                (service) courante. Si l'utilisateur connecté est affecté à plusieurs organisations,
+                il lui est alors possible de sélectionner une organisation dans la liste déroulante
+                correspondante. A tout moment de la navigation, l'organisation courante pourra être
+                modifiée. <note>
+                    <para>Si un ou plusieurs délégataires sont définis pour l'utilisateur courant,
+                        il est alors possible de sélectionner le délégataire souhaité afin de
+                        disposer de ses accréditations (délégation de profil).</para>
+                </note></para>
+            <para>Les actions suivantes sont accessibles depuis le menu de navigation : <itemizedlist>
+                    <listitem>
+                        <para><guimenuitem>Accueil</guimenuitem> : affiche la page
+                                d'<guimenuitem>Accueil</guimenuitem>,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Bannettes</guimenuitem> > <guimenuitem>Afficher les
+                                bannettes</guimenuitem> : affiche la liste des bannettes,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Bannettes</guimenuitem> > <guimenuitem>&lt;Bannette
+                                N></guimenuitem> : un accès rapide à certaines bannettes est
+                            disponible,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Courriers</guimenuitem> >
+                                <guimenuitem>Indexation</guimenuitem> : démarre le processus
+                            d'indexation,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Courriers</guimenuitem> >
+                                <guimenuitem>Création</guimenuitem> : affiche le formulaire de
+                            création de courrier,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Courriers</guimenuitem> > <guimenuitem>Courriers
+                                supprimés</guimenuitem> : affiche les courriers marqués comme
+                            supprimés,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Courriers</guimenuitem> >
+                                <guimenuitem>Favoris</guimenuitem> : affiche la page de gestion des
+                            courrier favoris,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Courriers</guimenuitem> > <guimenuitem>Presse
+                                Papier</guimenuitem> : affiche le presse-papier,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Courriers</guimenuitem> > <guimenuitem>Historique des
+                                Courriers</guimenuitem> : affiche l'historique des courriers
+                            consultés,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Recherche</guimenuitem> > <guimenuitem>Recherche
+                                simple</guimenuitem> : affiche le formulaire de recherche
+                            simple,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Recherche</guimenuitem> > <guimenuitem>Recherche
+                                avancée</guimenuitem> : affiche le formulaire de recherche
+                            avancée,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Recherche</guimenuitem> > <guimenuitem>Vue
+                                Simple</guimenuitem>/<guimenuitem>Vue 3 fenêtres</guimenuitem> :
+                            affiche la Vue Simple/Vue 3 fenêtres courante,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Recherche</guimenuitem> > <guimenuitem>Historique des
+                                Recherches</guimenuitem> : affiche l'historique des recherches
+                            effectuées,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Recherche</guimenuitem> > <guimenuitem>Requêtes
+                                personnelles</guimenuitem> : affiche la page des gestion des
+                            requêtes personnelles,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Suivi</guimenuitem> > <guimenuitem>Rapports</guimenuitem>
+                            : affiche la page listant les états statistiques paramétrés,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Paramètres</guimenuitem> >
+                                <guimenuitem>Préférences</guimenuitem> : affiche les préférences de
+                            l'utilisateur connecté,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Paramètres</guimenuitem> > <guimenuitem>Modifier le mot
+                                de passe</guimenuitem> : affiche la page de modification du mot de
+                            passe utilisateur,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Paramètres</guimenuitem> >
+                                <guimenuitem>Administration</guimenuitem> : affiche le module
+                            d'Administration (authentification requise),</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Aide</guimenuitem> > <guimenuitem>Aide</guimenuitem> :
+                            affiche l'aide contextuelle,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Aide</guimenuitem> > <guimenuitem>A propos de Courrier
+                                Light</guimenuitem> : affiche la version de l'Application, du
+                            serveur AIRS et de la configuration,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guimenuitem>Déconnexion</guimenuitem> : déconnecte l'utilisateur
+                            courant,</para>
+                    </listitem>
+                </itemizedlist><note>
+                    <para>Les actions disponibles depuis le menu de navigation dépendent du profil
+                        de l'utilisateur et de la configuration applicative</para>
+                </note></para>
+            <para>L'en-tête de page permet aussi de visualiser les messages de notification. Il
+                existe 3 types de messages pouvant être affichés dans la zone de notification : les
+                messages d'information, les messages d'avertissement, les messages d'erreur et les
+                messages de succès représentés respectivement par les icônes suivantes : <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/notif_info.jpg"/>
+                    </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/notif_warn.jpg"/>
+                    </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/notif_error.jpg"/>
+                    </imageobject>
+                </inlinemediaobject><inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/notif_success.jpg"/>
+                    </imageobject>
+                </inlinemediaobject></para>
+            <note>
+                <para>Il est possible de minimiser l'en-tête de page en cliquant sur l'icône <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/btn_minimize01.jpg"/>
+                        </imageobject>
+                    </inlinemediaobject>. Une fois l'en-tête de page minimisé, il est alors possible
+                    de le maximiser en cliquant sur l'icône <inlinemediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/btn_maximize01.jpg"/>
+                        </imageobject>
+                    </inlinemediaobject>.</para>
+            </note>
+        </section>
+        <section xml:id="common_template_main">
+            <title>Corps</title>
+            <para>Le corps de page dépend de la page affichée. </para>
+        </section>
+        <section xml:id="common_template_footer">
+            <title>Pied</title>
+            <para><figure xml:id="img_footer">
+                    <title>Pied de page</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/footer01.jpg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure> Le pied de page affiche les informations générales de l'application :
+                copyright, date et temps de génération de la page. </para>
+        </section>
+    </section>
+    <section xml:id="common_actionBar">
+        <title>Barre d'actions</title>
+        <para><figure xml:id="img_actionBar">
+                <title>Barre d'actions</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/unitViewActions01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>Les barres d'actions se situe essentiellement en tête de page, ou en tête des
+            tables de données.</para>
+        <para>Les barres d'actions se découpent en 3 zones :<itemizedlist>
+            <listitem>
+                <para>Sur la gauche de la barre se trouvent les actions de navigation : l'action <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_back01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject> qui permet d'afficher la page précédente (ou page mère)
+                        et l'action <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_refresh02.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject> qui permet de rafraichir le contenu de la page
+                        courante,</para>
+            </listitem>
+            <listitem>
+                <para>Sur la droite de la barre se trouvent les actions principales,</para>
+            </listitem>
+            <listitem>
+                    <para>Entre les deux zones, ancrées à droite, les actions secondaires.</para>
+                </listitem>
+        </itemizedlist></para>
+    </section>
+    <section xml:id="common_modalePanel">
+        <title>Fenêtres modales</title>
+        <para>Les fenêtres modales sont utilisées afin d'afficher un complément d'information,
+            demander une confirmation, sélectionner une valeur complexe,... Ces fenêtres peuvent
+            être déplacées (en sélectionnant la partie haute) mais empêche l'utilisateur d'effectuer
+            toute action supplémentaire sur l'écran précédent. Dans certains cas, ces fenêtres sont
+            redimensionnables. </para>
+    </section>
+    <section xml:id="common_table">
+        <title>Table de données</title>
+        <para><figure xml:id="img_table">
+                <title>Table de données</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/table01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>Les tables de données affichent des données sous forme tabulaire. </para>
+        <para>Selon le type de table, le nombre de lignes affichées peut être modifié en
+            sélectionnant une nouvelle valeur dans la liste <guilabel>Résultats par
+            page</guilabel>.</para>
+        <para>Par défaut les données sont affichées dans l'ordre où elles ont été configurées.
+            Toutefois, il est possible de modifier l'ordre d'affichage en cliquant sur la colonne
+            souhaitée afin de définir le tri applicable. Pour annuler le(s) tri(s) appliqués,
+            veuillez cliquer sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_resetSorting01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>.</para>
+        <para>Il est possibles de naviguer de page en page en utilisant les boutons de navigation ou
+            en cliquant sur le numéro de page souhaité.</para>
+    </section>
+    <section xml:id="common_picker">
+        <title>Pickers</title>
+        <para>Les pickers sont des composants graphiques utilisés à de nombreuses reprises dans
+            l'Application. Ces composants facilitent la sélection de valeur. Différents types de
+            picker sont répertoriés : <variablelist>
+                <varlistentry>
+                    <term>Picker de date</term>
+                    <listitem>
+                        <para><figure xml:id="img_pickerDate" floatstyle="left">
+                                <title>Picker de date</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/picker_date01.jpg"/>
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>Le picker de date permet de sélectionner une date dans le
+                            calendrier. Pour changer de mois, veuillez utiliser les simples flèches
+                            situées de part et d'autre du mois courant. Vous pouvez aussi changer
+                            d'année en utilisant les doubles flèches situées de part et d'autre du
+                            mois courant. Une fois le mois et l'année sélectionnés il ne reste plus
+                            qu'à cliquer sur le jour souhaité. Le picker est alors fermé et le
+                            champs d'édition correspondant est mis à jour avec la date
+                            choisie.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term xml:id="picker_organization">Picker d'organisation</term>
+                    <listitem>
+                        <para><figure xml:id="img_pickerOrg" floatstyle="left">
+                                <title>Picker d'organisation</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/picker_org01.jpg"/>
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>Le picker d'organisation (service) permet de sélectionner une
+                            organisation dans un organigramme. Il est possible d'ouvrir des nœuds de
+                            l'organigramme afin de visualiser les sous-éléments. Pour sélectionner
+                            un élément dans l'organigramme veuillez cliquer sur son intitulé. Le
+                            picker est alors fermé et le champs d'édition correspondant est mis à
+                            jour avec la l'organisation sélectionnée.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term xml:id="picker_user">Picker d'utilisateur</term>
+                    <listitem>
+                        <para><figure xml:id="img_pickerUser2" floatstyle="left">
+                                <title>Picker d'utilisateur</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/picker_user02.jpg"/>
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>Le picker d'utilisateur permet de sélectionner un ou plusieurs
+                            éléments dans une liste d'utilisateur. Il est possible de sélectionner
+                            plusieurs utilisateurs ; pour ce faire, il est nécessaire de cocher les
+                            utilisateurs souhaités puis de cliquer sur
+                                <guibutton>Sélectionner</guibutton>. Le picker est alors fermé et le
+                            champs d'édition correspondant est mis à jour avec l'utilisateur
+                            sélectionné. Il est possible de filtrer les utilisateurs affichés en
+                            renseignant le champ situé dans l'en-tête de colonne.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term xml:id="picker_correspondant">Picker de correspondant</term>
+                    <listitem>
+                        <para>
+                            <figure xml:id="img_pickerCorresponding01" floatstyle="left">
+                                <title>Champ de type "correspondant"</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/picker_corresponding01.jpg"/>
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>Le picker de correspondant est disponible pour les indexes de
+                            type "correspondant". Un champ "correspondant" permet de sélectionner un
+                            correspondant existant parmi une liste de valeurs disponibles. Il faut
+                            distinguer les 4 familles de correspondant suivantes : utilisateur
+                            (interne), service (interne), personne (externe), organisme (externe).
+                            Pour afficher la liste des correspondants suggérés il est nécessaire de
+                            saisir au minimum 3 lettres contenu dans son intitulé. Les
+                            correspondants suggérés s'affichent au fur et à mesure de la saisie ; il
+                            est alors possible de sélectionner le correspondant souhaité. Si aucun
+                            correspondant n'est trouvé, il est alors nécessaire de le créer en
+                            cliquant sur l'action <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_add02.jpg"/>
+                                </imageobject>
+                            </inlinemediaobject>. </para>
+                        <note>
+                            <para>Un champ de type "correspondant" n'est pas un champ libre. Il doit
+                                nécessairement exister un correspondant pour pouvoir le
+                                sélectionner. Un correspondant inexistant est automatiquement vidé
+                                du champ.</para>
+                        </note>
+                        <para><figure xml:id="img_pickerCorresponding02" floatstyle="left">
+                                <title>Création/modification de personne</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/picker_corresponding02.jpg"/>
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>Le picker de correspondant permet de créer/modifier un
+                            correspondant externe (personne ou organisme).</para>
+                        <para>Une personne se matérialise par son <guilabel>prénom</guilabel>, son
+                                <guilabel>nom</guilabel>, son <guilabel>appellation</guilabel>, son
+                                <guilabel>e-mail</guilabel>, son <guilabel>téléphone
+                                fixe</guilabel>/<guilabel>mobile</guilabel>, son
+                                <guilabel>fax</guilabel> et éventuellement son
+                                <guilabel>adresse</guilabel> personnelle. Il est possible de définir
+                            les <guilabel>relations</guilabel> existantes entre une personne et un
+                            organisme. Pour se faire, il faut cliquer sur l'action <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_add01.jpg"/>
+                                </imageobject>
+                            </inlinemediaobject> afin d'afficher la fenêtre modale <guilabel>Gestion
+                                de relation</guilabel>. <figure xml:id="img_pickerCorresponding03"
+                                floatstyle="left">
+                                <title>Création/modification de relation</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/picker_corresponding03.jpg"/>
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>Une relation se matérialise par la
+                                <guilabel>fonction</guilabel> de la <guilabel>personne</guilabel> au
+                            sein d'un <guilabel>organisme</guilabel>. Il est possible de
+                            sélectionner un organisme existant ou d'en ajouter un en cliquant sur
+                            l'action <inlinemediaobject>
+                                <imageobject>
+                                    <imagedata fileref="images/btn_add02.jpg"/>
+                                </imageobject>
+                            </inlinemediaobject>. Un organisme se matérialise par son
+                                <guilabel>nom</guilabel>, son <guilabel>représentant</guilabel>, son
+                                <guilabel>sigle</guilabel> et éventuellement son
+                                <guilabel>adresse</guilabel>. A l'issu de la création d'une
+                            relation, un clic sur le bouton <guilabel>Appliquer</guilabel> permet
+                            d'ajouter la relation à la personne courante.</para>
+                        <note>
+                            <para>Il est aussi possible de supprimer un correspondant en cliquant
+                                sur l'action <inlinemediaobject>
+                                    <imageobject>
+                                        <imagedata fileref="images/btn_delete05.jpg"/>
+                                    </imageobject>
+                                </inlinemediaobject> affiché en regard du champ de type
+                                "correspondant". Il est nécessaire d'avoir sélectionné un
+                                correspondant au préalable.</para>
+                        </note>
+                    </listitem>
+                </varlistentry>
+            </variablelist></para>
+    </section>
+    <section xml:id="common_documentViewer">
+        <title>Visionneuse</title>
+        <figure xml:id="img_documentViewer01">
+            <title>Visionneuse</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/documentViewer01.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>Selon le paramétrage de l’application, les pièces jointes peuvent être visualisées
+            soit dans un plugin tiers au sein du navigateur ou un programme tiers, ou alors, en
+            utilisant la Visionneuse intégrée à l’application. La Visionneuse prend en charge
+            l’affichage des fichiers PDF, images et bureautiques. L'utilisation de cette Visionneuse
+            permet également l'ajout et l'affichage de diverses annotations (selon
+            configuration).</para>
+        <para>La Visionneuse permet d’afficher des documents images (TIFF, JPEG, PNG, BMP), les
+            documents PDF (sans disposer d'Acrobat Reader sur le poste client) et les documents
+            bureautiques (DOC, DOCX, XSL, XSLX, PPT, PPTX, ODT, ODS, ODP). Quelque soit le document
+            affiché, il est possible de : <itemizedlist>
+                <listitem>
+                    <para>naviguer de page en page si le document dispose de plusieurs pages,</para>
+                </listitem>
+                <listitem>
+                    <para>appliquer un zoom avant, un zoom arrière ou même sélectionner le ratio du
+                        zoom à appliquer,</para>
+                </listitem>
+                <listitem>
+                    <para>afficher une loupe,</para>
+                </listitem>
+                <listitem>
+                    <para>sélectionner du texte (selon la nature du document),</para>
+                </listitem>
+                <listitem>
+                    <para>réaliser des rotations,</para>
+                </listitem>
+                <listitem>
+                    <para>télécharger le fichier,</para>
+                </listitem>
+                <listitem>
+                    <para>rechercher du texte (selon la nature du document),</para>
+                </listitem>
+                <listitem>
+                    <para>maximiser/minimiser la Visionneuse,</para>
+                </listitem>
+                <listitem>
+                    <para>ajouter un signet (selon les droits de l'utilisateur),</para>
+                </listitem>
+                <listitem>
+                    <para>supprimer un ensemble de pages d'une pièce jointe PDF ou TIF (selon les
+                        droits de l'utilisateur),</para>
+                </listitem>
+                <listitem>
+                    <para>copier dans le presse un ensemble de pages d'une pièce jointe PDF ou TIF
+                        (selon les droits de l'utilisateur),</para>
+                </listitem>
+                <listitem>
+                    <para>insérer un ensemble de pages issues du presse papier au sein d'une pièce
+                        jointe de même type (selon les droits de l'utilisateur).</para>
+                </listitem>
+            </itemizedlist></para>
+        <para>Selon le document, des informations complémentaires peuvent être affichées telles que
+            : les vignettes de page (si le document est multipage), le sommaire (si existant) et la
+            listes des signets apposés (selon les droits de l'utilisateur). L'utilisateur peut aussi
+            modifier/supprimer un signet (selon ses droits) en cliquant-droit sur un signet.</para>
+        <note>
+            <para>Un clic-droit sur le document permet aussi d'afficher le menu contextuel listant
+                les actions les plus courantes.</para>
+        </note>
+        <note>
+            <para>Selon les droits de l'utilisateur, la Visionneuse permet d'annoter le document
+                grâce à l'applet d'édition des annotations. </para>
+        </note>
+        <para><figure xml:id="img_documentViewer02">
+                <title>Affichage d'une note</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/documentViewer02.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>Si l'utilisateur dispose des droits suffisants, les annotations apposées sur le
+            document sont affichées au sein de la Visionneuse. Selon le type d'annotation
+            l'utilisateur doit survoler la l'icône <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/annotation01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> afin d'afficher le détail de la note. En marge de la note peuvent
+            s'afficher l'auteur et la date de création.</para>
+        <para>Un clic sur l'action d'ajout de signet <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_addBookmark01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> affiche une fenêtre modale permettant de sélectionner la page sur
+            laquelle apposer le signet ainsi que l'intitulé du signet. Il est aussi possible de
+            modifier/supprimer un signet (selon les droits de l'utilisateur) en cliquant droit sur
+            l'intitulé du signet. <figure xml:id="img_documentViewer04">
+                <title>Ajout d'un signet</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/documentViewer04.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <figure xml:id="img_documentViewer03">
+                <title>Modification / Suppression de signet</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/documentViewer03.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure></para>
+        <para>Un clic sur l'action de suppression de pages <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_delPage01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> affiche une fenêtre modale permettant de sélectionner les pages à
+            supprimer. Il est alors possible de sélectionner l'intervalle des pages à supprimer. Il
+            est aussi possible de supprimer les signets et annotations apposées sur les pages
+            sélectionnées. Une fenêtre de confirmation est affichée avant d'appliquer la
+                suppression.<figure xml:id="img_documentViewer05">
+                <title>Suppression de page(s)</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/documentViewer05.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure></para>
+        <para>Un clic sur l'action de copie de pages <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_selectPage01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> affiche une fenêtre modale permettant de sélectionner les pages à
+            copier dans le presse papier. Tout comme la fenêtre modale de suppression de pages, il
+            est possible de sélectionner l'intervalle des pages à copier dans le presse
+            papier.</para>
+        <para>Un clic sur l'action d'ajout de pages <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_addPage01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> affiche une fenêtre modale permettant de sélectionner les pages à
+            insérer issues du presse papier. Il est alors possible de copier les signets depuis le
+            document source mais aussi de supprimer les pages issues du document source (équivalent
+            d'un couper-coller).<figure xml:id="img_documentViewer06">
+                <title>Ajout de pages</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/documentViewer06.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure></para>
+    </section>
+    <section xml:id="common_notification">
+        <title>Alertes et notifications par mail</title>
+        <para>Selon le paramétrage de l'Application, différents types d'alerte peuvent être émises par mail : <itemizedlist>
+            <listitem>
+                <para>La notification d'un changement d'état du courrier : courrier à valider, courrier refusé, courrier à traiter, courrier à signer, réponse à un courrier accepté, réponse à un courrier rejeté.</para></listitem><listitem>
+                    <para> La relance, pour notifier l'utilisateur traitant que la date limite de
+                        traitement approche, la date de traitement limite du courrier expire ce jour
+                        ou la date de traitement limite du courrier est expirée.</para>
+                </listitem></itemizedlist>
+        </para>
+    </section>
+</chapter>

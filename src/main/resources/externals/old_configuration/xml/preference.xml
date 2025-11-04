@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preference xmlns="http://www.digitech.com/dossiers/preference" xmlns:ns2="http://www.digitech.com/dossiers/common" xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="6.0.5.1" customerName="LAPROVENCE">
+    <organization name="DEFAULT" id="0" titre="Accueil" copyRefButton="0" numberOfHomeBasketRow="12" creationMode="CLASSIC">
+        <indexation contentType="D_DOC_ENG"/>
+        <treeAccess/>
+        <SubmitWorkflow alert="0"/>
+        <reporting/>
+        <champWorkflow editable="0" contentType="D_DOS_FOUR">
+            <champs/>
+            <taches/>
+        </champWorkflow>
+        <champWorkflow editable="0" contentType="D_DOC_FAC">
+            <champs/>
+            <taches/>
+        </champWorkflow>
+        <champWorkflow editable="0" contentType="D_DOC_ENG">
+            <champs/>
+            <taches/>
+        </champWorkflow>
+        <newDocument>
+            <inMenu/>
+            <inFolder/>
+        </newDocument>
+        <contentType name="D_DOS_FOUR">
+            <multipleCreationEnable>DISABLE</multipleCreationEnable>
+        </contentType>
+        <contentType name="D_DOC_FAC">
+            <!--<displayPJ>VERTICAL_LEFT</displayPJ>-->
+            <advancedAudit>
+                <activatedAudit>ADV_EVENT_FIELDCHANGE</activatedAudit>
+                <activatedAudit>ADV_EVENT_WF_TASK_SUBMIT</activatedAudit>
+                <activatedAudit>ADV_EVENT_COMMENT</activatedAudit>
+		            <activatedAudit>ADV_EVENT_MAIL</activatedAudit>
+            </advancedAudit>
+            <multipleCreationEnable>DISABLE</multipleCreationEnable>
+        </contentType>
+        <contentType name="D_DOC_ENG">
+            <!--<displayPJ>VERTICAL_LEFT</displayPJ>-->
+            <advancedAudit>
+                <activatedAudit>ADV_EVENT_FIELDCHANGE</activatedAudit>
+                <activatedAudit>ADV_EVENT_COMMENT</activatedAudit>
+		            <activatedAudit>ADV_EVENT_MAIL</activatedAudit>
+            </advancedAudit>
+            <multipleCreationEnable>DISABLE</multipleCreationEnable>
+        </contentType>
+    </organization>
+</preference>

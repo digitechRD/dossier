@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<gro:ScriptsGroovy preLoad="false" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:gro="http://www.digitech.com/dossiers/groovyScript">
+    <gro:Script id="ScriptUtilsProject">
+        <gro:script>global/ScriptUtilsProject.groovy</gro:script>
+        <gro:type>GlobalLibrary</gro:type>
+    </gro:Script>
+	<gro:Script id="MSC_Utils" method="">
+        <gro:script>global/MSC_Utils.groovy</gro:script>
+        <gro:type>GlobalLibrary</gro:type>
+    </gro:Script>
+	<gro:Script id="FDOC_Utils">
+        <gro:script>global/FDOC_Utils.groovy</gro:script>
+        <gro:type>GlobalLibrary</gro:type>
+    </gro:Script>
+    <gro:Script id="affichage_sendMail_PJ" method="">
+        <gro:script>MSC/Mails/affichage_sendMail_PJ.groovy</gro:script>
+        <gro:type>DisplayRule</gro:type>
+    </gro:Script>
+    <gro:Script id="initialisation_sendMail_PJ" method="">
+        <gro:script>MSC/Mails/initialisation_sendMail_PJ.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="action_sendMail_PJ" method="">
+        <gro:script>MSC/Mails/action_sendMail_PJ.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="affichage_GenerateDocs" method="">
+        <gro:script>MSC/Modeles/affichage_GenerateDocs.groovy</gro:script>
+        <gro:type>DisplayRule</gro:type>
+    </gro:Script>
+    <gro:Script id="initialisation_GenerateDocs" method="">
+        <gro:script>MSC/Modeles/initialisation_GenerateDocs.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="action_GenerateDocs" method="">
+        <gro:script>MSC/Modeles/action_GenerateDocs.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>    
+    <gro:Script id="WKF_ValiderDoc_displayRule">
+        <gro:script>WKF/WKF_ValiderDoc_displayRule.groovy</gro:script>
+        <gro:type>DisplayRule</gro:type>
+    </gro:Script>
+    <gro:Script id="WKF_ActionValiderDocProcess">
+        <gro:script>WKF/WKF_ActionValiderDocProcess.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="WKF_initValiderDoc">
+        <gro:script>WKF/WKF_initValiderDoc.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="WKF_RefuserDoc_displayRule">
+        <gro:script>WKF/WKF_RefuserDoc_displayRule.groovy</gro:script>
+        <gro:type>DisplayRule</gro:type>
+    </gro:Script>
+    <gro:Script id="WKF_initRefuserDoc">
+        <gro:script>WKF/WKF_initRefuserDoc.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="WKF_ActionRefuserDocProcess">
+        <gro:script>WKF/WKF_ActionRefuserDocProcess.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    
+    <gro:Script id="affichage_generation_document" method="">
+        <gro:script>MSC/Docs/affichage_generation_document.groovy</gro:script>
+        <gro:type>DisplayRule</gro:type>
+    </gro:Script>
+    <gro:Script id="action_generation_document">
+        <gro:script>MSC/Docs/action_generation_document.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="MSC_dependency_MSC_DATE_FIN" method="">
+        <gro:script>MSC/Dependances/MSC_dependency_MSC_DATE_FIN.groovy</gro:script>
+        <gro:type>FieldDependency</gro:type>
+    </gro:Script>
+    <gro:Script id="MSC_beforeSave">
+        <gro:script>MSC/MSC_beforeSave.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="WS_create_update" method="">
+        <gro:script>MSC/MSC_WS_create_document.groovy</gro:script>
+        <gro:type>WSDocumentInitializer</gro:type>
+    </gro:Script>
+    <gro:Script id="affichage_transform_pj_docx_pdf" method="">
+        <gro:script>MSC/PJ/affichage_transform_pj_docx_pdf.groovy</gro:script>
+        <gro:type>DisplayRule</gro:type>
+    </gro:Script>
+    <gro:Script id="action_transform_pj_docx_pdf" method="">
+        <gro:script>MSC/PJ/action_transform_pj_docx_pdf.groovy</gro:script>
+        <gro:type>DocumentInitializer</gro:type>
+    </gro:Script>
+	<gro:Script id="customDigitechVacations">
+        <gro:script>custom/digitech_vacations.groovy</gro:script>
+        <gro:type>CustomHomeBlock</gro:type>
+    </gro:Script>
+	<gro:Script id="after_otpSignatureAccepted">
+		<gro:script>AFTERSIGN/after_otpSignatureAccepted.groovy</gro:script>
+		<gro:type>DocumentInitializer</gro:type>
+	</gro:Script>
+</gro:ScriptsGroovy>

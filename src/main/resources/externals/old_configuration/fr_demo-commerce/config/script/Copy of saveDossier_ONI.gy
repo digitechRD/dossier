@@ -1,0 +1,208 @@
+import java.util.List;
+import java.util.Map;
+import java.lang.Double;
+
+// import standart pour un script de type AIRSFLOW
+import org.slf4j.Logger;
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.UserCoreContext;
+import com.digitech.dossier.script.model.IScriptResultModel;
+import com.digitech.dossier.script.model.impl.ScriptResultModel;;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+
+import com.digitech.airs3dossiers.airs.AirsFolder;
+import com.digitech.dossier.script.model.onsave.ScriptResultBefore;
+import com.digitech.dossier.common.model.backend.airs.IField;
+
+//IScriptResultModel<> ouput = new ScriptResultModel<List<IDocument>>()
+ScriptResultBefore result = new ScriptResultBefore();
+
+
+
+static String C_ETAT_DOC = "C_ETAT_DOC";
+static String C_ETAT_DOSS = "C_ETAT_DOSS";
+static String C_STATUS_DOSS = "C_STATUS";
+static String DOC_VALUE = "119"; // lie au formulaire
+static String VALUE_WAITING_COM = "105"; // en attente d'export commission
+static String VALUE_STATUED_COM = "108"; // statué par la commission
+static String VALUE_WAITING_ENQ = "111"; // en attente d'enquete
+
+
+static String VALUE_VALIDE = "110"; // validé
+
+static String TEST_OK_SUM = "infos_test_script_saveOni_summary";
+static String TEST_OK_DETAIL = "infos_test_script_saveOni_detail"; 
+static String TEST_KO_DETAIL = "warn_test_script_saveOni_detail";
+static String TEST_KO_SUM = "warn_test_script_saveOni_summary";
+
+
+result.setResult( true );
+result.setMessageSummary("Le statut du dossier correspond aux éléments du dossier.");
+result.setMessageDetail( "cohérence OK." );
+
+if(airsDocument != null) {
+	if(airsDocument.isFolder()) {
+		AirsFolder airsFolder = (AirsFolder) airsDocument.getAirsDocument();
+		
+		// testing folder state
+		IField fieldDoss_STATUT = airsDocument.getField(C_STATUS_DOSS);
+		IField fieldDoss_ETAT = airsDocument.getField(C_ETAT_DOSS);
+		String fieldStatutvalue = getFieldValue( fieldDoss_STATUT );
+		String fieldEtatvalue = getFieldValue( fieldDoss_ETAT );
+		
+    if( fieldEtatvalue != null && 
+				( !fieldEtatvalue.equalsIgnoreCase(VALUE_WAITING_COM ) || !fieldEtatvalue.equalsIgnoreCase(VALUE_STATUED_COM )  )
+						&& fieldStatutvalue != null &&  !fieldStatutvalue.equalsIgnoreCase( VALUE_VALIDE ))
+		{		
+			List<Integer> childIds;
+			try {
+				childIds = airsFolder.getChildListId();
+				boolean docAllReadyLinked = false;
+				boolean mustBeSave = true;
+				if(childIds != null) {
+				
+					for(Integer childId : childIds) {					
+						
+						IDocument docToTrait = getDocumentMgr().getDocument(userContext.getJeton(), childId);
+						
+						IField field = docToTrait.getField("C_ETAT_DOC");
+					
+						
+						String fieldvalue = getFieldValue( field );	
+           				
+						if(fieldvalue != null && fieldvalue.equalsIgnoreCase( DOC_VALUE ) )
+						{// doc linked
+						
+								mustBeSave = false;
+								scriptLogger.warn("child linked ! ");
+								break;
+						
+						}					
+					}
+					if( mustBeSave)
+					{
+					
+						result.setResult( true );
+						result.setMessageSummary(TEST_OK_SUM);
+						result.setMessageDetail( TEST_OK_DETAIL );
+					}
+					else 
+					{
+				
+						result.setResult( false );
+						result.setMessageSummary(TEST_KO_SUM);
+						result.setMessageDetail( TEST_KO_DETAIL );
+					}
+				}
+				else
+					scriptLogger.warm("childIds is null");
+			}
+			catch(Exception e) {
+			System.out.println( e.getLocalizedMessage() );
+				//scriptLogger.error(e.getLocalizedMessage(), e);
+			}
+			    
+			    
+			    
+		}
+		else	if( fieldEtatvalue != null && 
+				( fieldEtatvalue.equalsIgnoreCase(VALUE_WAITING_COM ) || fieldEtatvalue.equalsIgnoreCase(VALUE_STATUED_COM )  )
+						&& fieldStatutvalue != null &&  fieldStatutvalue.equalsIgnoreCase( VALUE_WAITING_ENQ ))
+		{		
+			   
+			     result.setResult( false );
+						result.setMessageSummary(TEST_KO_SUM);
+						result.setMessageDetail( TEST_KO_DETAIL );
+		}
+		else if( fieldEtatvalue != null && 
+				( fieldEtatvalue.equalsIgnoreCase(VALUE_WAITING_COM ) || fieldEtatvalue.equalsIgnoreCase(VALUE_STATUED_COM )  )
+						&& fieldStatutvalue != null &&  fieldStatutvalue.equalsIgnoreCase(VALUE_VALIDE ))
+		{		
+		
+			List<Integer> childIds;
+			try {
+				childIds = airsFolder.getChildListId();
+				boolean docAllReadyLinked = false;
+				boolean mustBeSave = true;
+				if(childIds != null) {
+				
+					for(Integer childId : childIds) {					
+						
+						IDocument docToTrait = getDocumentMgr().getDocument(userContext.getJeton(), childId);
+						
+						IField field = docToTrait.getField("C_ETAT_DOC");
+					
+						
+						String fieldvalue = getFieldValue( field );	
+           				
+						if(fieldvalue != null && fieldvalue.equalsIgnoreCase( DOC_VALUE ) )
+						{// doc linked
+						
+							if( docAllReadyLinked )
+							{// don't  save
+							
+								mustBeSave = false;
+								scriptLogger.warm("To many child linked ! ");
+								break;
+							}else					
+						  	docAllReadyLinked = true;
+								}
+						}
+					
+					
+					if( mustBeSave && docAllReadyLinked)
+					{
+					
+						result.setResult( true );
+						result.setMessageSummary(TEST_OK_SUM);
+						result.setMessageDetail( TEST_OK_DETAIL );
+					}
+					else 
+					{
+				
+						result.setResult( false );
+						result.setMessageSummary(TEST_KO_SUM);
+						result.setMessageDetail( TEST_KO_DETAIL );
+					}
+				}
+				else
+					scriptLogger.warm("childIds is null");
+			}
+			catch(Exception e) {
+			System.out.println( e.getLocalizedMessage() );
+				//scriptLogger.error(e.getLocalizedMessage(), e);
+			}
+		}
+	}
+}
+else
+	scriptLogger.warm("airsDocument is null");
+
+output.setValue( result );
+
+
+private String getFieldValue( IField field )
+{
+	List<?> values = field.getValues();
+	String fieldvalue;
+	if(values != null && !values.isEmpty()) {
+		fieldvalue =getServerMgr().getFieldValues(values, field.getAirsField());   
+		scriptLogger.warn("Field Value : " + field.getCode() + " - " + fieldvalue );
+	}else
+	{
+		scriptLogger.warn("the field value is null or empty");
+	}
+	
+	return fieldvalue;
+}
+
+
+private IServer getServerMgr() {
+	return (IServer) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_SERVER_MGR);
+}
+
+private com.digitech.dossier.common.service.IDocument getDocumentMgr() {
+		return (com.digitech.dossier.common.service.IDocument) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_DOCUMENT_MGR);
+	}
+

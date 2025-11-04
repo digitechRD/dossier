@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preference>
+	<organization name="IAS" id="3" titre="Accueil IAS"
+		workflowCorbeille="1">
+		<indexation contentType="DOCSAL">
+			<airsrequest name="">
+				<value>WFTASK=indexationIAS</value>
+			</airsrequest>
+			<airsrequest name="">
+				<value>WFTASK=indexationApresEnrichissementIAS</value>
+			</airsrequest>
+		</indexation>
+		<SubmitWorkflow alert="1" onclick="gotoSimpleView" />
+		<reporting>
+			<file value="ias_receptions.rptdesign"
+				titre="Suivi des réceptions" />
+			<file value="ias_suivi_activites.rptdesign"
+				titre="Suivi des activités" />
+			<file value="ias_suivi_stock.rptdesign"
+				titre="Suivi du stock" />
+			<file value="ias_le_suivi_des_clotures.rptdesign"
+				titre="Suivi des clôtures" />
+		</reporting>
+	</organization>
+	<organization name="PPEBO" id="2" titre="Accueil PPEBO"
+		workflowCorbeille="1">
+		<indexation contentType="DOCSAL">
+			<airsrequest name="">
+				<value>WFTASK=indexationPPEBO</value>
+			</airsrequest>
+			<airsrequest name="">
+				<value>WFTASK=indexationApresEnrichissement</value>
+			</airsrequest>
+		</indexation>
+		<SubmitWorkflow alert="1" onclick="gotoSimpleView" />
+		<reporting>
+			<file value="ppebo_suivi_activites.rptdesign" titre="Suivi des activités"/>
+			<file value="ppebo_historique_production.rptdesign" titre="Historique de production"/>			
+		</reporting>		
+	</organization>
+	<organization name="EXPERIAN" id="1" titre="Accueil Experian"
+		workflowCorbeille="1">
+		<indexation contentType="DOCSAL">
+			<airsrequest name="">
+				<value>WFTASK=IndexationExperian</value>
+			</airsrequest>
+		</indexation>
+		<SubmitWorkflow alert="1" onclick="gotoSimpleView" />
+	</organization>
+	<organization name="SNT" id="7" titre="Accueil SNT"
+		afterLogin="gotoSearch">
+	</organization>
+</preference>

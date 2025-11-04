@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" type="xml"?>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
+    version="5.0" xml:id="identification" xml:lang="fr">
+    <title>Identification, Autorisations</title>
+    <section xml:id="identification_login">
+        <title>Page de Connexion</title>
+        <para>
+            <figure xml:id="img_login">
+                <title>Page de Connexion</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/login01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+        </para>
+        <para>La page de <guimenuitem>Connexion</guimenuitem> permet à un utilisateur de se
+            connecter à <application>AIRS Courrier Express</application>. Seules les personnes
+            habilitées doivent pouvoir accéder aux données exploitées par le Serveur AIRS. Pour ce
+            faire, l'utilisateur doit renseigner son <guilabel>Identifiant</guilabel> et son
+                <guilabel>Mot de passe</guilabel>.</para>
+        <para>Les paramètres de connexion ont été préalablement définis à l’aide d’un outil
+            d’administration permettant ainsi l'enregistrement de tous les utilisateurs du produit
+            (nom d’utilisateur, mot de passe,...). Il appartient aussi à l’administrateur de
+            configurer tous les profils d’utilisation du produit afin de définir, pour chaque
+            utilisateur, le périmètre d’utilisation des fonctionnalités ainsi que les conditions
+            d’accès aux différents objets traités.</para>
+        <para>Lors de la connexion, après vérification des critères de connexion et acceptation de
+            ceux-ci, le profil de l’utilisateur est chargé. Celui-ci dispose alors des droits et
+            accréditations qui lui ont été attribués par l’administrateur du système. Si les
+            informations de connexion permettent d’authentifier l’utilisateur et qu'il possède les
+            droits suffisants pour accéder à l'application, la <link linkend="home">page
+                    d’<guimenuitem>Accueil</guimenuitem></link> est affichée. </para>
+        <para>
+            <table frame="none" xml:id="table_login_error">
+                <title>Messages d'erreur</title>
+                <tgroup cols="2">
+                    <colspec colname="c1" colnum="1"/>
+                    <colspec colname="c2" colnum="2"/>
+                    <thead>
+                        <row>
+                            <entry>Message d'erreur</entry>
+                            <entry>Description</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row>
+                            <entry><errortext>Erreur d’authentification. Identifiant ou Mot de passe
+                                    invalide</errortext></entry>
+                            <entry>L'utilisateur ne peut pas être identifié car ses paramètres de
+                                connexion sont invalides</entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+            <note>
+                <para>En cochant <guilabel>Se souvenir de moi</guilabel>, l'Identifiant de
+                    l'utilisateur sera mémorisé pour les connections futures.</para>
+            </note>
+            <note>
+                <para>Dans le cas où le mot de passe est expiré, l'utilisateur doit au préalable
+                    saisir un nouveau mot de passe avant de pouvoir accéder à la page
+                    d'Accueil</para>
+            </note>
+        </para>
+    </section>
+    <section xml:id="identification_logout">
+        <title>Déconnexion</title>
+        <para>Une fois connecté à <application>AIRS Courrier Express</application>, l'utilisateur peut
+            se déconnecter à tout moment en cliquant sur le lien
+                <guimenuitem>Déconnexion</guimenuitem>. Une fois l'utilisateur déconnecté, la page
+            de <guimenuitem>Connexion</guimenuitem> est affichée.<figure xml:id="img_logout">
+                <title>Lien de déconnexion</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/logout01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure></para>
+    </section>
+</chapter>

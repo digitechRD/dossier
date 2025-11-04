@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@CUSTOMERNAME@" version="5.1.0">
+    <organization id="0" name="DEFAULT"/>
+    <organization id="3" name="RH_GEST">
+     <globalSearch>
+            <ns2:dossierrequest name="name">
+                <ns2:contentType>DOCUMENT_RH</ns2:contentType>
+                <ns2:airsvalue>RH_MATRICULE=&quot;#VALUE#&quot; OU RH_NOM=&quot;#VALUE#&quot;</ns2:airsvalue>
+            </ns2:dossierrequest>
+        </globalSearch>
+        <contentType name="DOCUMENT_RH">
+            <input>
+                <operator>=</operator>
+                <label>update_matricule_key</label>
+                <airsfield>
+                    <codeField>RH_MATRICULE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_categorie_key</label>
+                <airsfield>
+                    <codeField>RH_DOC_CAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_libelle_key</label>
+                <airsfield>
+                    <codeField>RH_LIBELLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_create_date_key</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_date_doc_key</label>
+                <airsfield>
+                    <codeField>RH_DATE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_etat_key</label>
+                <airsfield>
+                    <codeField>RH_ETAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_acteurs_key</label>
+                <airsfield>
+                    <codeField>RH_ACTEURS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_responsable_key</label>
+                <airsfield>
+                    <codeField>RH_RESPONSABLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_key_attachement</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSIER_RH">
+            <input>
+                <operator>=</operator>
+                <label>update_matricule_key</label>
+                <airsfield>
+                    <codeField>RH_MATRICULE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_nom_key</label>
+                <airsfield>
+                    <codeField>RH_NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_prenom_key</label>
+                <airsfield>
+                    <codeField>RH_PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_date_entree_key</label>
+                <airsfield>
+                    <codeField>RH_DATE_ENTREE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="8" name="RH_CONS">
+        <contentType name="DOCUMENT_RH">
+            <input>
+                <operator>=</operator>
+                <label>update_categorie_key</label>
+                <airsfield>
+                    <codeField>RH_DOC_CAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_libelle_key</label>
+                <airsfield>
+                    <codeField>RH_LIBELLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_create_date_key</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_date_doc_key</label>
+                <airsfield>
+                    <codeField>RH_DATE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    
+    <organization id="9" name="COM_GEST">
+     <globalSearch>
+            <ns2:dossierrequest name="name">
+                <ns2:contentType>DOCUMENT_COM</ns2:contentType>
+                <ns2:airsvalue>COM_NUMCLIENT=&quot;#VALUE#&quot; OU COM_NOM=&quot;#VALUE#&quot;</ns2:airsvalue>
+            </ns2:dossierrequest>
+        </globalSearch>
+        <contentType name="DOCUMENT_COM">
+            <input>
+                <operator>=</operator>
+                <label>update_numclient_key</label>
+                <airsfield>
+                    <codeField>COM_NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_type_doc_key</label>
+                <airsfield>
+                    <codeField>COM_TYPEDOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_libelle_key</label>
+                <airsfield>
+                    <codeField>COM_LIBELLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_create_date_key</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_date_doc_key</label>
+                <airsfield>
+                    <codeField>COM_DATEDOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_etat_key</label>
+                <airsfield>
+                    <codeField>COM_ETAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_responsable_key</label>
+                <airsfield>
+                    <codeField>COM_ACTEURS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <!--<input>
+                <operator>=</operator>
+                <label>Texte pièces jointes</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>-->
+        </contentType>
+        <contentType name="DOSSIER_COM">
+            <input>
+                <operator>=</operator>
+                <label>update_typecompte_key</label>
+                <airsfield>
+                    <codeField>COM_TYPECOMPTE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_numclient_key</label>
+                <airsfield>
+                    <codeField>COM_NUMCLIENT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_nom_key</label>
+                <airsfield>
+                    <codeField>COM_NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_signature_date_key</label>
+                <airsfield>
+                    <codeField>COM_DATE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    
+    <organization id="10" name="FACT_GEST">
+        <contentType name="DOCUMENT_FACT">
+            <input>
+                <operator>=</operator>
+                <label>update_type_doc_key</label>
+                <airsfield>
+                    <codeField>FACT_TYPE_DOC</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_fournisseur_key</label>
+                <airsfield>
+                    <codeField>FACT_FOURNISSEUR</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_tva196_key</label>
+                <airsfield>
+                    <codeField>FACT_NUMINTRACOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_siren_key</label>
+                <airsfield>
+                    <codeField>FACT_SIREN</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_fact_num_key</label>
+                <airsfield>
+                    <codeField>FACT_NUM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_fact_date_key</label>
+                <airsfield>
+                    <codeField>FACT_DATE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>update_create_date_key</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_etat_key</label>
+                <airsfield>
+                    <codeField>FACT_ETAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_validator_key</label>
+                <airsfield>
+                    <codeField>FACT_ACTEUR</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_key_attachement</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSIER_FACT">
+            <input>
+                <operator>=</operator>
+                <label>update_fournisseur_key</label>
+                <airsfield>
+                    <codeField>FACT_FOURNISSEUR</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_numintracom_key</label>
+                <airsfield>
+                    <codeField>FACT_NUMINTRACOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>update_siren_key</label>
+                <airsfield>
+                    <codeField>FACT_SIREN</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    
+    
+</searchForm>

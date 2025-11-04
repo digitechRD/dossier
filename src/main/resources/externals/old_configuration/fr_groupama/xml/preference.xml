@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preference xmlns="http://www.digitech.com/dossiers/preference">
+	<!--<organization name="externe" id="7" titre="Accueil Externe"
+		workflowCorbeille="0" afterLogin="gotoSearch">
+		<indexation contentType="Documents">
+			<airsrequest name="">
+				<value>AMODIF="1"</value>
+			</airsrequest>			
+		</indexation>				
+	</organization>-->
+	<organization name="GED" id="8" titre="Accueil GED"
+		workflowCorbeille="O" afterLogin="gotoSearch">
+		<indexation contentType="Documents">
+			<dossierrequest name=""
+				xmlns="http://www.digitech.com/dossiers/common">
+				<contentType>Documents</contentType>
+				<airsvalue>CORRECTION.item !="sans erreur"</airsvalue>
+			</dossierrequest>		
+		</indexation>				
+	</organization>
+</preference>

@@ -1,0 +1,52 @@
+import java.util.List;
+import java.util.Map;
+import java.lang.Double;
+
+// import standart pour un script de type AIRSFLOW
+import org.slf4j.Logger;
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.UserCoreContext;
+import com.digitech.dossier.script.model.IScriptResultModel;
+import com.digitech.dossier.script.model.impl.ScriptResultModel;;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.airs3dossiers.airs.AirsFolder;
+
+//IScriptResultModel<List<IDocument>> ouput = new ScriptResultModel<List<IDocument>>()
+
+List<IDocument> listDoc = new ArrayList<IDocument>();
+listDoc.add( airsDocument);
+
+if(airsDocument != null) {
+	if(airsDocument.isFolder()) {
+		AirsFolder airsFolder = (AirsFolder) airsDocument.getAirsDocument();
+		
+		List<Integer> childIds;
+		try {
+			childIds = airsFolder.getChildListId();
+			if(childIds != null) {
+				for(Integer childId : childIds) {
+					IDocument docToAdd = getDocumentService().getDocument(userContext.getJeton(), childId.intValue());
+					listDoc.add( docToAdd )	;
+					scriptLogger.info("adding childIds : " + childId.toString());
+				}				
+			}
+			else
+				scriptLogger.warm("childIds is null");
+		}
+		catch(Exception e) {
+			scriptLogger.error(e.getLocalizedMessage(), e);
+		}
+	}
+}
+else
+	scriptLogger.warm("airsDocument is null");
+
+output.setValue( listDoc );
+
+return output;
+
+public com.digitech.dossier.common.service.IDocument getDocumentService() {
+	return (com.digitech.dossier.common.service.IDocument) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_DOCUMENT_MGR);
+}
+
+

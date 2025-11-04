@@ -1,0 +1,1244 @@
+/************************************************************************************************************************************
+* Auteur 	  	: JMU
+* Date 		  	: 24/03/16
+* Description   : Classe utilitaire pour le flux documentaire
+************************************************************************************************************************************/
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.lang.StringUtils;
+
+import com.digitech.dossier.common.service.Constants;
+import com.digitech.dossier.common.service.IAuthorityList;
+import com.digitech.dossier.common.service.IMail;
+import com.digitech.dossier.common.service.IRight;
+import com.digitech.dossier.common.service.IServer;
+import com.digitech.dossier.common.service.IUser;
+import com.digitech.dossier.common.service.ServiceConstants;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.model.backend.DossierCoreContext;
+import com.digitech.dossier.common.model.backend.UserContext;
+import com.digitech.dossier.common.model.backend.UserCoreContext;
+import com.digitech.dossier.common.model.backend.Constants.AdvancedAuditType;
+import com.digitech.dossier.common.model.backend.airs.IAttachment;
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.airs.IField;
+import com.digitech.dossier.common.model.backend.airs.IProfile
+import com.digitech.dossier.common.model.backend.airs.IDocument.IComment
+import com.digitech.dossier.common.model.backend.airs.IDocument.IEvent;
+import com.digitech.dossier.common.model.backend.airs.impl.Document;
+import com.digitech.dossier.common.model.backend.airs.impl.Document.Event;
+import com.digitech.dossier.common.model.backend.report.value.airs.ReportPerson;
+import com.digitech.dossier.common.Utils;
+import com.digitech.dossier.common.utils.DocumentUtils;
+import com.digitech.dossier.common.utils.FieldUtils;
+import com.digitech.dossier.common.utils.NavigationUtils;
+import com.digitech.dossier.common.utils.UserUtils;
+import com.digitech.dossier.common.utils.ApplicationUtils;
+import com.digitech.dossier.script.service.impl.ScriptMgr;
+import com.digitech.dossier.common.resources.BundleUtils;
+
+import com.digitech.courrier.common.utils.CourrierUtils;
+
+import com.digitech.jcorbairs.Term;
+import com.digitech.jcorbairs.User;
+import com.digitech.jcorbairs.Organization;
+import com.digitech.jcorbairs.admin.OrganizationAdmin;
+import com.digitech.jcorbairs.admin.OrganizationsManager;
+import com.digitech.jcorbairs.admin.ProfilAdmin;
+import com.digitech.jcorbairs.admin.UserAdmin;
+import com.digitech.jcorbairs.exception.IdentificationException;
+import com.digitech.jcorbairs.exception.ServerException;
+import com.digitech.jcorbairs.PrimaryDocument;
+
+import com.digitech.jcorbairs.Domain;
+import com.digitech.jcorbairs.Search;
+import com.digitech.jcorbairs.Request;
+
+import com.digitech.dossier.common.model.backend.report.ReportAttachment;
+import com.digitech.dossier.common.model.backend.report.ReportDocument;
+import com.digitech.dossier.common.model.backend.report.ReportModel;
+import com.digitech.report.service.IDocumentConvertionService;
+import com.digitech.report.service.IDocumentGenerationService;
+import com.digitech.report.service.IDocumentInspectorService;
+import com.digitech.report.service.IDocumentMergingService;
+import com.digitech.report.service.impl.ooo.DocumentConvertionService;
+import com.digitech.report.service.impl.ooo.DocumentGenerationService;
+import com.digitech.report.service.impl.ooo.DocumentInspectorService;
+import com.digitech.report.service.impl.ooo.DocumentMergingService;
+import com.digitech.report.service.impl.ooo.OfficeManager;
+import com.digitech.report.service.impl.ooo.SectionModel;
+import com.digitech.report.service.impl.ooo.DocumentInspectorService;
+import com.digitech.report.service.IDocumentInspectorService;
+import com.digitech.dossier.common.service.export.IOdtGenerator;
+import com.digitech.dossier.common.service.export.impl.OdtGenerator;
+import com.digitech.jcorbairs.exception.DocumentException;
+import com.digitech.jcorbairs.exception.IdentificationException;
+import com.digitech.jcorbairs.exception.ServerException;
+import net.sf.jooreports.templates.DocumentTemplateException;
+import com.digitech.toolbox.document.exception.DocumentOperationException;
+import com.digitech.dossier.common.model.backend.export.PdfRenumberFontModel;
+import org.artofsolving.jodconverter.office.DefaultOfficeManagerConfiguration;
+
+class FDOC_Utils 
+{
+	public interface GroovyCommand
+	{
+		public void run() ; 
+	}
+	
+	private final static Logger log = LoggerFactory.getLogger("com.digitech.dossier.script.FDOC_Utils");
+	private static File constantsFile = null;
+	private static Properties properties = new Properties();
+	
+	static 
+	{
+		constantsFile = new File(DossierCoreContext.getApplicationPath() + File.separator + ScriptMgr.SCRIPT_RELATIVE_PATH + File.separator + "FDOC" + File.separator + "global" + File.separator + "Constantes.properties");
+		constantsFile.withInputStream 
+		{ 
+			stream->properties.load(stream)
+		}
+	}
+
+	public static String getConstant(String code) 
+	{
+		if (!properties.containsKey(code)) 
+		{
+			throw new ScriptException("Client '" + code + "' non trouvee au sein du fichier " + constantsFile);
+		}
+		return properties.getProperty(code);
+	}
+
+	public static String getConstant(String code, String defaultValue) 
+	{
+		if (!properties.containsKey(code)) 
+		{
+			return defaultValue;
+		}
+		return properties.getProperty(code);
+	}
+	
+	/**
+	* Verifie si le document possède un ou plusieurs validateur(s).
+	* @param document le document AIRS
+	* @return true si le champ "" du document possède une ou plusieurs valeurs
+	*/
+	public static boolean hasValidator(IDocument document) 
+	{
+		try 
+		{
+			List<Integer> docValidators = FieldUtils.getValues(document, getConstant("FIELD_CODE_VALIDATOR_LIST"));
+			if ((docValidators != null) && (!docValidators.isEmpty())) 
+			{
+				return true;
+			}
+		}
+		catch (Exception e) 
+		{
+			log.error("hasValidator : "+e.getMessage());
+		}
+		return false;
+	}
+	
+	/**
+	* Verifie si le document possède un signataire.
+	* @param document le document AIRS
+	* @return true si le champ "" du document possède une valeur
+	*/
+    public static boolean hasSigner(IDocument document) 
+	{
+        try 
+		{
+			Integer docSigner = FieldUtils.getValue(document, getConstant("FIELD_CODE_SIGNER_USER"));
+            if ((docSigner != null) && docSigner != 0) 
+			{
+                return true;
+            }
+        }
+        catch (Exception e) 
+		{
+			log.error("hasSigner : "+e.getMessage());
+        }
+        return false;
+    }
+
+	/**
+	* Verifie si le document possède un des circuit de validation present dans la liste circuits.
+	* @param document le document AIRS
+	* @param etats les circuits possibles
+	* @return true si le champ "FDOC_CIRCUIT_VAL" du document possède une des valeurs presente au sein de la liste circuits
+	*/
+    public static boolean hasCircuit(IDocument document, List<String> circuits) 
+	{
+        String fieldCodeDocumentCircuit = getConstant("FIELD_CODE_VALIDATION_CIRCUIT");
+        Integer circuitId = (Integer) FieldUtils.getValue(document, fieldCodeDocumentCircuit);
+        if (circuitId != null) 
+		{
+            Term term = ((IAuthorityList) getAuthorityListService()).getTerm(circuitId);
+            if (term == null) 
+			{
+                throw new IllegalStateException("Aucun terme avec l'ID '" + circuitId + "' trouve pour la liste d'autorite " + fieldCodeDocumentCircuit);
+            }
+            return circuits.contains(term.getCode());
+        }
+        return false;
+    }
+
+
+	/**
+	* Verifie si le document est dans un des etats present dans la liste states.
+	* @param document le document AIRS
+	* @param etats les etats possibles
+	* @return true si le champ "FDOC_ETAT_WKF" du document possède une des valeurs presente au sein de la liste etats
+	*/
+    public static boolean hasState(IDocument document, List<String> states) 
+	{
+        String fieldCodeDocumentState = getConstant("FIELD_CODE_STATUS");
+        Integer stateId = (Integer) FieldUtils.getValue(document, fieldCodeDocumentState);
+        if (stateId != null) 
+		{
+            Term term = ((IAuthorityList) getAuthorityListService()).getTerm(stateId);
+            if (term == null) 
+			{
+                throw new IllegalStateException("Aucun terme avec l'ID '" + stateId + "' trouve pour la liste d'autorite " + fieldCodeDocumentState);
+            }
+            return states.contains(term.getCode());
+        }
+        return false;
+    }
+
+	/**
+	* Permet de changer l'etat d'un document
+	* @param document le document AIRS
+	* @param le code de l'etat souhaite (se base sur la liste d'autorite FDOC_ETAT_WKF)
+	*/
+    public static boolean changeState(UserContext userContext, IDocument document, String state) 
+	{	
+		boolean ret = true;
+		
+		try
+		{
+			//Mise à jour du document avec le nouveau statut
+			String fieldCode = getConstant("FIELD_CODE_STATUS");
+			FieldUtils.setValue(document, fieldCode, getTermID(fieldCode, state))
+			
+			//Ajout d'une ligne dans l'historique
+			addHistoForWorkflow(document, userContext, "Changement d'etat : "+state);
+		}
+		catch(Exception e)
+		{
+			log.error(e.getMessage());
+			ret = false;
+		}
+		
+		return ret;
+	}
+	
+	/**
+	* Verifie si l'utilisateur connecte est l'utilisateur traitant (base sur le champ FDOC_USER_TRAIT).
+	* @param userContext le contexte de l'utilisateur connecte
+	* @param document le document AIRS
+	* @return true si l'utilisateur connecte est l'utilisateur traitant du document
+	*/
+    public static boolean isOwnerUser(UserContext userContext, IDocument document) 
+	{
+       Integer docUserOwner = Integer.valueOf( FieldUtils.getValue(document, getConstant("FIELD_CODE_OWNER_USER")));
+       return (docUserOwner != null && docUserOwner.equals(userContext.getUser().getId()));
+    }
+	
+	/**
+	* Verifie si l'utilisateur connecte est le valideur courant du document (base sur le champ FDOC_CUR_VALIDEUR).
+	* @param userContext le contexte de l'utilisateur connecte
+	* @param document le document AIRS
+	* @return true si l'utilisateur connecte est le valideur courant du document
+	*/
+    public static boolean isValidatorUser(UserContext userContext, IDocument document) 
+	{
+		Integer docValidator;
+		Object validatorObject = FieldUtils.getValue(document, getConstant("FIELD_CODE_VALIDATOR_USER"));
+		
+		if(validatorObject!=null)
+		{
+			docValidator = Integer.valueOf(validatorObject);
+		}
+
+		//try {
+        //   throw new Exception("Invalid U_GESTS value!")
+        //}
+        //catch(Exception e) {
+        //       log.warn("Field '{}' starts with a ; ('{}')", "FIELD_GESTIONNAIRES_CODE", "value");
+        //       log.error(e.getMessage(), e)
+        //}
+		
+        return docValidator != null && docValidator.equals(userContext.getUser().getId());
+    }
+	
+	/**
+	* Verifie si le valideur courant est le dernier valideur (base sur les 2 champs FDOC_CUR_VALIDEUR & FDOC_VALIDEURS).
+	* @param document le document AIRS
+	* @return true si le valideur courant du document est le dernier
+	*/
+    public static boolean isLastValidator(IDocument document) 
+	{
+	
+        Integer docValidator = null;
+        List<Integer> docValidators = null;
+        try 
+		{
+            docValidator = FieldUtils.getValue(document, getConstant("FIELD_CODE_VALIDATOR_USER"));
+            docValidators = FieldUtils.getValues(document, getConstant("FIELD_CODE_VALIDATOR_LIST"));
+        }
+        catch (IllegalStateException ise) 
+		{
+			throw new ScriptException(ise.getMessage());
+        }
+
+        return docValidators == null || docValidators.size() == 0 || docValidators.get(docValidators.size() - 1).equals(docValidator);
+    }
+
+	/**
+	* Retourne l'id du valideur suivant (base sur les 2 champs FDOC_CUR_VALIDEUR & FDOC_VALIDEURS).
+	* @param document le document AIRS
+	* @return l'id du valideur suivant, null sinon
+	*/
+    public static Integer getNextValidator(IDocument document) 
+	{
+		try 
+		{
+            Integer currentValidator = FieldUtils.getValue(document, getConstant("FIELD_CODE_VALIDATOR_USER"));
+            List<Integer> docValidators = FieldUtils.getValues(document, getConstant("FIELD_CODE_VALIDATOR_LIST"));
+            if (docValidators != null) 
+			{
+                int i = 0;
+                for (Integer valid : docValidators) 
+				{
+                    if (valid.equals(currentValidator)) 
+					{
+                        if (docValidators.size() > (i + 1)) 
+						{
+                            return docValidators.get(i + 1);
+                        }
+                    }
+                    i++;
+                }
+            }
+        }
+        catch (Exception e) 
+		{
+			throw new ScriptException(e.getMessage());
+        }
+        return null;
+    }
+
+	/**
+	* Retourne l'id du premier valideur
+	* @param document le document AIRS
+	* @return l'id du premier valideur, null sinon
+	*/
+    public static Integer getInitValidator(IDocument document) 
+	{
+        try 
+		{
+            List<Integer> docValidators = FieldUtils.getValues(document, getConstant("FIELD_CODE_VALIDATOR_LIST"));
+            if ((docValidators != null) && (!docValidators.isEmpty())) 
+			{
+                return docValidators.get(0);
+            }
+        }
+        catch (Exception e) 
+		{
+			throw new ScriptException(e.getMessage());
+        }
+        return null;
+    }
+
+	/**
+	* Retourne l'id du signataire
+	* @param document le document AIRS
+	* @return l'id du premier valideur, null sinon
+	*/
+    public static Integer getSignerUser(IDocument document) 
+	{
+        try 
+		{
+            Integer docSignerUser = FieldUtils.getValue(document, getConstant("FIELD_CODE_SIGNER_USER"));
+            if ((docSignerUser != null) && (docSignerUser != 0)) 
+			{
+                return docSignerUser;
+            }
+        }
+        catch (Exception e) 
+		{
+			throw new ScriptException(e.getMessage());
+        }
+        return null;
+    }
+	
+	/**
+	* Verifie si l'utilisateur connecte est le signataire courant du document (base sur le champ FDOC_CUR_SIGNATAIRE).
+	* @param userContext le contexte de l'utilisateur connecte
+	* @param document le document AIRS
+	* @return true si l'utilisateur connecte est le signataire courant
+	*/
+    public static boolean isSignerUser(UserContext userContext, IDocument document) 
+	{
+        Integer docSigner = FieldUtils.getValue(document, getConstant("FIELD_CODE_SIGNER_USER"));
+        return docSigner != null && docSigner.equals(userContext.getUser().getId());
+    }
+	
+	/**
+	* Renvoie l'id d'un item de liste d'autorite en fonction du code.
+	* @param fieldCode le code du champ (liste autorite)
+	* @param termCode le code de l'item de liste d'autorite
+	* @return l'id de l'item
+	* @throws IdentificationException
+	* @throws ServerException
+	*/
+    public static Integer getTermID(String fieldCode, String termCode) throws IdentificationException, ServerException 
+	{
+        List<Term> termList = CourrierUtils.getAuthorityListMgr().getTerms(fieldCode);
+        for (Term term : termList) 
+		{
+            if (term.getCode().equals(termCode)) 
+			{
+                return term.getId();
+            }
+        }
+        return -1;
+    }
+	
+    /**
+     * Gets a term Code.
+     * @param fieldCode the field code
+     * @param termId the term Id
+     * @return the term Code
+     * @throws IdentificationException
+     * @throws ServerException
+     */
+    public static String getTermCode(String fieldCode, Integer termId) throws IdentificationException, ServerException
+	{
+        List<Term> termList = CourrierUtils.getAuthorityListMgr().getTerms(fieldCode);
+        for(Term term : termList) {
+            if(term.getId().equals(termId)) {
+                return term.getCode();
+            }
+        }
+        return null;
+    }
+
+	/**
+	* Retourne le code du service en fonction d'un id
+	* @param orgId l'id du service
+	* @param userContext le contexte de l'utilisateur connecte
+	* @return service le code du service
+	*/
+    private static String getServiceCode(Integer orgId, UserContext userContext) throws IdentificationException, ServerException 
+	{
+        String serviceCode = null;
+        OrganizationAdmin orgAdm = OrganizationsManager.load(userContext.getJeton(), orgId);
+        if (orgAdm != null) 
+		{
+            serviceCode = orgAdm.getCode();
+        }
+        return serviceCode;
+    }
+	
+	/**
+	* Retourne la liste des utilisateurs possedant le profil profileCode
+	* @param profileCode le code du profil concerne
+	* @return elements la liste des utilisateurs possedant le profil
+	*/
+    public static List<User> getUsersFromProfile(String profileCode) 
+	{
+		String methodName = "getUsersFromProfile";
+        List<User> elements = new ArrayList<User>();
+
+        //Chargement du profil
+        IProfile profile = getRightMgr().getProfile(profileCode);
+        if (profile != null) 
+		{
+            ProfilAdmin currentProfil = com.digitech.jcorbairs.admin.ProfilsManager.load(DossierCoreContext.getAdminJeton(), profile.getId().intValue());
+            if (currentProfil != null) 
+			{
+                // Recuperation de tous les utilisateurs qui ont le profil
+                List<UserAdmin> userAdmList = currentProfil.getUsers();
+                if (userAdmList != null && userAdmList.size() > 0) {
+                    User user;
+                    for (UserAdmin usrAdm : userAdmList) 
+					{
+                        if ((user = getUserMgr().getUser(usrAdm.getId())) != null) 
+						{
+							log.debug(methodName+" :  Ajout de l'utilisateur "+user.getLogin());
+                            elements.add(user);
+                        }
+                    }
+                }
+            }
+        }
+        return elements;
+    }
+	
+	/**
+	* Retourne la liste des utilisateurs possedant le profil profileCode et faisant partie de la societe socCode
+	* @param profileCode le code du profil concerne
+	* @param socCode le code de la societe concernee
+	* @return elements la liste des utilisateurs possedant le profil de la societe socCode
+	*/
+    public static List<User> getUsersFromProfileAndSociety(String profileCode, String socCode) 
+	{
+		String methodName = "getUsersFromProfileAndSociety";
+        List<User> elements = new ArrayList<User>();
+
+        //Chargement du profil
+        IProfile profile = getRightMgr().getProfile(profileCode);
+		
+        if (profile != null) 
+		{
+            ProfilAdmin currentProfil = com.digitech.jcorbairs.admin.ProfilsManager.load(DossierCoreContext.getAdminJeton(), profile.getId().intValue());
+            if (currentProfil != null) 
+			{
+                //Recuperation de tous les utilisateurs qui ont le profil
+                List<UserAdmin> userAdmList = currentProfil.getUsers();
+				
+                if (userAdmList != null && userAdmList.size() > 0) 
+				{
+                    User user;
+					
+                    for (UserAdmin usrAdm : userAdmList) 
+					{
+                        if ((user = getUserMgr().getUser(usrAdm.getId())) != null) 
+						{
+							//Verification de l'appartenance de l'utilisateur e la societe socCode
+							List<Organization> orgaList = user.getOrganizations();
+							boolean userIsFromSoc = false;
+							
+							if(orgaList!=null)
+							{
+								for (Organization orga : orgaList) 
+								{
+									if(orga.getProperties().getCode().contains(socCode+"_"))
+									{
+										userIsFromSoc = true;
+									}
+								}
+								
+								if(userIsFromSoc)
+								{
+									log.debug(methodName+" : Ajout de l'utilisateur "+user.getLogin());
+									elements.add(user);
+								}
+							}
+                        }
+                    }
+                }
+            }
+        }
+        return elements;
+    }
+
+	/**
+	* Retourne la liste du champ selectionne faisant partie de la societe socCode
+	* @param socCode le code de la societe concernee
+	* @return elements de la liste du champ choisi en fonction de la societe socCode
+	*/
+	public static List<Term> getTermsFromSociety(String fieldCode, String socCode) 
+	{
+		String methodName = "getFieldFromSociety";
+		
+		List<Term> termList = CourrierUtils.getAuthorityListMgr().getTerms(fieldCode);
+		List<Term> elements = new ArrayList<Term>();
+		
+		if (termList != null) 
+		{
+			for (Term term : termList) 
+			{			
+				if(term.getCode().contains(socCode+"_"))
+				{
+					elements.add(term);
+					log.debug(methodName+" : Ajout du codeTerm : "+term.getCode());
+				}
+			}
+		}
+		return elements;
+	}
+	
+	/**
+	* Retourne le code de la societe du document (si le document a une societe)
+	* @param document le document
+	* @return socCode le code de la societe du document, chaine nulle si pas de societe sur le document
+	*/
+    public static String getSocietyCodeFromDocument(IDocument document) 
+	{
+		String methodName = "getSocietyCodeFromDocument";
+		String fieldCodeSociety = getConstant("FIELD_CODE_SOCIETE");
+		String socCode = null;
+		Integer socId = (Integer) document.getField(fieldCodeSociety).getValue();
+		
+		log.debug(methodName+" : fieldCode : " + fieldCodeSociety+ " - " + methodName+" : socId = "+socId);
+		
+        if (socId != null) 
+		{
+            Term term = ((IAuthorityList) getAuthorityListService()).getTerm(socId);
+            if (term == null) 
+			{
+               log.error(methodName+" : Aucun terme avec l'ID '" + socId + "' trouve pour la liste d'autorite " + fieldCodeSociety);
+            }
+			else
+			{
+				socCode = term.getCode();
+			}
+		}
+        
+		return socCode;
+	}
+	
+	/**
+	* Retourne le code de la societe de l'utilisateur en fonction du service auquel il est connecte
+	* @param UserContext userContext : le contexte de l'utilisateur connecte
+	* @return socCode le code de la societe de l'utilisateur
+	*/
+    public static String getSocietyCodeFromUserContext(UserContext userContext) 
+	{
+		String methodName = "getSocietyCodeFromUserContext";
+		String socCode = null;
+		String serviceCode = null;
+
+		// Recuperation du service courant de l'utilisateur connecte
+		serviceCode = getServiceCode(userContext.getCurrentOrgId(), userContext);
+		
+		log.debug(methodName+" : serviceCode : " + serviceCode);
+		
+		// Recuperation du debut du code du service de l'utilisateur connecte
+		socCode = serviceCode.substring(0, serviceCode.indexOf("_"));
+		
+		log.debug(methodName+" : socCode : " + socCode);
+        
+		return socCode;
+	}
+	
+	/**
+	* Verifie si l'utilisateur est un contributeur sur le document.
+	* @param userContext : Le contexte de l'utilisateur courant.
+	* @param document : Le document AIRS.
+	* @return true si l'utilisateur est un contributeur sur le document.
+	*/
+	public static boolean isCollaboratorUser(UserContext userContext, IDocument document)
+	{
+		String fieldCodeDocumentCollaboratorUser = getConstant("FIELD_CODE_COLLABORATOR");
+		List<Integer> docCollaborators = null;
+		try
+		{
+			docCollaborators = FieldUtils.getValues(document, fieldCodeDocumentCollaboratorUser);
+		}
+		catch(IllegalStateException ise)
+		{
+			log.error("isCollaboratorUser : "+ise.getMessage());
+			return false;
+		}
+		return docCollaborators != null && docCollaborators.contains(userContext.getUser().getId());
+	}
+  
+	/**
+	* Retire un utilisateur de la liste des contributeurs.
+	* @param userContext : Le contexte de l'utilisateur connecte.
+	* @param document : Le document AIRS.
+	*/
+	public static void removeUserFromCollaborators(UserContext userContext, IDocument document)
+	{
+		String methodName = "removeUserFromCollaborators";
+		String fieldCodeDocumentCollaboratorUser = getConstant("FIELD_CODE_COLLABORATOR");
+		List<Integer> docCollaborators = null;
+		try
+		{
+		  docCollaborators = FieldUtils.getValues(document, fieldCodeDocumentCollaboratorUser);
+		}
+		catch(IllegalStateException ise)
+		{
+		  log.error(methodName+" : "+ise.getMessage());
+		}
+	  
+		Integer userId = userContext.getUser().getId();
+		if(docCollaborators != null && docCollaborators.contains(userId))
+		{
+			// Obligation de parcourir la liste à cause de la syntaxe groovy...
+			for(int i=0; i < docCollaborators.size(); i++)
+			{
+			  if(docCollaborators.get(i) == userId)
+			  {
+				docCollaborators.remove(i);
+				break;
+			  }
+			}
+			FieldUtils.setValues(document, getConstant("FIELD_CODE_COLLABORATOR"), docCollaborators);
+		}
+		else
+		{
+			log.error(methodName+" : L'utilisateur ne fait pas parti de la liste des contributeurs.");
+		}
+	}
+	
+	/**
+    * Verifie si le contributeur courant est le dernier contributeur (base sur le champ FDOC_CONTRIB).
+    * @param document le document AIRS
+    * @return true si le contributeur courant du document est le dernier
+    */
+    public static boolean isLastCollaborator(UserContext userContext, IDocument document) 
+	{
+		String methodName = "isLastCollaborator";
+        Integer docCollaborator = null;
+        List<Integer> docCollaborators = null;
+        try 
+		{
+            docCollaborator = userContext.getUser().getId();
+            docCollaborators = FieldUtils.getValues(document, getConstant("FIELD_CODE_COLLABORATOR"));
+        }
+        catch (IllegalStateException ise) 
+		{
+			log.error(methodName+" : "+ise.getMessage());
+        }
+
+        return docCollaborator == null || docCollaborators.size() == 0 || docCollaborators.get(docCollaborators.size() - 1).equals(docCollaborator);
+    }
+	
+	/**
+	*  Ajoute un evenement d'historique de type changement de valeur pour un document.
+	* @param document : Le document.
+	* @param userContext : Le contexte utilisateur.
+	* @param fieldCode : Le code du champ AIRS.
+	* @param oldValue : L'ancienne valeur du champ.
+	* @param newValue : La nouvelle valeur du champ.
+	*
+	*/
+	private static void addHistoForField(IDocument document, UserCoreContext userContext, String fieldCode, String oldValue, String newValue)
+	{
+		// Si le document n'est pas verrouille
+		if(document.getLockType() != com.digitech.dossier.common.model.backend.Constants.DOC_LOCKED_BYOTHER)
+		{
+		  if(newValue != null && oldValue.compareToIgnoreCase(newValue) != 0 && !fieldCode.equals("D_MODIF"))
+		  {
+			// Ajout dans l'historique
+			String commentEvent = "Changement de valeur "+fieldCode+" : "+oldValue+" :"+newValue;
+			getAuditMgr().addDocumentEvent(userContext, document, AdvancedAuditType.ADV_EVENT_FIELDCHANGE.name(), commentEvent);
+		  }
+		}
+	}
+	
+	/**
+	* Ajoute une entree de type workflow dans l'historique d'un document
+	* @param document : Le document.
+	* @param userContext : Le contexte de l'utilisateur courant.
+	* @param newWorkflowValue : L'entree workflow à ajouter.
+	*/
+	private static void addHistoForWorkflow(IDocument document, UserCoreContext userContext,  String newWorkflowValue)
+	{
+		// Si le document n'est pas verrouille
+		if(document.getLockType() != com.digitech.dossier.common.model.backend.Constants.DOC_LOCKED_BYOTHER)
+		{
+			if(newWorkflowValue != null )
+			{
+				// Ajout dans l'historique
+				String commentEvent = "Action workflow : "+newWorkflowValue;
+				getAuditMgr().addDocumentEvent(userContext, document, AdvancedAuditType.ADV_EVENT_FIELDCHANGE.name(), commentEvent);
+			}
+		}
+	}
+
+	/**
+	* Ajoute un commentaire au document
+	* @param document
+	* @param userContext
+	* @param newWorkflowValue
+	*/
+	private static void addComment(IDocument document, UserCoreContext userContext, String comment)
+	{
+		String methodName = "addComment";
+		// Si le document n'est pas verrouille
+		if(document.getLockType() != com.digitech.dossier.common.model.backend.Constants.DOC_LOCKED_BYOTHER)
+		{
+		  // Ajout du commentaire si la chaine n'est pas vide
+		  if(comment!= null && !comment.equals(""))
+		  {
+			IComment commentObj = new Document.Comment();
+			commentObj.setComment(comment);
+			document.getComments().add(commentObj);
+
+			log.debug(methodName+" : Enregistrement du commentaire : "+comment);
+			getDocumentMgr().updateDocumentComments(userContext, document);
+		  }
+		  else
+		  {
+			log.debug(methodName+" : Le commentaire est vide");
+		  }
+		}
+		else
+		{
+		  log.debug(methodName+" : Le document est verrouille");
+		}
+	}
+	
+	/**
+	* Retourne le nom du modèle ODT à utiliser pour le document passer en paramètre (Generation de PJ)
+	* @param document
+	* @param userContext
+	*/
+	private static String getODTModel(IDocument document, UserCoreContext userContext)
+	{
+		Integer typeDoc = FieldUtils.getValue(document, getConstant("FIELD_CODE_DOCUMENT_TYPE"));
+
+		if ((typeDoc == null) || (typeDoc==0))
+			return "";
+		
+		Term term = getAuthorityListService().getTerm(typeDoc);
+
+		if (term == null)
+			return "";
+
+		// Recuperation de la valeur 1 de l'item (valeur du model associe au type de document)
+		String ODTModelName = term.getValues()[Integer.valueOf(getConstant("TYPEDOC_POS_VALDEF_MODEL"))];
+
+		return(ODTModelName);
+	}
+
+	/**
+	* Genère le document editable en fonction d'un modèle ODT
+	* @param document
+	* @param userContext
+	*/
+	public static void generateOdtToPdf(String odtFullFilePath, String pdfFullFilePath, String tempFullPath, List<IDocument> docList)
+		throws FileNotFoundException, ServerException, IdentificationException, DocumentException, IOException, DocumentTemplateException,
+			com.lowagie.text.DocumentException, DocumentOperationException
+	{
+		DefaultOfficeManagerConfiguration configuration =  DossierCoreContext.getParamsInfos().getOfficeConfiguration()
+
+		OfficeManager.getInstance().startOffice(configuration);
+
+		try {
+			// Definition des fichiers (temporaires + finaux)
+			File odtFile = new File(odtFullFilePath);
+			File pdfFile = new File(pdfFullFilePath);
+
+			getDocumentConversionService().convert(odtFile, pdfFile);
+		}
+		catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	* Genère le document editable en fonction d'un modèle ODT
+	* @param document
+	* @param userContext
+	*/
+	public static void generateDocument(String odt_templateFilePath, String odt_resultFilePath, String resultFilePath, String tempFilePath, List<IDocument> docList)
+		throws FileNotFoundException, ServerException, IdentificationException, DocumentException, IOException, DocumentTemplateException,
+			com.lowagie.text.DocumentException, DocumentOperationException
+	{
+		DefaultOfficeManagerConfiguration configuration =  DossierCoreContext.getParamsInfos().getOfficeConfiguration()
+
+		OfficeManager.getInstance().startOffice(configuration);
+
+		try 
+		{
+		  // Definition des fichiers (temporaires + finaux)
+		  File odtModelFile = new File(odt_templateFilePath);
+		  File odtResultFile = new File(odt_resultFilePath);
+		  File resultFile = new File(resultFilePath);
+
+		  // Definition des modèles de donnees
+		  PdfRenumberFontModel pdfFont = new PdfRenumberFontModel();
+		  Map<String, ReportAttachment> sectionAttachmentMap = new HashMap<String, ReportAttachment>();
+		  ReportModel reportDataModel = getOdtGeneration().buildReportModel(UserContext.getInstance(), docList, sectionAttachmentMap);
+		  Map<String, ReportModel> data = new HashMap<String, ReportModel>();
+		  Map<String, ReportAttachment> mapReportAttachement = new HashMap<String, ReportAttachment>();
+		  data.put(OdtGenerator.REPORT_MODEL_NAME, reportDataModel);
+
+		  // etape 1
+		  // Completion des variables de fusion (generation du document odt)
+		  getDocumentGenerationService().generate(odtModelFile, odtResultFile, data);
+
+		  // refresh the section
+		  Map<String, SectionModel> fileSections = getDocumentInspectorService().getSectionModels(odtResultFile,  OdtGenerator.NAME_FILE_PREFIX);
+
+		  // third step
+		  // generate output file
+		  getDocumentConversionService().convert(odtResultFile, resultFile);
+		  if(resultFile.exists() && resultFile.canWrite()) 
+		  {
+			// fourth step
+			// concant the final result file with the others
+			Map<String, SectionModel> fileSectionsPDF = getDocumentInspectorService().getSectionModels(odtResultFile, OdtGenerator.NAME_FILE_PREFIX);
+			getOdtGeneration().concatWithPdfOutput(resultFile, tempFilePath, mapReportAttachement, fileSectionsPDF, configuration);
+		  }
+		}
+		catch(Exception e)
+		{
+		  throw new RuntimeException(e);
+		}
+	}
+	
+	/*
+	 * @param docOnpPj the IDocument
+	 * @param fullPath the path of the file to add
+	 */
+	public static void addPrimaryDoc(IDocument docOnpPj, String fullPath, String attachmentType)
+	{
+	  String fileName = FilenameUtils.getName(fullPath);
+	  String filePath = FilenameUtils.getFullPath(fullPath);
+	  // Create the primary document to add
+	  //PrimaryDocument primaryDocToAdd = new PrimaryDocument(fileName, ScriptUtils.getConstant("BORDEREAU_NAME_ATTACHMENT"), ScriptUtils.getConstant("BORDEREAU_TYPE_ATTACHMENT"));
+	  PrimaryDocument primaryDocToAdd = new PrimaryDocument(fileName, fileName, attachmentType);
+	  try 
+	  {
+		// Add the primary Document
+		docOnpPj.getAirsDocument().getInnerDocument().addOrUpdatePrimaryDocument(primaryDocToAdd, filePath);
+	  }
+	  catch(Exception e) 
+	  {
+		//scriptLogger.error(e.getLocalizedMessage(), e);
+		throw new RuntimeException(e);
+	  }
+	}
+
+	/**
+	* @return IAuthorityList : Retourne le AuthorityListMgr
+	*/
+    public static IAuthorityList getAuthorityListService() 
+	{
+        return (IAuthorityList) ServiceManager.getInstance().getService(ServiceConstants.SERVICE_AIRS_AUTHORITYLIST_MGR);
+    }	
+	
+	/**
+	* @return IUser : Retourne le UserMgr
+	*/
+	public static IUser getUserMgr() 
+	{
+        return (IUser) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_USER_MGR);
+    }
+	
+	/**
+	* @return IServer : Retourne le ServerMgr
+	*/
+    public static IServer getServerMgr() 
+	{
+        return (IServer) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_SERVER_MGR);
+    }
+	
+	/**
+	* @return IRight : Retourne le RightMgr
+	*/
+    public static IRight getRightMgr() 
+	{
+        return (IRight) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_RIGHT_MGR);
+    }
+	
+	/**
+	* @return IDocument : Retourne le DocumentMgr
+	*/
+    public static com.digitech.dossier.common.service.IDocument getDocumentMgr() 
+	{
+        return (com.digitech.dossier.common.service.IDocument) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_DOCUMENT_MGR);
+    }
+
+	/**
+	* @return IAuditService : Retourne le AuditMgr
+	*/
+	public static com.digitech.dossier.common.service.IAuditService getAuditMgr()
+	{
+		return (com.digitech.dossier.common.service.IAuditService) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AUDIT_DOC_MGR);
+	}
+	
+	private static IDocumentConvertionService getDocumentConversionService() 
+	{
+		IDocumentConvertionService docConversionService = new DocumentConvertionService();
+		return docConversionService;
+	}
+	
+	private static IOdtGenerator getOdtGeneration()  
+	{
+		IOdtGenerator OdtGeneratorService = new OdtGenerator();
+		return OdtGeneratorService;
+	}
+	
+	private static IDocumentInspectorService getDocumentInspectorService()
+	{
+		IDocumentInspectorService docInspetorService = new DocumentInspectorService();
+		return docInspetorService;
+	}
+	
+	private static IDocumentGenerationService getDocumentGenerationService() 
+	{
+		//A verifier
+		IDocumentGenerationService docGenerationService = new DocumentGenerationService();
+		return docGenerationService;
+	}	
+	
+	
+	/**
+	* Envoi un mail à  un utilisateur
+	* @userContext      :
+	* @theDocument      :
+	* @user             :
+	* @mailSubjectKey   :
+	* @templateFileName :
+	*/
+    public static void sendNotification(UserContext userContext, IDocument theDocument, User user, String mailSubjectKey, String templateFileName, String state) 
+	{
+		String methodName = "sendNotification";
+        File templateFile = new File(CourrierUtils.getCourrierTemplateFolderPath(), templateFileName);
+        Map<String, Object> customPropertyMap = new HashMap<String, Object>();
+        customPropertyMap.put("state", state);
+		
+        if (user != null) 
+		{
+            String authLogin = getConstant("MAIL_NOTIFICATION_AUTH_DEFAULT_LOGIN", null);
+            String authPassword = getConstant("MAIL_NOTIFICATION_AUTH_DEFAULT_PASSWORD", null);
+
+            if (user.getEmail() != null && user.getEmail().length() > 5 && !user.getId().equals(userContext.getUserId())) 
+			{
+                // Send the mail to the user if he has a mail and is not also the sender
+                ApplicationUtils.sendMail(userContext, Arrays.asList(theDocument), templateFile, new ReportPerson(userContext, user), mailSubjectKey, customPropertyMap, Boolean.TRUE, authLogin, authPassword);
+            }
+        }
+    }
+	
+	
+	public static List<Integer> airsSearch(String airsRequest, String contentType, UserContext userContext)
+	{
+		List<Domain> contentTypes = new ArrayList<Domain>();	
+		contentTypes.add(getServerMgr().getDomain(userContext.getJeton(), contentType));	
+		Search searchModel = new Search(userContext.getJeton(), new Request(airsRequest), contentTypes);		
+		return searchModel.getResultIds();
+	}
+	
+  /**
+   * Ajoute une entree dans l'historique d'un document
+   * @param document : Le document.
+   * @param userContext : Le contexte de l'utilisateur courant.
+   * @param typeEvent : type de l'évenement AdvancedAuditType.
+   * @param libelle : Libellé à ajouter.
+   */
+	private static void addHisto(IDocument document, UserCoreContext userContext, String typeEvent, String libelle) {
+		// Si le document n'est pas verrouille
+		if (document.getLockType() != com.digitech.dossier.common.model.backend.Constants.DOC_LOCKED_BYOTHER) {
+			if (libelle != null) {
+				getAuditMgr().addDocumentEvent(userContext, document, typeEvent, libelle);
+			}
+		}
+	}
+
+  /**
+   * Envoi de mail
+   * @param document : Le document
+   * @param userContext : Le contexte de l'utilisateur courant
+   * @user : l'utilisateur connecté
+   * @emailTo : la valeur De
+   * @emailFrom : la valeur Pour
+   * @emailCc : la valeur Copie à
+   * @emailBcc : la valeur Copie cachée à
+   * @emailSubject : la valeur du sujet
+   * @emailContent : la valeur du contenu
+   * @emailSendLinkToDocument : true si on veut ajouter un lien sur le document dans le contenu du mail
+   * @emailAttachments : liste des pièces jointes
+   */
+	public static boolean sendMailAvecLien(IDocument document, UserContext userContext,
+		String emailTo, String emailFrom, String emailCc, String emailBcc, String emailSubject,
+		String emailContent, String emailSendLinkToDocument, List<IAttachment> emailAttachments) {
+
+		String methodName = "sendMailAvecLien";
+
+		log.debug(methodName + " : envoi mail a " + emailTo);
+
+		Dictionary<String, Object> fields = new Hashtable<>();
+		if (StringUtils.isNotBlank(emailFrom)) {
+			fields.put(IMail.FROM, emailFrom);
+		}
+		if (StringUtils.isNotBlank(emailTo)) {
+			fields.put(IMail.TO, emailTo);
+		}
+		if (StringUtils.isNotBlank(emailCc)) {
+			fields.put(IMail.CC, emailCc);
+		}
+		if (StringUtils.isNotBlank(emailBcc)) {
+			fields.put(IMail.BCC, emailBcc);
+		}
+		if (StringUtils.isNotBlank(emailSubject)) {
+			fields.put(IMail.SUBJECT, emailSubject);
+		}
+
+		// Ajout du lien cliquable si besoin au sein du contenu du mail
+		if (emailSendLinkToDocument.equals("true")) {
+			String url = DossierCoreContext.getParamsInfos().getWebAppURL() + "/faces/redirect.jsp?outcome=gotoDocumentUnitaire&docId=" + document.getAirsRefId();
+			String docLink = "Pour accéder directement au document en GED : " + url;
+
+			if (StringUtils.isNotBlank(emailContent))
+				emailContent = emailContent + "\n\n";
+
+			emailContent = emailContent + docLink;
+		}
+		if (StringUtils.isNotBlank(emailContent))
+			fields.put(IMail.CONTENT, emailContent);
+
+		IMail emailService = (IMail) ServiceManager.getInstance().getService(Constants.SERVICE_MAIL_MGR);
+
+		try {
+			emailService.sendMail(userContext, document, emailAttachments, fields, null, null);
+			return true;
+		}
+		catch (Exception e) {
+			log.error(methodName + " : " + e.getMessage());
+		}
+
+		return false;
+	}
+	/**
+	* Permet de mettre à jour le champ system qui contient la pj à signer
+	* @param userContext : Le contexte de l'utilisateur courant
+	* @param document le document AIRS
+	*/
+	public static boolean setAttachPjIdToSign(UserContext userContext, IDocument document)
+	{
+		String methodName = "setAttachPjIdToSign";
+		boolean ret = true;
+
+		try {
+			Integer pjIdEditable = 0;
+			Integer pjIdAnnexe = 0;
+
+			// On recupère la liste des pièces jointes et on cherche celle qui est du type editable. Au pire, on prend une annexe
+			List<IAttachment> pJList = document.getAttachments(userContext);
+
+			log.debug(methodName + " : Nb de PJ : " + pJList.size());
+
+			for (IAttachment pj : pJList) {
+				log.debug(methodName + " : Parcours des PJs, PJ de type " + pj.getType());
+
+				if(pj.getType().equals(getConstant("ATTACHMENT_TYPE_EDIT") && pj.getFileName().endsWith(".odt"))) {
+					log.debug(methodName + " : pj editable et odt, on prend");
+					pjIdEditable = pj.getId();
+					break;
+				}
+
+				if(!pj.getType().equals(getConstant("ATTACHMENT_TYPE_DEFINITIVE"))) {
+					log.debug(methodName + " : pj autre, on prend au cas ou");
+					pjIdAnnexe = pj.getId();
+					continue;
+				}
+			} // for pJList
+
+			String fieldCode = getConstant("FIELD_CODE_ATTACHMENTID_TOSIGN");
+
+			if (pjIdEditable > 0) {
+				log.debug(methodName + " : Set Pj editable à signer : " + pjIdEditable);
+				FieldUtils.setValue(document, fieldCode, pjIdEditable);
+			}
+			else if (pjIdAnnexe > 0) {
+				log.debug(methodName + " : Set Pj annexe à signer : " + pjIdAnnexe);
+				FieldUtils.setValue(document, fieldCode, pjIdAnnexe);
+			}
+			else {
+				log.debug(methodName + " : Pas de pj à signer, bizarre");
+			}
+		}
+		catch(Exception e) {
+			log.error(e.getMessage());
+			ret = false;
+		}
+		
+		return ret;
+	} // setAttachPjIdToSign
+
+	/**
+	* Permet de mettre à jour le champ system qui contient le signataire
+	* @param userContext : Le contexte de l'utilisateur courant
+	* @param document le document AIRS
+	*/
+	public static boolean setSignataire(UserContext userContext, IDocument document)
+	{
+		String methodName = "setSignataire";
+		boolean ret = true;
+		
+		try {
+
+			String fieldCodeDest = getConstant("FIELD_CODE_U_SIGNATORY");
+			Integer signataireValue = FieldUtils.getValue(document, getConstant("FIELD_CODE_SIGNER_USER"));
+			
+			FieldUtils.setValue(document, getConstant("FIELD_CODE_U_SIGNATORY"), signataireValue);
+
+			log.debug(methodName + " : maj signataire : " + signataireValue);
+		}
+		catch(Exception e) {
+			log.error(e.getMessage());
+			ret = false;
+		}
+		
+		return ret;
+	} // setSignataire
+
+	/**
+	* Permet de savoir si le document a été signé électroniquement
+	* @param userContext : Le contexte de l'utilisateur courant
+	* @param document le document AIRS
+	*/
+	public static boolean isDocumentDigitallySigned(UserContext userContext, IDocument document)
+	{
+		String methodName = "isDocumentDigitallySigned";
+		boolean ret = false;
+		
+		try {
+			List<Integer> pjDigitalisedSigned = FieldUtils.getValues(document, getConstant("FIELD_CODE_ATTACHMENTIDS_SIGNED"));
+			if ((pjDigitalisedSigned != null) && (!pjDigitalisedSigned.isEmpty())) {
+
+				ret = true;
+			}
+		}
+		catch(Exception e) {
+			log.error(e.getMessage());
+			ret = false;
+		}
+
+		if (ret)
+			log.debug(methodName + " : Signe electroniquement");
+		else
+			log.debug(methodName + " : Pas signe electroniquement");
+
+		return ret;
+	} // isDocumentDigitallySigned
+
+	/**
+	* Permet de modifier les propriétés des pjs d'un document après signature
+	*   Un Pdf avec un type Editable -> type Définitif
+	* @param userContext : Le contexte de l'utilisateur courant
+	* @param document le document AIRS
+	*/
+	public static boolean setAttachmentsNormalizeAfterSignature(UserContext userContext, IDocument document)
+	{
+		String methodName = "setAttachmentsNormalizeAfterSignature";
+		boolean ret = true;
+
+		try {
+
+			List<IAttachment> pJList = document.getAttachments(userContext);
+			for (IAttachment pj : pJList) {
+
+				if(pj.getType().equals(getConstant("ATTACHMENT_TYPE_EDIT")) && pj.getFileName().endsWith(".pdf")) {
+
+					log.debug(methodName + " : On passe en version definitive (" + pj.getId() + ")");
+					pj.setMode(com.digitech.dossier.common.model.backend.airs.IDocument.MODE_EDIT);
+					pj.setType(getConstant("ATTACHMENT_TYPE_DEFINITIVE"));
+					getDocumentMgr().updateDocumentAttachments(userContext, document);
+					break;
+				}
+			} // for pJList
+		}
+		catch(Exception e) {
+			log.error(e.getMessage());
+			ret = false;
+		}
+		
+		return ret;
+	} // setAttachmentsNormalizeAfterSignature
+
+} // Class FDOCS_Utils

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" threshold="all" debug="true" >
+   <!-- Console output -->
+   <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%-5p %d{HH:mm:ss.SSS} %m  (%F:%L) \n" />
+      </layout>
+   </appender>
+
+   <!-- 1 fichier par jour, on garde ce fichier jusqu'a ce que l'admin le supprime -->
+   <appender name="FILE_DAY" class="org.apache.log4j.rolling.RollingFileAppender">
+      <rollingPolicy class="org.apache.log4j.rolling.TimeBasedRollingPolicy">
+         <param name="FileNamePattern" value="${dossier_app}/logs/webApp_Dossier_%d{yyyy-MM-dd}.zip" />
+      </rollingPolicy>
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="%-5p %d{dd/MM/yyyy HH:mm:ss} (%F:%L) %m \n" />
+      </layout>
+   </appender>
+
+   <!-- roulement sur 20 fichiers de 5 Meg chacun -->
+   <appender name="FILE_ROLL" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="${dossier_app}/logs/dossierweb_log.txt" />
+      <param name="MaxFileSize" value="5000KB" />
+      <param name="MaxBackupIndex" value="20" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{ISO8601}]%5p [%t]%x(%F:%L) - %m%n" />
+      </layout>
+   </appender>
+
+   <appender name="FILE_SCRIPT" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="${dossier_app}/logs/dossierweb_script.txt" />
+      <param name="MaxFileSize" value="5000KB" />
+      <param name="MaxBackupIndex" value="20" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{ISO8601}]%5p [%t]%x(%F:%L) - %m%n" />
+      </layout>
+   </appender>
+
+   <appender name="SCHEDULER" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="${dossier_app}/logs/dossierweb_scheduler.txt" />
+      <param name="MaxFileSize" value="5000KB" />
+      <param name="MaxBackupIndex" value="20" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{ISO8601}]%5p [%t]%x(%F:%L) - %m%n" />
+      </layout>
+   </appender>
+   
+   <appender name="POPULATION" class="org.apache.log4j.RollingFileAppender">
+      <param name="File" value="${dossier_app}/logs/dossierweb_pop.txt" />
+      <param name="MaxFileSize" value="5000KB" />
+      <param name="MaxBackupIndex" value="20" />
+      <layout class="org.apache.log4j.PatternLayout">
+         <param name="ConversionPattern" value="[%d{ISO8601}]%5p [%t]%x(%F:%L) - %m%n" />
+      </layout>
+   </appender>
+
+   <!-- mail tracing -->
+
+   <logger name="com.digitech.airsweb">
+      <level value="WARN" />
+      <appender-ref ref="FILE_ROLL" />
+   </logger>
+
+   <logger name="com.digitech.dossier.script">
+      <level value="DEBUG" />
+      <appender-ref ref="FILE_SCRIPT" />
+   </logger>
+
+   <logger name="com.quartz"  additivity="true">
+      <level value="DEBUG" />
+      <appender-ref ref="SCHEDULER" />
+   </logger>
+   
+   <logger name="com.digitech.dossier.common.model.backend.airs.impl.Task">
+      <level value="DEBUG" />
+      <appender-ref ref="SCHEDULER" />
+   </logger>
+   
+   <logger name="com.digitech.dossier.common.service">
+      <level value="DEBUG" />
+      <appender-ref ref="FILE_ROLL" />
+   </logger>
+   
+   <logger name="com.digitech.common.dal.sgbd">
+      <level value="WARN" />
+      <appender-ref ref="POPULATION" />
+   </logger>
+   
+   <logger name="com.digitech.population">
+      <level value="WARN" />
+      <appender-ref ref="POPULATION" />
+   </logger>
+
+   <!-- defining root category -->
+   <root>
+      <!-- Niveau disponible :ALL, TRACE, INFO, DEBUG, WARN, ERROR -->
+      <level value="WARN" />
+      <appender-ref ref="FILE_ROLL" />
+   </root>
+
+</log4j:configuration>

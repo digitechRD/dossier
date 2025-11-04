@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tasks xmlns="http://www.digitech.com/dossiers/task" version="6.0.1" customerName="La Provence">
+  <task code="SEND_MAIL_FAC_ENG" title="Vérification des factures à engager" description="Cette tâche vérifie les factures à engager et envoie un mail aux utilisateurs concernés"
+    enabled="false" startDate="2011-12-01T09:00:00.000+01:00" planning="0 30 14 ? * MON" scriptId="sendNotificationMail">
+    <parameter name="fac_etat" type="STRING" value="A_ENG"/>
+  </task>
+  <task code="SEND_MAIL_FAC_VALID1" title="Vérification des factures à valider" description="Cette tâche vérifie les factures à valider et envoie un mail aux utilisateurs concernés (valideurs niveau 1)"
+    enabled="false" startDate="2011-12-01T09:00:00.000+01:00" planning="0 45 14 ? * MON" scriptId="sendNotificationMail">
+    <parameter name="fac_etat" type="STRING" value="A_VALID1"/>
+  </task>
+  <task code="SEND_MAIL_FAC_VALID2" title="Vérification des factures à valider" description="Cette tâche vérifie les factures à valider et envoie un mail aux utilisateurs concernés (valideurs niveau 2)"
+    enabled="false" startDate="2011-12-01T09:00:00.000+01:00" planning="0 0 15 ? * MON" scriptId="sendNotificationMail">
+    <parameter name="fac_etat" type="STRING" value="A_VALID2"/>
+  </task>
+  <task code="SEND_MAIL_FAC_BLOQ1" title="Vérification des factures bloquées" description="Cette tâche vérifie les factures bloquées et envoie un mail aux utilisateurs concernés (valideurs niveau 1)"
+    enabled="false" startDate="2011-12-01T09:00:00.000+01:00" planning="0 15 15 ? * MON" scriptId="sendNotificationMail">
+    <parameter name="fac_etat" type="STRING" value="BLOQ1"/>
+  </task>
+  <task code="SEND_MAIL_FAC_BLOQ2" title="Vérification des factures bloquées" description="Cette tâche vérifie les factures bloquées et envoie un mail aux utilisateurs concernés (valideurs niveau 2)"
+    enabled="false" startDate="2011-12-01T09:00:00.000+01:00" planning="0 30 15 ? * MON" scriptId="sendNotificationMail">
+    <parameter name="fac_etat" type="STRING" value="BLOQ2"/>
+  </task>
+  <task code="MAJ_CIPRES" title="Mise à jour de CIPRES" description="Cette tâche permet de mettre à jour CIPRES pour les factures BAP" enabled="false"
+    startDate="2011-12-01T09:00:00.000+01:00" planning="0 30 12,21 ? * MON-FRI" scriptId="MAJCIPRES">
+    <parameter/>
+  </task>
+  <task code="migrateAirsDocsFromWF" title="migrateAirsDocsFromWF" description="migrateAirsDocsFromWF" enabled="true" startDate="2011-12-01T18:03:00.000+01:00"
+    planning="0 02 * * * ?" scriptId="migrateAirsDocsFromWF">
+    <parameter/>
+  </task>
+</tasks>

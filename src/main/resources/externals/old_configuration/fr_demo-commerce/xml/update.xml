@@ -1,0 +1,3037 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:formulaire xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/update" version="6.0.6-RC4" customerName="@CUSTOMERNAME@">
+    <ns2:organization name="DEFAULT" id="0">
+      <!--FLUX COURRIER-->
+      <ns2:contentType name="COU_COURRIER_IN" type="index">
+         <ns2:input display="true" readonly="true" required="true" type="">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+            <dependInput fieldKey="O_PROPRIETAIRE" type="MONO">
+               <scriptId>courrierIn_dependency_generateChronoNumber</scriptId>
+            </dependInput>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'envoi</ns2:label>
+            <ns2:airsfield>D_ENVOI</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>  
+         <ns2:input display="true" readonly="false" required="true" type="">
+            <ns2:label>Date de réception</ns2:label>
+            <ns2:airsfield>D_RECEPTION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:initial-value>#TODAY#</ns2:initial-value>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierIn_dependency_computeDueDate</scriptId>
+            </dependInput>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="suggestion">
+            <ns2:label>Service traitant</ns2:label>
+            <ns2:airsfield>O_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <dependInput fieldKey="O_PROPRIETAIRE" type="MONO">
+               <scriptId>courrierIn_dependency_updateOwner</scriptId>
+            </dependInput>
+            <ns2:availableValues-filter-scriptId>courrierIn_availableValues_owner</ns2:availableValues-filter-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Service(s) en copie</ns2:label>
+            <ns2:airsfield>O_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Utilisateur(s) en copie</ns2:label>
+            <ns2:airsfield>U_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Valideur</ns2:label>
+            <ns2:airsfield>U_VALIDEUR</ns2:airsfield>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierIn_dependency_validatorRequired</scriptId>
+            </dependInput>
+            <ns2:field-properties-scriptId>courrierIn_init_read_U_VALIDEUR</ns2:field-properties-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Matricule</ns2:label>
+            <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>  
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Nom</ns2:label>
+            <ns2:airsfield>RH_NOM</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Catégorie</ns2:label>
+            <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Type de document</ns2:label>
+            <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+            <!--<dependInput type="MONO" fieldKey="RH_DOC_CAT">
+                    <scriptId>DependanceTypeCategorie</scriptId>
+            </dependInput>-->
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>         
+          </ns2:input>
+          
+         <scriptedAction id="changeStateBeforeSave" airsRight="" groovyScriptId="courrierIn_beforeSave"
+            type="before">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="changeStateAfterSave" airsRight="" groovyScriptId="courrierIn_afterSave"
+            type="after">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="onAddAttachment" airsRight="" groovyScriptId="courrierIn_beforeAddAttachment"
+            type="before">
+            <application>onAddAttachment</application>
+         </scriptedAction>
+      </ns2:contentType>
+      <ns2:contentType name="COU_COURRIER_IN" type="insert">
+         <ns2:input display="true" readonly="true" required="true" type="">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+            <dependInput fieldKey="O_PROPRIETAIRE" type="MONO">
+               <scriptId>courrierIn_dependency_generateChronoNumber</scriptId>
+            </dependInput>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'envoi</ns2:label>
+            <ns2:airsfield>D_ENVOI</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="">
+            <ns2:label>Date de réception</ns2:label>
+            <ns2:airsfield>D_RECEPTION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:initial-value>#TODAY#</ns2:initial-value>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierIn_dependency_computeDueDate</scriptId>
+            </dependInput>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="suggestion">
+            <ns2:label>Service traitant</ns2:label>
+            <ns2:airsfield>O_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <dependInput fieldKey="O_PROPRIETAIRE" type="MONO">
+               <scriptId>courrierIn_dependency_updateOwner</scriptId>
+            </dependInput>
+            <ns2:availableValues-filter-scriptId>courrierIn_availableValues_owner</ns2:availableValues-filter-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Service(s) en copie</ns2:label>
+            <ns2:airsfield>O_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Utilisateur(s) en copie</ns2:label>
+            <ns2:airsfield>U_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Valideur</ns2:label>
+            <ns2:airsfield>U_VALIDEUR</ns2:airsfield>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierIn_dependency_validatorRequired</scriptId>
+            </dependInput>
+            <ns2:field-properties-scriptId>courrierIn_init_read_U_VALIDEUR</ns2:field-properties-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Matricule</ns2:label>
+            <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>  
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Nom</ns2:label>
+            <ns2:airsfield>RH_NOM</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Catégorie</ns2:label>
+            <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Type de document</ns2:label>
+            <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+            <!--<dependInput type="MONO" fieldKey="RH_DOC_CAT">
+                <scriptId>DependanceTypeCategorie</scriptId>
+            </dependInput>-->
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>
+
+         <scriptedAction id="changeStateBeforeSave" airsRight="" groovyScriptId="courrierIn_beforeSave"
+            type="before">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="changeStateAfterSave" airsRight="" groovyScriptId="courrierIn_afterSave"
+            type="after">
+            <application>onSave</application>
+         </scriptedAction>
+      </ns2:contentType>
+      <ns2:contentType name="COU_COURRIER_IN" type="update">
+         <ns2:input display="true" readonly="true" required="true" type="">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierIn_init_read_N_CHRONO</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'envoi</ns2:label>
+            <ns2:airsfield>D_ENVOI</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="true" required="true" type="">
+            <ns2:label>Date de réception</ns2:label>
+            <ns2:airsfield>D_RECEPTION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierIn_dependency_computeDueDate</scriptId>
+            </dependInput>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="suggestion">
+            <ns2:label>Service traitant</ns2:label>
+            <ns2:airsfield>O_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <dependInput fieldKey="O_PROPRIETAIRE" type="MONO">
+               <scriptId>courrierIn_dependency_updateOwner</scriptId>
+            </dependInput>
+            <ns2:availableValues-filter-scriptId>courrierIn_availableValues_owner</ns2:availableValues-filter-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierIn_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Service(s) en copie</ns2:label>
+            <ns2:airsfield>O_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Utilisateur(s) en copie</ns2:label>
+            <ns2:airsfield>U_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Valideur</ns2:label>
+            <ns2:airsfield>U_VALIDEUR</ns2:airsfield>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierIn_dependency_validatorRequired</scriptId>
+            </dependInput>
+            <ns2:field-properties-scriptId>courrierIn_init_read_U_VALIDEUR</ns2:field-properties-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Matricule</ns2:label>
+            <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>  
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Nom</ns2:label>
+            <ns2:airsfield>RH_NOM</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Catégorie</ns2:label>
+            <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Type de document</ns2:label>
+            <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+                <!--<dependInput type="MONO" fieldKey="RH_DOC_CAT">
+                    <scriptId>DependanceTypeCategorie</scriptId>
+                </dependInput>-->
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="false" readonly="false" required="false">
+            <ns2:label>Créateur</ns2:label>
+            <ns2:airsfield>U_CREAT</ns2:airsfield>
+         </ns2:input>   
+         <ns2:input display="false" readonly="false" required="false" type="list">
+            <ns2:label>Etat</ns2:label>
+            <ns2:airsfield>T_ETAT_COURRIER</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="false">
+            <ns2:label>Visé</ns2:label>
+            <ns2:airsfield>T_ETAT_VISA</ns2:airsfield>
+         </ns2:input>         
+
+         <ns2:inputLinkedDoc contenttype="COU_REPONSE" likingcode="courrier-reponse" readonly="false"
+            direction="child" rownumber="-1">
+            <ns2:column overloadEnabled="false" label="Type" readonly="false" validator="">T_REPONSE</ns2:column>
+            <ns2:column overloadEnabled="false" label="Date" readonly="false" validator="">D_REPONSE</ns2:column>
+            <ns2:column overloadEnabled="false" label="Utilisateur" readonly="false" validator="">U_REPONSE</ns2:column>
+            <ns2:column overloadEnabled="false" label="Complément" readonly="false" validator="">C_COMPLEMENT</ns2:column>
+         </ns2:inputLinkedDoc>
+         
+         <link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="child"/>
+         <link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="parent"/>
+         <link contentTypeCode="COU_COURRIER_OUT" name="courrierIn-courrierOut" direction="child"/>
+
+         <action id="restore" resourceKey="action_restoreCourrier" image="icon_restore" styleClass="restoreMail"
+            displayRuleScriptId="courrierIn_restoreMailVisible" progressionModalPanelId="modalPanelProgress">
+            <groovyScriptId>courrierIn_restoreMail</groovyScriptId>
+         </action>
+         <action id="answer" resourceKey="action_answerCourrier" image="icon_response" styleClass="addMailResponse main"
+            displayRuleScriptId="courrierIn_addResponseVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>responsePanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_addResponse</groovyScriptId>
+            <modalPanelInitGroovyScriptId>response_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="visaIn" resourceKey="action_signCourrier" image="icon_visa" styleClass="signMail main" displayRuleScriptId="courrierIn_visaVisible"
+            progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>visaPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_visa</groovyScriptId>
+            <modalPanelInitGroovyScriptId>visa_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="validate" resourceKey="action_validateCourrier" image="icon_processTask_large" styleClass="validateMail"
+            displayRuleScriptId="courrierIn_validateVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>commentPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_validate</groovyScriptId>
+            <modalPanelInitGroovyScriptId>validate_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="refusal" resourceKey="action_refuseCourrier" image="task_Clore" styleClass="refuseMail" displayRuleScriptId="courrierIn_refusalVisible"
+            progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>commentPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_refusal</groovyScriptId>
+            <modalPanelInitGroovyScriptId>refusal_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="closing" resourceKey="action_closeCourrier" image="icon_closing" styleClass="closeMail"
+            displayRuleScriptId="courrierIn_closingVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>commentPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_closing</groovyScriptId>
+            <modalPanelInitGroovyScriptId>closing_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+
+         <scriptedAction id="changeStateBeforeSave" airsRight="" groovyScriptId="courrierIn_beforeSave"
+            type="before">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="changeStateAfterSave" airsRight="" groovyScriptId="courrierIn_afterSave"
+            type="after">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="onAddAttachment" airsRight="" groovyScriptId="courrierIn_beforeAddAttachment"
+            type="before">
+            <application>onAddAttachment</application>
+         </scriptedAction>
+
+         <ns2:docActions-scriptId>courrierIn_unavailableActions</ns2:docActions-scriptId>
+      </ns2:contentType>
+      <ns2:contentType name="COU_COURRIER_IN" type="read">
+         <ns2:input display="true">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierIn_init_read_N_CHRONO</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierIn_init_readT_TYPE</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierIn_init_read_T_PRIORITE</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>         
+         <ns2:input display="true">
+            <ns2:label>Date d'envoi</ns2:label>
+            <ns2:airsfield>D_ENVOI</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date de réception</ns2:label>
+            <ns2:airsfield>D_RECEPTION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierIn_init_read_D_ECHEANCE</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Utilisateur Créateur</ns2:label>
+            <ns2:airsfield>U_CREAT</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierIn_init_read_U_CREAT</ns2:field-properties-scriptId>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Service traitant</ns2:label>
+            <ns2:airsfield>O_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Service(s) en copie</ns2:label>
+            <ns2:airsfield>O_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Utilisateur(s) en copie</ns2:label>
+            <ns2:airsfield>U_COPIES</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Valideur</ns2:label>
+            <ns2:airsfield>U_VALIDEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+
+         <ns2:input display="true">
+            <ns2:label>Date de création</ns2:label>
+            <ns2:airsfield>D_CREAT</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierIn_init_read_D_CREAT</ns2:field-properties-scriptId>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date de validation</ns2:label>
+            <ns2:airsfield>D_VALIDATION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierIn_init_read_D_VALIDATION</ns2:field-properties-scriptId>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date d'acceptation</ns2:label>
+            <ns2:airsfield>D_ACCEPTATION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierIn_init_read_D_ACCEPTATION</ns2:field-properties-scriptId>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date de clôture</ns2:label>
+            <ns2:airsfield>D_CLOTURE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Matricule</ns2:label>
+            <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>  
+         <ns2:input display="true">
+            <ns2:label>Nom</ns2:label>
+            <ns2:airsfield>RH_NOM</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true">
+            <ns2:label>Catégorie</ns2:label>
+            <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input> 
+         <ns2:input display="true">
+            <ns2:label>Type de document</ns2:label>
+            <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+            <ns2:fieldset>Classement flux RH</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="false" readonly="false" required="false">
+            <ns2:label>Créateur</ns2:label>
+            <ns2:airsfield>U_CREAT</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="false" readonly="false" required="false" type="list">
+            <ns2:label>Etat</ns2:label>
+            <ns2:airsfield>T_ETAT_COURRIER</ns2:airsfield>
+         </ns2:input>         
+         <ns2:input display="false">
+            <ns2:label>Visé</ns2:label>
+            <ns2:airsfield>T_ETAT_VISA</ns2:airsfield>
+         </ns2:input>
+
+         <ns2:inputLinkedDoc contenttype="COU_REPONSE" likingcode="courrier-reponse" readonly="true"
+            direction="child" rownumber="-1">
+            <ns2:column overloadEnabled="false" label="Type" readonly="false" validator="">T_REPONSE</ns2:column>
+            <ns2:column overloadEnabled="false" label="Date" readonly="false" validator="">D_REPONSE</ns2:column>
+            <ns2:column overloadEnabled="false" label="Utilisateur" readonly="false" validator="">U_REPONSE</ns2:column>
+            <ns2:column overloadEnabled="false" label="Complément" readonly="false" validator="">C_COMPLEMENT</ns2:column>
+         </ns2:inputLinkedDoc>
+         
+         <link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="child"/>
+         <link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="parent"/>
+         <link contentTypeCode="COU_COURRIER_OUT" name="courrierIn-courrierOut" direction="child"/>
+
+         <action id="restore" resourceKey="action_restoreCourrier" image="icon_restore" styleClass="restoreMail"
+            displayRuleScriptId="courrierIn_restoreMailVisible" progressionModalPanelId="modalPanelProgress">
+            <groovyScriptId>courrierIn_restoreMail</groovyScriptId>
+         </action>
+         <action id="answer" resourceKey="action_answerCourrier" image="icon_response" styleClass="addMailResponse main"
+            displayRuleScriptId="courrierIn_addResponseVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>responsePanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_addResponse</groovyScriptId>
+            <modalPanelInitGroovyScriptId>response_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="visaIn" resourceKey="action_signCourrier" image="icon_visa" styleClass="signMail main" displayRuleScriptId="courrierIn_visaVisible"
+            progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>visaPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_visa</groovyScriptId>
+            <modalPanelInitGroovyScriptId>visa_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="validate" resourceKey="action_validateCourrier" image="icon_processTask_large" styleClass="validateMail"
+            displayRuleScriptId="courrierIn_validateVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>commentPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_validate</groovyScriptId>
+            <modalPanelInitGroovyScriptId>validate_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="refusal" resourceKey="action_refuseCourrier" image="task_Clore" styleClass="refuseMail" displayRuleScriptId="courrierIn_refusalVisible"
+            progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>commentPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_refusal</groovyScriptId>
+            <modalPanelInitGroovyScriptId>refusal_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="closing" resourceKey="action_closeCourrier" image="icon_closing" styleClass="closeMail"
+            displayRuleScriptId="courrierIn_closingVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>commentPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_closing</groovyScriptId>
+            <modalPanelInitGroovyScriptId>closing_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         
+         <ns2:docActions-scriptId>courrierIn_unavailableActions</ns2:docActions-scriptId>
+      </ns2:contentType>
+
+      <ns2:contentType name="COU_COURRIER_OUT" type="insert">
+         <ns2:input display="true" readonly="true" required="true" type="">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierOut_dependency_generateChronoNumber</scriptId>
+            </dependInput>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierOut_dependency_computeDueDate</scriptId>
+            </dependInput>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:initial-value>#LOGIN_ID#</ns2:initial-value>
+            <ns2:fieldset>Correspondants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Destinataire</ns2:label>
+            <ns2:airsfield>C_DESTINATAIRE</ns2:airsfield>
+            <ns2:fieldset>Correspondants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="suggestion">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <ns2:initial-value>#LOGIN_ID#</ns2:initial-value>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <scriptedAction id="changeStateBeforeCreate" airsRight="" groovyScriptId="courrierOut_beforeCreate"
+            type="before">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="changeStateAfterCreate" airsRight="" groovyScriptId="courrierOut_afterCreate"
+            type="after">
+            <application>onSave</application>
+         </scriptedAction>
+      </ns2:contentType>
+      <ns2:contentType name="COU_COURRIER_OUT" type="update">
+         <ns2:input display="true" readonly="true" required="true" type="">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="list">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+            <dependInput fieldKey="T_TYPE" type="MONO">
+               <scriptId>courrierOut_dependency_computeDueDate</scriptId>
+            </dependInput>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:fieldset>Correspondants</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="correspondent">
+            <ns2:label>Destinataire</ns2:label>
+            <ns2:airsfield>C_DESTINATAIRE</ns2:airsfield>
+            <ns2:fieldset>Correspondants</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="suggestion">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+            <ns2:field-properties-scriptId>courrierOut_init_readOnly</ns2:field-properties-scriptId>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="suggestion">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false" type="">
+            <ns2:label>Date d'envoi</ns2:label>
+            <ns2:airsfield>D_ENVOI</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+         </ns2:input>
+         <ns2:input display="false" readonly="false" required="false" type="list">
+            <ns2:label>Etat</ns2:label>
+            <ns2:airsfield>T_ETAT_COURRIER</ns2:airsfield>
+         </ns2:input>         
+         <ns2:input display="false">
+            <ns2:label>Visé</ns2:label>
+            <ns2:airsfield>T_ETAT_VISA</ns2:airsfield>
+         </ns2:input>
+         
+         <link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierOut" direction="parent"/>
+         
+         <action id="write" resourceKey="action_writeCourrier" image="icon_response" styleClass="addMailResponse main"
+            displayRuleScriptId="courrierOut_writeCourrierVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>responsePanel</modalPanelPageKey>
+            <groovyScriptId>courrierOut_writeCourrier</groovyScriptId>
+            <modalPanelInitGroovyScriptId>writeCourrier_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         <action id="visaOut" resourceKey="action_signCourrier" image="icon_visa" styleClass="signMail main" displayRuleScriptId="courrierIn_visaVisible"
+            progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>visaPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_visa</groovyScriptId>
+            <modalPanelInitGroovyScriptId>visa_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         
+        <scriptedAction id="changeStateBeforeUpdate" airsRight="" groovyScriptId="courrierOut_beforeUpdate"
+            type="before">
+            <application>onSave</application>
+         </scriptedAction>
+         <scriptedAction id="onAddAttachment" airsRight="" groovyScriptId="courrierOut_afterAddAttachment"
+            type="after">
+            <application>onAddAttachment</application>
+         </scriptedAction>
+         
+         <ns2:docActions-scriptId>courrierOut_unavailableActions</ns2:docActions-scriptId>
+      </ns2:contentType>
+      <ns2:contentType name="COU_COURRIER_OUT" type="read">
+         <ns2:input display="true">
+            <ns2:label>Numéro chrono</ns2:label>
+            <ns2:airsfield>N_CHRONO</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_TYPE</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierOut_init_read_T_TYPE</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Priorité</ns2:label>
+            <ns2:airsfield>T_PRIORITE</ns2:airsfield>
+            <ns2:field-properties-scriptId>courrierOut_init_read_T_PRIORITE</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Nature</ns2:label>
+            <ns2:airsfield>T_NATURE</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Objet</ns2:label>
+            <ns2:airsfield>C_OBJET</ns2:airsfield>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date d'échéance</ns2:label>
+            <ns2:airsfield>D_ECHEANCE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierOut_init_read_D_ECHEANCE</ns2:field-properties-scriptId>
+            <ns2:fieldset>Propriétés</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" type="correspondent">
+            <ns2:label>Emetteur</ns2:label>
+            <ns2:airsfield>C_EMETTEUR</ns2:airsfield>
+            <ns2:fieldset>Correspondants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true" type="correspondent">
+            <ns2:label>Destinataire</ns2:label>
+            <ns2:airsfield>C_DESTINATAIRE</ns2:airsfield>
+            <ns2:fieldset>Correspondants</ns2:fieldset>
+         </ns2:input>      
+         <ns2:input display="true">
+            <ns2:label>Utilisateur traitant</ns2:label>
+            <ns2:airsfield>U_PROPRIETAIRE</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>         
+         <ns2:input display="true">
+            <ns2:label>Utilisateur viseur</ns2:label>
+            <ns2:airsfield>U_VISEUR</ns2:airsfield>
+            <ns2:fieldset>Intervenants</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date de création</ns2:label>
+            <ns2:airsfield>D_CREAT</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierOut_init_read_D_CREAT</ns2:field-properties-scriptId>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date d'acceptation</ns2:label>
+            <ns2:airsfield>D_ACCEPTATION</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:field-properties-scriptId>courrierOut_init_read_D_ACCEPTATION</ns2:field-properties-scriptId>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date d'envoi</ns2:label>
+            <ns2:airsfield>D_ENVOI</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:fieldset>Cycle de vie</ns2:fieldset>
+         </ns2:input>
+         <ns2:input display="false" readonly="false" required="false" type="list">
+            <ns2:label>Etat</ns2:label>
+            <ns2:airsfield>T_ETAT_COURRIER</ns2:airsfield>
+         </ns2:input>         
+         <ns2:input display="false">
+            <ns2:label>Visé</ns2:label>
+            <ns2:airsfield>T_ETAT_VISA</ns2:airsfield>
+         </ns2:input>
+         
+         <link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierOut" direction="parent"/>
+         
+         <action id="write" resourceKey="action_writeCourrier" image="icon_response" styleClass="addMailResponse main"
+            displayRuleScriptId="courrierOut_writeCourrierVisible" progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>responsePanel</modalPanelPageKey>
+            <groovyScriptId>courrierOut_writeCourrier</groovyScriptId>
+            <modalPanelInitGroovyScriptId>writeCourrier_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>    
+         <action id="visaOut" resourceKey="action_signCourrier" image="icon_visa" styleClass="signMail main" displayRuleScriptId="courrierIn_visaVisible"
+            progressionModalPanelId="modalPanelProgress">
+            <modalPanelPageKey>visaPanel</modalPanelPageKey>
+            <groovyScriptId>courrierIn_visa</groovyScriptId>
+            <modalPanelInitGroovyScriptId>visa_initCustomModalPanel</modalPanelInitGroovyScriptId>
+         </action>
+         
+         <ns2:docActions-scriptId>courrierOut_unavailableActions</ns2:docActions-scriptId>
+      </ns2:contentType>
+      
+      <ns2:contentType name="COU_REPONSE" type="insert" visibleInCreation="false">
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_REPONSE</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true">
+            <ns2:label>Date de la réponse</ns2:label>
+            <ns2:airsfield>D_REPONSE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+            <ns2:initial-value>#TODAY#</ns2:initial-value>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Utilisateur</ns2:label>
+            <ns2:airsfield>U_REPONSE</ns2:airsfield>
+            <ns2:initial-value>#LOGIN_ID#</ns2:initial-value>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false">
+            <ns2:label>Complément</ns2:label>
+            <ns2:airsfield>C_COMPLEMENT</ns2:airsfield>
+         </ns2:input>
+      </ns2:contentType>
+      <ns2:contentType name="COU_REPONSE" type="update">
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_REPONSE</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true">
+            <ns2:label>Date de la réponse</ns2:label>
+            <ns2:airsfield>D_REPONSE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="true" type="list">
+            <ns2:label>Utilisateur</ns2:label>
+            <ns2:airsfield>U_REPONSE</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="true" readonly="false" required="false">
+            <ns2:label>Complément</ns2:label>
+            <ns2:airsfield>C_COMPLEMENT</ns2:airsfield>
+         </ns2:input>
+      </ns2:contentType>
+      <ns2:contentType name="COU_REPONSE" type="read">
+         <ns2:input display="true">
+            <ns2:label>Type</ns2:label>
+            <ns2:airsfield>T_REPONSE</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Date de la réponse</ns2:label>
+            <ns2:airsfield>D_REPONSE</ns2:airsfield>
+            <ns2:format>dd/MM/yyyy</ns2:format>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Utilisateur</ns2:label>
+            <ns2:airsfield>U_REPONSE</ns2:airsfield>
+         </ns2:input>
+         <ns2:input display="true">
+            <ns2:label>Complément</ns2:label>
+            <ns2:airsfield>C_COMPLEMENT</ns2:airsfield>
+         </ns2:input>
+      </ns2:contentType>
+      
+      <!--FLUX CIRIL GF-->
+      <ns2:contentType name="GF_TIERS" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Tiers nom</ns2:label>
+                <ns2:airsfield>GEDGF_NOMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Tiers numéro</ns2:label>
+                <ns2:airsfield>GEDGF_NUMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="GF_TIERS" type="update" auiAsSecretLevel="" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Tiers nom</ns2:label>
+                <ns2:airsfield>GEDGF_NOMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Tiers numéro</ns2:label>
+                <ns2:airsfield>GEDGF_NUMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="GF_TIERS" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Tiers nom</ns2:label>
+                <ns2:airsfield>GEDGF_NOMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Tiers numéro</ns2:label>
+                <ns2:airsfield>GEDGF_NUMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PIECE" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>GEDGF_NOMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>GEDGF_NUMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>GEDGF_DOMAINE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>GEDGF_NUMEXE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>GEDGF_SENS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>GEDGF_NUMFAC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PIECE" type="update" auiAsSecretLevel="" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>GEDGF_NOMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Tiers numéro</ns2:label>
+                <ns2:airsfield>GEDGF_NUMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Domaine</ns2:label>
+                <ns2:airsfield>GEDGF_DOMAINE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Facture</ns2:label>
+                <ns2:airsfield>GEDGF_NUMFAC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>GEDGF_NUMEXE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Sens</ns2:label>
+                <ns2:airsfield>GEDGF_SENS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PIECE" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du tiers</ns2:label>
+                <ns2:airsfield>GEDGF_NOMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro du tiers</ns2:label>
+                <ns2:airsfield>GEDGF_NUMTIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Domaine</ns2:label>
+                <ns2:airsfield>GEDGF_DOMAINE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>GEDGF_NUMEXE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Sens</ns2:label>
+                <ns2:airsfield>GEDGF_SENS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Facture</ns2:label>
+                <ns2:airsfield>GEDGF_NUMFAC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        
+        <!--FLUX ORDRE DE BOURSE-->
+        <ns2:contentType name="DOCUMENT_OB" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Compte client</ns2:label>
+                <ns2:airsfield>OB_CPTECLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro d'ordre de bourse</ns2:label>
+                <ns2:airsfield>OB_NUMOB</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>OB_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value>1802</ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable du document</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+         <ns2:contentType name="DOCUMENT_OB" type="update" visibleInCreation="true">
+            <link contentTypeCode="DOCUMENT_OB" name="DOCLIE" direction="child">Document lié fils</link>
+            <link contentTypeCode="DOCUMENT_OB" name="DOCLIE" direction="parent">Document lié pere</link>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Compte client</ns2:label>
+                <ns2:airsfield>OB_CPTECLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro d'ordre de bourse</ns2:label>
+                <ns2:airsfield>OB_NUMOB</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>OB_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable du doc.</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <action id="DMDVALIDATION" image="task_Attribuer" resourceKey="update_dmd_validation" displayRule="BOTH" styleClass="askvalidate">
+                <groovyScriptId>dmdValidation</groovyScriptId>
+            </action>
+            <action id="VALIDATION" image="iconevalidation" resourceKey="update_validation" displayRule="BOTH" styleClass="validate">
+                <groovyScriptId>Validation</groovyScriptId>
+            </action>
+            <action id="REFUS" image="iconerefus" resourceKey="update_refus" displayRule="BOTH" styleClass="refuse">
+                <groovyScriptId>Refus</groovyScriptId>
+            </action>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_OB" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Compte client</ns2:label>
+                <ns2:airsfield>OB_CPTECLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_OB" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Compte client</ns2:label>
+                <ns2:airsfield>OB_CPTECLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="PJ_OB" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Compte client lié</ns2:label>
+                <ns2:airsfield>OB_CPTECLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro d'ordre de bourse lié</ns2:label>
+                <ns2:airsfield>OB_NUMOB</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>OB_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable du document</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+         <ns2:contentType name="PJ_OB" type="update" visibleInCreation="true">
+            <link contentTypeCode="DOCUMENT_OB" name="DOCLIE" direction="child">Document lié fils</link>
+            <link contentTypeCode="DOCUMENT_OB" name="DOCLIE" direction="parent">Document lié pere</link>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Compte client lié</ns2:label>
+                <ns2:airsfield>OB_CPTECLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro d'ordre de bourse lié</ns2:label>
+                <ns2:airsfield>OB_NUMOB</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>OB_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable du document</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <action id="DMDVALIDATION" image="task_Attribuer" resourceKey="update_dmd_validation" displayRule="BOTH" styleClass="askvalidate">
+                <groovyScriptId>dmdValidation</groovyScriptId>
+            </action>
+            <action id="VALIDATION" image="iconevalidation" resourceKey="update_validation" displayRule="BOTH" styleClass="validate">
+                <groovyScriptId>Validation</groovyScriptId>
+            </action>
+            <action id="REFUS" image="iconerefus" resourceKey="update_refus" displayRule="BOTH" styleClass="refuse">
+                <groovyScriptId>Refus</groovyScriptId>
+            </action>
+        </ns2:contentType>
+        
+        <!--FLUX RH-->
+        <ns2:contentType name="DOCUMENT_RH" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <dependInput type="MULTIPLE" fieldKey="RH_DOC_CAT">
+                    <scriptId>DependanceTypeCategorie</scriptId>
+                </dependInput>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>RH_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <!--<ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>RH_DATE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>-->
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_RH" type="update" visibleInCreation="true">
+            <link contentTypeCode="DOCUMENT_RH" name="DOCLIE" direction="child">Document lié fils</link>
+            <link contentTypeCode="DOCUMENT_RH" name="DOCLIE" direction="parent">Document lié pere</link>
+            <ns2:input readonly="true" required="true" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <dependInput type="MULTIPLE" fieldKey="RH_DOC_CAT">
+                    <scriptId>DependanceTypeCategorie</scriptId>
+                </dependInput>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>RH_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <!--<ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>RH_DATE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>-->
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <action id="DMDVALIDATION" image="task_Attribuer" displayRuleScriptId="document_action_visible_gv" resourceKey="update_dmd_validation" displayRule="BOTH" styleClass="askvalidate">
+                <groovyScriptId>dmdValidation</groovyScriptId>
+            </action>
+            <action id="VALIDATION" image="iconevalidation" displayRuleScriptId="document_action_visible_gv" resourceKey="update_validation" displayRule="BOTH" styleClass="validate">
+                <groovyScriptId>Validation</groovyScriptId>
+            </action>
+            <action id="REFUS" image="iconerefus" displayRuleScriptId="document_action_visible_gv" resourceKey="update_refus" displayRule="BOTH" styleClass="refuse">
+                <groovyScriptId>Refus</groovyScriptId>
+            </action>
+            <action id="ARCHIVER" airsProfile="107" image="icon_update_archiver" resourceKey="update_doc_archiver" displayRule="VIEW" styleClass="archive">
+                <groovyScriptId>PasseDocArchiver</groovyScriptId>
+            </action>
+             <export type="SCRIPT" renderer="" id="GenerateFolder" image="icon_generate_folder" resourceKey="generate_folder_pdf_tooltip" styleClass="exportPDF">
+                <groovyScriptId>export_PDF_Listing</groovyScriptId>
+            </export>
+        </ns2:contentType>
+         <ns2:contentType name="DOSSIER_RH" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOS_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date entrée</ns2:label>
+                <ns2:airsfield>RH_DATE_ENTREE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de départ</ns2:label>
+                <ns2:airsfield>RH_DATE_DEPART</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Solde CA</ns2:label>
+                <ns2:airsfield>RH_SOLDE_CA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+          <ns2:contentType name="DOSSIER_RH" type="update" visibleInCreation="true">
+            <ns2:input readonly="true" required="true" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleCG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOS_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date entrée</ns2:label>
+                <ns2:airsfield>RH_DATE_ENTREE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de départ</ns2:label>
+                <ns2:airsfield>RH_DATE_DEPART</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Solde CA</ns2:label>
+                <ns2:airsfield>RH_SOLDE_CA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+        </ns2:contentType>
+        
+        <!--FLUX COMMERCIAL-->
+        <ns2:contentType name="DOSSIER_COM" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro client</ns2:label>
+                <ns2:airsfield>COM_NUMCLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de compte</ns2:label>
+                <ns2:airsfield>COM_TYPECOMPTE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>COM_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de signature</ns2:label>
+                <ns2:airsfield>COM_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_COM" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro client</ns2:label>
+                <ns2:airsfield>COM_NUMCLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de compte</ns2:label>
+                <ns2:airsfield>COM_TYPECOMPTE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>COM_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de signature</ns2:label>
+                <ns2:airsfield>COM_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_COM" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro client</ns2:label>
+                <ns2:airsfield>COM_NUMCLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>COM_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="true" display="true">
+                <ns2:label>Produit concerné</ns2:label>
+                <ns2:airsfield>COM_PRODUIT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>COM_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>COM_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>COM_DATEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>COM_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date d'enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>COM_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_COM" type="update" visibleInCreation="true">
+            <link contentTypeCode="DOCUMENT_COM" name="DOCLIE" direction="child">Document lié fils</link>
+            <link contentTypeCode="DOCUMENT_COM" name="DOCLIE" direction="parent">Document lié pere</link>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro client</ns2:label>
+                <ns2:airsfield>COM_NUMCLIENT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>COM_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Produit concerné</ns2:label>
+                <ns2:airsfield>COM_PRODUIT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>COM_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>COM_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>COM_DATEDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>COM_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="true" required="false" display="true">
+                <ns2:label>Date d'enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>COM_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <action id="ARCHIVER" image="icon_update_archiver" resourceKey="update_doc_archiver" displayRule="VIEW" styleClass="archive">
+                <groovyScriptId>PasseDocArchiver</groovyScriptId>
+            </action>
+             <export type="SCRIPT" renderer="" id="GenerateFolder" image="icon_generate_folder" resourceKey="generate_folder_pdf_tooltip" styleClass="exportPDF">
+                <groovyScriptId>export_PDF_Listing</groovyScriptId>
+            </export>
+        </ns2:contentType>
+        
+        <!--FLUX FACTURE-->
+        <ns2:contentType name="DOSSIER_FACT" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Numéro TVA intracommunautaire</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>SIREN</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_FACT" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Labo</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>SIREN</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_FACT" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Labo</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>SIREN</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de pièce</ns2:label>
+                <ns2:airsfield>FACT_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro</ns2:label>
+                <ns2:airsfield>FACT_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <!--<ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date</ns2:label>
+                <ns2:airsfield>FACT_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>-->
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>FACT_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 5.5</ns2:label>
+                <ns2:airsfield>FACT_TVA55</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 19.6</ns2:label>
+                <ns2:airsfield>FACT_TVA196</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>FACT_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Valideur</ns2:label>
+                <ns2:airsfield>FACT_ACTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>FACT_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_FACT" type="update" visibleInCreation="true">
+            <link contentTypeCode="DOCUMENT_FACT" name="DOCLIE" direction="child">Document lié fils</link>
+            <link contentTypeCode="DOCUMENT_FACT" name="DOCLIE" direction="parent">Document lié pere</link>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Labo</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>SIRET</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de pièce</ns2:label>
+                <ns2:airsfield>FACT_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro</ns2:label>
+                <ns2:airsfield>FACT_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <!--<ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date</ns2:label>
+                <ns2:airsfield>FACT_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>-->
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>FACT_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <!--<dependInput type="MULTIPLE" fieldKey="FACT_TYPE_DOC">
+                    <scriptId>DepTypeDoc</scriptId>
+                </dependInput>-->
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 5.5</ns2:label>
+                <ns2:airsfield>FACT_TVA55</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 19.6</ns2:label>
+                <ns2:airsfield>FACT_TVA196</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>FACT_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Valideur</ns2:label>
+                <ns2:airsfield>FACT_ACTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>FACT_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+           <!--> <action id="VALIDER" image="icon_update_archiver" resourceKey="update_doc_valider" displayRule="BOTH" styleClass="validate">
+                <groovyScriptId>PasseDocValider</groovyScriptId>
+            </action> -->
+            <action id="DMDVALIDATION" displayRuleScriptId="document_action_visible_gv" image="task_Attribuer" resourceKey="update_dmd_validation" displayRule="BOTH" styleClass="askvalidate">
+                <groovyScriptId>dmdValidationFact</groovyScriptId>
+            </action>
+            <action id="VALIDATION" displayRuleScriptId="document_action_visible_gv" image="iconevalidation" resourceKey="update_validation" displayRule="BOTH" styleClass="validate">
+                <groovyScriptId>ValidationFact</groovyScriptId>
+            </action>
+            <action id="REFUS" displayRuleScriptId="document_action_visible_gv" image="iconerefus" resourceKey="update_refus" displayRule="BOTH" styleClass="refuse">
+                <groovyScriptId>RefusFact</groovyScriptId>
+            </action>
+             <export type="SCRIPT" renderer="" id="GenerateFolder" image="icon_generate_folder" resourceKey="generate_folder_pdf_tooltip" styleClass="exportPDF">
+                <groovyScriptId>export_PDF_Listing</groovyScriptId>
+            </export>
+        </ns2:contentType>
+        
+        <!--FLUX FOURNISSEUR-->
+         <ns2:contentType name="DOCUMENT_FOU" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro TVA intracommunautaire</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>SIRET</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Engagement n°</ns2:label>
+                <ns2:airsfield>FACT_COMMANDE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type de pièce</ns2:label>
+                <ns2:airsfield>FACT_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro</ns2:label>
+                <ns2:airsfield>FACT_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date</ns2:label>
+                <ns2:airsfield>FACT_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Total HT</ns2:label>
+                <ns2:airsfield>FACT_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>TVA 5.5</ns2:label>
+                <ns2:airsfield>FACT_TVA55</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant TVA</ns2:label>
+                <ns2:airsfield>FACT_TVA196</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>FACT_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>FACT_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur</ns2:label>
+                <ns2:airsfield>FACT_ACTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>FACT_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_FOU" type="update" visibleInCreation="true">
+            <link contentTypeCode="DOCUMENT_FOU" name="DOCLIE" direction="child">Document lié fils</link>
+            <link contentTypeCode="DOCUMENT_FOU" name="DOCLIE" direction="parent">Document lié pere</link>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>SIRET</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Engagement n°</ns2:label>
+                <ns2:airsfield>FACT_COMMANDE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type de pièce</ns2:label>
+                <ns2:airsfield>FACT_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro</ns2:label>
+                <ns2:airsfield>FACT_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date</ns2:label>
+                <ns2:airsfield>FACT_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro TVA intracommunautaire</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Total HT</ns2:label>
+                <ns2:airsfield>FACT_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>TVA 5.5</ns2:label>
+                <ns2:airsfield>FACT_TVA55</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>TVA 19.6</ns2:label>
+                <ns2:airsfield>FACT_TVA196</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>FACT_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>Document_init_VisibleG</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>FACT_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur</ns2:label>
+                <ns2:airsfield>FACT_ACTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>FACT_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <action id="DMDVALIDATION" displayRuleScriptId="document_action_visible_gv" image="task_Attribuer" resourceKey="update_dmd_validation" displayRule="BOTH" styleClass="askvalidate">
+                <groovyScriptId>dmdValidationFact</groovyScriptId>
+            </action>
+            <action id="VALIDATION" displayRuleScriptId="document_action_visible_gv" image="iconevalidation" resourceKey="update_validation" displayRule="BOTH" styleClass="validate">
+                <groovyScriptId>ValidationFact</groovyScriptId>
+            </action>
+            <action id="REFUS" displayRuleScriptId="document_action_visible_gv" image="iconerefus" resourceKey="update_refus" displayRule="BOTH" styleClass="refuse">
+                <groovyScriptId>RefusFact</groovyScriptId>
+            </action>
+             <export type="SCRIPT" renderer="" id="GenerateFolder" image="icon_generate_folder" resourceKey="generate_folder_pdf_tooltip" styleClass="exportPDF">
+                <groovyScriptId>export_PDF_Listing</groovyScriptId>
+            </export>
+        </ns2:contentType>
+          <ns2:contentType name="DOSSIER_FOU" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro TVA intracommunautaire</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>SIRET</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_FOU" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="true" display="true">
+                <ns2:label>Fournisseur</ns2:label>
+                <ns2:airsfield>FACT_FOURNISSEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Numéro TVA intracommunautaire</ns2:label>
+                <ns2:airsfield>FACT_NUMINTRACOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>SIRET</ns2:label>
+                <ns2:airsfield>FACT_SIREN</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        
+        <!--FLUX CIRIL RH-->
+           <ns2:contentType name="RH_BULLETIN_PAIE" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma de provenance</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_CATEGORIE</ns2:airsfield>
+                <ns2:initial-value>PAIE</ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule agent-établissement</ns2:label>
+                <ns2:airsfield>RH_AGEETA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de bulletin</ns2:label>
+                <ns2:airsfield>RH_NUMBUL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Mois de paie</ns2:label>
+                <ns2:airsfield>RH_MOIS_PAIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_BULLETIN_PAIE" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule agent-établissement</ns2:label>
+                <ns2:airsfield>RH_AGEETA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de bulletin</ns2:label>
+                <ns2:airsfield>RH_NUMBUL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Mois de paie</ns2:label>
+                <ns2:airsfield>RH_MOIS_PAIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_BULLETIN_PAIE" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule agent-établissement</ns2:label>
+                <ns2:airsfield>RH_AGEETA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de bulletin</ns2:label>
+                <ns2:airsfield>RH_NUMBUL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Mois de paie</ns2:label>
+                <ns2:airsfield>RH_MOIS_PAIE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_FICHIER_EVAL_ANNU" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_CATEGORIE</ns2:airsfield>
+                <ns2:initial-value>GPEC</ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPEDOC</ns2:airsfield>
+                <ns2:initial-value>FICEVA</ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de fiche de poste</ns2:label>
+                <ns2:airsfield>RH_NO_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de fiche de poste</ns2:label>
+                <ns2:airsfield>RH_DATE_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Mission du poste</ns2:label>
+                <ns2:airsfield>RH_MISSION_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de campagne</ns2:label>
+                <ns2:airsfield>RH_NO_CAMPAGNE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercicce de la campagne</ns2:label>
+                <ns2:airsfield>RH_ANNEE_EXERCICE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° du dossier de l'entretien</ns2:label>
+                <ns2:airsfield>WKF_NUMDOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé du dossier de l'entretien</ns2:label>
+                <ns2:airsfield>WKF_LIBDOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_FICHIER_EVAL_ANNU" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de fiche de poste</ns2:label>
+                <ns2:airsfield>RH_NO_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de fiche de poste</ns2:label>
+                <ns2:airsfield>RH_DATE_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Mission du poste</ns2:label>
+                <ns2:airsfield>RH_MISSION_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de la campagne</ns2:label>
+                <ns2:airsfield>RH_NO_CAMPAGNE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice de la campagne</ns2:label>
+                <ns2:airsfield>RH_ANNEE_EXERCICE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° du dossier</ns2:label>
+                <ns2:airsfield>WKF_NUMDOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé du dossier</ns2:label>
+                <ns2:airsfield>WKF_LIBDOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_FICHIER_EVAL_ANNU" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de la fiche de poste</ns2:label>
+                <ns2:airsfield>RH_NO_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de la fiche de poste</ns2:label>
+                <ns2:airsfield>RH_DATE_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Mission du poste</ns2:label>
+                <ns2:airsfield>RH_MISSION_FICPOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° de la campagne</ns2:label>
+                <ns2:airsfield>RH_NO_CAMPAGNE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice de la campagne</ns2:label>
+                <ns2:airsfield>RH_ANNEE_EXERCICE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° du dossier de l'entretien</ns2:label>
+                <ns2:airsfield>WKF_NUMDOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Libellé du dossier de l'entretien</ns2:label>
+                <ns2:airsfield>WKF_LIBDOS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_ARRETE" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date d'effet</ns2:label>
+                <ns2:airsfield>RH_DATEFF_EVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N°évènement</ns2:label>
+                <ns2:airsfield>RH_NUMEVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Evènement</ns2:label>
+                <ns2:airsfield>RH_LIB_EVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code du motif</ns2:label>
+                <ns2:airsfield>RH_CODE_MOTIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Motif</ns2:label>
+                <ns2:airsfield>RH_LIB_MOTIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_DATE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_CODE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Arrêté</ns2:label>
+                <ns2:airsfield>RH_LIB_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Etat de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_ETAT_ARCHIVE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_CATEGORIE</ns2:airsfield>
+                <ns2:initial-value>CARRIERE</ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_ARRETE" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="false">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date d'effet</ns2:label>
+                <ns2:airsfield>RH_DATEFF_EVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Evènement</ns2:label>
+                <ns2:airsfield>RH_LIB_EVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Motif</ns2:label>
+                <ns2:airsfield>RH_LIB_MOTIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_DATE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Arrêté</ns2:label>
+                <ns2:airsfield>RH_LIB_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Etat de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_ETAT_ARCHIVE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_ARRETE" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date d'effet</ns2:label>
+                <ns2:airsfield>RH_DATEFF_EVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>N° évènement</ns2:label>
+                <ns2:airsfield>RH_NUMEVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Evenement</ns2:label>
+                <ns2:airsfield>RH_LIB_EVE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code motif</ns2:label>
+                <ns2:airsfield>RH_CODE_MOTIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Motif</ns2:label>
+                <ns2:airsfield>RH_LIB_MOTIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_DATE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_CODE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Arrêté</ns2:label>
+                <ns2:airsfield>RH_LIB_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Etat de l'arrêté</ns2:label>
+                <ns2:airsfield>RH_ETAT_ARCHIVE_ARRETE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_DOCUMENT_EXTERNE" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC_EXT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_CATEGORIE</ns2:airsfield>
+                <ns2:initial-value>Documents externes</ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Commentaire</ns2:label>
+                <ns2:airsfield>RH_INFO</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_DOCUMENT_EXTERNE" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC_EXT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Commentaire</ns2:label>
+                <ns2:airsfield>RH_INFO</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_DOCUMENT_EXTERNE" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC_EXT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Commentaire</ns2:label>
+                <ns2:airsfield>RH_INFO</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_AGENT" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma de provenance de l'agent</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de naissance</ns2:label>
+                <ns2:airsfield>RH_DATNAI</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_AGENT" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de naissance</ns2:label>
+                <ns2:airsfield>RH_DATNAI</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="RH_AGENT" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de naissance</ns2:label>
+                <ns2:airsfield>RH_DATNAI</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+    </ns2:organization> 
+
+    <!-- EN SUSPEND
+    <ns2:organization name="RH_CONS" id="8">    
+        <ns2:contentType name="RH_AGENT" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Schéma</ns2:label>
+                <ns2:airsfield>GEN_SCHEMA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de naissance</ns2:label>
+                <ns2:airsfield>RH_DATNAI</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+    </ns2:organization>
+    -->
+    <ns2:organization name="WKF" id="21">
+        <ns2:contentType name="GF_PES_SRCI_BUDGET" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI_BUDGET" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI_BUDGET" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI_BUDGET" type="index" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="GF_PES_SRCI" type="index" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOSSIER" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOSSIER" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOSSIER" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOSSIER" type="index" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Code budget</ns2:label>
+                <ns2:airsfield>WKF_BUDGET</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Exercice</ns2:label>
+                <ns2:airsfield>WKF_EXERCICE</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOCUMENT" type="insert" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom de fichier du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMFICDOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMDOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type MIME du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_TYPMIM</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOCUMENT" type="update" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom de fichier du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMFICDOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMDOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type MIME du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_TYPMIM</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOCUMENT" type="read" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom de fichier du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMFICDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMDOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type MIME du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_TYPMIM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:docActions-scriptId></ns2:docActions-scriptId>
+        </ns2:contentType>
+        <ns2:contentType name="WKF_PES_FAST_DOCUMENT" type="index" visibleInCreation="true">
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Date de modification</ns2:label>
+                <ns2:airsfield>D_MODIF</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom de fichier du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMFICDOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_NOMDOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Nom du fichier PES</ns2:label>
+                <ns2:airsfield>WKF_NOMFIC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input readonly="false" required="false" display="true">
+                <ns2:label>Type MIME du document du workflow</ns2:label>
+                <ns2:airsfield>WKF_TYPMIM</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>
+    </ns2:organization>
+    
+</ns2:formulaire>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets" customerName="ESH" version="4.1.4">
+    <ns2:organization id="0" name="DEFAULT"/>
+    
+    <ns2:organization load-on-startup="1" id="2" name="GEST">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<!--dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+		<workflowvalue>Redistribution</workflowvalue>
+              <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="GEST" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+        <!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest--> 	
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest>	
+    </ns2:organization>
+    
+    <ns2:organization load-on-startup="1" id="5" name="ENQ">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="ENQ" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="7567018030977"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="6" name="MED">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="MED" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="7567018030977"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="7" name="CAIEE">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="CAIEE" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="7567018030977"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="8" name="GED">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="GED" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="9" name="CAIREO">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="CAIREO" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="10" name="TRI">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="TRI" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="11" name="JUR">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="JUR" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="12" name="FACTU">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="FACTU" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+   
+    <ns2:organization load-on-startup="1" id="13" name="SEC">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte" ET ORGA="SEC" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+    <ns2:organization load-on-startup="1" id="14" name="DIR">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte"  ET ORGA="DIR" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+	<ns2:organization load-on-startup="1" id="15" name="SECDIR">		
+	<!--dossierrequest name="Documents à prendre en compte ou transferer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <workflowvalue>Redistribution</workflowvalue>        
+	</dossierrequest-->
+	<dossierrequest name="Documents des autres collaborateurs">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Pour transfert ou prise en compte"  ET ORGA="SECDIR" SAUF U_GEST.USR="#LOGIN_ID#"</airsvalue>
+        </dossierrequest>
+	<dossierrequest name="Documents numeriques/OCR à indexer/verifier">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>(WKF_STATUS="A indexer" OU WKF_STATUS="Pour verification") ET (U_CREAT.USR="#LOGIN_ID#" OU U_GEST.USR="#LOGIN_ID#")</airsvalue>
+        </dossierrequest>	
+	<!--dossierrequest name="Documents sans gestionnaire actif à traiter">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>WKF_STATUS="Corbeille temporaire"</airsvalue>
+        </dossierrequest-->
+	<dossierrequest name="Documents Sedex à indexer">
+            <contentType>DOCUMENT_ASSURE</contentType>
+            <airsvalue>N_NSS="Sedex"</airsvalue>
+        </dossierrequest> 		
+    </ns2:organization>
+
+   
+
+</ns2:corbeille>

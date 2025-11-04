@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<listview xmlns="http://www.digitech.com/dossiers/view">
+	<organization name="DEFAULT" id="0">
+		<contentType name="COURRIERS">
+    		<column label="Date de réception SFR">
+				<format>dd/MM/yyyy</format>
+				<airsField parentContentType="">D_ENTREE</airsField>
+			</column>
+			<column label="Numéro de contrat">
+				<format></format>
+				<airsField parentContentType="">NUMCONTRAT</airsField>
+			</column>
+			<column label="Numéro de ligne">
+				<format></format>
+				<airsField parentContentType="">NUMLIGNE</airsField>
+			</column>
+			<column label="Nom client">
+				<format></format>
+				<airsField parentContentType="">NOMCLIENT</airsField>
+			</column>
+			<column label="Typologie">
+				<format></format>
+				<airsField parentContentType="">TYPOLOGIE</airsField>
+			</column>					
+			<nbDocMax>10</nbDocMax>
+			<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>NUMLIGNE</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+		<contentType name="DOSSIER_CLIENT">
+			<column label="Numéro de contrat">
+				<format></format>
+				<airsField parentContentType="">NUMCONTRAT</airsField>
+			</column>			
+			<nbDocMax>50</nbDocMax>
+		</contentType>
+	</organization>
+</listview>

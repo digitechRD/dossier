@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hie:hierarchique version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:hie="http://www.digitech.com/dossiers/hierarchical">
+    <hie:organization name="DEFAULT">
+        <hie:flow flowCode="REF_DOCUMENT"/>
+        <hie:flow flowCode="COURRIER"/>
+        <hie:flow flowCode="MONTEE_SUR_CALE">
+            <hie:contentType name="ARMATEUR" visible="true">
+                <hie:libelle dateFormat="dd/MM/yyyy">{MSC_NOM_DEMANDEUR}</hie:libelle>
+                <hie:sorting>
+                    <com:sortingPolicy>
+                        <com:direction>DICREASING</com:direction>
+                        <com:codeField>MSC_NOM_DEMANDEUR</com:codeField>
+                    </com:sortingPolicy>
+                </hie:sorting>
+            </hie:contentType>
+            <hie:contentType name="NAVIRE" visible="true">
+                <hie:libelle dateFormat="dd/MM/yyyy">{MSC_NOM_NAVIRE} - {MSC_IMMAT_NAVIRE}</hie:libelle>
+                <hie:sorting>
+                    <com:sortingPolicy>
+                        <com:direction>DICREASING</com:direction>
+                        <com:codeField>MSC_NOM_NAVIRE</com:codeField>
+                    </com:sortingPolicy>
+                </hie:sorting>
+            </hie:contentType>
+            <hie:contentType name="MONTEE_SUR_CALE" visible="true">
+                <hie:libelle dateFormat="dd/MM/yyyy">Montée sur cale {MSC_NUM_MONTEE} du {MSC_DATE_DEBUT}</hie:libelle>
+                <hie:sorting>
+                    <com:sortingPolicy>
+                        <com:direction>DICREASING</com:direction>
+                        <com:codeField>MSC_DATE_DEBUT</com:codeField>
+                    </com:sortingPolicy>
+                </hie:sorting>
+            </hie:contentType>
+            <hie:contentType name="DOC_MONTEE" visible="true">
+                <hie:libelle dateFormat="dd/MM/yyyy">{MSC_NOM_DOCUMENT}</hie:libelle>
+                <hie:field_hier>MSC_TYPE_DOCUMENT</hie:field_hier>
+                <hie:sorting>
+                    <com:sortingPolicy>
+                        <com:direction>DICREASING</com:direction>
+                        <com:codeField>MSC_NOM_DOCUMENT</com:codeField>
+                    </com:sortingPolicy>
+                </hie:sorting>
+            </hie:contentType>
+        </hie:flow>
+    </hie:organization>
+</hie:hierarchique>

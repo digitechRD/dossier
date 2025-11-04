@@ -1,0 +1,184 @@
+import java.lang.*;
+import java.util.*;
+import javax.faces.*;
+import java.util.List;
+import java.util.Map;
+
+import org.slf4j.Logger;
+import org.apache.commons.lang.*;
+
+import com.digitech.dossier.common.model.backend.airs.IDocument;
+import com.digitech.dossier.common.model.backend.airs.IField;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+import com.digitech.dossier.common.Utils;
+
+import com.digitech.dossier.common.*;
+
+import java.lang.Double;
+import com.digitech.dossier.common.service.ServiceManager;
+import com.digitech.dossier.common.service.IServer;
+
+import com.digitech.dossier.common.model.backing.factory.*;
+import javax.faces.component.html.*;
+import javax.faces.component.*;
+import javax.faces.model.*;
+
+
+DOC_CAT_FIELD_CODE = "RH_DOC_CAT"
+DOC_TYPE_DOC_FIELD_CODE = "RH_TYPE_DOC"
+
+DOC_CAT_A_ID = "706"
+DOC_CAT_A_CODE = "A"
+
+DOC_CAT_B_ID = "707"
+DOC_CAT_B_CODE = "B"
+
+DOC_CAT_C_ID = "708"
+DOC_CAT_C_CODE = "C"
+
+DOC_CAT_D_ID = "709"
+DOC_CAT_D_CODE = "D"
+
+DOC_CAT_E_ID = "710"
+DOC_CAT_E_CODE = "E"
+
+DOC_CAT_F_ID = "711"
+DOC_CAT_F_CODE = "F"
+
+DOC_CAT_G_ID = "712"
+DOC_CAT_G_CODE = "G"
+
+DOC_CAT_H_ID = "713"
+DOC_CAT_H_CODE = "H"
+
+DOC_CAT_I_ID = "714"
+DOC_CAT_I_CODE = "I"
+
+DOC_CAT_J_ID = "715"
+DOC_CAT_J_CODE = "J"
+
+
+	IField fieldCat_Doc = fieldMap.get(DOC_CAT_FIELD_CODE);  
+	String fieldCatDocvalue = getFieldValue( fieldCat_Doc );
+	
+	IField fieldType_Doc = fieldMap.get(DOC_TYPE_DOC_FIELD_CODE);  
+	
+	scriptLogger.warn("Valeur de la categorie : " + fieldCatDocvalue );
+	List<SelectItem> selectItems = new SelectItemFactory().getAuthorities(fieldType_Doc.getCode());
+	
+	String sLettre;
+	String sColor = "green";
+
+	switch (fieldCatDocvalue) 
+  {
+    case DOC_CAT_A_ID :
+    	sLettre = DOC_CAT_A_CODE;
+    	sColor = "#FFFFCC"; 
+    	break;
+    
+    case DOC_CAT_B_ID :
+    	sLettre = DOC_CAT_B_CODE;
+    	sColor = "#CCFFCC"; 
+    	break;
+    	
+    case DOC_CAT_C_ID :
+    	sLettre = DOC_CAT_C_CODE;
+    	sColor = "#FFCCCC"; 
+    	break;
+    	
+    case DOC_CAT_D_ID :
+    	sLettre = DOC_CAT_D_CODE;
+      sColor = "#CCCCFF"; 
+    	break;
+    	
+    case DOC_CAT_E_ID :
+    	sLettre = DOC_CAT_E_CODE;
+    	sColor = "#99CCFF"; 
+    	break;
+    	
+    case DOC_CAT_F_ID :
+    	sLettre = DOC_CAT_F_CODE;
+    	sColor = "#CCCCCC"; 
+    	break;
+    	
+    case DOC_CAT_G_ID :
+    	sLettre = DOC_CAT_G_CODE;
+    	sColor = "#FF9966"; 
+    	break;
+    	
+    case DOC_CAT_H_ID :
+    	sLettre = DOC_CAT_H_CODE;
+    	sColor = "#99CC33"; 
+    	break;
+    	
+    case DOC_CAT_I_ID :
+    	sLettre = DOC_CAT_I_CODE;
+    	sColor = "#CCFFFF"; 
+    	break;
+    		
+    case DOC_CAT_J_ID :
+    	sLettre = DOC_CAT_J_CODE;
+    	sColor = "#FF66CC"; 
+    	break;
+    
+    default: 
+    	sLettre = "";
+    	break;
+    }
+	
+      Iterator<SelectItem> iter = selectItems.iterator();
+      while (iter.hasNext()) 
+      {
+        SelectItem ItemElement = iter.next();
+        String strLabel = ItemElement.getLabel(); 
+        
+        if ( StringUtils.isNotEmpty(strLabel))
+        {
+          scriptLogger.warn("Item : " + strLabel );
+          
+          String PremLettre = strLabel.substring(0, 1);
+          scriptLogger.warn("PremLettre : " + PremLettre );
+          
+          if( PremLettre.compareToIgnoreCase(sLettre) == 0 )
+          {
+            //on fait rien
+            scriptLogger.warn("Je fais rien ");
+          }
+          else
+          {
+            iter.remove();
+            scriptLogger.warn("Je supprime ");
+          }
+        }
+      }
+      
+      HtmlSelectOneMenu component = ((HtmlSelectOneMenu)  ((UIComponent)fieldType_Doc.getComponent()));
+      component.getChildren().get(0).setValue(selectItems );
+      component.getAttributes().put("style", "background-color: " + sColor);
+
+
+
+
+String getFieldValue( IField field )
+{
+	List<?> values = field.getValues();
+	String fieldvalue;
+	if(values != null && !values.isEmpty()) {
+		fieldvalue =getServerMgr().getFieldValues(values, field.getAirsField());   
+		scriptLogger.info("Field Value : " + field.getCode() + " - " + fieldvalue );
+	}else
+	{
+		scriptLogger.info("the field value is null or empty");
+	}
+	
+	return fieldvalue;
+}
+
+private IServer getServerMgr() {
+	return (IServer) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_SERVER_MGR);
+}
+
+private com.digitech.dossier.common.service.IDocument getDocumentMgr() {
+	return (com.digitech.dossier.common.service.IDocument) ServiceManager.getInstance().getService(com.digitech.dossier.common.service.Constants.SERVICE_AIRS_DOCUMENT_MGR);
+}

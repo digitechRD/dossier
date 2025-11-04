@@ -1,0 +1,1598 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.7.10-1" customerName="GEOCEAN">
+    <organization name="DEFAULT" id="0">
+        <contentType name="DOC_PJ" type="insert" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="DOC_PJ" type="update" auiAsSecretLevel="" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOC_PJ" type="read" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOS_FAC" type="update" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOS_FAC" type="read" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOC_FAC" type="update" auiAsSecretLevel="" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la facture</label>
+                <airsfield>FACT_DATE</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Montant TTC </label>
+                <airsfield>FACT_TTC</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Devise </label>
+                <airsfield>FACT_DEVISE</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Société </label>
+                <airsfield>FACT_SOCETE</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 1</label>
+                <airsfield>FACT_CODE_CHANT1</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 2</label>
+                <airsfield>FACT_CODE_CHANT2</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 3</label>
+                <airsfield>FACT_CODE_CHANT3</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de bon de cmd</label>
+                <airsfield>FACT_N_BDC</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de réception</label>
+                <airsfield>FACT_N_RECEPTION</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro Chrono </label>
+                <airsfield>FACT_CHRONO</airsfield>
+                <initial-value></initial-value>
+
+<!--                <ns2:dependInput fieldKey="FACT_CODE_CHANT1" type="MONO">
+                   <ns2:scriptId>facture_dependency_CDP</ns2:scriptId>
+                </ns2:dependInput>
+-->                
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr bt archive</label>
+                <airsfield>FACT_BT_ARCHIVE</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Etat de la facture </label>
+                <airsfield>FACT_ETAT</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Gestionnaire Achat</label>
+                <airsfield>FACT_USR_ACHAT</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminCompta</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_Achat</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 1</label>
+                <airsfield>FACT_USR_CTRLGEST1</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 2</label>
+                <airsfield>FACT_USR_CTRLGEST2</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 3</label>
+                <airsfield>FACT_USR_CTRLGEST3</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 1</label>
+                <airsfield>FACT_USR_CDP1</airsfield>
+                <initial-value></initial-value>
+
+                <ns2:dependInput fieldKey="FACT_CODE_CHANT1" type="MONO">
+                   <ns2:scriptId>facture_dependency_CDP</ns2:scriptId>
+                </ns2:dependInput>
+                
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 2</label>
+                <airsfield>FACT_USR_CDP2</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 3</label>
+                <airsfield>FACT_USR_CDP3</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaAchat</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Directeur </label>
+                <airsfield>FACT_USR_DIR</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_AdminComptaDAF</field-properties-scriptId>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_DIR</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>FACT_DT_RCPT</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. achat</label>
+                <airsfield>FACT_DT_ACHAT</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date comptabilisation</label>
+                <airsfield>FACT_DT_COMPTA</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date control gestion </label>
+                <airsfield>FACT_DT_CTRLGEST</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. chef de projet </label>
+                <airsfield>FACT_DT_CDP</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. DAF</label>
+                <airsfield>FACT_DT_DAF</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. dir </label>
+                <airsfield>FACT_DT_DIR</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de paiement </label>
+                <airsfield>FACT_DT_PMNT</airsfield>
+                <initial-value></initial-value>
+                <field-properties-scriptId>facture_init_readOnlyIfNo_Admin</field-properties-scriptId>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <ns2:scriptedAction type="before" groovyScriptId="DOC_FAC_before_Save" id="ON_SAVE_DOC_FAC">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="DOC_FAC" type="read" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la facture</label>
+                <airsfield>FACT_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Montant TTC </label>
+                <airsfield>FACT_TTC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Devise </label>
+                <airsfield>FACT_DEVISE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Société </label>
+                <airsfield>FACT_SOCETE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 1</label>
+                <airsfield>FACT_CODE_CHANT1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 2</label>
+                <airsfield>FACT_CODE_CHANT2</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 3</label>
+                <airsfield>FACT_CODE_CHANT3</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de bon de cmd</label>
+                <airsfield>FACT_N_BDC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de réception</label>
+                <airsfield>FACT_N_RECEPTION</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro Chrono </label>
+                <airsfield>FACT_CHRONO</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr bt archive</label>
+                <airsfield>FACT_BT_ARCHIVE</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Etat de la facture </label>
+                <airsfield>FACT_ETAT</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Gestionnaire Achat</label>
+                <airsfield>FACT_USR_ACHAT</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 1</label>
+                <airsfield>FACT_USR_CTRLGEST1</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 2</label>
+                <airsfield>FACT_USR_CTRLGEST2</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 3</label>
+                <airsfield>FACT_USR_CTRLGEST3</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 1</label>
+                <airsfield>FACT_USR_CDP1</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 2</label>
+                <airsfield>FACT_USR_CDP2</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 3</label>
+                <airsfield>FACT_USR_CDP3</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Directeur </label>
+                <airsfield>FACT_USR_DIR</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>FACT_DT_RCPT</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. achat</label>
+                <airsfield>FACT_DT_ACHAT</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date comptabilisation</label>
+                <airsfield>FACT_DT_COMPTA</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date control gestion </label>
+                <airsfield>FACT_DT_CTRLGEST</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. chef de projet </label>
+                <airsfield>FACT_DT_CDP</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. DAF</label>
+                <airsfield>FACT_DT_DAF</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. dir </label>
+                <airsfield>FACT_DT_DIR</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de paiement </label>
+                <airsfield>FACT_DT_PMNT</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <ns2:action id="factureValiderUnitView" image="icon_validerFacture" resourceKey="action_factureValider" displayRuleScriptId="facture_ValiderVisibilityUnitView" styleClass="validerFacture">
+                <ns2:groovyScriptId>facture_ValiderActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureRejeterUnitView" image="icon_rejeterFacture" resourceKey="action_factureRejeter" displayRuleScriptId="facture_RejeterVisibilityUnitView" styleClass="rejeterFacture">
+                <ns2:groovyScriptId>facture_RejeterActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureInvaliderUnitView" image="icon_invaliderFacture" resourceKey="action_factureInvalider" displayRuleScriptId="facture_InvaliderVisibilityUnitView" styleClass="invaliderFacture">
+                <ns2:groovyScriptId>facture_InvaliderActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureAnnulerUnitView" image="icon_annulerFacture" resourceKey="action_factureAnnuler" displayRuleScriptId="facture_AnnulerVisibilityUnitView" styleClass="annulerFacture">
+                <ns2:groovyScriptId>facture_AnnulerActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureLitigerUnitView" image="icon_litigerFacture" resourceKey="action_factureLitiger" displayRuleScriptId="facture_LitigerVisibilityUnitView" styleClass="litigerFacture">
+                <ns2:groovyScriptId>facture_LitigerActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureDelitigerUnitView" image="icon_delitigerFacture" resourceKey="action_factureDelitiger" displayRuleScriptId="facture_DelitigerVisibilityUnitView" styleClass="delitigerFacture">
+                <ns2:groovyScriptId>facture_DelitigerActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerAchatUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerAchat" displayRuleScriptId="facture_ChangerAchatVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerAchatActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerAchatActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerCDGUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerCDG" displayRuleScriptId="facture_ChangerCDGVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerCDGActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerCDGActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerCDPUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerCDP" displayRuleScriptId="facture_ChangerCDPVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerCDPActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerCDPActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerDIRUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerDIR" displayRuleScriptId="facture_ChangerDIRVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerDIRActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerDIRActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+        </contentType>
+    </organization>
+    <organization name="ADM" id="113">
+        <contentType name="DOC_PJ" type="insert" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="DOC_PJ" type="update" auiAsSecretLevel="" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOC_PJ" type="read" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOC_PJ" type="index" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de pièce jointe </label>
+                <airsfield>PJ_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="DOS_FAC" type="insert" visibleInCreation="false">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOS_FAC" type="update" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOS_FAC" type="read" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+        <contentType name="DOS_FAC" type="index" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+            </input>
+        </contentType>
+        <contentType name="DOC_FAC" type="insert" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la facture</label>
+                <airsfield>FACT_DATE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Montant TTC </label>
+                <airsfield>FACT_TTC</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Devise </label>
+                <airsfield>FACT_DEVISE</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Société </label>
+                <airsfield>FACT_SOCETE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 1</label>
+                <airsfield>FACT_CODE_CHANT1</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 2</label>
+                <airsfield>FACT_CODE_CHANT2</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 3</label>
+                <airsfield>FACT_CODE_CHANT3</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de bon de cmd</label>
+                <airsfield>FACT_N_BDC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de réception</label>
+                <airsfield>FACT_N_RECEPTION</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro Chrono </label>
+                <airsfield>FACT_CHRONO</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr bt archive</label>
+                <airsfield>FACT_BT_ARCHIVE</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Etat de la facture </label>
+                <airsfield>FACT_ETAT</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Gestionnaire Achat</label>
+                <airsfield>FACT_USR_ACHAT</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_Achat</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 1</label>
+                <airsfield>FACT_USR_CTRLGEST1</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 2</label>
+                <airsfield>FACT_USR_CTRLGEST2</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 3</label>
+                <airsfield>FACT_USR_CTRLGEST3</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 1</label>
+                <airsfield>FACT_USR_CDP1</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 2</label>
+                <airsfield>FACT_USR_CDP2</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 3</label>
+                <airsfield>FACT_USR_CDP3</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Directeur </label>
+                <airsfield>FACT_USR_DIR</airsfield>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_DIR</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>FACT_DT_RCPT</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. achat</label>
+                <airsfield>FACT_DT_ACHAT</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date comptabilisation</label>
+                <airsfield>FACT_DT_COMPTA</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date control gestion </label>
+                <airsfield>FACT_DT_CTRLGEST</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. chef de projet </label>
+                <airsfield>FACT_DT_CDP</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. DAF</label>
+                <airsfield>FACT_DT_DAF</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. dir </label>
+                <airsfield>FACT_DT_DIR</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de paiement </label>
+                <airsfield>FACT_DT_PMNT</airsfield>
+                <fieldset>Date de validation</fieldset>
+            </input>
+        </contentType>
+        <contentType name="DOC_FAC" type="update" auiAsSecretLevel="" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la facture</label>
+                <airsfield>FACT_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Montant TTC </label>
+                <airsfield>FACT_TTC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Devise </label>
+                <airsfield>FACT_DEVISE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Société </label>
+                <airsfield>FACT_SOCETE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 1</label>
+                <airsfield>FACT_CODE_CHANT1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 2</label>
+                <airsfield>FACT_CODE_CHANT2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 3</label>
+                <airsfield>FACT_CODE_CHANT3</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de bon de cmd</label>
+                <airsfield>FACT_N_BDC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de réception</label>
+                <airsfield>FACT_N_RECEPTION</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro Chrono </label>
+                <airsfield>FACT_CHRONO</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr bt archive</label>
+                <airsfield>FACT_BT_ARCHIVE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Etat de la facture </label>
+                <airsfield>FACT_ETAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Gestionnaire Achat</label>
+                <airsfield>FACT_USR_ACHAT</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_Achat</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 1</label>
+                <airsfield>FACT_USR_CTRLGEST1</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 2</label>
+                <airsfield>FACT_USR_CTRLGEST2</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 3</label>
+                <airsfield>FACT_USR_CTRLGEST3</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 1</label>
+                <airsfield>FACT_USR_CDP1</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 2</label>
+                <airsfield>FACT_USR_CDP2</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 3</label>
+                <airsfield>FACT_USR_CDP3</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Directeur </label>
+                <airsfield>FACT_USR_DIR</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Valideur</fieldset>
+                <availableValues-filter-scriptId>user_ElementFilter_DIR</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>FACT_DT_RCPT</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. achat</label>
+                <airsfield>FACT_DT_ACHAT</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date comptabilisation</label>
+                <airsfield>FACT_DT_COMPTA</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date control gestion </label>
+                <airsfield>FACT_DT_CTRLGEST</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. chef de projet </label>
+                <airsfield>FACT_DT_CDP</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. DAF</label>
+                <airsfield>FACT_DT_DAF</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. dir </label>
+                <airsfield>FACT_DT_DIR</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de paiement </label>
+                <airsfield>FACT_DT_PMNT</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Retour (Système)</label>
+                <airsfield>FACT_RETOUR</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val CtrlGest1</label>
+                <airsfield>FACT_VAL_CTRLGEST1</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val CtrlGest2</label>
+                <airsfield>FACT_VAL_CTRLGEST2</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val CtrlGest3</label>
+                <airsfield>FACT_VAL_CTRLGEST3</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val Cdp1</label>
+                <airsfield>FACT_VAL_CDP1</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val Cdp2</label>
+                <airsfield>FACT_VAL_CDP2</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val Cdp3</label>
+                <airsfield>FACT_VAL_CDP3</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>CdpValide</label>
+                <airsfield>FACT_CDPVALIDE</airsfield>
+                <initial-value></initial-value>
+                <fieldset>Interne</fieldset>
+            </input>
+            <ns2:action id="factureValiderUnitView" image="icon_validerFacture" resourceKey="action_factureValider" displayRuleScriptId="facture_ValiderVisibilityUnitView" styleClass="validerFacture">
+                <ns2:groovyScriptId>facture_ValiderActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureRejeterUnitView" image="icon_rejeterFacture" resourceKey="action_factureRejeter" displayRuleScriptId="facture_RejeterVisibilityUnitView" styleClass="rejeterFacture">
+                <ns2:groovyScriptId>facture_RejeterActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureInvaliderUnitView" image="icon_invaliderFacture" resourceKey="action_factureInvalider" displayRuleScriptId="facture_InvaliderVisibilityUnitView" styleClass="invaliderFacture">
+                <ns2:groovyScriptId>facture_InvaliderActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureAnnulerUnitView" image="icon_annulerFacture" resourceKey="action_factureAnnuler" displayRuleScriptId="facture_AnnulerVisibilityUnitView" styleClass="annulerFacture">
+                <ns2:groovyScriptId>facture_AnnulerActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureLitigerUnitView" image="icon_litigerFacture" resourceKey="action_factureLitiger" displayRuleScriptId="facture_LitigerVisibilityUnitView" styleClass="litigerFacture">
+                <ns2:groovyScriptId>facture_LitigerActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureDelitigerUnitView" image="icon_delitigerFacture" resourceKey="action_factureDelitiger" displayRuleScriptId="facture_DelitigerVisibilityUnitView" styleClass="delitigerFacture">
+                <ns2:groovyScriptId>facture_DelitigerActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerAchatUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerAchat" displayRuleScriptId="facture_ChangerAchatVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerAchatActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerAchatActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerCDGUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerCDG" displayRuleScriptId="facture_ChangerCDGVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerCDGActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerCDGActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerCDPUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerCDP" displayRuleScriptId="facture_ChangerCDPVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerCDPActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerCDPActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerDIRUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerDIR" displayRuleScriptId="facture_ChangerDIRVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerDIRActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerDIRActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:scriptedAction type="before" groovyScriptId="DOC_FAC_before_Save" id="ON_SAVE_DOC_FAC">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="DOC_FAC" type="read" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la facture</label>
+                <airsfield>FACT_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Montant TTC </label>
+                <airsfield>FACT_TTC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Devise </label>
+                <airsfield>FACT_DEVISE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Société </label>
+                <airsfield>FACT_SOCETE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 1</label>
+                <airsfield>FACT_CODE_CHANT1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 2</label>
+                <airsfield>FACT_CODE_CHANT2</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 3</label>
+                <airsfield>FACT_CODE_CHANT3</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de bon de cmd</label>
+                <airsfield>FACT_N_BDC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de réception</label>
+                <airsfield>FACT_N_RECEPTION</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro Chrono </label>
+                <airsfield>FACT_CHRONO</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr bt archive</label>
+                <airsfield>FACT_BT_ARCHIVE</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Etat de la facture </label>
+                <airsfield>FACT_ETAT</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Gestionnaire Achat</label>
+                <airsfield>FACT_USR_ACHAT</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 1</label>
+                <airsfield>FACT_USR_CTRLGEST1</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 2</label>
+                <airsfield>FACT_USR_CTRLGEST2</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Controleur Gestion 3</label>
+                <airsfield>FACT_USR_CTRLGEST3</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 1</label>
+                <airsfield>FACT_USR_CDP1</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 2</label>
+                <airsfield>FACT_USR_CDP2</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Chefs de projet 3</label>
+                <airsfield>FACT_USR_CDP3</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Directeur </label>
+                <airsfield>FACT_USR_DIR</airsfield>
+                <fieldset>Valideur</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>FACT_DT_RCPT</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. achat</label>
+                <airsfield>FACT_DT_ACHAT</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date comptabilisation</label>
+                <airsfield>FACT_DT_COMPTA</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date control gestion </label>
+                <airsfield>FACT_DT_CTRLGEST</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. chef de projet </label>
+                <airsfield>FACT_DT_CDP</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. DAF</label>
+                <airsfield>FACT_DT_DAF</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. dir </label>
+                <airsfield>FACT_DT_DIR</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de paiement </label>
+                <airsfield>FACT_DT_PMNT</airsfield>
+                <fieldset>Date validation</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Retour (Système)</label>
+                <airsfield>FACT_RETOUR</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val CtrlGest1</label>
+                <airsfield>FACT_VAL_CTRLGEST1</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val CtrlGest2</label>
+                <airsfield>FACT_VAL_CTRLGEST2</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val CtrlGest3</label>
+                <airsfield>FACT_VAL_CTRLGEST3</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val Cdp1</label>
+                <airsfield>FACT_VAL_CDP1</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val Cdp2</label>
+                <airsfield>FACT_VAL_CDP2</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Val Cdp3</label>
+                <airsfield>FACT_VAL_CDP3</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>CdpValide</label>
+                <airsfield>FACT_CDPVALIDE</airsfield>
+                <fieldset>Interne</fieldset>
+            </input>
+            <ns2:action id="factureValiderUnitView" image="icon_validerFacture" resourceKey="action_factureValider" displayRuleScriptId="facture_ValiderVisibilityUnitView" styleClass="validerFacture">
+                <ns2:groovyScriptId>facture_ValiderActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureRejeterUnitView" image="icon_rejeterFacture" resourceKey="action_factureRejeter" displayRuleScriptId="facture_RejeterVisibilityUnitView" styleClass="rejeterFacture">
+                <ns2:groovyScriptId>facture_RejeterActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureInvaliderUnitView" image="icon_invaliderFacture" resourceKey="action_factureInvalider" displayRuleScriptId="facture_InvaliderVisibilityUnitView" styleClass="invaliderFacture">
+                <ns2:groovyScriptId>facture_InvaliderActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureAnnulerUnitView" image="icon_annulerFacture" resourceKey="action_factureAnnuler" displayRuleScriptId="facture_AnnulerVisibilityUnitView" styleClass="annulerFacture">
+                <ns2:groovyScriptId>facture_AnnulerActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureLitigerUnitView" image="icon_litigerFacture" resourceKey="action_factureLitiger" displayRuleScriptId="facture_LitigerVisibilityUnitView" styleClass="litigerFacture">
+                <ns2:groovyScriptId>facture_LitigerActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureDelitigerUnitView" image="icon_delitigerFacture" resourceKey="action_factureDelitiger" displayRuleScriptId="facture_DelitigerVisibilityUnitView" styleClass="delitigerFacture">
+                <ns2:groovyScriptId>facture_DelitigerActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerAchatUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerAchat" displayRuleScriptId="facture_ChangerAchatVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerAchatActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerAchatActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerCDGUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerCDG" displayRuleScriptId="facture_ChangerCDGVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerCDGActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerCDGActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerCDPUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerCDP" displayRuleScriptId="facture_ChangerCDPVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerCDPActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerCDPActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="factureChangerDIRUnitView" image="icon_changerUtilFacture" resourceKey="action_factureChangerDIR" displayRuleScriptId="facture_ChangerDIRVisibilityUnitView" styleClass="ChangerUtilFacture">
+                <ns2:groovyScriptId>facture_ChangerDIRActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentAndUserPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>facture_initPanelChangerDIRActionUnitView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+        </contentType>
+        <contentType name="DOC_FAC" type="index" visibleInCreation="true">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Matricule fournisseur </label>
+                <airsfield>FOUR_MATRIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom fournisseur </label>
+                <airsfield>FOUR_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro de la facture</label>
+                <airsfield>FACT_NR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la facture</label>
+                <airsfield>FACT_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Montant TTC </label>
+                <airsfield>FACT_TTC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Devise </label>
+                <airsfield>FACT_DEVISE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Société </label>
+                <airsfield>FACT_SOCETE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 1</label>
+                <airsfield>FACT_CODE_CHANT1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 2</label>
+                <airsfield>FACT_CODE_CHANT2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Codes chantier 3</label>
+                <airsfield>FACT_CODE_CHANT3</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de bon de cmd</label>
+                <airsfield>FACT_N_BDC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr de réception</label>
+                <airsfield>FACT_N_RECEPTION</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Numéro Chrono </label>
+                <airsfield>FACT_CHRONO</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nr bt archive</label>
+                <airsfield>FACT_BT_ARCHIVE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Etat de la facture </label>
+                <airsfield>FACT_ETAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Gestionnaire Achat</label>
+                <airsfield>FACT_USR_ACHAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Controleur Gestion 1</label>
+                <airsfield>FACT_USR_CTRLGEST1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Controleur Gestion 2</label>
+                <airsfield>FACT_USR_CTRLGEST2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Controleur Gestion 3</label>
+                <airsfield>FACT_USR_CTRLGEST3</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Chefs de projet 1</label>
+                <airsfield>FACT_USR_CDP1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Chefs de projet 2</label>
+                <airsfield>FACT_USR_CDP2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Chefs de projet 3</label>
+                <airsfield>FACT_USR_CDP3</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Directeur </label>
+                <airsfield>FACT_USR_DIR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>FACT_DT_RCPT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. achat</label>
+                <airsfield>FACT_DT_ACHAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date comptabilisation</label>
+                <airsfield>FACT_DT_COMPTA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date control gestion </label>
+                <airsfield>FACT_DT_CTRLGEST</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. chef de projet </label>
+                <airsfield>FACT_DT_CDP</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. DAF</label>
+                <airsfield>FACT_DT_DAF</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date valid. dir </label>
+                <airsfield>FACT_DT_DIR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de paiement </label>
+                <airsfield>FACT_DT_PMNT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+    </organization>
+</formulaire>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formulaire version="7.1" customerName="OAINE" xmlns:com="http://www.digitech.com/dossiers/common" xmlns="http://www.digitech.com/dossiers/update">
+    <organization name="DEFAULT">
+        <flow flowCode="FLOW_OAI">
+            <contentType name="DOSSIER_ASSURE" type="read" visibleInCreation="true"/>
+            <contentType name="DOSSIER_ASSURE" type="update" visibleInCreation="true"/>
+            <contentType name="DOSSIER_ASSURE" type="insert" visibleInCreation="true"/>
+            <contentType name="DOSSIER_ASSURE" type="index" visibleInCreation="true"/>
+            <contentType name="DOCUMENT_ASSURE" type="read" visibleInCreation="true"/>
+            <contentType name="DOCUMENT_ASSURE" type="update" visibleInCreation="true"/>
+            <contentType name="DOCUMENT_ASSURE" type="insert" visibleInCreation="true"/>
+            <contentType name="DOCUMENT_ASSURE" type="index" visibleInCreation="true"/>
+        </flow>
+    </organization>
+    <organization name="OAI">
+        <flow flowCode="FLOW_OAI">
+            <contentType name="DOCUMENT_ASSURE" type="insert" visibleInCreation="true">
+                <input readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_nss</label>
+                    <airsfield>N_NSS</airsfield>
+                    <format>(\d{3})\.(\d{4})\.(\d{4})\.(\d{2})</format>
+                </input>
+                <input readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_request_number</label>
+                    <airsfield>N_DEM</airsfield>
+                </input>
+                <input readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_document_date</label>
+                    <airsfield>D_VALEUR</airsfield>
+                    <format>dd.MM.yyyy</format>
+                </input>
+                <input type="list" readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_group</label>
+                    <airsfield>AL_ASSURE_GROUPE_DOC</airsfield>
+                </input>
+                <input type="list" readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_type</label>
+                    <airsfield>AL_ASSURE_TYPE_DOC</airsfield>
+                    <com:dependInput type="MONO" fieldKey="AL_ASSURE_GROUPE_DOC">
+                        <com:scriptId>DependanceFieldsUpdateView</com:scriptId>
+                    </com:dependInput>
+                </input>
+                <input type="list" readonly="false" required="false" display="true">
+                    <label>xml_configuration_label_creator</label>
+                    <airsfield>U_CREAT</airsfield>
+                </input>
+                <input type="list" readonly="false" required="false" display="true">
+                    <label>xml_configuration_label_status</label>
+                    <airsfield>AL_WKF_STATUT</airsfield>
+                    <initial-value>7</initial-value>
+                </input>
+                <input type="multieval" readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_users</label>
+                    <airsfield>U_GESTS</airsfield>
+                </input>
+                <com:scriptedAction type="after" groovyScriptId="ExecuteInInsert" id="tcheckSave">
+                    <com:application>onSave</com:application>
+                </com:scriptedAction>
+            </contentType>
+            <contentType name="DOCUMENT_ASSURE" type="update" visibleInCreation="true">
+                <input readonly="true" required="true" display="true">
+                    <label>xml_configuration_label_nss</label>
+                    <airsfield>N_NSS</airsfield>
+                    <format>(\d{3})\.(\d{4})\.(\d{4})\.(\d{2})</format>
+                </input>
+                <input readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_name</label>
+                    <airsfield>NOM</airsfield>
+                </input>
+                <input readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_request_number</label>
+                    <airsfield>N_DEM</airsfield>
+                </input>
+                <input readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_document_date</label>
+                    <airsfield>D_VALEUR</airsfield>
+                    <format>dd.MM.yyyy</format>
+                </input>
+                <input readonly="false" required="false" display="true">
+                    <label>xml_configuration_label_emetteur</label>
+                    <airsfield>EMETTEUR</airsfield>
+                </input>
+                <input readonly="false" required="false" display="true">
+                    <label>xml_configuration_label_date_emission</label>
+                    <airsfield>D_EMISSION</airsfield>
+                    <format>dd.MM.yyyy</format>
+                </input>
+                <input readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_creator_date</label>
+                    <airsfield>D_CREAT</airsfield>
+                    <format>dd.MM.yyyy</format>
+                </input>
+                <input readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_update_date</label>
+                    <airsfield>D_MODIF</airsfield>
+                    <format>dd.MM.yyyy</format>
+                </input>
+                <input readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_count_pages</label>
+                    <airsfield>NOMBRE_PAGES</airsfield>
+                </input>
+                <input type="list" readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_group</label>
+                    <airsfield>AL_ASSURE_GROUPE_DOC</airsfield>
+                </input>
+                <input type="list" readonly="false" required="true" display="true">
+                    <label>xml_configuration_label_type</label>
+                    <airsfield>AL_ASSURE_TYPE_DOC</airsfield>
+                    <com:dependInput type="MONO" fieldKey="AL_ASSURE_GROUPE_DOC">
+                        <com:scriptId>DependanceFieldsUpdateView</com:scriptId>
+                    </com:dependInput>
+                </input>
+                <input type="list" readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_creator</label>
+                    <airsfield>U_CREAT</airsfield>
+                </input>
+                <input type="list" readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_status</label>
+                    <airsfield>AL_WKF_STATUT</airsfield>
+                </input>
+                <input type="multieval" readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_users</label>
+                    <airsfield>U_GESTS</airsfield>
+                </input>
+                <input type="multieval" readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_user</label>
+                    <airsfield>U_GEST</airsfield>
+                </input>
+                <input type="multieval" readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_history_users</label>
+                    <airsfield>U_GESTS_HISTO</airsfield>
+                </input>
+                <input readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_mail_number</label>
+                    <airsfield>N_COUR</airsfield>
+                </input>
+                <input readonly="true" required="false" display="true">
+                    <label>xml_configuration_label_id_document</label>
+                    <airsfield>REFAIRS</airsfield>
+                    <initial-value></initial-value>
+                </input>
+                <com:scriptedAction type="before" groovyScriptId="ExecuteInUpdate" id="TTSave">
+                    <com:application>onSave</com:application>
+                </com:scriptedAction>
+            </contentType>
+        </flow>
+    </organization>
+</formulaire>

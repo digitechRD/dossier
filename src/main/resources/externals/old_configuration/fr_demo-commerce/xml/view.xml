@@ -1,0 +1,631 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.6-RC4" customerName="@CUSTOMERNAME@">   
+    <organization name="DEFAULT" id="0">
+        <!--FLUX COURRIER-->
+        <contentType name="COU_COURRIER_IN">
+         <column label="ID">
+            <format></format>
+            <airsField>REFAIRS</airsField>
+            <airsProfiles>7</airsProfiles>
+         </column>
+         <column label="Numéro chrono" main="true">
+            <format></format>
+            <airsField>N_CHRONO</airsField>
+         </column>
+         <column label="Date de réception">
+            <format>dd/MM/yyyy</format>
+            <airsField>D_RECEPTION</airsField>
+         </column>
+         <column label="Service traitant">
+            <format></format>
+            <airsField>O_PROPRIETAIRE</airsField>
+         </column>
+         <column label="Utilisateur traitant">
+            <format></format>
+            <airsField>U_PROPRIETAIRE</airsField>
+         </column>
+         <column label="Emetteur" main="true">
+            <type>correspondent</type>
+            <format></format>
+            <airsField>C_EMETTEUR</airsField>
+         </column>
+         <column label="Objet" main="true">
+            <format></format>
+            <airsField>C_OBJET</airsField>
+         </column>
+         <column label="Date d'échéance">
+            <format>dd/MM/yyyy</format>
+            <airsField>D_ECHEANCE</airsField>
+         </column>
+         <column label="Etat">
+            <format></format>
+            <airsField>T_ETAT_COURRIER</airsField>
+         </column>
+         <column label="Visé">
+            <format></format>
+            <airsField>T_ETAT_VISA</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>E_LU</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_CREAT</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VALIDEUR</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VISEUR</airsField>
+         </column>
+         <ns2:export renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV" link=""/>
+         <actionColumnPosition>1</actionColumnPosition>
+         <rowStyleClass>#{row.valueMap['E_LU'].value == 1 ? ' courrierRead' : ' courrierNotRead'}</rowStyleClass>
+         <rowActions-scriptId>courrierIn_unavailableActions</rowActions-scriptId>
+      </contentType>
+      <contentType name="COU_COURRIER_OUT">
+         <column label="ID">
+            <format></format>
+            <airsField>REFAIRS</airsField>
+            <airsProfiles>7</airsProfiles>
+         </column>
+         <column label="Numéro chrono" main="true">
+            <format></format>
+            <airsField>N_CHRONO</airsField>
+         </column>
+         <column label="Utilisateur traitant">
+            <format></format>
+            <airsField>U_PROPRIETAIRE</airsField>
+         </column>
+         <column label="Emetteur" main="true">
+            <type>correspondent</type>
+            <format></format>
+            <airsField>C_EMETTEUR</airsField>
+         </column>
+         <column label="Destinataire" main="true">
+            <type>correspondent</type>
+            <format></format>
+            <airsField>C_DESTINATAIRE</airsField>
+         </column>
+         <column label="Objet" main="true">
+            <format></format>
+            <airsField>C_OBJET</airsField>
+         </column>
+         <column label="Date d'échéance">
+            <format>dd/MM/yyyy</format>
+            <airsField>D_ECHEANCE</airsField>
+         </column>
+         <column label="Etat">
+            <format></format>
+            <airsField>T_ETAT_COURRIER</airsField>
+         </column>
+         <column label="Visé">
+            <format></format>
+            <airsField>T_ETAT_VISA</airsField>
+         </column>
+         <column label="" visible="false">
+            <format></format>
+            <airsField>U_VISEUR</airsField>
+         </column>
+         <ns2:export renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV" link=""/>
+         <actionColumnPosition>1</actionColumnPosition>
+         <rowActions-scriptId>courrierOut_unavailableActions</rowActions-scriptId>
+      </contentType>
+      
+      <!--FLUX CIRIL GF-->
+      <contentType name="GF_TIERS">
+            <column main="false" label="Nom tiers" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_NOMTIE</airsField>
+            </column>
+            <column main="false" label="N° tiers" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_NUMTIE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GF_PIECE">
+            <column main="false" label="N° tiers" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_NUMTIE</airsField>
+            </column>
+            <column main="false" label="Nom du tiers" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_NOMTIE</airsField>
+            </column>
+            <column main="false" label="Domaine" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_DOMAINE</airsField>
+            </column>
+            <column main="false" label="N° facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_NUMFAC</airsField>
+            </column>
+            <column main="false" label="N° exercice" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_NUMEXE</airsField>
+            </column>
+            <column main="false" label="Sens" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>GEDGF_SENS</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        
+       <!--FLUX ORDRE DE BOURSE-->
+       <contentType name="DOCUMENT_OB">
+            <column main="false" label="Compte client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_CPTECLIENT</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Numéro d'ordre de bourse" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_NUMOB</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Type document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_TYPEDOC</airsField>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_ETAT</airsField>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Acteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_ACTEURS</airsField>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <ns2:export renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOSSIER_OB">
+            <column main="false" label="Compte client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_CPTECLIENT</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="PJ_OB">
+            <column main="false" label="Compte client lié" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_CPTECLIENT</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Numéro d'ordre de bourse lié" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_NUMOB</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Type document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>OB_TYPEDOC</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+             <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_ETAT</airsField>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Acteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_ACTEURS</airsField>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <ns2:export renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        
+        <!--FLUX RH-->
+          <contentType name="DOCUMENT_RH">
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_MATRICULE</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Nom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_NOM</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Catégorie" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_DOC_CAT</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+             <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_ETAT</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Acteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_ACTEURS</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <ns2:export airsProfile="108" renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <ns2:export airsProfile="109" renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <ns2:export airsProfile="108" renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV" link=""/>
+            <ns2:export airsProfile="109" renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV" link=""/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOSSIER_RH">
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <column main="false" label="Nom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_NOM</airsField>
+            </column>
+            <column main="false" label="Prénom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_PRENOM</airsField>
+            </column>
+            <column main="false" label="Date d'entrée" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>RH_DATE_ENTREE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        
+        <!--FLUX COMMERCIAL-->
+        <contentType name="DOSSIER_COM">
+            <column main="false" label="Numéro client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_NUMCLIENT</airsField>
+            </column>
+            <column main="false" label="Nom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_NOM</airsField>
+            </column>
+            <column main="false" label="Date de signature" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_DATE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOCUMENT_COM">
+            <column main="false" label="Numéro client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_NUMCLIENT</airsField>
+            </column>
+            <column main="false" label="Nom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_NOM</airsField>
+            </column>
+            <column main="false" label="Type de document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_TYPEDOC</airsField>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_ETAT</airsField>
+            </column>
+            <column main="false" label="Responsable" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>COM_ACTEURS</airsField>
+            </column>
+            <ns2:export renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        
+        <!--FLUX FACTURE-->
+        <contentType name="DOSSIER_FACT">
+            <column main="false" label="Fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_FOURNISSEUR</airsField>
+            </column>
+            <column main="false" label="SIREN" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>FACT_SIREN</airsField>
+            </column>
+            <column main="false" label="Labo" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_NUMINTRACOM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOCUMENT_FACT">
+            <column main="false" label="Type de pièce" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_TYPE_DOC</airsField>
+            </column>
+            <column main="false" label="Fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_FOURNISSEUR</airsField>
+            </column>
+            <column main="false" label="Labo" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_NUMINTRACOM</airsField>
+            </column>
+            <column main="false" label="Numéro de facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_NUM</airsField>
+            </column>
+            <column main="false" label="Montant TTC" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_TTC</airsField>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_ETAT</airsField>
+            </column>
+            <column main="false" label="Valideur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_ACTEUR</airsField>
+            </column>
+            <ns2:export renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        
+        <!--FLUX FOURNISSEUR-->
+        <contentType name="DOCUMENT_FOU">
+            <column main="false" label="Engagement n°" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_COMMANDE</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Type de pièce" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_TYPE_DOC</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_FOURNISSEUR</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Numéro TVA intracommunautaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_NUMINTRACOM</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Numéro" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_NUM</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Total HT" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_HT</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Montant TTC" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_TTC</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+           
+            <column main="false" label="Valideur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_ACTEUR</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_ETAT</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <ns2:export airsProfile="108" renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <ns2:export airsProfile="109" renderer="arboExport"    type="ARBO"    id="GenerateARBO" resourceKey="action_export_html" progressionModalPanelId="modalPanelProgress" styleClass="exportHTML"/>
+            <ns2:export airsProfile="108" renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV" link=""/>
+            <ns2:export airsProfile="109" renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV" link=""/>
+            
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOSSIER_FOU">
+            <column main="false" label="Fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_FOURNISSEUR</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="SIREN" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_SIREN</airsField>
+                <airsProfiles>107</airsProfiles>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <column main="false" label="Numéro TVA intracommunautaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>FACT_NUMINTRACOM</airsField>
+                <airsProfiles>108</airsProfiles>
+                <airsProfiles>109</airsProfiles>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        
+        <!--FLUX CIRIL RH-->
+        <contentType name="RH_BULLETIN_PAIE">
+            <column main="false" label="Matricule agent-établissement" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_AGEETA</airsField>
+            </column>
+            <column main="false" label="Mois de paie" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_MOIS_PAIE</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="RH_FICHIER_EVAL_ANNU">
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <column main="false" label="N° de la fiche de poste" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_NO_FICPOS</airsField>
+            </column>
+            <column main="false" label="Date de la fiche de poste" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_DATE_FICPOS</airsField>
+            </column>
+            <column main="false" label="Mission du poste" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_MISSION_FICPOS</airsField>
+            </column>
+            <column main="false" label="N° de la campagne" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_NO_CAMPAGNE</airsField>
+            </column>
+            <column main="false" label="Exercice de la campagne" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_ANNEE_EXERCICE</airsField>
+            </column>
+            <column main="false" label="N° du dossier de l'entretien" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_NUMDOS</airsField>
+            </column>
+            <column main="false" label="Libellé du dossier de l'entretien" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_LIBDOS</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="RH_ARRETE">
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <column main="false" label="Date d'évènement" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_DATEFF_EVE</airsField>
+            </column>
+            <column main="false" label="Evènement" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_LIB_EVE</airsField>
+            </column>
+            <column main="false" label="Motif" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_LIB_MOTIF</airsField>
+            </column>
+            <column main="false" label="Date d'arrêté" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_DATE_ARRETE</airsField>
+            </column>
+            <column main="false" label="Arrêté" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_LIB_ARRETE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE">
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <column main="false" label="Document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_TYPE_DOC_EXT</airsField>
+            </column>
+            <column main="false" label="Commentaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_INFO</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="RH_AGENT">
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <column main="false" label="Nom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_NOM</airsField>
+            </column>
+            <column main="false" label="Prénom" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_PRENOM</airsField>
+            </column>
+            <column main="false" label="Date de naissance" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>RH_DATNAI</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>10</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+     
+    </organization>
+    <organization name="WKF" id="21">
+        <contentType name="GF_PES_SRCI_BUDGET">
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="Code budget" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_BUDGET</airsField>
+            </column>
+            <column main="false" label="Exercice" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_EXERCICE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GF_PES_SRCI">
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="Nom du fichier PES" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_NOMFIC</airsField>
+            </column>
+            <column main="false" label="Code budget" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_BUDGET</airsField>
+            </column>
+            <column main="false" label="Exercice" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_EXERCICE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="WKF_PES_FAST_DOSSIER">
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="Nom du fichier PES" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_NOMFIC</airsField>
+            </column>
+            <column main="false" label="Code budget" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_BUDGET</airsField>
+            </column>
+            <column main="false" label="Exercice" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_EXERCICE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="WKF_PES_FAST_DOCUMENT">
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="Nom de fichier du document du workflow" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_NOMFICDOC</airsField>
+            </column>
+            <column main="false" label="Nom du document du workflow" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_NOMDOC</airsField>
+            </column>
+            <column main="false" label="Type MIME du document du workflow" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>WKF_TYPMIM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+    </organization>
+</listview>

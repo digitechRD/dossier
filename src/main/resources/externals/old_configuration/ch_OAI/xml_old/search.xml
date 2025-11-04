@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@ODI@" version="4.1.8">
+    <organization id="0" name="DEFAULT">
+        <contentType name="DOSSIER_ASSURE">        
+            <input>
+                <operator>=</operator>
+                <label>Numero de securite sociale</label>
+                <airsfield>
+                    <codeField>N_NSS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+	     <input>
+                <operator>=</operator>
+                <label>ID du dossier dans la base</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>Date de creation</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>Date de modification</label>
+                <airsfield>
+                    <codeField>D_MODIF</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+			<locutionsChecker groovyScriptId="searchNss"/>
+        </contentType>
+        <contentType name="DOCUMENT_ASSURE">
+            <input>
+                <operator>=</operator>
+                <label>Numero de securite sociale</label>
+                <airsfield>
+                    <codeField>N_NSS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+			<input>
+                <operator>=</operator>
+                <label>ID du document dans la base</label>
+                <airsfield>
+                    <codeField>REFAIRS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>            
+            <input>
+                <operator>=</operator>
+                <label>Sous dossier</label>
+                <airsfield>
+                    <codeField>N_DEM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+				    </input>
+            <input>
+                <operator>=</operator>
+                <label>Numero de courrier</label>
+                <airsfield>
+                    <codeField>N_COUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>				
+            </input>
+			<input>
+                <operator>=</operator>
+                <label>Lot</label>
+                <airsfield>
+                    <codeField>N_LOT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>				
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numero de piece</label>
+                <airsfield>
+                    <codeField>N_PIECE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>				
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Type de document</label>
+                <airsfield>
+                    <codeField>AL_TYPE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+                <type>list</type>
+            </input>
+	     <input>
+                <operator>=</operator>
+                <label>Mot-cle</label>
+                <airsfield>
+                    <codeField>KEYWORD</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+                <type>list</type>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>Date du document</label>
+                <airsfield>
+                    <codeField>D_VALEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Gestionnaire</label>
+                <airsfield>
+                    <codeField>U_GEST</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+                <type>list</type>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Createur</label>
+                <airsfield>
+                    <codeField>U_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+                <type>list</type>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>Date d'insertion</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>Date de modification</label>
+                <airsfield>
+                    <codeField>D_MODIF</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+	<!--     <input>
+                <operator>=</operator>
+                <label>Commentaire</label>
+                <airsfield>
+                    <codeField>COMM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input> -->
+            <input>
+                <operator>=</operator>
+                <label>Contenu plein texte</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>  
+			<locutionsChecker groovyScriptId="searchNss"/>			
+        </contentType>
+    </organization>
+</searchForm>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.6-SNAPSHOT" customerName="CIRIL">
+    <organization name="DEFAULT" id="0">
+        <contentType name="COU_COURRIER_IN">
+            <column main="false" label="ID" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>REFAIRS</airsField>
+                <airsProfiles>7</airsProfiles>
+            </column>
+            <column main="true" label="Numéro chrono" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>N_CHRONO</airsField>
+            </column>
+            <column main="false" label="Date de réception" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_RECEPTION</airsField>
+            </column>
+            <column main="false" label="Service traitant" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>O_PROPRIETAIRE</airsField>
+            </column>
+            <column main="false" label="Utilisateur traitant" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>U_PROPRIETAIRE</airsField>
+            </column>
+            <column main="true" label="Emetteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <type>correspondent</type>
+                <airsField>C_EMETTEUR</airsField>
+            </column>
+            <column main="true" label="Objet" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>C_OBJET</airsField>
+            </column>
+            <column main="false" label="Date d'échéance" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_ECHEANCE</airsField>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>T_ETAT_COURRIER</airsField>
+            </column>
+            <column main="false" label="Visé" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>T_ETAT_VISA</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>E_LU</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>U_CREAT</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>U_VALIDEUR</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>U_VISEUR</airsField>
+            </column>
+            <column main="false" label="Société concernée" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>G_SOCIETE</airsField>
+            </column>
+            <column main="false" label="Nom client" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>G_CLIENT</airsField>
+            </column>
+            <column main="false" label="Référence affaires" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>G_REF_AFFAIRE</airsField>
+            </column>
+            <column main="false" label="Sous dossier" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>G_SOUS_DOSSIER</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>1</actionColumnPosition>
+            <rowStyleClass>#{row.valueMap['E_LU'].value == 1 ? ' courrierRead' : ' courrierNotRead'}</rowStyleClass>
+            <rowActions-scriptId>courrierIn_unavailableActions</rowActions-scriptId>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT">
+            <column main="false" label="ID" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>REFAIRS</airsField>
+                <airsProfiles>7</airsProfiles>
+            </column>
+            <column main="true" label="Numéro chrono" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>N_CHRONO</airsField>
+            </column>
+            <column main="false" label="Utilisateur traitant" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>U_PROPRIETAIRE</airsField>
+            </column>
+            <column main="true" label="Emetteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <type>correspondent</type>
+                <airsField>C_EMETTEUR</airsField>
+            </column>
+            <column main="true" label="Destinataire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <type>correspondent</type>
+                <airsField>C_DESTINATAIRE</airsField>
+            </column>
+            <column main="true" label="Objet" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>C_OBJET</airsField>
+            </column>
+            <column main="false" label="Date d'échéance" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_ECHEANCE</airsField>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>T_ETAT_COURRIER</airsField>
+            </column>
+            <column main="false" label="Visé" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>T_ETAT_VISA</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <airsField>U_VISEUR</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>1</actionColumnPosition>
+            <rowActions-scriptId>courrierOut_unavailableActions</rowActions-scriptId>
+        </contentType>
+        <contentType name="DOS_CLIENT">
+            <column main="false" label="Nom client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_CLIENT</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOS_AFFAIRE">
+            <column main="false" label="Nom client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_CLIENT</airsField>
+            </column>
+            <column main="false" label="Référence affaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_REF_AFFAIRE</airsField>
+            </column>
+            <column main="false" label="Intitule de l'affaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_INTI_AFFAIRE</airsField>
+            </column>
+            <column main="false" label="Chargé d'Affaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_CHARGE_AFFAIRE</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Nr affaires SAGE" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_NR_AFFAIRE</airsField>
+            </column>
+            <column main="false" label="État du dossier" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_ETAT_DOSSIER</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="DOC_AFFAIRE">
+            <column main="false" label="Nom client" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_CLIENT</airsField>
+            </column>
+            <column main="false" label="Référence affaire" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_REF_AFFAIRE</airsField>
+            </column>
+            <column main="false" label="Sous dossier" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_SOUS_DOSSIER</airsField>
+            </column>
+            <column main="false" label="Type de document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_TYPE_DOCUMENT</airsField>
+            </column>
+            <column main="false" label="Référence du document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_REF_DOCUMENT</airsField>
+            </column>
+            <column main="false" label="Nom fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_FOURNISSEUR</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="FAC_FACTURE">
+            <column main="false" label="Société concernée" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_SOCIETE</airsField>
+            </column>
+            <column main="false" label="Nom fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_FOURNISSEUR</airsField>
+            </column>
+            <column main="false" label="Date de la facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_DATE_FACT</airsField>
+            </column>
+            <column main="false" label="Nr de facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_NR_FACT</airsField>
+            </column>
+            <column main="false" label="Montant HT" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_MONTANT_HT</airsField>
+            </column>
+            <column main="false" label="Montant TTC" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_MONTANT_TTC</airsField>
+            </column>
+            <column main="false" label="Nr de bon de commande" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_NR_BON_CMD</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="FAC_FOURNISSEUR">
+            <column main="false" label="Nom fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>G_FOURNISSEUR</airsField>
+            </column>
+            <column main="false" label="Date de création" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+                <airsField>D_CREAT</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+    </organization>
+</listview>

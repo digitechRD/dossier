@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype">
+  <parentContentType name="PLI">
+    <childContentType name="TRANSACTION">
+      <codeLinkedField parentField="PLIID"  childField="PLIID"/>
+    </childContentType>
+  </parentContentType>
+  <parentContentType name="TRANSACTION">
+    <childContentType name="RIB">
+      <codeLinkedField parentField="TRANSID"  childField="TRANSID"/>
+    </childContentType>
+    <childContentType name="TIP">
+      <codeLinkedField parentField="TRANSID"  childField="TRANSID"/>
+    </childContentType>
+    <childContentType name="COUPON">
+      <codeLinkedField parentField="TRANSID"  childField="TRANSID"/>
+    </childContentType>
+    <childContentType name="CHEQUE">
+      <codeLinkedField parentField="TRANSID"  childField="TRANSID"/>
+    </childContentType>
+    <childContentType name="PJ">
+      <codeLinkedField parentField="TRANSID"  childField="TRANSID"/>
+    </childContentType>
+  </parentContentType>
+</rootContentType>

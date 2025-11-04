@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params">
+<airsConfig>
+<appName>AIRS</appName>
+<server port="5000">pc-pro</server>
+<userAdmin>
+<login>adm_airs3</login>
+<password>adm_airs3</password>
+</userAdmin>
+</airsConfig>
+ <workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <sql_mode>false</sql_mode>
+    <unique_actor>false</unique_actor>
+    <actorFilter>false</actorFilter>
+    <flowmind>
+      <server port="1099">PC-PRO</server>
+      <dbConnection maxconn="2" pool="digiflow">
+        <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+        <server port="1521">vmxpora10pro</server>
+        <instance>PFA</instance>
+        <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+        <login>flowuser_ExperianVeoliaV4</login>
+        <password>flowuser_ExperianVeoliaV4</password>
+      </dbConnection>
+    </flowmind>
+  </workFlow>
+<mailConfig>
+<smtp>localhost</smtp>
+<defaultMailSender/>
+</mailConfig>
+<appConfig>
+<expiredPassword>180</expiredPassword>
+<expiredPasswordAfterCreation/>
+<autoDisconnection>0</autoDisconnection>
+<searchJocker/>
+<isoxDisabled/>
+<windowFocused/>
+<readOnlyPJTypeDisplayed/>
+<basketPJTypeDisplayed/>
+<updateSecretLevel/>
+<validatorActivate>1</validatorActivate>
+<autoOpenPJ/>
+<displayPJ>VERTICAL_RIGHT</displayPJ>
+<docLock lockTime="1">
+<fieldLock contentTypeLock="FACTURE">LOCKTIME</fieldLock>
+</docLock>
+<autoReloadCurrentBasket/>
+<oneSearchResult/>
+<nbMaxSearchDoc>400</nbMaxSearchDoc>
+</appConfig>
+</params>

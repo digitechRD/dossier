@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<listview  xmlns="http://www.digitech.com/dossiers/view">
+	<organization name="DEFAULT" id="0">
+		<contentType name="DOC_AGENT">
+			<!-- column label="Date de création du dossier">
+				<format></format>
+				<airsField parentContentType="DOS_AGENT">D_CREAT</airsField>
+			</column-->
+			<column label="D_CREAT">
+				<format></format>
+				<airsField parentContentType="">D_CREAT</airsField>
+			</column>
+			<column label="ID du document">
+				<format></format>
+				<airsField parentContentType="">REFAIRS</airsField>
+			</column>
+			<column label="Code Agent">
+				<format></format>
+				<airsField parentContentType="">NUM_MAT</airsField>
+			</column>
+			<column label="Date">
+				<format></format>
+				<airsField parentContentType="">DATE_DOC</airsField>
+			</column>
+			<column label="Type">
+				<format></format>
+				<airsField parentContentType="">TYPE_DOC_AGENT</airsField>
+			</column>
+			<column label="Libellé">
+				<format></format>
+				<airsField parentContentType="">LIBELLE_AGENT</airsField>
+			</column>
+			<column label="Responsable">
+				<format></format>
+				<airsField parentContentType="">USER_REF</airsField>
+			</column>
+			<column label="Statut">
+				<format></format>
+				<airsField parentContentType="">STATUT</airsField>
+			</column>
+			<column label="Tâche Wkf">
+				<format></format>
+				<airsField parentContentType="">DISPLAYTASK</airsField>
+			</column>
+			<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>NUM_MAT</codeField>
+				</sortingPolicy>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>DATE_DOC</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+		<contentType name="DOS_AGENT">
+			<column label="Code Agent">
+				<format></format>
+				<airsField parentContentType="">NUM_MAT</airsField>
+			</column>
+			<nbDocMax>20</nbDocMax>
+				<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>NUM_MAT</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+
+		<contentType name="DOC_COLL">
+    		<column label="Code Etablissement">
+				<format></format>
+				<airsField parentContentType="">CODE_ETAB</airsField>
+			</column>
+			<column label="Date">
+				<format></format>
+				<airsField parentContentType="">DATE_DOC</airsField>
+			</column>
+			<column label="Type">
+				<format></format>
+				<airsField parentContentType="">TYPE_DOC_COLL</airsField>
+			</column>
+			<column label="Libellé">
+				<format></format>
+				<airsField parentContentType="">LIBELLE_COLL</airsField>
+			</column>
+			<column label="Responsable">
+				<format></format>
+				<airsField parentContentType="">USER_REF</airsField>
+			</column>
+			<column label="Statut">
+				<format></format>
+				<airsField parentContentType="">STATUT</airsField>
+			</column>			
+			<nbDocMax>20</nbDocMax>
+			<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>CODE_ETAB</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+		
+		<contentType name="DOS_COLL">
+			<column label="Code Etablissement">
+				<format></format>
+				<airsField parentContentType="">CODE_ETAB</airsField>
+			</column>
+			<nbDocMax>20</nbDocMax>
+			<sorting>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>ASCENDING</direction>
+					<codeField>CODE_ETAB</codeField>
+				</sortingPolicy>
+				<sortingPolicy 	xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>DATE_DOC</codeField>
+				</sortingPolicy>
+			</sorting>
+		</contentType>
+	</organization>
+</listview>

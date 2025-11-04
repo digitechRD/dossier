@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<courrier xmlns="http://www.digitech.com/dossiers/courrier" customerName="CIRIL" version="6.0.0">
+   <organization id="0" name="">
+       <courrierTypeAuthorityListCode>T_TYPE</courrierTypeAuthorityListCode>
+      <courrierType code="INTERNE" flow="IN">
+         <validatorRequired>false</validatorRequired>
+         <dueDateComputingRule>#TODAY#+10</dueDateComputingRule>
+         <responseTemplates>courrier_simple.odt</responseTemplates>
+         <responseTemplates>nouveau.odt</responseTemplates>
+         <responseTemplates>test.odt</responseTemplates>
+      </courrierType>
+      <courrierType code="DEMANDE_EMPLOI_STAGE" flow="IN">
+         <validatorRequired>false</validatorRequired>
+         <dueDateComputingRule>#TODAY#+20</dueDateComputingRule>
+         <responseTemplates>courrier_simple.odt</responseTemplates>
+         <responseTemplates>nouveau.odt</responseTemplates>
+         <responseTemplates>test.odt</responseTemplates>
+      </courrierType>
+      <courrierType code="AUTRE" flow="IN">
+         <validatorRequired>false</validatorRequired>
+         <dueDateComputingRule>#TODAY#+20</dueDateComputingRule>
+         <responseTemplates>courrier_simple.odt</responseTemplates>
+         <responseTemplates>nouveau.odt</responseTemplates>
+         <responseTemplates>test.odt</responseTemplates>
+      </courrierType>
+      <courrierType code="ADMINISTRATIF" flow="IN">
+         <validatorRequired>true</validatorRequired>
+         <dueDateComputingRule>D_RECEPTION+7</dueDateComputingRule>
+         <responseTemplates>courrier_simple.odt</responseTemplates>
+         <responseTemplates>nouveau.odt</responseTemplates>
+         <responseTemplates>test.odt</responseTemplates>
+      </courrierType>
+      <courrierType code="CITOYEN" flow="IN">
+         <validatorRequired>true</validatorRequired>
+         <dueDateComputingRule>#TODAY#+15</dueDateComputingRule>
+         <responseTemplates>courrier_simple.odt</responseTemplates>
+         <responseTemplates>nouveau.odt</responseTemplates>
+         <responseTemplates>test.odt</responseTemplates>
+      </courrierType>
+      <advancedAudit>
+         <activatedAudit>ADV_EVENT_COURRIER_VALIDATED</activatedAudit>
+         <activatedAudit>ADV_EVENT_COURRIER_REJECTED</activatedAudit>
+         <activatedAudit>ADV_EVENT_COURRIER_REFUSED</activatedAudit>
+         <activatedAudit>ADV_EVENT_COURRIER_ACCEPTED</activatedAudit>
+         <activatedAudit>ADV_EVENT_COURRIER_CLOSED</activatedAudit>
+      </advancedAudit>
+   </organization>
+</courrier>

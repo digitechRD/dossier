@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.2" customerName="CIRIL">
+    <organization name="DEFAULT" id="0">
+        <contentType name="COU_COURRIER_IN" flowCode="COURRIER">
+            <column main="true" label="Numéro chrono" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>N_CHRONO</airsField>
+            </column>
+            <column main="false" label="Date du courrier" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_COURRIER</airsField>
+            </column>
+            <column main="false" label="Date de réception" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_RECEPTION</airsField>
+            </column>
+            <column main="false" label="Type de courrier" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>T_TYPE</airsField>
+            </column>
+            <column main="false" label="Service traitant" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>O_PROPRIETAIRE</airsField>
+            </column>
+            <column main="false" label="Utilisateur traitant" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_PROPRIETAIRE</airsField>
+            </column>
+            <column main="false" label="Emetteur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <type>correspondent</type>
+                <airsField>C_EMETTEUR</airsField>
+            </column>
+            <column main="true" label="Objet" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>C_OBJET</airsField>
+            </column>
+            <column main="false" label="Date d'échéance" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_ECHEANCE</airsField>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>T_ETAT_COURRIER</airsField>
+            </column>
+            <column main="false" label="Visé" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>T_ETAT_VISA</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>E_LU</airsField>
+            </column>
+            <column main="false" label="Créé par" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_CREAT</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_VALIDEUR</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_VALIDEURS</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_VISEUR</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_COPIES</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_VISEURS</airsField>
+            </column>
+            <column main="true" label="Supprimé par" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="RECYCLE_ONLY">
+                <airsField>DOC_EVENTS_USR</airsField>
+            </column>
+            <column main="true" label="Supprimé le" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="RECYCLE_ONLY">
+                <airsField>DOC_EVENTS_DATE</airsField>
+            </column>
+            <ns2:action id="closing_SimpleView" resourceKey="action_closeCourrier" reRender="resultTable" styleClass="closeMail contextual">
+                <ns2:groovyScriptId>closingSimpleView_CourrierIn</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCustomModalPanel_closingSimpleView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="removeFromCopy_SimpleView" resourceKey="action_removeFromCopy" reRender="resultTable" styleClass="markAsRead contextual">
+                <ns2:groovyScriptId>removeFromCopy_SimpleView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>markAsReadPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initRemoveFromCopy_SimpleView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="validateSimpleView" resourceKey="action_validateCourrier" reRender="resultTable" styleClass="validateMail contextual">
+                <ns2:groovyScriptId>validateCourrierIn_SimpleView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCustomModalPanel_validateSimpleView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="askVisaSimpleView_courrierIn" resourceKey="action_askVisa" reRender="resultTable" styleClass="askVisaSimpleView contextual">
+                <ns2:groovyScriptId>askVisaSimpleView_courrierIn</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>DICREASING</ns2:direction>
+                    <ns2:codeField>D_RECEPTION</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>1</actionColumnPosition>
+            <rowStyleClass>#{row.valueMap['E_LU'].value == '1' ? ' courrierRead' : ' courrierNotRead'}</rowStyleClass>
+            <rowActions-scriptId>courrierIn_unavailableActions</rowActions-scriptId>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT" flowCode="COURRIER">
+            <column main="true" label="Numéro chrono" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>N_CHRONO</airsField>
+            </column>
+            <column main="false" label="Type de courrier" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>T_TYPE</airsField>
+            </column>
+            <column main="false" label="Utilisateur traitant" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_PROPRIETAIRE</airsField>
+            </column>
+            <column main="true" label="Emetteur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <type>correspondent</type>
+                <airsField>C_EMETTEUR</airsField>
+            </column>
+            <column main="true" label="Destinataire" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <type>correspondent</type>
+                <airsField>C_DESTINATAIRE</airsField>
+            </column>
+            <column main="true" label="Objet" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>C_OBJET</airsField>
+            </column>
+            <column main="false" label="Date du courrier" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_COURRIER</airsField>
+            </column>
+            <column main="false" label="Date d'échéance" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_ECHEANCE</airsField>
+            </column>
+            <column main="false" label="Etat" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>T_ETAT_COURRIER</airsField>
+            </column>
+            <column main="false" label="Visé" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>T_ETAT_VISA</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_VISEUR</airsField>
+            </column>
+            <column main="false" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>U_VISEURS</airsField>
+            </column>
+            <ns2:action id="closing_SimpleView" image="icon_closing" resourceKey="action_closeCourrier" reRender="resultTable" styleClass="closeMail contextual">
+                <ns2:groovyScriptId>closingSimpleView_CourrierOut</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCustomModalPanel_closingSimpleView</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="askVisaSimpleView_courrierOut" resourceKey="action_askVisa" reRender="resultTable" styleClass="askVisaSimpleView contextual">
+                <ns2:groovyScriptId>validateCourrierOut_SimpleView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>1</actionColumnPosition>
+            <rowActions-scriptId>courrierOut_unavailableActions</rowActions-scriptId>
+        </contentType>
+        <contentType name="GF_TIERS" flowCode="GF_TIERS">
+            <column main="false" label="Nom du tiers" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_TI_NOMTIE</airsField>
+            </column>
+            <column main="false" label="Numéro du tiers" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL" >
+                <airsField>GF_TI_NUMTIE</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GF_MOUVEMENT" flowCode="GF_TIERS">
+            <column main="false" label="Date de création" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL" >
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL" >
+                <format>dd/MM/yyyy</format>
+                <airsField>D_MODIF</airsField>
+            </column>
+	          <column main="false" label="Type de mouvement" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_TYPE</airsField>
+            </column>
+            <column main="false" label="Nom du tiers" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField parentContentType="GF_TIERS">GF_TI_NOMTIE</airsField>
+            </column>
+            <column main="false" label="Identifiant" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_ID</airsField>
+            </column>
+            <column main="false" label="Libellé" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_LIBMVT</airsField>
+            </column>
+            <column main="false" label="Date du mouvement" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>GF_MV_DATE</airsField>
+            </column>
+            <column main="false" label="Exercice" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_EXE</airsField>
+            </column>
+            <column main="false" label="N° du Marché" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MA_NUMMAR</airsField>
+            </column>
+            <column main="false" label="N° de subvention" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_SUB</airsField>
+            </column>
+            <column main="false" label="Lien avec mar. ou sub." visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_LIEN</airsField>
+            </column>
+            <column main="false" label="Numéro du lien" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_IDLIEN</airsField>
+            </column>
+            <column main="false" label="Nature comptable" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MV_NATURE</airsField>
+            </column>
+            <column main="false" label="Collectivité" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MA_LIBCOL</airsField>
+            </column>
+            <column main="false" label="Budget" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_BUD</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GF_MARCHE" flowCode="GF_TIERS">
+            <column main="false" label="Date de création" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="N° du marché" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MA_NUMMAR</airsField>
+            </column>
+            <column main="false" label="Collectivité" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MA_LIBCOL</airsField>
+            </column>
+            <column main="false" label="Libellé du marché" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_MA_LIBMAR</airsField>
+            </column>
+            <column main="false" label="Date de notification" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>GF_MA_DATNOT</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GF_PIECE_JOINTE" flowCode="GF_TIERS">
+            <column main="false" label="Nom" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PJ_NOM</airsField>
+            </column>
+            <column main="false" label="Date" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>GF_PJ_DATE</airsField>
+            </column>
+            <column main="false" label="Identifiant" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PJ_ID</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GF_PES" flowCode="GF_PES">
+            <column main="false" label="Date de création" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_CREAT</airsField>
+            </column>
+            <column main="false" label="Date de modification" visible="false" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>D_MODIF</airsField>
+            </column>
+            <column main="false" label="Nom du fichier" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_NOMFIC</airsField>
+            </column>
+            <column main="false" label="Budget" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_BUD</airsField>
+            </column>
+            <column main="false" label="Exercice comptable" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_EXE</airsField>
+            </column>
+            <column main="false" label="Sens" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_SENS</airsField>
+            </column>
+            <column main="false" label="Type" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GF_PES_TYPE</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="RH_AGENT" flowCode="RH_AGENT">
+            <column main="false" label="Titre" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>RH_TITRE</airsField>
+            </column>
+            <column main="false" label="Nom d'usage" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>RH_NOMUSA</airsField>
+            </column>
+            <column main="false" label="Nom de famille" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>RH_NOMPAT</airsField>
+            </column>
+            <column main="false" label="Prénom" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>RH_PRENOM</airsField>
+            </column>
+            <column main="false" label="Date de naissance" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <format>dd/MM/yyyy</format>
+                <airsField>RH_DATNAI</airsField>
+            </column>
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_NOMUSA</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_PRENOM</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE" flowCode="RH_AGENT">
+            <column main="false" label="Nom d'usage" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField parentContentType="RH_AGENT">RH_NOMUSA</airsField>
+            </column>
+            <column main="false" label="Prénom" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField parentContentType="RH_AGENT">RH_PRENOM</airsField>
+            </column>
+            <column main="false" label="Matricule" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>RH_MATRICULE</airsField>
+            </column>
+            <column main="false" label="Nom du document" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL"> 
+                <airsField>RH_NOMDOC</airsField>
+            </column>
+            <ns2:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_MATRICULE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RH_NOMDOC</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GEN_ROOT" flowCode="GEN">
+            <column main="false" label="Nom du classeur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_NOM</airsField>
+            </column>
+            <column main="false" label="RChamp1" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_CH1</airsField>
+            </column>
+            <column main="false" label="RChamp2" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_CH2</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GEN_DOS" flowCode="GEN">
+            <column main="false" label="Nom du classeur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_NOM</airsField>
+            </column>
+            <column main="false" label="RChamp1" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_CH1</airsField>
+            </column>
+            <column main="false" label="Plan de classement" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOS_PCLASS</airsField>
+            </column>
+            <column main="false" label="DosChamp1" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOS_CH1</airsField>
+            </column>
+            <column main="false" label="DosChamp2" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOS_CH2</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="GEN_DOC" flowCode="GEN">
+            <column main="false" label="Nom du classeur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_NOM</airsField>
+            </column>
+            <column main="false" label="RChamp1" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_ROOT_CH1</airsField>
+            </column>
+            <column main="false" label="Plan de classement" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOS_PCLASS</airsField>
+            </column>
+            <column main="false" label="DosChamp1" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOS_CH1</airsField>
+            </column>
+            <column main="false" label="Type de document" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_TYPE</airsField>
+            </column>
+            <column main="false" label="DocChamp1" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_CH1</airsField>
+            </column>
+            <column main="false" label="DocChamp2" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_CH2</airsField>
+            </column>
+            <column main="false" label="DocDateInfo" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_DATE</airsField>
+            </column>
+            <column main="false" label="Créateur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_CREAT</airsField>
+            </column>
+            <column main="false" label="Collaborateurs" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_COLLAB</airsField>
+            </column>
+            <column main="false" label="Valideur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_VALIDEUR</airsField>
+            </column>
+            <column main="false" label="Etat du document " visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" recycleBin="ALL">
+                <airsField>GEN_DOC_STATUS</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+    </organization>
+</listview>

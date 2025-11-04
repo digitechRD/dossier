@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:searchForm xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/search" xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="6.0.6-SNAPSHOT" customerName="CIRIL">
+    <ns2:organization name="DEFAULT" id="0">
+        <ns2:globalSearch>
+            <dossierrequest name="Num Chrono">
+                <contentType>COU_COURRIER_IN</contentType>
+                <airsvalue>N_CHRONO=&quot;#VALUE#&quot; OU C_OBJET=&quot;+#VALUE#+&quot;</airsvalue>
+            </dossierrequest>
+        </ns2:globalSearch>
+        <ns2:contentType name="COU_COURRIER_IN" selected="false">
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Numéro chrono</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>N_CHRONO</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>true</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Type</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>T_TYPE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Société concernée</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_SOCIETE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Priorité</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>T_PRIORITE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date de réception</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_RECEPTION</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date d'échéance</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_ECHEANCE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:airsProfiles>12</ns2:airsProfiles>
+            </ns2:input>
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>C_EMETTEUR</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>correspondent</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nature</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>T_NATURE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Objet</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>C_OBJET</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>true</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Contenu des documents</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>DOCS</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="COU_COURRIER_OUT" selected="false">
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Numéro chrono</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>N_CHRONO</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>true</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Type</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>T_TYPE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Société concernée</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_SOCIETE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Priorité</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>T_PRIORITE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date d'échéance</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_ECHEANCE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:airsProfiles>12</ns2:airsProfiles>
+            </ns2:input>
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>C_EMETTEUR</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>correspondent</ns2:type>
+            </ns2:input>
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Destinataire</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>C_DESTINATAIRE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>correspondent</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nature</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>T_NATURE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="true">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Objet</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>C_OBJET</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>true</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Contenu des documents</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>DOCS</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOS_CLIENT" selected="false">
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nom client</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_CLIENT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>suggestion</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOS_AFFAIRE" selected="false">
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nom client</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_CLIENT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>suggestion</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Référence affaire</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_REF_AFFAIRE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Intitule de l'affaire</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_INTI_AFFAIRE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Référence Devis</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_REF_DEVIS</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Chargé d'Affaire</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_CHARGE_AFFAIRE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>suggestion</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nr affaires SAGE</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_NR_AFFAIRE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Date de livraison partielle</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_DATE_LIVRAISON</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Montant total DEVIS HT</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_TOTAL_DEVIS</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Date de mise en service</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_DATE_MES</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>État du dossier</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_ETAT_DOSSIER</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="FAC_FACTURE" selected="false">
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Société concernée</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_SOCIETE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>list</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nom fournisseur</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_FOURNISSEUR</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+                <ns2:type>suggestion</ns2:type>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date de la facture</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_DATE_FACT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nr de facture</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_NR_FACT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_MONTANT_HT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_MONTANT_TTC</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nr de bon de commande</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_NR_BON_CMD</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="FAC_FOURNISSEUR" selected="false">
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nom fournisseur</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_FOURNISSEUR</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date de création</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOC_AFFAIRE" selected="false">
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nom client</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_CLIENT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Référence affaires</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_REF_AFFAIRE</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Sous dossier</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_SOUS_DOSSIER</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_TYPE_DOCUMENT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Référence du document</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_REF_DOCUMENT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Nom fournisseur</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_FOURNISSEUR</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:operator>&gt;</ns2:operator>
+                <ns2:operator>&lt;</ns2:operator>
+                <ns2:operator>{}</ns2:operator>
+                <ns2:label>Date de création en GED</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>D_CREAT</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+            <ns2:input main="false">
+                <ns2:operator>=</ns2:operator>
+                <ns2:label>Créateur du document GED</ns2:label>
+                <ns2:airsfield>
+                    <ns2:codeField>G_CREATEUR</ns2:codeField>
+                </ns2:airsfield>
+                <ns2:inputHelper autoTab="false"/>
+                <ns2:required>false</ns2:required>
+                <ns2:readOnly>false</ns2:readOnly>
+                <ns2:allowJoker>false</ns2:allowJoker>
+            </ns2:input>
+        </ns2:contentType>
+    </ns2:organization>
+</ns2:searchForm>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype" xmlns:ns2="http://www.digitech.com/dossiers/common" xmlns:ns3="http://www.digitech.com/dossiers/baskets"
+	version="6.0.9" customerName="ocsd_bnk">
+    
+    <!--CHEQUES IEOM-->
+    <parentContentType isFlowParent="true" name="D_DOS_IMGCHQ_IEOM" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="IEOM" id="23"/>
+        </flow>
+        <childContentType name="D_DOC_IMGCHQ_IEOM" appName="AIRS">
+            <codeLinkedField parentField="NUM_REM" childField="NUM_REM"/>
+            <codeLinkedField parentField="MON_REM" childField="MON_REM"/>
+            <codeLinkedField parentField="DAT_REM" childField="DAT_REM"/>
+            <codeLinkedField parentField="CPT_REM" childField="CPT_REM"/>
+        </childContentType>
+    </parentContentType>
+    
+    <!--CHEQUES SOCREDO-->
+    <parentContentType isFlowParent="true" name="D_DOS_IMGCHQ_SOC" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="Socredo" id="1"/>
+        </flow>
+        <childContentType name="D_DOC_IMGCHQ_SOC" appName="AIRS">
+            <codeLinkedField parentField="NUM_REM" childField="NUM_REM"/>
+            <codeLinkedField parentField="MON_REM" childField="MON_REM"/>
+            <codeLinkedField parentField="DAT_REM" childField="DAT_REM"/>
+            <codeLinkedField parentField="CPT_REM" childField="CPT_REM"/>
+        </childContentType>
+    </parentContentType>
+    
+    <!--CHEQUES CCP-->
+     <parentContentType isFlowParent="true" name="D_DOS_IMGCHQ_CCP" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="CCP" id="24"/>
+        </flow>
+        <childContentType name="D_DOC_IMGCHQ_CCP" appName="AIRS">
+            <codeLinkedField parentField="NUM_REM" childField="NUM_REM"/>
+            <codeLinkedField parentField="MON_REM" childField="MON_REM"/>
+            <codeLinkedField parentField="DAT_REM" childField="DAT_REM"/>
+            <codeLinkedField parentField="CPT_REM" childField="CPT_REM"/>
+        </childContentType>
+    </parentContentType>
+	
+	 <!--CCP DSF-->
+     <parentContentType isFlowParent="true" name="D_DOS_CCP_DSF" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="CCP" id="24"/>
+        </flow>
+        <childContentType name="D_CPT_CCP_DSF" appName="AIRS">
+            <codeLinkedField parentField="CCP_NUM_CLIENT" childField="CCP_NUM_CLIENT"/>
+        </childContentType>
+     </parentContentType>
+	 
+	  <parentContentType isFlowParent="true" name="D_CPT_CCP_DSF" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="CCP" id="24"/>
+        </flow>
+        <childContentType name="D_DOC_CCP_DSF" appName="AIRS">
+            <codeLinkedField parentField="CCP_NUM_CLIENT" childField="CCP_NUM_CLIENT"/>
+			<codeLinkedField parentField="CCP_NUM_COMPTE" childField="CCP_NUM_COMPTE"/>
+        </childContentType>
+     </parentContentType>
+	
+	<!--SOCREDO DPC-->    
+    <parentContentType isFlowParent="true" name="D_DOS_DPC" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="Socredo DPC" id="25"/>
+        </flow>
+       <!--0.00.0_DCC-->
+        <childContentType name="D_DOC_DCC" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+        <!--3.01.0_Compte client (OVC)-->
+        <childContentType name="D_DOC_OVC" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+        <!--3.06.0_Epargnes - Casden-->
+        <childContentType name="D_DOC_CAS" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+        <!--3.03.0_Dossier Risques (DRI)-->	
+        <childContentType name="D_DOC_RISQUE" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+        <!--3.01.1_Autorisation de decouvert-->
+        <childContentType name="D_DOC_ADD" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>   
+		    <!--1.01.0_Les Operations de guichet-->
+  		  <childContentType name="D_DOC_OP_GUI" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+        <!--1.02.0_Banque à distance-->
+		    <childContentType name="D_DOC_BANK_DIST" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+    		<!--2.01.0_Activites Locales-->		
+    		<childContentType name="D_DOC_ACT_LOCAL" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+        <!--2.01.0_Activites Locales-->
+		    <childContentType name="D_DOC_ETR_EUR" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+        <!--2.03.0_Etrangère - Hors Europe-->
+		    <childContentType name="D_DOC_ETR_HORS_EUR" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+		    <!--3.01.2_Echelles-->		
+		    <childContentType name="D_DOC_ECHELLE" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+		    <!--3.01.2_Echelles-->		
+		    <childContentType name="D_DOC_CARTES" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+		
+		<!-- chantier DCC - Credits -->		
+        <childContentType name="D_DOC_CREDITS" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+		
+		<!-- chantier DCC - Chèques -->		
+		<childContentType name="D_DOC_CHQ" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+		
+		<!-- chantier DCC - GRC -->		
+		<childContentType name="D_DOC_GRC" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>		
+		
+		<!-- chantier DCC - Epargnes - Bancaire -->		
+		<childContentType name="D_DOC_EPAR_BANC" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+	
+		<!-- chantier DCC - Epargnes - Règlementee -->		
+		<childContentType name="D_DOC_EPAR_REGL" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>		
+		
+		<!-- chantier DCC - IARD -->		
+		<childContentType name="D_DOC_ASS_IARD" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>		
+		
+		<!-- chantier DCC - Assurance Vie -->		
+		<childContentType name="D_DOC_ASS_VIE" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+
+		<!-- chantier DCC - GTG -->		
+		<childContentType name="D_DOC_GTG" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+		
+		<!-- chantier DCC - MON -->		
+		<childContentType name="D_DOC_MON" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+		
+		<!-- chantier DCC - Gestion salle de marche -->		
+		<childContentType name="D_DOC_GEST" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>			
+		
+		<!-- chantier DCC - Portefeuilles - libre - Import -->		
+		<childContentType name="D_DOC_LIBR_IMP" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>		
+		
+		<!-- chantier DCC - Portefeuilles - libre - Export -->		
+		<childContentType name="D_DOC_LIBR_EXP" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+		
+		<!-- chantier DCC - Portefeuilles - Documentaire - Import -->		
+		<childContentType name="D_DOC_DOC_IMP" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>		
+	
+		<!-- chantier DCC - Portefeuilles - Documentaire - Export -->		
+		<childContentType name="D_DOC_DOC_EXP" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+	
+		<!-- chantier DCC - Credit documentaire -->		
+		<childContentType name="D_DOC_CRE_DOC" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>	
+	
+		<!-- chantier DCC - Placements financiers -->		
+		<childContentType name="D_DOC_FIN" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+
+		<!-- chantier DCC - Engagements -->		
+		<childContentType name="D_DOC_ENG" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+
+		<!-- chantier DCC - Conventions -->		
+		<childContentType name="D_DOC_CONV" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>		
+		
+		<!-- chantier DCC - Dossiers LAB -->		
+		<childContentType name="D_DOC_LAB" appName="AIRS">
+            <codeLinkedField parentField="DPC_NUM_CLIENT" childField="DPC_NUM_CLIENT"/>
+        </childContentType>
+		
+	</parentContentType>
+
+
+	<!--OFINA PORTEUR-->
+    <parentContentType isFlowParent="true" name="D_DOS_OFINA_CLT_PORTEUR" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="OFINA" id="26"/>
+        </flow>
+        <childContentType name="D_DOC_OFINA_CLT_PRODUIT" appName="AIRS">
+            <codeLinkedField parentField="OFINA_CLT_NUM_CLIENT" childField="OFINA_CLT_NUM_CLIENT"/>
+        </childContentType>
+    </parentContentType>
+
+	<!--OFINA PORTEUR - DOCUMENTS-->
+    <parentContentType isFlowParent="true" name="D_DOC_OFINA_CLT_PRODUIT" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="OFINA" id="26"/>
+        </flow>
+        <childContentType name="D_DOC_OFINA_CLT_PORTEUR" appName="AIRS">
+            <codeLinkedField parentField="OFINA_CLT_NUM_CLIENT" childField="OFINA_CLT_NUM_CLIENT"/>
+			<codeLinkedField parentField="OFINA_CLT_TYPE_PRODUIT_2" childField="OFINA_CLT_TYPE_PRODUIT_2"/>
+        </childContentType>
+    </parentContentType>
+
+	<!--OFINA ACQUEREUR-->
+    <parentContentType isFlowParent="true" name="D_DOS_OFINA_CLT_ACQUER" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="OFINA" id="26"/>
+        </flow>
+        <childContentType name="D_DOC_OFINA_CLT_ACQ" appName="AIRS">
+            <codeLinkedField parentField="OFINA_CLT_NUM_CLIENT" childField="OFINA_CLT_NUM_CLIENT"/>
+        </childContentType>
+    </parentContentType>
+
+	<!--OFINA ACQUEREUR - DOCUMENTS-->
+    <parentContentType isFlowParent="true" name="D_DOC_OFINA_CLT_ACQ" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="OFINA" id="26"/>
+        </flow>
+        <childContentType name="D_DOC_OFINA_CLT_ACQUER" appName="AIRS">
+            <codeLinkedField parentField="OFINA_CLT_NUM_CLIENT" childField="OFINA_CLT_NUM_CLIENT"/>
+			<codeLinkedField parentField="OFINA_CLT_TYPE_ACQUISITION_2" childField="OFINA_CLT_TYPE_ACQUISITION_2"/>
+        </childContentType>
+    </parentContentType>
+
+	<!--OFINA ADM-->
+    <parentContentType isFlowParent="true" name="D_DOS_OFINA_ADM" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>FLUX BANQUE migre le 25-04-2016</description>
+            <organization name="OFINA" id="26"/>
+        </flow>
+        <childContentType name="D_DOC_OFINA_ADM_FACTURE" appName="AIRS">
+            <codeLinkedField parentField="OFINA_ADM_NOM_FOURNISSEUR" childField="OFINA_ADM_NOM_FOURNISSEUR"/>
+        </childContentType>
+		<childContentType name="D_DOC_OFINA_ADM_CONV" appName="AIRS">
+            <codeLinkedField parentField="OFINA_ADM_NOM_FOURNISSEUR" childField="OFINA_ADM_NOM_FOURNISSEUR"/>
+        </childContentType>
+    </parentContentType>
+    
+	
+		<!--OFINA ADM-->
+    <parentContentType isFlowParent="true" name="D_DOS_ATD" appName="AIRS">
+        <flow code="FLOW_BNK" label="FLUX BANQUE">
+            <description>Projet ATD</description>
+            <organization name="CCP" id="24"/>
+        </flow>
+        <childContentType name="D_DOC_ATD" appName="AIRS">
+            <codeLinkedField parentField="ATD_REF" childField="ATD_REF"/>
+        </childContentType>
+		<childContentType name="D_DOC_ATD_MAINLEVEE" appName="AIRS">
+            <codeLinkedField parentField="ATD_REF" childField="ATD_REF"/>
+        </childContentType>
+		<childContentType name="D_DOC_ATD_COURRIER" appName="AIRS">
+            <codeLinkedField parentField="ATD_REF" childField="ATD_REF"/>
+        </childContentType>
+		<childContentType name="D_DOC_ATD_TB" appName="AIRS">
+            <codeLinkedField parentField="ATD_REF" childField="ATD_REF"/>
+        </childContentType>
+		
+		
+		
+    </parentContentType>
+	
+</rootContentType>

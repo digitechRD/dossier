@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jacros-int>  
+ <initializer name="com.digitech.airs3dossiers.airs.AIRSDossierInitializer">
+   <param>
+     <name>appName</name>
+     <desc>Nom de l'application</desc>
+     <value>AIRS</value>
+   </param>
+   <param>
+     <name>airsHost</name>
+     <desc>AirsServer Host Name</desc>
+     <value>localhost</value>
+   </param>
+   <param>
+     <name>airsPort</name>
+     <desc>AirsServer Port</desc>
+     <value>5033</value>
+   </param>
+    <param>
+     <name>airsUser</name>
+     <desc>nom de l'utilisateur de test de la connection AIRS</desc>
+     <value>adm_airs3</value>
+   </param>
+    <param>
+     <name>airsPassword</name>
+     <desc>password de l'utilisateur de test de la connection AIRS</desc>
+     <value>adm_airs3</value>
+   </param>
+   <param>
+     <name>expiredPassword</name>
+     <desc>le temps expiration du mot de passe user en jours</desc>
+     <value>180</value>
+   </param>
+   <param>
+     <name>lockTime</name>
+     <desc>le temps maximum durant lequel un document va etre locke en h (-1 pour desactiver)</desc>
+     <value>1</value>
+   </param>
+   <param>
+     <name>fieldLock</name>
+     <desc>Le champ dans lequel on stocke la date de dernier lock</desc>
+     <value>LOCKTIME</value>
+   </param>
+   <param>
+     <name>contentTypeLock</name>
+     <desc>Le domaine avec fonctionnalité de lock</desc>
+     <value>DOCSAL</value>
+   </param>
+   <param>
+     <name>SMTP</name>
+     <desc>Adresse du serveur SMTP pour diffusion</desc>
+     <value>smtp.completel.net</value>
+   </param>   
+   <param>
+     <name>ACTIVATE_VALIDATOR</name>
+     <desc>Activer les validateurs de l'application (0 ou 1)</desc>
+     <value>1</value>
+   </param>
+   <param>
+     <name>MAX_RECHERCHE</name>
+     <desc>le nombre maximum de résultats d'une requête qui doivent être traités</desc>
+     <value>500</value>
+   </param>
+   <param>
+     <name>BIRTDATASOURCE</name>
+     <desc>l'url JDBC de la datasource BIRT</desc>
+     <value>jdbc:oracle:thin:@localhost:1521:AIRS</value>
+   </param>
+   <param>
+     <name>BIRTDATASOURCE_USER</name>
+     <desc>l'utilisateur bdd de la datasource BIRT</desc>
+     <value>MEDIADOC</value>
+   </param>
+   <param>
+     <name>BIRTDATASOURCE_PASSWORD</name>
+     <desc>le password bdd de la datasource BIRT</desc>
+     <value>MEDIADOC</value>
+   </param>
+ </initializer>
+ <initializer name="com.digitech.digiFlow.CWorkFlowInitializer">
+   <param>
+     <name>type_workflow</name>
+     <desc>définition du workflow utilisé : pour l'instant FLOWMIND</desc>
+     <value>FLOWMIND</value>
+   </param>
+ </initializer>
+ <initializer name="com.digitech.digiFlow.flowMind.CFlowMindInitializer">
+   <param>
+     <name>serveur</name>
+     <desc>serveur Flowmind</desc>
+     <value>localhost</value>
+   </param>
+   <param>
+     <name>port</name>
+     <desc>n° de port Flowmind</desc>
+     <value>1099</value>
+   </param>
+ </initializer>
+ <initializer name="com.digitech.framework.db.DbInitializer">
+   <driver name="oracle.jdbc.driver.OracleDriver"/>
+   <pool name="digiflow" user="FMUSER" password="FMUSER" url="jdbc:oracle:thin:@localhost:1521:AIRS" maxconn="2"   sequenceImpl="com.digitech.framework.db.oracle.SequenceOraImpl"  />
+ </initializer>
+</jacros-int>

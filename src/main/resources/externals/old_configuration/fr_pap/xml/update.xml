@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<upd:formulaire version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:upd="http://www.digitech.com/dossiers/update">
+    <upd:organization name="DEFAULT">
+        <upd:flow flowCode="REF_DOCUMENT" system="false"/>
+        <upd:flow flowCode="COURRIER" system="false"/>
+        <upd:flow flowCode="MONTEE_SUR_CALE" system="false">
+            <upd:contentType name="ARMATEUR" type="read" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:label>Identifiant Armateur</upd:label>
+                    <upd:airsfield>REFAIRS</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:label>Nom armateur</upd:label>
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:label>Adresse</upd:label>
+                    <upd:airsfield>MSC_ADRESSE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:label>Mail</upd:label>
+                    <upd:airsfield>MSC_MAIL</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:label>Agent maritime</upd:label>
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:label>Localisation</upd:label>
+                    <upd:airsfield>MSC_LOCALISATION_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:label>Pays</upd:label>
+                    <upd:airsfield>MSC_PAYS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:label>Nom prénom du demandeur ou raison sociale</upd:label>
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="ARMATEUR" type="update" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:label>Identifiant Armateur</upd:label>
+                    <upd:airsfield>REFAIRS</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ADRESSE</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LOCALISATION_ARMATEUR</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PAYS</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+            </upd:contentType>
+            <upd:contentType name="ARMATEUR" type="insert" visibleInCreation="true" system="false">
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ADRESSE</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LOCALISATION_ARMATEUR</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PAYS</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+            </upd:contentType>
+            <upd:contentType name="ARMATEUR" type="index" visibleInCreation="true" system="false">
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ADRESSE</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LOCALISATION_ARMATEUR</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PAYS</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+            </upd:contentType>
+            <upd:contentType name="NAVIRE" type="read" visibleInCreation="true" system="false">
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LONGUEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LARGEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_POIDS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TIRANT_EAU</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="NAVIRE" type="update" auiAsSecretLevel="" visibleInCreation="true" system="false">
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LONGUEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LARGEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_POIDS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TIRANT_EAU</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="NAVIRE" type="insert" visibleInCreation="true" system="false">
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LONGUEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LARGEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_POIDS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TIRANT_EAU</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="NAVIRE" type="index" visibleInCreation="true" system="false">
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LONGUEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_LARGEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_POIDS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TIRANT_EAU</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="MONTEE_SUR_CALE" type="read" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="textarea" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX_SOUHAITES</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_SOUHAITEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_DEBUT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR_CONF</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_FIN</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PRENOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_TAHITI</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_REPRESENTE_PAR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_CODE_POSTAL</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_BP</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_COMMUNE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TEL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR_LIST</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAPE_EN_COURS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAT_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <com:action id="action_sendMail_PJ" airsProfileCode="PF_RESP_MONTEE_SUR_CALE" resourceKey="action_sendMail_PJ" displayRule="BOTH" displayRuleScriptId="affichage_sendMail_PJ" viewUnitMustbeSaved="false" styleClass="icone_sendMail_PJ">
+                    <com:groovyScriptId>action_sendMail_PJ</com:groovyScriptId>
+                    <com:modalPanelPageKey>action_sendMail_PJ</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>initialisation_sendMail_PJ</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:action id="FDOC_generation_document" resourceKey="action_generation_document" reRender="viewUnitPanel" displayRuleScriptId="affichage_generation_document" viewUnitMustbeSaved="false" styleClass="icone_generation_document">
+                    <com:groovyScriptId>action_generation_document</com:groovyScriptId>
+                </com:action>
+                <com:action id="WKF_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKF_ValiderDoc_displayRule" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="ValiderDoc">
+                    <com:groovyScriptId>WKF_ActionValiderDocProcess</com:groovyScriptId>
+                    <com:modalPanelPageKey>WKF_CommentPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>WKF_initValiderDoc</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:action id="WKF_RefuserDoc" resourceKey="action_RefuserDoc" displayRuleScriptId="WKF_RefuserDoc_displayRule" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="RefuserDoc">
+                    <com:groovyScriptId>WKF_ActionRefuserDocProcess</com:groovyScriptId>
+                    <com:modalPanelPageKey>WKF_CommentPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>WKF_initRefuserDoc</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:action id="MSC_GenerateDocs" airsProfileCode="PF_RESP_MONTEE_SUR_CALE" resourceKey="MSC_action_GenerateDocs_title" displayRuleScriptId="affichage_GenerateDocs" viewUnitMustbeSaved="false" styleClass="icone_GenerateDocs">
+                    <com:groovyScriptId>action_GenerateDocs</com:groovyScriptId>
+                    <com:modalPanelPageKey>MSC_DocxPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>initialisation_GenerateDocs</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:action id="MSC_action_transform_pj_docx_pdf" airsProfileCode="PF_RESP_MONTEE_SUR_CALE" resourceKey="test" displayRuleScriptId="affichage_transform_pj_docx_pdf" viewUnitMustbeSaved="false" styleClass="icone_GenerateDocs">
+                    <com:groovyScriptId>action_transform_pj_docx_pdf</com:groovyScriptId>
+                </com:action>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="MONTEE_SUR_CALE" type="update" auiAsSecretLevel="" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="textarea" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX_SOUHAITES</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_SOUHAITEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_DEBUT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <com:dependInput fieldKey="MSC_DATE_DEBUT" type="MULTIPLE">
+                        <com:scriptId>MSC_dependency_MSC_DATE_FIN</com:scriptId>
+                    </com:dependInput>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR_CONF</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <com:dependInput fieldKey="MSC_DUREE_SEJOUR_CONF" type="MULTIPLE">
+                        <com:scriptId>MSC_dependency_MSC_DATE_FIN</com:scriptId>
+                    </com:dependInput>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_FIN</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PRENOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_TAHITI</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_REPRESENTE_PAR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_CODE_POSTAL</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_BP</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_COMMUNE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TEL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR_LIST</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAPE_EN_COURS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAT_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <com:action id="WKF_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKF_ValiderDoc_displayRule" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="ValiderDoc">
+                    <com:groovyScriptId>WKF_ActionValiderDocProcess</com:groovyScriptId>
+                    <com:modalPanelPageKey>WKF_CommentPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>WKF_initValiderDoc</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:action id="WKF_RefuserDoc" resourceKey="action_RefuserDoc" displayRuleScriptId="WKF_RefuserDoc_displayRule" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="RefuserDoc">
+                    <com:groovyScriptId>WKF_ActionRefuserDocProcess</com:groovyScriptId>
+                    <com:modalPanelPageKey>WKF_CommentPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>WKF_initRefuserDoc</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:scriptedAction type="before" groovyScriptId="MSC_beforeSave" id="MSC_beforeSave">
+                    <com:application>onSave</com:application>
+                </com:scriptedAction>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="MONTEE_SUR_CALE" type="insert" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="textarea" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX_SOUHAITES</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_SOUHAITEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_DEBUT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR_CONF</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_FIN</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PRENOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_TAHITI</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_REPRESENTE_PAR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_CODE_POSTAL</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_BP</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_COMMUNE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TEL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR_LIST</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAPE_EN_COURS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAT_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                </upd:input>
+                <com:scriptedAction type="before" groovyScriptId="MSC_beforeSave" id="MSC_beforeSave">
+                    <com:application>onSave</com:application>
+                </com:scriptedAction>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="MONTEE_SUR_CALE" type="index" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_IMMAT_NAVIRE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_AGENT_MARITIME</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX_SOUHAITES</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TRAVAUX</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Données</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_SOUHAITEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_DEBUT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DUREE_SEJOUR_CONF</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_DATE_FIN</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Dates</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_PRENOM_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_TAHITI</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_ARMATEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_REPRESENTE_PAR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_CODE_POSTAL</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_BP</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_COMMUNE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TEL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ASSUREUR_CLIENT</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ATTINEUR_LIST</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_MAIL_ATTINEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Infos partenaires client</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAPE_EN_COURS</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_ETAT_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                    <upd:fieldset>Process</upd:fieldset>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DEMANDEUR</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <com:action id="WKF_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKF_ValiderDoc_displayRule" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="ValiderDoc">
+                    <com:groovyScriptId>WKF_ActionValiderDocProcess</com:groovyScriptId>
+                    <com:modalPanelPageKey>WKF_CommentPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>WKF_initValiderDoc</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:action id="WKF_RefuserDoc" resourceKey="action_RefuserDoc" displayRuleScriptId="WKF_RefuserDoc_displayRule" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="RefuserDoc">
+                    <com:groovyScriptId>WKF_ActionRefuserDocProcess</com:groovyScriptId>
+                    <com:modalPanelPageKey>WKF_CommentPanel</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>WKF_initRefuserDoc</com:modalPanelInitGroovyScriptId>
+                </com:action>
+                <com:scriptedAction type="before" groovyScriptId="MSC_beforeSave" id="MSC_beforeSave">
+                    <com:application>onSave</com:application>
+                </com:scriptedAction>
+                <upd:docActions-scriptId></upd:docActions-scriptId>
+            </upd:contentType>
+            <upd:contentType name="DOC_MONTEE" type="read" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:label>Identifiant Document</upd:label>
+                    <upd:airsfield>REFAIRS</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TYPE_DOCUMENT</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DOCUMENT</upd:airsfield>
+                </upd:input>
+                <com:action id="action_sendMail_PJ" airsProfileCode="PF_RESP_MONTEE_SUR_CALE" resourceKey="action_sendMail_PJ" displayRule="BOTH" displayRuleScriptId="affichage_sendMail_PJ" viewUnitMustbeSaved="false" styleClass="icone_sendMail_PJ">
+                    <com:groovyScriptId>action_sendMail_PJ</com:groovyScriptId>
+                    <com:modalPanelPageKey>action_sendMail_PJ</com:modalPanelPageKey>
+                    <com:modalPanelInitGroovyScriptId>initialisation_sendMail_PJ</com:modalPanelInitGroovyScriptId>
+                </com:action>
+            </upd:contentType>
+            <upd:contentType name="DOC_MONTEE" type="update" visibleInCreation="true" system="false">
+                <upd:input readonly="true" required="false" display="true">
+                    <upd:label>Identifiant Document</upd:label>
+                    <upd:airsfield>REFAIRS</upd:airsfield>
+                </upd:input>
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TYPE_DOCUMENT</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DOCUMENT</upd:airsfield>
+                </upd:input>
+				<com:scriptedAction type="after" groovyScriptId="after_otpSignatureAccepted" id="onOtpSignatureAccepted">
+					<com:application>onAcceptedBySignBook</com:application>
+				</com:scriptedAction>
+            </upd:contentType>
+            <upd:contentType name="DOC_MONTEE" type="insert" visibleInCreation="true" system="false">
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TYPE_DOCUMENT</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DOCUMENT</upd:airsfield>
+                </upd:input>
+            </upd:contentType>
+            <upd:contentType name="DOC_MONTEE" type="index" visibleInCreation="true" system="false">
+                <upd:input type="suggestion" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NUM_MONTEE</upd:airsfield>
+                    <upd:initial-value></upd:initial-value>
+                </upd:input>
+                <upd:input type="list" readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_TYPE_DOCUMENT</upd:airsfield>
+                </upd:input>
+                <upd:input readonly="false" required="false" display="true">
+                    <upd:airsfield>MSC_NOM_DOCUMENT</upd:airsfield>
+                </upd:input>
+            </upd:contentType>
+        </upd:flow>
+    </upd:organization>
+</upd:formulaire>

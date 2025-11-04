@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params customerName="@CUSTOMERNAME@" version="4.0" xmlns="http://www.digitech.com/dossiers/params">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <server port="5000">Srv-Prod-08</server>
+    <userAdmin>
+      <login>adm_airs3</login>
+      <password>adm_airs3</password>
+    </userAdmin>
+  </airsConfig>
+  <workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <flowmind>
+      <server port=""></server>
+      <dbConnection maxconn="2" pool="digiflow">
+        <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+        <server port=""></server>
+        <instance></instance>
+        <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+        <login></login>
+        <password></password>
+      </dbConnection>
+    </flowmind>
+  </workFlow>
+  <mailConfig>
+    <smtp>Srv-Prod-08</smtp>
+    <defaultmailsender></defaultmailsender>
+  </mailConfig>
+  <appConfig>
+  <interConnexion>
+		<appName>COURRIER</appName>
+		<url>http://10.1.5.13:8080/Courrier/</url>
+	</interConnexion>
+  	<autoDisconnection>1</autoDisconnection>
+  	<searchJocker>*</searchJocker>
+  	<configurationStateDisplayed>false</configurationStateDisplayed>
+    <expiredPassword>365</expiredPassword>
+    <validatorActivate>true</validatorActivate>
+    <autoOpenPJ>true</autoOpenPJ>
+    <displayPJ>VERTICAL_RIGHT</displayPJ>
+    <oneSearchResult>viewUnit</oneSearchResult>
+    <nbDocPage>10</nbDocPage>
+    <nbMaxSearchDoc>100</nbMaxSearchDoc>
+  </appConfig>
+  <birt webAppUrl="http://:/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">Srv-ged-15</server>
+            <instance>PFA</instance>
+            <login>CdG81_C_airsuser</login>
+            <password>CdG81_C_airsuser</password>
+        </dbConnection>
+    </birt>
+</params>

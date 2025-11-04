@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype" customerName="SMC" version="5.1-SNAPSHOT">
+    <parentContentType appName="AIRS" name="DOSSIER">
+        <childContentType appName="AIRS" name="DOCUMENT">
+            <codeLinkedField childField="SIREN" parentField="SIREN"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="DOSJUR">
+        <childContentType appName="AIRS" name="DOCJUR">
+            <codeLinkedField childField="REFMARCO" parentField="REFMARCO"/>
+            <codeLinkedField childField="GENRE" parentField="GENRE"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="DOSCLI">
+        <childContentType appName="AIRS" name="DOSJUR">
+            <codeLinkedField childField="REFMARCO" parentField="REFMARCO"/>
+        </childContentType>
+    </parentContentType>
+</rootContentType>

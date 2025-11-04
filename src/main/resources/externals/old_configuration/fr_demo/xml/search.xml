@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@CUSTOMERNAME@" version="5.1.0">
+    <organization id="0" name="DEFAULT"/>
+    <organization id="3" name="RH_GEST">
+     <globalSearch>
+            <ns2:dossierrequest name="name">
+                <ns2:contentType>DOCUMENT_RH</ns2:contentType>
+                <ns2:airsvalue>RH_MATRICULE=&quot;#VALUE#&quot; OU RH_NOM=&quot;#VALUE#&quot;</ns2:airsvalue>
+            </ns2:dossierrequest>
+        </globalSearch>
+        <contentType name="DOCUMENT_RH">
+            <input>
+                <operator>=</operator>
+                <label>Matricule</label>
+                <airsfield>
+                    <codeField>RH_MATRICULE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Categorie</label>
+                <airsfield>
+                    <codeField>RH_DOC_CAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Libelle</label>
+                <airsfield>
+                    <codeField>RH_LIBELLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date d'enregistrement</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date du document</label>
+                <airsfield>
+                    <codeField>RH_DATE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Etat</label>
+                <airsfield>
+                    <codeField>RH_ETAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Acteur</label>
+                <airsfield>
+                    <codeField>RH_ACTEURS</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Responsable</label>
+                <airsfield>
+                    <codeField>RH_RESPONSABLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOSSIER_RH">
+            <input>
+                <operator>=</operator>
+                <label>Matricule</label>
+                <airsfield>
+                    <codeField>RH_MATRICULE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Nom</label>
+                <airsfield>
+                    <codeField>RH_NOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Prenom</label>
+                <airsfield>
+                    <codeField>RH_PRENOM</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date d'entree</label>
+                <airsfield>
+                    <codeField>RH_DATE_ENTREE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="8" name="RH_CONS">
+        <contentType name="DOCUMENT_RH">
+            <input>
+                <operator>=</operator>
+                <label>Categorie</label>
+                <airsfield>
+                    <codeField>RH_DOC_CAT</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Libelle</label>
+                <airsfield>
+                    <codeField>RH_LIBELLE</codeField>
+                </airsfield>
+                <initial-value></initial-value>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date d'enregistrement</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date du document</label>
+                <airsfield>
+                    <codeField>RH_DATE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+</searchForm>

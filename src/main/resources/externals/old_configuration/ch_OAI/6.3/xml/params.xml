@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" version="5.3.8" customerName="OAINE">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">ai1022i007s</server>
+        <userAdmin>
+            <login>GIAIRS</login>
+            <password>D1g1tech</password>
+        </userAdmin>
+		<adminWebappURL>http://ai1022i007s.gilai.oai.ch:9090/AirsAdmin</adminWebappURL>
+    </airsConfig>
+    <mailConfig>
+        <smtp>mail.gilai.oai.ch</smtp>
+        <defaultMailSender></defaultMailSender>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+		<smtpPort>25</smtpPort>
+        <mailAuthentication>false</mailAuthentication>
+    </mailConfig>
+	<!--workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <flowmind>
+	<server port="1099">ai0airs1</server>      	
+    </flowmind>
+  </workFlow-->
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>0</isoxDisabled>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <readOnlyPJTypeDisplayed></readOnlyPJTypeDisplayed>
+        <basketPJTypeDisplayed></basketPJTypeDisplayed>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_LEFT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>500</nbMaxSearchDoc>
+        <displayMode>BASIC</displayMode>
+        <uploadAcceptedTypes></uploadAcceptedTypes>
+        <ssoActivated>true</ssoActivated>
+		<autoDeleteDoc>ASK_FOR_DELETE</autoDeleteDoc>
+		<uploadAcceptedTypes>PDF,DOCX,DOC,TIF,TIFF</uploadAcceptedTypes>
+		<alerteDeleteInfo>true</alerteDeleteInfo>
+		<defaultDeleteType>DOC_ONLY</defaultDeleteType>
+    </appConfig>
+    <birt webAppUrl="">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="8080"></server>
+            <instance></instance>
+            <login></login>
+            <password></password>
+        </dbConnection>
+    </birt>
+    <versionning>
+        <activated>true</activated>
+        <rollingNumber>20</rollingNumber>
+    </versionning>
+    <oooConfig autoStart="true">
+        <officeHome>/opt/openoffice4/</officeHome>
+        <portNumbers>2002</portNumbers>
+        <portNumbers>2003</portNumbers>
+        <portNumbers>2004</portNumbers>
+        <executableName>soffice</executableName>
+        <taskQueueTimeout>30000</taskQueueTimeout>
+        <taskExecutionTimeout>120000</taskExecutionTimeout>
+        <maxTasksPerProcess>200</maxTasksPerProcess>
+    </oooConfig>
+</params>

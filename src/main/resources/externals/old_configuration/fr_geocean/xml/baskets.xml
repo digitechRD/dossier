@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<corbeille xmlns="http://www.digitech.com/dossiers/baskets" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.7.10-1" customerName="GEOCEAN">
+    <organization name="DEFAULT" id="0">
+        <basketRequest indexation="false" inHeaderMenu="true" basket-properties-scriptId="" name="Factures du jour">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>D_CREAT = #TODAY#</ns2:airsvalue>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" basket-properties-scriptId="" name="Toute les factures">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>D_CREAT &lt;= #TODAY#</ns2:airsvalue>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures à transférer">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="303" AND (FACT_RETOUR IS NULL OR FACT_RETOUR.ITEM="403")</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures à transférer (rejetés par les achats)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="303" AND FACT_RETOUR.ITEM="402"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Achat">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="304" AND FACT_RETOUR.ITEM="403" AND FACT_USR_ACHAT.USR="#LOGIN_ID#"</ns2:airsvalue>
+            <ns2:airsProfile>110</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Achat (rejetés par la vérif compta)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="304" AND FACT_RETOUR.ITEM="402" AND FACT_USR_ACHAT.USR="#LOGIN_ID#"</ns2:airsvalue>
+            <ns2:airsProfile>110</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta à vérifier">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="305" AND FACT_RETOUR.ITEM="403"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta à vérifier (rejetés par les CDG/CDP)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="305" AND FACT_RETOUR.ITEM="402"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Contrôleur de gestion">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="306" AND FACT_RETOUR.ITEM="403" AND ((FACT_USR_CTRLGEST1.USR="#LOGIN_ID#" AND FACT_VAL_CTRLGEST1.ITEM="604") OR (FACT_USR_CTRLGEST2.USR="#LOGIN_ID#" AND FACT_VAL_CTRLGEST2.ITEM="607") OR (FACT_USR_CTRLGEST3.USR="#LOGIN_ID#" AND FACT_VAL_CTRLGEST3.ITEM="610"))</ns2:airsvalue>
+            <ns2:airsProfile>209</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Contrôleur de gestion (rejetés par le Chef de projet)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="306" AND FACT_RETOUR.ITEM="402" AND ((FACT_USR_CTRLGEST1.USR="#LOGIN_ID#" AND FACT_VAL_CTRLGEST1.ITEM="604") OR (FACT_USR_CTRLGEST2.USR="#LOGIN_ID#" AND FACT_VAL_CTRLGEST2.ITEM="607") OR (FACT_USR_CTRLGEST3.USR="#LOGIN_ID#" AND FACT_VAL_CTRLGEST3.ITEM="610"))</ns2:airsvalue>
+            <ns2:airsProfile>209</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Chef de projet">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="307" AND FACT_RETOUR.ITEM="403" AND ((FACT_USR_CDP1.USR="#LOGIN_ID#" AND FACT_VAL_CDP1.ITEM="613") OR (FACT_USR_CDP2.USR="#LOGIN_ID#" AND FACT_VAL_CDP2.ITEM="616") OR (FACT_USR_CDP3.USR="#LOGIN_ID#" AND FACT_VAL_CDP3.ITEM="619"))</ns2:airsvalue>
+            <ns2:airsProfile>112</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Chef de projet (rejetés par la compta)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="307" AND FACT_RETOUR.ITEM="402" AND ((FACT_USR_CDP1.USR="#LOGIN_ID#" AND FACT_VAL_CDP1.ITEM="613") OR (FACT_USR_CDP2.USR="#LOGIN_ID#" AND FACT_VAL_CDP2.ITEM="616") OR (FACT_USR_CDP3.USR="#LOGIN_ID#" AND FACT_VAL_CDP3.ITEM="619"))</ns2:airsvalue>
+            <ns2:airsProfile>112</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta en préparation paiement">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="308" AND FACT_RETOUR.ITEM="403" AND FACT_CDPVALIDE.ITEM="623"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta en préparation paiement, mais invalidée par les CDP">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="308" AND FACT_RETOUR.ITEM="403" AND FACT_CDPVALIDE.ITEM="624"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta en préparation paiement (rejeté par le DAF)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="308" AND FACT_RETOUR.ITEM="402"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta en litige">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="309"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures en validation DAF">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="310" AND FACT_RETOUR.ITEM="403"</ns2:airsvalue>
+            <ns2:airsProfile>113</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures en validation DAF (rejeté par le directeur)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="310" AND FACT_RETOUR.ITEM="402"</ns2:airsvalue>
+            <ns2:airsProfile>113</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Directeur">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="311" AND FACT_RETOUR.ITEM="403" AND FACT_USR_DIR.USR="#LOGIN_ID#"</ns2:airsvalue>
+            <ns2:airsProfile>114</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Mes factures en validation Directeur (rejet de la Compta)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="311" AND FACT_RETOUR.ITEM="402" AND FACT_USR_DIR.USR="#LOGIN_ID#"</ns2:airsvalue>
+            <ns2:airsProfile>114</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta en enregistrement Paiement">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="312"</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta payée (du jour)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="313" AND D_CREAT &lt;= #TODAY#</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+        <basketRequest indexation="false" inHeaderMenu="true" flowCode="FLUX_FAC" basket-properties-scriptId="" name="Factures Compta annulée (du jour)">
+            <ns2:contentType>DOC_FAC</ns2:contentType>
+            <ns2:airsvalue>FACT_ETAT.ITEM="314" AND D_CREAT &lt;= #TODAY#</ns2:airsvalue>
+            <ns2:airsProfile>111</ns2:airsProfile>
+        </basketRequest>
+    </organization>
+</corbeille>

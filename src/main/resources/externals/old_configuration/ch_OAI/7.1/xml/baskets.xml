@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<corbeille version="7.1" customerName="OAINE" xmlns:com="http://www.digitech.com/dossiers/common" xmlns="http://www.digitech.com/dossiers/baskets">
+    <organization name="DEFAULT"/>
+    <organization name="OAI">
+        <flow flowCode="FLOW_OAI">
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_personal_documents">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="7" ET U_GESTS.USR="#LOGIN_ID#"</com:airsvalue>
+            </basketRequest>
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_without_user_fr">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="7" ET U_GESTS.USR="49"</com:airsvalue>
+                <com:airsProfileCode>CORBEILLE_TEMP_FR</com:airsProfileCode>
+            </basketRequest>
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_without_user_de">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="7" ET U_GESTS.USR="48"</com:airsvalue>
+                <com:airsProfileCode>CORBEILLE_TEMP_DE</com:airsProfileCode>
+            </basketRequest>
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_without_user">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="10" SAUF (U_GESTS.USR="49" OU U_GESTS.USR="48")</com:airsvalue>
+                <com:airsProfileCode>CORBEILLE_TEMP</com:airsProfileCode>
+            </basketRequest>
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_sedex_reception">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="8"</com:airsvalue>
+                <com:airsProfileCode>SCAN</com:airsProfileCode>
+            </basketRequest>
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_sedex_transferred_documents">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="9"</com:airsvalue>
+                <com:airsProfileCode>SCAN</com:airsProfileCode>
+            </basketRequest>
+            <basketRequest indexation="false" inHeaderMenu="false" name="xml_configuration_basket_confidential">
+                <com:contentType>DOCUMENT_ASSURE</com:contentType>
+                <com:airsvalue>AL_WKF_STATUT.ROOTITEM="7" ET U_GESTS.USR="40"</com:airsvalue>
+                <com:airsProfileCode>CORBEILLE_CONFIDENTIEL</com:airsProfileCode>
+            </basketRequest>
+        </flow>
+    </organization>
+</corbeille>

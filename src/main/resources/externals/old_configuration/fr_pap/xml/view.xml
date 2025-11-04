@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<vie:listview version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:vie="http://www.digitech.com/dossiers/view">
+    <vie:organization name="DEFAULT">
+        <vie:flow flowCode="REF_DOCUMENT"/>
+    </vie:organization>
+    <vie:organization name="DEFAULT">
+        <vie:flow flowCode="COURRIER"/>
+    </vie:organization>
+    <vie:organization name="DEFAULT">
+        <vie:flow flowCode="MONTEE_SUR_CALE">
+            <vie:contentType name="ARMATEUR">
+                <vie:column main="true" label="Nom armateur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:type>suggestion</vie:type>
+                    <vie:airsField>MSC_NOM_ARMATEUR</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Pays" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_PAYS</vie:airsField>
+                </vie:column>
+                <com:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+                <vie:nbDocMax>0</vie:nbDocMax>
+                <vie:actionColumnPosition>0</vie:actionColumnPosition>
+            </vie:contentType>
+            <vie:contentType name="NAVIRE">
+                <vie:column main="true" label="Nom armateur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:type>suggestion</vie:type>
+                    <vie:airsField>MSC_NOM_ARMATEUR</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Nom navire" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_NOM_NAVIRE</vie:airsField>
+                </vie:column>
+                <com:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+                <vie:nbDocMax>100</vie:nbDocMax>
+                <vie:actionColumnPosition>0</vie:actionColumnPosition>
+            </vie:contentType>
+            <vie:contentType name="MONTEE_SUR_CALE">
+                <vie:column main="true" label="Numero de montée" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_NUM_MONTEE</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Nom navire" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:type>suggestion</vie:type>
+                    <vie:airsField>MSC_NOM_NAVIRE</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Immatriculation" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:type>suggestion</vie:type>
+                    <vie:airsField>MSC_IMMAT_NAVIRE</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Armateur" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_NOM_ARMATEUR</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Date de début" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:format>dd/MM/yyyy</vie:format>
+                    <vie:airsField>MSC_DATE_DEBUT</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Etape" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:type>suggestion</vie:type>
+                    <vie:airsField>MSC_ETAPE_EN_COURS</vie:airsField>
+                </vie:column>
+                <com:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+                <vie:nbDocMax>100</vie:nbDocMax>
+                <vie:actionColumnPosition>0</vie:actionColumnPosition>
+            </vie:contentType>
+            <vie:contentType name="DOC_MONTEE">
+                <vie:column main="true" label="Numero de montée" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_NUM_MONTEE</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Type de document" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_TYPE_DOCUMENT</vie:airsField>
+                </vie:column>
+                <vie:column main="true" label="Nom du document" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" columnDisplayMode="DEFAULT">
+                    <vie:airsField>MSC_NOM_DOCUMENT</vie:airsField>
+                </vie:column>
+                <com:export type="XSL_CSV" renderer="exportCSV.xsl" id="exportCSV" resourceKey="action_export_csv" viewUnitMustbeSaved="false" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+                <vie:nbDocMax>100</vie:nbDocMax>
+                <vie:actionColumnPosition>0</vie:actionColumnPosition>
+            </vie:contentType>
+        </vie:flow>
+    </vie:organization>
+</vie:listview>

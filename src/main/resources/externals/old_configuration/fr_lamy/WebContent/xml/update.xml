@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<formulaire>
+  <organization name="DEFAULT" id="0">
+    <contentType name="FACTURE" type="update">
+      <input type="">
+        <label>Nom de la société facturée</label>
+        <airsfield>FAC_SOC_NOM</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Numéro de facture fournisseur</label>
+        <airsfield>FAC_FRN_ID</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Date d'émission de la facture</label>
+        <airsfield>FAC_DATE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>N° de transaction SAP</label>
+        <airsfield>FAC_TRN_SAP</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Date d'échéance SAP</label>
+        <airsfield>FAC_ECH_DATE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Code SAP fournisseur</label>
+        <airsfield>FRN_SAP_ID</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Montant total HT de la facture</label>
+        <airsfield>FAC_TOT_HT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Montant total TVA de la facture</label>
+        <airsfield>FAC_TOT_TVA</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Montant total TTC de la facture</label>
+        <airsfield>FAC_TOT_TTC</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Taux n°1 TVA de la facture</label>
+        <airsfield>FAC_TX_TVA1</airsfield>
+        <initial-value>19.6</initial-value>
+      </input>
+      <input type="">
+        <label>Taux n°2 TVA de la facture</label>
+        <airsfield>FAC_TX_TVA2</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>SIRET du fournisseur</label>
+        <airsfield>FRN_SIRET</airsfield>
+        <initial-value></initial-value>
+        <validator>SiretValidator</validator>
+      </input>
+      <input type="">
+        <label>RS Fournisseur</label>
+        <airsfield>FRN_RS</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Code postal</label>
+        <airsfield>FRN_CP</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Numéro de commande SAP</label>
+        <airsfield>CMD_SAP_ID</airsfield>
+        <initial-value>45000</initial-value>
+      </input>
+      
+      <input type="" readonly="1">
+        <label>Id</label>
+        <airsfield>REFAIRS</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Etape</label>
+        <airsfield>WFTASK</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Numéro d'endos</label>
+        <airsfield>NOENDOS</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Date de numérisation</label>
+        <airsfield>D_CREAT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Date de dernière modification</label>
+        <airsfield>D_MODIF</airsfield>
+        <initial-value></initial-value>				
+      </input>
+      <input type="">
+        <label>SIRET</label>
+        <airsfield>FAC_FRN_SIRET</airsfield>
+        <initial-value></initial-value>
+      </input>
+      
+      <input type="">
+        <label>Ligne Adresse 1</label>
+        <airsfield>FRN_ADR1</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Ligne Adresse 2</label>
+        <airsfield>FRN_ADR2</airsfield>
+        <initial-value></initial-value>
+      </input>
+      
+      <input type="">
+        <label>Ville</label>
+        <airsfield>FRN_VILLE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Code Pays</label>
+        <airsfield>FRN_CPAYS</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Libellé Pays</label>
+        <airsfield>FRN_LPAYS</airsfield>
+        <initial-value></initial-value>
+      </input>
+      
+      <input type="">
+        <label>Code société facturée</label>
+        <airsfield>CMD_SOC_ID</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Nom société facturée</label>
+        <airsfield>CMD_SOC_NOM</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Date de commande</label>
+        <airsfield>CMD_DATE</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Groupe d'acheteurs</label>
+        <airsfield>CMD_GRP_ACHAT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="">
+        <label>Montant HT de la commande</label>
+        <airsfield>CMD_TOT_HT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="multieval" id="INC">
+        <label>Incidence</label>
+        <input type="" cssClass="inputMultiClass">
+          <label>Numéro</label>
+          <airsfield>CMD_LIG_ID</airsfield>
+          <initial-value></initial-value>
+        </input>
+        <input type="" cssClass="inputMultiClass">
+          <label>Montant HT</label>
+          <airsfield>CMD_LIG_TOT_HT</airsfield>
+          <initial-value></initial-value>
+        </input>
+        <input type="" cssClass="inputMultiClass">
+          <label>Type imputation</label>
+          <airsfield>CMD_LIG_IMPUT</airsfield>
+          <initial-value></initial-value>
+        </input>
+        <input type="" cssClass="inputMultiClass">
+          <label>Centre de coût</label>
+          <airsfield>CMD_LIG_CDC</airsfield>
+          <initial-value></initial-value>
+        </input>
+        <input type="" cssClass="inputMultiClass">
+          <label>Elément d'OTP</label>
+          <airsfield>CMD_LIG_OTP</airsfield>
+          <initial-value></initial-value>
+        </input>
+        <input type="" cssClass="inputMultiClass">
+          <label>Immobilisation</label>
+          <airsfield>CMD_LIG_IMMO</airsfield>
+          <initial-value></initial-value>
+        </input>
+      </input>
+      <input type="">
+        <label>Ecart (ABS) entre montant HT Facture et BDC</label>
+        <airsfield>ECART</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Statut WORKFLOW</label>
+        <airsfield>STATUT</airsfield>
+        <initial-value></initial-value>
+      </input>
+      <input type="" readonly="1">
+        <label>Mode nominal (1) ou reprise de l'existant (0)</label>
+        <airsfield>FMODE</airsfield>
+        <initial-value></initial-value>
+      </input>
+    </contentType>
+  </organization>
+</formulaire>

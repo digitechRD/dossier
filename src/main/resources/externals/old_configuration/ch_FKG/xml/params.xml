@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params customerName="@FKG@" version="5.0.CH" xmlns="http://www.digitech.com/dossiers/params">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <server port="5000">192.168.16.14</server>
+    <userAdmin>
+      <login>adm_airs3</login>
+      <password>adm_airs3</password>
+    </userAdmin>
+  </airsConfig>
+  <workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <flowmind>
+	<server port="1099">192.168.16.14</server>
+      <dbConnection maxconn="2" pool="digiflow">
+        <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+        <server port="1521">192.168.16.14</server>
+        <instance>XE</instance>
+        <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+        <login>flowuser</login>
+        <password>flowuser</password>
+      </dbConnection>
+    </flowmind>
+  </workFlow>
+  <mailConfig>
+    <smtp>smtp.vtxnet.ch</smtp>
+    <defaultmailsender>ged@digitech-sa.ch</defaultmailsender>
+  </mailConfig>
+  <appConfig>
+  	<autoDisconnection>1</autoDisconnection>
+  	<searchJocker>*</searchJocker>
+  	<configurationStateDisplayed>true</configurationStateDisplayed>
+    <expiredPassword>365</expiredPassword>
+    <validatorActivate>true</validatorActivate>
+    <autoOpenPJ>true</autoOpenPJ>
+    <isoxDisabled>1</isoxDisabled>
+    <documentViewerEnabled>true</documentViewerEnabled>
+    <displayPJ>VERTICAL_RIGHT</displayPJ>
+    <oneSearchResult>viewUnit</oneSearchResult>
+    <nbDocPage>10</nbDocPage>
+    <nbMaxSearchDoc>100</nbMaxSearchDoc>
+  </appConfig>
+  <birt webAppUrl="http://192.168.16.14:9090/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">192.168.16.14</server>
+            <instance>XE</instance>
+            <login>airsuser</login>
+            <password>airsuser</password>
+        </dbConnection>
+    </birt>
+	<versionning>
+    	<activated>1</activated>
+    	<rollingNumber>100</rollingNumber>
+    </versionning>
+</params>

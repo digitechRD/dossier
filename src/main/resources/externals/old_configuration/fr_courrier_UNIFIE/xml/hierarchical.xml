@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hierarchique xmlns="http://www.digitech.com/dossiers/hierarchical" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.2" customerName="CIRIL">
+  <organization name="DEFAULT" id="0">
+    <contentType name="COU_COURRIER_IN" visible="false">
+      <libelle dateFormat="dd/MM/yyyy">{N_CHRONO} - {C_OBJET}</libelle>
+      <field_hier>D_ENVOI</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>D_ENVOI</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="COU_COURRIER_OUT" visible="false">
+      <libelle dateFormat="dd/MM/yyyy">{N_CHRONO} - {C_OBJET}</libelle>
+      <field_hier>D_ENVOI</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>D_ENVOI</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GF_TIERS" visible="true">
+      <libelle>Tiers - {GF_TI_NUMTIE} {GF_TI_NOMTIE}</libelle>
+      <field_hier>GF_TI_NUMTIE</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GF_TI_NOMTIE</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GF_MOUVEMENT" visible="true">
+      <libelle>{GF_MV_ID} {GF_MV_LIBMVT}</libelle>
+      <field_hier>GF_PES_EXE</field_hier>
+      <field_hier>GF_MV_LIEN</field_hier>
+      <field_hier>GF_MV_IDLIEN</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>DICREASING</ns2:direction>
+          <ns2:codeField>GF_PES_EXE</ns2:codeField>
+        </ns2:sortingPolicy>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GF_MV_LIBMVT</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GF_MARCHE" visible="true">
+      <libelle>Marché - {GF_MA_NUMMAR}</libelle>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GF_MA_NUMMAR</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GF_PIECE_JOINTE" visible="true">
+      <libelle dateFormat="dd/MM/yyyy">Pièce jointe - {GF_PJ_NOM} - {GF_PJ_DATE}</libelle>
+      <sorting/>
+    </contentType>
+    <contentType name="GF_PES" visible="true">
+      <libelle>{GF_PES_NOMFIC}</libelle>
+      <field_hier>GF_PES_BUD</field_hier>
+      <field_hier>GF_PES_TYPE</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GF_PES_NOMFIC</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GF_PES_EXE" visible="true">
+      <libelle>Exercice : {GF_PES_EXE}</libelle>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GF_PES_EXE</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="RH_AGENT" visible="true">
+      <libelle>{RH_TITRE} {RH_PRENOM} {RH_NOMUSA} {RH_MATRICULE}</libelle>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>RH_NOMUSA</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="RH_DOCUMENT_EXTERNE" visible="true">
+      <libelle>{RH_NOMDOC}</libelle>
+      <field_hier>RH_CATEGORIE</field_hier>
+      <field_hier>RH_SOUS_CATEGORIE</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>RH_CATEGORIE</ns2:codeField>
+        </ns2:sortingPolicy>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>RH_SOUS_CATEGORIE</ns2:codeField>
+        </ns2:sortingPolicy>
+        <ns2:sortingPolicy>
+          <ns2:direction>DICREASING</ns2:direction>
+          <ns2:codeField>RH_DATDEB</ns2:codeField>
+        </ns2:sortingPolicy>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>RH_NOMDOC</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GEN_ROOT" visible="true">
+      <libelle>{GEN_ROOT_NOM} - {GEN_ROOT_CH1}</libelle>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GEN_ROOT_CH1</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GEN_DOC" visible="true">
+      <libelle>{GEN_DOC_TYPE} - {GEN_DOC_CH1} - {GEN_DOC_STATUS}</libelle>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GEN_DOC_CH1</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+    <contentType name="GEN_DOS" visible="true">
+      <libelle>{GEN_DOS_CH1}</libelle>
+      <field_hier>GEN_DOS_PCLASS</field_hier>
+      <sorting>
+        <ns2:sortingPolicy>
+          <ns2:direction>ASCENDING</ns2:direction>
+          <ns2:codeField>GEN_DOS_PCLASS</ns2:codeField>
+        </ns2:sortingPolicy>
+      </sorting>
+    </contentType>
+  </organization>
+</hierarchique>

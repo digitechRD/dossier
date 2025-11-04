@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><params xmlns="http://www.digitech.com/dossiers/params" customerName="CIRIL" version="6.2">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">srv-ged-16</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+        <adminWebappURL>http://pc-fma:8080/adminAirs</adminWebappURL>
+    </airsConfig>
+    <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>false</contentTypeFilter>
+        <flowmind>
+            <server port="0"/>
+            <dbConnection maxconn="-1">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1099"/>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+            </dbConnection>
+        </flowmind>
+    </workFlow>
+    <mailConfig>
+        <smtp>Polaris</smtp>
+        <SSLActivated>false</SSLActivated>
+        <SSLPort>0</SSLPort>
+        <smtpPort>25</smtpPort>
+        <mailAuthentication>false</mailAuthentication>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>-1</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>3</passwordMinSize>
+<!-- 
+        <autoDeleteDoc>ASK_FOR_DELETE</autoDeleteDoc>
+        <alerteDeleteInfo>true</alerteDeleteInfo>
+ -->
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <validatorActivate>true</validatorActivate>
+        <autoOpenPJ>true</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>10</nbDocPage>
+        <nbMaxSearchDoc>100</nbMaxSearchDoc>
+        <displayMode>BASIC</displayMode>
+        <uploadAcceptedTypes>pdf,doc,docx,xls,xlsx,txt</uploadAcceptedTypes>
+        <ssoActivated>false</ssoActivated>
+        <webAppURL>http://Polaris:9083/courrierExpress</webAppURL>
+        <flowSelectionEnabled>true</flowSelectionEnabled>
+    </appConfig>
+    <birt webAppUrl="http://pc-fma:8080/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">srv-ged-08-new</server>
+            <instance>PFADOS</instance>
+            <login>ged_airs_init</login>
+            <password>ged_airs_init</password>
+        </dbConnection>
+    </birt>
+    <versionning>
+        <activated>true</activated>
+        <rollingNumber>0</rollingNumber>
+    </versionning>
+    <oooConfig autoStart="true">
+        <officeHome>C:\Program Files (x86)\OpenOffice 4</officeHome>
+        <executableName>soffice.exe</executableName>
+        <portNumbers>2013</portNumbers>
+        <taskQueueTimeout>60000</taskQueueTimeout>
+        <taskExecutionTimeout>120000</taskExecutionTimeout>
+        <maxTasksPerProcess>200</maxTasksPerProcess>
+    </oooConfig>
+    <popConfig>
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">@srv-ged-08-new</server>
+            <instance>PFADOS</instance>
+            <login>ged_pop_init</login>
+            <password>ged_pop_init</password>
+        </dbConnection>
+    </popConfig>
+</params>

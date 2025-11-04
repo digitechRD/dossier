@@ -1,0 +1,2387 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.2.0" customerName="CIRIL">
+    <organization name="DEFAULT" id="0">
+        <contentType name="COU_COURRIER_IN" type="index" visibleInCreation="true" flowCode="COURRIER">
+            <input readonly="true" required="true" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="O_PROPRIETAIRE">
+                    <ns2:scriptId>courrierIn_dependency_generateChronoNumber</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Date de réception</label>
+                <airsfield>D_RECEPTION</airsfield>
+                <initial-value>#TODAY#</initial-value>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierIn_dependency_computeDueDate</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="true" display="true">
+                <label>Service traitant</label>
+                <airsfield>O_PROPRIETAIRE</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="false" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="O_PROPRIETAIRE">
+                    <ns2:scriptId>courrierIn_dependency_updateOwner</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrierIn_availableValues_owner</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Service(s) en copie</label>
+                <airsfield>O_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur(s) en copie</label>
+                <airsfield>U_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Utilisateur(s) ayant lu(s)</label>
+                <airsfield>U_COPIES_LUES</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_markAsRead_U_COPIES_LUES</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Valideurs</label>
+                <airsfield>U_VALIDEURS</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierIn_dependency_U_VALIDEURS_insert_index</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>courrierIn_init_read_U_VALIDEUR_insert_index</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Valideur</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_U_VISEUR</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Viseur</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="false">
+                <label>Etat</label>
+                <airsfield>T_ETAT_COURRIER</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Visé</label>
+                <airsfield>T_ETAT_VISA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierIn_beforeSave" id="changeStateBeforeSave">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrierIn_afterSave" id="changeStateAfterSave">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierIn_beforeAddAttachment" id="onAddAttachment">
+                <ns2:application>onAddAttachment</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="COU_COURRIER_IN" type="insert" visibleInCreation="true" flowCode="COURRIER">
+            <input readonly="true" required="true" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="O_PROPRIETAIRE">
+                    <ns2:scriptId>courrierIn_dependency_generateChronoNumber</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>courrierIn_init_insert_N_CHRONO</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Date de réception</label>
+                <airsfield>D_RECEPTION</airsfield>
+                <initial-value>#TODAY#</initial-value>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierIn_dependency_computeDueDate</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="true" display="true">
+                <label>Service traitant</label>
+                <airsfield>O_PROPRIETAIRE</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="false" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="O_PROPRIETAIRE">
+                    <ns2:scriptId>courrierIn_dependency_updateOwner</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrierIn_availableValues_owner</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Service(s) en copie</label>
+                <airsfield>O_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur(s) en copie</label>
+                <airsfield>U_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Valideurs</label>
+                <airsfield>U_VALIDEURS</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierIn_dependency_U_VALIDEURS_insert_index</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>courrierIn_init_read_U_VALIDEUR_insert_index</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Valideur</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_U_VISEUR_insert</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Viseur</availableValues-filter-scriptId>
+            </input>
+            <input type="list" readonly="false" required="false" display="false">
+                <label>Etat</label>
+                <airsfield>T_ETAT_COURRIER</airsfield>
+                <field-properties-scriptId>courrierIn_init_insert_T_ETAT_COURRIER</field-properties-scriptId>
+            </input>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierIn_beforeSave" id="changeStateBeforeSave">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrierIn_afterSave" id="changeStateAfterSave">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrier_afterChangeSelectType" id="afterChangeSelectType">
+                <ns2:application>onChangeContentType</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="COU_COURRIER_IN" type="update" visibleInCreation="true" flowCode="COURRIER">
+            <ns2:link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="child"/>
+            <ns2:link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="parent"/>
+            <ns2:link contentTypeCode="COU_COURRIER_OUT" name="courrierIn-courrierOut" direction="child"/>
+            <input readonly="true" required="true" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_N_CHRONO</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Date de réception</label>
+                <airsfield>D_RECEPTION</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierIn_dependency_computeDueDate</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'envoi réponse</label>
+                <airsfield>D_ENVOI</airsfield>
+                <validator>airs3dossiers.TwoDateValidator</validator>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierIn_init_D_ENVOI_update</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="true" display="true">
+                <label>Service traitant</label>
+                <airsfield>O_PROPRIETAIRE</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="false" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="O_PROPRIETAIRE">
+                    <ns2:scriptId>courrierIn_dependency_updateOwner</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrierIn_availableValues_owner</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Service(s) en copie</label>
+                <airsfield>O_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur(s) en copie</label>
+                <airsfield>U_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Utilisateur(s) ayant lu(s)</label>
+                <airsfield>U_COPIES_LUES</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_markAsRead_U_COPIES_LUES</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Valideurs</label>
+                <airsfield>U_VALIDEURS</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierIn_dependency_validatorRequired</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>courrierIn_init_read_U_VALIDEUR</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Valideur</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>valideur courant</label>
+                <airsfield>U_VALIDEUR</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_U_VISEUR</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Viseur</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>viseur courant</label>
+                <airsfield>U_VISEUR</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Créateur</label>
+                <airsfield>U_CREAT</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="false">
+                <label>Etat</label>
+                <airsfield>T_ETAT_COURRIER</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Visé</label>
+                <airsfield>T_ETAT_VISA</airsfield>
+            </input>
+            <inputLinkedDoc contenttype="COU_REPONSE" readonly="false" direction="child" likingcode="courrier-reponse" rownumber="-1">
+                <column overloadEnabled="false" label="Type" readonly="false" required="false">T_REPONSE</column>
+                <column overloadEnabled="false" label="Date" readonly="false" required="false">D_REPONSE</column>
+                <column overloadEnabled="false" label="Utilisateur" readonly="false" required="false">U_REPONSE</column>
+                <column overloadEnabled="false" label="Complément" readonly="false" required="false">C_COMPLEMENT</column>
+            </inputLinkedDoc>
+            <ns2:action id="restore" image="icon_restore" resourceKey="action_restoreCourrier" displayRuleScriptId="courrierIn_restoreMailVisible" progressionModalPanelId="modalPanelProgress" styleClass="restoreMail">
+                <ns2:groovyScriptId>courrierIn_restoreMail</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="answer" image="icon_response" resourceKey="action_answerCourrier" displayRuleScriptId="courrierIn_addResponseVisible" progressionModalPanelId="modalPanelProgress" styleClass="addMailResponse main">
+                <ns2:groovyScriptId>courrierIn_addResponse</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>responsePanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>response_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="visaIn" image="icon_visa" resourceKey="action_signCourrier" displayRuleScriptId="courrierIn_visaVisible" progressionModalPanelId="modalPanelProgress" styleClass="signMail main">
+                <ns2:groovyScriptId>courrierIn_visa</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>visaPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>visa_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="validate" image="icon_processTask_large" resourceKey="action_validateCourrier" displayRuleScriptId="courrierIn_validateVisible" progressionModalPanelId="modalPanelProgress" styleClass="validateMail main">
+                <ns2:groovyScriptId>courrierIn_validate</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>validate_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="refusal" image="task_Clore" resourceKey="action_refuseCourrier" displayRuleScriptId="courrierIn_refusalVisible" progressionModalPanelId="modalPanelProgress" styleClass="refuseMail main">
+                <ns2:groovyScriptId>courrierIn_refusal</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>refusal_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="askVisa" image="icon_ask_visa" resourceKey="action_askVisa" reRender="viewUnitPanel" displayRuleScriptId="askVisaVisible" progressionModalPanelId="modalPanelProgress" styleClass="askVisa main">
+                <ns2:groovyScriptId>askVisa_courrierIn</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="closing" image="icon_closing" resourceKey="action_closeCourrier" displayRuleScriptId="courrierIn_closingVisible" progressionModalPanelId="modalPanelProgress" styleClass="closeMail">
+                <ns2:groovyScriptId>courrierIn_closing</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>closing_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="removeFromCopy" resourceKey="action_removeFromCopy" displayRuleScriptId="courrierIn_removeFromCopyVisible" progressionModalPanelId="modalPanelProgress" styleClass="markAsRead">
+                <ns2:groovyScriptId>removeFromCopy_ViewUnitRead</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierIn_beforeSave" id="changeStateBeforeSave">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrierIn_afterSave" id="changeStateAfterSave">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierIn_beforeAddAttachment" id="onAddAttachment">
+                <ns2:application>onAddAttachment</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="sendMail_addLinkedDoc" id="onSendMailAfter">
+                <ns2:application>onSendMail</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeModalMail_setToCourrierIn" id="onShowMailBefore">
+                <ns2:application>onShowMail</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeDelete_checkRightAttachment" id="onDeleteAttachmentBefore">
+                <ns2:application>onDeleteAttachment</ns2:application>
+            </ns2:scriptedAction>
+            <docActions-scriptId>courrierIn_unavailableActions</docActions-scriptId>
+        </contentType>
+        <contentType name="COU_COURRIER_IN" type="read" visibleInCreation="true" flowCode="COURRIER">
+            <ns2:link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="child"/>
+            <ns2:link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierIn" direction="parent"/>
+            <ns2:link contentTypeCode="COU_COURRIER_OUT" name="courrierIn-courrierOut" direction="child"/>
+            <input readonly="false" required="false" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_N_CHRONO</field-properties-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <field-properties-scriptId>courrierIn_init_readT_TYPE</field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_T_PRIORITE</field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de réception</label>
+                <airsfield>D_RECEPTION</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierIn_init_read_D_ECHEANCE</field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Service traitant</label>
+                <airsfield>O_PROPRIETAIRE</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Service(s) en copie</label>
+                <airsfield>O_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur(s) en copie</label>
+                <airsfield>U_COPIES</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Utilisateur(s) ayant lu(s)</label>
+                <airsfield>U_COPIES_LUES</airsfield>
+                <field-properties-scriptId>courrierIn_init_read_markAsRead_U_COPIES_LUES</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Valideur courant</label>
+                <airsfield>U_VALIDEUR</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Valideurs</label>
+                <airsfield>U_VALIDEURS</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Viseur courant</label>
+                <airsfield>U_VISEUR</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierIn_init_read_D_CREAT</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de validation</label>
+                <airsfield>D_VALIDATION</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierIn_init_read_D_VALIDATION</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'acceptation</label>
+                <airsfield>D_ACCEPTATION</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierIn_init_read_D_ACCEPTATION</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'envoi réponse</label>
+                <airsfield>D_ENVOI</airsfield>
+                <validator>airs3dossiers.TwoDateValidator</validator>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierIn_init_readOnlyD_ENVOI</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de clôture</label>
+                <airsfield>D_CLOTURE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Créateur</label>
+                <airsfield>U_CREAT</airsfield>
+            </input>
+            <input type="list" readonly="false" required="false" display="false">
+                <label>Etat</label>
+                <airsfield>T_ETAT_COURRIER</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Visé</label>
+                <airsfield>T_ETAT_VISA</airsfield>
+            </input>
+            <inputLinkedDoc contenttype="COU_REPONSE" readonly="true" direction="child" likingcode="courrier-reponse" rownumber="-1">
+                <column overloadEnabled="false" label="Type" readonly="false" required="false">T_REPONSE</column>
+                <column overloadEnabled="false" label="Date" readonly="false" required="false">D_REPONSE</column>
+                <column overloadEnabled="false" label="Utilisateur" readonly="false" required="false">U_REPONSE</column>
+                <column overloadEnabled="false" label="Complément" readonly="false" required="false">C_COMPLEMENT</column>
+            </inputLinkedDoc>
+            <ns2:action id="restore" image="icon_restore" resourceKey="action_restoreCourrier" displayRuleScriptId="courrierIn_restoreMailVisible" progressionModalPanelId="modalPanelProgress" styleClass="restoreMail">
+                <ns2:groovyScriptId>courrierIn_restoreMail</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="answer" image="icon_response" resourceKey="action_answerCourrier" displayRuleScriptId="courrierIn_addResponseVisible" progressionModalPanelId="modalPanelProgress" styleClass="addMailResponse main">
+                <ns2:groovyScriptId>courrierIn_addResponse</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>responsePanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>response_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="visaIn" image="icon_visa" resourceKey="action_signCourrier" displayRuleScriptId="courrierIn_visaVisible" progressionModalPanelId="modalPanelProgress" styleClass="signMail main">
+                <ns2:groovyScriptId>courrierIn_visa</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>visaPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>visa_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="validate" image="icon_processTask_large" resourceKey="action_validateCourrier" displayRuleScriptId="courrierIn_validateVisible" progressionModalPanelId="modalPanelProgress" styleClass="validateMail main">
+                <ns2:groovyScriptId>courrierIn_validate</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>validate_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="refusal" image="task_Clore" resourceKey="action_refuseCourrier" displayRuleScriptId="courrierIn_refusalVisible" progressionModalPanelId="modalPanelProgress" styleClass="refuseMail main">
+                <ns2:groovyScriptId>courrierIn_refusal</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>refusal_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="askVisa" image="icon_ask_visa" resourceKey="action_askVisa" reRender="viewUnitPanel" displayRuleScriptId="askVisaVisible" progressionModalPanelId="modalPanelProgress" styleClass="askVisa main">
+                <ns2:groovyScriptId>askVisa_courrierIn</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="closing" image="icon_closing" resourceKey="action_closeCourrier" displayRuleScriptId="courrierIn_closingVisible" progressionModalPanelId="modalPanelProgress" styleClass="closeMail">
+                <ns2:groovyScriptId>courrierIn_closing</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>closing_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="removeFromCopy" resourceKey="action_removeFromCopy" displayRuleScriptId="courrierIn_removeFromCopyVisible" styleClass="markAsRead">
+                <ns2:groovyScriptId>removeFromCopy_ViewUnitRead</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="addUserInCopy" image="icon_addInCopy" resourceKey="action_addUserInCopy" reRender="ViewUnitModel_row_U_COPIES" displayRuleScriptId="courrierIn_addUserInCopyVisible" progressionModalPanelId="modalPanelProgress">
+                <ns2:groovyScriptId>courrierIn_addUserInCopy</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>addUserInCopyPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>addUserInCopy_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:scriptedAction type="after" groovyScriptId="sendMail_addLinkedDoc" id="onSendMailAfter">
+                <ns2:application>onSendMail</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeModalMail_setToCourrierIn" id="onShowMailBefore">
+                <ns2:application>onShowMail</ns2:application>
+            </ns2:scriptedAction>
+            <docActions-scriptId>courrierIn_unavailableActions</docActions-scriptId>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT" type="insert" visibleInCreation="true" flowCode="COURRIER">
+            <input readonly="true" required="true" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="U_PROPRIETAIRE">
+                    <ns2:scriptId>courrierOut_dependency_generateChronoNumber</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>courrierOut_init_insert_N_CHRONO</field-properties-scriptId>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierOut_dependency_computeDueDate</ns2:scriptId>
+                </ns2:dependInput>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <initial-value>#LOGIN_ID#</initial-value>
+                <fieldset>Correspondants</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="true" display="true">
+                <label>Destinataire</label>
+                <airsfield>C_DESTINATAIRE</airsfield>
+                <fieldset>Correspondants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="false" display="false">
+                <label>Service traitant</label>
+                <airsfield>O_PROPRIETAIRE</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="U_PROPRIETAIRE">
+                    <ns2:scriptId>courrierOut_dependency_updateOrgaOwner</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>O_PROPRIETAIRE_init_CourrierOut</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="true" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <initial-value>#LOGIN_ID#</initial-value>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrierOut_availableValues_owner</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <field-properties-scriptId>courrierOut_init_read_U_VISEUR</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Viseur</availableValues-filter-scriptId>
+            </input>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierOut_beforeCreate" id="changeStateBeforeCreate">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrierOut_afterCreate" id="changeStateAfterCreate">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrier_afterChangeSelectType" id="afterChangeSelectType">
+                <ns2:application>onChangeContentType</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT" type="update" visibleInCreation="true" flowCode="COURRIER">
+            <ns2:link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierOut" direction="parent"/>
+            <input readonly="true" required="true" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <ns2:dependInput type="MONO" fieldKey="T_TYPE">
+                    <ns2:scriptId>courrierOut_dependency_computeDueDate</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Correspondants</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="true" display="true">
+                <label>Destinataire</label>
+                <airsfield>C_DESTINATAIRE</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Correspondants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="false" display="false">
+                <label>Service traitant</label>
+                <airsfield>O_PROPRIETAIRE</airsfield>
+                <ns2:dependInput type="MONO" fieldKey="U_PROPRIETAIRE">
+                    <ns2:scriptId>courrierOut_dependency_updateOrgaOwner</ns2:scriptId>
+                </ns2:dependInput>
+                <field-properties-scriptId>O_PROPRIETAIRE_init_CourrierOut</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input type="suggestion" readonly="false" required="true" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <field-properties-scriptId></field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrierOut_availableValues_owner</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <field-properties-scriptId>courrierOut_init_read_U_VISEUR</field-properties-scriptId>
+                <fieldset>Intervenants</fieldset>
+                <availableValues-filter-scriptId>courrier_ElementFilter_Viseur</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>viseur courant</label>
+                <airsfield>U_VISEUR</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'envoi</label>
+                <airsfield>D_ENVOI</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input type="list" readonly="false" required="false" display="false">
+                <label>Etat</label>
+                <airsfield>T_ETAT_COURRIER</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Visé</label>
+                <airsfield>T_ETAT_VISA</airsfield>
+            </input>
+            <ns2:action id="restore" image="icon_restore" resourceKey="action_restoreCourrier" displayRuleScriptId="courrierOut_restoreMailVisible" progressionModalPanelId="modalPanelProgress" styleClass="restoreMail">
+                <ns2:groovyScriptId>courrierOut_restoreMail</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="write" image="icon_response" resourceKey="action_writeCourrier" displayRuleScriptId="courrierOut_writeCourrierVisible" progressionModalPanelId="modalPanelProgress" styleClass="addMailResponse main">
+                <ns2:groovyScriptId>courrierOut_writeCourrier</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>responsePanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>writeCourrier_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="visaOut" image="icon_visa" resourceKey="action_signCourrier" displayRuleScriptId="courrierOut_visaVisible" progressionModalPanelId="modalPanelProgress" styleClass="signMail main">
+                <ns2:groovyScriptId>courrierOut_visa</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>visaPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>visa_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="askVisa" image="icon_ask_visa" resourceKey="action_askVisa" displayRuleScriptId="askVisaVisible" progressionModalPanelId="modalPanelProgress" styleClass="askVisa main">
+                <ns2:groovyScriptId>askVisa_courrierOut</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="closing" image="icon_closing" resourceKey="action_closeCourrier" displayRuleScriptId="courrierOut_closingVisible" progressionModalPanelId="modalPanelProgress" styleClass="closeMail">
+                <ns2:groovyScriptId>courrierOut_closing</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>closing_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:scriptedAction type="before" groovyScriptId="courrierOut_beforeUpdate" id="changeStateBeforeUpdate">
+                <ns2:application>onSave</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="after" groovyScriptId="courrierOut_afterAddAttachment" id="onAddAttachment">
+                <ns2:application>onAddAttachment</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeModalMail_setToCourrierOut" id="onShowMailBefore">
+                <ns2:application>onShowMail</ns2:application>
+            </ns2:scriptedAction>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeDelete_checkRightAttachment" id="onDeleteAttachmentBefore">
+                <ns2:application>onDeleteAttachment</ns2:application>
+            </ns2:scriptedAction>
+            <docActions-scriptId>courrierOut_unavailableActions</docActions-scriptId>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT" type="read" visibleInCreation="true" flowCode="COURRIER">
+            <ns2:link contentTypeCode="COU_COURRIER_IN" name="courrierIn-courrierOut" direction="parent"/>
+            <input readonly="false" required="false" display="true">
+                <label>N° chrono</label>
+                <airsfield>N_CHRONO</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Type</label>
+                <airsfield>T_TYPE</airsfield>
+                <field-properties-scriptId>courrierOut_init_read_T_TYPE</field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Priorité</label>
+                <airsfield>T_PRIORITE</airsfield>
+                <field-properties-scriptId>courrierOut_init_read_T_PRIORITE</field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du courrier</label>
+                <airsfield>D_COURRIER</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nature</label>
+                <airsfield>T_NATURE</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Objet</label>
+                <airsfield>C_OBJET</airsfield>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'échéance</label>
+                <airsfield>D_ECHEANCE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierOut_init_read_D_ECHEANCE</field-properties-scriptId>
+                <fieldset>Propriétés</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Emetteur</label>
+                <airsfield>C_EMETTEUR</airsfield>
+                <fieldset>Correspondants</fieldset>
+            </input>
+            <input type="correspondent" readonly="false" required="false" display="true">
+                <label>Destinataire</label>
+                <airsfield>C_DESTINATAIRE</airsfield>
+                <fieldset>Correspondants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur traitant</label>
+                <airsfield>U_PROPRIETAIRE</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur viseur</label>
+                <airsfield>U_VISEUR</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateurs viseurs</label>
+                <airsfield>U_VISEURS</airsfield>
+                <fieldset>Intervenants</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierOut_init_read_D_CREAT</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'acceptation</label>
+                <airsfield>D_ACCEPTATION</airsfield>
+                <format>dd/MM/yyyy</format>
+                <field-properties-scriptId>courrierOut_init_read_D_ACCEPTATION</field-properties-scriptId>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date d'envoi</label>
+                <airsfield>D_ENVOI</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de clôture</label>
+                <airsfield>D_CLOTURE</airsfield>
+                <format>dd/MM/yyyy</format>
+                <fieldset>Cycle de vie</fieldset>
+            </input>
+            <input type="list" readonly="false" required="false" display="false">
+                <label>Etat</label>
+                <airsfield>T_ETAT_COURRIER</airsfield>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Visé</label>
+                <airsfield>T_ETAT_VISA</airsfield>
+            </input>
+            <ns2:action id="restore" image="icon_restore" resourceKey="action_restoreCourrier" displayRuleScriptId="courrierOut_restoreMailVisible" progressionModalPanelId="modalPanelProgress" styleClass="restoreMail">
+                <ns2:groovyScriptId>courrierOut_restoreMail</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="write" image="icon_response" resourceKey="action_writeCourrier" displayRuleScriptId="courrierOut_writeCourrierVisible" progressionModalPanelId="modalPanelProgress" styleClass="addMailResponse main">
+                <ns2:groovyScriptId>courrierOut_writeCourrier</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>responsePanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>writeCourrier_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="visaOut" image="icon_visa" resourceKey="action_signCourrier" displayRuleScriptId="courrierOut_visaVisible" progressionModalPanelId="modalPanelProgress" styleClass="signMail main">
+                <ns2:groovyScriptId>courrierOut_visa</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>visaPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>visa_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="askVisa" image="icon_ask_visa" resourceKey="action_askVisa" displayRuleScriptId="askVisaVisible" progressionModalPanelId="modalPanelProgress" styleClass="askVisa main">
+                <ns2:groovyScriptId>askVisa_courrierOut</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="closing" image="icon_closing" resourceKey="action_closeCourrier" displayRuleScriptId="courrierOut_closingVisible" progressionModalPanelId="modalPanelProgress" styleClass="closeMail">
+                <ns2:groovyScriptId>courrierOut_closing</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>commentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>closing_initCustomModalPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeModalMail_setToCourrierOut" id="onShowMailBefore">
+                <ns2:application>onShowMail</ns2:application>
+            </ns2:scriptedAction>
+            <docActions-scriptId>courrierOut_unavailableActions</docActions-scriptId>
+        </contentType>
+        <contentType name="COU_REPONSE" type="insert" visibleInCreation="false" flowCode="COURRIER">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_REPONSE</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Date de la réponse</label>
+                <airsfield>D_REPONSE</airsfield>
+                <initial-value>#TODAY#</initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Utilisateur</label>
+                <airsfield>U_REPONSE</airsfield>
+                <initial-value>#LOGIN_ID#</initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Complément</label>
+                <airsfield>C_COMPLEMENT</airsfield>
+            </input>
+        </contentType>
+        <contentType name="COU_REPONSE" type="update" visibleInCreation="true" flowCode="COURRIER">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type</label>
+                <airsfield>T_REPONSE</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Date de la réponse</label>
+                <airsfield>D_REPONSE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Utilisateur</label>
+                <airsfield>U_REPONSE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Complément</label>
+                <airsfield>C_COMPLEMENT</airsfield>
+            </input>
+            <ns2:scriptedAction type="before" groovyScriptId="beforeRender_checkRightLinkedDoc" id="onRenderLinkedDocBefore">
+                <ns2:application>onRender</ns2:application>
+            </ns2:scriptedAction>
+        </contentType>
+        <contentType name="COU_REPONSE" type="read" visibleInCreation="true" flowCode="COURRIER">
+            <input readonly="false" required="false" display="true">
+                <label>Type</label>
+                <airsfield>T_REPONSE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de la réponse</label>
+                <airsfield>D_REPONSE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Utilisateur</label>
+                <airsfield>U_REPONSE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Complément</label>
+                <airsfield>C_COMPLEMENT</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GF_TIERS" type="insert" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom du tiers</label>
+                <airsfield>GF_TI_NOMTIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>N° du tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_TIERS" type="update" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom du tiers</label>
+                <airsfield>GF_TI_NOMTIE</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>N° du tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GF_TIERS" type="read" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom du tiers</label>
+                <airsfield>GF_TI_NOMTIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>N° du tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_MOUVEMENT" type="insert" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de mouvement</label>
+                <airsfield>GF_MV_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Identifiant du mouvement</label>
+                <airsfield>GF_MV_ID</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Libellé</label>
+                <airsfield>GF_MV_LIBMVT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du mouvement</label>
+                <airsfield>GF_MV_DATE</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Exercice</label>
+                <airsfield>GF_PES_EXE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° de subvention</label>
+                <airsfield>GF_MV_SUB</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Lien avec mar. ou sub.</label>
+                <airsfield>GF_MV_LIEN</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du lien</label>
+                <airsfield>GF_MV_IDLIEN</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nature comptable</label>
+                <airsfield>GF_MV_NATURE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collectivité</label>
+                <airsfield>GF_MA_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Budget</label>
+                <airsfield>GF_PES_BUD</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Champ de sécurité 1</label>
+                <airsfield>SECU1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Champ de sécurité 2</label>
+                <airsfield>SECU2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_MOUVEMENT" type="update" auiAsSecretLevel="" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de mouvement</label>
+                <airsfield>GF_MV_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Identifiant du mouvement</label>
+                <airsfield>GF_MV_ID</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Libellé</label>
+                <airsfield>GF_MV_LIBMVT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du mouvement</label>
+                <airsfield>GF_MV_DATE</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Exercice</label>
+                <airsfield>GF_PES_EXE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° de subvention</label>
+                <airsfield>GF_MV_SUB</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Lien avec mar. ou sub.</label>
+                <airsfield>GF_MV_LIEN</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du lien</label>
+                <airsfield>GF_MV_IDLIEN</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nature comptable</label>
+                <airsfield>GF_MV_NATURE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collectivité</label>
+                <airsfield>GF_MA_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Champ de sécurité 1</label>
+                <airsfield>SECU1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Champ de sécurité 2</label>
+                <airsfield>SECU2</airsfield>
+                <initial-value></initial-value>
+            </input>
+        </contentType>
+        <contentType name="GF_MOUVEMENT" type="read" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de mouvement</label>
+                <airsfield>GF_MV_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Identifiant du mouvement</label>
+                <airsfield>GF_MV_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Libellé</label>
+                <airsfield>GF_MV_LIBMVT</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date du mouvement</label>
+                <airsfield>GF_MV_DATE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Exercice</label>
+                <airsfield>GF_PES_EXE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° de subvention </label>
+                <airsfield>GF_MV_SUB</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Lien avec mar. ou sub.</label>
+                <airsfield>GF_MV_LIEN</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du lien</label>
+                <airsfield>GF_MV_IDLIEN</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nature comptable</label>
+                <airsfield>GF_MV_NATURE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collectivité</label>
+                <airsfield>GF_MA_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Budget</label>
+                <airsfield>GF_PES_BUD</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GF_MARCHE" type="insert" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collectivité</label>
+                <airsfield>GF_MA_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Libellé du marché</label>
+                <airsfield>GF_MA_LIBMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de notification</label>
+                <airsfield>GF_MA_DATNOT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GF_MARCHE" type="update" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collectivité</label>
+                <airsfield>GF_MA_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Libellé du marché</label>
+                <airsfield>GF_MA_LIBMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de notification</label>
+                <airsfield>GF_MA_DATNOT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GF_MARCHE" type="read" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collectivité</label>
+                <airsfield>GF_MA_LIBCOL</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Libellé du marché</label>
+                <airsfield>GF_MA_LIBMAR</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de notification</label>
+                <airsfield>GF_MA_DATNOT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_PIECE_JOINTE" type="insert" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="true" display="true">
+                <label>Id pièce jointe</label>
+                <airsfield>GF_PJ_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date</label>
+                <airsfield>GF_PJ_DATE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom</label>
+                <airsfield>GF_PJ_NOM</airsfield>
+            </input>
+            <input readonly="true" required="false" display="true">
+                <label>Id tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+            </input>
+            <input readonly="true" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+            </input>
+            <input readonly="true" required="false" display="true">
+                <label>Id mouvement</label>
+                <airsfield>GF_MV_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GF_PIECE_JOINTE" type="update" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="true" display="true">
+                <label>Id pièce jointe</label>
+                <airsfield>GF_PJ_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date</label>
+                <airsfield>GF_PJ_DATE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom</label>
+                <airsfield>GF_PJ_NOM</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Id tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Id mouvement</label>
+                <airsfield>GF_MV_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+            <ns2:action id="DownloadPJVisible" resourceKey="action_DownloadPJ" displayRuleScriptId="DownloadPJVisible" progressionModalPanelId="modalPanelProgress" styleClass="DownloadPJVisible">
+                <ns2:groovyScriptId>DownloadPJ_action</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>DownloadPJPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>DownloadPJ_init</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+        </contentType>
+        <contentType name="GF_PIECE_JOINTE" type="read" visibleInCreation="true" flowCode="GF_TIERS">
+            <input readonly="false" required="true" display="true">
+                <label>Id pièce jointe</label>
+                <airsfield>GF_PJ_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date</label>
+                <airsfield>GF_PJ_DATE</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom</label>
+                <airsfield>GF_PJ_NOM</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Id tiers</label>
+                <airsfield>GF_TI_NUMTIE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° du marché</label>
+                <airsfield>GF_MA_NUMMAR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Id mouvement</label>
+                <airsfield>GF_MV_ID</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code collectivité</label>
+                <airsfield>GF_CODE_LIBCOL</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Code budget</label>
+                <airsfield>GF_CODE_BUDGET</airsfield>
+            </input>
+            <ns2:action id="DownloadPJVisible" resourceKey="action_DownloadPJ" displayRuleScriptId="DownloadPJVisible" progressionModalPanelId="modalPanelProgress" styleClass="DownloadPJVisible">
+                <ns2:groovyScriptId>DownloadPJ_action</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>DownloadPJPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>DownloadPJ_init</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+        </contentType>
+        <contentType name="GF_PES" type="insert" visibleInCreation="true" flowCode="GF_PES">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom du fichier</label>
+                <airsfield>GF_PES_NOMFIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Budget</label>
+                <airsfield>GF_PES_BUD</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Exercice comptable</label>
+                <airsfield>GF_PES_EXE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Sens</label>
+                <airsfield>GF_PES_SENS</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type</label>
+                <airsfield>GF_PES_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_PES" type="update" auiAsSecretLevel="" visibleInCreation="true" flowCode="GF_PES">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom du fichier</label>
+                <airsfield>GF_PES_NOMFIC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Budget</label>
+                <airsfield>GF_PES_BUD</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Exercice comptable</label>
+                <airsfield>GF_PES_EXE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Sens</label>
+                <airsfield>GF_PES_SENS</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type</label>
+                <airsfield>GF_PES_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_PES" type="read" visibleInCreation="true" flowCode="GF_PES">
+            <input readonly="false" required="false" display="false">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom du fichier</label>
+                <airsfield>GF_PES_NOMFIC</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Budget</label>
+                <airsfield>GF_PES_BUD</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Exercice comptable</label>
+                <airsfield>GF_PES_EXE</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Sens</label>
+                <airsfield>GF_PES_SENS</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Type</label>
+                <airsfield>GF_PES_TYPE</airsfield>
+            </input>
+        </contentType>
+        <contentType name="RH_AGENT" type="insert" visibleInCreation="true" flowCode="RH_AGENT">
+            <input readonly="false" required="true" display="true">
+                <label>Matricule</label>
+                <airsfield>RH_MATRICULE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Schéma de l'agent</label>
+                <airsfield>GEN_SCHEMA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Titre</label>
+                <airsfield>RH_TITRE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Prénom</label>
+                <airsfield>RH_PRENOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom d'usage</label>
+                <airsfield>RH_NOMUSA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom de famille</label>
+                <airsfield>RH_NOMPAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de naissance</label>
+                <airsfield>RH_DATNAI</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="RH_AGENT" type="update" auiAsSecretLevel="" visibleInCreation="true" flowCode="RH_AGENT">
+            <input readonly="true" required="true" display="true">
+                <label>Matricule</label>
+                <airsfield>RH_MATRICULE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Titre</label>
+                <airsfield>RH_TITRE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Prénom</label>
+                <airsfield>RH_PRENOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom d'usage</label>
+                <airsfield>RH_NOMUSA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom de famille</label>
+                <airsfield>RH_NOMPAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de naissance</label>
+                <airsfield>RH_DATNAI</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="RH_AGENT" type="read" visibleInCreation="true" flowCode="RH_AGENT">
+            <input readonly="false" required="false" display="true">
+                <label>Matricule</label>
+                <airsfield>RH_MATRICULE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Titre</label>
+                <airsfield>RH_TITRE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Prénom</label>
+                <airsfield>RH_PRENOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Nom d'usage</label>
+                <airsfield>RH_NOMUSA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom de famille</label>
+                <airsfield>RH_NOMPAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de naissance</label>
+                <airsfield>RH_DATNAI</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE" type="insert" visibleInCreation="true" flowCode="RH_AGENT">
+            <input readonly="false" required="true" display="true">
+                <label>Matricule</label>
+                <airsfield>RH_MATRICULE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Schéma de l'agent</label>
+                <airsfield>GEN_SCHEMA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>N° de démat</label>
+                <airsfield>RH_NUMDEMAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de début</label>
+                <airsfield>RH_DATDEB</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de fin</label>
+                <airsfield>RH_DATFIN</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom du document</label>
+                <airsfield>RH_NOMDOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Commentaire</label>
+                <airsfield>RH_INFO</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Catégorie</label>
+                <airsfield>RH_CATEGORIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Sous-Catégorie</label>
+                <airsfield>RH_SOUS_CATEGORIE</airsfield>
+                <initial-value></initial-value>
+                <ns2:dependInput type="MONO" fieldKey="RH_CATEGORIE">
+                    <ns2:scriptId>DependanceSousCategorie</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de document</label>
+                <airsfield>RH_TYPEDOC</airsfield>
+                <initial-value></initial-value>
+                <ns2:dependInput type="MONO" fieldKey="RH_SOUS_CATEGORIE">
+                    <ns2:scriptId>DependanceTypeDocument</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE" type="update" auiAsSecretLevel="" visibleInCreation="true" flowCode="RH_AGENT">
+            <input readonly="false" required="true" display="false">
+                <airsfield>RH_MATRICULE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="false">
+                <airsfield>GEN_SCHEMA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <airsfield>RH_NUMDEMAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de début</label>
+                <airsfield>RH_DATDEB</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de fin</label>
+                <airsfield>RH_DATFIN</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom du document</label>
+                <airsfield>RH_NOMDOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Commentaire</label>
+                <airsfield>RH_INFO</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Catégorie</label>
+                <airsfield>RH_CATEGORIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Sous-catégorie</label>
+                <airsfield>RH_SOUS_CATEGORIE</airsfield>
+                <initial-value></initial-value>
+                <ns2:dependInput type="MONO" fieldKey="RH_CATEGORIE">
+                    <ns2:scriptId>DependanceSousCategorie</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Type de document</label>
+                <airsfield>RH_TYPEDOC</airsfield>
+                <initial-value></initial-value>
+                <ns2:dependInput type="MONO" fieldKey="RH_SOUS_CATEGORIE">
+                    <ns2:scriptId>DependanceTypeDocument</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE" type="read" visibleInCreation="true" flowCode="RH_AGENT">
+            <input readonly="false" required="false" display="false">
+                <label>Matricule</label>
+                <airsfield>RH_MATRICULE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Schéma de l'agent</label>
+                <airsfield>GEN_SCHEMA</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>N° de démat</label>
+                <airsfield>RH_NUMDEMAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de début</label>
+                <airsfield>RH_DATDEB</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Date de fin</label>
+                <airsfield>RH_DATFIN</airsfield>
+                <initial-value></initial-value>
+                <format>dd/MM/yyyy</format>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Nom du document</label>
+                <airsfield>RH_NOMDOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Commentaire</label>
+                <airsfield>RH_INFO</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Catégorie</label>
+                <airsfield>RH_CATEGORIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Sous-catégorie</label>
+                <airsfield>RH_SOUS_CATEGORIE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="false">
+                <label>Type de document</label>
+                <airsfield>RH_TYPEDOC</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GEN_ROOT" type="insert" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>RChamp2</label>
+                <airsfield>GEN_ROOT_CH2</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GEN_ROOT" type="update" auiAsSecretLevel="" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>RChamp2</label>
+                <airsfield>GEN_ROOT_CH2</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GEN_ROOT" type="read" visibleInCreation="true" flowCode="GEN">
+            <input readonly="false" required="false" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>RChamp2</label>
+                <airsfield>GEN_ROOT_CH2</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOS" type="insert" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Plan de classement</label>
+                <airsfield>GEN_DOS_PCLASS</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>DosChamp1</label>
+                <airsfield>GEN_DOS_CH1</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DosChamp2</label>
+                <airsfield>GEN_DOS_CH2</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOS" type="update" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Plan de classement</label>
+                <airsfield>GEN_DOS_PCLASS</airsfield>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>DosChamp1</label>
+                <airsfield>GEN_DOS_CH1</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DosChamp2</label>
+                <airsfield>GEN_DOS_CH2</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOS" type="read" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="false" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Plan de classement</label>
+                <airsfield>GEN_DOS_PCLASS</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DosChamp1</label>
+                <airsfield>GEN_DOS_CH1</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DosChamp2</label>
+                <airsfield>GEN_DOS_CH2</airsfield>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOC" type="insert" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Plan de classement</label>
+                <airsfield>GEN_DOS_PCLASS</airsfield>
+                <initial-value></initial-value>
+                <ns2:dependInput type="MONO" fieldKey="GEN_ROOT_NOM">
+                    <ns2:scriptId>documentRanking_dependency</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>DosChamp1</label>
+                <airsfield>GEN_DOS_CH1</airsfield>
+                <initial-value>-</initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de document</label>
+                <airsfield>GEN_DOC_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocChamp1</label>
+                <airsfield>GEN_DOC_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocChamp2</label>
+                <airsfield>GEN_DOC_CH2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>DocDateInfo</label>
+                <airsfield>GEN_DOC_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Créateur</label>
+                <airsfield>GEN_DOC_CREAT</airsfield>
+                <initial-value>#LOGIN_ID#</initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collaborateurs</label>
+                <airsfield>GEN_DOC_COLLAB</airsfield>
+                <initial-value></initial-value>
+                <availableValues-filter-scriptId>collaborator_elementFilter</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Valideur</label>
+                <airsfield>GEN_DOC_VALIDEUR</airsfield>
+                <initial-value></initial-value>
+                <availableValues-filter-scriptId>validator_elementFilter</availableValues-filter-scriptId>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Etat du document </label>
+                <airsfield>GEN_DOC_STATUS</airsfield>
+                <initial-value>829</initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Visibilité du document</label>
+                <airsfield>GEN_DOC_VISIB</airsfield>
+                <initial-value>902</initial-value>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOC" type="update" auiAsSecretLevel="" visibleInCreation="true" flowCode="GEN">
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Plan de classement</label>
+                <airsfield>GEN_DOS_PCLASS</airsfield>
+                <initial-value></initial-value>
+                <ns2:dependInput type="MONO" fieldKey="GEN_ROOT_NOM">
+                    <ns2:scriptId>documentRanking_dependency</ns2:scriptId>
+                </ns2:dependInput>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>DosChamp1</label>
+                <airsfield>GEN_DOS_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Type de document</label>
+                <airsfield>GEN_DOC_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocChamp1</label>
+                <airsfield>GEN_DOC_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocChamp2</label>
+                <airsfield>GEN_DOC_CH2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>DocDateInfo</label>
+                <airsfield>GEN_DOC_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input type="list" readonly="true" required="true" display="true">
+                <label>Créateur</label>
+                <airsfield>GEN_DOC_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collaborateurs</label>
+                <airsfield>GEN_DOC_COLLAB</airsfield>
+                <initial-value></initial-value>
+                <availableValues-filter-scriptId>collaborator_elementFilter</availableValues-filter-scriptId>
+            </input>
+            <input readonly="false" required="true" display="true">
+                <label>Valideur</label>
+                <airsfield>GEN_DOC_VALIDEUR</airsfield>
+                <availableValues-filter-scriptId>validator_elementFilter</availableValues-filter-scriptId>
+            </input>
+            <input readonly="true" required="true" display="true">
+                <label>Etat du document </label>
+                <airsfield>GEN_DOC_STATUS</airsfield>
+            </input>
+            <input type="list" readonly="false" required="true" display="true">
+                <label>Visibilité du document</label>
+                <airsfield>GEN_DOC_VISIB</airsfield>
+            </input>
+            <ns2:action id="GEN_validatePublication" resourceKey="action_validatePublication" displayRuleScriptId="validatePublication_VisibilityUnitView" styleClass="icon_validatePublication">
+                <ns2:groovyScriptId>validatePublication_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_outOfDate" resourceKey="action_outOfDate" displayRuleScriptId="outOfDate_VisibilityUnitView" styleClass="icon_outOfDate">
+                <ns2:groovyScriptId>outOfDate_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_invalidatePublication" resourceKey="action_invalidatePublication" displayRuleScriptId="invalidatePublication_VisibilityUnitView" styleClass="icon_invalidatePublication">
+                <ns2:groovyScriptId>invalidatePublication_ActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>GEN_CommentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_collabEnd" resourceKey="action_collabEnd" displayRuleScriptId="collabEnd_VisibilityUnitView" styleClass="icon_collabEnd">
+                <ns2:groovyScriptId>collabEnd_ActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>GEN_CommentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_askForPublication" resourceKey="action_askForPublication" displayRuleScriptId="askForPublication_VisibilityUnitView" styleClass="icon_askForPublication">
+                <ns2:groovyScriptId>askForPublication_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_delete" resourceKey="action_delete_document" displayRuleScriptId="delete_VisibilityUnitView" styleClass="icon_delete">
+                <ns2:groovyScriptId>delete_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_restore" resourceKey="action_restore" displayRuleScriptId="restore_VisibilityUnitView" styleClass="icon_restore">
+                <ns2:groovyScriptId>restore_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+        </contentType>
+        <contentType name="GEN_DOC" type="read" visibleInCreation="true" flowCode="GEN">
+            <input readonly="false" required="false" display="true">
+                <label>Nom du classeur</label>
+                <airsfield>GEN_ROOT_NOM</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>RChamp1</label>
+                <airsfield>GEN_ROOT_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Plan de classement</label>
+                <airsfield>GEN_DOS_PCLASS</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DosChamp1</label>
+                <airsfield>GEN_DOS_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Type de document</label>
+                <airsfield>GEN_DOC_TYPE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocChamp1</label>
+                <airsfield>GEN_DOC_CH1</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocChamp2</label>
+                <airsfield>GEN_DOC_CH2</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>DocDateInfo</label>
+                <airsfield>GEN_DOC_DATE</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Créateur</label>
+                <airsfield>GEN_DOC_CREAT</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Collaborateurs</label>
+                <airsfield>GEN_DOC_COLLAB</airsfield>
+                <initial-value></initial-value>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Valideur</label>
+                <airsfield>GEN_DOC_VALIDEUR</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Etat du document </label>
+                <airsfield>GEN_DOC_STATUS</airsfield>
+            </input>
+            <input readonly="false" required="false" display="true">
+                <label>Visibilité du document</label>
+                <airsfield>GEN_DOC_VISIB</airsfield>
+            </input>
+            <ns2:action id="GEN_validatePublication" resourceKey="action_validatePublication" displayRuleScriptId="validatePublication_VisibilityUnitView" styleClass="icon_validatePublication">
+                <ns2:groovyScriptId>validatePublication_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_outOfDate" resourceKey="action_outOfDate" displayRuleScriptId="outOfDate_VisibilityUnitView" styleClass="icon_outOfDate">
+                <ns2:groovyScriptId>outOfDate_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_invalidatePublication" resourceKey="action_invalidatePublication" displayRuleScriptId="invalidatePublication_VisibilityUnitView" styleClass="icon_invalidatePublication">
+                <ns2:groovyScriptId>invalidatePublication_ActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>GEN_CommentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_collabEnd" resourceKey="action_collabEnd" displayRuleScriptId="collabEnd_VisibilityUnitView" styleClass="icon_collabEnd">
+                <ns2:groovyScriptId>collabEnd_ActionUnitView</ns2:groovyScriptId>
+                <ns2:modalPanelPageKey>GEN_CommentPanel</ns2:modalPanelPageKey>
+                <ns2:modalPanelInitGroovyScriptId>initCommentPanel</ns2:modalPanelInitGroovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_askForPublication" resourceKey="action_askForPublication" displayRuleScriptId="askForPublication_VisibilityUnitView" styleClass="icon_askForPublication">
+                <ns2:groovyScriptId>askForPublication_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_delete" resourceKey="action_delete_document" displayRuleScriptId="delete_VisibilityUnitView" styleClass="icon_delete">
+                <ns2:groovyScriptId>delete_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action id="GEN_restore" resourceKey="action_restore" displayRuleScriptId="restore_VisibilityUnitView" styleClass="icon_restore">
+                <ns2:groovyScriptId>restore_ActionUnitView</ns2:groovyScriptId>
+            </ns2:action>
+            <docActions-scriptId></docActions-scriptId>
+        </contentType>
+        <contentType name="GF_PES_EXE" type="read" visibleInCreation="true"/>
+        <contentType name="GF_PES_EXE" type="update" visibleInCreation="true"/>
+        <contentType name="GF_PES_EXE" type="insert" visibleInCreation="true"/>
+        <contentType name="GF_PES_EXE" type="index" visibleInCreation="true"/>
+        <contentType name="GF_PES" type="index" visibleInCreation="true"/>
+        <contentType name="GF_MARCHE" type="index" visibleInCreation="true"/>
+        <contentType name="GF_TIERS" type="index" visibleInCreation="true"/>
+        <contentType name="GF_MOUVEMENT" type="index" visibleInCreation="true"/>
+        <contentType name="GF_PIECE_JOINTE" type="index" visibleInCreation="true"/>
+        <contentType name="COU_COURRIER_OUT" type="index" visibleInCreation="true"/>
+        <contentType name="COU_REPONSE" type="index" visibleInCreation="true"/>
+        <contentType name="GEN_DOC" type="index" visibleInCreation="true"/>
+        <contentType name="GEN_DOS" type="index" visibleInCreation="true"/>
+        <contentType name="GEN_ROOT" type="index" visibleInCreation="true"/>
+        <contentType name="RH_DOCUMENT_EXTERNE" type="index" visibleInCreation="true"/>
+        <contentType name="RH_AGENT" type="index" visibleInCreation="true"/>
+    </organization>
+</formulaire>

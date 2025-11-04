@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<preference xmlns="http://www.digitech.com/dossiers/preference" xmlns:ns2="http://www.digitech.com/dossiers/common"
+   customerName="CIRIL" version="6.0.0">
+   <organization id="0" name="DEFAULT" copyRefButton="0" numberOfHomeBasketRow="15" creationMode="ADVANCED"
+      defaultAttachmentType="COU_RECU">
+      <reporting>
+		    <file value="courrier_in_suivi.rptdesign" titre="Suivi des courriers entrants"/>
+            <file value="courrier_in_retard.rptdesign" titre="Suivi des courriers en retard"/>
+        </reporting>
+      <contentType name="COU_COURRIER_IN">
+         <displayPJ>VERTICAL_RIGHT</displayPJ>
+         <advancedAudit>
+            <activatedAudit>ADV_EVENT_DOC_CREATE</activatedAudit>
+            <activatedAudit>ADV_EVENT_DOC_DELETE</activatedAudit>
+            <activatedAudit>ADV_EVENT_DOC_LOCK</activatedAudit>
+            <activatedAudit>ADV_EVENT_ATTACHMENT_UPDATE</activatedAudit>
+            <activatedAudit>ADV_EVENT_ATTACHMENT_INSERT</activatedAudit>
+            <activatedAudit>ADV_EVENT_ATTACHMENT_DELETE</activatedAudit>
+            <activatedAudit>ADV_EVENT_COMMENT</activatedAudit>
+         </advancedAudit>
+         <multipleCreationEnable>ENABLE</multipleCreationEnable>
+      </contentType>
+   </organization>
+</preference>

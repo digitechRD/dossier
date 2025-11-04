@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:formulaire xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/update" version="6.0.5.1" customerName="LAPROVENCE">
+    <ns2:organization name="DEFAULT" id="0">
+        <ns2:contentType name="D_DOS_FOUR" type="update" visibleInCreation="true">
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Nom fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_NOM</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Numéro SIRET</ns2:label>
+                <ns2:airsfield>FOUR_SIRET</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="D_DOC_FAC" type="update" visibleInCreation="true">
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro facture</ns2:label>
+                <ns2:airsfield>FAC_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date facture</ns2:label>
+                <ns2:airsfield>FAC_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Date Num.</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date de compta.</ns2:label>
+                <ns2:airsfield>FAC_DATE_COMPTA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date d'échéance</ns2:label>
+                <ns2:airsfield>FAC_DATE_ECHEA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date de validation</ns2:label>
+                <ns2:airsfield>FAC_DATE_VALID</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>FAC_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>TVA Globale</ns2:label>
+                <ns2:airsfield>FAC_TVA_TOTAL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 2.10</ns2:label>
+                <ns2:airsfield>FAC_TVA_2_10</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 5.5</ns2:label>
+                <ns2:airsfield>FAC_TVA_5_5</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 7</ns2:label>
+                <ns2:airsfield>FAC_TVA_7</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 13.8</ns2:label>
+                <ns2:airsfield>FAC_TVA_13_8</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 19.6</ns2:label>
+                <ns2:airsfield>FAC_TVA_19_6</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>FAC_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>FAC_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>EMETTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Société</ns2:label>
+                <ns2:airsfield>SOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat facture</ns2:label>
+                <ns2:airsfield>FAC_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+ 		  <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Assistant</ns2:label>
+                <ns2:airsfield>FAC_TRAIT1</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur</ns2:label>
+                <ns2:airsfield>FAC_VALID1</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <!--<ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>-->
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur Niv. 1 (2)</ns2:label>
+                <ns2:airsfield>FAC_VALID12</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <!--<ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>-->
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <!--<ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur Niv.2</ns2:label>
+                <ns2:airsfield>FAC_VALID2</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>   -->
+            <scriptedAction type="before" groovyScriptId="onSaveFacBefore" airsRight="" id="onSaveFacBefore">
+                <application>onSave</application>
+            </scriptedAction>
+            <scriptedAction type="before" groovyScriptId="onSubmitTaskScriptBefore" airsRight="" id="onSubmitTaskScript">
+                <application>onSubmitTask</application>
+            </scriptedAction>
+            <scriptedAction type="after" groovyScriptId="onSubmitTaskScriptAfter" airsRight="" id="onSubmitTaskScriptAfter">
+                <application>onSubmitTask</application>
+            </scriptedAction>
+            <scriptedAction type="before" groovyScriptId="onDeleteFacBefore" airsRight="" id="onDeleteFacBefore">
+                <application>onDelete</application>
+            </scriptedAction>
+        </ns2:contentType>
+        <ns2:contentType name="D_DOC_FAC" type="insert" visibleInCreation="true">
+            <ns2:input type="" readonly="false" required="true" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+                <ns2:initial-value>XXCONTRAT</ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="true" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>FAC_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value>502</ns2:initial-value>
+            </ns2:input>
+            <scriptedAction type="before" groovyScriptId="verifyTypeDoc_beforeCreate" airsRight="" id="verifyTypeDocBeforeCreate">
+                <application>onSave</application>
+            </scriptedAction>
+        </ns2:contentType>
+        <ns2:contentType name="D_DOC_ENG" type="update" visibleInCreation="true">
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>ENG_LIBEL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date engagement</ns2:label>
+                <ns2:airsfield>ENG_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>ENG_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>ENG_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>ENG_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>EMETTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Société</ns2:label>
+                <ns2:airsfield>SOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat engagement</ns2:label>
+                <ns2:airsfield>ENG_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Verrouillé</ns2:label>
+                <ns2:airsfield>ENG_VERROU</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+        </ns2:contentType>
+       <!-- <ns2:contentType name="D_DOC_ENG" type="insert" visibleInCreation="true">
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>ENG_LIBEL</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date engagement</ns2:label>
+                <ns2:airsfield>ENG_DATE</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>ENG_HT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>ENG_TTC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>ENG_TYPE_DOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>EMETTEUR</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Société</ns2:label>
+                <ns2:airsfield>SOC</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat engagement</ns2:label>
+                <ns2:airsfield>ENG_ETAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Verrouillé</ns2:label>
+                <ns2:airsfield>ENG_VERROU</ns2:airsfield>
+            </ns2:input>
+        </ns2:contentType>     -->
+    </ns2:organization>
+      <ns2:organization name="ADMIN" id="24">
+        <ns2:contentType name="D_DOS_FOUR" type="update" visibleInCreation="true">
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Nom fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_NOM</ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Numéro SIRET</ns2:label>
+                <ns2:airsfield>FOUR_SIRET</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="D_DOC_FAC" type="update" visibleInCreation="true">
+	     <ns2:input type="secretLevel" display="true">
+                <ns2:label>Niveau de secret</ns2:label>
+                <ns2:airsfield></ns2:airsfield>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro facture</ns2:label>
+                <ns2:airsfield>FAC_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date facture</ns2:label>
+                <ns2:airsfield>FAC_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="true" required="false" display="true">
+                <ns2:label>Date Num.</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date de compta.</ns2:label>
+                <ns2:airsfield>FAC_DATE_COMPTA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date d'échéance</ns2:label>
+                <ns2:airsfield>FAC_DATE_ECHEA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date de validation</ns2:label>
+                <ns2:airsfield>FAC_DATE_VALID</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>FAC_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>TVA Globale</ns2:label>
+                <ns2:airsfield>FAC_TVA_TOTAL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 2.10</ns2:label>
+                <ns2:airsfield>FAC_TVA_2_10</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 5.5</ns2:label>
+                <ns2:airsfield>FAC_TVA_5_5</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 7</ns2:label>
+                <ns2:airsfield>FAC_TVA_7</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 13.8</ns2:label>
+                <ns2:airsfield>FAC_TVA_13_8</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="false">
+                <ns2:label>Montant TVA 19.6</ns2:label>
+                <ns2:airsfield>FAC_TVA_19_6</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>FAC_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>FAC_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>EMETTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Société</ns2:label>
+                <ns2:airsfield>SOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat facture</ns2:label>
+                <ns2:airsfield>FAC_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+  		  <!--<ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>-->
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Assistant</ns2:label>
+                <ns2:airsfield>FAC_TRAIT1</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur</ns2:label>
+                <ns2:airsfield>FAC_VALID1</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <!--<ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>-->
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur Niv. 1 (2)</ns2:label>
+                <ns2:airsfield>FAC_VALID12</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <!--<ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>-->
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Valideur Niv.2</ns2:label>
+                <ns2:airsfield>FAC_VALID2</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <!--<ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>-->
+                <ns2:field-properties-scriptId>facture_init_readOnlyAAC</ns2:field-properties-scriptId>
+            </ns2:input>
+            <scriptedAction type="before" groovyScriptId="onSaveFacBefore" airsRight="" id="onSaveFacBefore">
+                <application>onSave</application>
+            </scriptedAction>
+            <scriptedAction type="before" groovyScriptId="onSubmitTaskScriptBefore" airsRight="" id="onSubmitTaskScript">
+                <application>onSubmitTask</application>
+            </scriptedAction>
+            <scriptedAction type="after" groovyScriptId="onSubmitTaskScriptAfter" airsRight="" id="onSubmitTaskScriptAfter">
+                <application>onSubmitTask</application>
+            </scriptedAction>
+            <scriptedAction type="before" groovyScriptId="onDeleteFacBefore" airsRight="" id="onDeleteFacBefore">
+                <application>onDelete</application>
+            </scriptedAction>
+        </ns2:contentType>
+        <ns2:contentType name="D_DOC_FAC" type="insert" visibleInCreation="true">
+            <ns2:input type="" readonly="false" required="true" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+                <ns2:initial-value>XXCONTRAT</ns2:initial-value>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="true" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>FAC_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value>502</ns2:initial-value>
+            </ns2:input>
+            <scriptedAction type="before" groovyScriptId="verifyTypeDoc_beforeCreate" airsRight="" id="verifyTypeDocBeforeCreate">
+                <application>onSave</application>
+            </scriptedAction>
+        </ns2:contentType>
+        <ns2:contentType name="D_DOC_ENG" type="update" visibleInCreation="true">
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Matricule fournisseur</ns2:label>
+                <ns2:airsfield>FOUR_MAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>ENG_LIBEL</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Numéro engagement</ns2:label>
+                <ns2:airsfield>ENG_NUM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Date engagement</ns2:label>
+                <ns2:airsfield>ENG_DATE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant HT</ns2:label>
+                <ns2:airsfield>ENG_HT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Montant TTC</ns2:label>
+                <ns2:airsfield>ENG_TTC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>ENG_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="" readonly="false" required="false" display="true">
+                <ns2:label>Emetteur</ns2:label>
+                <ns2:airsfield>EMETTEUR</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Société</ns2:label>
+                <ns2:airsfield>SOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Etat engagement</ns2:label>
+                <ns2:airsfield>ENG_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+            <ns2:input type="list" readonly="false" required="false" display="true">
+                <ns2:label>Verrouillé</ns2:label>
+                <ns2:airsfield>ENG_VERROU</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+                <ns2:field-properties-scriptId>facture_init_readOnlyA</ns2:field-properties-scriptId>
+            </ns2:input>
+        </ns2:contentType>
+    </ns2:organization>
+</ns2:formulaire>

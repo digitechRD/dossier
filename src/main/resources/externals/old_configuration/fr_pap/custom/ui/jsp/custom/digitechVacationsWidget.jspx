@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:panelGroup layout="block" styleClass="row container-fluid px-0 d-flex justify-content-center h-100">
+    <h:panelGroup layout="block" styleClass="card w-100 h-100 border-0">
+
+      <c:if test="#{empty item.groovyResults['occupations']}">
+        <h:outputText value="#{MessageBundleModel.home_chart_no_data}"
+                      styleClass="description row alert alert-info alert-message justify-content-center mt-2 text-center"/>
+      </c:if>
+
+      <c:if test="#{not empty item.groovyResults['occupations']}">
+
+        <script type="text/javascript" src="#{ScriptBundleModel.charts}"/>
+
+        <h:selectOneMenu id="rangePeriods#{item.cleanedId}"
+                         value="#{item.userParamsWrapper['rangeDate']}"
+                         styleClass="form-control form-control-sm small xs-small ml-auto py-0 mr-1 mt-0 max-w-200px"
+                         title="Période">
+          <f:selectItems value="#{item.groovyResults['rangeOptions']}"/>
+          <a4j:support event="onchange" ajaxSingle="true" ignoreDupResponses="true" oncomplete="refreshAsynchronousBlocks()"
+                       reRender="notifications, result#{item.cleanedId}Panel" action="#{item.refreshAndSave}"/>
+        </h:selectOneMenu>
+
+        <!-- Zone du graphique -->
+        <h:panelGroup layout="block" styleClass="chartPanelHtml">
+          <h:outputText value="PLANNING"
+                        styleClass="description row alert alert-info alert-message justify-content-center mt-2 text-center"/>
+          <div id="#{item.cleanedId}OccupationChart" style="width: 100%;height:100%"></div>
+        </h:panelGroup>
+
+        <!-- @formatter:off -->
+        <script type="text/javascript">
+          // Fonction pour debugger les données Groovy
+          function debugGroovyData#{item.cleanedId}() {
+            console.log('=== DONNÉES GROOVY - TIMELINE NAVIRES ===');
+            console.log('ID du widget:', '#{item.cleanedId}');
+
+            // Récupération des données depuis le serveur - avec vérification
+            var xCategoriesData = [];
+            var yCategoriesData = [];
+            // var occupationsData = [];
+            var lengthsData = [];
+            var offsetsData = [];
+            try {
+              xCategoriesData = #{not empty item.groovyResults['XCategories'] ? item.groovyResults['XCategories'] : '[]'};
+              yCategoriesData = #{not empty item.groovyResults['YCategories'] ? item.groovyResults['YCategories'] : '[]'};
+              // var occupationsData = #{not empty item.groovyResults['occupations'] ? item.groovyResults['occupations'] : '[]'};
+              lengthsData = #{not empty item.groovyResults['OccupationLengths'] ? item.groovyResults['OccupationLengths'] : '[]'};
+              offsetsData = #{not empty item.groovyResults['OccupationOffsets'] ? item.groovyResults['OccupationOffsets'] : '[]'};
+
+              console.log('Données brutes récupérées avec succès');
+            } catch (e) {
+              console.error('Erreur lors de la récupération des données:', e);
+              // Valeurs par défaut en cas d'erreur
+            }
+
+            console.log('Type de xCategoriesData:', typeof xCategoriesData, Array.isArray(xCategoriesData) ? '(Array)' : '(Not Array)');
+            console.log('Type de yCategoriesData:', typeof yCategoriesData, Array.isArray(yCategoriesData) ? '(Array)' : '(Not Array)');
+            // console.log('Type de occupationsData:', typeof occupationsData, Array.isArray(occupationsData) ? '(Array)' : '(Not Array)');
+            console.log('Type de lengthsData:', typeof lengthsData, Array.isArray(lengthsData) ? '(Array)' : '(Not Array)');
+            console.log('Type de offsetsData:', typeof offsetsData, Array.isArray(offsetsData) ? '(Array)' : '(Not Array)');
+
+            console.log('--- xCategoriesData (Dates) ---');
+            console.log('Valeur complète:', xCategoriesData);
+            if (Array.isArray(xCategoriesData)) {
+             console.log('Nombre de jours:', xCategoriesData.length);
+            }
+
+            console.log('--- yCategoriesData (Navires) ---');
+            console.log('Valeur complète:', yCategoriesData);
+            if (Array.isArray(yCategoriesData)) {
+              console.log('Nombre de navires:', yCategoriesData.length);
+            }
+
+            console.log('--- lengthsData (Longueurs) ---');
+            console.log('Valeur complète:', lengthsData);
+            if (Array.isArray(lengthsData)) {
+              console.log('Nombre de longueurs:', lengthsData.length);
+            }
+
+            console.log('--- offsetsData (Décalages) ---');
+            console.log('Valeur complète:', offsetsData);
+            if (Array.isArray(offsetsData)) {
+              console.log('Nombre de décalages:', offsetsData.length);
+            }
+
+            console.log('=== FIN DONNÉES GROOVY ===');
+
+            return {
+              xCategories: xCategoriesData,
+              yCategories: yCategoriesData,
+              // occupations: occupationsData,
+              lengths: lengthsData,
+              offsets: offsetsData
+            };
+          }
+
+          function #{item.cleanedId}initOccupationChart(dataXAxis, dataYAxis, lengths, offsets) {
+            console.log('=== INITIALISATION TIMELINE NAVIRES ===');
+
+            var itemContainer = document.getElementById('#{item.cleanedId}OccupationChart');
+            if (!itemContainer) {
+              console.error('Container not found (id=#{item.cleanedId}OccupationChart)');
+              return;
+            }
+
+            if (itemContainer.offsetWidth &lt;= 0 || itemContainer.offsetHeight &lt;= 0) {
+              console.warn('Container pas encore prêt, dimensions invalides');
+              return;
+            }
+
+            try {
+              var occupationChart = echarts.init(itemContainer);
+              console.log('Graphique ECharts initialisé');
+            } catch (e) {
+              console.error('Erreur ECharts:', e);
+              return;
+            }
+
+            // Vérification et conversion des données
+            var validLengths = Array.isArray(lengths) ? lengths : [];
+            var validOffsets = Array.isArray(offsets) ? offsets : [];
+            var validYAxis = Array.isArray(dataYAxis) ? dataYAxis : [];
+            var validXAxis = Array.isArray(dataXAxis) ? dataXAxis : [];
+
+            // Préparation des données pour le graphique
+            var seriesData = [
+              {
+                name: 'Offset',
+                type: 'bar',
+                stack: 'Total',
+                silent: true,
+                  itemStyle: {
+                  borderColor: 'transparent',
+                  color: 'transparent'
+                },
+                emphasis: {
+                  itemStyle: {
+                    borderColor: 'transparent',
+                    color: 'transparent'
+                  }
+                },
+                data: validOffsets
+              },
+              {
+                name: 'Occupation',
+                type: 'bar',
+                stack: 'Total',
+                itemStyle: {
+                borderColor: 'transparent',
+                color: '#5470c6'
+              },
+              label: {
+                show: true,
+                fontSize: 10,
+                fontStyle: 'italic',
+                formatter: function (params) {
+                  if (params.value > 0 &amp;&amp; validYAxis[params.dataIndex]) {
+                    return validYAxis[params.dataIndex][0];
+                  }
+                  return '';
+                }
+              },
+              data: validLengths
+              }
+            ];
+
+            var options = {
+              animationDuration: 400,
+              animation: true,
+              title: {
+                text: '',
+                show: true,
+                left: 'center',
+                textStyle: {
+                fontSize: 16,
+                fontWeight: 'bold'
+              }
+            },
+            dataZoom: [
+            {
+              type: 'slider',
+              xAxisIndex: 0,
+              filterMode: 'filter',
+              height: 16,
+              bottom: 4,
+              start: 0,
+              end: 100,
+              handleSize: '80%',
+              showDetail: false
+            }
+            ],
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              },
+              formatter: function (params) {
+                var occupationParam = params[1];
+                if (occupationParam &amp;&amp; occupationParam.value > 0) {
+                  var navireName = validYAxis[occupationParam.dataIndex] ? validYAxis[occupationParam.dataIndex][0] : 'Inconnu';
+                  var startOffset = validOffsets[occupationParam.dataIndex] || 0;
+                  var startDate = validXAxis[Math.floor(startOffset)] || 'Date inconnue';
+                  var duration = validLengths[occupationParam.dataIndex] || 0;
+                  var endDateIndex = Math.floor(startOffset + duration - 1);
+                  var endDate = validXAxis[endDateIndex >= validXAxis.length ? validXAxis.length - 1 : endDateIndex] || 'Date inconnue';
+
+                  return navireName + '&lt;br/>' +
+                  'Du: ' + startDate + '&lt;br/>' +
+                  'Au: ' + endDate + '&lt;br/>' +
+                  'Durée: ' + duration + ' jours';
+                }
+                return '';
+              }
+            },
+            grid: {
+              top: 60,
+              left: 5,
+              right: 25,
+              bottom: 40,
+              containLabel: true
+            },
+            xAxis: {
+				type: 'value',
+                axisTick: {
+                  show: true,
+                  alignWithLabel: true
+                },
+                axisLabel: {
+                  show: false 
+				  //formatter: function (value, index) {
+                  //  return dataXAxis[index];
+                  //},
+                  //align: 'left'
+                }
+            },
+            yAxis: {
+              type: 'category',
+              axisTick: { show: false },
+              splitLine: { show: false },
+              axisLine: { show: false },
+              axisLabel: {
+                show: true,
+                fontSize: 10
+              },
+              data: validYAxis.map(function(y) { return y ? y[0] : ''; })
+            },
+            series: seriesData
+            };
+
+            try {
+              occupationChart.setOption(options);
+              console.log('Options appliquées avec succès');
+            } catch (e) {
+              console.error('Erreur setOption:', e);
+            }
+            return occupationChart;
+          }
+
+          // Initialisation
+          $jQ(document).ready(function () {
+            console.log('Document ready pour timeline navires #{item.cleanedId}');
+
+            try {
+              var groovyData = debugGroovyData#{item.cleanedId}();
+              console.log('&lt;&lt;&lt; debugGroovyData');
+
+              var occupationChart = #{item.cleanedId}initOccupationChart(
+                  groovyData.xCategories,
+                  groovyData.yCategories,
+                  groovyData.lengths,
+                  groovyData.offsets
+              );
+
+              console.log('&lt;&lt;&lt; initOccupationChart');
+
+              if (occupationChart) {
+                window.addEventListener('resize', function () {
+                  occupationChart.resize();
+                });
+
+                if (typeof initResizeObserver4Chart === 'function') {
+                  initResizeObserver4Chart('contentForm:custom_#{item.cleanedId}Panel', occupationChart);
+                }
+              }
+            } catch (err) {
+              console.error('Erreur lors de l\'initialisation:', err);
+            }
+          });
+        </script>
+        <!-- @formatter:on -->
+      </c:if>
+    </h:panelGroup>
+  </h:panelGroup>
+
+</ui:composition>

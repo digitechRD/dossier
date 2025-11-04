@@ -1,0 +1,1032 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common"
+            xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="6.2" customerName="CIRIL">
+    <organization name="DEFAULT" id="0">
+        <globalSearch>
+            <ns2:dossierrequest name="Num Chrono">
+                <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+                <ns2:airsvalue>N_CHRONO="#VALUE#" OU C_OBJET="+#VALUE#+"</ns2:airsvalue>
+            </ns2:dossierrequest>
+            <flowCode>COURRIER</flowCode>
+        </globalSearch>
+        <globalSearch>
+            <ns2:dossierrequest name="Recherche de PES sur l'exercice comptable">
+                <ns2:contentType>GF_PES</ns2:contentType>
+                <ns2:airsvalue>GF_PES_EXE=&amp;quot;#VALUE#&amp;quot;</ns2:airsvalue>
+            </ns2:dossierrequest>
+            <flowCode>GF_PES</flowCode>
+        </globalSearch>
+        <globalSearch>
+            <ns2:dossierrequest name="Recherche de tiers par le nom">
+                <ns2:contentType>GF_TIERS</ns2:contentType>
+                <ns2:airsvalue>GF_TI_NOMTIE="#VALUE#"</ns2:airsvalue>
+            </ns2:dossierrequest>
+            <flowCode>GF_TIERS</flowCode>
+        </globalSearch>
+        <globalSearch>
+            <ns2:dossierrequest name="Recherche sur GEN_DOC">
+                <ns2:contentType>GEN_DOC</ns2:contentType>
+                <ns2:airsvalue>GEN_DOS_CH1="+#VALUE#+"</ns2:airsvalue>
+            </ns2:dossierrequest>
+            <flowCode>GEN</flowCode>
+        </globalSearch>
+        <globalSearch>
+            <ns2:dossierrequest name="Recherche sur RH_AGENT">
+                <ns2:contentType>RH_AGENT</ns2:contentType>
+                <ns2:airsvalue>RH_NOMUSA="#VALUE#" OR RH_NOMPAT="#VALUE#" OR RH_PRENOM="#VALUE#" OR RH_MATRICULE="#VALUE#"</ns2:airsvalue>
+            </ns2:dossierrequest>
+            <flowCode>RH_AGENT</flowCode>
+        </globalSearch>
+        <contentType name="COU_COURRIER_IN" selected="true">
+            <input main="true">
+                <operator>=</operator>
+                <label>Numéro chrono</label>
+                <airsfield>
+                    <codeField>N_CHRONO</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Type</label>
+                <airsfield>
+                    <codeField>T_TYPE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Priorité</label>
+                <airsfield>
+                    <codeField>T_PRIORITE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date du courrier</label>
+                <airsfield>
+                    <codeField>D_COURRIER</codeField>
+                </airsfield>
+                <format>dd/MM/yyyy</format>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de réception</label>
+                <airsfield>
+                    <codeField>D_RECEPTION</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date d'échéance</label>
+                <airsfield>
+                    <codeField>D_ECHEANCE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <airsProfiles>12</airsProfiles>
+                <airsProfilesCode>DOS_DIRECTION</airsProfilesCode>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Emetteur</label>
+                <airsfield>
+                    <codeField>C_EMETTEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>correspondent</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nature</label>
+                <airsfield>
+                    <codeField>T_NATURE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Objet</label>
+                <airsfield>
+                    <codeField>C_OBJET</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Contenu des documents</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT" selected="true">
+            <input main="true">
+                <operator>=</operator>
+                <label>Numéro chrono</label>
+                <airsfield>
+                    <codeField>N_CHRONO</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Type</label>
+                <airsfield>
+                    <codeField>T_TYPE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Priorité</label>
+                <airsfield>
+                    <codeField>T_PRIORITE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date du courrier</label>
+                <airsfield>
+                    <codeField>D_COURRIER</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date d'échéance</label>
+                <airsfield>
+                    <codeField>D_ECHEANCE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <airsProfiles>12</airsProfiles>
+                <airsProfilesCode>DOS_DIRECTION</airsProfilesCode>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Emetteur</label>
+                <airsfield>
+                    <codeField>C_EMETTEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>correspondent</type>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Destinataire</label>
+                <airsfield>
+                    <codeField>C_DESTINATAIRE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>correspondent</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nature</label>
+                <airsfield>
+                    <codeField>T_NATURE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Objet</label>
+                <airsfield>
+                    <codeField>C_OBJET</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Contenu des documents</label>
+                <airsfield>
+                    <codeField>DOCS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GF_TIERS" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro du tiers</label>
+                <airsfield>
+                    <codeField>GF_TI_NUMTIE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du tiers</label>
+                <airsfield>
+                    <codeField>GF_TI_NOMTIE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GF_MOUVEMENT" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Type de mouvement</label>
+                <airsfield>
+                    <codeField>GF_MV_TYPE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro du tiers</label>
+                <airsfield>
+                    <codeField>GF_TI_NUMTIE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du tiers</label>
+                <airsfield>
+                    <codeField>GF_TI_NOMTIE</codeField>
+                    <parentContentType>GF_TIERS</parentContentType>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Identifiant du mouvement</label>
+                <airsfield>
+                    <codeField>GF_MV_ID</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Libellé</label>
+                <airsfield>
+                    <codeField>GF_MV_LIBMVT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Marché</label>
+                <airsfield>
+                    <codeField>GF_MA_NUMMAR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro de la subvention</label>
+                <airsfield>
+                    <codeField>GF_MV_SUB</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nature comptable</label>
+                <airsfield>
+                    <codeField>GF_MV_NATURE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date du mouvement</label>
+                <airsfield>
+                    <codeField>GF_MV_DATE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Exercice</label>
+                <airsfield>
+                    <codeField>GF_PES_EXE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Collectivité</label>
+                <airsfield>
+                    <codeField>GF_MA_LIBCOL</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Budget</label>
+                <airsfield>
+                    <codeField>GF_PES_BUD</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GF_MARCHE" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro de marché</label>
+                <airsfield>
+                    <codeField>GF_MA_NUMMAR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Libellé du marché</label>
+                <airsfield>
+                    <codeField>GF_MA_LIBMAR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Date de notification</label>
+                <airsfield>
+                    <codeField>GF_MA_DATNOT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Collectivité</label>
+                <airsfield>
+                    <codeField>GF_MA_LIBCOL</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GF_PIECE_JOINTE" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Id pièce jointe</label>
+                <airsfield>
+                    <codeField>GF_PJ_ID</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom</label>
+                <airsfield>
+                    <codeField>GF_PJ_NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date</label>
+                <airsfield>
+                    <codeField>GF_PJ_DATE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro du tiers</label>
+                <airsfield>
+                    <codeField>GF_TI_NUMTIE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro de marché</label>
+                <airsfield>
+                    <codeField>GF_MA_NUMMAR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Id mouvement</label>
+                <airsfield>
+                    <codeField>GF_MV_ID</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GF_PES" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Budget</label>
+                <airsfield>
+                    <codeField>GF_PES_BUD</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Exercice comptable</label>
+                <airsfield>
+                    <codeField>GF_PES_EXE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Type</label>
+                <airsfield>
+                    <codeField>GF_PES_TYPE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+                <type>suggestion</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Sens</label>
+                <airsfield>
+                    <codeField>GF_PES_SENS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du fichier</label>
+                <airsfield>
+                    <codeField>GF_PES_NOMFIC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="RH_AGENT" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <airsfield>
+                    <codeField>RH_MATRICULE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <airsfield>
+                    <codeField>RH_PRENOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <airsfield>
+                    <codeField>RH_NOMUSA</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <airsfield>
+                    <codeField>RH_NOMPAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="RH_DOCUMENT_EXTERNE" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Matricule</label>
+                <airsfield>
+                    <codeField>RH_MATRICULE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Prénom</label>
+                <airsfield>
+                    <codeField>RH_PRENOM</codeField>
+                    <parentContentType>RH_AGENT</parentContentType>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom d'usage</label>
+                <airsfield>
+                    <codeField>RH_NOMUSA</codeField>
+                    <parentContentType>RH_AGENT</parentContentType>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du document</label>
+                <airsfield>
+                    <codeField>RH_NOMDOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&lt;</operator>
+                <operator>&gt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de début de validité</label>
+                <airsfield>
+                    <codeField>RH_DATDEB</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&lt;</operator>
+                <operator>&gt;</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de fin de validité</label>
+                <airsfield>
+                    <codeField>RH_DATFIN</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <airsfield>
+                    <codeField>RH_CATEGORIE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>suggestion</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Sous-catégorie du document</label>
+                <airsfield>
+                    <codeField>RH_SOUS_CATEGORIE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>suggestion</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Type de document</label>
+                <airsfield>
+                    <codeField>RH_TYPEDOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>suggestion</type>
+            </input>
+        </contentType>
+        <contentType name="GEN_ROOT" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du classeur</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>RChamp1</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_CH1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>RChamp2</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_CH2</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOS" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du classeur</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>RChamp1</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_CH1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Plan de classement</label>
+                <airsfield>
+                    <codeField>GEN_DOS_PCLASS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>DosChamp1</label>
+                <airsfield>
+                    <codeField>GEN_DOS_CH1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>DosChamp2</label>
+                <airsfield>
+                    <codeField>GEN_DOS_CH2</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="GEN_DOC" selected="false">
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom du classeur</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>RChamp1</label>
+                <airsfield>
+                    <codeField>GEN_ROOT_CH1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Plan de classement</label>
+                <airsfield>
+                    <codeField>GEN_DOS_PCLASS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>DosChamp1</label>
+                <airsfield>
+                    <codeField>GEN_DOS_CH1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Type de document</label>
+                <airsfield>
+                    <codeField>GEN_DOC_TYPE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>DocChamp1</label>
+                <airsfield>
+                    <codeField>GEN_DOC_CH1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>DocChamp2</label>
+                <airsfield>
+                    <codeField>GEN_DOC_CH2</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <operator>{}</operator>
+                <label>DocDateInfo</label>
+                <airsfield>
+                    <codeField>GEN_DOC_DATE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Créateur</label>
+                <airsfield>
+                    <codeField>GEN_DOC_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Collaborateurs</label>
+                <airsfield>
+                    <codeField>GEN_DOC_COLLAB</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Valideur</label>
+                <airsfield>
+                    <codeField>GEN_DOC_VALIDEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Etat du document </label>
+                <airsfield>
+                    <codeField>GEN_DOC_STATUS</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+        </contentType>
+    </organization>
+</searchForm>

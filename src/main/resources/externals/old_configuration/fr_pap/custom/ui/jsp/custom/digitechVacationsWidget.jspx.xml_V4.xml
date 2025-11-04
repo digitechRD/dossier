@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/2002/08/xhtml/xhtml1-transitional.xsd"
+                xmlns:c="http://java.sun.com/jstl/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:panelGroup layout="block" styleClass="row container-fluid px-0 d-flex justify-content-center h-100">
+    <h:panelGroup layout="block" styleClass="card w-100 h-100 border-0">
+      <c:if test="#{empty item.groovyResults['occupations']}">
+        <h:outputText value="#{MessageBundleModel.home_chart_no_data}"
+                      styleClass="description row alert alert-info alert-message justify-content-center mt-2 text-center"/>
+      </c:if>
+      <c:if test="#{not empty item.groovyResults['occupations']}">
+        <script type="text/javascript" src="#{ScriptBundleModel.charts}">
+			console.log('=== DÉBUT INITIALISATION GRAPHIQUE ===');
+            console.log('ID du graphique:', '#{item.cleanedId}');
+            console.log('xCategories:', xCategories);
+            console.log('yCategories:', yCategories);
+            console.log('occupations:', occupations);
+            console.log('lengths:', lengths);
+            console.log('offsets:', offsets);
+		</script>
+        <h:selectOneMenu id="rangePeriods#{item.cleanedId}"
+                         value="#{item.userParamsWrapper['rangeDate']}"
+                         styleClass="form-control form-control-sm small xs-small ml-auto py-0 mr-1 mt-0 max-w-200px"
+                         title="Période">
+          <f:selectItems value="#{item.groovyResults['rangeOptions']}"/>
+          <a4j:support event="onchange" ajaxSingle="true" ignoreDupResponses="true" oncomplete="refreshAsynchronousBlocks()"
+                       reRender="notifications, result#{item.cleanedId}Panel" action="#{item.refreshAndSave}"/>
+        </h:selectOneMenu>
+        <!-- Zone du graphique -->
+        <h:panelGroup layout="block" styleClass="chartPanelHtml">
+          <div id="#{item.cleanedId}OccupationChart" style="width: 100%; height: 100%"></div>
+        </h:panelGroup>
+        <script type="text/javascript">
+          <![CDATA[
+          function #{item.cleanedId}initOccupationChart(xCategories, yCategories, occupations, lengths, offsets) {
+            console.log('=== DÉBUT INITIALISATION GRAPHIQUE ===');
+            console.log('ID du graphique:', '#{item.cleanedId}');
+            console.log('xCategories:', xCategories);
+            console.log('yCategories:', yCategories);
+            console.log('occupations:', occupations);
+            console.log('lengths:', lengths);
+            console.log('offsets:', offsets);
+            
+            // Log détaillé des données
+            console.log('--- Détail xCategories ---');
+            xCategories.forEach((cat, index) => console.log(`xCategories[${index}]:`, cat));
+            
+            console.log('--- Détail yCategories ---');
+            yCategories.forEach((cat, index) => console.log(`yCategories[${index}]:`, cat));
+            
+            console.log('--- Détail occupations ---');
+            occupations.forEach((occ, index) => console.log(`occupations[${index}]:`, occ));
+            
+            console.log('--- Détail lengths ---');
+            lengths.forEach((len, index) => console.log(`lengths[${index}]:`, len));
+            
+            console.log('--- Détail offsets ---');
+            offsets.forEach((off, index) => console.log(`offsets[${index}]:`, off));
+
+            var chartDom = document.getElementById('#{item.cleanedId}OccupationChart');
+            console.log('Element DOM trouvé:', chartDom);
+            
+            if (!chartDom) {
+              console.error('Container not found (id=#{item.cleanedId}OccupationChart)');
+              return;
+            }
+            
+            console.log('Dimensions du container:', {
+              width: chartDom.offsetWidth,
+              height: chartDom.offsetHeight,
+              clientWidth: chartDom.clientWidth,
+              clientHeight: chartDom.clientHeight
+            });
+            
+            if (chartDom.offsetWidth <= 0 || chartDom.offsetHeight <= 0) {
+              console.error('Container has invalid dimensions');
+              return;
+            }
+            
+            var myChart = echarts.init(chartDom);
+            console.log('Graphique ECharts initialisé:', myChart);
+
+            // Prépare les données pour le graphique
+            var seriesData = [];
+            console.log('--- Début préparation des séries ---');
+            
+            yCategories.forEach(function(yCategory, index) {
+              console.log(`Traitement yCategory[${index}]:`, yCategory);
+              
+              var shipName = yCategory[0];
+              var length = lengths[index];
+              var offset = offsets[index];
+              
+              console.log(`Données pour ${shipName}: length=${length}, offset=${offset}`);
+              
+              var data = xCategories.map(function() { return 0; });
+              var startIndex = Math.floor(offset);
+              var endIndex = Math.floor(offset + length - 1);
+              
+              console.log(`Indices calculés: start=${startIndex}, end=${endIndex}`);
+              
+              if (endIndex >= xCategories.length) {
+                console.log(`Ajustement endIndex: ${endIndex} -> ${xCategories.length - 1}`);
+                endIndex = xCategories.length - 1;
+              }
+
+              for (var i = startIndex; i <= endIndex; i++) {
+                if (i >= 0 && i < data.length) {
+                  data[i] = length;
+                  console.log(`Data[${i}] = ${length} pour ${shipName}`);
+                }
+              }
+              
+              var color = '#' + Math.floor(Math.random()*16777215).toString(16);
+              console.log(`Couleur générée pour ${shipName}: ${color}`);
+              
+              seriesData.push({
+                name: shipName,
+                type: 'bar',
+                stack: 'occupations',
+                data: data,
+                itemStyle: {
+                  color: color
+                },
+                label: {
+                  show: true,
+                  position: 'inside',
+                  formatter: function(params) {
+                    return params.value > 0 ? shipName : '';
+                  }
+                }
+              });
+              
+              console.log(`Série ajoutée pour ${shipName}:`, seriesData[seriesData.length - 1]);
+            });
+            
+            console.log('Séries finales:', seriesData);
+
+            var option = {
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: { type: 'shadow' },
+                formatter: function(params) {
+                  console.log('Tooltip déclenché:', params);
+                  var tar = params[0];
+                  var date = xCategories[tar.dataIndex];
+                  return date + '<br/>' + tar.seriesName + ' : ' + tar.value + ' jours';
+                }
+              },
+              dataZoom: [
+                {
+                  type: 'slider',
+                  xAxisIndex: 0,
+                  filterMode: 'filter',
+                  start: 0,
+                  end: 100
+                }
+              ],
+              grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '10%',
+                containLabel: true
+              },
+              xAxis: {
+                type: 'category',
+                data: xCategories,
+                axisLabel: {
+                  rotate: 45,
+                  interval: 2
+                }
+              },
+              yAxis: {
+                type: 'category',
+                data: yCategories.map(function(y) { return y[0]; })
+              },
+              series: seriesData
+            };
+            
+            console.log('Option ECharts configurée:', option);
+            
+            try {
+              myChart.setOption(option);
+              console.log('Options appliquées avec succès au graphique');
+            } catch (e) {
+              console.error('Erreur lors de l\'application des options:', e);
+            }
+            
+            window.addEventListener('resize', function() {
+              console.log('Redimensionnement de la fenêtre détecté');
+              myChart.resize();
+            });
+            
+            console.log('=== FIN INITIALISATION GRAPHIQUE ===');
+            return myChart;
+          }
+
+          jQuery(document).ready(function() {
+            console.log('Document ready - Début initialisation graphique');
+            
+            try {
+              let occupationChart = #{item.cleanedId}initOccupationChart(
+                #{item.groovyResults['XCategories']},
+                #{item.groovyResults['YCategories']},
+                #{item.groovyResults['occupations']},
+                #{item.groovyResults['OccupationLengths']},
+                #{item.groovyResults['OccupationOffsets']}
+              );
+              
+              console.log('Graphique initialisé avec succès:', occupationChart);
+            } catch (error) {
+              console.error('Erreur lors de l\'initialisation du graphique:', error);
+              console.error('Stack trace:', error.stack);
+            }
+          });
+          ]]>
+        </script>
+      </c:if>
+    </h:panelGroup>
+  </h:panelGroup>
+</ui:composition>

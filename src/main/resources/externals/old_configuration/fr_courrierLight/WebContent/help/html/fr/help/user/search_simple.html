@@ -1,0 +1,34 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+   <title>7.2.&nbsp;Recherche simple</title><link rel="stylesheet" type="text/css" href="style.css"><meta name="generator" content="DocBook XSL Stylesheets V1.76.1-RC2"><link rel="home" href="index.html" title="Manuel Utilisateur"><link rel="up" href="search.html" title="Chapitre&nbsp;7.&nbsp;Recherche"><link rel="prev" href="search_common.html" title="7.1.&nbsp;Partie commune"><link rel="next" href="search_advanced.html" title="7.3.&nbsp;Recherche avancée"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="section" title="7.2.&nbsp;Recherche simple"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="search_simple"></a>7.2.&nbsp;Recherche simple</h2></div></div></div><div class="figure"><a name="img_searchSimple"></a><p class="title"><b>Figure&nbsp;7.2.&nbsp;Recherche simple</b></p><div class="figure-contents"><div class="mediaobject"><img src="images/search03.jpg" alt="Recherche simple"></div></div></div><br class="figure-break"><p>La Recherche Simple permet de réaliser des recherches en spécifiant des valeurs pour
+            un ensemble de critères. La recherche construite est une recherche par intersection. Par
+            exemple, si l'utilisateur spécifie la valeur '15/10/1980' pour le critère <span class="guilabel">Date
+                de réception</span> et la valeur 'Interne' pour le critère
+                <span class="guilabel">Type</span>, la requête construite sera de la forme : D_RECEPTION =
+            '15/10/1980' <span class="bold"><strong>ET</strong></span> T_TYPE = 'INTERNE. </p><p>La liste déroulante <span class="guilabel">Type de Contenu</span> permet de spécifier le Type
+            de Contenu sur lequel la recherche doit être réalisée. Il est important de spécifier en
+            premier lieu le Type de Contenu car les critères de recherche affichés dépendent du Type
+            de Contenu sélectionné. </p><p>Les critères de recherche se caractérisent par : </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>un intitulé : il définit le nom du critère de recherche,</p></li><li class="listitem"><p>un opérateur : il définit le type d'opérateur à appliquer sur le critère
+                        de recherche. Selon la configuration de l'application, les opérateurs
+                        suivant peuvent être utilisés : </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p>= : permet de spécifier l'égalité, </p></li><li class="listitem"><p>&gt; : permet de spécifier la supériorité, </p></li><li class="listitem"><p>&lt; : permet de spécifier l'infériorité, </p></li><li class="listitem"><p>{} : permet de spécifier un interval de valeurs. L'interval de
+                                    valeurs peut être spécifié sur les champs de type numérique ou
+                                    de type date. </p></li><li class="listitem"><p>}{ : permet de spécifier un interval de valeurs "non compris
+                                    entre". L'interval de valeurs ainsi saisi sera exclu des
+                                    résultats de recherche. L'interval de valeurs "non compris
+                                    entre" peut être spécifié sur les champs de type numérique ou de
+                                    type date.</p></li></ul></div><p>
+                  </p></li><li class="listitem"><p>un champ de recherche : il définit la valeur du critère de
+                        recherche.</p></li></ul></div><p>
+         </p><p>Les critères de recherche affichés sont décrits au chapitre <a class="link" href="home_createDoc.html" title="5.2.&nbsp;Création de courrier">Création de courrier</a>.</p><p>Selon le type du champ de recherche, celui ci n'est pas éditable. Il faut alors
+            utiliser le "picker" de valeur : </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>picker de date : accessible en cliquant sur l'icône <span class="inlinemediaobject"><img src="images/btn_pickerDate01.jpg"></span>, permet de sélectionner une date. La date peut être
+                        saisi manuellement en respectant le format : jj/mm/aaaa. </p></li><li class="listitem"><p>picker d'organisation : accessible en cliquant sur l'icône <span class="inlinemediaobject"><img src="images/btn_pickerOrg01.jpg"></span>, permet de sélectionner une organisation (service). </p></li><li class="listitem"><p>picker d'autorité : accessible en cliquant sur l'icône <span class="inlinemediaobject"><img src="images/btn_pickerAuthority01.jpg"></span>, permet de sélectionner un élément d'une liste
+                        d'autorité. </p></li><li class="listitem"><p>picker d'utilisateur : accessible en cliquant sur l'icône <span class="inlinemediaobject"><img src="images/btn_pickerUser01.jpg"></span>, permet de sélectionner un utilisateur. </p></li></ul></div><p>Si un critère de recherche est déjà renseigné pour un champ, le picker
+            s'initialisera avec cette valeur. </p><p>Pour effacer la valeur d'un champ il peut être nécessaire de cliquer sur l'icône <span class="inlinemediaobject"><img src="images/btn_pickerDel01.jpg"></span>. </p><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/admon/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Pour certains champs, des caractères "joker" peuvent être spécifiés. Une
+                annotation est alors mentionnée en regard du champs. Par défaut, le serveur AIRS
+                tolère le caractère '+' en temps que "joker". Si par exemple vous saisissez le mot
+                clé "maison+", le moteur fera une recherche sur tous les mots commençant par
+                "maison". Le joker ne peut être saisi que sur un critère de type alphanumérique. De
+                plus, certain champ supporte la recherche "majuscule et accent
+                indifférencié".</p></td></tr></table></div><div class="note" title="Note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/admon/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Le critère de recherche <span class="guilabel">Contenu des documents</span> est utilisé
+                pour faire la recherche d'un critère au sein des pièces jointes attachées aux
+                courriers (recherche plein texte).</p></td></tr></table></div></div></body></html>

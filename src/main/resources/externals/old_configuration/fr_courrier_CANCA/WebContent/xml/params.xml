@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params customerName="Digitech" version="4.0" xmlns="http://www.digitech.com/dossiers/params">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <server port="6021">pc-lgu</server>
+    <userAdmin>
+      <login>adm_airs3</login>
+      <password>adm_airs3</password>
+    </userAdmin>
+  </airsConfig>
+  <workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <sql_mode>false</sql_mode>
+    <unique_actor>false</unique_actor>
+    <actorFilter>false</actorFilter>
+    <flowmind>
+      <server port="3000">pc-lgu</server>
+      <dbConnection maxconn="2" pool="digiflow">
+        <driver url="jdbc:oracle:thin:"/>
+        <server port="1521">srv-geddev-3</server>
+        <instance>PFACOU</instance>
+        <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+        <login>COURRIER_FLOWUSER_CANCA_3_4</login>
+        <password>COURRIER_FLOWUSER_CANCA_3_4</password>
+      </dbConnection>
+    </flowmind>
+  </workFlow>
+  <mailConfig>
+    <smtp>smtp.digitech.fr</smtp>
+    <defaultmailsender>digitech@digitech.fr</defaultmailsender>
+  </mailConfig>
+  <appConfig>
+	<interConnexion>
+		<appName>COURRIER</appName>
+		<url>http://pc-lgu:8080/Courrier</url>
+	</interConnexion>
+  	<configurationStateDisplayed>false</configurationStateDisplayed>
+    <expiredPassword>-1</expiredPassword>
+    <validatorActivate>true</validatorActivate>
+    <memberRightOrga>memberRightOrga</memberRightOrga>
+    <autoOpenPJ>false</autoOpenPJ>
+    <displayPJ>FULLSCREEN</displayPJ>
+    <doclock lockTime="0">
+      <fieldLock contentTypeLock="DOSSIER"/>
+    </doclock>
+    <autoReloadCurrentBasket>true</autoReloadCurrentBasket>
+    <oneSearchResult>gotoSimpleView</oneSearchResult>
+    <nbDocPage>25</nbDocPage>
+    <nbMaxSearchDoc>100</nbMaxSearchDoc>
+  </appConfig>
+</params>

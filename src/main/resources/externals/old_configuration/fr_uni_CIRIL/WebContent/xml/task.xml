@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tasks xmlns="http://www.digitech.com/dossiers/task" customerName="CIRIL" version="6.0.0">
+   <task code="DUE_DATE_BEFORE_5" title="Vérification de la date d'échéance des courriers (relance à J - 5)"
+      description="Cette tâche vérifie la date d'échéance de chaque courrier afin d'envoyer un mail de relance au propriétaire du courrier quand la date d'échéance est dans 5 jours"
+      enabled="true" startDate="2011-12-01T09:00:00" planning="0 0 1 * * ?" scriptId="task_checker_dueDate">
+      <parameter name="interval" type="INTEGER" value="-5" />
+   </task>
+   <task code="DUE_DATE_TODAY" title="Vérification de la date d'échéance des courriers (relance à jour J)"
+      description="Cette tâche vérifie la date d'échéance de chaque courrier afin d'envoyer un mail de relance au propriétaire du courrier quand la date d'échéance est aujourd'hui"
+      enabled="true" startDate="2011-12-01T09:00:00" planning="0 0 1 * * ?" scriptId="task_checker_dueDate">
+      <parameter name="interval" type="INTEGER" value="0" />
+   </task>
+   <task code="DUE_DATE_AFTER_1" title="Vérification de la date d'échéance des courriers (relance à jour J + 1)"
+      description="Cette tâche vérifie la date d'échéance de chaque courrier afin d'envoyer un mail de relance au propriétaire du courrier quand la date d'échéance est passée d'un jour"
+      enabled="true" startDate="2011-12-01T09:00:00" planning="0 0 1 * * ?" scriptId="task_checker_dueDate">
+      <parameter name="interval" type="INTEGER" value="1" />
+   </task>
+   <task code="UPDATE_POPULATION" title="Mise à jours du module Population"
+      description="Cette tâche éfectue une mise à jour du module Population toute les deux minutes"
+      enabled="true" startDate="2011-12-01T09:00:00" planning="0 0/2 * * * ?" scriptId="task_update_population">
+      <parameter name="interval" type="INTEGER" value="1" />
+   </task>   
+</tasks>

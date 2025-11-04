@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="CIRIL" version="6.0.0">
+  <organization id="0" name="DEFAULT">
+   <!-- COURRIER EXPRESS DEBUT -->
+    <globalSearch>
+      <ns2:dossierrequest name="Num Chrono">
+        <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+        <ns2:airsvalue>N_CHRONO=&quot;#VALUE#&quot; OU C_OBJET=&quot;+#VALUE#+&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>COURRIER</ns2:flowCode>
+    </globalSearch>
+	  <!-- COURRIER EXPRESS FIN -->
+	  <!-- GF DEBUT -->
+    <globalSearch>
+      <ns2:dossierrequest name="Recherche de PES sur l'exercice comptable">
+        <ns2:contentType>GF_PES</ns2:contentType>
+        <ns2:airsvalue>GF_PES_EXE=&amp;quot;#VALUE#&amp;quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>GF_PES</ns2:flowCode>
+    </globalSearch>
+    <globalSearch>
+      <ns2:dossierrequest name="Recherche de tiers par le nom">
+        <ns2:contentType>GF_TIERS</ns2:contentType>
+        <ns2:airsvalue>GF_TI_NOMTIE=&quot;#VALUE#&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>GF_TIERS</ns2:flowCode>
+    </globalSearch>
+		<!-- GF FIN -->
+		<!-- RH DEBUT -->
+    <globalSearch>
+      <ns2:dossierrequest name="Recherche sur RH_AGENT">
+        <ns2:contentType>RH_AGENT</ns2:contentType>
+        <ns2:airsvalue>RH_NOMUSA=&quot;#VALUE#&quot; OR RH_NOMPAT=&quot;#VALUE#&quot; OR RH_PRENOM=&quot;#VALUE#&quot; OR RH_MATRICULE=&quot;#VALUE#&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>RH_AGENT</ns2:flowCode>
+    </globalSearch>
+		<!-- RH FIN -->
+		<!-- URBANISME DEBUT -->
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch AOS">
+        <ns2:contentType>DOC_AOS</ns2:contentType>
+        <ns2:airsvalue>AOS_NUMDOS=&quot;#VALUE#&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>AOS</ns2:flowCode>
+    </globalSearch>
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch FONCIER">
+        <ns2:contentType>DOC_FON</ns2:contentType>
+        <ns2:airsvalue>FON_NUMDOS=&quot;#VALUE#&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>FONCIER</ns2:flowCode>
+    </globalSearch>
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch PLU">
+        <ns2:contentType>DOC_PLU</ns2:contentType>
+        <ns2:airsvalue>PLU_CODERGT=&quot;#VALUE#&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>PLU</ns2:flowCode>
+    </globalSearch>
+    <globalSearch>
+      <ns2:dossierrequest name="globalSearch Parcelle">
+        <ns2:contentType>DOC_PAR</ns2:contentType>
+        <ns2:airsvalue>PAR_CODEPRL=&quot;#VALUE#&quot;</ns2:airsvalue>
+      </ns2:dossierrequest>
+      <ns2:flowCode>Parcelle</ns2:flowCode>
+    </globalSearch>
+		<!-- URBANISME FIN -->
+		<!-- COURRIER EXPRESS DEBUT -->
+    <contentType name="COU_COURRIER_IN" selected="true">
+      <input main="true">
+        <operator>=</operator>
+        <label>Numéro chrono</label>
+        <airsfield>
+          <codeField>N_CHRONO</codeField>
+        </airsfield>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="true">
+        <operator>=</operator>
+        <label>Type</label>
+        <airsfield>
+          <codeField>T_TYPE</codeField>
+        </airsfield>
+        <type>list</type>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Priorité</label>
+        <airsfield>
+          <codeField>T_PRIORITE</codeField>
+        </airsfield>
+        <type>list</type>
+      </input>
+      <input>
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <operator>}{</operator>
+        <label>Date de réception</label>
+        <airsfield>
+          <codeField>D_RECEPTION</codeField>
+        </airsfield>
+      </input>
+      <input>
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <operator>}{</operator>
+        <label>Date d'échéance</label>
+        <airsfield>
+          <codeField>D_ECHEANCE</codeField>
+        </airsfield>
+        <airsProfiles>12</airsProfiles>
+      </input>
+      <input main="true">
+        <operator>=</operator>
+        <label>Emetteur</label>
+        <airsfield>
+          <codeField>C_EMETTEUR</codeField>
+        </airsfield>
+        <type>correspondent</type>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Nature</label>
+        <airsfield>
+          <codeField>T_NATURE</codeField>
+        </airsfield>
+        <type>list</type>
+      </input>
+      <input main="true">
+        <operator>=</operator>
+        <label>Objet</label>
+        <airsfield>
+          <codeField>C_OBJET</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Contenu des documents</label>
+        <airsfield>
+          <codeField>DOCS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="COU_COURRIER_OUT">
+      <input main="true">
+        <operator>=</operator>
+        <label>Numéro chrono</label>
+        <airsfield>
+          <codeField>N_CHRONO</codeField>
+        </airsfield>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Type</label>
+        <airsfield>
+          <codeField>T_TYPE</codeField>
+        </airsfield>
+        <type>list</type>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Priorité</label>
+        <airsfield>
+          <codeField>T_PRIORITE</codeField>
+        </airsfield>
+        <type>list</type>
+      </input>
+      <input>
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <operator>}{</operator>
+        <label>Date d'échéance</label>
+        <airsfield>
+          <codeField>D_ECHEANCE</codeField>
+        </airsfield>
+        <airsProfiles>12</airsProfiles>
+      </input>
+      <input main="true">
+        <operator>=</operator>
+        <label>Emetteur</label>
+        <airsfield>
+          <codeField>C_EMETTEUR</codeField>
+        </airsfield>
+        <type>correspondent</type>
+      </input>
+      <input main="true">
+        <operator>=</operator>
+        <label>Destinataire</label>
+        <airsfield>
+          <codeField>C_DESTINATAIRE</codeField>
+        </airsfield>
+        <type>correspondent</type>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Nature</label>
+        <airsfield>
+          <codeField>T_NATURE</codeField>
+        </airsfield>
+        <type>list</type>
+      </input>
+      <input main="true">
+        <operator>=</operator>
+        <label>Objet</label>
+        <airsfield>
+          <codeField>C_OBJET</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input>
+        <operator>=</operator>
+        <label>Contenu des documents</label>
+        <airsfield>
+          <codeField>DOCS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+	  <!-- COURRIER EXPRESS FIN -->
+	  <!-- GF DEBUT -->
+    <contentType name="GF_MARCHE" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro de marché</label>
+        <airsfield>
+          <codeField>GF_MA_NUMMAR</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Libellé du marché</label>
+        <airsfield>
+          <codeField>GF_MA_LIBMAR</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Date de notification</label>
+        <airsfield>
+          <codeField>GF_MA_DATNOT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Collectivité</label>
+        <airsfield>
+          <codeField>GF_MA_LIBCOL</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="GF_TIERS" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro du tiers</label>
+        <airsfield>
+          <codeField>GF_TI_NUMTIE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Nom du tiers</label>
+        <airsfield>
+          <codeField>GF_TI_NOMTIE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="GF_MOUVEMENT" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro du tiers</label>
+        <airsfield>
+          <codeField>GF_TI_NUMTIE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Identifiant</label>
+        <airsfield>
+          <codeField>GF_MV_ID</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Libellé</label>
+        <airsfield>
+          <codeField>GF_MV_LIBMVT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Marché</label>
+        <airsfield>
+          <codeField>GF_MA_NUMMAR</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro de la subvention</label>
+        <airsfield>
+          <codeField>GF_MV_SUB</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Nature comptable</label>
+        <airsfield>
+          <codeField>GF_MV_NATURE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="GF_PES" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Budget</label>
+        <airsfield>
+          <codeField>GF_PES_BUD</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Exercice comptable</label>
+        <airsfield>
+          <codeField>GF_PES_EXE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Type</label>
+        <airsfield>
+          <codeField>GF_PES_TYPE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+        <type>suggestion</type>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Sens</label>
+        <airsfield>
+          <codeField>GF_PES_SENS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Nom du fichier</label>
+        <airsfield>
+          <codeField>GF_PES_NOMFIC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+    </contentType>
+		<!-- GF FIN -->
+		<!-- RH DEBUT -->
+    <contentType name="RH_AGENT" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_MATRICULE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_PRENOM</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_NOMUSA</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_NOMPAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="RH_DOCUMENT_EXTERNE" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_MATRICULE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_PRENOM</codeField>
+          <parentContentType>RH_AGENT</parentContentType>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_NOMUSA</codeField>
+          <parentContentType>RH_AGENT</parentContentType>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_NOMDOC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&lt;</operator>
+        <operator>&gt;</operator>
+        <airsfield>
+          <codeField>RH_DATDEB</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&lt;</operator>
+        <operator>&gt;</operator>
+        <airsfield>
+          <codeField>RH_DATFIN</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_CATEGORIE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+        <type>suggestion</type>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_SOUS_CATEGORIE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+        <type>suggestion</type>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>RH_TYPEDOC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+        <type>suggestion</type>
+      </input>
+    </contentType>
+		<!-- RH FIN -->
+		<!-- URBANISME DEBUT -->
+    <contentType name="DOC_PLU" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Code règlement</label>
+        <airsfield>
+          <codeField>PLU_CODERGT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Etape</label>
+        <airsfield>
+          <codeField>PLU_ETAPE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+        <type>suggestion</type>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Document</label>
+        <airsfield>
+          <codeField>PLU_LBLDOC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <label>Date de création</label>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOS_PLU" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Code règlement</label>
+        <airsfield>
+          <codeField>PLU_CODERGT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <label>Date de création</label>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOC_PAR" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Code parcelle</label>
+        <airsfield>
+          <codeField>PAR_CODEPCL</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Etape</label>
+        <airsfield>
+          <codeField>PAR_ETAPE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+        <type>list</type>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Document</label>
+        <airsfield>
+          <codeField>PAR_LBLDOC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <label>Date de création</label>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOS_PAR" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Code parcelle</label>
+        <airsfield>
+          <codeField>PAR_CODEPCL</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <label>Date de création</label>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOC_AOS" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro dossier AOS</label>
+        <airsfield>
+          <codeField>AOS_NUMDOS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Phase / étape</label>
+        <airsfield>
+          <codeField>AOS_ETAPE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+        <type>list</type>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Document</label>
+        <airsfield>
+          <codeField>AOS_LBLDOC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <label>Date de création</label>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOS_AOS" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro dossier AOS</label>
+        <airsfield>
+          <codeField>AOS_NUMDOS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <label>Date de création</label>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOS_FON" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro dossier foncier</label>
+        <airsfield>
+          <codeField>FON_NUMDOS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+    <contentType name="DOC_FON" selected="false">
+      <input main="false">
+        <operator>=</operator>
+        <label>Numéro dossier foncier</label>
+        <airsfield>
+          <codeField>FON_NUMDOS</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>true</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Phase / étape</label>
+        <airsfield>
+          <codeField>FON_ETAPE</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <label>Document</label>
+        <airsfield>
+          <codeField>FON_LBLDOC</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+      <input main="false">
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <airsfield>
+          <codeField>D_CREAT</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+        <readOnly>false</readOnly>
+        <allowJoker>false</allowJoker>
+      </input>
+    </contentType>
+		<!-- URBANISME FIN -->
+  </organization>
+</searchForm>

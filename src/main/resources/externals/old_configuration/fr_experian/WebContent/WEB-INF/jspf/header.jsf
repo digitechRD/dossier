@@ -1,0 +1,99 @@
+<f:subview id="header">
+  <h:form>
+	  <TABLE border="0" width="100%" cellpadding="0" cellspacing="0">
+		<TBODY>
+			<TR Class="airsBordereauHeaderClass" height="70" valign="top">
+				<td colspan="2">
+					<table cellpadding="0" cellspacing="0" width="100%">
+						<tr>
+							<TD nowrap width="20%"><hx:graphicImageEx
+								styleClass="graphicImageEx" id="imageExLogoProduct"
+								value="theme/Images/client.gif"></hx:graphicImageEx></TD>
+							<TD nowrap valign="middle" align="center" width="60%"><hx:graphicImageEx
+								styleClass="graphicImageEx"
+								value="theme/Images/titreAppli.png"></hx:graphicImageEx></TD>
+							<TD valign="center" nowrap align="right">
+							<table height="61" width="251" border="0" cellpadding="0"
+								cellspacing="0" background="theme/Images/orange.dossiers.gif"
+								style="background-repeat:no-repeat;">
+								<tr>
+									<td width="30" align="center"><hx:graphicImageEx
+										styleClass="graphicImageEx"
+										value="theme/Images/personne.gif"/>
+									</td>
+									<td class="txtwhite10pxbold"><nobr><i><h:outputText
+										id="prenom" value="BNPPERE" /></i>&nbsp;<b><h:outputText id="nom"
+										value="" /></b></nobr>
+									</td>
+								</tr>								
+							</table>
+						</TD>				
+							
+							<TD valign="bottom" nowrap align="right"><hx:graphicImageEx
+								styleClass="graphicImageEx" id="imageExLogoClient"
+								value="theme/Images/prestataire.jpg" align="right"></hx:graphicImageEx></TD>
+						</tr>
+					</table>
+				</td>
+			</TR>
+			
+			<TR>
+				<td nowrap width="100%">
+					<div id="navigation">
+						<ul>
+							<li><h:commandLink id="linkHome"
+								action="#{pc_GeneralTemplate.doLinkHomeAction}">
+								<h:outputText id="textHome" value="#{msg.accueil}"></h:outputText>
+							</h:commandLink></li>
+							<li><h:commandLink id="linkSearch"
+								action="#{pc_GeneralTemplate.doLinkSearchAction}">
+								<h:outputText id="textSearch" value="#{msg.search}"></h:outputText>
+							</h:commandLink></li>
+							<li><h:commandLink id="linkIndexation"
+								action="#{pc_GeneralTemplate.doLinkIndexationAction}">
+								<h:outputText id="textIndexation" value="#{msg.indexation}"></h:outputText>
+							</h:commandLink></li>
+							<li><h:commandLink id="linkChangePwd"
+								action="#{pc_GeneralTemplate.doLinkChangePwdAction}">
+								<h:outputText id="textChangePwd"
+									value="#{msg.userManagement}"></h:outputText>
+							</h:commandLink></li>
+							<li><h:commandLink id="linkReport"
+							    rendered="#{sessionScope.userReport}"
+								action="#{pc_GeneralTemplate.doLinkReport}">
+								<h:outputText id="textReport"
+									value="#{msg.reporting}"></h:outputText>
+							</h:commandLink></li>
+							<li><h:commandLink id="linkAdminsystem"
+								rendered="#{sessionScope.userSystem}"
+								action="#{pc_GeneralTemplate.doLinkAdminsystemAction}">
+								<h:outputText id="textAdminSys" value="#{msg.userSystem}"></h:outputText>
+							</h:commandLink></li>
+						</ul>
+					</div>
+					<div id="attente_navigation" style="display:none;" align="center">
+					<hx:graphicImageEx
+								styleClass="graphicImageEx" id="imageExAttente"
+								value="theme/Images/corbeille.attente.gif" align="center"></hx:graphicImageEx>
+					</div>
+				</td>
+	
+				<TD nowrap align="right">
+					<div id="navigation">
+						<ul>
+							<li><hx:outputLinkEx value="aide/index.html" target="_blanck" id="linkEx1">
+								<h:outputText id="aide" value="#{msg.aide}"></h:outputText>
+							</hx:outputLinkEx></li>
+							<li class="last"><h:commandLink id="linkLogout"
+								action="#{pc_GeneralTemplate.doLinkLogoutAction}">
+								<h:outputText id="textLogout" value="#{msg.logout}"></h:outputText>
+							</h:commandLink></li>
+						</ul>
+					</div>
+				</TD>
+			</TR>
+		</TBODY>
+	  </TABLE>
+  </h:form>
+
+</f:subview>

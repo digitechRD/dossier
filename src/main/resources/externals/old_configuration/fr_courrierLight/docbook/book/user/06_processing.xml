@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" type="xml"?>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
+    version="5.0" xml:id="processing" xml:lang="fr">
+    <title>Traitement des courriers</title>
+    <section xml:id="steps">
+        <title>Etapes de traitement du courrier</title>
+        <section xml:id="step_toValidate">
+            <title>Demande de validation</title>
+            <para>Dans la fiche de création/indexation du courrier, le champ
+                    <guilabel>valideur</guilabel> permet de sélectionner un valideur. Dés lors que
+                ce champ est renseigné, le courrier transite par la bannette <guilabel>Mes courriers
+                    à valider</guilabel> de la personne concernée.</para>
+        </section>
+        <section xml:id="step_validate">
+            <title>Validation</title>
+            <figure xml:id="img_stepValidate">
+                <title>Validation</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/step_validate01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>Cette étape n'est pas forcément obligatoire, elle dépend du processus propre à
+                chaque service. Elle permet au valideur : de vérifier les informations saisies, de
+                donner des directives de traitement, de modifier le service destinataire et la liste
+                de diffusion (destinataire principal et copies), etc. Depuis la fiche du courrier,
+                le valideur peut cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_validate01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> afin d'afficher la fenêtre de validation du courrier. Le
+                valideur peut éventuellement renseigner un commentaire. Ce commentaire ne sera
+                visible que par l'utilisateur traitant ou le service traitant sauf si le valideur
+                coche la case à cocher <guilabel>Public</guilabel> ; dans ce second cas, le
+                commentaire sera visible par tous. Un clic sur le bouton
+                    <guilabel>Valider</guilabel> déclenche la diffusion du courrier vers
+                l'utilisateur/le service traitant et les utilisateurs/services en copie.</para>
+        </section>
+        <section xml:id="step_refuse">
+            <title>Refus</title>
+            <figure xml:id="img_stepRefuse">
+                <title>Validation</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/step_refuse01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>Cette étape n'est pas forcément obligatoire, elle dépend du processus propre à
+                chaque service. Elle permet au valideur : de vérifier les informations saisies, de
+                donner des directives de traitement, de modifier le service destinataire et la liste
+                de diffusion (destinataire principal et copies), etc. Depuis la fiche du courrier,
+                le valideur peut cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_refuse01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> afin d'afficher la fenêtre de refus du courrier. Le valideur
+                peut éventuellement renseigner un commentaire. Ce commentaire ne sera visible que
+                par l'utilisateur créateur/indexeur sauf si le valideur coche la case à cocher
+                    <guilabel>Public</guilabel> ; dans ce second cas, le commentaire sera visible
+                par tous. Un clic sur le bouton <guilabel>Refuser</guilabel> retourne le courrier à
+                son créateur pour correction.</para>
+        </section>
+        <section xml:id="step_response">
+            <title>Réponse</title>
+            <figure xml:id="img_stepResponse">
+                <title>Réponse</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/step_response01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>La réponse à un courrier, est une phase essentielle du cycle de vie. Le
+                propriétaire du courrier génère/rédige un document réponse au courrier reçu.</para>
+            <para>Depuis la fiche du courrier, l'utilisateur traitant peut cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_response01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> afin d'afficher la fenêtre de réponse au courrier. Cette
+                fenêtre affiche de part et d'autre le(s) courrier(s) reçu(s) et le courrier réponse
+                généré. Le courrier réponse est généré après sélection du modèle de réponse
+                souhaité. La réponse est affichée en lecture seule mais peut être modifiée en
+                cliquant sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_edit02.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> . Le courrier réponse est alors ouvert au sein de l'éditeur de
+                texte configuré sur le poste client (Microsoft Word ou Open Office). Pour ce faire
+                une nouvelle page est affichée permettant la sélection du modèle de fichier à éditer
+                (Applet).</para>
+            <figure xml:id="img_stepResponseEdit">
+                <title>Modification de réponse</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/editDocument01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>Le type de modèle permet de définir si la réponse générée doit être modifiée avec
+                Open Office ou Microsoft Word. Lors du premier lancement de l'applet, il est
+                nécessaire de spécifier l'emplacement de l'éditeur texte à utiliser pour la
+                modification de la réponse. Dés lors que la réponse a été complétée, il peut être
+                nécessaire de cliquer sur le bouton <guilabel>Valider les modifications</guilabel>
+                afin d'appliquer les modifications. La prévisualisation de la réponse est alors
+                réactualisée. Afin d'enregistrer la réponse définitive, il est nécessaire de cliquer
+                sur le bouton <guilabel>Répondre</guilabel>.</para>
+            <para>Il est possible de réaliser plusieurs réponses ou d’ajouter une ou plusieurs <link
+                    linkend="unitView_attachment">pièces jointes</link> (cas de courriers réponse
+                rédigés en dehors de l’application).</para>
+            <note>
+                <para>Les modèles ODT proposés dépendent du paramétrage applicatif.</para>
+            </note>
+        </section>
+        <section xml:id="step_askVisa">
+            <title>Demande de Visa</title>
+            <para>Dans la fiche de création/indexation du courrier, le champ
+                    <guilabel>viseur</guilabel> permet de sélectionner un utilisateur viseur du
+                courrier réponse/à émettre. Dés lors que ce champ est renseigné, une fois le
+                courrier réponse ajouté ou le courrier à émettre rédigé, le courrier transite par la
+                bannette <guilabel>Mes courriers à viser</guilabel> de la personne concernée. </para>
+        </section>
+        <section xml:id="step_visa">
+            <title>Visa</title>
+            <figure xml:id="img_stepVisa">
+                <title>Visa</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/step_visa01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>
+            <para>La phase de visa d'un courrier est en grande partie identique à la phase de <link
+                    linkend="step_response">réponse</link>.</para>
+            <para>Depuis la fiche du courrier, l'utilisateur viseur peut cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_visa01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> afin d'afficher la fenêtre de visa du courrier. Cette fenêtre
+                affiche de part et d'autre le(s) courrier(s) reçu(s) et le(s) courrier réponse(s).
+                Les réponses sont affichées en lecture seule mais peut être modifiées en cliquant
+                sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_edit02.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> . Le viseur peut éventuellement renseigner un commentaire. Ce
+                commentaire ne sera visible que par l'utilisateur traitant sauf si le viseur coche
+                la case à cocher <guilabel>Public</guilabel> ; dans ce second cas, le commentaire
+                sera visible par tous.</para>
+            <para>Ensuite, le viseur doit cliquer sur le bouton <guilabel>Accepter</guilabel> s'il
+                considère que les réponses sont corrects ou sur le bouton
+                    <guilabel>Refuser</guilabel> s'il considère que les réponses sont incorrectes. </para>
+            <para>Pour finir, il est nécessaire de cliquer sur le bouton
+                    <guilabel>Appliquer</guilabel> afin d'enregistrer l'état du Visa.</para>
+        </section>
+    </section>
+    <section xml:id="unitView">
+        <title>Fiche du courrier</title>
+    <section xml:id="unitView_intro">
+        <title>Introduction</title>
+        <figure xml:id="img_unitViewIntro">
+            <title>Fiche du courrier</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitView01.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>La fiche du courrier permet de visualiser le contenu thématisé et détaillé d'un
+                courrier. Si le courrier est verrouillé la fiche s'ouvre en mode "édition", sinon la
+                fiche s'ouvre en mode "consultation". </para>
+        <para>La fiche se divise en 2 parties : la <link linkend="unitView_actions">barre
+                    d'actions</link> et la fiche détaillée. </para>
+        <para>La fiche détaillée a été organisée en 5 onglets (affichés selon les droits de
+                l'utilisateur) : <itemizedlist>
+                    <listitem>
+                        <para>l'onglet <link linkend="unitView_content">Contenu</link>,</para>
+                    </listitem>
+                    <listitem>
+                        <para>l'onglet <link linkend="unitView_attachment">Pièce
+                            Jointe</link>,</para>
+                    </listitem>
+                    <listitem>
+                        <para>l'onglet <link linkend="unitView_history">Historique</link>,</para>
+                    </listitem>
+                    <listitem>
+                        <para>l'onglet <link linkend="unitView_comment">Commentaire</link>,</para>
+                    </listitem>
+                    <listitem>
+                        <para>l'onglet <link linkend="unitView_link">Lien</link>.</para>
+                        <para>.</para>
+                    </listitem>
+                </itemizedlist> Selon la configuration de l'application, la fenêtre d'affichage de
+                la pièce jointe est automatiquement ouverte. </para>
+    </section>
+    <section xml:id="unitView_actions">
+        <title>Actions</title>
+        <figure xml:id="img_unitViewActions">
+            <title>Actions</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitViewActions01.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>
+                <variablelist>
+                    <varlistentry>
+                        <term>actions disponibles (affichés selon les droits de
+                            l'utilisateur)</term>
+                        <listitem>
+                            <itemizedlist>
+                                <listitem>
+                                    <para>l'action principale <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_edit01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject>permet de passer en mode Edition. Le
+                                        courrier est alors verrouillé.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action principale <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_save01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject>permet de sauvegarder la fiche du
+                                        courrier et de passer en mode Consultation. Le courrier est
+                                        alors déverrouillé.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action principale <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_validate01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet d'afficher la fenêtre de
+                                        validation d'un courrier lors de la phase de <link
+                                            linkend="step_validate">validation</link>.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action principale <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_refuse01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> affiche la fenêtre de refus d'un
+                                        courrier lors de la phase de <link linkend="step_refuse"
+                                            >validation</link>.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action principale <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_response01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> affiche la fenêtre de génération de
+                                        courrier (courrier réponse).</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action principale <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_visa01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> affiche la fenêtre de visa du
+                                        courrier.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_closeMail01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet de clôturer le courrier.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_restoreMail01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet de restaurer un courrier
+                                        clôturé.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_deleteDoc01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet de supprimer le courrier.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_mail01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet d'envoyer un E-mail.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_favorite01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet d'ajouter le courrier courant
+                                        aux Favoris.</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata
+                                                  fileref="images/btn_displayBookmarks01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet d'afficher les signets (affiché
+                                        selon les droits de l'utilisateur).</para>
+                                </listitem>
+                                <listitem>
+                                    <para>l'action secondaire <inlinemediaobject>
+                                            <imageobject>
+                                                <imagedata fileref="images/btn_clipboard01.jpg"/>
+                                            </imageobject>
+                                        </inlinemediaobject> permet de copier/dupliquer/lier le
+                                        courrier (un menu contextuel s'affiche afin de proposer
+                                        l'action à réaliser).</para>
+                                </listitem>
+                            </itemizedlist>
+                        </listitem>
+                    </varlistentry>
+                </variablelist>
+            </para>
+    </section>
+    <section xml:id="unitView_content">
+        <title>Onglet contenu</title>
+        <figure xml:id="img_unitViewContent">
+            <title>Onglet contenu</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitView02.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>L'onglet <guilabel>Contenu</guilabel> donne accès à certains champs d'indexation
+                (selon Configuration) du courrier. Cet onglet est affiché selon les droits de
+                l'utilisateur. </para>
+        <para>On distingue 2 modes de fonctionnement : <itemizedlist>
+                    <listitem>
+                        <para>le mode consultation permet seulement la visualisation des champs
+                            d'indexation</para>
+                    </listitem>
+                    <listitem>
+                        <para>le mode édition (affiché selon les droits utilisateur) permet de
+                            modifier la valeur de certains champs d'indexation. Certains champs sont
+                            modifiables à l'aide de <link linkend="common_picker"
+                            >pickers</link></para>
+                    </listitem>
+                </itemizedlist></para>
+        <para>Les indexes affichés sont décrits au chapitre <link linkend="home_createDoc">Création de
+                courrier</link>. Certains indexes ne sont pas modifiables et sont affichés seulement à titre informatif.</para>
+            <para>Le suivi des réponses affiché en bas de fiche, permet d'afficher/modifier le suivi
+                des réponses émises pour le courrier reçu. L'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_add01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> permet d'ajouter une ligne vierge au tableau listant le suivi
+                des réponses. Il est alors possible de modifier les champs du suivi de réponse puis
+                de l'enregistrer en cliquant sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_save02.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> . Il est aussi possible de modifier un suivi de réponse en
+                cliquant sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_edit02.jpg"/>
+                    </imageobject>
+                </inlinemediaobject>. L'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_delete05.jpg"/>
+                    </imageobject>
+                </inlinemediaobject> quant à elle permet de supprimer le suivi de réponse
+                existant.</para>
+    </section>
+    <section xml:id="unitView_attachment">
+        <title>Onglet pièce jointe</title>
+        <figure xml:id="img_unitViewAttachment">
+            <title>Onglet pièce jointe</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitView03.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>L'onglet Pièce Jointe permet de visualiser l'ensemble des pièces jointes du courrier.
+                Cet onglet est affiché selon les droits de l'utilisateur. Les informations suivantes
+                sont affichées: <itemizedlist>
+                    <listitem>
+                        <para><guilabel>Id</guilabel>entifiant de la pièce jointe,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Intitulé</guilabel> de la pièce jointe,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Type</guilabel> de la pièce jointe,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Nom du fichier</guilabel> joint.</para>
+                    </listitem>
+                </itemizedlist></para>
+        <para>On distingue 2 modes de fonctionnement : <itemizedlist>
+                <listitem>
+                    <para>le mode consultation permet seulement de consulter les pièces
+                        jointes,</para>
+                </listitem>
+                <listitem>
+                    <para>le mode édition (affiché selon les droits utilisateur) permet d'ajouter,
+                        de modifier ou même de supprimer une pièce jointe.</para>
+                </listitem>
+            </itemizedlist>Pour visualiser le fichier de la pièce jointe, il est nécessaire de
+            cliquer sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_display01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>; la fenêtre de visualisation de pièce jointe est alors affichée. </para>
+        <para>Il est possible de modifier les informations liées à une pièce jointe en la cochant
+            puis en cliquant sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_edit02.jpg"/>
+                </imageobject>
+            </inlinemediaobject>. Pour modifier le fichier de la pièce jointe, il est nécessaire de
+            cliquer sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_editAttachment01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>dans la colonne <guilabel>Action</guilabel>.</para>
+        <para>Pour supprimer une pièce jointe, il faut au préalable cocher le(s) pièce(s) jointe(s)
+            puis cliquer sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_remove01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>. Un message de confirmation s'affiche avant d'appliquer la
+            suppression.</para>
+        <note>
+            <para>Si le "versioning" est activé, il est alors possible de sélectionner la version à
+                afficher.</para>
+        </note>
+        <para><figure xml:id="img_unitViewAddAttachment">
+                    <title>Ajout de pièce jointe</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/addAttachment01.jpg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>Pour ajouter une pièce jointe, veuillez cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_add01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject>. La fenêtre modale <guilabel>Ajout/Modification d'une pièce
+                    jointe</guilabel> s'ouvre. Il est alors possible de saisir les informations
+                liées à la pièce jointe telles que son <guilabel>Intitulé</guilabel> et son
+                    <guilabel>Type</guilabel>, mais aussi de sélectionner le
+                    <guilabel>Fichier</guilabel> à uploader. En cliquant sur le bouton
+                    <guibutton>Enregistrer</guibutton>, le fichier est uploadé et la pièce jointe
+                est ajoutée au courrier. </para>
+    </section>
+    <section xml:id="unitView_link">
+        <title>Onglet lien</title>
+        <figure xml:id="img_unitViewLink">
+            <title>Onglet lien</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitView06.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>L'onglet <guilabel>Lien</guilabel> permet de consulter l'ensemble des courriers liés
+                au courrier courant. Cet onglet est affiché selon les droits de l'utilisateur. Les
+                informations suivantes sont affichées: <itemizedlist>
+                    <listitem>
+                        <para><guilabel>Intitulé</guilabel> du lien,</para>
+                    </listitem>
+                    <listitem>
+                        <para>Les <guilabel>Pièces jointes</guilabel> associées au courrier lié (un
+                            clic sur la pièce jointe permet de l'afficher dans la fenêtre de
+                            visualisation),</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Type de Contenu</guilabel> du courrier lié,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Nom du Lien</guilabel> utilisé pour récupérer le courrier
+                            lié,</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Direction du Lien</guilabel> (parent ou enfant).</para>
+                    </listitem>
+                </itemizedlist>Pour afficher la fiche détaillée du courrier lié, il est nécessaire
+                de cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_display01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject>. </para>
+        <para>Pour supprimer un ou plusieurs liens, il faut au préalable cocher le(s) courrier(s)
+                puis cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_remove01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject>. Un message de confirmation s'affiche avant d'appliquer la
+                suppression.</para>
+        <para><figure xml:id="img_unitViewAddLink">
+                    <title>Ajout de pièce jointe</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="images/addLink01.jpg"/>
+                        </imageobject>
+                    </mediaobject>
+                </figure>Pour créer un lien, veuillez cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_add01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject>. La fenêtre modale <guilabel>Sélection de
+                    courrier(s)</guilabel> s'ouvre. Il est alors possible de sélectionner le
+                    <guilabel>Type de Lien</guilabel> puis de saisir les critères de recherche (les
+                critères de recherche affichés dépendent du paramétrage applicatif) puis de cliquer
+                sur le bouton <guibutton>Rechercher</guibutton> afin d'afficher les résultats de
+                recherche. Il est alors possible de cocher les courriers qui doivent être liés au
+                courrier courant puis de cliquer sur le bouton <guibutton>Sélectionner</guibutton>
+                afin de créer le lien. </para>
+    </section>
+    <section xml:id="unitView_history">
+        <title>Onglet historique</title>
+        <figure xml:id="img_unitViewHistory">
+            <title>Onglet historique</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitView04.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>L'onglet <guilabel>Historique</guilabel> permet de visualiser l'historique des actions
+                réalisées sur le courrier. Cet onglet est affiché selon les droits de l'utilisateur.
+                Les informations suivantes sont affichées : <itemizedlist>
+                    <listitem>
+                        <para><guilabel>Message</guilabel> de trace lié à l'action</para>
+                    </listitem>
+                    <listitem>
+                        <para>Nom de l'<guilabel>Acteur</guilabel> responsable de l'action</para>
+                    </listitem>
+                    <listitem>
+                        <para><guilabel>Date</guilabel> de réalisation de l'action</para>
+                    </listitem>
+                </itemizedlist></para>
+    </section>
+    <section xml:id="unitView_comment">
+        <title>Onglet commentaire</title>
+        <figure xml:id="img_unitViewComment">
+            <title>Onglet commentaire</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/unitView05.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>L'onglet <guilabel>Commentaire</guilabel> permet de visualiser l'ensemble des
+                commentaires relatifs au courrier. Cet onglet est affiché selon les droits de
+                l'utilisateur. On distingue 2 modes de fonctionnement : <itemizedlist>
+                    <listitem>
+                        <para>le mode consultation permet seulement la visualisation des
+                            commentaires</para>
+                    </listitem>
+                    <listitem>
+                        <para>le mode édition (affiché selon les droits utilisateur) permet
+                            d'ajouter, ou de supprimer un commentaire</para>
+                    </listitem>
+                </itemizedlist></para>
+        <para>Pour supprimer un ou plusieurs commentaires, il faut au préalable cocher le(s)
+                courrier(s) puis cliquer sur l'action <inlinemediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/btn_remove01.jpg"/>
+                    </imageobject>
+                </inlinemediaobject>. Un message de confirmation s'affiche avant d'appliquer la
+                suppression.</para>
+        <note>
+            <para>Il est seulement possible de Supprimer "mes" commentaires.</para>
+        </note>
+        <para>Il est possible de modifier un de "mes" commentaires en cochant un commentaire puis en
+            cliquant sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_edit02.jpg"/>
+                </imageobject>
+            </inlinemediaobject>.</para>
+        <para><figure xml:id="img_unitViewAddComment">
+                <title>Ajout de commentaire</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/addComment01.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>Pour ajouter un commentaire, veuillez cliquer sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_add01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>. La fenêtre modale <guilabel>Ajout/Modification d'un
+                Commentaire</guilabel> s'ouvre. Il est alors possible de saisir le
+                <guilabel>Commentaire</guilabel> à ajouter ainsi que le type de partage à appliquer.
+            Il faut considérer les niveaux de partage (confidentialité) suivants : <itemizedlist>
+                <listitem>
+                    <para>Privé : le commentaire n'est visible que par son auteur
+                            (<guilabel>Public</guilabel> décoché et <guilabel>Type de
+                            Partage</guilabel> Personnelle),</para>
+                </listitem>
+                <listitem>
+                    <para>Public : le commentaire est visible par tous les utilisateurs
+                            (<guilabel>Public </guilabel>coché et <guilabel>Type de
+                            Partage</guilabel> Personnelle),</para>
+                </listitem>
+                <listitem>
+                    <para>Partagé : le commentaire n'est visible que par son auteur et les
+                        utilisateurs souhaités (utilisateurs appartenant à une organisation et/ou
+                        utilisateurs individuellement).</para>
+                </listitem>
+            </itemizedlist>En cliquant sur l'action <guibutton>Enregistrer</guibutton>, le
+            commentaire est créé.</para>
+    </section>
+    <section xml:id="unitView_windowAttachment">
+        <title>Pièce jointe</title>
+        <figure xml:id="img_unitViewWindowAttachment">
+            <title>Pièce jointe</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/attachment01.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>La Fenêtre de Visualisation de pièce jointe permet de consulter les pièces jointes
+                d'un courrier. Selon le type de fichier à visualiser, la pièce jointe est affichée
+                dans le <link linkend="common_documentViewer">Visualiseur de document</link>. Si
+                plusieurs pièces jointes existent pour le courrier, il est possible d'utiliser les
+                flèches de part et de la Pièce Jointe courante pour naviguer de pièce jointe en
+                pièce jointe. </para>
+        <note>
+            <para>Si la pièce jointe n'est pas trouvée dans le système de fichier AIRS, un message
+                d'erreur est affiché.</para>
+        </note>
+    </section>
+    </section>
+</chapter>

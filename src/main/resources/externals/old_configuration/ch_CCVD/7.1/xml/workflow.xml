@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://www.digitech.com/dossiers/workflow" customerName="ESH" version="4.1.4">
+		
+		<tache name="CreerNip">
+        <valueSortie value="NIP cree">
+            <airsfield value="71" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+		
+	<tache name="CreerNssCICA">
+        <valueSortie value="Reponse Centrale OK">
+            <airsfield value="88" name="AL_STATUT"/>
+		<airsfield value="41" name="AL_SERVICE"/>
+        </valueSortie>
+		</tache>
+		
+		<tache name="AdresseACreer">
+        <valueSortie value="Adresse creee">
+            <airsfield value="71" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>		
+		
+		<tache name="IndexAvecErreurs">
+        <valueSortie value="Indexation corrigee">
+            <airsfield value="71" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+		
+		
+		<tache name="TraiterAC">        
+		<valueSortie value="A valider">
+            <airsfield value="75" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+	
+	
+	<tache name="AValiderAC">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="A controler">
+            <airsfield value="70" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="Refuse En attente de reponse">
+            <airsfield value="83" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="Refuse Urgent">
+            <airsfield value="91" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="Refuse">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+	</tache>
+
+
+	<tache name="TraiterACApValidKO"> 
+		<valueSortie value="En attente de reponse">
+            <airsfield value="83" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Mutation en cours">
+            <airsfield value="87" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="A valider">
+            <airsfield value="75" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+		
+		<tache name="TraiterAF">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En traitement">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Urgent">
+            <airsfield value="91" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Mutation en cours">
+            <airsfield value="87" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En attente affil PSA">
+            <airsfield value="82" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="En attente affil PCI">
+            <airsfield value="80" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="En attente affil EMP">
+            <airsfield value="81" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+	
+	<tache name="TraiterAFPSA">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En traitement">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En attente affil PSA">
+            <airsfield value="82" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+
+	<tache name="TraiterAMF">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En traitement">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Demande amarree">
+            <airsfield value="669" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+	
+		
+		<tache name="TraiterREC">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En traitement">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En attente de reponse">
+            <airsfield value="83" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Urgent">
+            <airsfield value="91" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+		
+		<tache name="TraiterREN">
+		<valueSortie value="En traitement">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="A controler">
+            <airsfield value="70" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+		<tache name="AControlerREN">
+		<valueSortie value="Rejete">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Valide">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+	<tache name="ArchiverREN">
+		<valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Rejete">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+		<tache name="TraiterCTE">
+		<valueSortie value="En attente de reponse">
+            <airsfield value="83" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Mutation en cours">
+            <airsfield value="87" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="A controler">
+            <airsfield value="70" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+		<tache name="ArchiveCTE">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+		<tache name="MutationCTE">
+        <valueSortie value="Valide">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+        <valueSortie value="Rejete">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="Mutation en cours">
+            <airsfield value="87" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="A controler">
+            <airsfield value="70" name="AL_STATUT"/>
+        </valueSortie>
+
+		</tache>
+	
+
+	<tache name="ReponseCTE">
+		<valueSortie value="Reponse obtenue">
+			<airsfield value="395" name="AL_STATUT"/>
+		</valueSortie>
+	</tache>
+		
+
+	<tache name="TraiterPC">
+        <valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En traitement">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="En attente de reponse">
+            <airsfield value="83" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Urgent">
+            <airsfield value="91" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Mutation en cours">
+            <airsfield value="87" name="AL_STATUT"/>
+        </valueSortie>
+	<valueSortie value="A controler">
+            <airsfield value="70" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+	<tache name="AControlerPC">
+        <valueSortie value="Valide">
+            <airsfield value="84" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Rejete">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+	</tache>
+	
+	<tache name="ArchiverPC">
+		<valueSortie value="Archive">
+            <airsfield value="77" name="AL_STATUT"/>
+        </valueSortie>
+		<valueSortie value="Rejete">
+            <airsfield value="74" name="AL_STATUT"/>
+        </valueSortie>
+		</tache>
+
+	
+	<tache name="IndexerMail">
+        <valueSortie value="Mail indexe">
+            <airsfield value="71" name="AL_STATUT"/>
+		<airsfield value="41" name="AL_SERVICE"/>
+        </valueSortie>
+	<valueSortie value="NSS a creer">
+            <airsfield value="89" name="AL_STATUT"/>
+        </valueSortie>
+	</tache>
+
+
+
+	
+    <airs2workflow/>
+	
+</workflow>

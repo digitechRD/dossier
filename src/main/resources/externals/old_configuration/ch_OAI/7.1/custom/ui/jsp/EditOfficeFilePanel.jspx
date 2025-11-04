@@ -1,0 +1,34 @@
+﻿<jsp:root version="2.0" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:jsp="http://java.sun.com/JSP/Page">
+  
+  <f:view>
+    <html>
+    <head id="head">
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <title>
+        <h:outputText value="ExportToEdit"/>
+      </title>
+      <script type="text/javascript">
+        function redirect(url) {
+          window.location = url;
+        }
+      </script>
+    </head>
+    
+    <body id="body">
+    <h:panelGroup layout="block">
+      <h:outputText value="#{CustomActionModel.modalPanelModel.DATA_MESSAGE}"/>
+      <script type="text/javascript">
+        if ("#{CustomActionModel.modalPanelModel.DATA_STATUT}" == "OK") {
+          redirect('#{CustomActionModel.modalPanelModel.DATA_FILE}');
+        }
+        setTimeout('window.close()', 5000);
+      </script>
+    </h:panelGroup>
+    
+    </body>
+    </html>
+  </f:view>
+
+</jsp:root>

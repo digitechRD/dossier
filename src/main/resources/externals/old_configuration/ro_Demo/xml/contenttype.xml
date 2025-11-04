@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype" customerName="@CUSTOMERNAME@" version="5.1.0">
+    <parentContentType appName="AIRS" name="DOSSIER_RH">
+        <childContentType appName="AIRS" name="DOCUMENT_RH">
+            <codeLinkedField childField="RH_MATRICULE" parentField="RH_MATRICULE"/>
+            <codeLinkedField childField="RH_NOM" parentField="RH_NOM"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="DOSSIER_COM">
+        <childContentType appName="AIRS" name="DOCUMENT_COM">
+            <codeLinkedField childField="COM_NUMCLIENT" parentField="COM_NUMCLIENT"/>
+            <codeLinkedField childField="COM_NOM" parentField="COM_NOM"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType appName="AIRS" name="DOSSIER_FACT">
+        <childContentType appName="AIRS" name="DOCUMENT_FACT">
+            <codeLinkedField childField="FACT_NUMINTRACOM" parentField="FACT_NUMINTRACOM"/>
+            <!--<codeLinkedField childField="FACT_FOURNISSEUR" parentField="FACT_FOURNISSEUR"/>
+            <codeLinkedField childField="FACT_SIREN" parentField="FACT_SIREN"/>-->    
+        </childContentType>
+    </parentContentType>
+</rootContentType>

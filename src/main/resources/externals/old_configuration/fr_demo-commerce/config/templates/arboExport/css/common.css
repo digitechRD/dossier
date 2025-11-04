@@ -1,0 +1,423 @@
+/*
+/!\ Do not modify the style order /!\
+*/
+@import "standard.inc.css";
+
+@import "widget.inc.css";
+
+@import "webui.inc.css";
+
+
+
+.deleted {text-decoration: line-through; }
+
+.hidden {display: none; padding: 0px; margin: 0px;}
+
+.disabled, .disabled img {filter:alpha(opacity=30); -moz-opacity:0.30; opacity:0.30; -khtml-opacity:0.30; cursor: default;}
+
+a.disabled:hover {text-decoration: none;}
+
+.message {text-align: left; clear: both; padding-top: 10px;}
+
+.message ul {list-style-type: none; margin-left: 0px;}
+
+.description {margin-bottom: 8px;}
+
+.alert {padding-top: 8px; padding-bottom: 8px;}
+
+.error {font-weight: bold;}
+
+.info {font-weight: bold;}
+
+.warning {font-weight: bold;}
+
+.indexing {font-weight: bold;}
+
+.id input {width: 60px;}
+
+.operator select {width: 40px;}
+
+.attachment select {width: 200px;}
+
+.detail input, .detail select {width: 300px;}
+
+.start input, .finish input { width: 100px;}
+
+.detail .TxtFld_ReadOnly_sun4,
+.detail .TxtAra_ReadOnly_sun4,
+.readOnly input {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.date input {width: 100px;}
+
+.path input {width: 300px;}
+
+.email {width: 375px;}
+
+.table {margin: 10px 10px 0px 10px;}
+
+.table a {color: #000000;}
+
+.radioButtonGroup table, .checkboxButtonGroup table {display: block; float: left;}
+
+.radioButtonGroup input, .checkboxButtonGroup input {clear: none; float: none;}
+
+.radioButtonGroup span label, .checkboxButtonGroup span label {clear: none; float: none; text-align: left; margin-top: 2px;}
+
+.panel {padding: 8px; float: left;}
+
+.panel label {width: 300px; clear: left; display: block; float: left; text-align: right; font-weight: bold; padding-right:8px;}
+
+.panel label.required {background-image: url(../img/required.png); background-position: right top; background-repeat: no-repeat;}
+
+.preferencePanel label {width: 200px;}
+
+.panel .legend { margin-top: 10px;}
+
+.panel .legend .required {
+	background-image: url(../img/required.png);
+	background-position: left top;
+	background-repeat: no-repeat;
+	padding-left: 8px;
+  clear: left;
+  display: block;
+  font-style: italic;
+}
+
+.panel .message {margin-left: 8px; color: #FF0000;}
+
+.panel .rich-fileupload-list-decor {
+  border: none;
+}
+
+.panel input,
+.panel select,
+.panel textarea,
+.panel .checkboxButtonGroup,
+.panel .input,
+.panel .yui-button {float: left; margin-left: 10px; margin-bottom: 8px;}
+
+.panel .yui-picker input,
+.panel .yui-picker select,
+.panel .yui-picker textarea,
+.panel .yui-picker .yui-button,
+.panel .rich-spinner-c input {float: none; margin-left: 0px; margin-bottom: 0px;}
+
+.panel .rich-spinner-c .rich-spinner-input-container,
+.panel .rich-spinner-c .rich-spinner-buttons {border: none; background-image: none; background-color: transparent;}
+
+.panel .rich-spinner-c .rich-spinner-buttons table {margin-left: -6px;}
+
+.panel .operator {
+  width: 30px;
+}
+
+.panel div .message, fieldset .message {padding-top: 0px; padding-bottom: 8px;}
+
+.panel .icon {vertical-align: baseline;}
+
+.panel .exponant {display: block; width: auto; clear: none; margin-left: 2px; vertical-align: super; font-size: 8px;}
+
+.yui-layout-bd .attachment {
+  width: 96%;
+}
+
+.modalPanel .radioButtonGroup span label, .modalPanel .checkboxButtonGroup span label {width: 200px;}
+
+.treeSelectionModalPanel .rich-mpnl-content {overflow: auto;}
+
+.deleteDocumentModalPanel .radioButtonGroup span label {width: 350px;}
+
+.errorPage .panel {width: 100%; padding: 0;}
+
+.breadcrumbs {padding: 2px 8px 2px 8px; margin: 0px;}
+
+.footerNote {float: left; clear: left;}
+
+.picker {width: 60px; height: 20px; float: left; margin-left: 5px;}
+
+.picker img {display: block; float: left; margin-right: 5px; margin-bottom: 2px;}
+
+.picker .up img, .picker .down img {clear: both;}
+
+.picker .up img {margin-top: 10px;}
+
+.contentPage { float:left; width: 100%;}
+
+.contentPage .legend {clear: both; text-align: left; margin-top: 8px;}
+
+.contentPage .button {float: right;}
+
+.contentPage .center {text-align: center; margin: 0 auto;}
+
+.contentPage .mainPanel .tabSet {width: 100%;}
+
+.document .workflow .data select {width: 400px;}
+
+.buttonPanel {clear: left; float: right;}
+
+.TblActTd_sun4 label, .TblActTdLst_sun4 label {width: auto; clear: none; display: inline; float: none; text-align: left; vertical-align: super;}
+
+.TblActTdLst_sun4 label {width: auto; clear: none; display: inline; float: none; text-align: left; vertical-align: baseline;}
+
+.TblActTd_sun4 input, .TblActTd_sun4 select {margin-left: 0px; margin-bottom: 0px; float: none; vertical-align: super;}
+
+.TblActTdLst_sun4 input {margin-left: 0px; margin-bottom: 0px; float: none; vertical-align: baseline;}
+
+.EdtLstAddLblTd_sun4 label, .EdtLstRmvLblTd_sun4 label {width: 5px;}
+
+.popup {height: 100%;}
+
+.popup .browser,
+.advancedLayout .yui-layout-doc .browser {text-align: center; width: 96%;}
+
+.popup .browser .document,
+.advancedLayout .yui-layout-doc .browser .document {float: none; text-align: right; font-weight: bold; height: auto; vertical-align:top;}
+
+.popup .browser .attachment,
+.advancedLayout .yui-layout-doc .browser .attachment {float: none; text-align: left; font-weight: bold; height: auto; vertical-align:top;}
+
+.tree .rich-tree-node-text span {float: left; margin-top: 2px;}
+
+.tree .rich-tree-node-text .text,
+.tree .rich-tree-node-text a {float: left;}
+
+.tree .rich-tree-node-text .inplaceInput {float: left;}
+
+.tree .rich-tree-node-text .rich-inplace-input-view-hover {color: inherit;}
+
+.tree .rich-tree-node-text div.inlineActions {float: left; margin-left: 10px;}
+
+.tree .rich-tree-node-text div.inlineActions img {margin-left: 2px;}
+
+.advancedLayout .yui-layout-doc .attachment .documentViewer {float: left; height: 600px;}
+
+.advancedLayout .yui-layout-doc .status {position: absolute; width: 100%; height: 100%; z-index: 100; text-align:center; padding-top: 200px; filter:alpha(opacity=50); -moz-opacity:0.50; opacity:0.50; -khtml-opacity:0.50; background-color: #DDDDDD;}
+
+.searchResult3Windows .contentPage .table {height: 250px; overflow: auto;}
+
+.searchResult3Windows .handle {position: relative; width: auto; height: 8px; cursor: s-resize; background-repeat: repeat-x; background-position: center; margin: 8px 0px 8px 0px;}
+
+.advancedLayout .contentPage .contentTypeTabPanel .rich-tabpanel-content,
+.searchResult3Windows .contentPage .contentTypeTabPanel .rich-tabpanel-content  {
+  display: none;
+}
+.viewUnit .treePanel .status {position: absolute; z-index: 100; text-align:center; filter:alpha(opacity=50); -moz-opacity:0.50; opacity:0.50; -khtml-opacity:0.50; background-color: #DDDDDD;}
+
+.linkedTableDoc {clear: left; display: block; float: left; margin-right: 8px; margin-top: 2px;}
+
+.buttons {
+  clear: both;
+  margin: 8px 0px 0px 0px;
+}
+
+.buttons input,
+.buttons div.btn_submit,
+.buttons div.btn_cancel,
+.buttons div.btn_generic {
+  float: right;
+  margin: 0px 0px 0px 8px;
+}
+
+.panelWithTitle2 div.header {
+  border:1px solid #E6E0E0;
+}
+
+.panelWithTitle2 .dataTable div.header {
+  border: none;
+}
+
+.panelWithTitle2 .topActions {
+  margin-bottom: 4px;
+}
+
+.panelWithTitle2 .title {
+  width: 100%;
+}
+
+.panelWithTitle2 .title .left, .panelWithTitle2 .title .right {
+  background-image: none;
+  width: 0px;
+}
+
+.panelWithTitle2 .title .text {
+  background-image: url(../img/puce01.png);
+  background-position: 6px center;
+  background-repeat: no-repeat;
+  padding-left: 18px;
+}
+
+.panelWithTitle2 .topRight {
+  background-color: #E6E0E0;
+}
+
+.layout .column {vertical-align: top;}
+
+.layout .menu {padding: 10px; top: 0px;}
+
+.footerPanel {
+  height: 24px;
+  line-height: 24px;
+  margin: 0px 8px 0px 8px;
+}
+
+.footerPanel div {height: 24px; line-height: 24px; background-repeat: no-repeat;}
+
+.footerPanel div img, #footerPanel div .footerText {vertical-align: middle;}
+
+.footerPanel div.left {float: left; margin: 0px; padding-left: 10px; background-position: top left;}
+
+.footerPanel div.right {float: right; margin: 0px; padding-right: 10px; background-position: top right;}
+
+.deployJavaPlugin {position: absolute;}
+
+.docCreationPanel {padding-top: 0px; padding-bottom: 0px;}
+
+
+
+
+
+
+table.detail, span.detail {display: block; float: left; margin-left: 0px; margin-bottom: 8px;}
+
+table.detail input, span.detail input {margin-bottom: 4px;}
+
+table.detail td {width: auto;}
+
+table.detail label, span.detail label {width: auto; font-weight: normal;  margin-left: 10px;}
+
+table.detail .CalPopFldLbl_sun4 {padding-left: 0px; padding-right: 0px; margin-right: 0px;}
+
+table.detail .CalPopDiv_sun4 select {float: none; margin:2px 1px 2px 2px; vertical-align:top;}
+
+table.detail .CalPopDiv_sun4 .DatCalLeft_sun4 select {width: 80px;}
+
+table.detail .CalPopDiv_sun4 .DatCalRight_sun4 select {width: 60px;}
+
+table.detail .DatSelTopMiddle_sun4 {width: 100%;}
+
+table.detail .inlineFieldHelp_sun4, span.detail .inlineFieldHelp_sun4 {margin-left: 8px; margin-top: -2px;}
+
+table.radioButtonGroup, table.checkboxButtonGroup {border-spacing: 0px; border-collapse: collapse;}
+
+table.radioButtonGroup label, table.checkboxButtonGroup label {clear: none; float: right; text-align: left; margin-top: 2px;}
+
+table.radioButtonGroup td, table.checkboxButtonGroup td {padding: 0px;}
+
+.delete table.radioButtonGroup label {width: 90%;}
+
+.row div.rich-editor {float:left; margin-bottom:8px; margin-left:10px;}
+
+.row span.richText {float:left; margin-left: 10px; margin-bottom: 14px;}
+
+.row span.richText p {margin: 0px;}
+
+table.finish {margin-left: 10px;}
+
+table.date input {width: 90%;}
+
+th.action {text-align: center;}
+
+div.first div.first select {margin-bottom: 24px;}
+
+div.left {float: left;}
+
+div.right {float: right;}
+
+fieldset .button {margin-top: 0px; margin-bottom: 8px;}
+
+iframe.attachment {position: absolute; top: 24px; left: 0px; text-align: center; width: 100%; height: 100%;}
+
+/******************/
+/* Theme Specific */
+/******************/
+.contentPage div.TtlTxtDiv_sun4 h1.TtlTxt_sun4 {
+  background-image: url("../img/puce_title.jpg");
+  background-repeat: no-repeat;
+  background-position: 0px 1px;
+  padding-left: 18px;
+  height: 100%;
+}
+
+.table {
+  background-image: url("../img/woodstock/table_titlebar_top.gif");
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+
+.contentPage .Tbl_sun4 table {margin-bottom: 0px;}
+
+.viewUnit .layout .left {border-right-style: solid; border-right-width: 1px; border-right-color: #E7E1E1;}
+
+.viewUnit .leftMenuPanel, .searchResult3Windows .leftMenuPanel {padding: 0px 8px 8px 8px;}
+
+.viewUnit .leftMenuPanel img, .searchResult3Windows .leftMenuPanel img {padding-top: 8px;}
+
+.viewUnit .leftMenuPanel div, .searchResult3Windows .leftMenuPanel div {width: 32px; margin: auto;}
+
+.leftMenuPanel span.contextMenu div {width: auto; margin: 0px; text-align: left;}
+
+.leftMenuPanel span.contextMenu div.rich-menu-item-folder {width: 16px;}
+
+.leftMenuPanel span.contextMenu span {clear: none; display: inline; padding: 0px;}
+
+.viewUnit .leftMenuPanel div.workflowAirs, .viewUnit .leftMenuPanel div.workflow, .viewUnit .leftMenuPanel div.custom,
+.searchResult3Windows .leftMenuPanel div.workflowAirs, .searchResult3Windows .leftMenuPanel div.workflow, .searchResult3Windows .leftMenuPanel div.custom {
+  border-top-style: dotted;
+  border-top-width: 1px;
+  padding-top: 4px;
+}
+
+.EdtLstTbl_sun4 .EdtLstAddLblTd_sun4,
+.EdtLstTbl_sun4 .EdtLstRmvLblTd_sun4 {
+  width: 300px;
+}
+
+.EdtLstRmvLblTd_sun4 label {
+  display: none;
+}
+
+.viewUnit .EdtLstTbl_sun4 {
+   background: transparent none repeat scroll 0 0;
+   width: 0;
+   border-spacing: 0px;
+   border-collapse: collapse;
+}
+
+.viewUnit .EdtLstTbl_sun4 td {
+  padding: 0px;
+}
+
+.viewUnit .EdtLstTbl_sun4 .EdtLstAddLblTd_sun4, .viewUnit .EdtLstTbl_sun4 .EdtLstRmvLblTd_sun4 {
+  display: none;
+}
+
+.viewUnit .EdtLstTbl_sun4 .EdtLstAddBtnTd_sun4 input, .viewUnit .EdtLstTbl_sun4 .EdtLstRmvBtnTd_sun4 input {
+  width: auto;
+}
+
+.viewUnit .EdtLstTbl_sun4 .EdtLstAddLblTd_sun4 label, .viewUnit .EdtLstTbl_sun4 .EdtLstRmvLblTd_sun4 label {
+  display:none;
+}
+
+
+.multivalued {padding-right : 10;}
+
+/********************/
+.viewUnit element.style {
+margin-left:17px;
+}
+/***********************/
+
+.viewUnit .mainPanel .tabContent a.disabled, .searchResult3Windows .mainPanel .tabContent a.disabled {visibility: hidden;}
+
+.popup .browser,
+.advancedLayout .layout .browser {float: none; background-image : url("../img/header-ar.jpg");}
+
+.popup .browser a,
+.advancedLayout .layout .browser a {font-weight: bold;}
+
+.popup .attachment,
+.advancedLayout .layout .browser .attachment {margin-top: 8px; float: none; height: 92%;}

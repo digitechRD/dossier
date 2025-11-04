@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ScriptsGroovy xmlns="http://www.digitech.com/dossiers/groovyScript" version="6.0.5.1" customerName="LAPROVENCE">
+    <Script id="CourrierScriptUtils">
+        <script>global/LaProvenceScriptUtils.groovy</script>
+        <type>GlobalLibrary</type>
+    </Script>
+    <Script id="facture_init_readOnlyAAC">
+        <script>facture_init_readOnlyAAC.groovy</script>
+        <type>FieldInitializer</type>
+    </Script>
+    <Script id="facture_init_readOnlyA">
+        <script>facture_init_readOnlyA.groovy</script>
+        <type>FieldInitializer</type>
+    </Script>
+    <Script id="facture_init_readOnlyAC">
+        <script>facture_init_readOnlyAC.groovy</script>
+        <type>FieldInitializer</type>
+    </Script>
+    <Script id="verifyTypeDoc_beforeCreate">
+        <script>trigger/beforeCreate_verifyTypeDoc.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="onDeleteFacBefore">
+        <script>trigger/beforeDelete_unlockEng.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="onSaveFacBefore">
+        <script>trigger/beforeSave_verifyTTC.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="onSubmitTaskScriptBefore">
+        <script>trigger/onSubmitTaskScriptBefore.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="onSubmitTaskScriptAfter">
+        <script>trigger/onSubmitTaskScriptAfter.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="sendNotificationMail">
+        <script>sendNotificationMail.groovy</script>
+        <type>Task</type>
+    </Script>
+    <Script id="launchBatDataloader">
+        <script>launchBatDataloader.groovy</script>
+        <type>Task</type>
+    </Script>
+    <Script id="MAJCIPRES">
+        <script>MAJCIPRES.groovy</script>
+        <type>Task</type>
+    </Script>
+    <Script id="assistantFilter">
+        <script>filter/assistantFilter.groovy</script>
+        <type>ElementFilter</type>
+    </Script>
+    <Script id="migrateAirsDocsFromWF">
+        <script>migrateAirsDocsFromWF.groovy</script>
+        <type>Task</type>
+    </Script>
+    <Script id="updatePopulationModuleTask">
+        <script>updatePopulationModuleTask.groovy</script>
+        <type>Task</type>
+    </Script>
+</ScriptsGroovy>

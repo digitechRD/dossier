@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<preference>
+  <organization name="DEFAULT" id="0" titre="Default" workflowCorbeille="1">
+    <indexation contentType="FACTURE">
+      <airsrequest name="">
+        <value>WFTASK=NONE</value>
+      </airsrequest>
+    </indexation>
+    <SubmitWorkflow alert="1" onclick="gotoSimpleView"/>
+  </organization>
+  <organization name="EXPERIAN" id="1" titre="Accueil Experian" workflowCorbeille="1">
+    <indexation contentType="FACTURE">
+      <airsrequest name="">
+        <value>WFTASK=EXP_Indexation</value>
+      </airsrequest>
+    </indexation>
+    <SubmitWorkflow alert="1" onclick="gotoSimpleView"/>
+    <reporting>
+      <file value="suiviIndexation.rptdesign" titre="Suivi Indexation"/>
+    </reporting>
+  </organization>
+  <organization name="TOS" id="2" titre="Accueil TOS" workflowCorbeille="1">
+    <indexation contentType="FACTURE">
+      <airsrequest name="">
+        <value>WFTASK=WK_Ano_Rapp_Soc</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Ano_Rapp_Four</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Index_cmd</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Ano_Rapp_BdC</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Ana_Fact</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_litige</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Dem_Avoir</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Ano_Soc_four</value>
+      </airsrequest>
+      <airsrequest name="">
+        <value>WFTASK=WK_Expl_Fact</value>
+      </airsrequest>
+    </indexation>
+    <SubmitWorkflow alert="1" onclick="gotoSimpleView"/>
+    <reporting>
+      <file value="suiviTechnique.rptdesign" titre="Suivi Technique"/>
+      <file value="suiviReception.rptdesign" titre="Suivi Reception"/>
+      <file value="suiviEtats.rptdesign" titre="Suivi Etat"/>
+    </reporting>
+  </organization>
+  <organization name="EXTERNE" id="12" titre="EXTERNE" afterLogin="gotoSearch">
+  </organization>
+</preference>

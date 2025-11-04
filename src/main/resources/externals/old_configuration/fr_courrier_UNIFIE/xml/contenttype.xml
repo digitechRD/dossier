@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rootContentType xmlns="http://www.digitech.com/dossiers/contenttype" xmlns:ns2="http://www.digitech.com/dossiers/common" xmlns:ns3="http://www.digitech.com/dossiers/baskets" version="6.2" customerName="CIRIL">
+    <parentContentType isFlowParent="true" name="GF_PES_EXE" appName="AIRS">
+        <flow code="GF_PES" label="GF - PES" order="9999" displayedFirst="false">
+            <description>Permet de consulter les flux PES transmis au trésor public avec tous les documents s'y rattachant.</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfilesCode>PC_GF_PES</airsProfilesCode>
+            <airsProfiles>313</airsProfiles>
+        </flow>
+        <childContentType name="GF_PES" appName="AIRS">
+            <codeLinkedField parentField="GF_PES_EXE" childField="GF_PES_EXE" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="GF_TIERS" appName="AIRS">
+        <flow code="GF_TIERS" label="GF - Tiers" order="9999" displayedFirst="false">
+            <description>Permet de consulter toutes les pièces comptables rattachées à un tiers.</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfilesCode>PC_GF_TIERS</airsProfilesCode>
+            <airsProfiles>312</airsProfiles>
+        </flow>
+        <childContentType name="GF_MOUVEMENT" appName="AIRS">
+            <codeLinkedField parentField="GF_TI_NUMTIE" childField="GF_TI_NUMTIE" multiple="false"/>
+        </childContentType>
+        <childContentType name="GF_PIECE_JOINTE" appName="AIRS">
+            <codeLinkedField parentField="GF_TI_NUMTIE" childField="GF_TI_NUMTIE" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="GF_MARCHE" appName="AIRS">
+        <flow code="GF_TIERS" label="GF - Tiers" order="9999" displayedFirst="false">
+            <description>Permet de consulter toutes les pièces comptables rattachées à un tiers.</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfilesCode>PC_GF_TIERS</airsProfilesCode>
+            <airsProfiles>312</airsProfiles>
+        </flow>
+        <childContentType name="GF_MOUVEMENT" appName="AIRS">
+            <codeLinkedField parentField="GF_MA_NUMMAR" childField="GF_MA_NUMMAR" multiple="false"/>
+        </childContentType>
+        <childContentType name="GF_PIECE_JOINTE" appName="AIRS">
+            <codeLinkedField parentField="GF_MA_NUMMAR" childField="GF_MA_NUMMAR" multiple="false"/>
+        </childContentType>
+        <extraFilter>
+            <ns2:dossierrequest name="Filtre de test pour la collectivité A">
+                <ns2:contentType>GF_MARCHE</ns2:contentType>
+                <ns2:airsvalue>
+				GF_CODE_LIBCOL="A" OU GF_CODE_LIBCOL=""
+                </ns2:airsvalue>
+                <ns2:airsProfile>819</ns2:airsProfile>
+                <ns2:airsProfileCode>PC_GF_COL_A</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="Filtre de test pour la collectivité B">
+                <ns2:contentType>GF_MARCHE</ns2:contentType>
+                <ns2:airsvalue>
+				GF_CODE_LIBCOL="B" OU GF_CODE_LIBCOL=""
+                </ns2:airsvalue>
+                <ns2:airsProfile>820</ns2:airsProfile>
+                <ns2:airsProfileCode>PC_GF_COL_B</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType isFlowParent="false" name="GF_MOUVEMENT" appName="AIRS">
+        <flow code="GF_TIERS" label="GF - Tiers" order="9999" displayedFirst="false">
+            <description>Permet de consulter toutes les pièces comptables rattachées à un tiers.</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>312</airsProfiles>
+            <airsProfilesCode>PC_GF_TIERS</airsProfilesCode>
+        </flow>
+        <childContentType name="GF_PIECE_JOINTE" appName="AIRS">
+            <codeLinkedField parentField="GF_MV_ID" childField="GF_MV_ID" multiple="false"/>
+            <extraFilter>
+                <ns2:dossierrequest name="Filtre de test pour la collectivité A">
+                    <ns2:contentType>GF_PIECE_JOINTE</ns2:contentType>
+                    <ns2:airsvalue>
+				GF_CODE_LIBCOL="A" OU GF_CODE_LIBCOL=""
+                </ns2:airsvalue>
+                    <ns2:airsProfile>819</ns2:airsProfile>
+                    <ns2:airsProfileCode>PC_GF_COL_A</ns2:airsProfileCode>
+                </ns2:dossierrequest>
+                <ns2:dossierrequest name="Filtre de test pour la collectivité B">
+                    <ns2:contentType>GF_PIECE_JOINTE</ns2:contentType>
+                    <ns2:airsvalue>
+				GF_CODE_LIBCOL="B" OU GF_CODE_LIBCOL=""
+                </ns2:airsvalue>
+                    <ns2:airsProfile>820</ns2:airsProfile>
+                    <ns2:airsProfileCode>PC_GF_COL_B</ns2:airsProfileCode>
+                </ns2:dossierrequest>
+            </extraFilter>
+        </childContentType>
+        <extraFilter>
+            <ns2:dossierrequest name="Filtre de test pour la collectivité A">
+                <ns2:contentType>GF_MOUVEMENT</ns2:contentType>
+                <ns2:airsvalue>
+				GF_CODE_LIBCOL="A" OU GF_CODE_LIBCOL=""
+                </ns2:airsvalue>
+                <ns2:airsProfile>819</ns2:airsProfile>
+                <ns2:airsProfileCode>PC_GF_COL_A</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="Filtre de test pour la collectivité B">
+                <ns2:contentType>GF_MOUVEMENT</ns2:contentType>
+                <ns2:airsvalue>
+				GF_CODE_LIBCOL="B" OU GF_CODE_LIBCOL=""
+                </ns2:airsvalue>
+                <ns2:airsProfile>820</ns2:airsProfile>
+                <ns2:airsProfileCode>PC_GF_COL_B</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="RH_AGENT" appName="AIRS">
+        <flow code="RH_AGENT" label="RH - AGENT" order="9999" displayedFirst="false">
+            <description>Flux contenant la grande majorité des documents propres à l'agent.</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>409</airsProfiles>
+            <airsProfiles>411</airsProfiles>
+            <airsProfilesCode>PC_RH_AGENT</airsProfilesCode>
+            <airsProfilesCode>PC_RH_VISU_GLOBALE</airsProfilesCode>
+        </flow>
+        <childContentType name="RH_DOCUMENT_EXTERNE" appName="AIRS">
+            <codeLinkedField parentField="RH_MATRICULE" childField="RH_MATRICULE" multiple="false"/>
+            <codeLinkedField parentField="GEN_SCHEMA" childField="GEN_SCHEMA" multiple="false"/>
+        <extraFilter>
+            <ns2:dossierrequest name="Filtre sur le dossier de l'utilisateur">
+                <ns2:contentType>RH_DOCUMENT_EXTERNE</ns2:contentType>
+                <ns2:airsvalue>RH_MATRICULE="#USER_OPT_MATRICULE#"</ns2:airsvalue>
+                <ns2:airsProfile>409</ns2:airsProfile>
+                <ns2:airsProfileCode>PC_RH_AGENT</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+        </extraFilter>
+        </childContentType>
+        <extraFilter>
+            <ns2:dossierrequest name="Filtre sur le dossier de l'utilisateur">
+                <ns2:contentType>RH_AGENT</ns2:contentType>
+                <ns2:airsvalue>RH_MATRICULE="#USER_OPT_MATRICULE#"</ns2:airsvalue>
+                <ns2:airsProfile>409</ns2:airsProfile>
+                <ns2:airsProfileCode>PC_RH_AGENT</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+    <parentContentType isFlowParent="false" name="GEN_DOS" appName="AIRS">
+        <flow code="GEN" label="Flux Generique" order="9999" displayedFirst="false">
+            <description>Flux Générique</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>609</airsProfiles>
+            <airsProfiles>610</airsProfiles>
+            <airsProfiles>709</airsProfiles>
+            <airsProfilesCode>GEN_MODIF</airsProfilesCode>
+            <airsProfilesCode>GEN_CONSULT</airsProfilesCode>
+            <airsProfilesCode>GEN_ADMIN</airsProfilesCode>
+        </flow>
+        <childContentType name="GEN_DOC" appName="AIRS">
+            <codeLinkedField parentField="GEN_ROOT_NOM" childField="GEN_ROOT_NOM" multiple="false"/>
+            <codeLinkedField parentField="GEN_ROOT_CH1" childField="GEN_ROOT_CH1" multiple="false"/>
+            <codeLinkedField parentField="GEN_DOS_PCLASS" childField="GEN_DOS_PCLASS" multiple="false"/>
+            <codeLinkedField parentField="GEN_DOS_CH1" childField="GEN_DOS_CH1" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="COU_REPONSE" appName="AIRS">
+        <flow code="COURRIER" label="Gestion du courrier" order="9999" displayedFirst="true">
+            <description>Gestion du courrier entrant</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>10</airsProfiles>
+            <airsProfiles>11</airsProfiles>
+            <airsProfiles>12</airsProfiles>
+            <airsProfiles>509</airsProfiles>
+            <airsProfilesCode>DOS_AGENT</airsProfilesCode>
+            <airsProfilesCode>DOS_GESTIONNAIRE</airsProfilesCode>
+            <airsProfilesCode>DOS_DIRECTION</airsProfilesCode>
+            <airsProfilesCode>DOS_VISU_GLOBALE</airsProfilesCode>
+        </flow>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="GEN_ROOT" appName="AIRS">
+        <flow code="GEN" label="Flux Generique" order="9999" displayedFirst="false">
+            <description>Flux Générique</description>
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>609</airsProfiles>
+            <airsProfiles>610</airsProfiles>
+            <airsProfiles>709</airsProfiles>
+            <airsProfilesCode>GEN_MODIF</airsProfilesCode>
+            <airsProfilesCode>GEN_CONSULT</airsProfilesCode>
+            <airsProfilesCode>GEN_ADMIN</airsProfilesCode>
+        </flow>
+        <childContentType name="GEN_DOS" appName="AIRS">
+            <codeLinkedField parentField="GEN_ROOT_NOM" childField="GEN_ROOT_NOM" multiple="false"/>
+            <codeLinkedField parentField="GEN_ROOT_CH1" childField="GEN_ROOT_CH1" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="true" name="COU_COURRIER_IN" appName="AIRS">
+        <flow code="COURRIER" label="Gestion du courrier" order="9999" displayedFirst="true">
+            <description>Gestion du courrier entrant</description>
+            <organization id="0" name="DEFAULT"/>
+            <airsProfiles>10</airsProfiles>
+            <airsProfiles>11</airsProfiles>
+            <airsProfiles>12</airsProfiles>
+            <airsProfiles>509</airsProfiles>
+            <airsProfilesCode>DOS_AGENT</airsProfilesCode>
+            <airsProfilesCode>DOS_GESTIONNAIRE</airsProfilesCode>
+            <airsProfilesCode>DOS_DIRECTION</airsProfilesCode>
+            <airsProfilesCode>DOS_VISU_GLOBALE</airsProfilesCode>
+        </flow>
+        <extraFilter>
+            <ns2:dossierrequest name="agent">
+                <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+                <ns2:airsvalue>
+				  (T_ETAT_COURRIER.ITEM="123" ET U_VALIDEURS.USR="#LOGIN_ID#") OU
+                  (T_ETAT_COURRIER.ITEM="126" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="127" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#" OU U_VISEURS.USR="#LOGIN_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="128" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL) OU U_PROPRIETAIRE.USR="#LOGIN_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="128" ET (U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#"))
+                </ns2:airsvalue>
+                <ns2:airsProfile>10</ns2:airsProfile>
+                <ns2:airsProfileCode>DOS_AGENT</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="gestionnaire">
+                <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+                <ns2:airsvalue>
+                  (T_ETAT_COURRIER.ITEM="122") OU
+                  (T_ETAT_COURRIER.ITEM="123" ET U_VALIDEURS.USR="#LOGIN_ID#") OU
+                  (T_ETAT_COURRIER.ITEM="125" ET U_CREAT.USR="#LOGIN_ID#") OU
+                  (T_ETAT_COURRIER.ITEM="126" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#") OU U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="127" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#") OU U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#" OU U_VISEURS.USR="#LOGIN_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="128" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#") OU U_PROPRIETAIRE.USR="#LOGIN_ID#")) OU
+                 (T_ETAT_COURRIER.ITEM="128" ET (U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#"))
+               </ns2:airsvalue>
+                <ns2:airsProfile>11</ns2:airsProfile>
+                <ns2:airsProfileCode>DOS_GESTIONNAIRE</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="direction">
+                <ns2:contentType>COU_COURRIER_IN</ns2:contentType>
+                <ns2:airsvalue>
+                  (T_ETAT_COURRIER.ITEM="122") OU
+                  (T_ETAT_COURRIER.ITEM="123" ET U_VALIDEURS.USR="#LOGIN_ID#") OU
+                  (T_ETAT_COURRIER.ITEM="125" ET U_CREAT.USR="#LOGIN_ID#") OU
+                  (T_ETAT_COURRIER.ITEM="126" ET (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" OU U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="127" ET (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" OU U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#" OU U_VISEURS.USR="#LOGIN_ID#")) OU
+                  (T_ETAT_COURRIER.ITEM="128" ET O_PROPRIETAIRE.ROOTORG="#ORG_ID#") OU 
+                  (T_ETAT_COURRIER.ITEM="128" ET (U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#"))
+               </ns2:airsvalue>
+                <ns2:airsProfile>12</ns2:airsProfile>
+                <ns2:airsProfileCode>DOS_DIRECTION</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+
+    <parentContentType isFlowParent="true" name="COU_COURRIER_OUT" appName="AIRS">
+        <flow code="COURRIER" label="Gestion du courrier" order="9999" displayedFirst="true">
+            <description>Gestion du courrier entrant</description>
+            <organization id="0" name="DEFAULT"/>
+            <airsProfiles>10</airsProfiles>
+            <airsProfiles>11</airsProfiles>
+            <airsProfiles>12</airsProfiles>
+            <airsProfiles>509</airsProfiles>
+            <airsProfilesCode>DOS_AGENT</airsProfilesCode>
+            <airsProfilesCode>DOS_GESTIONNAIRE</airsProfilesCode>
+            <airsProfilesCode>DOS_DIRECTION</airsProfilesCode>
+            <airsProfilesCode>DOS_VISU_GLOBALE</airsProfilesCode>
+        </flow>
+        <extraFilter>
+            <ns2:dossierrequest name="agent">
+                <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+                <ns2:airsvalue>U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_VISEURS.USR="#LOGIN_ID#" OU C_EMETTEUR="AIRS=#LOGIN_ID#"</ns2:airsvalue>
+                <ns2:airsProfile>10</ns2:airsProfile>
+                <ns2:airsProfileCode>DOS_AGENT</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="gestionnaire">
+                <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+                <ns2:airsvalue>O_PROPRIETAIRE.ORG="#ORG_ID#" OU  U_PROPRIETAIRE.USR="#LOGIN_ID#" OU U_VISEURS.USR="#LOGIN_ID#" OU C_EMETTEUR="AIRS=#LOGIN_ID#"</ns2:airsvalue>
+                <ns2:airsProfile>11</ns2:airsProfile>
+                <ns2:airsProfileCode>DOS_GESTIONNAIRE</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+            <ns2:dossierrequest name="direction">
+                <ns2:contentType>COU_COURRIER_OUT</ns2:contentType>
+                <ns2:airsvalue>                            
+                   O_PROPRIETAIRE.ROOTORG="#ORG_ID#" OU U_VISEURS.USR="#LOGIN_ID#" OU C_EMETTEUR="AIRS=#LOGIN_ID#" OU U_PROPRIETAIRE.USR="#LOGIN_ID#"
+				</ns2:airsvalue>
+                <ns2:airsProfile>12</ns2:airsProfile>
+                <ns2:airsProfileCode>DOS_DIRECTION</ns2:airsProfileCode>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+</rootContentType>

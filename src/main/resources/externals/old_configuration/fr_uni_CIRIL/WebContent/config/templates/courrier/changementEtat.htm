@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+<!--
+.style2 {color: #666666}
+a:link {
+text-decoration:none;
+}
+a:hover {
+text-decoration:underline;
+}
+-->
+</style>
+</head>
+<body>
+<#assign recipient=reportModel.customReportBeansMap.recipient>
+<#assign state=reportModel.customReportBeansMap.state>
+<#assign document=reportModel.first>
+<#assign stateType = enums["com.digitech.courrier.common.model.backend.CourrierAdvancedAuditType"]>
+<table width="1024" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000">
+  <tr>
+    <td><img src="img/header.jpg" width="1024" height="82" /></td>
+  </tr>
+  <tr>
+    <td style="padding:4px; color:#FFFFFF">Bonjour ${recipient.firstName} ${recipient.lastName?upper_case}<br />
+      <br />
+    <br />
+    Le courrier <a href="${document.customPropertiesMap.redirectUrl}" style="color:#eeb607;"><#if document.reportFieldsMap.C_OBJET.finalHtmlValue??>${document.reportFieldsMap.C_OBJET.finalHtmlValue} - </#if>${document.reportFieldsMap.N_CHRONO.finalHtmlValue}</a> <#if state == stateType.ADV_EVENT_COURRIER_TO_INDEX>a &eacute;t&eacute; ajout&eacute; &agrave; votre bannette des courriers &agrave; indexer<#elseif state == stateType.ADV_EVENT_COURRIER_TO_VALIDATE>a &eacute;t&eacute; ajout&eacute; &agrave; votre bannette des courriers &agrave; valider<#elseif state == stateType.ADV_EVENT_COURRIER_VALIDATED>a &eacute;t&eacute; ajout&eacute; &agrave; votre bannette des courriers &agrave; traiter<#elseif state == stateType.ADV_EVENT_COURRIER_REFUSED>a &eacute;t&eacute; ajout&eacute; &agrave; votre bannette des courriers refus&eacute;s<#elseif state == stateType.ADV_EVENT_COURRIER_DIFFUSED>a &eacute;t&eacute; ajout&eacute; &agrave; votre bannette des courriers &agrave; traiter<#elseif state == stateType.ADV_EVENT_COURRIER_TO_SIGN>a &eacute;t&eacute; ajout&eacute; &agrave; votre bannette des courriers &agrave; viser<#elseif state == stateType.ADV_EVENT_COURRIER_ACCEPTED>a &eacute;t&eacute; accept&eacute; (Visa)<#elseif state == stateType.ADV_EVENT_COURRIER_REJECTED>a &eacute;t&eacute; rejet&eacute; (Visa)<#elseif state == stateType.ADV_EVENT_COURRIER_CLOSED>a &eacute;t&eacute; cl&ocirc;tur&eacute;</#if>.<br />
+    <br /></td>
+  </tr>
+</table>
+<br />
+<span class="style2">Ne r&eacute;pondez pas              directement &agrave; cet e-mail, celui-ci vous est envoy&eacute;              automatiquement.</span><br />
+</body>
+</html>

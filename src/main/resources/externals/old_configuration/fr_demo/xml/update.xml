@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:formulaire xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/update" customerName="@CUSTOMERNAME@" version="5.1.0">
+    <ns2:organization id="0" name="DEFAULT"/>
+    <ns2:organization id="3" name="RH_GEST">
+        <ns2:contentType name="DOCUMENT_RH" type="update">
+            <link direction="child" name="DOCLIE" contentTypeCode="DOCUMENT_RH">Document lié fils</link>
+            <link direction="parent" name="DOCLIE" contentTypeCode="DOCUMENT_RH">Document lié pere</link>
+            <ns2:input display="true" readonly="false" required="true" type="">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+                <dependInput type="MULTIPLE" fieldKey="RH_DOC_CAT">
+                <scriptId>DependanceTypeCategorie</scriptId>
+                </dependInput>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>           
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>RH_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>RH_DATE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <action displayRule="VIEW" id="ARCHIVER" image="icon_update_archiver" resourceKey="update_doc_archiver">
+                <groovyScriptId>PasseDocArchiver</groovyScriptId>
+            </action>
+        </ns2:contentType>
+        <ns2:contentType name="DOCUMENT_RH" type="insert">
+            <ns2:input display="true" readonly="false" required="true" type="">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>RH_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Responsable</ns2:label>
+                <ns2:airsfield>RH_RESPONSABLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>RH_DATE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Acteur</ns2:label>
+                <ns2:airsfield>RH_ACTEURS</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_RH" type="update">
+            <ns2:input display="true" readonly="false" required="true" type="">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOS_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Date entrée</ns2:label>
+                <ns2:airsfield>RH_DATE_ENTREE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Date de départ</ns2:label>
+                <ns2:airsfield>RH_DATE_DEPART</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Solde CA</ns2:label>
+                <ns2:airsfield>RH_SOLDE_CA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_RH" type="insert">
+            <ns2:input display="true" readonly="false" required="true" type="">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="list">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOS_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Date entrée</ns2:label>
+                <ns2:airsfield>RH_DATE_ENTREE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Date de départ</ns2:label>
+                <ns2:airsfield>RH_DATE_DEPART</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="false" required="false" type="">
+                <ns2:label>Solde CA</ns2:label>
+                <ns2:airsfield>RH_SOLDE_CA</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+    </ns2:organization>
+    <ns2:organization id="8" name="RH_CONS">
+        <ns2:contentType name="DOCUMENT_RH" type="update">
+            <ns2:input display="true" readonly="true" required="true" type="">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="list">
+                <ns2:label>Catégorie</ns2:label>
+                <ns2:airsfield>RH_DOC_CAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="list">
+                <ns2:label>Type de document</ns2:label>
+                <ns2:airsfield>RH_TYPE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Libellé</ns2:label>
+                <ns2:airsfield>RH_LIBELLE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Date du document</ns2:label>
+                <ns2:airsfield>RH_DATE_DOC</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Date enregistrement</ns2:label>
+                <ns2:airsfield>D_CREAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="list">
+                <ns2:label>Etat</ns2:label>
+                <ns2:airsfield>RH_ETAT</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <action displayRule="VIEW" id="ARCHIVER" image="icon_update_archiver" resourceKey="update_doc_archiver">
+                <groovyScriptId>PasseDocArchiver</groovyScriptId>
+            </action>
+        </ns2:contentType>
+        <ns2:contentType name="DOSSIER_RH" type="update">
+            <ns2:input display="true" readonly="true" required="true" type="">
+                <ns2:label>Matricule</ns2:label>
+                <ns2:airsfield>RH_MATRICULE</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Nom</ns2:label>
+                <ns2:airsfield>RH_NOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+            <ns2:input display="true" readonly="true" required="false" type="">
+                <ns2:label>Prénom</ns2:label>
+                <ns2:airsfield>RH_PRENOM</ns2:airsfield>
+                <ns2:initial-value></ns2:initial-value>
+            </ns2:input>
+        </ns2:contentType>
+    </ns2:organization>
+</ns2:formulaire>

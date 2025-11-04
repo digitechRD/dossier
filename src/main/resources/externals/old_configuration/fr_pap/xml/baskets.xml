@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bkt:corbeille version="9.0" customerName="PAP" xmlns:com="http://www.digitech.com/dossiers/common" xmlns:bkt="http://www.digitech.com/dossiers/baskets">
+    <bkt:organization name="DEFAULT" titre="DEFAULT" load-on-startup="0">
+        <bkt:flow flowCode="REF_DOCUMENT"/>
+    </bkt:organization>
+    <bkt:organization name="DEFAULT" titre="DEFAULT" load-on-startup="0">
+        <bkt:flow flowCode="COURRIER"/>
+    </bkt:organization>
+    <bkt:organization name="DEFAULT" titre="DEFAULT" load-on-startup="0">
+        <bkt:flow flowCode="MONTEE_SUR_CALE">
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="ACTION" name="Documents à indexer">
+                <com:contentType>DOC_MONTEE</com:contentType>
+                <com:airsvalue>MSC_TYPE_DOCUMENT.ITEM.CODE="ADEFINIR"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="-1"></bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Demandes reçues">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="reception_demande" OU MSC_ETAPE_EN_COURS IS NULL</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Demandes à contrôler">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="controle_demande"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_CONTROLE_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Constitution du dossier">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="constitution_dossier"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_DOSSIER_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Numérotation - Bureau courrier">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="apposition_numero_courrier"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_BUREAU_COURRIER</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Envoi du dossier">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="envoi_dossier"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_DOSSIER_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Dossier en attente de réception">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="reception_dossier"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Vérification du dossier">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="verification_dossier"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="1">Instruction du dossier</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Visas en cours">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="visa_dir_adj_infra_exploit" OU MSC_ETAPE_EN_COURS.ITEM.CODE="visa_charge_environnement" OU MSC_ETAPE_EN_COURS.ITEM.CODE="visa_commandant_port" OU MSC_ETAPE_EN_COURS.ITEM.CODE="visa_agent_comptable"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="2">Visas et signatures</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Visas - Dir. Adj Infra Exploit">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="visa_dir_adj_infra_exploit"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_DIR_ADJ_INFRA_EXPLOIT</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="2">Visas et signatures</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Visas - Chargé Environnement">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="visa_charge_environnement"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_CHARGE_ENVIRONNEMENT</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="2">Visas et signatures</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Visas - Commandant de port">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="visa_commandant_port"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_COMMANDANT_PORT</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="2">Visas et signatures</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Visas - Agent comptable">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="visa_agent_comptable"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_AGENT_COMPTABLE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="2">Visas et signatures</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Signatures en cours">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="signature"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="2">Visas et signatures</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Préparation montée sur cale">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="preparation_montee_sur_cale"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="3">Montée sur cale</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Vérification BER">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="verification_ber"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="3">Montée sur cale</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Montée sur cale en cours">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="montee_sur_cale"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="3">Montée sur cale</bkt:fieldset>
+            </bkt:basketRequest>
+            <bkt:basketRequest indexation="false" inHeaderMenu="false" basket-properties-scriptId="" styleClass="" maxResults="-1" time-to-live="-1" type="FOLDER" name="Facturation montée sur cale">
+                <com:contentType>MONTEE_SUR_CALE</com:contentType>
+                <com:airsvalue>MSC_ETAPE_EN_COURS.ITEM.CODE="facturation_montee_sur_cale"</com:airsvalue>
+                <com:sortingPolicy>
+                    <com:direction>DICREASING</com:direction>
+                    <com:codeField>D_CREAT</com:codeField>
+                </com:sortingPolicy>
+                <com:airsProfileCode>PF_RESP_MONTEE_SUR_CALE</com:airsProfileCode>
+                <bkt:fieldset styleClass="" order="3">Montée sur cale</bkt:fieldset>
+            </bkt:basketRequest>
+        </bkt:flow>
+    </bkt:organization>
+</bkt:corbeille>

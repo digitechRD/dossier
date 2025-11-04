@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ScriptsGroovy xmlns="http://www.digitech.com/dossiers/groovyScript" version="6.2" customerName="CIRIL">
+  <Script id="CourrierScriptUtils">
+    <script>courrier/global/CourrierScriptUtils.groovy</script>
+    <type>GlobalLibrary</type>
+  </Script>
+  <Script id="TemplateScriptUtils">
+    <script>courrier/global/TemplateScriptUtils.groovy</script>
+    <type>GlobalLibrary</type>
+  </Script>
+  <Script id="GenScriptUtils">
+    <script>GEN/global/GenScriptUtils.groovy</script>
+    <type>GlobalLibrary</type>
+  </Script>
+  <Script id="AttachmentTableSorting">
+    <script>courrier/document/AttachmentTableSorting.groovy</script>
+    <type>AttachmentTableSorting</type>
+  </Script>
+  <Script id="courrierIn_addResponseVisible">
+    <script>courrier/action/addResponseVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_restoreMailVisible">
+    <script>courrier/action/restoreMailVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierOut_restoreMailVisible">
+    <script>courrier/action/restoreMailVisible_courrierOut.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_validateVisible">
+    <script>courrier/action/validateVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_refusalVisible">
+    <script>courrier/action/refusalVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_closingVisible">
+    <script>courrier/action/closingVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierOut_closingVisible">
+    <script>courrier/action/closingVisible_courrierOut.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_visaVisible">
+    <script>courrier/action/visaVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_addUserInCopyVisible">
+    <script>courrier/action/addUserInCopyVisible_courrierIn.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierOut_visaVisible">
+    <script>courrier/action/visaVisible_courrierOut.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierOut_writeCourrierVisible">
+    <script>courrier/action/writeCourrierVisible_courrierOut.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="courrierIn_visa">
+    <script>courrier/action/visa_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_visa">
+    <script>courrier/action/visa_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_addResponse">
+    <script>courrier/action/addResponse_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_addUserInCopy">
+    <script>courrier/action/addUserInCopy_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_restoreMail">
+    <script>courrier/action/restoreMail_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_restoreMail">
+    <script>courrier/action/restoreMail_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_validate">
+    <script>courrier/action/validate_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_refusal">
+    <script>courrier/action/refusal_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_closing">
+    <script>courrier/action/closing_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_closing">
+    <script>courrier/action/closing_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_writeCourrier">
+    <script>courrier/action/writeCourrier_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="visa_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_visa.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="response_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_response.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="validate_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_validate.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="refusal_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_refusal.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="closing_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_closing.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="writeCourrier_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_writeCourrier.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="addUserInCopy_initCustomModalPanel">
+    <script>courrier/action/init/initCustomModalPanel_addUserInCopy.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_beforeSave">
+    <script>courrier/trigger/beforeSave_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_afterSave">
+    <script>courrier/trigger/afterSave_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_beforeAddAttachment">
+    <script>courrier/trigger/beforeAddAttachment_courrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_afterAddAttachment">
+    <script>courrier/trigger/afterAddAttachment_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_beforeCreate">
+    <script>courrier/trigger/beforeCreate_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_afterCreate">
+    <script>courrier/trigger/afterCreate_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierOut_beforeUpdate">
+    <script>courrier/trigger/beforeUpdate_courrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_unavailableActions">
+    <script>courrier/document/unavailableActions_courrierIn.groovy</script>
+    <type>DocumentActions</type>
+  </Script>
+  <Script id="courrierOut_unavailableActions">
+    <script>courrier/document/unavailableActions_courrierOut.groovy</script>
+    <type>DocumentActions</type>
+  </Script>
+  <Script id="courrierIn_init_readOnly">
+    <script>courrier/field/init/readOnly_init_courrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_readOnly">
+    <script>courrier/field/init/readOnly_init_courrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_N_CHRONO">
+    <script>courrier/field/init/N_CHRONO_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_insert_N_CHRONO">
+    <script>courrier/field/init/N_CHRONO_init_insert_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_insert_N_CHRONO">
+    <script>courrier/field/init/N_CHRONO_init_insert_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_insert_T_ETAT_COURRIER">
+    <script>courrier/field/init/T_ETAT_COURRIER_init_insert_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_D_CREAT">
+    <script>courrier/field/init/D_CREAT_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_T_PRIORITE">
+    <script>courrier/field/init/T_PRIORITE_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_readT_TYPE">
+    <script>courrier/field/init/T_TYPE_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_U_VALIDEUR">
+    <script>courrier/field/init/U_VALIDEUR_init_read_courrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_D_VALIDATION">
+    <script>courrier/field/init/D_VALIDATION_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_U_VISEUR">
+    <script>courrier/field/init/U_VISEUR_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_D_ACCEPTATION">
+    <script>courrier/field/init/D_ACCEPTATION_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_D_ECHEANCE">
+    <script>courrier/field/init/D_ECHEANCE_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_U_CREAT">
+    <script>courrier/field/init/U_CREAT_init_read_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_markAsRead_U_COPIES_LUES">
+    <script>courrier/field/init/U_COPIES_LUES_markAsRead_CourrierIn.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_D_CREAT">
+    <script>courrier/field/init/D_CREAT_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_D_ACCEPTATION">
+    <script>courrier/field/init/D_ACCEPTATION_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_D_ECHEANCE">
+    <script>courrier/field/init/D_ECHEANCE_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_U_CREAT">
+    <script>courrier/field/init/U_CREAT_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_T_PRIORITE">
+    <script>courrier/field/init/T_PRIORITE_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="O_PROPRIETAIRE_init_CourrierOut">
+    <script>courrier/field/init/O_PROPRIETAIRE_init_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_T_TYPE">
+    <script>courrier/field/init/T_TYPE_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierOut_init_read_U_VISEUR">
+    <script>courrier/field/init/U_VISEUR_init_read_CourrierOut.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_dependency_updateOwner">
+    <script>courrier/field/dependency/updateOwner_dependency_courrierIn.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierOut_dependency_updateOrgaOwner">
+    <script>courrier/field/dependency/courrierOut_dependency_updateOrgaOwner.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierIn_dependency_validatorRequired">
+    <script>courrier/field/dependency/validatorRequired_dependency_courrierIn.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierIn_dependency_computeDueDate">
+    <script>courrier/field/dependency/computeDueDate_dependency_courrierIn.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierOut_dependency_computeDueDate">
+    <script>courrier/field/dependency/computeDueDate_dependency_courrierOut.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierIn_dependency_generateChronoNumber">
+    <script>courrier/field/dependency/generateChronoNumber_dependency_courrierIn.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierOut_dependency_generateChronoNumber">
+    <script>courrier/field/dependency/generateChronoNumber_dependency_courrierOut.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierIn_availableValues_owner">
+    <script>courrier/field/availableValues/U_PROPRIETAIRE_availableValues_CourrierIn.groovy</script>
+        <type>ElementFilter</type>
+  </Script>
+  <Script id="courrierOut_availableValues_owner">
+    <script>courrier/field/availableValues/U_PROPRIETAIRE_availableValues_CourrierOut.groovy</script>
+        <type>ElementFilter</type>
+  </Script>
+  <Script id="courrier_ElementFilter_Valideur">
+    <script>courrier/field/elementFilter/courrier_ElementFilter_valideur.groovy</script>
+    <type>ElementFilter</type>
+  </Script>
+  <Script id="courrier_ElementFilter_Viseur">
+    <script>courrier/field/elementFilter/courrier_ElementFilter_viseur.groovy</script>
+    <type>ElementFilter</type>
+  </Script>
+  <Script id="task_checker_dueDate">
+    <script>courrier/task/checker_dueDate.groovy</script>
+    <type>Task</type>
+  </Script>
+  <Script id="reloadPopCache_Courrier">
+    <script>courrier/task/updatePopulationModuleCourrier.groovy</script>
+    <type>Task</type>
+  </Script>
+  <Script id="sendWaitingMail">
+    <script>courrier/task/sendWaitingMail.groovy</script>
+    <type>Task</type>
+  </Script>
+  <Script id="updateZipCodes">
+    <script>courrier/task/updateZipCodes.groovy</script>
+    <type>Task</type>
+  </Script>
+  <Script id="DependanceSousCategorie">
+    <script>RH/DependanceSousCategorie.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="DependanceTypeDocument">
+    <script>RH/DependanceTypeDocument.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="documentRanking_dependency">
+    <script>GEN/dependency/documentRanking_dependency.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="invalidatePublication_VisibilityUnitView">
+    <script>GEN/visibility/invalidatePublication_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="invalidatePublication_ActionUnitView">
+    <script>GEN/action/invalidatePublication_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="collabEnd_VisibilityUnitView">
+    <script>GEN/visibility/collabEnd_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="collabEnd_ActionUnitView">
+    <script>GEN/action/collabEnd_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="initCommentPanel">
+    <script>GEN/init/initComment_panel.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="validatePublication_VisibilityUnitView">
+    <script>GEN/visibility/validatePublication_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="validatePublication_ActionUnitView">
+    <script>GEN/action/validatePublication_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="outOfDate_VisibilityUnitView">
+    <script>GEN/visibility/outOfDate_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="outOfDate_ActionUnitView">
+    <script>GEN/action/outOfDate_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="askForPublication_VisibilityUnitView">
+    <script>GEN/visibility/askForPublication_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="askForPublication_ActionUnitView">
+    <script>GEN/action/askForPublication_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="delete_VisibilityUnitView">
+    <script>GEN/visibility/delete_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="delete_ActionUnitView">
+    <script>GEN/action/delete_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="restore_VisibilityUnitView">
+    <script>GEN/visibility/restore_VisibilityUnitView.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="restore_ActionUnitView">
+    <script>GEN/action/restore_ActionUnitView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="validator_elementFilter">
+    <script>GEN/filter/validator_elementFilter.groovy</script>
+    <type>ElementFilter</type>
+  </Script>
+  <Script id="collaborator_elementFilter">
+    <script>GEN/filter/collaborator_elementFilter.groovy</script>
+    <type>ElementFilter</type>
+  </Script>
+  <Script id="sendMail_addLinkedDoc">
+    <script>courrier/trigger/afterMail_addLinkedDoc.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="beforeModalMail_setToCourrierIn">
+    <script>courrier/trigger/beforeModalMail_setToCourrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="beforeModalMail_setToCourrierOut">
+    <script>courrier/trigger/beforeModalMail_setToCourrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="beforeDelete_checkRightAttachment">
+    <script>courrier/trigger/beforeDelete_checkRightAttachment.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="beforeRender_checkRightLinkedDoc">
+    <script>courrier/trigger/beforeRender_checkRightLinkedDoc.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="closingSimpleView_CourrierIn">
+    <script>courrier/action/closingSimpleView_CourrierIn.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="closingSimpleView_CourrierOut">
+    <script>courrier/action/closingSimpleView_CourrierOut.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="initCustomModalPanel_closingSimpleView">
+    <script>courrier/action/init/initCustomModalPanel_closingSimpleView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="initRemoveFromCopy_SimpleView">
+    <script>courrier/action/init/initRemoveFromCopy_SimpleView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="removeFromCopy_SimpleView">
+    <script>courrier/action/removeFromCopy_SimpleView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="removeFromCopy_ViewUnitUpdate">
+    <script>courrier/action/removeFromCopy_ViewUnitUpdate.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="removeFromCopy_ViewUnitRead">
+    <script>courrier/action/removeFromCopy_ViewUnitRead.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_removeFromCopyVisible">
+    <script>courrier/action/courrierIn_removeFromCopyVisible.groovy</script>
+    <type>DisplayRule</type>
+  </Script>
+  <Script id="initD_ENVOI_viewUnitRead">
+    <script>courrier/field/init/initD_ENVOI_viewUnitRead.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="initD_ENVOI_viewUnitInsert">
+    <script>courrier/field/init/initD_ENVOI_viewUnitInsert.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_readOnlyD_ENVOI">
+    <script>courrier/field/init/readOnly_init_courrierInD_ENVOI.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrier_afterChangeSelectType">
+    <script>courrier/trigger/courrier_AfterChangeSelectType.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="validateCourrierIn_SimpleView">
+    <script>courrier/action/validateCourrierIn_SimpleView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="initCustomModalPanel_validateSimpleView">
+    <script>courrier/action/init/initCustomModalPanel_validateSimpleView.groovy</script>
+    <type>DocumentInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_readOnly_userCopy_withLinkedDocs">
+    <script>courrier/field/init/courrierIn_init_readOnly_userCopy_withLinkedDocs.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_dependency_U_VALIDEURS_insert_index">
+    <script>courrier/field/dependency/courrierIn_dependency_U_VALIDEURS_insert_index.groovy</script>
+    <type>FieldDependency</type>
+  </Script>
+  <Script id="courrierIn_init_read_U_VALIDEUR_insert_index">
+    <script>courrier/field/init/courrierIn_init_read_U_VALIDEUR_insert_index.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_read_U_VISEUR_insert">
+    <script>courrier/field/init/courrierIn_init_read_U_VISEUR_insert.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+  <Script id="courrierIn_init_D_ENVOI_update">
+    <script>courrier/field/init/courrierIn_init_D_ENVOI_update.groovy</script>
+    <type>FieldInitializer</type>
+  </Script>
+    <Script id="DownloadPJVisible">
+        <script>GF/DownloadPJVisible.groovy</script>
+        <type>DisplayRule</type>
+    </Script>
+    <Script id="DownloadPJ_action">
+        <script>GF/DownloadPJ_action.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="DownloadPJ_init">
+        <script>GF/DownloadPJ_init.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="askVisaVisible">
+        <script>/courrier/action/askVisaVisible.groovy</script>
+        <type>DisplayRule</type>
+    </Script>
+    <Script id="askVisa_courrierIn">
+        <script>/courrier/action/askVisa_courrierIn.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="askVisa_courrierOut">
+        <script>/courrier/action/askVisa_courrierOut.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+    <Script id="askVisaSimpleView_courrierIn">
+        <script>/courrier/action/askVisaSimpleView_courrierIn.groovy</script>
+        <type>DocumentInitializer</type>
+    </Script>
+</ScriptsGroovy>

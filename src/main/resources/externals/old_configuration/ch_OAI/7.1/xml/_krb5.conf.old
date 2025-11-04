@@ -1,0 +1,19 @@
+[libdefaults]
+	default_realm = GILAI.OAI.CH
+	default_tkt_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+	default_tgs_enctypes = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+	permitted_enctypes   = aes128-cts rc4-hmac des3-cbc-sha1 des-cbc-md5 des-cbc-crc
+	udp_preference_limit = 1
+
+[realms]
+GILAI.OAI.CH  = {
+	kdc = ai0adds2.GILAI.OAI.CH:88
+	default_domain = GILAI.OAI.CH
+}
+
+[domain_realm]
+	.gilai.oai.ch = GILAI.OAI.CH
+	
+[logging]
+	kdc = SYSLOG:DEBUG
+	admin_server = FILE=/var/log/intairs/Kerberos/kadm5.log

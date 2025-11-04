@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<hierarchique  xmlns="http://www.digitech.com/dossiers/hierarchical">	
+	<organization name="DEFAULT" id="0">
+		<contentType name="DOC_AGENT">
+			<field_hier>TYPE_DOC_AGENT</field_hier>
+			<field_hier>[Avenant]</field_hier>
+			<field_hier>DATE_DOC</field_hier>
+			<libelle>{DATE_DOC} - {LIBELLE_AGENT}</libelle>						
+			<sorting>
+				<sortingPolicy xmlns="http://www.digitech.com/dossiers/common">
+					<direction>DECREASING</direction>
+					<codeField>DATE_DOC</codeField>
+				</sortingPolicy>
+			</sorting>
+			<filter>DOCSTATE="#VALUE#"</filter>
+		</contentType>
+		<contentType name="DOS_AGENT">
+			<libelle>Dossier Agent {NUM_MAT}</libelle>						
+			<sortingPolicy xmlns="http://www.digitech.com/dossiers/common">
+				<direction>DECREASING</direction>
+				<codeField>DATE_DOC</codeField>
+			</sortingPolicy>
+		</contentType>
+		<contentType name="DOC_COLL">
+			<field_hier>TYPE_DOC_COLL</field_hier>
+			<libelle>{DATE_DOC} - {LIBELLE_COLL}</libelle>						
+			<sortingPolicy xmlns="http://www.digitech.com/dossiers/common">
+				<direction>DECREASING</direction>
+				<codeField>DATE_DOC</codeField>
+			</sortingPolicy>
+		</contentType>
+		<contentType name="DOS_COLL">			
+			<field_hier></field_hier>
+			<libelle>Dossier - Code Etab {CODE_ETAB}</libelle>						
+			<sortingPolicy xmlns="http://www.digitech.com/dossiers/common">
+				<direction>DECREASING</direction>
+				<codeField>DATE_DOC</codeField>
+			</sortingPolicy>
+		</contentType>
+	</organization>
+</hierarchique>

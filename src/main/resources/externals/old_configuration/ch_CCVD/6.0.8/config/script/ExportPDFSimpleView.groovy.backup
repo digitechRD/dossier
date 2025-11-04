@@ -1,0 +1,59 @@
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueExportInitializer
+import com.digitech.dossier.script.model.IScriptResultValueModel;
+import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.common.model.backend.airs.IAttachment
+
+import com.digitech.dossier.common.Utils
+import com.digitech.dossier.common.controller.CustomActionController
+
+String ExportPath = com.digitech.dossier.common.utils.ExportUtils.getExportPDFDirectory();
+
+new File(com.digitech.dossier.common.utils.ExportUtils.getExportPDFDirectory()).mkdirs();
+new File(ExportPath).mkdirs();
+
+ScriptResultValueExportInitializer result = new ScriptResultValueExportInitializer();
+
+CustomActionController customActionController = Utils.getCustomActionController();
+Map<String, Object> data = customActionController.getModel().getModalPanelModel();
+data.clear();
+
+List<IDocument> docs = null;
+
+try{
+
+	//result = output.getValue();
+	//result.setMessageSummary("EXPORT DOCUMENT : ");
+
+	if (docs == null || docs.size()==0) docs = Utils.getSearchResultController().getModel().getSearchResultTableModel().getSelectedDocuments();
+	else {
+		result.setMessageSeverity(IScriptResultValueModel.Severity.WARN);
+		result.setMessageDetail("ATTENTION : Veuillez sélectionner un document à éditer");
+		return;
+	}
+
+	IDocument document = docs.get(0);
+
+	List<IAttachment> attachments = document.getAttachments(userContext);
+
+	Integer fileId = attachments.get(0).getId();
+
+	String userLogin = userContext.getUser().getLogin();
+
+	document.getAirsDocument().getInnerDocument().getPrimaryDocument(attachments.get(0).getAirsAttachment(), ExportPath);
+	String exportDestFileName = ExportPath+"/"+attachments.get(0).getFileName();
+
+	File originalFile = new File(exportDestFileName);
+	String fileUrl = originalFile.getAbsolutePath();
+	
+	scriptLogger.debug(fileUrl);
+
+	result.setFileResultName(exportDestFileName);
+	result.setFileResultPath(fileUrl);
+	output.setValue(result);
+
+}catch(Exception e){
+	result.setMessageSeverity(IScriptResultValueModel.Severity.ERROR);
+	result.setMessageDetail("ERREUR - Téléchargement de la pièce jointe est impossible. Veuillez contacter votre administrateur");
+	scriptLogger.error("Erreur lors du téléchargement de la pièce jointe :",e);
+	return;
+}

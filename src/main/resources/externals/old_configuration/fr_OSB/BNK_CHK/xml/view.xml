@@ -1,0 +1,1804 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common"
+	customerName="ocsd_bnk" version="6.0.9">
+
+    <organization id="0" name="DEFAULT">
+     <!--Si il n'y a aucune organisation, ils ne voient rien-->
+    </organization>
+    
+    <!--ORGANISATION = 1 -> Banque SOCREDO-->
+    <organization id="1" name="Socredo">
+        <contentType flowcode="FLOW_BNK" name="D_DOS_IMGCHQ_SOC">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_IMGCHQ_SOC">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date de traitement">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_TMT</airsField>
+            </column>            
+            <column label="Cpt tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Num cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Banque remettante">
+                <airsField>BNK_REM</airsField>
+            </column>
+            <column label="Banque tiree">
+                <airsField>BNK_CHQ</airsField>
+            </column>          
+            <column label="Indice CRC">
+                <airsField>IND_CRC</airsField>
+            </column>      
+            <column label="Numero MRQ">
+                <airsField>NUM_MRQ</airsField>
+            </column>    
+            <column label="Commentaire">
+                <airsField>COMMENTAIRE</airsField>
+            </column>              
+            <column label="Etat REGL">
+                <airsField>CHQ_ETAT_REGL</airsField>
+            </column>     
+            <column label="Etat SIGN">
+                <airsField>CHQ_ETAT_SIGN</airsField>
+            </column>                
+            <!--Export HTML-->       
+            <!--<ns2:export renderer="arboExport" type="ARBO" id="GenerateARBO"  image="export_image" resourceKey="export_tooltip">
+              <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--Export XSL-->
+            <ns2:export renderer="exportXLS_Socredo.xsl" type="XSL_XLS" id="ExpOCSD" image="export_xsl_image" resourceKey="export_xsl_tooltip">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+          
+          
+            <!--Controles-->
+            <ns2:action id="CHQ_CTLR" reRender="resultTable" image="controle_signature_image" resourceKey="controle_signature_tooltip" progressionModalPanelId="modalPanelProgress" airsProfile="440">
+      				<ns2:modalPanelPageKey>chekControlPanel</ns2:modalPanelPageKey>
+      				<ns2:groovyScriptId>chekControlPanelAction</ns2:groovyScriptId>
+      				<ns2:modalPanelInitGroovyScriptId>initChekControlPanel</ns2:modalPanelInitGroovyScriptId>
+      			</ns2:action>
+      		  <ns2:action id="CHQ_CTLR_RV" reRender="resultTable" image="controle_signature_image" resourceKey="controle_reglementaire_tooltip" progressionModalPanelId="modalPanelProgress" airsProfile="440">
+      				<ns2:modalPanelPageKey>chekRectoVersoControlPanel</ns2:modalPanelPageKey>
+      				<ns2:groovyScriptId>chekControlPanelActionRectoVerso</ns2:groovyScriptId>
+      				<ns2:modalPanelInitGroovyScriptId>initChekControlPanelRectoVerso</ns2:modalPanelInitGroovyScriptId>
+		        </ns2:action>
+             <ns2:action id="CHQ_CTLR_FOR_REQ" reRender="resultTable" image="controle_signature_image" resourceKey="controle_signature_global_tooltip" progressionModalPanelId="modalPanelProgress" airsProfile="440">
+      				<ns2:modalPanelPageKey>chekControlPanel</ns2:modalPanelPageKey>
+      				<ns2:groovyScriptId>chekControlPanelAction</ns2:groovyScriptId>
+      				<ns2:modalPanelInitGroovyScriptId>initChekControlPanelForRequest</ns2:modalPanelInitGroovyScriptId>
+      			</ns2:action>
+      		  <ns2:action id="CHQ_CTLR_RV_FOR_REQ" reRender="resultTable" image="controle_signature_image" resourceKey="controle_reglementaire_global_tooltip" progressionModalPanelId="modalPanelProgress" airsProfile="440">
+      				<ns2:modalPanelPageKey>chekRectoVersoControlPanel</ns2:modalPanelPageKey>
+      				<ns2:groovyScriptId>chekControlPanelActionRectoVerso</ns2:groovyScriptId>
+      				<ns2:modalPanelInitGroovyScriptId>initChekControlPanelRectoVersoForRequest</ns2:modalPanelInitGroovyScriptId>
+		        </ns2:action> 
+      			
+            <rowStyleClass> #{((row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '1' and row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '1') or (row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '1' and empty(row.valueMap['CHQ_ETAT_SIGN'].refFieldCode)) or (row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '1' and empty(row.valueMap['CHQ_ETAT_REGL'].refFieldCode)))? 'ChequeOkVert' : (((row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '3' and row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '3') or (row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '3' and row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '1') or (row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '1' and row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '3') or (row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '3' and empty(row.valueMap['CHQ_ETAT_REGL'].refFieldCode)) or (row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '3' and empty(row.valueMap['CHQ_ETAT_SIGN'].refFieldCode))) ? 'ChequeAttenteOrange' : (row.valueMap['CHQ_ETAT_REGL'].refFieldCode == '2' or row.valueMap['CHQ_ETAT_SIGN'].refFieldCode == '2') ? 'ChequeKoRouge' : '')}</rowStyleClass> 
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    
+    <organization id="23" name="IEOM">
+        <contentType flowcode="FLOW_BNK" name="D_DOS_IMGCHQ_IEOM">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_IMGCHQ_IEOM">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Date de traitement">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_TMT</airsField>
+            </column>            
+            <column label="Banque tiree">
+                <airsField>BNK_CHQ</airsField>
+            </column> 
+            <column label="Numero cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column> 
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>   
+            <column label="Devise">
+                <airsField>DEV_ZIB</airsField>
+            </column>  
+            <column label="Indice CRC">
+                <airsField>IND_CRC</airsField>
+            </column> 
+            <column label="Banque remettante">
+                <airsField>BNK_REM</airsField>
+            </column>       
+            <column label="Code guichet">
+                <airsField>COD_GCH</airsField>
+            </column> 
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>        
+            <column label="Numero MRQ">
+                <airsField>NUM_MRQ</airsField>
+            </column>                                                                                                                  
+            <!--<ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpONI">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--Export XSL-->
+            <ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpOCSD" image="export_xsl_image" resourceKey="export_xsl_tooltip">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>            
+            <!--<ns2:export renderer="arboExport" type="ARBO" id="GenerateARBO">
+              <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>-->
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    
+    
+        <organization id="24" name="CCP">
+        <contentType flowcode="FLOW_BNK" name="D_DOS_IMGCHQ_CCP">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_IMGCHQ_CCP">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Date de traitement">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_TMT</airsField>
+            </column>            
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Cpt tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Num cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Banque remettante">
+                <airsField>BNK_REM</airsField>
+            </column>
+            <column label="Banque tiree">
+                <airsField>BNK_CHQ</airsField>
+            </column>         
+            <column label="Devise">
+                <airsField>DEV_ZIB</airsField>
+            </column>  
+            <column label="Indice CRC">
+                <airsField>IND_CRC</airsField>
+            </column>      
+            <column label="Numero MRQ">
+                <airsField>NUM_MRQ</airsField>
+            </column>
+            <!--<ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpONI">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>-->
+            <!--Export XSL-->
+            <ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpOCSD" image="export_xsl_image" resourceKey="export_xsl_tooltip">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>            
+            <!--<ns2:export renderer="arboExport" type="ARBO" id="GenerateARBO">
+              <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>-->
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+		
+		<!-- Dossiers CCP   -   DSF -->
+		<contentType flowcode="FLOW_BNK" name="D_DOS_CCP_DSF">
+            <column label="Numéro de client">
+                <airsField>CCP_NUM_CLIENT</airsField>
+            </column>
+            <column label="Nom">
+                <airsField>CCP_NOM</airsField>
+            </column>
+            <column label="Prénom">
+                <airsField>CCP_PRENOM</airsField>
+            </column>
+			<column label="Date de naissance">
+                <format>dd/MM/yyyy</format>
+                <airsField>CCP_DATE_NAISSANCE</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+				
+		<!-- Documents CCP   -   DSF -->
+        <contentType flowcode="FLOW_BNK" name="D_DOC_CCP_DSF">
+            <column label="Numéro de client">
+                <airsField>CCP_NUM_CLIENT</airsField>
+            </column>		
+            <column label="Numéro de compte">
+                <airsField>CCP_NUM_COMPTE</airsField>
+            </column>					
+            <column label="Type de dossier">
+                <airsField>CCP_TYPE_DOSSIER</airsField>
+            </column>
+            <column label="Type de document">
+                <airsField>CCP_TYPE_DOC</airsField>
+            </column>
+           <ns2:export renderer="arboExport" type="ARBO" id="GenerateARBO">
+              <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+
+		<contentType flowcode="FLOW_BNK" name="D_DOS_ATD">
+            <column label="Intitulé du compte">
+                <airsField>ATD_INTITULE_COMPTE_G</airsField>
+            </column>
+			<column label="Date de naissance">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_NAISSANCE</airsField>
+            </column>			
+            <column label="Numéro de compte">
+                <airsField>ATD_NUM_COMPTE_G</airsField>
+            </column>
+			<column label="Date de réception DSB">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_DSB</airsField>
+            </column>		
+			<column label="Date de réception ODI">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_ODI</airsField>
+            </column>		
+            <column label="Référence ATD">
+                <airsField>ATD_REF</airsField>
+            </column>
+            <column label="Nom du créancier">
+                <airsField>ATD_NOM_CREANCIER</airsField>
+            </column>
+            <column label="Montant total">
+                <airsField>ATD_MONTANT_TOTAL</airsField>
+            </column>
+            <column label="Montant réservé">
+                <airsField>ATD_MONTANT_RESERVE</airsField>
+            </column>
+			<column label="Date de règlement">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_REGLEMENT</airsField>
+            </column>
+            <column label="Référence de lettrage">
+                <airsField>ATD_REF_LETTRAGE</airsField>
+            </column>
+			<column label="Date de mainlevée">
+                <airsField>ATD_DATE_MLV</airsField>
+            </column>
+            <column label="Montant mainlevée">
+                <airsField>ATD_MONTANT_MLV</airsField>
+            </column>
+            <column label="Solde après mainlevée">
+                <airsField>ATD_SOLDE_APRES_MLV</airsField>
+            </column>			
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>				
+
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ATD">
+            <column label="Intitulé du compte">
+                <airsField>ATD_INTITULE_COMPTE_G</airsField>
+            </column>
+			<column label="Date de naissance">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_NAISSANCE</airsField>
+            </column>			
+            <column label="Numéro de compte">
+                <airsField>ATD_NUM_COMPTE_G</airsField>
+            </column>
+			<column label="Date de réception DSB">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_DSB</airsField>
+            </column>		
+			<column label="Date de réception ODI">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_ODI</airsField>
+            </column>		
+            <column label="Référence ATD">
+                <airsField>ATD_REF</airsField>
+            </column>
+            <column label="Nom du créancier">
+                <airsField>ATD_NOM_CREANCIER</airsField>
+            </column>
+            <column label="Montant total">
+                <airsField>ATD_MONTANT_TOTAL</airsField>
+            </column>
+            <column label="Montant réservé">
+                <airsField>ATD_MONTANT_RESERVE</airsField>
+            </column>
+			<column label="Date de règlement">
+                <format>dd/MM/yyyy</format>
+                <airsField>ATD_DATE_REGLEMENT</airsField>
+            </column>
+            <column label="Référence de lettrage">
+                <airsField>ATD_REF_LETTRAGE</airsField>
+            </column>
+			<column label="Date de numérisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>	
+
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ATD_MAINLEVEE">
+            <column label="Référence ATD">
+                <airsField>ATD_REF</airsField>
+            </column>
+			<column label="Intitulé du compte">
+                <airsField>ATD_INTITULE_COMPTE_O</airsField>
+            </column>	
+            <column label="Numéro de compte">
+                <airsField>ATD_NUM_COMPTE_O</airsField>
+            </column>
+ 			<column label="Date de mainlevée">
+                <airsField>ATD_DATE_MLV</airsField>
+            </column>
+            <column label="Montant mainlevée">
+                <airsField>ATD_MONTANT_MLV</airsField>
+            </column>
+            <column label="Solde après mainlevée">
+                <airsField>ATD_SOLDE_APRES_MLV</airsField>
+            </column>
+            <column label="Code opération">
+                <airsField>ATD_CODE_OPE</airsField>
+            </column>
+            <column label="Numéro évènement">
+                <airsField>ATD_NUM_EVE</airsField>
+            </column>
+            <column label="Montant opération">
+                <airsField>ATD_MON_OPE</airsField>
+            </column>
+            <column label="Numéro de chapitre">
+                <airsField>ATD_NUM_CHA</airsField>
+            </column>
+            <column label="Libellé de chapitre">
+                <airsField>ATD_LIB_CHA</airsField>
+            </column>		
+			<column label="Date de numérisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+            </column>			
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>	
+		
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ATD_COURRIER">
+            <column label="Référence ATD">
+                <airsField>ATD_REF</airsField>
+            </column>
+			<column label="Intitulé du compte">
+                <airsField>ATD_INTITULE_COMPTE_O</airsField>
+            </column>	
+            <column label="Numéro de compte">
+                <airsField>ATD_NUM_COMPTE_O</airsField>
+            </column>
+            <column label="Nom">
+                <airsField>ATD_NOM</airsField>
+            </column>
+            <column label="Prénom">
+                <airsField>ATD_PRENOM</airsField>
+            </column>
+            <column label="Adresse">
+                <airsField>ATD_ADRESSE</airsField>
+            </column>
+            <column label="Code postal">
+                <airsField>ATD_CODE_POSTAL</airsField>
+            </column>
+            <column label="Ville">
+                <airsField>ATD_VILLE</airsField>
+            </column>
+            <column label="Code opération">
+                <airsField>ATD_CODE_OPE</airsField>
+            </column>
+            <column label="Numéro évènement">
+                <airsField>ATD_NUM_EVE</airsField>
+            </column>
+            <column label="Montant opération">
+                <airsField>ATD_MON_OPE</airsField>
+            </column>
+            <column label="Numéro de chapitre">
+                <airsField>ATD_NUM_CHA</airsField>
+            </column>
+            <column label="Libellé de chapitre">
+                <airsField>ATD_LIB_CHA</airsField>
+            </column>
+            <column label="Clé">
+                <airsField>ATD_CLE</airsField>
+            </column>			
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>	
+
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ATD_TB">
+            <column label="Référence ATD">
+                <airsField>ATD_REF</airsField>
+            </column>
+			<column label="Intitulé du compte">
+                <airsField>ATD_INTITULE_COMPTE_O</airsField>
+            </column>	
+            <column label="Numéro de compte">
+                <airsField>ATD_NUM_COMPTE_O</airsField>
+            </column>
+            <column label="Code opération">
+                <airsField>ATD_CODE_OPE</airsField>
+            </column>
+            <column label="Numéro évènement">
+                <airsField>ATD_NUM_EVE</airsField>
+            </column>
+            <column label="Montant opération">
+                <airsField>ATD_MON_OPE</airsField>
+            </column>
+            <column label="Numéro de chapitre">
+                <airsField>ATD_NUM_CHA</airsField>
+            </column>
+            <column label="Libellé de chapitre">
+                <airsField>ATD_LIB_CHA</airsField>
+            </column>			
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>	
+		
+    </organization>   
+    
+    <organization id="25" name="SOCREDO DPC">
+        <contentType flowcode="FLOW_BNK" name="D_DOS_DPC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Nom">
+                <airsField>DPC_NOM_CLIENT</airsField>
+          </column>
+          <column label="Prenom">
+                <airsField>DPC_PRENOM_CLIENT</airsField>
+          </column>
+          <column label="Date de naissance">
+                <format>dd/MM/yyyy</format>
+                <airsField>DPC_DATE_NAISSANCE</airsField>
+          </column> 
+          <!--Export XSL-->
+          <ns2:export renderer="exportXLS_Socredo_DPC.xsl" type="XSL_XLS" id="ExpOCSD" image="export_xsl_image" resourceKey="export_xsl_tooltip">
+               <ns2:groovyScriptId></ns2:groovyScriptId>
+          </ns2:export>                    
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NOM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_PRENOM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>           
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_DATE_NAISSANCE</ns2:codeField>
+                </ns2:sortingPolicy>       
+          </sorting>       
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_DCC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>DCC_TYPE_DOSSIER</airsField>
+          </column>  
+          <column label="Type de document">
+                <airsField>DCC_TYPE_DOCUMENT</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DCC_DATE_NUMERISATION</airsField>
+          </column>
+          <column label="Date d'emission">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_EMISSION</airsField>
+          </column>
+          <column label="Date de validite">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_VALIDITE</airsField>
+          </column>		  
+          <column label="Zone de commentaire">
+                <airsField>DCC_ZONE_COMMENTAIRE</airsField>
+          </column>
+          <!--Export XSL-->
+          <ns2:export renderer="exportXLS_Socredo_DPC.xsl" type="XSL_XLS" id="ExpOCSD" image="export_xsl_image" resourceKey="export_xsl_tooltip">
+               <ns2:groovyScriptId></ns2:groovyScriptId>
+          </ns2:export>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DCC_TYPE_DOSSIER</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DCC_DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy> 
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DCC_ZONE_COMMENTAIRE</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_OVC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Numero de compte">
+                <airsField>OVC_NUM_COMPTE</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>OVC_TYPE_DOSSIER</airsField>
+          </column>            
+          <column label="Etat">
+                <airsField>OVC_ETAT</airsField>
+          </column>  
+          <column label="Type de compte">
+                <airsField>OVC_TYPE</airsField>
+          </column>                      
+          <column label="Type de document">
+                <airsField>OVC_TYPE_DOCUMENT</airsField>
+          </column>
+          <column label="Date de debut">
+                 <format>dd/MM/yyyy</format>
+                <airsField>OVC_DATE_DEBUT</airsField>
+          </column>
+          <column label="Date de fin">
+                 <format>dd/MM/yyyy</format>
+                <airsField>OVC_DATE_FIN</airsField>
+          </column>
+           <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_NUM_COMPTE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_TYPE_DOSSIER</ns2:codeField>
+                </ns2:sortingPolicy>                
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_ETAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_TYPE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_DATE_DEBUT</ns2:codeField>
+                </ns2:sortingPolicy>                 
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_DATE_FIN</ns2:codeField>
+                </ns2:sortingPolicy>                
+            </sorting>
+        </contentType>
+		<contentType flowcode="FLOW_BNK" name="D_DOC_CAS">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Numero de compte">
+                <airsField>OVC_NUM_COMPTE</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>CAS_TYPE_DOSSIER</airsField>
+          </column>                              
+          <column label="Type de document">
+                <airsField>CAS_TYPE_DOCUMENT</airsField>
+          </column>
+          <column label="Date de numerisation">
+                 <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+           <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_NUM_COMPTE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CAS_TYPE_DOSSIER</ns2:codeField>
+                </ns2:sortingPolicy>                
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>               
+            </sorting>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_RISQUE">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>RISQUE_TYPE_DOSSIER</airsField>
+          </column>  
+          <column label="TYPE">
+                <airsField>RISQUE_TYPE_SOUS_DOSSIER</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>RISQUE_TYPE_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>RISQUE_TYPE_DOSSIER</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_CREDITS">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>CREDITS_TYP_DOS</airsField>
+          </column>  
+          <column label="Numero credit">
+                <airsField>CREDITS_NUM</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>CREDITS_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CREDITS_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CREDITS_NUM</ns2:codeField>
+                </ns2:sortingPolicy>                
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_ADD">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ADD_TYPE_DOSSIER</airsField>
+          </column>  
+          <column label="Numero">
+                <airsField>ADD_NUM</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ADD_TYPE_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ADD_TYPE_DOSSIER</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ADD_NUM</ns2:codeField>
+                </ns2:sortingPolicy>                
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - Services -->
+		<contentType flowcode="FLOW_BNK" name="D_DOC_OP_GUI">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>OP_GUI_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>OP_GUI_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OP_GUI_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<contentType flowcode="FLOW_BNK" name="D_DOC_BANK_DIST">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>BANK_DIST_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>BANK_DIST_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>BANK_DIST_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+
+		<!-- chantier DCC - Activités -->		
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ACT_LOCAL">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ACT_LOCAL_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ACT_LOCAL_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ACT_LOCAL_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ETR_EUR">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ETR_EUR_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ETR_EUR_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ETR_EUR_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ETR_HORS_EUR">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ETR_HORS_EUR_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ETR_HORS_EUR_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ETR_HORS_EUR_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+
+		<!-- chantier DCC - Echelles -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ECHELLE">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ECHELLE_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ECHELLE_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ECHELLE_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - Cartes -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_CARTES">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>CARTE_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>CARTE_TYP_DOC</airsField>
+          </column>
+          <column label="Type de carte">
+                <airsField>CARTE_TYP</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CARTE_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CARTE_TYP</ns2:codeField>
+                </ns2:sortingPolicy>				
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - Chèques -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_CHQ">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>CHQ_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>CHQ_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CHQ_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - GRC -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_GRC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>GRC_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>GRC_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>GRC_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Epargnes - Bancaire -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_EPAR_BANC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>EPAR_BANC_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>EPAR_BANC_TYP_DOC</airsField>
+          </column>
+          <column label="Numéro épargne bancaire">
+                <airsField>EPAR_BANC_NUM</airsField>
+          </column>	  
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>EPAR_BANC_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>EPAR_BANC_NUM</ns2:codeField>
+                </ns2:sortingPolicy>				
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Epargnes - Règlementée -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_EPAR_REGL">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>EPAR_REGL_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>EPAR_REGL_TYP_DOC</airsField>
+          </column>
+          <column label="Numéro épargne règlementée">
+                <airsField>EPAR_REGL_NUM</airsField>
+          </column>	  
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>EPAR_REGL_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - IARD -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ASS_IARD">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ASS_IARD_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ASS_IARD_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ASS_IARD_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - Assurance Vie -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ASS_VIE">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ASS_VIE_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ASS_VIE_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ASS_VIE_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - GTG -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_GTG">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>GTG_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>GTG_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>GTG_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>	
+		
+		<!-- chantier DCC - MON -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_MON">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>MON_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>MON_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>MON_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+
+		<!-- chantier DCC - Gestion salle de marché -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_GEST">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>GEST_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>GEST_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>GEST_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - libre - Import -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_LIBR_IMP">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>LIBR_IMP_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>LIBR_IMP_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>LIBR_IMP_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - libre - Export -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_LIBR_EXP">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>LIBR_EXP_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>LIBR_EXP_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>LIBR_EXP_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - Documentaire - Import -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_DOC_IMP">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>DOC_IMP_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>DOC_IMP_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DOC_IMP_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>
+		
+		<!-- chantier DCC - Portefeuilles - Documentaire - Export -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_DOC_EXP">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>DOC_EXP_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>DOC_EXP_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DOC_EXP_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>	
+		
+		<!-- chantier DCC - Crédit documentaire -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_CRE_DOC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>CRE_DOC_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>CRE_DOC_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CRE_DOC_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Placements financiers -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_FIN">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>FIN_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>FIN_TYP_DOC</airsField>
+          </column>
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FIN_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>               
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>	
+		
+		<!-- chantier DCC - Engagements -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_ENG">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>ENG_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>ENG_TYP_DOC</airsField>
+          </column>
+          <column label="Numéro engagement">
+                <airsField>ENG_NUM</airsField>
+          </column>	  
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ENG_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ENG_NUM</ns2:codeField>
+                </ns2:sortingPolicy>				
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>                
+          </sorting>
+        </contentType>	
+		
+		<!-- chantier DCC - Conventions -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_CONV">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>CONV_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>CONV_TYP_DOC</airsField>
+          </column>
+          <column label="Date convention">
+                <format>dd/MM/yyyy</format>		  
+                <airsField>CONV_DATE</airsField>
+          </column>		  
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CONV_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy> 
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CONV_CODE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>CONV_DATE</ns2:codeField>
+                </ns2:sortingPolicy>				
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>               
+          </sorting>
+        </contentType>		
+		
+		<!-- chantier DCC - Dossiers LAB -->	
+		<contentType flowcode="FLOW_BNK" name="D_DOC_LAB">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>LAB_TYP_DOS</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>LAB_TYP_DOC</airsField>
+          </column>
+          <column label="Numéro DAV">
+                <airsField>NUM_DAV</airsField>
+          </column>		  
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>
+          <column label="Date de contrôle">
+                <format>yyyy-MM-dd</format>
+                <airsField>DATE_LAB</airsField>
+          </column>		  
+          <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>LAB_TYP_DOS</ns2:codeField>
+                </ns2:sortingPolicy>  
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>NUM_DAV</ns2:codeField>
+                </ns2:sortingPolicy> 				
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_NUMERISATION</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DATE_LAB</ns2:codeField>
+                </ns2:sortingPolicy>		
+          </sorting>
+        </contentType>
+		
+    </organization>
+ 
+     <!-- OFINA -->
+    <organization id="26" name="OFINA">
+        <contentType flowcode="FLOW_BNK" name="D_DOS_OFINA_CLT_PORTEUR">
+          <column label="Numero client">
+                <airsField>OFINA_CLT_NUM_CLIENT</airsField>
+          </column>         
+         <column label="Nom client">
+                <airsField>OFINA_CLT_NOM_CLIENT</airsField>
+          </column>           
+          <column label="Prenom client">
+                <airsField>OFINA_CLT_PRENOM_CLIENT</airsField>
+          </column>  
+          <column label="Date de naissance">
+                <format>dd/MM/yyyy</format>
+                <airsField>OFINA_CLT_DATE_NAISSANCE</airsField>
+          </column>                               
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOS_OFINA_CLT_ACQUER">
+          <column label="Numero client">
+                <airsField>OFINA_CLT_NUM_CLIENT</airsField>
+          </column>         
+         <column label="Enseigne">
+                <airsField>OFINA_CLT_ENSEIGNE</airsField>
+          </column>           
+          <column label="Date de creation">
+                <format>dd/MM/yyyy</format>
+                <airsField>OFINA_CLT_DATE_CREATION</airsField>
+          </column>                               
+        </contentType>             
+        <contentType flowcode="FLOW_BNK" name="D_DOC_OFINA_CLT_PORTEUR">
+          <column label="Numero client">
+                <airsField>OFINA_CLT_NUM_CLIENT</airsField>
+          </column>        
+         <column label="Type de document">
+                <airsField>OFINA_CLT_PORTEUR_TYPE_DOC</airsField>
+          </column>           
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>                     
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_OFINA_CLT_ACQUER">
+          <column label="Numero client">
+                <airsField>OFINA_CLT_NUM_CLIENT</airsField>
+          </column>
+          <column label="Numero SE">
+                <airsField>OFINA_CLT_NUM_SE</airsField>
+          </column>          
+          <column label="Type de document">
+                <airsField>OFINA_CLT_ACQUER_TYPE_DOC</airsField>
+          </column>  
+          <column label="Date de numerisation">
+                <format>dd/MM/yyyy</format>          
+                <airsField>DATE_NUMERISATION</airsField>
+          </column>           
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_OFINA_ADM_FACTURE">
+          <column label="Nom fournisseur">
+                <airsField>OFINA_ADM_NOM_FOURNISSEUR</airsField>
+          </column>
+          <column label="Numero de facture">
+                <airsField>OFINA_ADM_NUM_FACTURE</airsField>
+          </column>  
+          <column label="Date de facture">
+                <format>dd/MM/yyyy</format>
+                <airsField>OFINA_ADM_DATE_FACTURE</airsField>             
+          </column>          
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOC_OFINA_ADM_CONV">
+          <column label="Nom fournisseur">
+                <airsField>OFINA_ADM_NOM_FOURNISSEUR</airsField>
+          </column>
+          <column label="Type de convention">
+                <airsField>OFINA_ADM_TYPE_CONVENTION</airsField>
+          </column>  
+          <column label="Contenant de la convention">
+                <airsField>OFINA_ADM_CONTENANT</airsField>
+          </column>            
+          <column label="Date de signature">
+                <format>dd/MM/yyyy</format>
+                <airsField>OFINA_ADM_DATE_SIGNATURE</airsField>
+          </column>
+        </contentType>         
+    </organization>
+    
+    <!-- ARCHIVISTE -->
+    <organization id="27" name="Archiviste">
+        <contentType flowcode="FLOW_BNK" name="D_DOS_OFINA_CLT_PORTEUR">
+          <column label="Numero client">
+                <airsField>OFINA_CLT_NUM_CLIENT</airsField>
+          </column>  
+          <column label="Numero de carton">
+                <airsField>NUM_CARTON</airsField>
+          </column> 
+          <column label="Numero de boite">
+                <airsField>NUM_BOITE</airsField>
+          </column>                                                           
+        </contentType>
+        <contentType flowcode="FLOW_BNK" name="D_DOS_OFINA_CLT_ACQUER">
+          <column label="Numero client">
+                <airsField>OFINA_CLT_NUM_CLIENT</airsField>
+          </column>          
+          <column label="Numero SE">
+                <airsField>OFINA_CLT_NUM_SE</airsField>
+          </column>   
+          <column label="Numero de carton">
+                <airsField>NUM_CARTON</airsField>
+          </column> 
+          <column label="Numero de boite">
+                <airsField>NUM_BOITE</airsField>
+          </column>                                      
+        </contentType>             
+        <contentType flowcode="FLOW_BNK" name="D_DOS_OFINA_ADM">
+          <column label="Nom fournisseur">
+                <airsField>OFINA_ADM_NOM_FOURNISSEUR</airsField>
+          </column>
+          <column label="Numero de carton">
+                <airsField>NUM_CARTON</airsField>
+          </column> 
+          <column label="Numero de boite">
+                <airsField>NUM_BOITE</airsField>
+          </column>         
+        </contentType>  
+        <contentType flowcode="FLOW_BNK" name="D_DOC_OVC">
+          <column label="Numero client">
+                <airsField>DPC_NUM_CLIENT</airsField>
+          </column>
+          <column label="Numero de compte">
+                <airsField>OVC_NUM_COMPTE</airsField>
+          </column>
+          <column label="Type de dossier">
+                <airsField>OVC_TYPE_DOSSIER</airsField>
+          </column>            
+          <column label="Etat">
+                <airsField>OVC_ETAT</airsField>
+          </column>  
+          <column label="Type de compte">
+                <airsField>OVC_TYPE</airsField>
+          </column>                      
+          <column label="Type de document">
+                <airsField>OVC_TYPE_DOCUMENT</airsField>
+          </column>
+          <column label="Date de debut">
+                 <format>dd/MM/yyyy</format>
+                <airsField>OVC_DATE_DEBUT</airsField>
+          </column>
+          <column label="Date de fin">
+                 <format>dd/MM/yyyy</format>
+                <airsField>OVC_DATE_FIN</airsField>
+          </column>
+           <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>DPC_NUM_CLIENT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_NUM_COMPTE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_TYPE_DOSSIER</ns2:codeField>
+                </ns2:sortingPolicy>                
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_ETAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_TYPE</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_DATE_DEBUT</ns2:codeField>
+                </ns2:sortingPolicy>                 
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>OVC_DATE_FIN</ns2:codeField>
+                </ns2:sortingPolicy>                
+            </sorting>
+        </contentType>       
+    </organization>
+    
+</listview>

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.14" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.0.0 Build &lt;200601231141></property>
+    <property name="units">in</property>
+    <html-property name="description">Suivi des réceptions IAS</html-property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">odaDriverClass</property>
+            <property name="id">4</property>
+            <expression name="value">"oracle.jdbc.driver.OracleDriver"</expression>
+        </structure>
+        <structure>
+            <property name="name">odaURL</property>
+            <property name="id">4</property>
+            <expression name="value">if(params["birtjdbcurl"]==null)
+{
+"jdbc:oracle:thin:@localhost:1521:AIRS";
+}else{params["birtjdbcurl"];}</expression>
+        </structure>
+        <structure>
+            <property name="name">odaUser</property>
+            <property name="id">4</property>
+            <expression name="value">if(params["birtjdbcuser"]==null)
+{
+"MEDIADOC";
+}else{params["birtjdbcuser"];}</expression>
+        </structure>
+        <structure>
+            <property name="name">odaPassword</property>
+            <property name="id">4</property>
+            <expression name="value">if(params["birtjdbcpass"]==null)
+{
+"MEDIADOC";
+ }else{params["birtjdbcpass"];}</expression>
+        </structure>
+    </list-property>
+    <text-property name="displayName">IAS - Suivi des réceptions</text-property>
+    <list-property name="configVars">
+        <structure>
+            <property name="name">Date de début</property>
+            <property name="value">1/1/05</property>
+        </structure>
+        <structure>
+            <property name="name">Date de fin</property>
+            <property name="value">1/1/10</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcuser</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcpass</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="Date de début" id="6">
+            <text-property name="helpText">Date de début</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2005</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Date de fin" id="7">
+            <text-property name="helpText">Date de fin</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2010</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcurl" id="119">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcuser" id="120">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcpass" id="121">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AIRS_MEDIADOC" id="4">
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:@localhost:1521:AIRS</property>
+            <property name="odaUser">MEDIADOC</property>
+            <encrypted-property name="odaPassword">TUVESUFET0M=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="receptions" id="5">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">DATERECEP</property>
+                    <property name="displayName">Date</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MAX(COURRIERSNUM)</property>
+                    <property name="displayName">Courriers</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MAX(TRANSFERTSPPEBO)</property>
+                    <property name="displayName">Transferts PPEBO</property>
+                </structure>
+                <structure>
+                    <property name="columnName">TOTAL</property>
+                    <property name="displayName">Total</property>
+                </structure>
+            </list-property>
+            <property name="dataSource">AIRS_MEDIADOC</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">Date de début</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Date de fin</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">2</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select DATERECEP, max(COURRIERSNUM), max(TRANSFERTSPPEBO), max(COURRIERSNUM)+ max(TRANSFERTSPPEBO)total
+FROM
+(
+select trunc(D_CREAT,'DD') DATERECEP, count(*) COURRIERSNUM, 0 TRANSFERTSPPEBO from doc_docsal where doc_id in (  
+select doc_id from docref_docsal where aui_id = 31
+) 
+group by trunc(D_CREAT,'DD') 
+
+UNION
+ 
+select TRUNC(EvtDate,'DD') DATERECEP ,0 COURRIERSNUM, count(*) TRANSFERTSPPEBO from   
+(   
+SELECT    
+      EVT.EVT_ID as EvtID,    
+      EVT.GEVT_ID as GevtId,    
+      EVT.TEVT_ID as TevId,    
+      EVT.EVT_DATE As EvtDate,    
+      EVT.EVT_NB,    
+      EVT.USR_ID as UsrId,    
+      SUBSTR(DOC.DOC_COMMENT, 1                                    , INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1                                    ) as idTache,    
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 1) + 1, INSTR(DOC.DOC_COMMENT, ':', 1, 2) - INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1) as taskname,    
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 2) + 1                                                                           ) as sortieTache,    
+      DS.CTY_ID    
+   FROM    
+      EVT_ACTIONDOC DOC,    
+      EVT_AIRS      EVT,    
+      DOC_DOCSAL    DS     
+   WHERE    
+      EVT.EVT_ID = DOC.EVT_ID    
+      AND    
+      EVT.TEVT_ID in (select TEVT_ID from EVT_TYPE where TEVT_DESC = 'Valider Workflow')    
+      AND    
+      DS.DOC_ID = DOC.DOC_ID    
+         
+) where taskname='AutreRejetATraiter' and sortietache='a qualifier' 
+group by trunc(EvtDate,'DD') 
+
+)
+where DATERECEP BETWEEN ? AND ?
+group by DATERECEP
+</property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="BNP header" id="111">
+            <property name="backgroundColor">#008000</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="textAlign">left</property>
+        </style>
+        <style name="Tableau" id="113">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+        <style name="Image" id="114">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+        </style>
+        <style name="Ligne" id="115">
+            <property name="fontFamily">"Arial"</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="Titre" id="116">
+            <property name="backgroundColor">#008000</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontSize">x-large</property>
+            <property name="textOverline">none</property>
+            <property name="textUnderline">underline</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="airsheaderclass" id="117">
+            <property name="backgroundColor">#B5C8E1</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+        </style>
+        <style name="airsheaderTableclass" id="156">
+            <property name="backgroundColor">#B5C8E1</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="airsfooterTableclass" id="157">
+            <property name="backgroundColor">#B5C8E1</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+            <property name="textAlign">center</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text-data id="53">
+            <property name="style">airsheaderclass</property>
+            <expression name="valueExpr">"IAS : Suivi des réceptions "+java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de début"]) + " au "+ java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de fin"])</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <image id="118">
+            <property name="style">Image</property>
+            <property name="dataSet">receptions</property>
+            <property name="source">embed</property>
+            <property name="imageName">action.editer.gif</property>
+            <text-property name="altText">Export PDF</text-property>
+            <structure name="action">
+                <property name="formatType">pdf</property>
+                <property name="linkType">drill-through</property>
+                <property name="reportName">ias_receptions.rptdesign</property>
+                <property name="targetWindow">_blank</property>
+                <list-property name="paramBindings">
+                    <structure>
+                        <property name="paramName">Date de début</property>
+                        <expression name="expression">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(new java.text.SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", java.util.Locale.US).parse(params["Date de début"]))</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">Date de fin</property>
+                        <expression name="expression">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(new java.text.SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", java.util.Locale.US).parse(params["Date de fin"]))</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">birtjdbcurl</property>
+                        <expression name="expression">params["birtjdbcurl"]</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">birtjdbcuser</property>
+                        <expression name="expression">params["birtjdbcuser"]</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">birtjdbcpass</property>
+                        <expression name="expression">params["birtjdbcpass"]</expression>
+                    </structure>
+                </list-property>
+            </structure>
+        </image>
+        <text id="112">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br><br><br>]]></text-property>
+        </text>
+        <table id="79">
+            <property name="width">100%</property>
+            <property name="dataSet">receptions</property>
+            <list-property name="paramBindings">
+                <structure>
+                    <property name="paramName">Date de début</property>
+                    <expression name="expression">params["Date de début"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">Date de fin</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">DATERECEP</property>
+                    <expression name="expression">dataSetRow["DATERECEP"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(row["DATERECEP"])</property>
+                    <expression name="expression">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(row["DATERECEP"])</expression>
+                </structure>
+                <structure>
+                    <property name="name">MAX(COURRIERSNUM)</property>
+                    <expression name="expression">dataSetRow["MAX(COURRIERSNUM)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">MAX(TRANSFERTSPPEBO)</property>
+                    <expression name="expression">dataSetRow["MAX(TRANSFERTSPPEBO)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">TOTAL</property>
+                    <expression name="expression">dataSetRow["TOTAL"]</expression>
+                </structure>
+            </list-property>
+            <column id="103">
+                <property name="style">Tableau</property>
+            </column>
+            <column id="104"/>
+            <column id="105"/>
+            <column id="106"/>
+            <header>
+                <row id="80">
+                    <property name="style">airsheaderTableclass</property>
+                    <cell id="81">
+                        <label id="82">
+                            <text-property name="text">Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="83">
+                        <label id="84">
+                            <text-property name="text">Courriers</text-property>
+                        </label>
+                    </cell>
+                    <cell id="85">
+                        <label id="86">
+                            <text-property name="text">Transferts PPEBO</text-property>
+                        </label>
+                    </cell>
+                    <cell id="87">
+                        <label id="88">
+                            <text-property name="text">Total</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="89">
+                    <property name="style">Ligne</property>
+                    <cell id="90">
+                        <data id="91">
+                            <property name="resultSetColumn">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(row["DATERECEP"])</property>
+                        </data>
+                    </cell>
+                    <cell id="92">
+                        <data id="93">
+                            <property name="resultSetColumn">MAX(COURRIERSNUM)</property>
+                        </data>
+                    </cell>
+                    <cell id="94">
+                        <data id="95">
+                            <property name="resultSetColumn">MAX(TRANSFERTSPPEBO)</property>
+                        </data>
+                    </cell>
+                    <cell id="96">
+                        <data id="97">
+                            <property name="resultSetColumn">TOTAL</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="98">
+                    <property name="style">airsfooterTableclass</property>
+                    <cell id="99">
+                        <text id="110">
+                            <property name="contentType">plain</property>
+                            <text-property name="content"><![CDATA[Total]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="100">
+                        <text-data id="107">
+                            <expression name="valueExpr">i=Total.sum(row["MAX(COURRIERSNUM)"]);
+if(i!=null)
+{
+ i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="101">
+                        <text-data id="108">
+                            <expression name="valueExpr">i=Total.sum(row["MAX(TRANSFERTSPPEBO)"]);
+if(i!=null)
+{
+ i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="102">
+                        <text-data id="109">
+                            <expression name="valueExpr">i=Total.sum(row["TOTAL"]);
+if(i!=null)
+{
+i.toFixed(0)
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">action.editer.gif</property>
+            <property name="data">
+                R0lGODlhIAAgAPcAAAAAAAAACAgAAAgIAAgICBAIABAICBAQCBAQEBAYGBgICBgQCBgYGBgYISEQCCEQ
+                ECEYCCEYECEhISkQCCkYCCkYECkYGCkhGCkpKSkxMTEYEDEhITEpITEpKTExKTExMTkhEDkhGDkxMTkx
+                OTk5MTk5OUIhEEIhGEIpGEJCOUJCQkopGEpKSkpKUlJSUloxIVoxKVpaWlpjWlpjY2MxIWM5IWNaUmNa
+                WmNjY2s5KWtjY2tra3Nrc3Nza3Nzc3Nze3N7c3N7e3tKKXtKMXtzc3t7e3t7hIRKKYRKMYR7e4R7hISE
+                e4SEhIxSMYyEhIyMjIyMlJSUlJycnJycpaWlpa2trbVzQrWtrbW1tb1rQr1rSr1zSr29tb29vcbGxs7O
+                ztbW1t7e3ufn5+/n7+/v5+/v7+/v9+/37/eUWveUY/f39/+UWv+UY//39//3////9///////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                /ywAAAAAIAAgAAAI/gABCBxIsKDBgwXhKFzIsKHDhwoFQlTDkCLEhxIbWqS4UaHFi3AywtmopqRJkyNT
+                XhR5smQZNS9ftlTpUCJHl1+q6Ny5EwsWLxwxAhjpUowYLAgQlFhaQkXTpgRYiPnI0CZMMWHAfKECoAsc
+                MV6+eAnrpcwHDCVrAiia1UsXLD4IhAFLNiycMhKKpK26tgxWsVioSIniFI4XnjwRpP0oUM2YtnBVOGUA
+                4MsYrEbnhoGDgIqZN3DcRATgN4yXwCoOAGDA4oCRMliqUNE5uwsOHy/hgA5JOsyXLlWikFgAgICKATPK
+                gNGMWUyVEmT2vhGI9bQUJiJQ5DhAQEBeJUuK/hhZYqQIDg8YRIiQkpL6bypRiog4MQRJhAEOKpwIgYJ/
+                CBMrwFDDFjQEQdF0APgWGBM8eHACEkOgUEEaaFSIBoUYXpjGEHq94YZApmERBRM7dIBCfSg4gGGGaayI
+                xhA+UPRhgofFtwMJAKwwRA0HtHjhjxlWCGNaIJ4WHw4uYDDABS8YoGGFLPo4JEVFikiiCyUAIMAATmq4
+                RhpZaGFFmGGuEKMaCCpIBRM+xNCCQAIAsMACDjxAZwQRVPAABHle0EVu7nlBxRPmxfDBQBVooaiYjIZp
+                RRMiiAEoANVhcV2bLqQWAAViWqFFFp4yqkUTHohhBpW9vTciDzjE4AIDnhFYIKsFF9B6wQYccNDBDVOh
+                Wtppg7K5Aw6tynBDDDjIoEMPRTxBBRZfhDHGGW3wpoZRYAAbxRPh/eDDt9/+UAQTUEhRhRfLyWTttW1x
+                UcUUg237xLzzRiFFbdFKemBjMJGRFWCxUSGwwLLpxEUXX4BhVFozEmXGZf+ONVYXblE8VsJz6WtRRib5
+                hVVWYIQscshhlCxpbhsjpPLKBQUEADs=
+            </property>
+        </structure>
+    </list-property>
+</report>

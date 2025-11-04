@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.14" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.0.0 Build &lt;200601231141></property>
+    <property name="units">in</property>
+    <list-property name="configVars">
+        <structure>
+            <property name="name">Date de début</property>
+            <property name="value">1/1/05</property>
+        </structure>
+        <structure>
+            <property name="name">Date de fin</property>
+            <property name="value">1/1/10</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcurl</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcuser</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcpass</property>
+        </structure>
+        <structure>
+            <property name="name">Organisations</property>
+            <property name="value">Entité GED</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="Date de début" id="9">
+            <text-property name="helpText">Date de début</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2005</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Date de fin" id="10">
+            <text-property name="helpText">Date de fin</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2010</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcurl" id="119">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcuser" id="120">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcpass" id="121">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Organisations" id="125">
+            <property name="valueType">dynamic</property>
+            <property name="dataType">string</property>
+            <text-property name="promptText">Listed es organisations</text-property>
+            <property name="controlType">list-box</property>
+            <property name="dataSetName">Organisations</property>
+            <expression name="valueExpr">row["ORG_LABEL"]</expression>
+            <expression name="labelExpr">row["ORG_LABEL"]</expression>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <property name="defaultValue">%</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">ORG_LABEL</property>
+                    <expression name="expression">dataSetRow["ORG_LABEL"]</expression>
+                </structure>
+            </list-property>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AIRS3DOSSIERS" id="8">
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:@localhost:1521:AIRS</property>
+            <property name="odaUser">AIRSUSER_NAFTAL</property>
+            <encrypted-property name="odaPassword">QUlSU1VTRVJfTkFGVEFM</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Consultation" id="123">
+            <property name="dataSource">AIRS3DOSSIERS</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">Date début</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Date fin</property>
+                    <property name="position">2</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+                <structure>
+                    <property name="name">Organisation</property>
+                    <property name="dataType">string</property>
+                    <property name="position">3</property>
+                    <expression name="defaultValue">"%"</expression>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select trunc(EVT_DATE,'MM'),count(*) 
+from evt_airs 
+where TEVT_ID=32
+and EVT_DATE between ? and ?
+and usr_id in (
+select usr_id from user_orga where org_id in(
+select org_id from organization where ORG_LABEL LIKE ?
+))
+group by trunc(EVT_DATE,'MM')</property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Organisations" id="124">
+            <property name="dataSource">AIRS3DOSSIERS</property>
+            <property name="queryText">select ORG_LABEL
+from organization</property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="airsheaderclass" id="4">
+            <property name="backgroundColor">#708090</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+        </style>
+        <style name="airslineheaderclass" id="5">
+            <property name="backgroundColor">#FF942C</property>
+            <property name="borderBottomColor">#979797</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#979797</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#979797</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#979797</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+        </style>
+        <style name="airsrowclass1" id="6">
+            <property name="backgroundColor">#FFFFFF</property>
+            <property name="color">black</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">0px</property>
+            <property name="paddingBottom">0px</property>
+            <property name="paddingRight">0px</property>
+        </style>
+        <style name="airsfooterclass" id="7">
+            <property name="backgroundColor">#FFFFFF</property>
+            <property name="fontWeight">100</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomStyle">none</property>
+            <property name="borderBottomWidth">0px</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderLeftWidth">0px</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderRightWidth">0px</property>
+            <property name="borderTopStyle">none</property>
+            <property name="borderTopWidth">0px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">0px</property>
+            <property name="paddingRight">4pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text-data id="53">
+            <property name="style">airsheaderclass</property>
+            <expression name="valueExpr">"Consultations mensuelles"+"  "+java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de début"]) + " au "+ java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de fin"])</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <image id="122">
+            <property name="source">embed</property>
+            <property name="imageName">action.editer.gif</property>
+        </image>
+        <text id="112">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br><br><br>]]></text-property>
+        </text>
+        <table id="126">
+            <property name="width">100%</property>
+            <property name="dataSet">Consultation</property>
+            <list-property name="paramBindings">
+                <structure>
+                    <property name="paramName">Date début</property>
+                    <expression name="expression">params["Date de début"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">Date fin</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">Organisation</property>
+                    <expression name="expression">params["Organisations"]</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">TRUNC(EVT_DATE,MM)</property>
+                    <expression name="expression">dataSetRow["TRUNC(EVT_DATE,MM)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">COUNT(*)</property>
+                    <expression name="expression">dataSetRow["COUNT(*)"]</expression>
+                </structure>
+            </list-property>
+            <column id="140"/>
+            <column id="141"/>
+            <header>
+                <row id="127">
+                    <property name="style">airsheaderclass</property>
+                    <cell id="128">
+                        <label id="129">
+                            <text-property name="text">Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="130">
+                        <label id="131">
+                            <text-property name="text">Nombre consultations</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="132">
+                    <property name="style">airsrowclass1</property>
+                    <cell id="133">
+                        <data id="134">
+                            <property name="resultSetColumn">TRUNC(EVT_DATE,MM)</property>
+                        </data>
+                    </cell>
+                    <cell id="135">
+                        <data id="136">
+                            <property name="resultSetColumn">COUNT(*)</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="137">
+                    <cell id="138"/>
+                    <cell id="139"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">action.editer.gif</property>
+            <property name="data">
+                R0lGODlhIAAgAPcAAAAAAAAACAgAAAgIAAgICBAIABAICBAQCBAQEBAYGBgICBgQCBgYGBgYISEQCCEQ
+                ECEYCCEYECEhISkQCCkYCCkYECkYGCkhGCkpKSkxMTEYEDEhITEpITEpKTExKTExMTkhEDkhGDkxMTkx
+                OTk5MTk5OUIhEEIhGEIpGEJCOUJCQkopGEpKSkpKUlJSUloxIVoxKVpaWlpjWlpjY2MxIWM5IWNaUmNa
+                WmNjY2s5KWtjY2tra3Nrc3Nza3Nzc3Nze3N7c3N7e3tKKXtKMXtzc3t7e3t7hIRKKYRKMYR7e4R7hISE
+                e4SEhIxSMYyEhIyMjIyMlJSUlJycnJycpaWlpa2trbVzQrWtrbW1tb1rQr1rSr1zSr29tb29vcbGxs7O
+                ztbW1t7e3ufn5+/n7+/v5+/v7+/v9+/37/eUWveUY/f39/+UWv+UY//39//3////9///////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                /ywAAAAAIAAgAAAI/gABCBxIsKDBgwXhKFzIsKHDhwoFQlTDkCLEhxIbWqS4UaHFi3AywtmopqRJkyNT
+                XhR5smQZNS9ftlTpUCJHl1+q6Ny5EwsWLxwxAhjpUowYLAgQlFhaQkXTpgRYiPnI0CZMMWHAfKECoAsc
+                MV6+eAnrpcwHDCVrAiia1UsXLD4IhAFLNiycMhKKpK26tgxWsVioSIniFI4XnjwRpP0oUM2YtnBVOGUA
+                4MsYrEbnhoGDgIqZN3DcRATgN4yXwCoOAGDA4oCRMliqUNE5uwsOHy/hgA5JOsyXLlWikFgAgICKATPK
+                gNGMWUyVEmT2vhGI9bQUJiJQ5DhAQEBeJUuK/hhZYqQIDg8YRIiQkpL6bypRiog4MQRJhAEOKpwIgYJ/
+                CBMrwFDDFjQEQdF0APgWGBM8eHACEkOgUEEaaFSIBoUYXpjGEHq94YZApmERBRM7dIBCfSg4gGGGaayI
+                xhA+UPRhgofFtwMJAKwwRA0HtHjhjxlWCGNaIJ4WHw4uYDDABS8YoGGFLPo4JEVFikiiCyUAIMAATmq4
+                RhpZaGFFmGGuEKMaCCpIBRM+xNCCQAIAsMACDjxAZwQRVPAABHle0EVu7nlBxRPmxfDBQBVooaiYjIZp
+                RRMiiAEoANVhcV2bLqQWAAViWqFFFp4yqkUTHohhBpW9vTciDzjE4AIDnhFYIKsFF9B6wQYccNDBDVOh
+                Wtppg7K5Aw6tynBDDDjIoEMPRTxBBRZfhDHGGW3wpoZRYAAbxRPh/eDDt9/+UAQTUEhRhRfLyWTttW1x
+                UcUUg237xLzzRiFFbdFKemBjMJGRFWCxUSGwwLLpxEUXX4BhVFozEmXGZf+ONVYXblE8VsJz6WtRRib5
+                hVVWYIQscshhlCxpbhsjpPLKBQUEADs=
+            </property>
+        </structure>
+    </list-property>
+</report>

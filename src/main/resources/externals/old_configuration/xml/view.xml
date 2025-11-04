@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.5.1" customerName="LAPROVENCE">
+    <organization name="DEFAULT" id="0">
+        <contentType name="D_DOS_FOUR">
+            <column main="false" label="Matricule fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FOUR_MAT</airsField>
+            </column>
+            <column main="false" label="Nom Fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FOUR_NOM</airsField>
+            </column>
+            <column main="false" label="Numéro SIRET" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FOUR_SIRET</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FOUR_MAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FOUR_NOM</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="D_DOC_FAC">
+            <column main="false" label="Matricule fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FOUR_MAT</airsField>
+            </column>
+            <column main="false" label="Nom Fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="D_DOS_FOUR">FOUR_NOM</airsField>
+            </column>
+            <column main="false" label="Numéro facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FAC_NUM</airsField>
+            </column>
+            <column main="false" label="Date facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField parentContentType="">FAC_DATE</airsField>
+            </column>
+            <column main="false" label="Date d'échéance" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField parentContentType="">FAC_DATE_ECHEA</airsField>
+            </column>
+ 		<column main="false" label="Date valid 1" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField parentContentType="">FAC_DATE_VALID</airsField>
+            </column>
+
+             <column main="false" label="Date num." visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField parentContentType="">D_CREAT</airsField>
+            </column>
+            <column main="false" label="Montant TTC" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FAC_TTC</airsField>
+            </column>
+            <column main="false" label="Type de document" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FAC_TYPE_DOC</airsField>
+            </column>
+            <column main="false" label="Emetteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">EMETTEUR</airsField>
+            </column>
+            <column main="false" label="Société" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">SOC</airsField>
+            </column>
+            <column main="false" label="Etat facture" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FAC_ETAT</airsField>
+            </column>
+  		<column main="false" label="Assistant" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FAC_TRAIT1</airsField>
+            </column>
+
+            <ns2:scriptedAction type="before" groovyScriptId="onDeleteFacBefore" id="onDeleteFacBefore">
+                <ns2:application>onDelete</ns2:application>
+            </ns2:scriptedAction>
+	     <ns2:export renderer="exportCSV.xsl" type="XSL_CSV" id="exportCSV" resourceKey="action_export_csv" progressionModalPanelId="modalPanelProgress" styleClass="exportCSV"/>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FOUR_MAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FAC_NUM</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FAC_DATE</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+        <contentType name="D_DOC_ENG">
+            <column main="false" label="Matricule fournisseur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">FOUR_MAT</airsField>
+            </column>
+            <column main="false" label="Numéro engagement" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">ENG_NUM</airsField>
+            </column>
+            <column main="false" label="Date engagement" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format>dd/MM/yyyy</format>
+                <airsField parentContentType="">ENG_DATE</airsField>
+            </column>
+            <column main="false" label="Montant TTC" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">ENG_TTC</airsField>
+            </column>
+            <column main="false" label="Emetteur" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">EMETTEUR</airsField>
+            </column>
+            <column main="false" label="Verrouillé" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="true">
+                <format></format>
+                <airsField parentContentType="">ENG_VERROU</airsField>
+            </column>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>FOUR_MAT</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ENG_NUM</ns2:codeField>
+                </ns2:sortingPolicy>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>ENG_DATE</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+            <nbDocMax>0</nbDocMax>
+            <actionColumnPosition>0</actionColumnPosition>
+        </contentType>
+    </organization>
+</listview>

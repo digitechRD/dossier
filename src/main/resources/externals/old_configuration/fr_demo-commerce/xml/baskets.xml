@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets" version="6.0.6-RC4" customerName="@CUSTOMERNAME@">
+    <ns2:organization name="DEFAULT" id="0">
+      <!--FLUX COURRIER -->
+      <ns2:basketRequest name="basket_mailToIndex" flowCode="COURRIER" indexation="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;122&quot;</airsvalue>
+         <airsProfile>11</airsProfile>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToIndex" flowCode="COURRIER"  indexation="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;122&quot;</airsvalue>
+         <airsProfile>12</airsProfile>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailRejected" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>U_CREAT.USR=&quot;#LOGIN_ID#&quot; ET T_ETAT_COURRIER.ROOTITEM=&quot;125&quot;</airsvalue>
+         <airsProfile>11</airsProfile>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailRejected" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>U_CREAT.USR=&quot;#LOGIN_ID#&quot; ET T_ETAT_COURRIER.ROOTITEM=&quot;125&quot;</airsvalue>
+         <airsProfile>12</airsProfile>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailRefused" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>(U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET
+            U_PROPRIETAIRE IS NULL)) ET T_ETAT_VISA.ROOTITEM=&quot;131&quot; SAUF T_ETAT_COURRIER.ROOTITEM=&quot;128&quot;</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToValidate" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;123&quot; ET U_VALIDEUR.USR=&quot;#LOGIN_ID#&quot; </airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToCheck" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;127&quot; ET U_VISEUR.USR=&quot;#LOGIN_ID#&quot; ET
+            (T_ETAT_VISA.ROOTITEM=&quot;129&quot; OU T_ETAT_VISA IS NULL)</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailLate" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;126&quot; ET (U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU
+            (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL)) ET
+            D_ECHEANCE&lt;=&quot;#TODAY#&quot;</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToProcess" flowCode="COURRIER" inHeaderMenu="true">
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;126&quot; ET (U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU
+            (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL))</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailProcessed" flowCode="COURRIER" >
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;127&quot; ET (U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; OU
+            (O_PROPRIETAIRE.ROOTORG=&quot;#ORG_ID#&quot; ET U_PROPRIETAIRE IS NULL))</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailInCopy" flowCode="COURRIER" >
+         <contentType>COU_COURRIER_IN</contentType>
+         <airsvalue>U_COPIES.USR=&quot;#LOGIN_ID#&quot; OU O_COPIES.ORG=&quot;#ORG_ID#&quot;</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToSendToCheck" flowCode="COURRIER" >
+         <contentType>COU_COURRIER_OUT</contentType>
+         <airsvalue>T_ETAT_COURRIER.ROOTITEM=&quot;127&quot; ET U_VISEUR.USR=&quot;#LOGIN_ID#&quot; ET
+            (T_ETAT_VISA.ROOTITEM=&quot;129&quot; OU T_ETAT_VISA IS NULL)</airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToSendRefused" flowCode="COURRIER" >
+         <contentType>COU_COURRIER_OUT</contentType>
+         <airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; ET T_ETAT_VISA.ROOTITEM=&quot;131&quot; SAUF T_ETAT_COURRIER.ROOTITEM=&quot;128&quot;
+         </airsvalue>
+      </ns2:basketRequest>
+      <ns2:basketRequest name="basket_mailToSend" flowCode="COURRIER" >
+         <contentType>COU_COURRIER_OUT</contentType>
+         <airsvalue>U_PROPRIETAIRE.USR=&quot;#LOGIN_ID#&quot; ET D_ENVOI IS NULL</airsvalue>
+      </ns2:basketRequest>
+      
+      <!--GF CIRIL-->
+      <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents du jour">
+            <contentType>GF_PIECE</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+      </ns2:basketRequest>
+      
+      <!--ORDRE DE BOURSE-->
+        <!--GESTIONNAIRE-->
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à enregistrer">
+            <contentType>DOCUMENT_OB</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;727&quot;</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à valider">
+            <contentType>DOCUMENT_OB</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;728&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents refusés">
+            <contentType>DOCUMENT_OB</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;1703&quot; ET RH_RESPONSABLE.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers documents ajoutés">
+            <contentType>DOCUMENT_OB</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        
+        <!--VALIDEUR-->
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à valider">
+            <contentType>DOCUMENT_OB</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;728&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents refusés">
+            <contentType>DOCUMENT_OB</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;1703&quot; ET RH_RESPONSABLE.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>  
+        
+        <!--FLUX RH-->
+          <!--GESTIONNAIRE-->
+          <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à enregistrer">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;727&quot;</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à enregistrer">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;727&quot;</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à valider">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;728&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à valider">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;728&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents refusés">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;1703&quot; ET RH_RESPONSABLE.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents refusés">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;1703&quot; ET RH_RESPONSABLE.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers documents ajoutés">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers courriers classés">
+            <contentType>COU_COURRIER_IN</contentType>
+            <airsvalue>D_CREAT=#TODAY# ET RH_NOM IS NOT EMPTY</airsvalue>
+            <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers documents ajoutés">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers courriers classés">
+            <contentType>COU_COURRIER_IN</contentType>
+            <airsvalue>D_CREAT=#TODAY# ET RH_NOM IS NOT EMPTY</airsvalue>
+            <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        
+        <!--CONSULTANT-->
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents notifiés">
+            <contentType>DOCUMENT_RH</contentType>
+            <airsvalue>RH_ETAT.ROOTITEM=&quot;729&quot; ET RH_ACTEURS.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+            <airsProfile>107</airsProfile>
+        </ns2:basketRequest>
+        
+        
+        <!--FLUX COMMERCIAL-->
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers documents ajoutés">
+            <contentType>DOCUMENT_COM</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents en cours de traitement">
+            <contentType>DOCUMENT_COM</contentType>
+            <airsvalue>COM_ETAT.ROOTITEM=&quot;1203&quot;</airsvalue>
+        </ns2:basketRequest>
+        
+        <!--FLUX FACTURE-->
+         <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Factures à valider">
+            <contentType>DOCUMENT_FACT</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;1609&quot; ET FACT_ACTEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers documents ajoutés">
+            <contentType>DOCUMENT_FACT</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+        </ns2:basketRequest>
+        
+        <!--FLUX COMPTABLE FOURNISSEUR-->
+        <!--GESTIONNAIRE-->
+         <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à enregistrer">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;2103&quot;</airsvalue>
+             <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Factures à valider">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;1609&quot; ET FACT_ACTEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+             <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Factures refusées">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;2102&quot; ET FACT_RESPONSABLE.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+             <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Factures sans engagement">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_COMMANDE IS NULL</airsvalue>
+             <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers ajouts">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+             <airsProfile>109</airsProfile>
+        </ns2:basketRequest>
+        
+        <!--VALIDEUR-->
+          <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Documents à enregistrer">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;2103&quot;</airsvalue>
+             <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Factures à valider">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;1609&quot; ET FACT_ACTEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+             <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Factures refusées">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>FACT_ETAT.ROOTITEM=&quot;2102&quot; ET FACT_RESPONSABLE.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+             <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+        <ns2:basketRequest indexation="false" inHeaderMenu="false" name="Derniers ajouts">
+            <contentType>DOCUMENT_FOU</contentType>
+            <airsvalue>D_CREAT=#TODAY#</airsvalue>
+             <airsProfile>108</airsProfile>
+        </ns2:basketRequest>
+    </ns2:organization>
+</ns2:corbeille>

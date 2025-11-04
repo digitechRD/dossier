@@ -1,0 +1,3377 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns="http://www.digitech.com/dossiers/search"	xmlns:ns2="http://www.digitech.com/dossiers/common"
+	customerName="ocsd_bnk"	version="6.0.9">
+
+	<organization id="0" name="DEFAULT">
+	</organization>
+	
+	<organization id="1" name="Socredo">
+		<globalSearch>
+			<ns2:dossierrequest name="name">
+				<ns2:contentType>D_DOC_IMGCHQ_SOC</ns2:contentType>
+				<ns2:airsvalue>NUM_REM=&quot;#VALUE#&quot;</ns2:airsvalue>
+			</ns2:dossierrequest>
+			<flowCode>FLOW_BNK</flowCode>
+		</globalSearch>
+		<contentType name="D_DOS_IMGCHQ_SOC">
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de remise</label>
+				<airsfield>
+					<codeField>DAT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Numero remise</label>
+				<airsfield>
+					<codeField>NUM_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant remise</label>
+				<airsfield>
+					<codeField>MON_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte beneficiaire</label>
+				<airsfield>
+					<codeField>CPT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+		</contentType>
+		<contentType name="D_DOC_IMGCHQ_SOC">
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>TYP_DOC</codeField>
+				</airsfield>
+				<initial-value/>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Etat Con. Regl</label>
+				<airsfield>
+					<codeField>CHQ_ETAT_REGL</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Etat Con. Sign</label>
+				<airsfield>
+					<codeField>CHQ_ETAT_SIGN</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de traitement</label>
+				<airsfield>
+					<codeField>DAT_TMT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant cheque</label>
+				<airsfield>
+					<codeField>MON_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>
+				</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Banque remettante</label>
+				<airsfield>
+					<codeField>BNK_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input> 
+			<input>
+				<operator>=</operator>
+				<label>Banque tirée</label>
+				<airsfield>
+					<codeField>BNK_CHQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Indice CRC</label>
+				<airsfield>
+					<codeField>IND_CRC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>                                   
+      <input>
+				<operator>=</operator>
+				<label>Prestataire de démat.</label>
+				<airsfield>
+					<codeField>CHQ_PRESTATAIRE_DEMAT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de remise</label>
+				<airsfield>
+					<codeField>DAT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>N° remise</label>
+				<airsfield>
+					<codeField>NUM_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte tireur</label>
+				<airsfield>
+					<codeField>CPT_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numero cheque</label>
+				<airsfield>
+					<codeField>NUM_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant remise</label>
+				<airsfield>
+					<codeField>MON_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte beneficiaire</label>
+				<airsfield>
+					<codeField>CPT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Code guichet</label>
+				<airsfield>
+					<codeField>COD_GCH</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Banque remettante</label>
+				<airsfield>
+					<codeField>BNK_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Banque tirée</label>
+				<airsfield>
+					<codeField>BNK_CHQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Devise</label>
+				<airsfield>
+					<codeField>DEV_ZIB</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro MRQ</label>
+				<airsfield>
+					<codeField>NUM_MRQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+		</contentType>
+	</organization>
+
+	<organization id="23" name="IEOM">
+		<globalSearch>
+			<ns2:dossierrequest name="name">
+				<ns2:contentType>D_DOC_IMGCHQ_IEOM</ns2:contentType>
+				<ns2:airsvalue>NUM_REM=&quot;#VALUE#&quot;</ns2:airsvalue>
+			</ns2:dossierrequest>
+			<flowCode>FLOW_BNK</flowCode>
+		</globalSearch>
+
+		<contentType name="D_DOS_IMGCHQ_IEOM">
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de remise</label>
+				<airsfield>
+					<codeField>DAT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Numero remise</label>
+				<airsfield>
+					<codeField>NUM_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant remise</label>
+				<airsfield>
+					<codeField>MON_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte beneficiaire</label>
+				<airsfield>
+					<codeField>CPT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+		</contentType>
+		<contentType name="D_DOC_IMGCHQ_IEOM">
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>TYP_DOC</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de remise</label>
+				<airsfield>
+					<codeField>DAT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Banque tirée</label>
+				<airsfield>
+					<codeField>BNK_CHQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Numero cheque</label>
+				<airsfield>
+					<codeField>NUM_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>   
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant cheque</label>
+				<airsfield>
+					<codeField>MON_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>
+				</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte tireur</label>
+				<airsfield>
+					<codeField>CPT_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Devise</label>
+				<airsfield>
+					<codeField>DEV_ZIB</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Indice CRC</label>
+				<airsfield>
+					<codeField>IND_CRC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>    
+			<input>
+				<operator>=</operator>
+				<label>Banque remettante</label>
+				<airsfield>
+					<codeField>BNK_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>              
+			<input>
+				<operator>=</operator>
+				<label>Code guichet</label>
+				<airsfield>
+					<codeField>COD_GCH</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>          
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant remise</label>
+				<airsfield>
+					<codeField>MON_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>                 		
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>N° remise</label>
+				<airsfield>
+					<codeField>NUM_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte beneficiaire</label>
+				<airsfield>
+					<codeField>CPT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Prestataire de démat.</label>
+				<airsfield>
+					<codeField>CHQ_PRESTATAIRE_DEMAT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date TMT</label>
+				<airsfield>
+					<codeField>DAT_TMT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro MRQ</label>
+				<airsfield>
+					<codeField>NUM_MRQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>			
+		</contentType>
+	</organization>
+
+	<organization id="24" name="CCP">
+		<globalSearch>
+			<ns2:dossierrequest name="name">
+				<ns2:contentType>D_DOC_IMGCHQ_CCP</ns2:contentType>
+				<ns2:airsvalue>NUM_REM=&quot;#VALUE#&quot;</ns2:airsvalue>
+			</ns2:dossierrequest>
+			<flowCode>FLOW_BNK</flowCode>
+		</globalSearch>
+
+		<contentType name="D_DOS_IMGCHQ_CCP">
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de remise</label>
+				<airsfield>
+					<codeField>DAT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Numero remise</label>
+				<airsfield>
+					<codeField>NUM_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant remise</label>
+				<airsfield>
+					<codeField>MON_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte beneficiaire</label>
+				<airsfield>
+					<codeField>CPT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+		</contentType>
+		<contentType name="D_DOC_IMGCHQ_CCP">
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>TYP_DOC</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Prestataire de démat.</label>
+				<airsfield>
+					<codeField>CHQ_PRESTATAIRE_DEMAT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de remise</label>
+				<airsfield>
+					<codeField>DAT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>N° remise</label>
+				<airsfield>
+					<codeField>NUM_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte tireur</label>
+				<airsfield>
+					<codeField>CPT_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numero cheque</label>
+				<airsfield>
+					<codeField>NUM_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant remise</label>
+				<airsfield>
+					<codeField>MON_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Montant cheque</label>
+				<airsfield>
+					<codeField>MON_CHQ</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>
+				</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Compte beneficiaire</label>
+				<airsfield>
+					<codeField>CPT_REM</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Code guichet</label>
+				<airsfield>
+					<codeField>COD_GCH</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date TMT</label>
+				<airsfield>
+					<codeField>DAT_TMT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Banque remettante</label>
+				<airsfield>
+					<codeField>BNK_REM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Banque tirée</label>
+				<airsfield>
+					<codeField>BNK_CHQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Devise</label>
+				<airsfield>
+					<codeField>DEV_ZIB</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Indice CRC</label>
+				<airsfield>
+					<codeField>IND_CRC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro MRQ</label>
+				<airsfield>
+					<codeField>NUM_MRQ</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+			</input>
+		</contentType>
+		
+		<!-- Dossiers CCP   -   DSF -->
+		<contentType name="D_DOS_CCP_DSF">
+			<input>
+				<operator>=</operator>
+				<label>Numéro de client</label>
+				<airsfield>
+					<codeField>CCP_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Nom</label>
+				<airsfield>
+					<codeField>CCP_NOM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Prénom</label>
+				<airsfield>
+					<codeField>CCP_PRENOM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de naissance</label>
+				<airsfield>
+					<codeField>CCP_DATE_NAISSANCE</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>
+		</contentType>
+		
+		<!-- Documents CCP   -   DSF -->
+		<contentType name="D_DOC_CCP_DSF">
+			<input>
+				<operator>=</operator>
+				<label>Numéro de client</label>
+				<airsfield>
+					<codeField>CCP_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>CCP_NUM_COMPTE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Type de dossier</label>
+				<airsfield>
+					<codeField>CCP_TYPE_DOSSIER</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CCP_TYPE_DOC</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+		</contentType>	
+		
+		<!-- Dossiers ATD -->
+		<contentType name="D_DOS_ATD">
+			<input>
+				<operator>=</operator>
+				<label>Référence ATD</label>
+				<airsfield>
+					<codeField>ATD_REF</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Intitulé du compte</label>
+				<airsfield>
+					<codeField>ATD_INTITULE_COMPTE_G</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de naissance</label>
+				<airsfield>
+					<codeField>ATD_DATE_NAISSANCE</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>ATD_NUM_COMPTE_G</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de réception DSB</label>
+				<airsfield>
+					<codeField>ATD_DATE_DSB</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de saisie ODI</label>
+				<airsfield>
+					<codeField>ATD_DATE_ODI</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Nom du créancier</label>
+				<airsfield>
+					<codeField>ATD_NOM_CREANCIER</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant total</label>
+				<airsfield>
+					<codeField>ATD_MONTANT_TOTAL</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant réservé</label>
+				<airsfield>
+					<codeField>ATD_MONTANT_RESERVE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de règlement</label>
+				<airsfield>
+					<codeField>ATD_DATE_REGLEMENT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Référence lettrage</label>
+				<airsfield>
+					<codeField>ATD_REF_LETTRAGE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Date de mainlevée</label>
+				<airsfield>
+					<codeField>ATD_DATE_MLV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<label>Montant mainlevée</label>
+				<airsfield>
+					<codeField>ATD_MONTANT_MLV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Solde après mainlevée</label>
+				<airsfield>
+					<codeField>ATD_SOLDE_APRES_MLV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+		</contentType>	
+
+		<contentType name="D_DOC_ATD">
+			<input>
+				<operator>=</operator>
+				<label>Référence ATD</label>
+				<airsfield>
+					<codeField>ATD_REF</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Intitulé du compte</label>
+				<airsfield>
+					<codeField>ATD_INTITULE_COMPTE_G</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de naissance</label>
+				<airsfield>
+					<codeField>ATD_DATE_NAISSANCE</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>ATD_NUM_COMPTE_G</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de réception DSB</label>
+				<airsfield>
+					<codeField>ATD_DATE_DSB</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de saisie ODI</label>
+				<airsfield>
+					<codeField>ATD_DATE_ODI</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Nom du créancier</label>
+				<airsfield>
+					<codeField>ATD_NOM_CREANCIER</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant total</label>
+				<airsfield>
+					<codeField>ATD_MONTANT_TOTAL</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant réservé</label>
+				<airsfield>
+					<codeField>ATD_MONTANT_RESERVE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de règlement</label>
+				<airsfield>
+					<codeField>ATD_DATE_REGLEMENT</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Référence lettrage</label>
+				<airsfield>
+					<codeField>ATD_REF_LETTRAGE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de mnumérisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>	
+		</contentType>	
+
+
+		<contentType name="D_DOC_ATD_MAINLEVEE">
+			<input>
+				<operator>=</operator>
+				<label>Référence ATD</label>
+				<airsfield>
+					<codeField>ATD_REF</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Intitulé du compte</label>
+				<airsfield>
+					<codeField>ATD_INTITULE_COMPTE_O</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>ATD_NUM_COMPTE_O</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Date de mainlevée</label>
+				<airsfield>
+					<codeField>ATD_DATE_MLV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<label>Montant mainlevée</label>
+				<airsfield>
+					<codeField>ATD_MONTANT_MLV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Solde après mainlevée</label>
+				<airsfield>
+					<codeField>ATD_SOLDE_APRES_MLV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Code opération</label>
+				<airsfield>
+					<codeField>ATD_CODE_OPE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro évènement</label>
+				<airsfield>
+					<codeField>ATD_NUM_EVE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant de l'opération</label>
+				<airsfield>
+					<codeField>ATD_MON_OPE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro de chapitre</label>
+				<airsfield>
+					<codeField>ATD_NUM_CHA</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Libellé de chapitre</label>
+				<airsfield>
+					<codeField>ATD_LIB_CHA</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numérisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>			
+		</contentType>
+		
+		<contentType name="D_DOC_ATD_COURRIER">
+			<input>
+				<operator>=</operator>
+				<label>Référence ATD</label>
+				<airsfield>
+					<codeField>ATD_REF</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Intitulé du compte</label>
+				<airsfield>
+					<codeField>ATD_INTITULE_COMPTE_O</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>ATD_NUM_COMPTE_O</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Nom</label>
+				<airsfield>
+					<codeField>ATD_NOM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Prénom</label>
+				<airsfield>
+					<codeField>ATD_PRENOM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Adresse</label>
+				<airsfield>
+					<codeField>ATD_ADRESSE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Code postal</label>
+				<airsfield>
+					<codeField>ATD_CODE_POSTAL</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Ville</label>
+				<airsfield>
+					<codeField>ATD_VILLE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<label>Code opération</label>
+				<airsfield>
+					<codeField>ATD_CODE_OPE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro évènement</label>
+				<airsfield>
+					<codeField>ATD_NUM_EVE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant de l'opération</label>
+				<airsfield>
+					<codeField>ATD_MON_OPE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro de chapitre</label>
+				<airsfield>
+					<codeField>ATD_NUM_CHA</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Libellé de chapitre</label>
+				<airsfield>
+					<codeField>ATD_LIB_CHA</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Clé</label>
+				<airsfield>
+					<codeField>ATD_CLE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>	
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numérisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>			
+		</contentType>
+		
+		<contentType name="D_DOC_ATD_TB">
+			<input>
+				<operator>=</operator>
+				<label>Référence ATD</label>
+				<airsfield>
+					<codeField>ATD_REF</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Intitulé du compte</label>
+				<airsfield>
+					<codeField>ATD_INTITULE_COMPTE_O</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>ATD_NUM_COMPTE_O</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Code opération</label>
+				<airsfield>
+					<codeField>ATD_CODE_OPE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro évènement</label>
+				<airsfield>
+					<codeField>ATD_NUM_EVE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Montant de l'opération</label>
+				<airsfield>
+					<codeField>ATD_MON_OPE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro de chapitre</label>
+				<airsfield>
+					<codeField>ATD_NUM_CHA</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Libellé de chapitre</label>
+				<airsfield>
+					<codeField>ATD_LIB_CHA</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numérisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<initial-value></initial-value>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type></type>
+			</input>			
+		</contentType>		
+		
+	</organization>
+
+	<organization id="25" name="SOCREDO DPC">
+		<contentType name="D_DOS_DPC">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Nom</label>
+				<airsfield>
+					<codeField>DPC_NOM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Prénom</label>
+				<airsfield>
+					<codeField>DPC_PRENOM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de naissance</label>
+				<airsfield>
+					<codeField>DPC_DATE_NAISSANCE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+			</input>
+		</contentType>
+		<contentType name="D_DOC_DCC">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>DCC_TYPE_DOCUMENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DCC_DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+		    </input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date d'emission</label>
+				<airsfield>
+					<codeField>DATE_EMISSION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+		    </input> 
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de validite</label>
+				<airsfield>
+					<codeField>DATE_VALIDITE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+		    </input> 			
+		</contentType>
+		<contentType name="D_DOC_OVC">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>OVC_TYPE_DOCUMENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>OVC_NUM_COMPTE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+		</contentType>
+		<contentType name="D_DOC_CAS">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CAS_TYPE_DOCUMENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro de compte</label>
+				<airsfield>
+					<codeField>OVC_NUM_COMPTE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+		</contentType>
+		<contentType name="D_DOC_RISQUE">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type</label>
+				<airsfield>
+					<codeField>RISQUE_TYPE_SOUS_DOSSIER</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>RISQUE_TYPE_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <operator>}{</operator>
+        <label>Date de numerisation</label>
+        <airsfield>
+            <codeField>DATE_NUMERISATION</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+      </input>		
+		</contentType>
+		<contentType name="D_DOC_CREDITS">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro de crédit</label>
+				<airsfield>
+					<codeField>CREDITS_NUM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CREDITS_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <operator>}{</operator>
+        <label>Date de numerisation</label>
+        <airsfield>
+            <codeField>DATE_NUMERISATION</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+      </input>			
+		</contentType>
+		<contentType name="D_DOC_ADD">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro</label>
+				<airsfield>
+					<codeField>ADD_NUM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ADD_TYPE_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+        <operator>=</operator>
+        <operator>&gt;</operator>
+        <operator>&lt;</operator>
+        <operator>{}</operator>
+        <operator>}{</operator>
+        <label>Date de numerisation</label>
+        <airsfield>
+            <codeField>DATE_NUMERISATION</codeField>
+        </airsfield>
+        <inputHelper autoTab="false"/>
+        <required>false</required>
+      </input>			
+		</contentType> 
+
+		<!-- chantier DCC - Services -->		
+		<contentType name="D_DOC_OP_GUI">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>OP_GUI_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<contentType name="D_DOC_BANK_DIST">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>BANK_DIST_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+
+		<!-- chantier DCC - Activités -->		
+		<contentType name="D_DOC_ACT_LOCAL">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ACT_LOCAL_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<contentType name="D_DOC_ETR_EUR">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ETR_EUR_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<contentType name="D_DOC_ETR_HORS_EUR">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ETR_HORS_EUR_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>	
+
+		<!-- chantier DCC - Echelles -->
+		<contentType name="D_DOC_ECHELLE">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ECHELLE_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+
+		<!-- chantier DCC - Cartes -->
+		<contentType name="D_DOC_CARTES">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CARTE_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de carte</label>
+				<airsfield>
+					<codeField>CARTE_TYP</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type>list</type>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+
+		<!-- chantier DCC - Chèques -->
+		<contentType name="D_DOC_CHQ">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CHQ_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - GRC -->
+		<contentType name="D_DOC_GRC">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>GRC_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+
+		<!-- chantier DCC - Epargnes - Bancaire -->
+		<contentType name="D_DOC_EPAR_BANC">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>EPAR_BANC_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro épargne bancaire</label>
+				<airsfield>
+					<codeField>EPAR_BANC_NUM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type>list</type>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<!-- chantier DCC - Epargnes - Règlementée -->
+		<contentType name="D_DOC_EPAR_REGL">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>EPAR_REGL_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro épargne règlementée</label>
+				<airsfield>
+					<codeField>EPAR_REGL_NUM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type>list</type>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>	
+		
+		<!-- chantier DCC - IARD -->
+		<contentType name="D_DOC_ASS_IARD">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ASS_IARD_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<!-- chantier DCC - Assurance Vie -->
+		<contentType name="D_DOC_ASS_VIE">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ASS_VIE_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - GTG -->
+		<contentType name="D_DOC_GTG">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>GTG_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<!-- chantier DCC - MON -->
+		<contentType name="D_DOC_MON">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>MON_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<!-- chantier DCC - Gestion salle de marché -->
+		<contentType name="D_DOC_GEST">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>GEST_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+
+		<!-- chantier DCC - Portefeuilles - libre - Import -->
+		<contentType name="D_DOC_LIBR_IMP">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>LIBR_IMP_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+		
+		<!-- chantier DCC - Portefeuilles - libre - Export -->
+		<contentType name="D_DOC_LIBR_EXP">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>LIBR_EXP_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - Documentaire - Import -->
+		<contentType name="D_DOC_DOC_IMP">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>DOC_IMP_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - Portefeuilles - Documentaire - Export -->
+		<contentType name="D_DOC_DOC_EXP">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>DOC_EXP_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+
+		<!-- chantier DCC - Crédit documentaire -->
+		<contentType name="D_DOC_CRE_DOC">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CRE_DOC_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - Placements financiers -->
+		<contentType name="D_DOC_FIN">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>FIN_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+
+		<!-- chantier DCC - Engagements -->
+		<contentType name="D_DOC_ENG">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>ENG_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro engagement</label>
+				<airsfield>
+					<codeField>ENG_NUM</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - Conventions -->
+		<contentType name="D_DOC_CONV">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>CONV_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Date convention</label>
+				<airsfield>
+					<codeField>CONV_DATE</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>		
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>		
+		
+		<!-- chantier DCC - Dossiers LAB -->
+		<contentType name="D_DOC_LAB">
+			<input>
+				<operator>=</operator>
+				<label>Numéro client</label>
+				<airsfield>
+					<codeField>DPC_NUM_CLIENT</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Type de document</label>
+				<airsfield>
+					<codeField>LAB_TYP_DOC</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>false</allowJoker>
+				<type>list</type>
+			</input>
+			<input>
+				<operator>=</operator>
+				<label>Numéro DAV</label>
+				<airsfield>
+					<codeField>NUM_DAV</codeField>
+				</airsfield>
+				<inputHelper autoTab="false" />
+				<required>false</required>
+				<allowJoker>true</allowJoker>
+				<type>list</type>
+			</input>			
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de numerisation</label>
+				<airsfield>
+					<codeField>DATE_NUMERISATION</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>
+			<input>
+				<operator>=</operator>
+				<operator>&gt;</operator>
+				<operator>&lt;</operator>
+				<operator>{}</operator>
+				<operator>}{</operator>
+				<label>Date de contrôle</label>
+				<airsfield>
+					<codeField>DATE_LAB</codeField>
+				</airsfield>
+				<inputHelper autoTab="false"/>
+				<required>false</required>
+			</input>			
+		</contentType>
+	
+	</organization>
+	
+	<!-- OFINA -->
+    <organization id="26" name="OFINA">
+          <contentType name="D_DOS_OFINA_CLT_PORTEUR">
+            <input>
+                <operator>=</operator>
+                <label>Numero de client</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>            
+            <input>
+                <operator>=</operator>
+                <label>Nom</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NOM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>    
+            <input>
+                <operator>=</operator>
+                <label>Prénom</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_PRENOM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>   
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de naissance</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_DATE_NAISSANCE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>                                                               
+        </contentType>
+        <contentType name="D_DOS_OFINA_CLT_ACQUER">
+            <input>
+                <operator>=</operator>
+                <label>Numero de client</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>            
+            <input>
+                <operator>=</operator>
+                <label>Enseigne</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_ENSEIGNE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>      
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de creation</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_DATE_CREATION</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>                                                               
+        </contentType>    
+        <contentType name="D_DOC_OFINA_CLT_PORTEUR">
+            <input>
+                <operator>=</operator>
+                <label>Numero de client</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>            
+            <input>
+                <operator>=</operator>
+                <label>Type de document</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_PORTEUR_TYPE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>                                   
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de numérisation</label>
+                <airsfield>
+                    <codeField>DATE_NUMERISATION</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>            
+        </contentType>
+        <contentType name="D_DOC_OFINA_CLT_ACQUER">
+           <input>
+                <operator>=</operator>
+                <label>Numero de client</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+           <input>
+                <operator>=</operator>
+                <label>Numero SE</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_SE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>            
+             <input>
+                <operator>=</operator>
+                <label>Type de document</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_ACQUER_TYPE_DOC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+                <type>list</type>   
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de numérisation</label>
+                <airsfield>
+                    <codeField>DATE_NUMERISATION</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input>            
+        </contentType>
+        <contentType name="D_DOC_OFINA_ADM_FACTURE">
+           <input>
+                <operator>=</operator>
+                <label>Nom du fournisseur</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_NOM_FOURNISSEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+             <input>
+                <operator>=</operator>
+                <label>Numéro de facture</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_NUM_FACTURE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>  
+                <allowJoker>true</allowJoker>                
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de facture</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_DATE_FACTURE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input> 
+        </contentType>
+        
+        <contentType name="D_DOC_OFINA_ADM_CONV">
+           <input>
+                <operator>=</operator>
+                <label>Nom du fournisseur</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_NOM_FOURNISSEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+             <input>
+                <operator>=</operator>
+                <label>Type de convention</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_TYPE_CONVENTION</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>   
+                <type>list</type> 
+            </input>
+           <input>
+                <operator>=</operator>
+                <label>Contenant de la convention</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_CONTENANT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>            
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Date de signature</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_DATE_SIGNATURE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>false</allowJoker>
+            </input> 
+        </contentType>
+    </organization>
+    
+    <!-- ARCHIVISTE -->
+    <organization id="27" name="ARCHIVISTE">
+          <contentType name="D_DOS_OFINA_CLT_PORTEUR">
+            <input>
+                <operator>=</operator>
+                <label>Numero de client</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>                
+            <input>
+                <operator>=</operator>
+                <label>Numéro de carton</label>
+                <airsfield>
+                    <codeField>NUM_CARTON</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>  
+                <allowJoker>true</allowJoker>                
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Numéro de boîte</label>
+                <airsfield>
+                    <codeField>NUM_BOITE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>                                                               
+        </contentType>
+        <contentType name="D_DOS_OFINA_CLT_ACQUER">
+            <input>
+                <operator>=</operator>
+                <label>Numero de client</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_CLIENT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>       
+            <input>
+                <operator>=</operator>
+                <label>Numero SE</label>
+                <airsfield>
+                    <codeField>OFINA_CLT_NUM_SE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>      
+            <input>
+                <operator>=</operator>
+                <label>Numéro de carton</label>
+                <airsfield>
+                    <codeField>NUM_CARTON</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>  
+                <allowJoker>true</allowJoker>                
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Numéro de boîte</label>
+                <airsfield>
+                    <codeField>NUM_BOITE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>                                                              
+        </contentType>    
+        <contentType name="D_DOS_OFINA_ADM">
+           <input>
+                <operator>=</operator>
+                <label>Nom du fournisseur</label>
+                <airsfield>
+                    <codeField>OFINA_ADM_NOM_FOURNISSEUR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input>
+                <operator>=</operator>
+                <label>Numéro de carton</label>
+                <airsfield>
+                    <codeField>NUM_CARTON</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>  
+                <allowJoker>true</allowJoker>                
+            </input>
+            <input>
+                <operator>=</operator>
+                <operator>{}</operator>
+                <operator>}{</operator>
+                <label>Numéro de boîte</label>
+                <airsfield>
+                    <codeField>NUM_BOITE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <allowJoker>true</allowJoker>
+            </input> 
+        </contentType>
+        <contentType name="D_DOC_OVC">
+    			<input>
+    				<operator>=</operator>
+    				<label>Numéro client</label>
+    				<airsfield>
+    					<codeField>DPC_NUM_CLIENT</codeField>
+    				</airsfield>
+    				<inputHelper autoTab="false" />
+    				<required>false</required>
+    				<allowJoker>true</allowJoker>
+    			</input>
+    			<input>
+    				<operator>=</operator>
+    				<label>Type de document</label>
+    				<airsfield>
+    					<codeField>OVC_TYPE_DOCUMENT</codeField>
+    				</airsfield>
+    				<inputHelper autoTab="false" />
+    				<required>false</required>
+    				<allowJoker>false</allowJoker>
+    				<type>list</type>
+    			</input>
+    			<input>
+    				<operator>=</operator>
+    				<label>Numéro de compte</label>
+    				<airsfield>
+    					<codeField>OVC_NUM_COMPTE</codeField>
+    				</airsfield>
+    				<inputHelper autoTab="false" />
+    				<required>false</required>
+    				<allowJoker>true</allowJoker>
+    			</input>			
+    		</contentType>
+    </organization>
+</searchForm>

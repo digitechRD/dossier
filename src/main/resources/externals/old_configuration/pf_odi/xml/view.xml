@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@ODI@" version="4.1.7">
+    <organization id="0" name="DEFAULT">
+        <contentType name="D_DOS_IMGCHQ">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Cpt tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Num cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+            <ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpONI">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_COM">
+            <column label="Type document">
+                <airsField>TYP_DOCU</airsField>
+            </column>
+            <column label="Numero tahiti">
+                <airsField>NUM_TAHI</airsField>
+            </column>
+            <column label="Numero site">
+                <airsField>NUM_SITE</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Numero affiliation">
+                <airsField>NUM_AFFI</airsField>
+            </column>
+            <column label="Date intervention">
+                <airsField>DAT_INTER</airsField>
+            </column>
+            <column label="Numero fiche">
+                <airsField>NUM_FICH</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_DAB">
+            <column label="Numéro de DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <column label="Mois">
+                <airsField>MOIS_DAB</airsField>
+            </column>
+            
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>            
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        
+        
+    </organization>
+    <organization id="1" name="Socredo">
+      <contentType name="D_DOC_DAB">
+            <column label="Numéro de DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <column label="Mois">
+                <airsField>MOIS_DAB</airsField>
+            </column>
+            
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>            
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        
+        <contentType name="D_DOS_DAB">
+            <column label="Client">
+                <airsField>CLIENT_DAB</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOS_IMGCHQ">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Cpt tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Num cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+            <ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpONI">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="2" name="BDP">
+      <contentType name="D_DOC_DAB">
+            <column label="Numéro de DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <column label="Mois">
+                <airsField>MOIS_DAB</airsField>
+            </column>
+            
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>            
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        
+        <contentType name="D_DOS_IMGCHQ">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Cpt tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Num cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+            <ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpONI">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="3" name="OPT">
+      <contentType name="D_DOC_DAB">
+            <column label="Numéro de DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <column label="Mois">
+                <airsField>MOIS_DAB</airsField>
+            </column>
+            
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>            
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        
+        <contentType name="D_DOS_IMGCHQ">
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type document">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <format>dd/MM/yyyy</format>
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Num remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Cpt tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Num cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Banque">
+                <airsField>COD_CHQ</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+            <ns2:export renderer="exportXLS.xsl" type="XSL_XLS" id="ExpONI">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="6" name="Purge OPT">
+        <contentType name="D_DOC_DAB">
+            <column label="Client">
+                <airsField>CLIENT_DAB</airsField>
+            </column>
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>
+            <column label="Numero DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Numero remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Compte tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Numero cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_COM">
+            <column label="Type document">
+                <airsField>TYP_DOCU</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Numero fiche">
+                <airsField>NUM_FICH</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="5" name="Purge Banque de Polynésie">
+        <contentType name="D_DOC_DAB">
+            <column label="Client">
+                <airsField>CLIENT_DAB</airsField>
+            </column>
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>
+            <column label="Numero DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Numero remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Compte tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Numero cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_COM">
+            <column label="Type document">
+                <airsField>TYP_DOCU</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Numero fiche">
+                <airsField>NUM_FICH</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="4" name="Purge Socredo">
+        <contentType name="D_DOC_DAB">
+            <column label="Client">
+                <airsField>CLIENT_DAB</airsField>
+            </column>
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>
+            <column label="Numero DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_IMGCHQ">
+            <column label="Type">
+                <airsField>TYP_DOC</airsField>
+            </column>
+            <column label="Date remise">
+                <airsField>DAT_REM</airsField>
+            </column>
+            <column label="Numero remise">
+                <airsField>NUM_REM</airsField>
+            </column>
+            <column label="Compte tireur">
+                <airsField>CPT_CHQ</airsField>
+            </column>
+            <column label="Numero cheque">
+                <airsField>NUM_CHQ</airsField>
+            </column>
+            <column label="Montant remise">
+                <airsField>MON_REM</airsField>
+            </column>
+            <column label="Montant cheque">
+                <airsField>MON_CHQ</airsField>
+            </column>
+            <column label="Compte benef.">
+                <airsField>CPT_REM</airsField>
+            </column>
+            <column label="Sens">
+                <airsField>SEN_IMG</airsField>
+            </column>
+           <!--  <ns2:scriptedAction id="Suppresion" airsRight="" groovyScriptId="isSuppressionPossible" type="before">
+                <ns2:application>onDelete</ns2:application>
+            </ns2:scriptedAction>-->
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_COM">
+            <column label="Type document">
+                <airsField>TYP_DOCU</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Numero fiche">
+                <airsField>NUM_FICH</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="7" name="OSB">
+    <contentType name="D_DOC_DAB">
+            <column label="Client">
+                <airsField>CLIENT_DAB</airsField>
+            </column>
+            <column label="Date">
+                <airsField>DATE_DAB</airsField>
+            </column>
+            <column label="Numero DAB">
+                <airsField>NUM_DAB</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOS_COM">
+            <column label="Numero tahiti">
+                <airsField>NUM_TAHI</airsField>
+            </column>
+            <column label="Numero site">
+                <airsField>NUM_SITE</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Etat dossier">
+                <airsField>ETA_DOS</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+        <contentType name="D_DOC_COM">
+            <column label="Type document">
+                <airsField>TYP_DOCU</airsField>
+            </column>
+            <column label="Numero tahiti">
+                <airsField>NUM_TAHI</airsField>
+            </column>
+            <column label="Numero site">
+                <airsField>NUM_SITE</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Numero affiliation">
+                <airsField>NUM_AFFI</airsField>
+            </column>
+            <column label="Date intervention">
+                <airsField>DAT_INTER</airsField>
+            </column>
+            <column label="Numero fiche">
+                <airsField>NUM_FICH</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+    <organization id="8" name="Purge OSB">
+        <contentType name="D_DOC_COM">
+            <column label="Type document">
+                <airsField>TYP_DOCU</airsField>
+            </column>
+            <column label="Numero tahiti">
+                <airsField>NUM_TAHI</airsField>
+            </column>
+            <column label="Numero site">
+                <airsField>NUM_SITE</airsField>
+            </column>
+            <column label="Enseigne">
+                <airsField>LIB_ENSEI</airsField>
+            </column>
+            <column label="Numero affiliation">
+                <airsField>NUM_AFFI</airsField>
+            </column>
+            <column label="Date intervention">
+                <airsField>DAT_INTER</airsField>
+            </column>
+            <column label="Numero fiche">
+                <airsField>NUM_FICH</airsField>
+            </column>
+            <sorting/>
+            <nbDocMax>0</nbDocMax>
+        </contentType>
+    </organization>
+</listview>

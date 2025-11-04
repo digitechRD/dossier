@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<searchForm xmlns:ns0="http://www.digitech.com/dossiers/baskets" xmlns="http://www.digitech.com/dossiers/search" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.7.10-1" customerName="GEOCEAN">
+    <organization name="DEFAULT" id="0">
+        <globalSearch>
+            <ns2:dossierrequest name="Recherche de factures à partir du numéro facture ou non fournisseur">
+                <ns2:contentType>DOC_FAC</ns2:contentType>
+                <ns2:airsvalue>( FOUR_NOM="+#VALUE#+" OU FACT_NR="#VALUE#" )</ns2:airsvalue>
+            </ns2:dossierrequest>
+        </globalSearch>
+        <contentType name="DOS_FAC" selected="false">
+            <input main="true">
+                <operator>=</operator>
+                <label>Matricule fournisseur </label>
+                <airsfield>
+                    <codeField>FOUR_MATRIC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom fournisseur </label>
+                <airsfield>
+                    <codeField>FOUR_NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+        <contentType name="DOC_FAC" selected="false">
+            <input main="true">
+                <operator>=</operator>
+                <label>Matricule fournisseur </label>
+                <airsfield>
+                    <codeField>FOUR_MATRIC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nom fournisseur </label>
+                <airsfield>
+                    <codeField>FOUR_NOM</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="true">
+                <operator>=</operator>
+                <label>Numéro de la facture</label>
+                <airsfield>
+                    <codeField>FACT_NR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de la facture</label>
+                <airsfield>
+                    <codeField>FACT_DATE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Montant TTC </label>
+                <airsfield>
+                    <codeField>FACT_TTC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Devise </label>
+                <airsfield>
+                    <codeField>FACT_DEVISE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Société </label>
+                <airsfield>
+                    <codeField>FACT_SOCETE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Codes chantier 1</label>
+                <airsfield>
+                    <codeField>FACT_CODE_CHANT1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Codes chantier 2</label>
+                <airsfield>
+                    <codeField>FACT_CODE_CHANT2</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Codes chantier 3</label>
+                <airsfield>
+                    <codeField>FACT_CODE_CHANT3</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nr de bon de cmd</label>
+                <airsfield>
+                    <codeField>FACT_N_BDC</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nr de réception</label>
+                <airsfield>
+                    <codeField>FACT_N_RECEPTION</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Numéro Chrono </label>
+                <airsfield>
+                    <codeField>FACT_CHRONO</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>true</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Etat de la facture </label>
+                <airsfield>
+                    <codeField>FACT_ETAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Gestionnaire Achat</label>
+                <airsfield>
+                    <codeField>FACT_USR_ACHAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_Achat</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Controleur Gestion 1</label>
+                <airsfield>
+                    <codeField>FACT_USR_CTRLGEST1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Controleur Gestion 2</label>
+                <airsfield>
+                    <codeField>FACT_USR_CTRLGEST2</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Controleur Gestion 3</label>
+                <airsfield>
+                    <codeField>FACT_USR_CTRLGEST3</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_CDG</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Chefs de projet 1</label>
+                <airsfield>
+                    <codeField>FACT_USR_CDP1</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Chefs de projet 2</label>
+                <airsfield>
+                    <codeField>FACT_USR_CDP2</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Chefs de projet 3</label>
+                <airsfield>
+                    <codeField>FACT_USR_CDP3</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_CDP</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Directeur </label>
+                <airsfield>
+                    <codeField>FACT_USR_DIR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+                <type>list</type>
+                <availableValues-filter-scriptId>user_ElementFilter_DIR</availableValues-filter-scriptId>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de réception</label>
+                <airsfield>
+                    <codeField>FACT_DT_RCPT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date valid. achat</label>
+                <airsfield>
+                    <codeField>FACT_DT_ACHAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date comptabilisation</label>
+                <airsfield>
+                    <codeField>FACT_DT_COMPTA</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date control gestion </label>
+                <airsfield>
+                    <codeField>FACT_DT_CTRLGEST</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date valid. chef de projet </label>
+                <airsfield>
+                    <codeField>FACT_DT_CDP</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date valid. DAF</label>
+                <airsfield>
+                    <codeField>FACT_DT_DAF</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date valid. dir </label>
+                <airsfield>
+                    <codeField>FACT_DT_DIR</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de paiement </label>
+                <airsfield>
+                    <codeField>FACT_DT_PMNT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <label>Nr bt archive</label>
+                <airsfield>
+                    <codeField>FACT_BT_ARCHIVE</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+            <input main="false">
+                <operator>=</operator>
+                <operator>&gt;</operator>
+                <operator>&lt;</operator>
+                <label>Date de création</label>
+                <airsfield>
+                    <codeField>D_CREAT</codeField>
+                </airsfield>
+                <inputHelper autoTab="false"/>
+                <required>false</required>
+                <readOnly>false</readOnly>
+                <allowJoker>false</allowJoker>
+            </input>
+        </contentType>
+    </organization>
+</searchForm>

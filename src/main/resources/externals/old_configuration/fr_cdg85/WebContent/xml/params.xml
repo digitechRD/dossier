@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params customerName="Digitech" version="4.0" xmlns="http://www.digitech.com/dossiers/params">
+  <airsConfig>
+    <appName>AIRS</appName>
+    <!-- server port="5000">pc-digi-3</server-->
+    <server port="5450">srv-geddev-6</server>
+    <!-- server port="5460">srv-geddev-4</server-->
+    <userAdmin>
+      <login>adm_airs3</login>
+      <password>adm_airs3</password>
+    </userAdmin>
+  </airsConfig>
+<workFlow>
+    <workflowtype>FLOWMIND</workflowtype>
+    <sql_mode>false</sql_mode>
+    <unique_actor>false</unique_actor>
+    <actorFilter>false</actorFilter>
+    <flowmind>
+      <server port="1450">srv-geddev-6</server>
+      <dbConnection maxconn="2" pool="digiflow">
+        <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+        <server port="1521">srv-geddev-5</server>
+        <instance>PFA</instance>
+        <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+        <login>ados_fm_cdg85_30</login>
+        <password>ados_fm_cdg85_30</password>
+      </dbConnection>
+    </flowmind>
+  </workFlow>
+  <mailConfig>
+    <smtp>smtp.digitech.fr</smtp>
+    <defaultmailsender>digitech@digitech.fr</defaultmailsender>
+  </mailConfig>
+  <appConfig>
+  	<isoxDisabled>0</isoxDisabled>
+  	<windowFocused>1</windowFocused>
+  	<autoDisconnection>1</autoDisconnection>
+  	
+  	<searchJocker>*</searchJocker>
+  	<configurationStateDisplayed>false</configurationStateDisplayed>
+    <expiredPassword>365</expiredPassword>
+    <validatorActivate>true</validatorActivate>
+    <memberRightOrga>memberRightOrga</memberRightOrga>
+    <autoOpenPJ>false</autoOpenPJ>
+    <displayPJ>VERTICAL_RIGHT</displayPJ>
+    <doclock lockTime="0">
+      <fieldLock contentTypeLock="DOSSIER"/>
+    </doclock>
+    <autoReloadCurrentBasket>true</autoReloadCurrentBasket>
+    <oneSearchResult>gotoSimpleView</oneSearchResult>
+    <nbDocPage>25</nbDocPage>
+    <nbMaxSearchDoc>100</nbMaxSearchDoc>
+  </appConfig>
+  <birt webAppUrl="http://localhost:8080/AirsStat">
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">srv-geddev-1</server>
+            <instance>bddbench</instance>
+            <login>airsdossier</login>
+            <password>airsdossier</password>
+        </dbConnection>
+    </birt>
+</params>

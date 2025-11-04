@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://www.digitech.com/dossiers/workflow" customerName="FKG" version="5.2">
+	
+	<!-- STATUT PROCESSUS = En attente de validation-->	
+	<tache name="Modification_gestion_qualite">
+        <valueSortie value="Soumettre">
+            <airsfield value="7" name="AL_PROCESSUS_STATUT"/>
+        </valueSortie>
+    </tache>
+	   
+	<!-- STATUT PROCESSUS = INVALIDE-->
+	<tache name="Prise_en_compte_rejet_gestion_qualite">
+        <valueSortie value="Rejet pris en compte">
+            <airsfield value="9" name="AL_PROCESSUS_STATUT"/>
+        </valueSortie>
+    </tache>
+
+	<!-- STATUT PROCESSUS = VALIDE-->
+	<tache name="Prise_en_compte_validation_gestion_qualite">
+        <valueSortie value="Validation prise en compte">
+            <airsfield value="8" name="AL_PROCESSUS_STATUT"/>
+        </valueSortie>
+    </tache>
+	
+	<!-- SET : Date de validation-->
+	<tache name="Prise_en_compte_validation_gestion_qualite">
+        <valueSortie value="Validation prise en compte">
+            <airsfield value="#TODAY#" name="PROC_DATE_VALIDATION"/>
+        </valueSortie>
+    </tache>
+	
+    <airs2workflow/>
+</workflow>

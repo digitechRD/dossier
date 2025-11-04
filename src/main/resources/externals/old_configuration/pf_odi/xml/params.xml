@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<params xmlns="http://www.digitech.com/dossiers/params" customerName="@ODI@" version="4.1.9 RC7">
+    <airsConfig>
+        <appName>AIRS</appName>
+        <server port="5000">172.17.14.11</server>
+        <userAdmin>
+            <login>adm_airs3</login>
+            <password>adm_airs3</password>
+        </userAdmin>
+    </airsConfig>
+    <workFlow>
+        <workflowType>FLOWMIND</workflowType>
+        <actorFilter>false</actorFilter>
+        <userFilter>false</userFilter>
+        <contentTypeFilter>false</contentTypeFilter>
+        <flowmind>
+            <server port="0"></server>
+            <dbConnection maxconn="2" pool="digiflow">
+                <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+                <server port="1099"></server>
+                <instance></instance>
+                <sequenceImpl>com.digitech.framework.db.oracle.SequenceOraImpl</sequenceImpl>
+                <login></login>
+                <password></password>
+            </dbConnection>
+        </flowmind>
+    </workFlow>
+    <mailConfig>
+        <smtp></smtp>
+    </mailConfig>
+    <appConfig>
+        <configurationStateDisplayed>true</configurationStateDisplayed>
+        <expiredPassword>365</expiredPassword>
+        <expiredPasswordAfterCreation>0</expiredPasswordAfterCreation>
+        <passwordMinSize>8</passwordMinSize>
+        <passwordLetterNumber>0</passwordLetterNumber>
+        <passwordDigitNumber>0</passwordDigitNumber>
+        <passwordSpecialCharacterNumber>0</passwordSpecialCharacterNumber>
+        <autoDisconnection>0</autoDisconnection>
+        <searchJocker>*</searchJocker>
+        <isoxDisabled>1</isoxDisabled>
+        <documentViewerEnabled>true</documentViewerEnabled>
+        <defaultPushpinActivated>false</defaultPushpinActivated>
+        <windowFocused>0</windowFocused>
+        <updateSecretLevel></updateSecretLevel>
+        <validatorActivate>false</validatorActivate>
+        <autoOpenPJ>false</autoOpenPJ>
+        <displayPJ>VERTICAL_RIGHT</displayPJ>
+        <autoReloadBaskets>true</autoReloadBaskets>
+        <oneSearchResult>gotoSimpleView</oneSearchResult>
+        <defaultSearchResultView>SIMPLE</defaultSearchResultView>
+        <nbDocPage>100</nbDocPage>
+        <nbMaxSearchDoc>200</nbMaxSearchDoc>        
+        <uniqueFolder>true</uniqueFolder>
+    </appConfig>                                         
+    <birt webAppUrl="http://www.ocsd.pf:9090/AirsStat/">
+       <!--<birt webAppUrl="http://127.0.0.1:9090/AirsStat/">-->
+        <dbConnection>
+            <driver url="jdbc:oracle:thin:">oracle.jdbc.driver.OracleDriver</driver>
+            <server port="1521">172.17.14.12</server>
+            <instance>OCSDAPP</instance>
+            <login>ocsd_do_airsuser</login>
+            <password>airsuserdoocsd</password>
+        </dbConnection>
+    </birt>
+</params>

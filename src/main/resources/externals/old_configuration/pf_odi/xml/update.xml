@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<formulaire xmlns="http://www.digitech.com/dossiers/update" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="@ODI@" version="4.1.7">
+    <organization id="0" name="DEFAULT">
+    <contentType type="update" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+         <contentType type="insert" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOS_IMGCHQ">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOS_IMGCHQ">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOC_IMGCHQ">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <airsfield>DAT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateFolder">
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <contentType type="insert" name="D_DOC_IMGCHQ">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+      
+        <contentType type="update" name="D_DOC_COM">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOCU</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero tahiti</label>
+                <airsfield>NUM_TAHI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero site</label>
+                <airsfield>NUM_SITE</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>LIB_ENSEI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero affiliation</label>
+                <airsfield>NUM_AFFI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date intervention</label>
+                <airsfield>DAT_INTER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero fiche</label>
+                <airsfield>NUM_FICH</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOC_COM">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOCU</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero tahiti</label>
+                <airsfield>NUM_TAHI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero site</label>
+                <airsfield>NUM_SITE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>LIB_ENSEI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero affiliation</label>
+                <airsfield>NUM_AFFI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date intervention</label>
+                <airsfield>DAT_INTER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero fiche</label>
+                <airsfield>NUM_FICH</airsfield>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="1" name="Socredo">
+        <contentType type="update" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+        </contentType>
+       <contentType type="insert" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOS_IMGCHQ">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOS_IMGCHQ">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOC_IMGCHQ">
+            <ns2:link direction="child" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ">REcto</ns2:link>
+            <ns2:link direction="parent" name="RECTO-VERSO" contentTypeCode="D_DOC_IMGCHQ">Verso</ns2:link>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code REV</label>
+                <airsfield>COD_REV</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_CAIS</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF" id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateFolder">
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <contentType type="insert" name="D_DOC_IMGCHQ">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code REV</label>
+                <airsfield>COD_REV</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Code guichet</label>
+                <airsfield>COD_CAIS</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+      
+    </organization>
+    <organization id="2" name="BDP">
+    <contentType type="update" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+         <contentType type="insert" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOS_IMGCHQ">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOS_IMGCHQ">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOC_IMGCHQ">
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateFolder">
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <contentType type="insert" name="D_DOC_IMGCHQ">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+       
+    </organization>
+    <organization id="3" name="OPT">
+    <contentType type="update" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+         <contentType type="insert" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOS_IMGCHQ">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOS_IMGCHQ">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date création</label>
+                <airsfield>D_CREAT</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date modification</label>
+                <airsfield>D_MODIF</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOC_IMGCHQ">
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateDocument">
+                <ns2:groovyScriptId></ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateRectoVerso">
+                <ns2:groovyScriptId>getRectoVerso</ns2:groovyScriptId>
+            </ns2:export>
+            <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateFolder">
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <contentType type="insert" name="D_DOC_IMGCHQ">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOC</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date remise</label>
+                <airsfield>DAT_REM</airsfield>
+                <initial-value>
+            </initial-value>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero remise</label>
+                <airsfield>NUM_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte tireur</label>
+                <airsfield>CPT_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero cheque</label>
+                <airsfield>NUM_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant remise</label>
+                <airsfield>MON_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Montant cheque</label>
+                <airsfield>MON_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Compte beneficiaire</label>
+                <airsfield>CPT_REM</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Sens image</label>
+                <airsfield>SEN_IMG</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Banque</label>
+                <airsfield>COD_CHQ</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de création</label>
+                <airsfield>D_CREAT</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Date de modification</label>
+                <airsfield>D_MODIF</airsfield>
+            </input>
+        </contentType>
+       
+    </organization>
+    <organization id="7" name="OSB">
+    <contentType type="update" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+         <contentType type="insert" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>
+        <contentType type="update" name="D_DOS_COM">
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero tahiti</label>
+                <airsfield>NUM_TAHI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero site</label>
+                <airsfield>NUM_SITE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>LIB_ENSEI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Etat dossier</label>
+                <airsfield>ETA_DOS</airsfield>
+            </input>
+            <ns2:action displayRule="VIEW" airsProfile="84" airsRight="" id="TPE_CONTENTIEUX">
+                <ns2:groovyScriptId>ModifetatDoss_TPE_OSB</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" airsProfile="88" airsRight="" id="COMPTA">
+                <ns2:groovyScriptId>ModifetatDoss_COMPTA_OSB</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" airsProfile="89" airsRight="" id="JURIDIQ">
+                <ns2:groovyScriptId>ModifetatDoss_JURIDIQ_OSB</ns2:groovyScriptId>
+            </ns2:action>
+            <ns2:action displayRule="VIEW" airsProfile="84" airsRight="" id="TPE_COURS">
+                <ns2:groovyScriptId>ModifetatDoss_TPE_OSB_CLOS</ns2:groovyScriptId>
+            </ns2:action>
+                        <ns2:export renderer="attachedFilePrinter.rptdesign" type="BIRT_PDF"  id="GenerateFolderTwice">
+                <ns2:groovyScriptId>getFolder</ns2:groovyScriptId>
+            </ns2:export>
+        </contentType>
+        <contentType type="insert" name="D_DOS_COM">
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero tahiti</label>
+                <airsfield>NUM_TAHI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero site</label>
+                <airsfield>NUM_SITE</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>LIB_ENSEI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Etat dossier</label>
+                <airsfield>ETA_DOS</airsfield>
+            </input>
+        </contentType>
+      
+        <contentType type="update" name="D_DOC_COM">
+            <input display="true" required="false" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOCU</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero tahiti</label>
+                <airsfield>NUM_TAHI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="true" type="">
+                <label>Numero site</label>
+                <airsfield>NUM_SITE</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>LIB_ENSEI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero affiliation</label>
+                <airsfield>NUM_AFFI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date intervention</label>
+                <airsfield>DAT_INTER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero fiche</label>
+                <airsfield>NUM_FICH</airsfield>
+            </input>
+        </contentType>
+        <contentType type="insert" name="D_DOC_COM">
+            <input display="true" required="true" readonly="false" type="list">
+                <label>Type de document</label>
+                <airsfield>TYP_DOCU</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero tahiti</label>
+                <airsfield>NUM_TAHI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Numero site</label>
+                <airsfield>NUM_SITE</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="">
+                <label>Enseigne</label>
+                <airsfield>LIB_ENSEI</airsfield>
+            </input>
+            <input display="true" required="true" readonly="false" type="multieval">
+                <label>Numero affiliation</label>
+                <airsfield>NUM_AFFI</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date intervention</label>
+                <airsfield>DAT_INTER</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numero fiche</label>
+                <airsfield>NUM_FICH</airsfield>
+            </input>
+        </contentType>
+    </organization>
+    <organization id="5" name="Purge Banque de Polynésie">
+        <contentType type="update" name="D_DOC_DAB">
+            <input display="true" required="false" readonly="false" type="">
+                <label>Numéro DAB</label>
+                <airsfield>NUM_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Date</label>
+                <airsfield>DATE_DAB</airsfield>
+            </input>
+            <input display="true" required="false" readonly="false" type="">
+                <label>Client</label>
+                <airsfield>CLIENT_DAB</airsfield>
+            </input>
+        </contentType>       
+    </organization>
+</formulaire>

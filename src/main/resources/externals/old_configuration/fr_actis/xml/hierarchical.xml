@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<hierarchique xmlns="http://www.digitech.com/dossiers/hierarchical" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.6-SNAPSHOT" customerName="CIRIL">
+    <organization name="DEFAULT" id="0">
+        <contentType name="COU_COURRIER_IN" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{N_CHRONO} - {C_OBJET}</libelle>
+            <field_hier>G_SOUS_DOSSIER</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_ENVOI</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+        </contentType>
+        <contentType name="COU_COURRIER_OUT" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">{N_CHRONO} - {C_OBJET}</libelle>
+            <field_hier>G_SOUS_DOSSIER</field_hier>
+            <sorting>
+                <ns2:sortingPolicy>
+                    <ns2:direction>ASCENDING</ns2:direction>
+                    <ns2:codeField>D_ENVOI</ns2:codeField>
+                </ns2:sortingPolicy>
+            </sorting>
+        </contentType>
+        <contentType name="DOS_CLIENT" visible="true">
+            <libelle>{G_CLIENT}</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="DOS_AFFAIRE" visible="true">
+            <libelle>{G_REF_AFFAIRE} : {G_INTI_AFFAIRE} ({G_ETAT_DOSSIER})</libelle>
+            <sorting/>
+        </contentType>
+        <contentType name="DOC_AFFAIRE" visible="true">
+            <libelle>{G_TYPE_DOCUMENT} : {G_REF_DOCUMENT}</libelle>
+            <field_hier>G_SOUS_DOSSIER</field_hier>
+            <sorting/>
+        </contentType>
+        <contentType name="FAC_FACTURE" visible="true">
+            <libelle dateFormat="dd/MM/yyyy">Facture {G_NR_FACT} du {G_DATE_FACT}</libelle>
+            <field_hier format="MMMMM / yyyy">G_DATE_FACT</field_hier>
+            <sorting/>
+        </contentType>
+        <contentType name="FAC_FOURNISSEUR" visible="true">
+            <libelle>Fournisseur : {G_FOURNISSEUR}</libelle>
+            <sorting/>
+        </contentType>
+    </organization>
+</hierarchique>

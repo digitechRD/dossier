@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.14" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.0.0 Build &lt;200601231141></property>
+    <property name="units">in</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">odaDriverClass</property>
+            <property name="id">4</property>
+            <expression name="value">"oracle.jdbc.driver.OracleDriver"</expression>
+        </structure>
+        <structure>
+            <property name="name">odaURL</property>
+            <property name="id">4</property>
+            <expression name="value">if(params["birtjdbcurl"]==null)
+{
+"jdbc:oracle:thin:@localhost:1521:AIRS";
+}else{params["birtjdbcurl"];}</expression>
+        </structure>
+        <structure>
+            <property name="name">odaUser</property>
+            <property name="id">4</property>
+            <expression name="value">if(params["birtjdbcuser"]==null)
+{
+"MEDIADOC";
+}else{params["birtjdbcuser"];}</expression>
+        </structure>
+        <structure>
+            <property name="name">odaPassword</property>
+            <property name="id">4</property>
+            <expression name="value">if(params["birtjdbcpass"]==null)
+{
+"MEDIADOC";
+ }else{params["birtjdbcpass"];}</expression>
+        </structure>
+    </list-property>
+    <list-property name="configVars">
+        <structure>
+            <property name="name">Date de début</property>
+            <property name="value">2/14/06</property>
+        </structure>
+        <structure>
+            <property name="name">Date de fin</property>
+            <property name="value">2/22/06</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcurl</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcuser</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcpass</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="Date de début" id="6">
+            <text-property name="helpText">Date de début</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2005</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Date de fin" id="7">
+            <text-property name="helpText">Date de fin</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2010</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcurl" id="119">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcuser" id="120">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcpass" id="121">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AIRS_MEDIADOC" id="4">
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:@localhost:1521:AIRS</property>
+            <property name="odaUser">MEDIADOC</property>
+            <encrypted-property name="odaPassword">TUVESUFET0M=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Cloture" id="123">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">DATE_CLOTURE</property>
+                    <property name="displayName">Date</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MAX(INFORMATION)</property>
+                    <property name="displayName">Information</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MAX(RECLAMATION)</property>
+                    <property name="displayName">Réclamation</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MAX(REFUS)</property>
+                    <property name="displayName">Refus</property>
+                </structure>
+                <structure>
+                    <property name="columnName">MAX(RECHERCHE)</property>
+                    <property name="displayName">Recherche</property>
+                </structure>
+                <structure>
+                    <property name="columnName">TOTAL</property>
+                    <property name="displayName">Total</property>
+                </structure>
+            </list-property>
+            <property name="dataSource">AIRS_MEDIADOC</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">Date début1</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">Date fin2</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">2</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">deb2</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">3</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">fin2</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">4</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">deb3</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">5</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">fin3</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">6</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">deb4</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">7</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">fin4</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">8</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select DATE_CLOTURE,max(INFORMATION),max(RECLAMATION),max(REFUS),max(RECHERCHE),max(INFORMATION)+max(RECLAMATION)+max(REFUS)+max(RECHERCHE) TOTAL from(
+select count(*) INFORMATION, 0 RECLAMATION, 0 REFUS, 0 RECHERCHE,trunc(LASTDATE,'DD') DATE_CLOTURE from 
+( 
+SELECT max(EvtDate) LASTDATE,doc_id from ( 
+SELECT          
+      EVT.EVT_ID as EvtID,          
+      EVT.GEVT_ID as GevtId,          
+      EVT.TEVT_ID as TevId,          
+      EVT.EVT_DATE As EvtDate,          
+      EVT.EVT_NB,          
+      EVT.USR_ID as UsrId,    
+      DOC.DOC_ID as DOC_ID,         
+      SUBSTR(DOC.DOC_COMMENT, 1                                    , INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1                                    ) as idTache,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 1) + 1, INSTR(DOC.DOC_COMMENT, ':', 1, 2) - INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1) as taskname,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 2) + 1                                                                           ) as sortieTache          
+  
+   FROM          
+      EVT_ACTIONDOC DOC,          
+      EVT_AIRS      EVT          
+        
+   WHERE          
+      EVT.EVT_ID = DOC.EVT_ID          
+      AND          
+      EVT.TEVT_ID in (select TEVT_ID from EVT_TYPE where TEVT_DESC = 'Valider Workflow')          
+      AND     
+      EVT.EVT_DATE BETWEEN ? AND ? 
+      ) 
+group by doc_id 
+) CLOS, 
+docref_docsal DREF 
+where DREF.doc_id=CLOS.doc_id and fld_id=33 and DREF.aui_id=170 and DREF.doc_id in (  
+select doc_id from docref_docsal where fld_id=27 and aui_id=101  
+) group by trunc(LASTDATE,'DD')
+
+UNION
+
+select 0 INFORMATION, count(*) RECLAMATION, 0 REFUS, 0 RECHERCHE,trunc(LASTDATE,'DD') DATE_CLOTURE from 
+( 
+SELECT max(EvtDate) LASTDATE,doc_id from ( 
+SELECT          
+      EVT.EVT_ID as EvtID,          
+      EVT.GEVT_ID as GevtId,          
+      EVT.TEVT_ID as TevId,          
+      EVT.EVT_DATE As EvtDate,          
+      EVT.EVT_NB,          
+      EVT.USR_ID as UsrId,    
+      DOC.DOC_ID as DOC_ID,         
+      SUBSTR(DOC.DOC_COMMENT, 1                                    , INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1                                    ) as idTache,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 1) + 1, INSTR(DOC.DOC_COMMENT, ':', 1, 2) - INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1) as taskname,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 2) + 1                                                                           ) as sortieTache          
+  
+   FROM          
+      EVT_ACTIONDOC DOC,          
+      EVT_AIRS      EVT          
+        
+   WHERE          
+      EVT.EVT_ID = DOC.EVT_ID          
+      AND          
+      EVT.TEVT_ID in (select TEVT_ID from EVT_TYPE where TEVT_DESC = 'Valider Workflow')          
+      AND     
+      EVT.EVT_DATE BETWEEN ? AND ? 
+      ) 
+group by doc_id 
+) CLOS, 
+docref_docsal DREF  
+where DREF.doc_id=CLOS.doc_id and fld_id=33 and DREF.aui_id=171 and DREF.doc_id in (  
+select doc_id from docref_docsal where fld_id=27 and aui_id=101  
+) group by trunc(LASTDATE,'DD')
+
+UNION
+
+select 0 INFORMATION, 0 RECLAMATION, count(*) REFUS, 0 RECHERCHE,trunc(LASTDATE,'DD') DATE_CLOTURE from 
+( 
+SELECT max(EvtDate) LASTDATE,doc_id from ( 
+SELECT          
+      EVT.EVT_ID as EvtID,          
+      EVT.GEVT_ID as GevtId,          
+      EVT.TEVT_ID as TevId,          
+      EVT.EVT_DATE As EvtDate,          
+      EVT.EVT_NB,          
+      EVT.USR_ID as UsrId,    
+      DOC.DOC_ID as DOC_ID,         
+      SUBSTR(DOC.DOC_COMMENT, 1                                    , INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1                                    ) as idTache,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 1) + 1, INSTR(DOC.DOC_COMMENT, ':', 1, 2) - INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1) as taskname,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 2) + 1                                                                           ) as sortieTache          
+  
+   FROM          
+      EVT_ACTIONDOC DOC,          
+      EVT_AIRS      EVT          
+        
+   WHERE          
+      EVT.EVT_ID = DOC.EVT_ID          
+      AND          
+      EVT.TEVT_ID in (select TEVT_ID from EVT_TYPE where TEVT_DESC = 'Valider Workflow')          
+      AND     
+      EVT.EVT_DATE BETWEEN ? AND ? 
+      ) 
+group by doc_id 
+) CLOS, 
+docref_docsal DREF  
+where DREF.doc_id=CLOS.doc_id and fld_id=33 and DREF.aui_id=172 and DREF.doc_id in (  
+select doc_id from docref_docsal where fld_id=27 and aui_id=101  
+) group by trunc(LASTDATE,'DD')
+
+UNION
+
+select 0 INFORMATION, 0 RECLAMATION, 0 REFUS, count(*) RECHERCHE,trunc(LASTDATE,'DD') DATE_CLOTURE from 
+( 
+SELECT max(EvtDate) LASTDATE,doc_id from ( 
+SELECT          
+      EVT.EVT_ID as EvtID,          
+      EVT.GEVT_ID as GevtId,          
+      EVT.TEVT_ID as TevId,          
+      EVT.EVT_DATE As EvtDate,          
+      EVT.EVT_NB,          
+      EVT.USR_ID as UsrId,    
+      DOC.DOC_ID as DOC_ID,         
+      SUBSTR(DOC.DOC_COMMENT, 1                                    , INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1                                    ) as idTache,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 1) + 1, INSTR(DOC.DOC_COMMENT, ':', 1, 2) - INSTR(DOC.DOC_COMMENT, ':', 1, 1) - 1) as taskname,          
+      SUBSTR(DOC.DOC_COMMENT, INSTR(DOC.DOC_COMMENT, ':', 1, 2) + 1                                                                           ) as sortieTache          
+  
+   FROM          
+      EVT_ACTIONDOC DOC,          
+      EVT_AIRS      EVT          
+        
+   WHERE          
+      EVT.EVT_ID = DOC.EVT_ID          
+      AND          
+      EVT.TEVT_ID in (select TEVT_ID from EVT_TYPE where TEVT_DESC = 'Valider Workflow')          
+      AND     
+      EVT.EVT_DATE BETWEEN ? AND ? 
+      ) 
+group by doc_id 
+) CLOS, 
+docref_docsal DREF
+where DREF.doc_id=CLOS.doc_id and fld_id=33 and DREF.aui_id=173 and DREF.doc_id in (  
+select doc_id from docref_docsal where fld_id=27 and aui_id=101  
+) group by trunc(LASTDATE,'DD')
+)group by DATE_CLOTURE</property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="BNP header" id="111">
+            <property name="backgroundColor">#008000</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="textAlign">left</property>
+        </style>
+        <style name="airsheaderclass" id="117">
+            <property name="backgroundColor">#B5C8E1</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+        </style>
+        <style name="Image" id="114">
+            <property name="borderBottomStyle">none</property>
+            <property name="borderLeftStyle">none</property>
+            <property name="borderRightStyle">none</property>
+            <property name="borderTopStyle">none</property>
+        </style>
+        <style name="Ligne" id="115">
+            <property name="fontFamily">"Arial"</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="Tableau" id="113">
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+        </style>
+        <style name="Titre" id="116">
+            <property name="backgroundColor">#008000</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontSize">x-large</property>
+            <property name="textOverline">none</property>
+            <property name="textUnderline">underline</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="airsheaderTableclass" id="156">
+            <property name="backgroundColor">#B5C8E1</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+            <property name="textAlign">center</property>
+        </style>
+        <style name="airsfooterTableclass" id="157">
+            <property name="backgroundColor">#B5C8E1</property>
+            <property name="fontFamily">"Arial"</property>
+            <property name="fontWeight">bold</property>
+            <property name="color">#000000</property>
+            <property name="borderBottomColor">#FFFFFF</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1px</property>
+            <property name="borderLeftColor">#FFFFFF</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1px</property>
+            <property name="borderRightColor">#FFFFFF</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1px</property>
+            <property name="borderTopColor">#FFFFFF</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1px</property>
+            <property name="marginTop">2px</property>
+            <property name="marginLeft">2px</property>
+            <property name="marginBottom">2px</property>
+            <property name="marginRight">2px</property>
+            <property name="paddingTop">0px</property>
+            <property name="paddingLeft">4pt</property>
+            <property name="paddingBottom">2px</property>
+            <property name="paddingRight">4pt</property>
+            <property name="textAlign">center</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text-data id="53">
+            <property name="style">airsheaderclass</property>
+            <expression name="valueExpr">"IAS: Suivi des clôtures  "+java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de début"]) + " au "+ java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de fin"])</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <image id="122">
+            <property name="style">Image</property>
+            <property name="source">embed</property>
+            <property name="imageName">action.editer.gif</property>
+            <structure name="action">
+                <property name="formatType">pdf</property>
+                <property name="linkType">drill-through</property>
+                <property name="reportName">ias_le_suivi_des_clotures.rptdesign</property>
+                <property name="targetWindow">_blank</property>
+                <list-property name="paramBindings">
+                    <structure>
+                        <property name="paramName">Date de début</property>
+                        <expression name="expression">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(new java.text.SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", java.util.Locale.US).parse(params["Date de début"]));</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">Date de fin</property>
+                        <expression name="expression">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(new java.text.SimpleDateFormat("EEE MMM d HH:mm:ss z yyyy", java.util.Locale.US).parse(params["Date de fin"]));</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">birtjdbcurl</property>
+                        <expression name="expression">params["birtjdbcurl"]</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">birtjdbcuser</property>
+                        <expression name="expression">params["birtjdbcuser"]</expression>
+                    </structure>
+                    <structure>
+                        <property name="paramName">birtjdbcpass</property>
+                        <expression name="expression">params["birtjdbcpass"]</expression>
+                    </structure>
+                </list-property>
+            </structure>
+        </image>
+        <text id="112">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br><br><br>]]></text-property>
+        </text>
+        <table id="206">
+            <property name="width">100%</property>
+            <property name="dataSet">Cloture</property>
+            <list-property name="paramBindings">
+                <structure>
+                    <property name="paramName">Date début1</property>
+                    <expression name="expression">params["Date de début"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">deb2</property>
+                    <expression name="expression">params["Date de début"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">deb3</property>
+                    <expression name="expression">params["Date de début"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">deb4</property>
+                    <expression name="expression">params["Date de début"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">Date fin2</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">fin2</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">fin3</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">fin4</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">DATE_CLOTURE</property>
+                    <expression name="expression">dataSetRow["DATE_CLOTURE"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(row["DATE_CLOTURE"])</property>
+                    <expression name="expression">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(row["DATE_CLOTURE"])</expression>
+                </structure>
+                <structure>
+                    <property name="name">MAX(INFORMATION)</property>
+                    <expression name="expression">dataSetRow["MAX(INFORMATION)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">MAX(RECLAMATION)</property>
+                    <expression name="expression">dataSetRow["MAX(RECLAMATION)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">MAX(REFUS)</property>
+                    <expression name="expression">dataSetRow["MAX(REFUS)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">MAX(RECHERCHE)</property>
+                    <expression name="expression">dataSetRow["MAX(RECHERCHE)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">TOTAL</property>
+                    <expression name="expression">dataSetRow["TOTAL"]</expression>
+                </structure>
+            </list-property>
+            <column id="240"/>
+            <column id="241"/>
+            <column id="242"/>
+            <column id="243"/>
+            <column id="244"/>
+            <column id="245"/>
+            <header>
+                <row id="207">
+                    <property name="style">airsheaderTableclass</property>
+                    <cell id="208">
+                        <label id="209">
+                            <text-property name="text">Date</text-property>
+                        </label>
+                    </cell>
+                    <cell id="210">
+                        <label id="211">
+                            <text-property name="text">Information</text-property>
+                        </label>
+                    </cell>
+                    <cell id="212">
+                        <label id="213">
+                            <text-property name="text">Réclamation</text-property>
+                        </label>
+                    </cell>
+                    <cell id="214">
+                        <label id="215">
+                            <text-property name="text">Refus</text-property>
+                        </label>
+                    </cell>
+                    <cell id="216">
+                        <label id="217">
+                            <text-property name="text">Recherche</text-property>
+                        </label>
+                    </cell>
+                    <cell id="218">
+                        <label id="219">
+                            <text-property name="text">Total</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="220">
+                    <property name="style">Ligne</property>
+                    <cell id="221">
+                        <data id="222">
+                            <property name="resultSetColumn">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(row["DATE_CLOTURE"])</property>
+                        </data>
+                    </cell>
+                    <cell id="223">
+                        <data id="224">
+                            <property name="resultSetColumn">MAX(INFORMATION)</property>
+                        </data>
+                    </cell>
+                    <cell id="225">
+                        <data id="226">
+                            <property name="resultSetColumn">MAX(RECLAMATION)</property>
+                        </data>
+                    </cell>
+                    <cell id="227">
+                        <data id="228">
+                            <property name="resultSetColumn">MAX(REFUS)</property>
+                        </data>
+                    </cell>
+                    <cell id="229">
+                        <data id="230">
+                            <property name="resultSetColumn">MAX(RECHERCHE)</property>
+                        </data>
+                    </cell>
+                    <cell id="231">
+                        <data id="232">
+                            <property name="resultSetColumn">TOTAL</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="233">
+                    <property name="style">airsfooterTableclass</property>
+                    <cell id="234">
+                        <text id="246">
+                            <property name="contentType">plain</property>
+                            <text-property name="content"><![CDATA[Total]]></text-property>
+                        </text>
+                    </cell>
+                    <cell id="235">
+                        <text-data id="248">
+                            <expression name="valueExpr">i=Total.sum(row["MAX(INFORMATION)"]);
+if(i!=null)
+{
+i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="236">
+                        <text-data id="249">
+                            <expression name="valueExpr">i=Total.sum(row["MAX(RECLAMATION)"]);
+if(i!=null)
+{
+i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="237">
+                        <text-data id="250">
+                            <expression name="valueExpr">i=Total.sum(row["MAX(REFUS)"]);
+if(i!=null)
+{
+i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="238">
+                        <text-data id="251">
+                            <expression name="valueExpr">i=Total.sum(row["MAX(RECHERCHE)"]);
+if(i!=null)
+{
+i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                    <cell id="239">
+                        <text-data id="252">
+                            <expression name="valueExpr">i=Total.sum(row["TOTAL"]);
+if(i!=null)
+{
+i.toFixed(0);
+}</expression>
+                            <property name="contentType">html</property>
+                        </text-data>
+                    </cell>
+                </row>
+            </footer>
+        </table>
+    </body>
+    <list-property name="images">
+        <structure>
+            <property name="name">action.editer.gif</property>
+            <property name="data">
+                R0lGODlhIAAgAPcAAAAAAAAACAgAAAgIAAgICBAIABAICBAQCBAQEBAYGBgICBgQCBgYGBgYISEQCCEQ
+                ECEYCCEYECEhISkQCCkYCCkYECkYGCkhGCkpKSkxMTEYEDEhITEpITEpKTExKTExMTkhEDkhGDkxMTkx
+                OTk5MTk5OUIhEEIhGEIpGEJCOUJCQkopGEpKSkpKUlJSUloxIVoxKVpaWlpjWlpjY2MxIWM5IWNaUmNa
+                WmNjY2s5KWtjY2tra3Nrc3Nza3Nzc3Nze3N7c3N7e3tKKXtKMXtzc3t7e3t7hIRKKYRKMYR7e4R7hISE
+                e4SEhIxSMYyEhIyMjIyMlJSUlJycnJycpaWlpa2trbVzQrWtrbW1tb1rQr1rSr1zSr29tb29vcbGxs7O
+                ztbW1t7e3ufn5+/n7+/v5+/v7+/v9+/37/eUWveUY/f39/+UWv+UY//39//3////9///////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////
+                /ywAAAAAIAAgAAAI/gABCBxIsKDBgwXhKFzIsKHDhwoFQlTDkCLEhxIbWqS4UaHFi3AywtmopqRJkyNT
+                XhR5smQZNS9ftlTpUCJHl1+q6Ny5EwsWLxwxAhjpUowYLAgQlFhaQkXTpgRYiPnI0CZMMWHAfKECoAsc
+                MV6+eAnrpcwHDCVrAiia1UsXLD4IhAFLNiycMhKKpK26tgxWsVioSIniFI4XnjwRpP0oUM2YtnBVOGUA
+                4MsYrEbnhoGDgIqZN3DcRATgN4yXwCoOAGDA4oCRMliqUNE5uwsOHy/hgA5JOsyXLlWikFgAgICKATPK
+                gNGMWUyVEmT2vhGI9bQUJiJQ5DhAQEBeJUuK/hhZYqQIDg8YRIiQkpL6bypRiog4MQRJhAEOKpwIgYJ/
+                CBMrwFDDFjQEQdF0APgWGBM8eHACEkOgUEEaaFSIBoUYXpjGEHq94YZApmERBRM7dIBCfSg4gGGGaayI
+                xhA+UPRhgofFtwMJAKwwRA0HtHjhjxlWCGNaIJ4WHw4uYDDABS8YoGGFLPo4JEVFikiiCyUAIMAATmq4
+                RhpZaGFFmGGuEKMaCCpIBRM+xNCCQAIAsMACDjxAZwQRVPAABHle0EVu7nlBxRPmxfDBQBVooaiYjIZp
+                RRMiiAEoANVhcV2bLqQWAAViWqFFFp4yqkUTHohhBpW9vTciDzjE4AIDnhFYIKsFF9B6wQYccNDBDVOh
+                Wtppg7K5Aw6tynBDDDjIoEMPRTxBBRZfhDHGGW3wpoZRYAAbxRPh/eDDt9/+UAQTUEhRhRfLyWTttW1x
+                UcUUg237xLzzRiFFbdFKemBjMJGRFWCxUSGwwLLpxEUXX4BhVFozEmXGZf+ONVYXblE8VsJz6WtRRib5
+                hVVWYIQscshhlCxpbhsjpPLKBQUEADs=
+            </property>
+        </structure>
+    </list-property>
+</report>

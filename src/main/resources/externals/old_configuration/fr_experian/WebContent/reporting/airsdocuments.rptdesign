@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.14" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.0.0 Build &lt;200601231141></property>
+    <property name="units">in</property>
+    <text-property name="displayName">Documents AIRS</text-property>
+    <list-property name="configVars">
+        <structure>
+            <property name="name">Date_de_debut</property>
+            <property name="value">1/1/07</property>
+        </structure>
+        <structure>
+            <property name="name">Date de fin</property>
+            <property name="value">1/1/10</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcurl</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcuser</property>
+        </structure>
+        <structure>
+            <property name="name">birtjdbcpass</property>
+        </structure>
+    </list-property>
+    <parameters>
+        <scalar-parameter name="Date_de_debut" id="6">
+            <text-property name="helpText">Date_de_debut</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <text-property name="promptText">Date de début</text-property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2005</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="Date de fin" id="7">
+            <text-property name="helpText">Date de fin</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">dateTime</property>
+            <property name="isRequired">true</property>
+            <property name="controlType">text-box</property>
+            <property name="defaultValue">01/01/2010</property>
+            <structure name="format">
+                <property name="category">Short Date</property>
+                <property name="pattern">Short Date</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcurl" id="119">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcuser" id="120">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="birtjdbcpass" id="121">
+            <property name="hidden">true</property>
+            <property name="valueType">static</property>
+            <property name="dataType">string</property>
+            <property name="concealValue">false</property>
+            <property name="isRequired">false</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+                <property name="pattern">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="AIRS3DOSSIERS DATA SOURCE" id="4">
+            <property name="odaDriverClass">oracle.jdbc.driver.OracleDriver</property>
+            <property name="odaURL">jdbc:oracle:thin:@localhost:1521:AIRS</property>
+            <property name="odaUser">AIRSUSER_NAFTAL</property>
+            <encrypted-property name="odaPassword">QUlSU1VTRVJfTkFGVEFM</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="Documents" id="5">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">COUNT(*)</property>
+                    <property name="displayName">Nombre</property>
+                </structure>
+                <structure>
+                    <property name="columnName">TRUNC(D_CREAT,DD)</property>
+                    <property name="displayName">Date de création</property>
+                </structure>
+            </list-property>
+            <property name="dataSource">AIRS3DOSSIERS DATA SOURCE</property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">deb1</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue">java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).parse("01/01/2005")</expression>
+                    <property name="isInput">true</property>
+                </structure>
+                <structure>
+                    <property name="name">fin1</property>
+                    <property name="dataType">dateTime</property>
+                    <property name="position">2</property>
+                    <expression name="defaultValue">new java.util.Date()</expression>
+                    <property name="isInput">true</property>
+                </structure>
+            </list-property>
+            <property name="queryText">select TRUNC(D_CREAT,'DD'),count(*)  from DOC_DOCPERS
+where D_CREAT BETWEEN ? AND ?
+group by TRUNC(D_CREAT,'DD')</property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="NouveauStyle" id="122">
+            <property name="backgroundColor">#8080FF</property>
+            <property name="fontFamily">cursive</property>
+        </style>
+        <style name="NouveauStyle1" id="155">
+            <property name="fontFamily">cursive</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <page-footer>
+                <text id="3">
+                    <property name="contentType">html</property>
+                    <text-property name="content"><![CDATA[<value-of>new Date()</value-of>]]></text-property>
+                </text>
+            </page-footer>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <text-data id="53">
+            <property name="style">NouveauStyle</property>
+            <expression name="valueExpr">"Suivi des activités  "+java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date_de_debut"]) + " au "+ java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT, java.util.Locale.FRANCE).format(params["Date de fin"])</expression>
+            <property name="contentType">html</property>
+        </text-data>
+        <text id="112">
+            <property name="contentType">html</property>
+            <text-property name="content"><![CDATA[<br><br><br>]]></text-property>
+        </text>
+        <table id="156">
+            <property name="width">100%</property>
+            <property name="dataSet">Documents</property>
+            <list-property name="paramBindings">
+                <structure>
+                    <property name="paramName">deb1</property>
+                    <expression name="expression">params["Date_de_debut"]</expression>
+                </structure>
+                <structure>
+                    <property name="paramName">fin1</property>
+                    <expression name="expression">params["Date de fin"]</expression>
+                </structure>
+            </list-property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">TRUNC(D_CREAT,DD)</property>
+                    <expression name="expression">dataSetRow["TRUNC(D_CREAT,DD)"]</expression>
+                </structure>
+                <structure>
+                    <property name="name">COUNT(*)</property>
+                    <expression name="expression">dataSetRow["COUNT(*)"]</expression>
+                </structure>
+            </list-property>
+            <column id="170"/>
+            <column id="171"/>
+            <header>
+                <row id="157">
+                    <property name="style">NouveauStyle</property>
+                    <cell id="158">
+                        <label id="159">
+                            <text-property name="text">Date de création</text-property>
+                        </label>
+                    </cell>
+                    <cell id="160">
+                        <label id="161">
+                            <text-property name="text">Nombre de documents</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="162">
+                    <property name="style">NouveauStyle1</property>
+                    <cell id="163">
+                        <data id="164">
+                            <property name="resultSetColumn">TRUNC(D_CREAT,DD)</property>
+                        </data>
+                    </cell>
+                    <cell id="165">
+                        <data id="166">
+                            <property name="resultSetColumn">COUNT(*)</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="167">
+                    <cell id="168"/>
+                    <cell id="169"/>
+                </row>
+            </footer>
+        </table>
+    </body>
+</report>

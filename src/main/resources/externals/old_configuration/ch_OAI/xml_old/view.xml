@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<listview xmlns="http://www.digitech.com/dossiers/view" xmlns:ns2="http://www.digitech.com/dossiers/common" customerName="ESH" version="4.1.4">
+	<organization id="0" name="DEFAULT">
+		<contentType name="DOSSIER_ASSURE">
+			<column label="Numero de securite sociale" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+				<airsField>N_NSS</airsField>
+			</column>
+			<column label="ID du dossier">
+				<airsField>REFAIRS</airsField>
+			</column>
+			<nbDocMax>0</nbDocMax>
+		</contentType>
+		<contentType name="DOCUMENT_ASSURE">		
+			<column label="Date" suggestionFilterEnabled="false">
+				<airsField>D_VALEUR</airsField>
+				<format>dd.MM.yyyy</format>
+			</column>
+			<column label="Type" suggestionFilterEnabled="false">
+				<airsField>AL_TYPE_DOC</airsField>
+			</column>
+			<column label="S. Dossier" suggestionFilterEnabled="true" autoCompeteEnabled="false">
+				<airsField>N_DEM</airsField>
+			</column>
+			<column label="Collaborateur" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+				<airsField>U_GEST</airsField>
+			</column>
+			<column label="Dossier" suggestionFilterEnabled="false" autoCompeteEnabled="false">
+				<airsField>N_NSS</airsField>
+			</column>
+			<actionColumnPosition>3</actionColumnPosition>
+			<sorting>
+				<ns2:sortingPolicy>
+					<ns2:direction>DICREASING</ns2:direction>
+					<ns2:codeField>D_VALEUR</ns2:codeField>					
+				</ns2:sortingPolicy>
+				<ns2:sortingPolicy>
+					<ns2:direction>DICREASING</ns2:direction>
+					<ns2:codeField>REFAIRS</ns2:codeField>					
+				</ns2:sortingPolicy>
+			</sorting>
+			<nbDocMax>0</nbDocMax>
+			<ns2:export type="SCRIPT" renderer="" id="GenerateFolder" progressionModalPanelId="modalPanelProgress">
+				<ns2:groovyScriptId>exportListingDocuments</ns2:groovyScriptId>
+			</ns2:export>
+			<ns2:action resourceKey="ExportGDOSTitle" id="ExportGDOSScript" >
+				<ns2:groovyScriptId>ExportGDOSExec</ns2:groovyScriptId>
+				<ns2:modalPanelInitGroovyScriptId>ExportGDOSInit</ns2:modalPanelInitGroovyScriptId>
+				<ns2:modalPanelPageKey>ExportGDOSJSP</ns2:modalPanelPageKey>
+			</ns2:action>
+			<ns2:action displayRule="BOTH" id="GEDPDF" resourceKey="messageGEDPDF">
+				<ns2:groovyScriptId>GEDPDF</ns2:groovyScriptId>
+				<ns2:modalPanelPageKey>modalPanelSelectTitle</ns2:modalPanelPageKey>			
+			</ns2:action>
+			<ns2:action displayRule="BOTH" id="Sedex" resourceKey="messageSedex">
+				<ns2:groovyScriptId>ExportSedex</ns2:groovyScriptId>
+				<ns2:modalPanelPageKey></ns2:modalPanelPageKey>			
+			</ns2:action>
+			<ns2:action id="editFirstAttachment"
+				link="window.open('popup-editAttachment.jspx', 'Courrier', 'width=650,height=130,toolbar=no,scrollbars=no,resizable=no');"
+				resourceKey="editFirstAttachment" image="imgEditFirstAttachment"
+				target="_blank">
+				<ns2:modalPanelInitGroovyScriptId>editFirstAttachmentInitModalPanelSimpleView</ns2:modalPanelInitGroovyScriptId>
+			</ns2:action>
+			<!--ns2:action id="editFirstAttachment" resourceKey="editFirstAttachment" image="imgEditFirstAttachment" displayRuleScriptId="editFirstAttachmentVisibleSimpleView">
+				<ns2:modalPanelPageKey>editFirstAttachment</ns2:modalPanelPageKey>
+				<ns2:modalPanelInitGroovyScriptId>editFirstAttachmentInitModalPanelSimpleView</ns2:modalPanelInitGroovyScriptId>
+				<ns2:groovyScriptId>editFirstAttachment</ns2:groovyScriptId>
+			</ns2:action-->
+			<ns2:action displayRule="BOTH" id="copy" resourceKey="messageCopy">
+				<ns2:groovyScriptId>copy</ns2:groovyScriptId>
+				<ns2:modalPanelInitGroovyScriptId>copyInit</ns2:modalPanelInitGroovyScriptId>
+				<ns2:modalPanelPageKey>modalPanelCopy</ns2:modalPanelPageKey>
+			</ns2:action>
+		</contentType>
+	</organization>
+</listview>

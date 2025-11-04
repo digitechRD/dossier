@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets" version="6.2" customerName="CIRIL">
+  <ns2:organization name="DEFAULT" id="0">
+    <ns2:basketRequest indexation="true" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToIndex">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="122"</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToSign">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>U_SIGNATORY.USR="#LOGIN_ID#"</airsvalue>
+      <airsRight>SIGNATURE</airsRight>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailRejected">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>U_CREAT.USR="#LOGIN_ID#" ET T_ETAT_COURRIER.ROOTITEM="125"</airsvalue>
+      <airsRight>DOSSIERS_ADD_DOC</airsRight>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailRefused">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>(U_PROPRIETAIRE.USR="#LOGIN_ID#" OU (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" ET
+        U_PROPRIETAIRE IS NULL)) ET T_ETAT_VISA.ROOTITEM="131" ET T_ETAT_COURRIER.ROOTITEM="127"
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailAccepted">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>(U_PROPRIETAIRE.USR="#LOGIN_ID#" OU (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" ET
+        U_PROPRIETAIRE IS NULL)) ET T_ETAT_VISA.ROOTITEM="130" ET T_ETAT_COURRIER.ROOTITEM="127"
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToValidate">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="123" ET U_VALIDEUR.USR="#LOGIN_ID#"</airsvalue>
+      <airsProfile>109</airsProfile>
+      <airsProfileCode>DOS_VALIDEUR</airsProfileCode>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToCheck">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="127" ET U_VISEUR.USR="#LOGIN_ID#" ET
+        (T_ETAT_VISA.ROOTITEM="129" OU T_ETAT_VISA IS NULL)
+      </airsvalue>
+      <airsProfile>110</airsProfile>
+      <airsProfileCode>DOS_VISEUR</airsProfileCode>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailLate">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="126" ET (U_PROPRIETAIRE.USR="#LOGIN_ID#" OU
+        (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL)) ET
+        D_ECHEANCE&lt;="#TODAY#"
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToProcess">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="126" ET ((O_PROPRIETAIRE.ORG="#ORG_ID#" ET U_PROPRIETAIRE.USR="#LOGIN_ID#") OU
+        (O_PROPRIETAIRE.ORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL))
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToProcessForServicesUnderMe">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="126" ET
+        (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL SAUF O_PROPRIETAIRE.ORG="#ORG_ID#")
+      </airsvalue>
+      <airsProfile>12</airsProfile>
+      <airsProfileCode>DOS_DIRECTION</airsProfileCode>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="false" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailProcessed">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="127" ET (U_PROPRIETAIRE.USR="#LOGIN_ID#" OU
+        (O_PROPRIETAIRE.ROOTORG="#ORG_ID#" ET U_PROPRIETAIRE IS NULL)) ET( T_ETAT_VISA.ROOTITEM="129" OU T_ETAT_VISA IS NULL)
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="false" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailInCopy">
+      <contentType>COU_COURRIER_IN</contentType>
+      <airsvalue>(U_COPIES.USR="#LOGIN_ID#" OU O_COPIES.ORG="#ORG_ID#") SAUF U_COPIES_LUES.USR="#LOGIN_ID#"</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="false" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToSendRefused">
+      <contentType>COU_COURRIER_OUT</contentType>
+      <airsvalue>U_PROPRIETAIRE.USR="#LOGIN_ID#" ET T_ETAT_VISA.ROOTITEM="131" SAUF T_ETAT_COURRIER.ROOTITEM="128"
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="false" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToSendToCheck">
+      <contentType>COU_COURRIER_OUT</contentType>
+      <airsvalue>T_ETAT_COURRIER.ROOTITEM="127" ET U_VISEUR.USR="#LOGIN_ID#" ET
+        (T_ETAT_VISA.ROOTITEM="129" OU T_ETAT_VISA IS NULL)
+      </airsvalue>
+      <airsProfile>110</airsProfile>
+      <airsProfileCode>DOS_VISEUR</airsProfileCode>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToSendAccepted">
+      <contentType>COU_COURRIER_OUT</contentType>
+      <airsvalue>U_PROPRIETAIRE.USR="#LOGIN_ID#" ET T_ETAT_VISA.ROOTITEM="130" SAUF T_ETAT_COURRIER.ROOTITEM="128"
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="COURRIER" basket-properties-scriptId="" name="basket_mailToSend">
+      <contentType>COU_COURRIER_OUT</contentType>
+      <airsvalue>U_PROPRIETAIRE.USR="#LOGIN_ID#" ET D_ENVOI IS NULL SAUF T_ETAT_VISA.ROOTITEM="130"</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="true" inHeaderMenu="false" flowCode="COURRIER" basket-properties-scriptId="" name="basket_waiting_for_signature">
+      <contentType>COU_COURRIER_OUT</contentType>
+      <airsvalue>U_SIGNATORY.USR="#LOGIN_ID#"</airsvalue>
+      <airsProfileCode>SIGNATAIRE_SEULEMENT</airsProfileCode>
+      <airsProfile>822</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_TIERS" basket-properties-scriptId="" name="Documents 'Tiers' créés aujourd'hui">
+      <contentType>GF_TIERS</contentType>
+      <airsvalue>D_CREAT=#TODAY#</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_TIERS" basket-properties-scriptId="" name="Documents 'Mouvement' créés aujourd'hui">
+      <contentType>GF_MOUVEMENT</contentType>
+      <airsvalue>D_CREAT=#TODAY#</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_TIERS" basket-properties-scriptId="" name="Documents 'Marche' créés aujourd'hui">
+      <contentType>GF_MARCHE</contentType>
+      <airsvalue>D_CREAT=#TODAY#</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_TIERS" basket-properties-scriptId="" name="Documents 'Tiers'">
+      <contentType>GF_TIERS</contentType>
+      <airsvalue>DOCID>0</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_TIERS" basket-properties-scriptId="" name="Documents 'Mouvement'">
+      <contentType>GF_MOUVEMENT</contentType>
+      <airsvalue>DOCID>0</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_TIERS" basket-properties-scriptId="" name="Documents 'Marche'">
+      <contentType>GF_MARCHE</contentType>
+      <airsvalue>DOCID>0</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GF_PES" basket-properties-scriptId="" name="Documents 'PES' créés aujourd'hui">
+      <contentType>GF_PES</contentType>
+      <airsvalue>D_CREAT=#TODAY#</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="RH_AGENT" basket-properties-scriptId="" name="Documents 'RH' créés aujourd'hui">
+      <contentType>RH_DOCUMENT_EXTERNE</contentType>
+      <airsvalue>D_CREAT=#TODAY#</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GEN" basket-properties-scriptId="" name="Mes documents à valider">
+      <contentType>GEN_DOC</contentType>
+      <airsvalue>GEN_DOC_STATUS.ITEM="1002" AND GEN_DOC_VALIDEUR.USR="#LOGIN_ID#"</airsvalue>
+      <airsProfile>611</airsProfile>
+      <airsProfileCode>GEN_VALIDEUR</airsProfileCode>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GEN" basket-properties-scriptId="" name="Mes documents refusés">
+      <contentType>GEN_DOC</contentType>
+      <airsvalue>GEN_DOC_STATUS.ITEM="830" AND GEN_DOC_CREAT.USR="#LOGIN_ID#"</airsvalue>
+      <airsProfile>609</airsProfile>
+      <airsProfileCode>GEN_MODIF</airsProfileCode>
+    </ns2:basketRequest>
+    <ns2:basketRequest indexation="false" inHeaderMenu="true" flowCode="GEN" basket-properties-scriptId="" name="Mes documents en collaboration">
+      <contentType>GEN_DOC</contentType>
+      <airsvalue>(GEN_DOC_STATUS.ITEM="831" OR GEN_DOC_STATUS.ITEM="832") AND GEN_DOC_COLLAB.USR="#LOGIN_ID#"</airsvalue>
+      <airsProfile>609</airsProfile>
+      <airsProfileCode>GEN_MODIF</airsProfileCode>
+    </ns2:basketRequest>
+  </ns2:organization>
+</ns2:corbeille>

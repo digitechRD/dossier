@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?oxygen RNGSchema="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" type="xml"?>
+<chapter xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:m="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml"
+    version="5.0" xml:id="search" xml:lang="fr">
+    <title>Recherche</title>
+    <section xml:id="search_common">
+        <title>Partie commune</title>
+        <figure xml:id="img_searchCommon">
+            <title>Partie commune</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/search02.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>La fonctionnalité de Recherche permet de définir et d'exécuter des recherches. Depuis
+            la page d'Accueil de l'Application, si l'utilisateur connecté possède les droits
+            suffisants pour effectuer des recherches, la fonctionnalité de Recherche est accessible
+            depuis le sous menu <guimenuitem>Recherche</guimenuitem> ou le bloc fonctionnel
+                <guimenuitem>Recherche</guimenuitem>. Dés lors, un simple clic sur cette action
+            permet d'afficher la page souhaitée. </para>
+        <para>Il existe 2 types de recherche : la <guilabel>Recherche simple</guilabel> et la
+                <guilabel>Recherche avancée</guilabel>. Pour commuter d'un mode de recherche à un
+            autre, veuillez sélectionner le mode désiré dans la liste déroulante
+                <guilabel>Vue</guilabel>. Dés lors que les critères de recherche (mode simple) ou
+            l'expression de recherche (mode avancé) ont été saisis, il est nécessaire de cliquer sur
+            l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_search02.jpg"/>
+                </imageobject>
+            </inlinemediaobject> afin d'exécuter la recherche et d'afficher la page des résultats. </para>
+        <para>L'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_reset01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet de vider l'ensemble des critères de recherche (mode simple)
+            ou l'expression de recherche (mode avancée). </para>
+    </section>
+    <section xml:id="search_simple">
+        <title>Recherche simple</title>
+        <figure xml:id="img_searchSimple">
+            <title>Recherche simple</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/search03.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>La Recherche Simple permet de réaliser des recherches en spécifiant des valeurs pour
+            un ensemble de critères. La recherche construite est une recherche par intersection. Par
+            exemple, si l'utilisateur spécifie la valeur '15/10/1980' pour le critère <guilabel>Date
+                de réception</guilabel> et la valeur 'Interne' pour le critère
+                <guilabel>Type</guilabel>, la requête construite sera de la forme : D_RECEPTION =
+            '15/10/1980' <emphasis role="bold">ET</emphasis> T_TYPE = 'INTERNE. </para>
+        <para>La liste déroulante <guilabel>Type de Contenu</guilabel> permet de spécifier le Type
+            de Contenu sur lequel la recherche doit être réalisée. Il est important de spécifier en
+            premier lieu le Type de Contenu car les critères de recherche affichés dépendent du Type
+            de Contenu sélectionné. </para>
+        <para>Les critères de recherche se caractérisent par : <itemizedlist>
+                <listitem>
+                    <para>un intitulé : il définit le nom du critère de recherche,</para>
+                </listitem>
+                <listitem>
+                    <para>un opérateur : il définit le type d'opérateur à appliquer sur le critère
+                        de recherche. Selon la configuration de l'application, les opérateurs
+                        suivant peuvent être utilisés : <itemizedlist>
+                            <listitem>
+                                <para>= : permet de spécifier l'égalité, </para>
+                            </listitem>
+                            <listitem>
+                                <para>> : permet de spécifier la supériorité, </para>
+                            </listitem>
+                            <listitem>
+                                <para>&lt; : permet de spécifier l'infériorité, </para>
+                            </listitem>
+                            <listitem>
+                                <para>{} : permet de spécifier un interval de valeurs. L'interval de
+                                    valeurs peut être spécifié sur les champs de type numérique ou
+                                    de type date. </para>
+                            </listitem>
+                            <listitem>
+                                <para>}{ : permet de spécifier un interval de valeurs "non compris
+                                    entre". L'interval de valeurs ainsi saisi sera exclu des
+                                    résultats de recherche. L'interval de valeurs "non compris
+                                    entre" peut être spécifié sur les champs de type numérique ou de
+                                    type date.</para>
+                            </listitem>
+                        </itemizedlist></para>
+                </listitem>
+                <listitem>
+                    <para>un champ de recherche : il définit la valeur du critère de
+                        recherche.</para>
+                </listitem>
+            </itemizedlist></para>
+        <para>Les critères de recherche affichés sont décrits au chapitre <link
+                linkend="home_createDoc">Création de courrier</link>.</para>
+        <para>Selon le type du champ de recherche, celui ci n'est pas éditable. Il faut alors
+            utiliser le "picker" de valeur : <itemizedlist>
+                <listitem>
+                    <para>picker de date : accessible en cliquant sur l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_pickerDate01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>, permet de sélectionner une date. La date peut être
+                        saisi manuellement en respectant le format : jj/mm/aaaa. </para>
+                </listitem>
+                <listitem>
+                    <para>picker d'organisation : accessible en cliquant sur l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_pickerOrg01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>, permet de sélectionner une organisation (service). </para>
+                </listitem>
+                <listitem>
+                    <para>picker d'autorité : accessible en cliquant sur l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_pickerAuthority01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>, permet de sélectionner un élément d'une liste
+                        d'autorité. </para>
+                </listitem>
+                <listitem>
+                    <para>picker d'utilisateur : accessible en cliquant sur l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_pickerUser01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>, permet de sélectionner un utilisateur. </para>
+                </listitem>
+            </itemizedlist>Si un critère de recherche est déjà renseigné pour un champ, le picker
+            s'initialisera avec cette valeur. </para>
+        <para>Pour effacer la valeur d'un champ il peut être nécessaire de cliquer sur l'icône <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_pickerDel01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>. </para>
+        <note>
+            <para>Pour certains champs, des caractères "joker" peuvent être spécifiés. Une
+                annotation est alors mentionnée en regard du champs. Par défaut, le serveur AIRS
+                tolère le caractère '+' en temps que "joker". Si par exemple vous saisissez le mot
+                clé "maison+", le moteur fera une recherche sur tous les mots commençant par
+                "maison". Le joker ne peut être saisi que sur un critère de type alphanumérique. De
+                plus, certain champ supporte la recherche "majuscule et accent
+                indifférencié".</para>
+        </note>
+        <note>
+            <para>Le critère de recherche <guilabel>Contenu des documents</guilabel> est utilisé
+                pour faire la recherche d'un critère au sein des pièces jointes attachées aux
+                courriers (recherche plein texte).</para>
+        </note>
+    </section>
+    <section xml:id="search_advanced">
+        <title>Recherche avancée</title>
+        <figure xml:id="img_searchAdvanced">
+            <title>Recherche avancée</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/search04.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>La Recherche Avancée permet de réaliser des recherches documentaires très précises, en
+            spécifiant des valeurs pour des critères ciblés, et sur un ensemble de Types de contenu.
+            Pour réaliser une recherche avancée, il est nécessaire de sélectionner dans un premier
+            temps le(s) Type(s) de Contenu sur le(s)quel(s) la recherche doit être jouée. Une fois
+            le(s) Type(s) de Contenu coché(s), veuillez cliquer sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_addLoc01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> pour afficher la fenêtre d'<guilabel>Ajout d'une
+                Locution</guilabel> ou sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_leftParenthesis.jpg"/>
+                </imageobject>
+            </inlinemediaobject> pour ajouter une parenthèse ouvrante.</para>
+        <para><figure xml:id="img_searchAdvanced_addLoc">
+                <title>Ajout de locution</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/search05.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>La fenêtre d'<guilabel>Ajout d'une Locution</guilabel> permet de spécifier le
+            champ à ajouter, le type d'opérateur à utiliser ainsi que la valeur du critère. Selon le
+            type du champ de recherche, celui ci n'est pas éditable. Il faut alors utiliser le
+            "picker" de valeur. Pour plus de détails sur les "pickers", voir la documentation
+            relatif à la <link linkend="search_simple">Recherche Simple</link>. Une fois l'ajout de
+            locution finalisé, veuillez cliquer sur le bouton <guibutton>Ajouter</guibutton> pour
+            mettre à jour l'expression de recherche. </para>
+        <para><figure xml:id="img_searchAdvanced_addLoc2">
+                <title>Ajout de locution</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/search06.jpg"/>
+                    </imageobject>
+                </mediaobject>
+            </figure>Au fil de la construction de l'expression, la liste des actions possibles est
+            mise à jour. Il est alors possible de spécifier des opérateurs inter-locutions. L'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_operatorAnd.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet d'ajouter l'opérateur d'intersection inter-locutions.
+            L'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_operatorNot.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet d'ajouter l'opérateur de négation inter-locutions. L'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_operatorOr.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet d'ajouter l'opérateur d'union inter-locutions. Une fois
+            l'expression de recherche renseignée, il suffit de lancer la recherche en cliquant sur
+            l'action <guibutton>Rechercher</guibutton>. La page des résultats de recherche est alors
+            affichée. </para>
+    </section>
+    <section xml:id="searchResult_simple">
+        <title>Résultats de recherche</title>
+        <figure xml:id="img_searchResultSimple">
+            <title>Vue simple</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="images/searchResult02.jpg"/>
+                </imageobject>
+            </mediaobject>
+        </figure>
+        <para>La Vue simple permet de visualiser un résultat de recherche ou le contenu d'une
+            bannette. Les données affichées dans la Vue Simple dépendent de la Configuration.
+            Seules la colonne de sélection et la colonne <guilabel>Actions</guilabel> ne dépendent
+            pas de la Configuration. La colonne <guilabel>Actions</guilabel> permet d'exécuter une
+            action unitaire sur la ligne courante. On distingue les actions suivantes : <itemizedlist>
+                <listitem>
+                    <para>Verrouillage du courrier, illustré par l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_lock01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>. Selon les droits de l'utilisateur, il se peut que ce
+                        bouton soit désactivé.</para>
+                </listitem>
+                <listitem>
+                    <para>Déverrouillage du courrier, illustré par l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_unlock01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>. Selon les droits de l'utilisateur, il se peut que ce
+                        bouton doit désactivé.</para>
+                </listitem>
+                <listitem>
+                    <para>Affichage de la fiche du courrier, illustré par l'icône <inlinemediaobject>
+                            <imageobject>
+                                <imagedata fileref="images/btn_viewUnit01.jpg"/>
+                            </imageobject>
+                        </inlinemediaobject>(selon les droits de l'utilisateur).</para>
+                </listitem>
+            </itemizedlist>Des actions globales peuvent être exécutées : l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_refresh02.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet de rejouer la requête et de mettre à jour les résultats de
+            recherche, l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_indexAll01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> (selon droits de l'utilisateur) permet de lancer la procédure
+            d'indexation sur l'ensemble des résultats de recherche et l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_exportCsvAll01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet d'exporter l'ensemble des résultats de recherche au format
+            CSV. L'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_save03.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet d'<link linkend="personalRequests">enregistrer la
+                requête</link>. L'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_displayBookmarks01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> permet d'afficher les signets référencés par l'ensemble des
+            courriers résultats.</para>
+        <para>Il est aussi possible de cocher une ou plusieurs lignes afin d'exécuter une action de
+            suppression en cliquant sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_deleteDoc01.jpg"/>
+                </imageobject>
+            </inlinemediaobject> (selon droits de l'utilisateur), une action d'indexation en
+            cliquant sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_index01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>, ou une action d'export CSV en cliquant sur l'action <inlinemediaobject>
+                <imageobject>
+                    <imagedata fileref="images/btn_exportCsv01.jpg"/>
+                </imageobject>
+            </inlinemediaobject>. </para>
+        <para>Afin d'ordonner la liste des résultats de recherche, il est possible de spécifier un
+            tri multi colonnes. Lorsque l'<link linkend="preferences">affichage avancé</link> est
+            activé, l'utilisateur peut masquer, repositionner et redimensionner une colonne. Les
+            options d'affichage sont conservées dans les préférences de l'utilisateur. Pour plus
+            d'informations au sujet des tables de données veuillez vous référer à la section <link
+                linkend="common_table">Table de données</link>. </para>
+        <note>
+            <para>Si le nombre de résultats de recherche est trop grand, la fonctionnalité de tri
+                est alors désactivée.</para>
+        </note>
+    </section>
+</chapter>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<corbeille xmlns="http://www.digitech.com/dossiers/baskets">
+
+	<!-- Organisation par défaut, normalement il n'y en a pas sauf adm_airs3 -->
+	<organization name="DEFAULT" id="0" titre="Accueil commun">
+
+  	<!-- Corbeille des dossiers du jour -->
+    <dossierrequest name="Dossiers du jour" xmlns="http://www.digitech.com/dossiers/common">
+			<contentType>PLI</contentType>
+			<airsvalue>D_CREAT="#TODAY#"</airsvalue>
+		</dossierrequest>
+
+  	<!-- Corbeille des documents du jour -->
+    <dossierrequest name="Documents du jour" xmlns="http://www.digitech.com/dossiers/common">
+			<contentType>TRANSACTION</contentType>
+			<airsvalue>D_CREAT="#TODAY#"</airsvalue>
+		</dossierrequest>
+
+  </organization>
+
+   
+    <organization id="0" name="DEFAULT" titre="Accueil">
+        <ns1:dossierrequest name="DEFAULT" xmlns:ns1="http://www.digitech.com/dossiers/common">
+            <ns1:contentType>TRANSACTION</ns1:contentType>
+            <ns1:workflowvalue>WFALLTASKS</ns1:workflowvalue>
+        </ns1:dossierrequest>
+    </organization>
+    <organization id="4" name="Contribution" titre="Accueil">
+        <ns3:dossierrequest name="Identification à effectuer" xmlns:ns3="http://www.digitech.com/dossiers/common">
+            <ns3:contentType>TRANSACTION</ns3:contentType>
+            <ns3:workflowvalue>GestionIdentification</ns3:workflowvalue>         
+        </ns3:dossierrequest>
+        <ns32:dossierrequest name="Particularités prioritaires" xmlns:ns32="http://www.digitech.com/dossiers/common">
+            <ns32:contentType>TRANSACTION</ns32:contentType>
+            <ns32:workflowvalue>InfoPAvecValidation</ns32:workflowvalue>           
+        </ns32:dossierrequest>
+        <ns33:dossierrequest name="Particularités non prioritaires" xmlns:ns33="http://www.digitech.com/dossiers/common">
+            <ns33:contentType>TRANSACTION</ns33:contentType>
+            <ns33:workflowvalue>InfoNPAvecValidation</ns33:workflowvalue>
+        </ns33:dossierrequest>
+    </organization>
+    <organization id="9" name="GRCADH" titre="Accueil">
+        <ns4:dossierrequest name="DEFAULT" xmlns:ns4="http://www.digitech.com/dossiers/common">
+            <ns4:contentType>TRANSACTION</ns4:contentType>
+            <ns4:workflowvalue>WFALLTASKS</ns4:workflowvalue>
+        </ns4:dossierrequest>
+    </organization>
+    <organization id="8" name="GRCGES" titre="Accueil">
+        <ns5:dossierrequest name="DEFAULT" xmlns:ns5="http://www.digitech.com/dossiers/common">
+            <ns5:contentType>TRANSACTION</ns5:contentType>
+            <ns5:workflowvalue>WFALLTASKS</ns5:workflowvalue>
+        </ns5:dossierrequest>
+    </organization>
+    
+    </corbeille>
+

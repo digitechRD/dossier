@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<jacros-int>  
+ <initializer name="com.digitech.airs3dossiers.airs.AIRSDossierInitializer">
+   <param>
+     <name>appName</name>
+     <desc>Nom de l'application</desc>
+     <value>AIRS</value>
+   </param>
+   <param>
+     <name>airsHost</name>
+     <desc>AirsServer Host Name</desc>
+     <value>192.168.30.84</value>
+   </param>
+   <param>
+     <name>airsPort</name>
+     <desc>AirsServer Port</desc>
+     <value>5000</value>
+   </param>
+    <param>
+     <name>airsUser</name>
+     <desc>nom de l'utilisateur de test de la connexion AIRS</desc>
+     <value>adm_airs3</value>
+   </param>
+    <param>
+     <name>airsPassword</name>
+     <desc>password de l'utilisateur de test de la connection AIRS</desc>
+     <value>adm_airs3</value>
+   </param>
+   <param>
+     <name>expiredPassword</name>
+     <desc>le temps expiration du mot de passe user en jours</desc>
+     <value>180</value>
+   </param>
+   <param>
+     <name>lockTime</name>
+     <desc>le temps maximum durant lequel un document va etre locke en h (-1 pour desactiver)</desc>
+     <value>1</value>
+   </param> 
+   <param>
+     <name>fieldLock</name>
+     <desc>Le champ dans lequel on stocke la date de dernier lock</desc>
+     <value>LOCKTIME</value>
+   </param>
+   <param>
+     <name>contentTypeLock</name>
+     <desc>Le domaine avec fonctionnalité de lock</desc>
+     <value>PIECECOMP</value>
+   </param>   
+   <param>
+     <name>SMTP</name>
+     <desc>Adresse du serveur SMTP pour diffusion</desc>
+     <value>192.168.30.201</value>
+   </param>   
+   <param>
+     <name>ACTIVATE_VALIDATOR</name>
+     <desc>Activer les validateurs de l'application (0 ou 1)</desc>
+     <value>1</value>
+   </param>
+   <param>
+     <name>MAX_RECHERCHE</name>
+     <desc>le nombre maximum de résultats d'une requête qui doivent être traités</desc>
+     <value>1000</value>
+   </param>
+   <param>
+     <name>FROM_EMAIL</name>
+     <desc>Adresse Email utilisée par défaut pour la diffusion</desc>
+     <value>monemail@email.fr</value>
+   </param>    
+   <param>
+     <name>WF_FILTER_BY_ACTOR</name>
+     <desc></desc>
+     <value>1</value>
+   </param>
+   <param>
+     <name>AUTO_OPEN_PJ</name>
+     <desc>Ouverture automatique de la PJ du document : 0 ou 1</desc>
+     <value>1</value>
+   </param>
+   <param>
+     <name>DISPLAY_DOC_PJ</name>
+     <desc>Mode d'ouverture de la PJ : FULLSCREEN, VERTICAL_LEFT, VERTICAL_RIGHT, HORIZONTAL_TOP, HORIZONTAL_BOTTOM</desc>
+     <value>VERTICAL_RIGHT</value>
+   </param>
+   <param>
+     <name>DROITS_MEMBRE_ORGA</name>
+     <desc>Libellé du rôle "Membre" sur une organisation. Défaut : "Membre"</desc>
+     <value>Membre</value>
+   </param>
+ </initializer> 
+ <initializer name="com.digitech.digiFlow.CWorkFlowInitializer">
+   <param>
+     <name>type_workflow</name>
+     <desc>définition du workflow utilisé : pour l'instant FLOWMIND</desc>
+     <value>FLOWMIND</value>
+   </param>
+ </initializer>
+ <initializer name="com.digitech.digiFlow.flowMind.CFlowMindInitializer">
+   <param>
+     <name>serveur</name>
+     <desc>serveur Flowmind</desc>
+     <value>192.168.30.84</value>
+   </param>
+   <param>
+     <name>port</name>
+     <desc>n° de port Flowmind</desc>
+     <value>1099</value>
+   </param>
+ </initializer>
+ <initializer name="com.digitech.framework.db.DbInitializer">
+   <driver name="oracle.jdbc.driver.OracleDriver"/>
+   <pool name="digiflow" user="AIRS3DOSSIERS_FM" password="AIRS3DOSSIERS_FM" url="jdbc:oracle:thin:@192.168.30.84:1521:AIRS" maxconn="2"   sequenceImpl="com.digitech.framework.db.oracle.SequenceOraImpl"  />
+ </initializer>
+ 
+</jacros-int>

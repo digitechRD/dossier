@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workflow xmlns="http://www.digitech.com/dossiers/workflow" version="6.0.5.1" customerName="LAPROVENCE">
+    <tache name="AValider1">
+        <valueSortie value="Standby">
+            <airsfield name="FAC_ETAT" value="114"/>
+        </valueSortie>
+        <valueSortie value="Bloquer">
+            <airsfield name="FAC_ETAT" value="117"/>
+        </valueSortie>
+    </tache>
+    <tache name="AValider2">
+        <valueSortie value="Bloquer">
+            <airsfield name="FAC_ETAT" value="117"/>
+        </valueSortie>
+        <valueSortie value="BonAPayerPartiel">
+            <airsfield name="FAC_ETAT" value="116"/>
+        </valueSortie>
+        <valueSortie value="BonAPayer">
+            <airsfield name="FAC_ETAT" value="115"/>
+        </valueSortie>
+    </tache>
+    <tache name="BonAPayerPartiel">
+        <valueSortie value="ResteAPayer">
+            <airsfield name="FAC_ETAT" value="118"/>
+        </valueSortie>
+    </tache>
+    <tache name="StandByTrait">
+        <valueSortie value="ATraiter">
+            <airsfield name="FAC_ETAT" value="111"/>
+        </valueSortie>
+    </tache>
+    <tache name="Bloquee2">
+        <valueSortie value="BonAPayerPartiel">
+            <airsfield name="FAC_ETAT" value="116"/>
+        </valueSortie>
+        <valueSortie value="BonAPayer">
+            <airsfield name="FAC_ETAT" value="115"/>
+        </valueSortie>
+    </tache>
+    <tache name="Bloquee1">
+        <valueSortie value="BonAPayerPartiel">
+            <airsfield name="FAC_ETAT" value="116"/>
+        </valueSortie>
+        <valueSortie value="BonAPayer">
+            <airsfield name="FAC_ETAT" value="115"/>
+        </valueSortie>
+    </tache>
+    <tache name="AEngagerPousser">
+        <valueSortie value="AEngager">
+            <airsfield name="FAC_ETAT" value="402"/>
+        </valueSortie>
+        <valueSortie value="ATraiter">
+            <airsfield name="FAC_ETAT" value="111"/>
+        </valueSortie>
+        <userFilterScriptId>assistantFilter</userFilterScriptId>
+    </tache>
+    <tache name="AEngager">
+        <valueSortie value="AValider">
+            <airsfield name="FAC_ETAT" value="113"/>
+        </valueSortie>
+        <valueSortie value="APousser">
+            <airsfield name="FAC_ETAT" value="604"/>
+        </valueSortie>
+    </tache>
+    <tache name="ATraiter">
+        <valueSortie value="Standby">
+            <airsfield name="FAC_ETAT" value="112"/>
+        </valueSortie>
+        <valueSortie value="AValider">
+            <airsfield name="FAC_ETAT" value="113"/>
+        </valueSortie>
+    </tache>
+    <tache name="ResteAPayer">
+        <valueSortie value="BonAPayer">
+            <airsfield name="FAC_ETAT" value="115"/>
+        </valueSortie>
+        <valueSortie value="BonAPayerPartiel">
+            <airsfield name="FAC_ETAT" value="116"/>
+        </valueSortie>
+    </tache>
+    <tache name="StandByValid">
+        <valueSortie value="AValider">
+            <airsfield name="FAC_ETAT" value="113"/>
+        </valueSortie>
+    </tache>
+    <airs2workflow>
+        <mapping variable="UtilTrait" field="FAC_TRAIT1" refdata="Id" processStarting="false"/>
+        <mapping variable="UtilValid1" field="FAC_VALID1" refdata="Id" processStarting="false"/> 
+        <mapping variable="UtilValid12" field="FAC_VALID12" refdata="Id" processStarting="false"/>
+        <mapping variable="UtilValid2" field="FAC_VALID2" refdata="Id" processStarting="false"/>
+        <mapping variable="MontantHT" field="FAC_HT" processStarting="false"/>
+        <mapping variable="NumEngagement" field="ENG_NUM" processStarting="false"/>
+        <mapping variable="NumFacture" field="FAC_NUM" processStarting="false"/>
+    </airs2workflow>
+</workflow>

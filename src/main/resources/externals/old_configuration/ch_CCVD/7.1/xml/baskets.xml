@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:corbeille xmlns="http://www.digitech.com/dossiers/common" xmlns:ns2="http://www.digitech.com/dossiers/baskets" customerName="ESH" version="4.1.4">
+  <ns2:organization id="0" name="DEFAULT"/>
+
+  <ns2:organization load-on-startup="1" id="30" numberOfHomeBasketRow="20" name="FINANCE" titre="FINANCE">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;30&quot;</airsvalue>
+      <airsProfile>50</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À valider">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;75&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;30&quot;</airsvalue>
+      <airsProfile>52</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET AL_ORGA_WKF.ORG=&quot;30&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;30&quot;
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="26" numberOfHomeBasketRow="20" name="SCAN" titre="SCAN">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Avec NIP à créer ">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;88&quot; ET U_SCAN.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+      <!--<workflowvalue>CreerNip</workflowvalue>-->
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Adresse à créer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;76&quot; ET U_SCAN.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;41&quot; ET AL_ORGA_WKF.ORG=&quot;26&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="LAD New Folder avec erreurs d'indexation">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;85&quot; ET U_SCAN.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Mail à indexer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>IndexerMail</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;86&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Annexes Sedex">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;629&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="1" numberOfHomeBasketRow="20" name="AC" titre="AC">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;1&quot;</airsvalue>
+      <airsProfile>10</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;1&quot;</airsvalue>
+      <airsProfile>10</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;1&quot; ET FILENAME=&quot;WORKFIN&quot;</airsvalue>
+      <airsProfile>10</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;1&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;1&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À valider">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;75&quot; ET AL_ORGA_WKF.ORG=&quot;1&quot;</airsvalue>
+      <airsProfile>10</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+    <!--ns2:basketRequest inHeaderMenu="true" name="Documents sans numéro d'affilié">
+<contentType>DOCUMENT_AFFILIE</contentType>
+<airsvalue>N_AFF=&quot;0&quot;</airsvalue>
+</ns2:basketRequest-->
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="3" numberOfHomeBasketRow="20" name="AF" titre="AF">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;3&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;3&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;25&quot; ET AL_ORGA_WKF.ORG=&quot;3&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <!--ns2:basketRequest inHeaderMenu="true" name="En attente affil PSA">
+        <contentType>DOCUMENT_AFFILIE</contentType>
+        <airsvalue>AL_STATUT.ITEM=&quot;82&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest-->
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente affil PCI">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;80&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente affil EMP">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;81&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="4" numberOfHomeBasketRow="20" name="AF_PSA" titre="AF_PSA">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_SERVICE.ITEM=&quot;26&quot;</airsvalue>
+      <airsProfile>12</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer PSA">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(AL_SERVICE.ITEM=&quot;26&quot; ET AL_STATUT.ITEM=&quot;686&quot;) UNION_ALL (AL_SERVICE.ITEM=&quot;26&quot; ET
+        AL_STATUT.ITEM=&quot;71&quot;)
+      </airsvalue>
+      <airsProfile>12</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;26&quot; ET AL_ORGA_WKF.ORG=&quot;4&quot;</airsvalue>
+      <airsProfile>12</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente affil PSA">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;82&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="12" numberOfHomeBasketRow="20" name="FM" titre="FM">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_SERVICE.ITEM=&quot;793&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;793&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="5" numberOfHomeBasketRow="20" name="ALMAT_CANT" titre="ALMAT_CANT">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_SERVICE.ITEM=&quot;27&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;27&quot;</airsvalue>
+      <airsProfile>11</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="6" numberOfHomeBasketRow="20" name="AMF" titre="AMF">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_SERVICE.ITEM=&quot;28&quot; ET AL_ORGA_WKF.ORG=&quot;6&quot;</airsvalue>
+      <airsProfile>14</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;28&quot; ET AL_ORGA_WKF.ORG=&quot;6&quot;</airsvalue>
+      <airsProfile>14</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Demande amarree">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;669&quot; ET AL_SERVICE.ITEM=&quot;28&quot; ET AL_ORGA_WKF.ORG=&quot;6&quot;</airsvalue>
+      <airsProfile>14</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;28&quot; ET AL_ORGA_WKF.ORG=&quot;6&quot;</airsvalue>
+      <airsProfile>14</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À amarrer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;668&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="17" numberOfHomeBasketRow="20" name="PCF" titre="PCF">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;31&quot;</airsvalue>
+      <airsProfile>23</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;31&quot;</airsvalue>
+      <airsProfile>23</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+
+  <ns2:organization load-on-startup="1" id="22" numberOfHomeBasketRow="20" name="RENTES_1" titre="Rentes 1">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET AL_ORGA_WKF.ORG=&quot;22&quot;</airsvalue>-->
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="23" numberOfHomeBasketRow="20" name="RENTES_2" titre="Rentes 2">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;23&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;23&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;23&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;23&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;23&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET AL_ORGA_WKF.ORG=&quot;23&quot;</airsvalue>-->
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="24" numberOfHomeBasketRow="20" name="RENTES_3" titre="Rentes 3">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;24&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;24&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;24&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerREN</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;24&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;24&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET AL_ORGA_WKF.ORG=&quot;24&quot;</airsvalue-->
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="11" numberOfHomeBasketRow="20" name="ESTIMATION" titre="Estimation">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;11&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;11&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;11&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;11&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerREN</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;27&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;11&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+      <!--<airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET AL_ORGA_WKF.ORG=&quot;11&quot;</airsvalue>-->
+    </ns2:basketRequest>
+
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="2" numberOfHomeBasketRow="20" name="ACCORDS_BILATERAUX" titre="Accords Bilatéraux">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;2&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;2&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;2&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;2&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerREN</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;2&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;2&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET
+        AL_ORGA_WKF.ORG=&quot;2&quot;
+      </airsvalue>
+    </ns2:basketRequest>
+
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="28" numberOfHomeBasketRow="20" name="RENTES_4" titre="Rentes 4">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerREN</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue>
+      <airsProfile>15</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+      <!--airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET AL_ORGA_WKF.ORG=&quot;28&quot;</airsvalue-->
+    </ns2:basketRequest>
+
+  </ns2:organization>
+
+
+  <ns2:organization load-on-startup="1" id="13" numberOfHomeBasketRow="20" name="IJAI" titre="IJAI">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;</airsvalue>
+      <airsProfile>19</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;</airsvalue>
+      <airsProfile>19</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerREN</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;</airsvalue>
+      <airsProfile>19</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;
+        ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;13&quot;)
+      </airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="21" numberOfHomeBasketRow="20" name="REC" titre="REC">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_SERVICE.ITEM=&quot;33&quot;</airsvalue>
+      <airsProfile>26</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;33&quot;</airsvalue>
+      <airsProfile>26</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;33&quot; ET AL_ORGA_WKF.ORG=&quot;21&quot;</airsvalue>
+      <airsProfile>26</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;21&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;21&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="7" numberOfHomeBasketRow="20" name="APG_MILITAIRES" titre="APG Militaire">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents (Département)">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;92&quot; ET AL_ORGA_WKF.ORG=&quot;7&quot;</airsvalue>
+      <airsProfile>13</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;7&quot;</airsvalue>
+      <airsProfile>13</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;7&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;7&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerREN</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;7&quot;</airsvalue>
+      <airsProfile>13</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;7&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET (AL_STATUT.ITEM=&quot;79&quot; OU D_ECHEANCE&lt;=&quot;#TODAY#&quot;) ET
+        AL_ORGA_WKF.ORG=&quot;7&quot;
+      </airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="18" numberOfHomeBasketRow="20" name="PCG" titre="PCG">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;32&quot;</airsvalue>
+      <airsProfile>24</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerRFM</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;32&quot; ET AL_ORGA_WKF.ORG=&quot;18&quot;</airsvalue>
+      <airsProfile>24</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <!--ns2:basketRequest inHeaderMenu="true" name="Mutation en cours">
+        <contentType>DOCUMENT_AFFILIE</contentType>
+        <airsvalue>AL_STATUT.ITEM=&quot;87&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest-->
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_STATUT.ITEM=&quot;79&quot;) UNION_ALL (U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;)</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="16" numberOfHomeBasketRow="20" name="PC" titre="PC">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;30&quot; ET AL_ORGA_WKF.ORG=&quot;16&quot;</airsvalue>
+      <airsProfile>22</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;16&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;16&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <!--<workflowvalue>AControlerPC</workflowvalue>-->
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;30&quot; ET AL_ORGA_WKF.ORG=&quot;16&quot;</airsvalue>
+      <airsProfile>22</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;) SAUF AL_STATUT.ITEM=&quot;70&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="8" numberOfHomeBasketRow="20" name="CI-CA" titre="CI-CA">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;8&quot;</airsvalue>
+      <airsProfile>16</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler workflow finance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;8&quot;</airsvalue>
+      <airsProfile>16</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Avec NSS à créer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;89&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;8&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;8&quot;) SAUF AL_STATUT.ITEM=&quot;70&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer - Avis de mutation">
+      <contentType>DOCUMENT_AVIS_MUTATION</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot;</airsvalue>
+      <airsProfile>16</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter - Avis de mutation">
+      <contentType>DOCUMENT_AVIS_MUTATION</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler - Avis de mutation">
+      <contentType>DOCUMENT_AVIS_MUTATION</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance - Avis de mutation">
+      <contentType>DOCUMENT_AVIS_MUTATION</contentType>
+      <airsvalue>(AL_STATUT.ITEM=&quot;74&quot; OU AL_STATUT.ITEM=&quot;83&quot; OU AL_STATUT.ITEM=&quot;77&quot;) ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET
+        U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse - Avis de mutation">
+      <contentType>DOCUMENT_AVIS_MUTATION</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="19" numberOfHomeBasketRow="20" name="PCI" titre="PCI">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot;</airsvalue>
+      <airsProfile>47</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot; ET AL_SERVICE.ROOTITEM=&quot;24&quot; ET FILENAME=&quot;WORKFIN&quot;
+      </airsvalue>
+      <airsProfile>47</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À valider">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;75&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot;</airsvalue>
+      <airsProfile>47</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot;</airsvalue>
+    </ns2:basketRequest>
+    <!--ns2:basketRequest inHeaderMenu="true" name="À contrôler ">
+        <contentType>DOCUMENT_AFFILIE</contentType>
+        <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest-->
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;19&quot;) SAUF AL_STATUT.ITEM=&quot;70&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+
+  <ns2:organization load-on-startup="1" id="10" numberOfHomeBasketRow="20" name="CTE" titre="CTE">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;10&quot;</airsvalue>
+      <airsProfile>18</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Mutation en cours">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;87&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;10&quot;</airsvalue>
+      <airsProfile>18</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;10&quot;</airsvalue>
+      <airsProfile>18</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À archiver">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;629&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;10&quot;</airsvalue>
+      <airsProfile>18</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;10&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="20" numberOfHomeBasketRow="20" name="PSA_1" titre="PSA 1">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot;</airsvalue>
+      <airsProfile>25</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler workflow finance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot; ET FILENAME=&quot;WORKFIN&quot;</airsvalue>
+      <airsProfile>25</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À valider">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;75&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot;</airsvalue>
+      <airsProfile>25</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;20&quot; ET
+        U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;) SAUF AL_STATUT.ITEM=&quot;70&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="31" numberOfHomeBasketRow="20" name="PSA_2" titre="PSA 2">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot;</airsvalue>
+      <airsProfile>25</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler workflow finance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot; ET FILENAME=&quot;WORKFIN&quot;</airsvalue>
+      <airsProfile>25</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À valider">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;75&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot;</airsvalue>
+      <airsProfile>25</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;31&quot; ET
+        U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;
+      </airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;) SAUF AL_STATUT.ITEM=&quot;70&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+
+  <ns2:organization load-on-startup="1" id="14" numberOfHomeBasketRow="20" name="IM" titre="IM">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;24&quot; ET AL_ORGA_WKF.ORG=&quot;14&quot;</airsvalue>
+      <airsProfile>20</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de réponse">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;83&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À contrôler ">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;14&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot; ET AL_ORGA_WKF.ORG=&quot;14&quot;) SAUF AL_STATUT.ITEM=&quot;70&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="15" numberOfHomeBasketRow="20" name="JU" titre="JU">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_ORGA_WKF.ORG=&quot;15&quot;</airsvalue>
+      <airsProfile>21</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET AL_ORGA_WKF.ORG=&quot;15&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+      <contentType>DOCUMENT_AFFILIE</contentType>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot;ET AL_ORGA_WKF.ORG=&quot;15&quot;</airsvalue>
+      <airsProfile>21</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;15&quot; ET D_ECHEANCE&lt;=&quot;#TODAY#&quot;) SAUF AL_STATUT.ITEM=&quot;79&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+
+  <ns2:organization load-on-startup="1" id="25" numberOfHomeBasketRow="20" name="REV" titre="REV">
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À distribuer">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;71&quot; ET AL_SERVICE.ITEM=&quot;696&quot; ET AL_ORGA_WKF.ORG=&quot;25&quot;</airsvalue>
+      <airsProfile>27</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À traiter">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;74&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Urgents">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;91&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En traitement">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;84&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="À controler">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>AL_STATUT.ITEM=&quot;70&quot; ET AL_SERVICE.ITEM=&quot;696&quot; ET AL_ORGA_WKF.ORG=&quot;25&quot;</airsvalue>
+      <airsProfile>27</airsProfile>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="En attente de conversion PDF">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>STATUT_WORKFLOW=&quot;En attente de conversion auto&quot; ET U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot;</airsvalue>
+    </ns2:basketRequest>
+    <ns2:basketRequest flowCode="FLOW_CCVD" inHeaderMenu="true" name="Documents arrivés à échéance">
+      <contentType>DOCUMENT_AFFILIE</contentType>
+      <airsvalue>(U_TAXATEUR.USR=&quot;#LOGIN_ID#&quot; ET AL_ORGA_WKF.ORG=&quot;15&quot;) SAUF AL_STATUT.ITEM=&quot;79&quot;</airsvalue>
+    </ns2:basketRequest>
+  </ns2:organization>
+</ns2:corbeille>

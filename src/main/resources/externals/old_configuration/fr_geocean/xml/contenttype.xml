@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rootContentType xmlns:ns0="http://www.digitech.com/dossiers/baskets" xmlns="http://www.digitech.com/dossiers/contenttype" xmlns:ns2="http://www.digitech.com/dossiers/common" version="6.0.7.10-1" customerName="GEOCEAN">
+    <parentContentType isFlowParent="true" name="DOS_FAC" appName="AIRS">
+        <flow code="FLUX_FAC" label="Flux Facture" order="1" displayedFirst="true">
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>10</airsProfiles>
+        </flow>
+        <childContentType name="DOC_FAC" appName="AIRS">
+            <codeLinkedField parentField="FOUR_MATRIC" childField="FOUR_MATRIC" multiple="false"/>
+        </childContentType>
+    </parentContentType>
+    <parentContentType isFlowParent="false" name="DOC_FAC" appName="AIRS">
+        <flow code="FLUX_FAC" label="Flux Facture" order="1" displayedFirst="true">
+            <organization name="DEFAULT" id="0"/>
+            <airsProfiles>10</airsProfiles>
+        </flow>
+        <childContentType name="DOC_PJ" appName="AIRS">
+            <codeLinkedField parentField="FOUR_MATRIC" childField="FOUR_MATRIC" multiple="false"/>
+            <codeLinkedField parentField="FACT_NR" childField="FACT_NR" multiple="false"/>
+        </childContentType>
+        <extraFilter>
+            <ns2:dossierrequest name="Filtre pour les CDP">
+                <ns2:contentType>DOC_FAC</ns2:contentType>
+                <ns2:airsvalue>FACT_USR_ACHAT.USR="#LOGIN_ID#" OR FACT_USR_CTRLGEST1.USR="#LOGIN_ID#" OR FACT_USR_CTRLGEST2.USR="#LOGIN_ID#" OR FACT_USR_CTRLGEST1.USR="#LOGIN_ID#" OR FACT_USR_CDP1.USR="#LOGIN_ID#" OR FACT_USR_CDP2.USR="#LOGIN_ID#" OR FACT_USR_CDP3.USR="#LOGIN_ID#"</ns2:airsvalue>
+                <ns2:airsProfile>210</ns2:airsProfile>
+            </ns2:dossierrequest>
+        </extraFilter>
+    </parentContentType>
+</rootContentType>
