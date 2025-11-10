@@ -46,6 +46,24 @@ def roadNumber = person?.address?.home?.roadNumber ?: 666
 ----
 ====
 
+[[_99_appendixes_variable_available]]
+==== Tester si une variable est disponible/présente
+
+Pour quelques raisons que ce soient, vous pouvez être amené à vouloir tester si une variable est présente.
+
+Pour cela, le contexte *binding* du script {groovy} peut être testé comme il suit
+
+[source, groovy]
+--
+// test si la variable *_userContext* est disponible
+  if(binding.variables.containsKey("_userContext")) {
+    _scriptLogger("La variable \"_userContext\" est disponible (user name $_userContext.userFullName")
+  }
+  else {
+    // variable non disponible
+  }
+--
+
 [[_99_appendixes_groovy_scope]]
 ==== Portée des variables
 
@@ -85,7 +103,7 @@ include::{sourcedir}/scope_variables.groovy[]
 ==== Substitution dans les chaines de caractères
 
 Comme indiqué dans la
-link:++https://docs.groovy-lang.org/latest/html/documentation/index.html#_string_interpolation++[*documentation*, window="_blank"],
+pass:[<a href="https://docs.groovy-lang.org/latest/html/documentation/index.html#_string_interpolation" target="_blank">documentation</a>],
 il est possible de formater facilement des messages/chaines de caractères avec des données contextuelles en utilisant le _placeholder_ '[blue-text]#*${}*#' ou '[blue-text]#*$*#'.
 
 [source, groovy]
