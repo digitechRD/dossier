@@ -1,0 +1,57 @@
+[[appendix_admin]]
+=== *Admin* modèles
+
+
+[[appendix_admin_wsprofile]]
+WSProfile
+[cols="2a,3a,3a,1a",options="header"]
+|===
+|Paramètre|Description|Observations|Type
+|*id*|identifiant du profil||_integer_
+|*code*|code du profil||_string_
+|*label*|label du profil||_string_
+|*users*|liste des utilisateurs assignés à ce profil|cf. <<appendix_admin_wsprofileuser, WSProfileUser>>|
+|*rights*|liste des droits assignés à ce profil|cf. <<appendix_admin_wsright, WSRight>>|
+|*domainRights*|liste des droits par domain assignés à ce profil|cf. <<appendix_admin_wsdomainprofile, WSDomainProfile>>|
+|===
+
+[[appendix_admin_wsprofileuser]]
+WSProfileUser
+[cols="2a,3a,3a,1a",options="header"]
+|===
+|Paramètre|Description|Observations|Type
+|*id*|identifiant de l'utilisateur||_integer_
+|*login*|login de l'utilisateur||_string_
+|===
+
+[[appendix_admin_wsright]]
+WSRight
+[cols="2a,3a,3a,1a",options="header"]
+|===
+|Paramètre|Description|Observations|Type
+|*id*|identifiant du droit||_integer_
+|*code*|code du droit||_string_
+|*label*|label du droit||_string_
+|===
+
+[[appendix_admin_wsdomainprofile]]
+WSDomainProfile
+[cols="2a,3a,3a,1a",options="header"]
+|===
+|Paramètre|Description|Observations|Type
+|*id*|identifiant du droit||_integer_
+|*code*|code du droit||_string_
+|*label*|label du droit||_string_
+|*rights*|liste des droits assignés à ce domain|cf. <<appendix_admin_wsdomainprofile_right, WSDomainProfileRight>>|
+|===
+
+[[appendix_admin_wsdomainprofile_right]]
+WSDomainProfileRight
+[cols="2a,3a,3a,1a",options="header"]
+|===
+|Paramètre|Description|Observations|Type
+|*secretLevel*|niveau de secret||_integer_
+|*roleId*|Identifiant du rôle||_integer_
+|*withSelect*|droit pur *recherche*||_boolean_
+|*withUpdate*|droit pur *update*||_boolean_
+|===

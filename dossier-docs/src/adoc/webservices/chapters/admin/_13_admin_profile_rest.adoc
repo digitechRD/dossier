@@ -1,0 +1,268 @@
+[[admin_profile_rest]]
+==== Profils
+
+[NOTE]
+====
+Ce {webservice} n'est disponible qu'à partir de la version {9_0} de {arcadeged}
+====
+
+===== Client
+
+La classe `com.digitech.dossier.rest.ws.admin.impl.ProfileClient` de la librairie *com.digitech.airs:dossier-rest-client:{dossier-rest-client-version}* abstrait
+l'utilisation de cette *API* ({java} seulement)
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+===== Méthodes
+
+====== {GET} /admin/profiles
+
+Cette méthode permet de récupérer la liste de tous les profils et certaines de leurs propriétés.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http[s]://<host>:<port>/<context>/rest/admin/profiles \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<admin_profile_list_rest_response1>>)
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[admin_profile_list_rest_response1]]
+[source,json]
+.Retour, liste des profils
+----
+[
+  {
+    "id": 160,
+    "code": "ADMIN_AIRS",
+    "label": "Paramétrage plateforme Airs3",
+    "users": [
+      {
+        "id": 1,
+        "login": "adm_airs3"
+      },
+      {
+        "id": 2,
+        "login": "adminCourrier"
+      }
+    ],
+    "rights": [
+      {
+        "id": 21,
+        "code": "ADMIN_WEB",
+        "label": "Configuration de l'interface WEB"
+      },
+      {
+        "id": 27,
+        "code": "SECURITY_USER",
+        "label": "Accï¿½s et Sï¿½curitï¿½ : Gestion des utilisateurs"
+      }
+    ],
+    "domainRights": [
+      {
+        "code": "DOSSIER_EXTERNE",
+        "label": "Dossier externe",
+        "rights": [
+          {
+            "secretLevel": 0,
+            "roleId": 160,
+            "withSelect": true,
+            "withUpdate": true
+          }
+        ]
+      }
+    ]
+  }
+]
+----
+
+====== {POST} /admin/profiles
+
+Cette méthode permet de créer un nouveau profil.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_profil__|{body}|Structure *WSProfile*|[red]*Oui*|cf. <<appendix_admin_wsprofile, WSProfile>>
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'POST' \
+  'http[s]://<host>:<port>/<context>/rest/admin/profiles \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+  -d <WSProfile>
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*304*|Profil déjà existant
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*404*|Utilisateur non autorisé à opérer sur les profils
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+====== {PATCH} /admin/profiles
+
+Cette méthode permet de mettre à jour un nouveau profil.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_profil__|{body}|Structure *WSProfile*|[red]*Oui*|cf. <<appendix_admin_wsprofile, WSProfile>>
+|_clearData_|{query}|Utiliser la structure fournie pour mettre à jour [underline]#complètement# le *profil*|[red]*Oui*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'PATCH' \
+  'http[s]://<host>:<port>/<context>/rest/admin/profiles?clearData=false \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+  -d <WSProfile>
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*304*|Profil déjà existant
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*404*|Utilisateur non autorisé à opérer sur les profils
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+====== {GET} /admin/profiles{profileCode}
+
+Cette méthode permet de récupérer un profil existant.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_profileCode_|{path}|CODE du profil souhaité||
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  'http[s]://<host>:<port>/<context>/rest/admin/profiles/ADMIN_PROFIL \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<appendix_admin_wsprofile, WSProfile>>)
+|[red]*304*|Profil déjà existant
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*404*|Utilisateur non autorisé à opérer sur les profils
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+====== {GET} /admin/profiles{profileId}
+
+[NOTE]
+====
+Identique au web service précédent, automatiquement routé vers celui-ci si la paramètre *userId* est un *numérique*.
+====
+
+
+====== {PUT} /admin/profiles/right{profile}/{right}
+
+Cette méthode permet d'ajout un droit à un profil existant.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_profile_|{path}|CODE du profil souhaité|[red]*Oui*|
+|_right_|{path}|CODE du droit que l'on souhaite rattacher|[red]*Oui*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'PUT' \
+  'http[s]://<host>:<port>/<context>/rest/admin/profiles/right/ADMIN_PROFIL/READ_RIGHT \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*404*|Utilisateur non autorisé à opérer sur les profils
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+====== {DELETE} /admin/profiles/right{profile}/{right}
+
+Cette méthode permet d'de supprimer un droit d'un profil existant.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_profile_|{path}|CODE du profil souhaité|[red]*Oui*|
+|_right_|{path}|CODE du droit que l'on souhaite rattacher|[red]*Oui*|
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  'http[s]://<host>:<port>/<context>/rest/admin/profiles/right/ADMIN_PROFIL/READ_RIGHT \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*404*|Utilisateur non autorisé à opérer sur les profils
+|[red]*500*|Erreur interne au serveur/service
+|===
