@@ -1,0 +1,15 @@
+[[_03_options_security]]
+=== Sécurité
+
+[cols="4a,3a,1a,2a",options="header"]
+|===
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*security.authentication.user.allow.password.lost.link*|Autoriser l'utilisateur à demander son changement de passe (perdu) via la page d'accueil|Boolean|[red]#false#
+|*security.authentication.user.lost.link.expiration.duration*|Temps maximum (en minute) de validité de l'URL de renouvellement de mot de passe|Integer|*10*
+|*security.config.skip.error.redirection*|Ignorer l'affichage de la page d'erreur de configuration de l'application|Boolean|[green]#true#
+|*security.encode.document.renderer.servlet.parameters*|Encodage des paramètres de l'URL de rendu des documents (thumbnails)|Boolean|[red]#false#
+|*security.force.https.scheme*|Forcer le protocole https|Boolean|[red]#false#
+|*security.session.cookie.http-only*|Accès au cookie en http|Boolean|[red]#false#
+|*security.session.cookie.secure*|Sécuriser le cookie de session|Boolean|[green]#true#
+|*security.session.cookie.tracking.mode*|Méthode utilisée pour suivre la session utilisateur|String|*COOKIE (URL, SSL)*
+|===
