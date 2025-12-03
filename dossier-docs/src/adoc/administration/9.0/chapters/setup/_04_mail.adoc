@@ -172,15 +172,15 @@ Il faut ensuite récupérer ces 2 informations depuis la *Vue d'ensemble* :
 * tenantId : ID de l'annuaire
 * clientId : ID d'application
 
-image::./04_mail/application_infos.png[]
+image::mail/application_infos.png[]
 
 Enfin, depuis le menu *Certificats et secrets*, créez un secret client dont vous récupèrerez la *valeur* (à ne pas confondre avec l'ID du secret).
 
-image::./04_mail/add_secret.png[]
+image::mail/add_secret.png[]
 
 Attention au bout d'un certain temps après sa création, il n'est plus possible de copier la *valeur* du secret, il faut donc bien la récupérer la 1ère fois et la conserver.
 
-image::./04_mail/copy_secret.png[]
+image::mail/copy_secret.png[]
 
 Pour envoyer des mails via Microsoft Exchange Online / Office 365 avec une application (sans mot de passe utilisateur), il faut créer/configurer un service
 principal dans Azure AD et lui attribuer les permissions nécessaires. Le service principal peut être créé à l’aide des commandes PowerShell ci-dessous (s’il n’existe pas déjà) :
@@ -263,21 +263,21 @@ Rendez vous sur la console https://console.cloud.google.com/welcome[Google Cloud
 
 1) À partir du menu latéral, naviguez vers *API et services* → Écran de consentement OAuth.
 
-image::./04_mail/api_services.png[]
+image::mail/api_services.png[]
 
 2) Vérifiez via le menu *Audience* que le type d’utilisateur est *Interne* (usage au sein de l’organisation) ou *Externe* (accès public).
 
-image::./04_mail/audience.png[]
+image::mail/audience.png[]
 
 3) Naviguez ensuite dans *Accès aux données*, cliquez sur *Ajouter ou supprimer des niveaux d'accès*, puis ajoutez *https://mail.google.com/*
 
-image::./04_mail/data_access.png[]
+image::mail/data_access.png[]
 
 * Comptes de service
 
 1) Rendez-vous dans IAM et administration → Comptes de service.
 
-image::./04_mail/service_accounts.png[]
+image::mail/service_accounts.png[]
 
 2) Si besoin, créez un compte de service.
 
@@ -286,7 +286,7 @@ configuration doit être mentionné dans l'attribut *confFile* de la balise *oau
 
 4) Relevez l’ID client du compte de service pour l’étape suivante.
 
-image::./04_mail/account_id.png[]
+image::mail/account_id.png[]
 
 ====== Configuration dans la console d’administration Google Workspace
 

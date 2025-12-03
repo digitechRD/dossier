@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">02/12/2025 17:20:06</span>
+<span id="revdate">03/12/2025 07:16:38</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -97,49 +97,35 @@
 <li><a href="#_03_options_techniques">3.35. Options <em>`techniques`</em></a></li>
 </ul>
 </li>
-<li><a href="#_04_exploitation">4. Exploitation</a>
+<li><a href="#_04_setup">4. Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_04_logs">4.1. Configuration des logs</a>
+<li><a href="#_06_mail">4.1. Configuration de l&#8217;envoi de mails</a>
 <ul class="sectlevel3">
-<li><a href="#_configuration_générale">4.1.1. Configuration générale</a></li>
-<li><a href="#_modification_directe_via_les_préférences">4.1.2. Modification directe via les préférences</a></li>
-<li><a href="#_modification_via_les_apis_rest_dexploitation">4.1.3. Modification via les apis <code><span style="color:#73A12E">REST</span></code> d&#8217;exploitation</a></li>
-<li><a href="#_description_détaillée">4.1.4. Description détaillée</a>
+<li><a href="#_paramètres_additionnels">4.1.1. Paramètres additionnels</a></li>
+<li><a href="#_certificats">4.1.2. Certificats</a></li>
+<li><a href="#_examples">4.1.3. Examples</a>
 <ul class="sectlevel4">
-<li><a href="#_appender">4.1.4.1. Appender</a></li>
-<li><a href="#_logger">4.1.4.2. Logger</a></li>
+<li><a href="#_ovh">4.1.3.1. <span style="color: #46caf6">OVH</span></a></li>
+<li><a href="#_gmail">4.1.3.2. <span style="color: #185abc">gmail</span></a></li>
+<li><a href="#_office_365">4.1.3.3. <span style="color: #a84d58">Office 365</span></a></li>
 </ul>
 </li>
-<li><a href="#_logger_personnalisé">4.1.5. Logger personnalisé</a></li>
-</ul>
-</li>
-<li><a href="#_06_mail">4.2. Configuration de l&#8217;envoi de mails</a>
-<ul class="sectlevel3">
-<li><a href="#_paramètres_additionnels">4.2.1. Paramètres additionnels</a></li>
-<li><a href="#_certificats">4.2.2. Certificats</a></li>
-<li><a href="#_examples">4.2.3. Examples</a>
+<li><a href="#_authentification_moderne_oauth">4.1.4. Authentification moderne OAuth</a>
 <ul class="sectlevel4">
-<li><a href="#_ovh">4.2.3.1. <span style="color: #46caf6">OVH</span></a></li>
-<li><a href="#_gmail">4.2.3.2. <span style="color: #185abc">gmail</span></a></li>
-<li><a href="#_office_365">4.2.3.3. <span style="color: #a84d58">Office 365</span></a></li>
-</ul>
-</li>
-<li><a href="#_authentification_moderne_oauth">4.2.4. Authentification moderne OAuth</a>
-<ul class="sectlevel4">
-<li><a href="#_office_365_2">4.2.4.1. <span style="color: #a84d58">Office 365</span></a>
+<li><a href="#_office_365_2">4.1.4.1. <span style="color: #a84d58">Office 365</span></a>
 <ul class="sectlevel5">
 <li><a href="#_configuration_microsoft_office_365_azure_ad">Configuration Microsoft Office 365 / Azure AD</a></li>
 <li><a href="#_configuration_arcade_ged">Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
-<li><a href="#_google_workspace">4.2.4.2. <span style="color: #185abc">Google Workspace</span></a>
+<li><a href="#_google_workspace">4.1.4.2. <span style="color: #185abc">Google Workspace</span></a>
 <ul class="sectlevel5">
 <li><a href="#_configuration_dans_google_cloud_console">Configuration dans Google Cloud Console</a></li>
 <li><a href="#_configuration_dans_la_console_dadministration_google_workspace">Configuration dans la console d’administration Google Workspace</a></li>
 <li><a href="#_configuration_arcade_ged_2">Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
-<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">4.2.4.3. Exemples de configuration avec la balise oauth</a>
+<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">4.1.4.3. Exemples de configuration avec la balise oauth</a>
 <ul class="sectlevel5">
 <li><a href="#_office_365_3"><span style="color: #a84d58">Office 365</span></a></li>
 <li><a href="#_google_workspace_2"><span style="color: #185abc">Google Workspace</span></a></li>
@@ -149,46 +135,64 @@
 </li>
 </ul>
 </li>
-<li><a href="#_04_javamelody">4.3. <code><span style="color:#609dff">Javamelody</span></code></a>
-<ul class="sectlevel3">
-<li><a href="#_configuration">4.3.1. Configuration</a></li>
-<li><a href="#_exploitation">4.3.2. Exploitation</a></li>
 </ul>
 </li>
-<li><a href="#_04_temp_folders">4.4. Autres données d&#8217;exploitation</a></li>
-</ul>
-</li>
-<li><a href="#_20_custom">5. Personnalisation de l&#8217;application</a>
+<li><a href="#_05">5. Exploitation</a>
 <ul class="sectlevel2">
-<li><a href="#_20_custom_theme">5.1. Thème, personnalisation du look</a>
+<li><a href="#_04_logs">5.1. Configuration des logs</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction">5.1.1. Introduction</a></li>
-<li><a href="#_20_custom_theme_color">5.1.2. Personnalisation des couleurs</a></li>
-<li><a href="#_20_custom_theme_color_flow">5.1.3. Personnalisation des couleurs <strong><span class="underline">par flux</span></strong></a></li>
-<li><a href="#_20_custom_theme_images">5.1.4. Personnalisation des images</a></li>
-<li><a href="#_20_custom_theme_images_login">5.1.5. Personnalisation des images sur la page de <strong>Login</strong></a></li>
+<li><a href="#_configuration_générale">5.1.1. Configuration générale</a></li>
+<li><a href="#_modification_directe_via_les_préférences">5.1.2. Modification directe via les préférences</a></li>
+<li><a href="#_modification_via_les_apis_rest_dexploitation">5.1.3. Modification via les apis <code><span style="color:#73A12E">REST</span></code> d&#8217;exploitation</a></li>
+<li><a href="#_description_détaillée">5.1.4. Description détaillée</a>
+<ul class="sectlevel4">
+<li><a href="#_appender">5.1.4.1. Appender</a></li>
+<li><a href="#_logger">5.1.4.2. Logger</a></li>
 </ul>
 </li>
-<li><a href="#_20_custom_viewunit">5.2. [ViewUnit] ajout d&#8217;une action personnalisée</a>
-<ul class="sectlevel3">
-<li><a href="#_introduction_2">5.2.1. Introduction</a></li>
-<li><a href="#_module_adminairs">5.2.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
-<li><a href="#_expert_ajout_manuelle_dune_action_custom">5.2.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
-<li><a href="#_configuration_script_modale">5.2.4. Configuration script + modale</a></li>
-<li><a href="#_quelques_modèlesexemples_de_scripts">5.2.5. Quelques modèles/exemples de scripts</a></li>
+<li><a href="#_logger_personnalisé">5.1.5. Logger personnalisé</a></li>
 </ul>
 </li>
-<li><a href="#_20_custom_result">5.3. [Résultats] Personnalisation de la vue</a>
+<li><a href="#_04_javamelody">5.2. <code><span style="color:#609dff">Javamelody</span></code></a>
 <ul class="sectlevel3">
-<li><a href="#_styles">5.3.1. Styles</a></li>
+<li><a href="#_configuration">5.2.1. Configuration</a></li>
+<li><a href="#_exploitation">5.2.2. Exploitation</a></li>
 </ul>
 </li>
-<li><a href="#_20_task">5.4. [Cron] ajout d&#8217;une tâche planifiée</a>
+<li><a href="#_04_temp_folders">5.3. Autres données d&#8217;exploitation</a></li>
+</ul>
+</li>
+<li><a href="#_20_custom">6. Personnalisation de l&#8217;application</a>
+<ul class="sectlevel2">
+<li><a href="#_20_custom_theme">6.1. Thème, personnalisation du look</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction_3">5.4.1. Introduction</a></li>
-<li><a href="#_déclaration">5.4.2. Déclaration</a></li>
-<li><a href="#_introduction_4">5.4.3. Introduction</a></li>
-<li><a href="#_déclaration_2">5.4.4. Déclaration</a></li>
+<li><a href="#_introduction">6.1.1. Introduction</a></li>
+<li><a href="#_20_custom_theme_color">6.1.2. Personnalisation des couleurs</a></li>
+<li><a href="#_20_custom_theme_color_flow">6.1.3. Personnalisation des couleurs <strong><span class="underline">par flux</span></strong></a></li>
+<li><a href="#_20_custom_theme_images">6.1.4. Personnalisation des images</a></li>
+<li><a href="#_20_custom_theme_images_login">6.1.5. Personnalisation des images sur la page de <strong>Login</strong></a></li>
+</ul>
+</li>
+<li><a href="#_20_custom_viewunit">6.2. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_2">6.2.1. Introduction</a></li>
+<li><a href="#_module_adminairs">6.2.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
+<li><a href="#_expert_ajout_manuelle_dune_action_custom">6.2.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
+<li><a href="#_configuration_script_modale">6.2.4. Configuration script + modale</a></li>
+<li><a href="#_quelques_modèlesexemples_de_scripts">6.2.5. Quelques modèles/exemples de scripts</a></li>
+</ul>
+</li>
+<li><a href="#_20_custom_result">6.3. [Résultats] Personnalisation de la vue</a>
+<ul class="sectlevel3">
+<li><a href="#_styles">6.3.1. Styles</a></li>
+</ul>
+</li>
+<li><a href="#_20_task">6.4. [Cron] ajout d&#8217;une tâche planifiée</a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_3">6.4.1. Introduction</a></li>
+<li><a href="#_déclaration">6.4.2. Déclaration</a></li>
+<li><a href="#_introduction_4">6.4.3. Introduction</a></li>
+<li><a href="#_déclaration_2">6.4.4. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -315,7 +319,7 @@ technique</strong> pour accéder <span class="underline">seulement</span> aux WE
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_ADD_DOC_MENU.png" alt="DOSSIERS ADD DOC MENU"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_ADD_DOC_MENU.png" alt="DOSSIERS ADD DOC MENU"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -327,7 +331,7 @@ technique</strong> pour accéder <span class="underline">seulement</span> aux WE
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_ADMIN.png" alt="DOSSIERS MENU ADMIN"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_ADMIN.png" alt="DOSSIERS MENU ADMIN"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -339,7 +343,7 @@ technique</strong> pour accéder <span class="underline">seulement</span> aux WE
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_FULL_TEXT_SEARCH.png" alt="DOSSIERS MENU FULL TEXT SEARCH"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_FULL_TEXT_SEARCH.png" alt="DOSSIERS MENU FULL TEXT SEARCH"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -363,7 +367,7 @@ technique</strong> pour accéder <span class="underline">seulement</span> aux WE
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_HIDDEN_BASKETS.png" alt="DOSSIERS MENU HIDDEN BASKETS"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_HIDDEN_BASKETS.png" alt="DOSSIERS MENU HIDDEN BASKETS"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -378,7 +382,7 @@ technique</strong> pour accéder <span class="underline">seulement</span> aux WE
 affichage de l&#8217;icône Accueil</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_HOME.png" alt="DOSSIERS MENU HOME"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_HOME.png" alt="DOSSIERS MENU HOME"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -390,7 +394,7 @@ affichage de l&#8217;icône Accueil</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_INDEXATION.png" alt="DOSSIERS MENU INDEXATION"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_INDEXATION.png" alt="DOSSIERS MENU INDEXATION"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -402,7 +406,7 @@ affichage de l&#8217;icône Accueil</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_REPORTING.png" alt="DOSSIERS MENU REPORTING"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_REPORTING.png" alt="DOSSIERS MENU REPORTING"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -417,7 +421,7 @@ affichage de l&#8217;icône Accueil</p>
 résultats de recherche (simple/avancée)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_RESULT_3_WINDOWS.png" alt="DOSSIERS MENU RESULT 3 WINDOWS"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_RESULT_3_WINDOWS.png" alt="DOSSIERS MENU RESULT 3 WINDOWS"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -429,7 +433,7 @@ résultats de recherche (simple/avancée)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_RESULTSEARCH.png" alt="DOSSIERS MENU RESULTSEARCH"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_RESULTSEARCH.png" alt="DOSSIERS MENU RESULTSEARCH"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -450,10 +454,10 @@ résultats de recherche (simple/avancée)</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_SEARCH_menu.png" alt="DOSSIERS MENU SEARCH menu"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_SEARCH_menu.png" alt="DOSSIERS MENU SEARCH menu"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_SEARCH_dropdown.png" alt="DOSSIERS MENU SEARCH dropdown"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_SEARCH_dropdown.png" alt="DOSSIERS MENU SEARCH dropdown"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -475,10 +479,10 @@ résultats de recherche (simple/avancée)</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_SEARCH_ADVANCED_search.png" alt="DOSSIERS MENU SEARCH ADVANCED search"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_SEARCH_ADVANCED_search.png" alt="DOSSIERS MENU SEARCH ADVANCED search"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_SEARCH_ADVANCED_dropdown.png" alt="DOSSIERS MENU SEARCH ADVANCED dropdown"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_SEARCH_ADVANCED_dropdown.png" alt="DOSSIERS MENU SEARCH ADVANCED dropdown"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -490,7 +494,7 @@ résultats de recherche (simple/avancée)</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_SEARCH_RECYCLE_BIN.png" alt="DOSSIERS MENU SEARCH RECYCLE BIN"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_SEARCH_RECYCLE_BIN.png" alt="DOSSIERS MENU SEARCH RECYCLE BIN"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -505,7 +509,7 @@ résultats de recherche (simple/avancée)</p>
 du plan de classement au sein de la vue indexation</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_TREE_INDEXATION.png" alt="DOSSIERS MENU TREE INDEXATION"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_TREE_INDEXATION.png" alt="DOSSIERS MENU TREE INDEXATION"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -527,7 +531,7 @@ passe</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_USERSMANAGEMENT_password.png" alt="DOSSIERS MENU USERSMANAGEMENT password"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_USERSMANAGEMENT_password.png" alt="DOSSIERS MENU USERSMANAGEMENT password"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -560,7 +564,7 @@ passe</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_COMMENTAIRE_READ.png" alt="DOSSIERS TAB COMMENTAIRE READ"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_COMMENTAIRE_READ.png" alt="DOSSIERS TAB COMMENTAIRE READ"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -582,10 +586,10 @@ passe</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_action.png" alt="DOSSIERS TAB COMMENTAIRE WRITE action"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_action.png" alt="DOSSIERS TAB COMMENTAIRE WRITE action"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_zone.png" alt="DOSSIERS TAB COMMENTAIRE WRITE zone"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_COMMENTAIRE_WRITE_zone.png" alt="DOSSIERS TAB COMMENTAIRE WRITE zone"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -597,7 +601,7 @@ passe</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_DOCUMENT_LINK.png" alt="DOSSIERS TAB DOCUMENT LINK"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_DOCUMENT_LINK.png" alt="DOSSIERS TAB DOCUMENT LINK"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -624,7 +628,7 @@ passe</p>
 mode vue</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png" alt="DOSSIERS TAB DOCUMENT READ WRITE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png" alt="DOSSIERS TAB DOCUMENT READ WRITE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -639,7 +643,7 @@ mode vue</p>
 mode édition</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png" alt="DOSSIERS TAB DOCUMENT READ WRITE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_DOCUMENT_READ_WRITE.png" alt="DOSSIERS TAB DOCUMENT READ WRITE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -653,7 +657,7 @@ mode édition</p>
 <p>En mode Vue ou Édition</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_HISTORIQUE.png" alt="DOSSIERS TAB HISTORIQUE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_HISTORIQUE.png" alt="DOSSIERS TAB HISTORIQUE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -668,7 +672,7 @@ mode édition</p>
 mode vue</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_INDEX_READ_WRITE.png" alt="DOSSIERS TAB INDEX READ WRITE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_INDEX_READ_WRITE.png" alt="DOSSIERS TAB INDEX READ WRITE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -690,10 +694,10 @@ mode vue</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_INDEX_READ_WRITE.png" alt="DOSSIERS TAB INDEX READ WRITE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_INDEX_READ_WRITE.png" alt="DOSSIERS TAB INDEX READ WRITE"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_INDEX_WRITE_modify.png" alt="DOSSIERS TAB INDEX WRITE modify"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_INDEX_WRITE_modify.png" alt="DOSSIERS TAB INDEX WRITE modify"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -714,7 +718,7 @@ mode vue</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_SIMILAR_DOCUMENT_LINK.png" alt="DOSSIERS TAB SIMILAR DOCUMENT LINK"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_SIMILAR_DOCUMENT_LINK.png" alt="DOSSIERS TAB SIMILAR DOCUMENT LINK"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -728,7 +732,7 @@ mode vue</p>
 <p>Le workflow doit être activé</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TAB_WORKFLOW.png" alt="DOSSIERS TAB WORKFLOW"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TAB_WORKFLOW.png" alt="DOSSIERS TAB WORKFLOW"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -771,7 +775,7 @@ sélectionnées"</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DEL_ATTACHMENT.png" alt="DOSSIERS DEL ATTACHMENT"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DEL_ATTACHMENT.png" alt="DOSSIERS DEL ATTACHMENT"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -783,7 +787,7 @@ sélectionnées"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DEL_ATTACHMENT_VERSION.png" alt="DOSSIERS DEL ATTACHMENT VERSION"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DEL_ATTACHMENT_VERSION.png" alt="DOSSIERS DEL ATTACHMENT VERSION"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -795,7 +799,7 @@ sélectionnées"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DOWNLOAD_ATTACHMENT.png" alt="DOSSIERS DOWNLOAD ATTACHMENT"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DOWNLOAD_ATTACHMENT.png" alt="DOSSIERS DOWNLOAD ATTACHMENT"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -818,7 +822,7 @@ d&#8217;importer des pièces jointes dans tous les modes</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_IMPORT_ATTACHMENT.png" alt="DOSSIERS IMPORT ATTACHMENT"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_IMPORT_ATTACHMENT.png" alt="DOSSIERS IMPORT ATTACHMENT"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -841,7 +845,7 @@ d&#8217;une pièce jointe</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MODIFY_ATTACHMENT.png" alt="DOSSIERS MODIFY ATTACHMENT"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MODIFY_ATTACHMENT.png" alt="DOSSIERS MODIFY ATTACHMENT"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -855,7 +859,7 @@ d&#8217;une pièce jointe</p>
 <p>Affichage de l&#8217;action "Insérer des pages"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PJ_ADD_PAGE.png" alt="DOSSIERS PJ ADD PAGE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PJ_ADD_PAGE.png" alt="DOSSIERS PJ ADD PAGE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -881,7 +885,7 @@ d&#8217;une pièce jointe</p>
 <p>Affichage de l&#8217;action "Supprimer des pages"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PJ_DELETE_PAGE.png" alt="DOSSIERS PJ DELETE PAGE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PJ_DELETE_PAGE.png" alt="DOSSIERS PJ DELETE PAGE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -907,7 +911,7 @@ d&#8217;une pièce jointe</p>
 <p>Mode JavaWebStart activé</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PJ_PRINT.png" alt="DOSSIERS PJ PRINT"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PJ_PRINT.png" alt="DOSSIERS PJ PRINT"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -928,10 +932,10 @@ d&#8217;une pièce jointe</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_VIEW_ATTACHMENT_actions.png" alt="DOSSIERS VIEW ATTACHMENT actions"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_VIEW_ATTACHMENT_actions.png" alt="DOSSIERS VIEW ATTACHMENT actions"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_VIEW_ATTACHMENT_search.png" alt="DOSSIERS VIEW ATTACHMENT search"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_VIEW_ATTACHMENT_search.png" alt="DOSSIERS VIEW ATTACHMENT search"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -973,10 +977,10 @@ d&#8217;une pièce jointe</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_ADD_DOC.png" alt="DOSSIERS ADD DOC"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_ADD_DOC.png" alt="DOSSIERS ADD DOC"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_ADD_DOC_header.png" alt="DOSSIERS ADD DOC header"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_ADD_DOC_header.png" alt="DOSSIERS ADD DOC header"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1007,10 +1011,10 @@ d&#8217;une pièce jointe</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DISPLAY_TREE_ACCESS_doc.png" alt="DOSSIERS DISPLAY TREE ACCESS doc"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DISPLAY_TREE_ACCESS_doc.png" alt="DOSSIERS DISPLAY TREE ACCESS doc"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DISPLAY_TREE_ACCESS_card.png" alt="DOSSIERS DISPLAY TREE ACCESS card"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DISPLAY_TREE_ACCESS_card.png" alt="DOSSIERS DISPLAY TREE ACCESS card"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1029,7 +1033,7 @@ actions indisponibles</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DOC_COPY.png" alt="DOSSIERS DOC COPY"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DOC_COPY.png" alt="DOSSIERS DOC COPY"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1050,7 +1054,7 @@ actions indisponibles</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_COPY_URL.png" alt="DOSSIERS COPY URL"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_COPY_URL.png" alt="DOSSIERS COPY URL"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1072,7 +1076,7 @@ actions indisponibles</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DOC_DUPLICATE.png" alt="DOSSIERS DOC DUPLICATE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DOC_DUPLICATE.png" alt="DOSSIERS DOC DUPLICATE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1087,7 +1091,7 @@ actions indisponibles</p>
 actions indisponibles</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DOC_LINK.png" alt="DOSSIERS DOC LINK"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DOC_LINK.png" alt="DOSSIERS DOC LINK"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1112,7 +1116,7 @@ actions indisponibles</p>
 actions indisponibles</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DOC_MOVE.png" alt="DOSSIERS DOC MOVE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DOC_MOVE.png" alt="DOSSIERS DOC MOVE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1127,7 +1131,7 @@ actions indisponibles</p>
 actions indisponibles</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DOC_PASTE.png" alt="DOSSIERS DOC PASTE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DOC_PASTE.png" alt="DOSSIERS DOC PASTE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1146,10 +1150,10 @@ sélectionnés en CSV" et "Exporter tous les documents en CSV" dans la vue Résu
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_EXPORT_DOC_selected.png" alt="DOSSIERS EXPORT DOC selected"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_EXPORT_DOC_selected.png" alt="DOSSIERS EXPORT DOC selected"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_EXPORT_DOC_all.png" alt="DOSSIERS EXPORT DOC all"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_EXPORT_DOC_all.png" alt="DOSSIERS EXPORT DOC all"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1171,7 +1175,7 @@ actions indisponibles</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_LINK_ADD.png" alt="DOSSIERS LINK ADD"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_LINK_ADD.png" alt="DOSSIERS LINK ADD"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1193,7 +1197,7 @@ actions indisponibles</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_LINK_DELETE.png" alt="DOSSIERS LINK DELETE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_LINK_DELETE.png" alt="DOSSIERS LINK DELETE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1215,7 +1219,7 @@ actions indisponibles</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SAVE_DOC_FORBIDDEN.png" alt="DOSSIERS SAVE DOC FORBIDDEN"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SAVE_DOC_FORBIDDEN.png" alt="DOSSIERS SAVE DOC FORBIDDEN"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1230,7 +1234,7 @@ actions indisponibles</p>
 activé</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SHOW_USER_LOCKED_DOC.png" alt="DOSSIERS SHOW USER LOCKED DOC"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SHOW_USER_LOCKED_DOC.png" alt="DOSSIERS SHOW USER LOCKED DOC"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1244,7 +1248,7 @@ activé</p>
 <p>Pour les documents dont on n&#8217;est pas l&#8217;auteur</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SUP_DOC.png" alt="DOSSIERS SUP DOC"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SUP_DOC.png" alt="DOSSIERS SUP DOC"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1256,7 +1260,7 @@ activé</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SUP_DOC.png" alt="DOSSIERS SUP DOC"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SUP_DOC.png" alt="DOSSIERS SUP DOC"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1277,7 +1281,7 @@ activé</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_USER_LOCK.png" alt="DOSSIERS USER LOCK" height="24"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_USER_LOCK.png" alt="DOSSIERS USER LOCK" height="24"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1299,7 +1303,7 @@ résultats (en plus du droit <strong>DOSSIERS_USER_LOCK</strong>)</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_LOCK_MULTIPLE.png" alt="DOSSIERS LOCK MULTIPLE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_LOCK_MULTIPLE.png" alt="DOSSIERS LOCK MULTIPLE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1314,7 +1318,7 @@ résultats (en plus du droit <strong>DOSSIERS_USER_LOCK</strong>)</p>
 résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_UNLOCK_MULTIPLE.png" alt="DOSSIERS UNLOCK MULTIPLE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_UNLOCK_MULTIPLE.png" alt="DOSSIERS UNLOCK MULTIPLE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1326,7 +1330,7 @@ résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SUP_DOC.png" alt="DOSSIERS SUP DOC"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SUP_DOC.png" alt="DOSSIERS SUP DOC"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1361,7 +1365,7 @@ résultats</p>
 <p>Pour les commentaires dont on n&#8217;est pas l&#8217;auteur</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_COMMENT_DELETE.png" alt="DOSSIERS COMMENT DELETE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_COMMENT_DELETE.png" alt="DOSSIERS COMMENT DELETE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1375,7 +1379,7 @@ résultats</p>
 <p>Pour les commentaires dont on n&#8217;est pas l&#8217;auteur</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MODIFY_COMMENT_ALL.png" alt="DOSSIERS MODIFY COMMENT ALL"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MODIFY_COMMENT_ALL.png" alt="DOSSIERS MODIFY COMMENT ALL"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1387,7 +1391,7 @@ résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_NOTIFY_COMMENTS.png" alt="DOSSIERS NOTIFY COMMENTS"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_NOTIFY_COMMENTS.png" alt="DOSSIERS NOTIFY COMMENTS"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1409,7 +1413,7 @@ résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_COMMENT_SHARE_USER.png" alt="DOSSIERS COMMENT SHARE USER"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_COMMENT_SHARE_USER.png" alt="DOSSIERS COMMENT SHARE USER"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1597,10 +1601,10 @@ Recherche Plein-Texte dans la barre de recherche</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_FTSEARCH_GLOBAL_searchBar.png" alt="DOSSIERS FTSEARCH GLOBAL searchBar"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_FTSEARCH_GLOBAL_searchBar.png" alt="DOSSIERS FTSEARCH GLOBAL searchBar"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_FTSEARCH_GLOBAL_menu.png" alt="DOSSIERS FTSEARCH GLOBAL menu"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_FTSEARCH_GLOBAL_menu.png" alt="DOSSIERS FTSEARCH GLOBAL menu"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1612,7 +1616,7 @@ Recherche Plein-Texte dans la barre de recherche</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SEARCH_GLOBAL.png" alt="DOSSIERS SEARCH GLOBAL"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SEARCH_GLOBAL.png" alt="DOSSIERS SEARCH GLOBAL"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1626,7 +1630,7 @@ Recherche Plein-Texte dans la barre de recherche</p>
 <p>Dans la recherche avancée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SEARCH_MULTIPLE_FLOWS.png" alt="DOSSIERS SEARCH MULTIPLE FLOWS"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SEARCH_MULTIPLE_FLOWS.png" alt="DOSSIERS SEARCH MULTIPLE FLOWS"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1638,7 +1642,7 @@ Recherche Plein-Texte dans la barre de recherche</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SEARCHRESULT_FILTER.png" alt="DOSSIERS SEARCHRESULT FILTER"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SEARCHRESULT_FILTER.png" alt="DOSSIERS SEARCHRESULT FILTER"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1660,10 +1664,10 @@ préférences utilisateur</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SEARCHRESULT_WITH_PJ.png" alt="DOSSIERS SEARCHRESULT WITH PJ"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SEARCHRESULT_WITH_PJ.png" alt="DOSSIERS SEARCHRESULT WITH PJ"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SEARCHRESULT_WITH_PJ_preferences.png" alt="DOSSIERS SEARCHRESULT WITH PJ preferences"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SEARCHRESULT_WITH_PJ_preferences.png" alt="DOSSIERS SEARCHRESULT WITH PJ preferences"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1706,10 +1710,10 @@ Document</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_CLIPBOARD_action.png" alt="DOSSIERS PS CLIPBOARD action"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_CLIPBOARD_action.png" alt="DOSSIERS PS CLIPBOARD action"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_CLIPBOARD_dropdown.png" alt="DOSSIERS PS CLIPBOARD dropdown"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_CLIPBOARD_dropdown.png" alt="DOSSIERS PS CLIPBOARD dropdown"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1737,17 +1741,17 @@ favoris</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_DOCUMENT_TRACK_dropdown.png" alt="DOSSIERS PS DOCUMENT TRACK dropdown"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_DOCUMENT_TRACK_dropdown.png" alt="DOSSIERS PS DOCUMENT TRACK dropdown"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_DOCUMENT_TRACK_checkbox.png" alt="DOSSIERS PS DOCUMENT TRACK checkbox"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_DOCUMENT_TRACK_checkbox.png" alt="DOSSIERS PS DOCUMENT TRACK checkbox"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_DOCUMENT_TRACK_panel.png" alt="DOSSIERS PS DOCUMENT TRACK panel"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_DOCUMENT_TRACK_panel.png" alt="DOSSIERS PS DOCUMENT TRACK panel"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_DOCUMENT_TRACK_action.png" alt="DOSSIERS PS DOCUMENT TRACK action"></span>
-<span class="image"><img src="images/02_rights/DOSSIERS_PS_DOCUMENT_TRACK_action_untrack.png" alt="DOSSIERS PS DOCUMENT TRACK action untrack"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_DOCUMENT_TRACK_action.png" alt="DOSSIERS PS DOCUMENT TRACK action"></span>
+<span class="image"><img src="images/rights/DOSSIERS_PS_DOCUMENT_TRACK_action_untrack.png" alt="DOSSIERS PS DOCUMENT TRACK action untrack"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1773,15 +1777,15 @@ Résultats</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_FAVORITE_MANAGE_homeblock.png" alt="DOSSIERS PS FAVORITE MANAGE homeblock"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_FAVORITE_MANAGE_homeblock.png" alt="DOSSIERS PS FAVORITE MANAGE homeblock"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_FAVORITE_MANAGE_favorites.png" alt="DOSSIERS PS FAVORITE MANAGE favorites"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_FAVORITE_MANAGE_favorites.png" alt="DOSSIERS PS FAVORITE MANAGE favorites"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_FAVORITE_MANAGE_action.png" alt="DOSSIERS PS FAVORITE MANAGE action"></span>
-<span class="image"><img src="images/02_rights/DOSSIERS_PS_FAVORITE_MANAGE_search.png" alt="DOSSIERS PS FAVORITE MANAGE search"></span>
-<span class="image"><img src="images/02_rights/DOSSIERS_PS_FAVORITE_MANAGE_doc.png" alt="DOSSIERS PS FAVORITE MANAGE doc"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_FAVORITE_MANAGE_action.png" alt="DOSSIERS PS FAVORITE MANAGE action"></span>
+<span class="image"><img src="images/rights/DOSSIERS_PS_FAVORITE_MANAGE_search.png" alt="DOSSIERS PS FAVORITE MANAGE search"></span>
+<span class="image"><img src="images/rights/DOSSIERS_PS_FAVORITE_MANAGE_doc.png" alt="DOSSIERS PS FAVORITE MANAGE doc"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1793,7 +1797,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_HISTORY_DOCUMENT.png" alt="DOSSIERS PS HISTORY DOCUMENT"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_HISTORY_DOCUMENT.png" alt="DOSSIERS PS HISTORY DOCUMENT"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1805,7 +1809,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_HISTORY_SEARCH.png" alt="DOSSIERS PS HISTORY SEARCH"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_HISTORY_SEARCH.png" alt="DOSSIERS PS HISTORY SEARCH"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1817,7 +1821,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_REQ_CREATE.png" alt="DOSSIERS PS REQ CREATE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_REQ_CREATE.png" alt="DOSSIERS PS REQ CREATE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1829,7 +1833,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_REQ_DISP_SUBSCRIBE.png" alt="DOSSIERS PS REQ DISP SUBSCRIBE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_REQ_DISP_SUBSCRIBE.png" alt="DOSSIERS PS REQ DISP SUBSCRIBE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1841,7 +1845,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_REQ_DISPLAY_SHARED.png" alt="DOSSIERS PS REQ DISPLAY SHARED"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_REQ_DISPLAY_SHARED.png" alt="DOSSIERS PS REQ DISPLAY SHARED"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1853,7 +1857,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_REQ_SHARE_ALL.png" alt="DOSSIERS PS REQ SHARE ALL"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_REQ_SHARE_ALL.png" alt="DOSSIERS PS REQ SHARE ALL"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1865,7 +1869,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_REQ_SHARE_ORG.png" alt="DOSSIERS PS REQ SHARE ORG"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_REQ_SHARE_ORG.png" alt="DOSSIERS PS REQ SHARE ORG"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -1877,7 +1881,7 @@ Résultats</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_REQ_SHARE_USER.png" alt="DOSSIERS PS REQ SHARE USER"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_REQ_SHARE_USER.png" alt="DOSSIERS PS REQ SHARE USER"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1923,7 +1927,7 @@ Résultats</p>
 des préférences utilisateur</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_DELEGATION_ADD.png" alt="DOSSIERS DELEGATION ADD"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_DELEGATION_ADD.png" alt="DOSSIERS DELEGATION ADD"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -1972,7 +1976,7 @@ des préférences utilisateur</p>
 <p>Si le document est verrouillé par l&#8217;utilisateur</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SB_SEND.png" alt="DOSSIERS SB SEND"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SB_SEND.png" alt="DOSSIERS SB SEND"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2049,10 +2053,10 @@ classeurs" dans le panneau latéral</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_READ_options.png" alt="DOSSIERS WORKBOOK READ options"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_READ_options.png" alt="DOSSIERS WORKBOOK READ options"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_READ_verticalSideBar.png" alt="DOSSIERS WORKBOOK READ verticalSideBar"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_READ_verticalSideBar.png" alt="DOSSIERS WORKBOOK READ verticalSideBar"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2066,7 +2070,7 @@ classeurs" dans le panneau latéral</p>
 <p>Affichage de l&#8217;action "Ajouter à un classeur" dans les actions de la vue Document</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_UPDATE.png" alt="DOSSIERS WORKBOOK UPDATE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_UPDATE.png" alt="DOSSIERS WORKBOOK UPDATE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2088,10 +2092,10 @@ l&#8217;entête</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_ADD_options.png" alt="DOSSIERS WORKBOOK ADD options"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_ADD_options.png" alt="DOSSIERS WORKBOOK ADD options"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_ADD_docCreation.png" alt="DOSSIERS WORKBOOK ADD docCreation"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_ADD_docCreation.png" alt="DOSSIERS WORKBOOK ADD docCreation"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2112,10 +2116,10 @@ l&#8217;entête</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_SEARCH_menu.png" alt="DOSSIERS WORKBOOK SEARCH menu"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_SEARCH_menu.png" alt="DOSSIERS WORKBOOK SEARCH menu"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_WORKBOOK_SEARCH_action.png" alt="DOSSIERS WORKBOOK SEARCH action"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_WORKBOOK_SEARCH_action.png" alt="DOSSIERS WORKBOOK SEARCH action"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2172,7 +2176,7 @@ l&#8217;entête</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/SIGNATURE.png" alt="SIGNATURE"></span></p>
+<p><span class="image"><img src="images/rights/SIGNATURE.png" alt="SIGNATURE"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2194,7 +2198,7 @@ l&#8217;entête</p>
 <th class="tableblock halign-left valign-top">Permet d&#8217;afficher le menu "Préférences" avec les onglets : "Délégation", "Accès rapide
 aux actions personnalisées"
 et "Liste des contacts personnels"</th>
-<th class="tableblock halign-left valign-top"><span class="image"><img src="images/02_rights/DOSSIERS_HEADER_PREFERENCE.png" alt="DOSSIERS HEADER PREFERENCE"></span></th>
+<th class="tableblock halign-left valign-top"><span class="image"><img src="images/rights/DOSSIERS_HEADER_PREFERENCE.png" alt="DOSSIERS HEADER PREFERENCE"></span></th>
 </tr>
 </thead>
 <tbody>
@@ -2210,7 +2214,7 @@ et "Liste des contacts personnels"</th>
 aux actions personnalisées", "Liste des contacts personnels" et "Application"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_PREF_I18N.png" alt="DOSSIERS PS PREF I18N"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_PREF_I18N.png" alt="DOSSIERS PS PREF I18N"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2227,7 +2231,7 @@ onglets : "Délégation", "Accès rapide
 aux actions personnalisées", "Liste des contacts personnels", "Données personnelles" et "Accueil"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PS_PREF_MY_DATA.png" alt="DOSSIERS PS PREF MY DATA"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PS_PREF_MY_DATA.png" alt="DOSSIERS PS PREF MY DATA"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2239,7 +2243,7 @@ aux actions personnalisées", "Liste des contacts personnels", "Données personn
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_ALLOW_ADVANCED_TAB.png" alt="DOSSIERS ALLOW ADVANCED TAB"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_ALLOW_ADVANCED_TAB.png" alt="DOSSIERS ALLOW ADVANCED TAB"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2253,7 +2257,7 @@ aux actions personnalisées", "Liste des contacts personnels", "Données personn
 <p>Aucun effet si aucune colonne de type <em>Preview</em> est paramétrée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SELECT_ZOOM_AREA.png" alt="DOSSIERS SELECT ZOOM AREA"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SELECT_ZOOM_AREA.png" alt="DOSSIERS SELECT ZOOM AREA"></span></p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2286,7 +2290,7 @@ aux actions personnalisées", "Liste des contacts personnels", "Données personn
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_CHARTS_HOME_PAGE.png" alt="DOSSIERS CHARTS HOME PAGE"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_CHARTS_HOME_PAGE.png" alt="DOSSIERS CHARTS HOME PAGE"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2308,7 +2312,7 @@ aux actions personnalisées", "Liste des contacts personnels", "Données personn
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIER_HIDE_CUSTOM_PANEL.png" alt="DOSSIER HIDE CUSTOM PANEL"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIER_HIDE_CUSTOM_PANEL.png" alt="DOSSIER HIDE CUSTOM PANEL"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2331,10 +2335,10 @@ recherche plein texte</p>
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PIN_DOC_TO_HOME_PAGE_fulltext.png" alt="DOSSIERS PIN DOC TO HOME PAGE fulltext"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PIN_DOC_TO_HOME_PAGE_fulltext.png" alt="DOSSIERS PIN DOC TO HOME PAGE fulltext"></span></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_PIN_DOC_TO_HOME_PAGE_action.png" alt="DOSSIERS PIN DOC TO HOME PAGE action"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_PIN_DOC_TO_HOME_PAGE_action.png" alt="DOSSIERS PIN DOC TO HOME PAGE action"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2358,7 +2362,7 @@ recherche plein texte</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_MENU_SEARCH_RECYCLE_BIN.png" alt="DOSSIERS MENU SEARCH RECYCLE BIN"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_MENU_SEARCH_RECYCLE_BIN.png" alt="DOSSIERS MENU SEARCH RECYCLE BIN"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2372,7 +2376,7 @@ recherche plein texte</p>
 <p>Affichage de l&#8217;action "Envoyer un E-mail"</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_SEND_MAIL.png" alt="DOSSIERS SEND MAIL"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_SEND_MAIL.png" alt="DOSSIERS SEND MAIL"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -2384,7 +2388,7 @@ recherche plein texte</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="image"><img src="images/02_rights/DOSSIERS_TREE_FILTER.png" alt="DOSSIERS TREE FILTER"></span></p>
+<p><span class="image"><img src="images/rights/DOSSIERS_TREE_FILTER.png" alt="DOSSIERS TREE FILTER"></span></p>
 </div></div></td>
 </tr>
 <tr>
@@ -6723,14 +6727,654 @@ jointe</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_04_exploitation"><a class="anchor" href="#_04_exploitation"></a>4. Exploitation</h2>
+<h2 id="_04_setup"><a class="anchor" href="#_04_setup"></a>4. Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ce chapitre décrit les données, paramètres, outils,&#8230;&#8203; pouvant être utile lors de l&#8217;exploitation d'<code><span style="color:#448279">Arcade GED</span></code> afin d&#8217;analyser les performances et autres
+<p>Ce chapitre décrit la configuration de certaines fonctionnalités.</p>
+</div>
+<div class="sect2">
+<h3 id="_06_mail"><a class="anchor" href="#_06_mail"></a>4.1. Configuration de l&#8217;envoi de mails</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ce paramétrage permet aux utilisateurs d'<code><span style="color:#448279">Arcade GED</span></code> d&#8217;envoyer des mails à d&#8217;autres utilisateurs ou à des personnes externes.</p>
+</div>
+<div class="paragraph">
+<p>Il permet également l&#8217;envoi de notifications (<em>si paramétrées</em>) dans l&#8217;application.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le paramétrage se fait via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou directement dans le fichier <strong class="green-bg">params.xml</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
+  &lt;defaultMailSender&gt;dossier@___.fr&lt;/defaultMailSender&gt;
+  &lt;defaultMailSenderPwd&gt;ENC(XXX)&lt;/defaultMailSenderPwd&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+  &lt;mailAuthentication&gt;false&lt;/mailAuthentication&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 57.1428%;">
+<col style="width: 14.2858%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribut</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Obligatoire?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>protocol</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Protocole: <strong>smtp</strong> (défaut) ou <strong>smtps</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>smtp</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Host/adresse du serveur d&#8217;envoi de mails</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>smtpPort</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Port du serveur d&#8217;envoi de mails</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>defaultMailSender</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si le serveur <strong>smtp</strong> nécessite une authentification, renseigner ici l&#8217;émetteur par défaut à utiliser</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>defaultMailSenderPwd</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si le serveur <strong>smtp</strong> nécessite une authentification, renseigner ici le mot de passe de l&#8217;émetteur défini dans la balise <strong>defaultMailSender</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>SSLActivated</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activation du mode <strong>SSL</strong> (<strong>true</strong> / <strong>false</strong>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>TLSActivated</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activation du mode <strong>TLS</strong> (<strong>true</strong> / <strong>false</strong>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>mailAuthentication</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>L&#8217;envoi de mail nécessite une authentification. Si activé, la demande de mot de passe (mail) de l&#8217;utilisateur sera disponible dans la
+fenêtre d&#8217;envoi de mail.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>4.1.1. Paramètres additionnels</h4>
+<div class="paragraph">
+<p>Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier <strong>WEB-INF/classes/mail/mail-additional
+.properties</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Par exemple</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">mail.smtp.ssl.trust=smtp.gmail.com</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_certificats"><a class="anchor" href="#_certificats"></a>4.1.2. Certificats</h4>
+<div class="paragraph">
+<p>Si vous avez un souci d&#8217;envoi de mail relatif à un certificat (erreur <strong>pkix</strong>, &#8230;&#8203;), veuillez intégrer le certificat dans le magasin de la {jdk}.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si l&#8217;envoi concerne un compte <span style="color: #185abc">gmail</span>, l&#8217;ajout de la propriété <strong>mail.smtp.ssl.trust=smtp.gmail.com</strong> peut résoudre également le problème (cf. chapitre
+précédent).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>4.1.3. Examples</h4>
+<div class="sect4">
+<h5 id="_ovh"><a class="anchor" href="#_ovh"></a>4.1.3.1. <span style="color: #46caf6">OVH</span></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_gmail"><a class="anchor" href="#_gmail"></a>4.1.3.2. <span style="color: #185abc">gmail</span></h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Si un compte est défini (<em>defaultMailSender</em> et <em>defaultMailSenderPwd</em>), <strong>attention</strong>, le mot de passe attaché au compte n&#8217;est pas celui utilisé lors de
+l&#8217;authentification à l&#8217;interface <span style="color: #185abc">gmail</span>.</p>
+</div>
+<div class="paragraph">
+<p>Il faut alors :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>activer la <strong>double authentification</strong></p>
+</li>
+<li>
+<p>générer un mot de passe <span class="underline">dédié</span> via la <a href="https://myaccount.google.com/apppasswords">page suivante</a></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtps&lt;/protocol&gt;
+  &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
+  &lt;SSLActivated&gt;true&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;false&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_office_365"><a class="anchor" href="#_office_365"></a>4.1.3.3. <span style="color: #a84d58">Office 365</span></h5>
+<div class="paragraph">
+<p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes">ici</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+  &lt;protocol&gt;smtp&lt;/protocol&gt;
+  &lt;smtp&gt;smtp.office365.com&lt;/smtp&gt;
+  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+  &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>À partir de septembre 2025, <strong>Microsoft</strong> a désactivé cette fonctionnalité.<br>
+Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>4.1.4. Authentification moderne OAuth</h4>
+<div class="paragraph">
+<p>Pour activer ce mode d&#8217;authentification, il faut ajouter la balise <strong>oauth</strong> à l&#8217;intérieur de la balise <strong>mailConfig</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Si cette configuration est activée, le mot de passe de la balise <strong>defaultMailSenderPwd</strong> sera ignoré.</p>
+</div>
+<div class="paragraph">
+<p>Dans la version actuelle, l&#8217;application implémente l&#8217;authentification moderne pour <span style="color: #a84d58">Office 365</span> et <span style="color: #185abc">Google Workspace</span>.</p>
+</div>
+<div class="sect4">
+<h5 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>4.1.4.1. <span style="color: #a84d58">Office 365</span></h5>
+<div class="sect5">
+<h6 id="_configuration_microsoft_office_365_azure_ad"><a class="anchor" href="#_configuration_microsoft_office_365_azure_ad"></a>Configuration Microsoft Office 365 / Azure AD</h6>
+<div class="paragraph">
+<p>Pour ce mode de fonctionnement, une <strong>application d’entreprise</strong> doit être créée (ou exister) dans <strong>Microsoft Azure Active Directory</strong>. Elle devra posséder les
+autorisations d&#8217;API suivantes :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even fit-content">
+<caption class="title">Table 2. Microsoft Graph</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>email</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Afficher l&#8217;adresse e-mail des utilisateurs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.ReadWrite</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read and write mail in all mailboxes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.Send</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send mail as any user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offline_access</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conserver l&#8217;accès aux données auxquelles vous lui avez donné accès</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openid</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Connecter les utilisateurs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>profile</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Afficher le profil de base des utilisateurs</p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all stripes-even fit-content">
+<caption class="title">Table 3. Office 365 Exchange Online</caption>
+<colgroup>
+<col>
+<col>
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>full_access_as_app</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use Exchange WEB Services with full access to all mailboxes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.ReadWrite</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read and write mail in all mailboxes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.Send</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Send mail as any user</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SMTP.SendAsApp</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application access for sending emails via SMTP AUTH</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Il faut ensuite récupérer ces 2 informations depuis la <strong>Vue d&#8217;ensemble</strong> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>tenantId : ID de l&#8217;annuaire</p>
+</li>
+<li>
+<p>clientId : ID d&#8217;application</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/application_infos.png" alt="application infos">
+</div>
+</div>
+<div class="paragraph">
+<p>Enfin, depuis le menu <strong>Certificats et secrets</strong>, créez un secret client dont vous récupèrerez la <strong>valeur</strong> (à ne pas confondre avec l&#8217;ID du secret).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/add_secret.png" alt="add secret">
+</div>
+</div>
+<div class="paragraph">
+<p>Attention au bout d&#8217;un certain temps après sa création, il n&#8217;est plus possible de copier la <strong>valeur</strong> du secret, il faut donc bien la récupérer la 1ère fois et la conserver.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/copy_secret.png" alt="copy secret">
+</div>
+</div>
+<div class="paragraph">
+<p>Pour envoyer des mails via Microsoft Exchange Online / Office 365 avec une application (sans mot de passe utilisateur), il faut créer/configurer un service
+principal dans Azure AD et lui attribuer les permissions nécessaires. Le service principal peut être créé à l’aide des commandes PowerShell ci-dessous (s’il n’existe pas déjà) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Connect-AzureAD</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ S’authentifier dans la fenêtre qui s’ouvre.</p>
+</div>
+<div class="paragraph">
+<p>Récupération des identifiants de l’application d’entreprise (Dossier est le nom de l’application
+dans Microsoft Azure AD) :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Get-AzureADServicePrincipal -SearchString Dossier</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Résultat :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">ObjectId AppId DisplayName
+-------- ----- -----------
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Courrier</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>« CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC » ce sera le tenantId (ou id du locataire) évoqué précédemment.</p>
+</div>
+<div class="paragraph">
+<p>Avec ces 3 informations, on peut procéder à l’enregistrement du service principal :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Connect-ExchangeOnline</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>→ S’authentifier dans la fenêtre qui s’ouvre.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">New-ServicePrincipal -AppId BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -ServiceId
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -Organization
+CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Get-ServicePrincipal -Organization AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | fl
+Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -AccessRights FullAccess</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Le service principal est maintenant créé et possède les droits d&#8217;accès à la boîte mail de l&#8217;utilisateur.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_configuration_arcade_ged"><a class="anchor" href="#_configuration_arcade_ged"></a>Configuration <code><span style="color:#448279">Arcade GED</span></code></h6>
+<div class="paragraph">
+<p>Configuration de la balise <strong>oauth</strong> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oauth impl="MSOfficeOAuthAccess" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+       scope="https://outlook.office.com/.default" tenantId="tenantId" clientId="clientId" secret="secret"/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>4.1.4.2. <span style="color: #185abc">Google Workspace</span></h5>
+<div class="paragraph">
+<p>Pour permettre à l’application d’aspirer les emails via un compte de service Google, il est nécessaire de configurer à la fois Google Cloud et la console d’administration Google Workspace.</p>
+</div>
+<div class="paragraph">
+<p>Prérequis :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Un projet Google Cloud existe déjà (ou devra être créé), et vous y avez les droits d’administration.</p>
+</li>
+<li>
+<p>L’API Gmail est activée (Console Google Cloud → API et services → Bibliothèque).</p>
+</li>
+<li>
+<p>Le compte Google Workspace dispose des droits pour la délégation au niveau du domaine.</p>
+</li>
+</ul>
+</div>
+<div class="sect5">
+<h6 id="_configuration_dans_google_cloud_console"><a class="anchor" href="#_configuration_dans_google_cloud_console"></a>Configuration dans Google Cloud Console</h6>
+<div class="paragraph">
+<p>Rendez vous sur la console <a href="https://console.cloud.google.com/welcome">Google Cloud</a> et allez dans votre projet.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Écran de consentement OAuth</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) À partir du menu latéral, naviguez vers <strong>API et services</strong> → Écran de consentement OAuth.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/api_services.png" alt="api services">
+</div>
+</div>
+<div class="paragraph">
+<p>2) Vérifiez via le menu <strong>Audience</strong> que le type d’utilisateur est <strong>Interne</strong> (usage au sein de l’organisation) ou <strong>Externe</strong> (accès public).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/audience.png" alt="audience">
+</div>
+</div>
+<div class="paragraph">
+<p>3) Naviguez ensuite dans <strong>Accès aux données</strong>, cliquez sur <strong>Ajouter ou supprimer des niveaux d&#8217;accès</strong>, puis ajoutez <strong><a href="https://mail.google.com/" class="bare">https://mail.google.com/</a></strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/data_access.png" alt="data access">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Comptes de service</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) Rendez-vous dans IAM et administration → Comptes de service.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/service_accounts.png" alt="service accounts">
+</div>
+</div>
+<div class="paragraph">
+<p>2) Si besoin, créez un compte de service.</p>
+</div>
+<div class="paragraph">
+<p>3) Pour ce compte, générez une clé privée au format JSON (Actions → Gérer les clés → Ajouter une clé → JSON) et conservez le fichier. Ce fichier JSON de
+configuration doit être mentionné dans l&#8217;attribut <strong>confFile</strong> de la balise <strong>oauth</strong>.</p>
+</div>
+<div class="paragraph">
+<p>4) Relevez l’ID client du compte de service pour l’étape suivante.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/mail/account_id.png" alt="account id">
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_configuration_dans_la_console_dadministration_google_workspace"><a class="anchor" href="#_configuration_dans_la_console_dadministration_google_workspace"></a>Configuration dans la console d’administration Google Workspace</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>Délégation au niveau du domaine</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>1) Connectez-vous à admin.google.com.</p>
+</div>
+<div class="paragraph">
+<p>2) Allez dans Sécurité → Contrôles d’accès et des données → Commandes des API.</p>
+</div>
+<div class="paragraph">
+<p>3) Ouvrez Délégation au niveau du domaine.</p>
+</div>
+<div class="paragraph">
+<p>4) Si l’ID client du compte de service n’apparaît pas, cliquez sur Ajouter un client API.</p>
+</div>
+<div class="paragraph">
+<p>5) Saisissez l’ID client récupéré précédemment.</p>
+</div>
+<div class="paragraph">
+<p>6) Dans Champs d’application OAuth (virgule‐séparés), entrez : <a href="https://mail.google.com/" class="bare">https://mail.google.com/</a></p>
+</div>
+<div class="paragraph">
+<p>7) Cliquez sur Autoriser.</p>
+</div>
+<div class="paragraph">
+<p>Une fois ces étapes accomplies, l’application pourra utiliser le compte de service pour aspirer les emails des utilisateurs du domaine Google Workspace, sans nécessiter leurs mots de passe individuels.</p>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_configuration_arcade_ged_2"><a class="anchor" href="#_configuration_arcade_ged_2"></a>Configuration <code><span style="color:#448279">Arcade GED</span></code></h6>
+<div class="paragraph">
+<p>Configuration de la balise <strong>oauth</strong> :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="digi-office-gsuite-1a1111111111 1.json"/&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>4.1.4.3. Exemples de configuration avec la balise oauth</h5>
+<div class="sect5">
+<h6 id="_office_365_3"><a class="anchor" href="#_office_365_3"></a><span style="color: #a84d58">Office 365</span></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+    &lt;smtp&gt;smtp.office365.com&lt;/smtp&gt;
+    &lt;defaultMailSender&gt;prenom.nom@xxxxx.onmicrosoft.com&lt;/defaultMailSender&gt;
+    &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+    &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+    &lt;SSLPort&gt;-1&lt;/SSLPort&gt;
+    &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+    &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
+    &lt;protocol&gt;smtp&lt;/protocol&gt;
+    &lt;oauth impl="MSOfficeOAuthAccess" scope="https://outlook.office.com/.default" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
+           tenantId="tenantId" clientId="clientId" secret="secret"/&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_google_workspace_2"><a class="anchor" href="#_google_workspace_2"></a><span style="color: #185abc">Google Workspace</span></h6>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
+    &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
+    &lt;defaultMailSender&gt;prenom.nom@gmail.com&lt;/defaultMailSender&gt;
+    &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
+    &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
+    &lt;SSLPort&gt;-1&lt;/SSLPort&gt;
+    &lt;smtpPort&gt;587&lt;/smtpPort&gt;
+    &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
+    &lt;protocol&gt;smtp&lt;/protocol&gt;
+    &lt;oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="confFile.json"/&gt;
+&lt;/mailConfig&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_05"><a class="anchor" href="#_05"></a>5. Exploitation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ce chapitre décrit les données, paramètres, outils,&#8230;&#8203; pouvant être utiles lors de l&#8217;exploitation d'<code><span style="color:#448279">Arcade GED</span></code> afin d&#8217;analyser les performances et autres
 métriques de l&#8217;application.</p>
 </div>
 <div class="sect2">
-<h3 id="_04_logs"><a class="anchor" href="#_04_logs"></a>4.1. Configuration des logs</h3>
+<h3 id="_04_logs"><a class="anchor" href="#_04_logs"></a>5.1. Configuration des logs</h3>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -6748,7 +7392,7 @@ dysfonctionnement relevé.</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_configuration_générale"><a class="anchor" href="#_configuration_générale"></a>4.1.1. Configuration générale</h4>
+<h4 id="_configuration_générale"><a class="anchor" href="#_configuration_générale"></a>5.1.1. Configuration générale</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -6905,14 +7549,14 @@ de logs que l&#8217;on souhaite dans <strong>WEB-INF/classes/logback.properties<
 </div>
 </div>
 <div class="sect3">
-<h4 id="_modification_directe_via_les_préférences"><a class="anchor" href="#_modification_directe_via_les_préférences"></a>4.1.2. Modification directe via les préférences</h4>
+<h4 id="_modification_directe_via_les_préférences"><a class="anchor" href="#_modification_directe_via_les_préférences"></a>5.1.2. Modification directe via les préférences</h4>
 <div class="paragraph">
 <p>Disponible directement dans l&#8217;application <code><span style="color:#448279">Arcade GED</span></code>, via les préférences, onglet <strong>Administration</strong>, il vous est possible de modifier les logs de
 l&#8217;application (<code><span style="color:#448279">Arcade GED</span></code> et <code><span style="color:#25EF72">Airs</span></code>).</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/04_logs/preference_log_setup.png" alt="preference log setup">
+<img src="images/logs/preference_log_setup.png" alt="preference log setup">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -6978,14 +7622,14 @@ Les valeurs appliquées seront alors soit :</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_modification_via_les_apis_rest_dexploitation"><a class="anchor" href="#_modification_via_les_apis_rest_dexploitation"></a>4.1.3. Modification via les apis <code><span style="color:#73A12E">REST</span></code> d&#8217;exploitation</h4>
+<h4 id="_modification_via_les_apis_rest_dexploitation"><a class="anchor" href="#_modification_via_les_apis_rest_dexploitation"></a>5.1.3. Modification via les apis <code><span style="color:#73A12E">REST</span></code> d&#8217;exploitation</h4>
 <div class="paragraph">
 <p>Depuis la version <strong>9.0</strong> d'<code><span style="color:#448279">Arcade GED</span></code>, il est également possible de modifier <em>temporairement</em> (c&#8217;est-à-dire jusqu&#8217;au prochain <strong><span class="underline">redémarrage</span></strong> de
 l&#8217;application) le niveau de logs de l&#8217;application</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/04_logs/ws_log_setup.png" alt="ws log setup">
+<img src="images/logs/ws_log_setup.png" alt="ws log setup">
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -7004,7 +7648,7 @@ l&#8217;application) le niveau de logs de l&#8217;application</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_description_détaillée"><a class="anchor" href="#_description_détaillée"></a>4.1.4. Description détaillée</h4>
+<h4 id="_description_détaillée"><a class="anchor" href="#_description_détaillée"></a>5.1.4. Description détaillée</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -7020,7 +7664,7 @@ l&#8217;application) le niveau de logs de l&#8217;application</p>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_appender"><a class="anchor" href="#_appender"></a>4.1.4.1. Appender</h5>
+<h5 id="_appender"><a class="anchor" href="#_appender"></a>5.1.4.1. Appender</h5>
 <div class="paragraph">
 <p>Un <strong>appender</strong> est un composant responsable de l&#8217;écriture des logs vers une (ou plusieurs) destination(s) spécifique(s), comme un <em>fichier</em> ou encore la <em>console</em>.</p>
 </div>
@@ -7231,7 +7875,7 @@ personnaliser dans le fichier
 </table>
 </div>
 <div class="sect4">
-<h5 id="_logger"><a class="anchor" href="#_logger"></a>4.1.4.2. Logger</h5>
+<h5 id="_logger"><a class="anchor" href="#_logger"></a>5.1.4.2. Logger</h5>
 <div class="paragraph">
 <p>Un logger est un composant qui génère et envoie des messages de log à un ou plusieurs appenders. Il permet de catégoriser et de filtrer les logs en fonction du niveau de sévérité et du contexte de l&#8217;application.</p>
 </div>
@@ -7919,7 +8563,7 @@ les enregistre dans l&#8217;appender <strong>FILE_ROLL</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logger_personnalisé"><a class="anchor" href="#_logger_personnalisé"></a>4.1.5. Logger personnalisé</h4>
+<h4 id="_logger_personnalisé"><a class="anchor" href="#_logger_personnalisé"></a>5.1.5. Logger personnalisé</h4>
 <div class="paragraph">
 <p>Il est possible d&#8217;ajouter un fichier nommé <strong>externalLogback.xml</strong> dans le répertoire <strong>xml</strong> afin d&#8217;étendre la configuration
 injectée par défaut.</p>
@@ -7971,639 +8615,7 @@ injectée par défaut.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_06_mail"><a class="anchor" href="#_06_mail"></a>4.2. Configuration de l&#8217;envoi de mails</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Information"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ce paramétrage permet aux utilisateurs d'<code><span style="color:#448279">Arcade GED</span></code> d&#8217;envoyer des mails à d&#8217;autres utilisateurs ou à des personnes externes.</p>
-</div>
-<div class="paragraph">
-<p>Il permet également l&#8217;envoi de notifications (<em>si paramétrées</em>) dans l&#8217;application.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Le paramétrage se fait via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou directement dans le fichier <strong class="green-bg">params.xml</strong>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-  &lt;protocol&gt;smtps&lt;/protocol&gt;
-  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
-  &lt;defaultMailSender&gt;dossier@___.fr&lt;/defaultMailSender&gt;
-  &lt;defaultMailSenderPwd&gt;ENC(XXX)&lt;/defaultMailSenderPwd&gt;
-  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
-  &lt;mailAuthentication&gt;false&lt;/mailAuthentication&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-<table class="tableblock frame-all grid-all stripes-even stretch">
-<colgroup>
-<col style="width: 28.5714%;">
-<col style="width: 57.1428%;">
-<col style="width: 14.2858%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Attribut</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Obligatoire?</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>protocol</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Protocole: <strong>smtp</strong> (défaut) ou <strong>smtps</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="green">Oui</span></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>smtp</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Host/adresse du serveur d&#8217;envoi de mails</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="green">Oui</span></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>smtpPort</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Port du serveur d&#8217;envoi de mails</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><span class="green">Oui</span></p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>defaultMailSender</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Si le serveur <strong>smtp</strong> nécessite une authentification, renseigner ici l&#8217;émetteur par défaut à utiliser</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>defaultMailSenderPwd</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Si le serveur <strong>smtp</strong> nécessite une authentification, renseigner ici le mot de passe de l&#8217;émetteur défini dans la balise <strong>defaultMailSender</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>SSLActivated</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Activation du mode <strong>SSL</strong> (<strong>true</strong> / <strong>false</strong>)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>TLSActivated</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Activation du mode <strong>TLS</strong> (<strong>true</strong> / <strong>false</strong>)</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>mailAuthentication</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>L&#8217;envoi de mail nécessite une authentification. Si activé, la demande de mot de passe (mail) de l&#8217;utilisateur sera disponible dans la
-fenêtre d&#8217;envoi de mail.</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"></div></td>
-</tr>
-</tbody>
-</table>
-<div class="sect3">
-<h4 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>4.2.1. Paramètres additionnels</h4>
-<div class="paragraph">
-<p>Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier <strong>WEB-INF/classes/mail/mail-additional
-.properties</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Par exemple</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">mail.smtp.ssl.trust=smtp.gmail.com</code></pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_certificats"><a class="anchor" href="#_certificats"></a>4.2.2. Certificats</h4>
-<div class="paragraph">
-<p>Si vous avez un souci d&#8217;envoi de mail relatif à un certificat (erreur <strong>pkix</strong>, &#8230;&#8203;), veuillez intégrer le certificat dans le magasin de la {jdk}.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Astuce"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Si l&#8217;envoi concerne un compte <span style="color: #185abc">gmail</span>, l&#8217;ajout de la propriété <strong>mail.smtp.ssl.trust=smtp.gmail.com</strong> peut résoudre également le problème (cf. chapitre
-précédent).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_examples"><a class="anchor" href="#_examples"></a>4.2.3. Examples</h4>
-<div class="sect4">
-<h5 id="_ovh"><a class="anchor" href="#_ovh"></a>4.2.3.1. <span style="color: #46caf6">OVH</span></h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-  &lt;protocol&gt;smtps&lt;/protocol&gt;
-  &lt;smtp&gt;ssl0.ovh.net&lt;/smtp&gt;
-  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_gmail"><a class="anchor" href="#_gmail"></a>4.2.3.2. <span style="color: #185abc">gmail</span></h5>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-  &lt;protocol&gt;smtps&lt;/protocol&gt;
-  &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
-  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-  &lt;smtpPort&gt;587&lt;/smtpPort&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Si un compte est défini (<em>defaultMailSender</em> et <em>defaultMailSenderPwd</em>), <strong>attention</strong>, le mot de passe attaché au compte n&#8217;est pas celui utilisé lors de
-l&#8217;authentification à l&#8217;interface <span style="color: #185abc">gmail</span>.</p>
-</div>
-<div class="paragraph">
-<p>Il faut alors :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>activer la <strong>double authentification</strong></p>
-</li>
-<li>
-<p>générer un mot de passe <span class="underline">dédié</span> via la <a href="https://myaccount.google.com/apppasswords">page suivante</a></p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-  &lt;protocol&gt;smtps&lt;/protocol&gt;
-  &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
-  &lt;SSLActivated&gt;true&lt;/SSLActivated&gt;
-  &lt;TLSActivated&gt;false&lt;/TLSActivated&gt;
-  &lt;smtpPort&gt;465&lt;/smtpPort&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_office_365"><a class="anchor" href="#_office_365"></a>4.2.3.3. <span style="color: #a84d58">Office 365</span></h5>
-<div class="paragraph">
-<p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes">ici</a>)</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-  &lt;protocol&gt;smtp&lt;/protocol&gt;
-  &lt;smtp&gt;smtp.office365.com&lt;/smtp&gt;
-  &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-  &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-  &lt;smtpPort&gt;587&lt;/smtpPort&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>À partir de septembre 2025, <strong>Microsoft</strong> a désactivé cette fonctionnalité.<br>
-Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>4.2.4. Authentification moderne OAuth</h4>
-<div class="paragraph">
-<p>Pour activer ce mode d&#8217;authentification, il faut ajouter la balise <strong>oauth</strong> à l&#8217;intérieur de la balise <strong>mailConfig</strong>.</p>
-</div>
-<div class="paragraph">
-<p>Si cette configuration est activée, le mot de passe de la balise <strong>defaultMailSenderPwd</strong> sera ignoré.</p>
-</div>
-<div class="paragraph">
-<p>Dans la version actuelle, l&#8217;application implémente l&#8217;authentification moderne pour <span style="color: #a84d58">Office 365</span> et <span style="color: #185abc">Google Workspace</span>.</p>
-</div>
-<div class="sect4">
-<h5 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>4.2.4.1. <span style="color: #a84d58">Office 365</span></h5>
-<div class="sect5">
-<h6 id="_configuration_microsoft_office_365_azure_ad"><a class="anchor" href="#_configuration_microsoft_office_365_azure_ad"></a>Configuration Microsoft Office 365 / Azure AD</h6>
-<div class="paragraph">
-<p>Pour ce mode de fonctionnement, une <strong>application d’entreprise</strong> doit être créée (ou exister) dans <strong>Microsoft Azure Active Directory</strong>. Elle devra posséder les
-autorisations d&#8217;API suivantes :</p>
-</div>
-<table class="tableblock frame-all grid-all stripes-even fit-content">
-<caption class="title">Table 2. Microsoft Graph</caption>
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>email</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Afficher l&#8217;adresse e-mail des utilisateurs</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.ReadWrite</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Read and write mail in all mailboxes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.Send</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Send mail as any user</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>offline_access</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Conserver l&#8217;accès aux données auxquelles vous lui avez donné accès</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>openid</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Connecter les utilisateurs</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>profile</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Déléguée</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Afficher le profil de base des utilisateurs</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stripes-even fit-content">
-<caption class="title">Table 3. Office 365 Exchange Online</caption>
-<colgroup>
-<col>
-<col>
-<col>
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>full_access_as_app</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use Exchange WEB Services with full access to all mailboxes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.ReadWrite</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Read and write mail in all mailboxes</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Mail.Send</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Send mail as any user</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>SMTP.SendAsApp</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application access for sending emails via SMTP AUTH</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Il faut ensuite récupérer ces 2 informations depuis la <strong>Vue d&#8217;ensemble</strong> :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>tenantId : ID de l&#8217;annuaire</p>
-</li>
-<li>
-<p>clientId : ID d&#8217;application</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/application_infos.png" alt="application infos">
-</div>
-</div>
-<div class="paragraph">
-<p>Enfin, depuis le menu <strong>Certificats et secrets</strong>, créez un secret client dont vous récupèrerez la <strong>valeur</strong> (à ne pas confondre avec l&#8217;ID du secret).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/add_secret.png" alt="add secret">
-</div>
-</div>
-<div class="paragraph">
-<p>Attention au bout d&#8217;un certain temps après sa création, il n&#8217;est plus possible de copier la <strong>valeur</strong> du secret, il faut donc bien la récupérer la 1ère fois et la conserver.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/copy_secret.png" alt="copy secret">
-</div>
-</div>
-<div class="paragraph">
-<p>Pour envoyer des mails via Microsoft Exchange Online / Office 365 avec une application (sans mot de passe utilisateur), il faut créer/configurer un service
-principal dans Azure AD et lui attribuer les permissions nécessaires. Le service principal peut être créé à l’aide des commandes PowerShell ci-dessous (s’il n’existe pas déjà) :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Connect-AzureAD</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>→ S’authentifier dans la fenêtre qui s’ouvre.</p>
-</div>
-<div class="paragraph">
-<p>Récupération des identifiants de l’application d’entreprise (Dossier est le nom de l’application
-dans Microsoft Azure AD) :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Get-AzureADServicePrincipal -SearchString Dossier</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Résultat :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">ObjectId AppId DisplayName
--------- ----- -----------
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB Courrier</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>« CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC » ce sera le tenantId (ou id du locataire) évoqué précédemment.</p>
-</div>
-<div class="paragraph">
-<p>Avec ces 3 informations, on peut procéder à l’enregistrement du service principal :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Connect-ExchangeOnline</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>→ S’authentifier dans la fenêtre qui s’ouvre.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">New-ServicePrincipal -AppId BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB -ServiceId
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -Organization
-CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-cmd hljs" data-lang="cmd">Get-ServicePrincipal -Organization AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | fl
-Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA -AccessRights FullAccess</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Le service principal est maintenant créé et possède les droits d&#8217;accès à la boîte mail de l&#8217;utilisateur.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_configuration_arcade_ged"><a class="anchor" href="#_configuration_arcade_ged"></a>Configuration <code><span style="color:#448279">Arcade GED</span></code></h6>
-<div class="paragraph">
-<p>Configuration de la balise <strong>oauth</strong> :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oauth impl="MSOfficeOAuthAccess" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
-       scope="https://outlook.office.com/.default" tenantId="tenantId" clientId="clientId" secret="secret"/&gt;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>4.2.4.2. <span style="color: #185abc">Google Workspace</span></h5>
-<div class="paragraph">
-<p>Pour permettre à l’application d’aspirer les emails via un compte de service Google, il est nécessaire de configurer à la fois Google Cloud et la console d’administration Google Workspace.</p>
-</div>
-<div class="paragraph">
-<p>Prérequis :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Un projet Google Cloud existe déjà (ou devra être créé), et vous y avez les droits d’administration.</p>
-</li>
-<li>
-<p>L’API Gmail est activée (Console Google Cloud → API et services → Bibliothèque).</p>
-</li>
-<li>
-<p>Le compte Google Workspace dispose des droits pour la délégation au niveau du domaine.</p>
-</li>
-</ul>
-</div>
-<div class="sect5">
-<h6 id="_configuration_dans_google_cloud_console"><a class="anchor" href="#_configuration_dans_google_cloud_console"></a>Configuration dans Google Cloud Console</h6>
-<div class="paragraph">
-<p>Rendez vous sur la console <a href="https://console.cloud.google.com/welcome">Google Cloud</a> et allez dans votre projet.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Écran de consentement OAuth</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>1) À partir du menu latéral, naviguez vers <strong>API et services</strong> → Écran de consentement OAuth.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/api_services.png" alt="api services">
-</div>
-</div>
-<div class="paragraph">
-<p>2) Vérifiez via le menu <strong>Audience</strong> que le type d’utilisateur est <strong>Interne</strong> (usage au sein de l’organisation) ou <strong>Externe</strong> (accès public).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/audience.png" alt="audience">
-</div>
-</div>
-<div class="paragraph">
-<p>3) Naviguez ensuite dans <strong>Accès aux données</strong>, cliquez sur <strong>Ajouter ou supprimer des niveaux d&#8217;accès</strong>, puis ajoutez <strong><a href="https://mail.google.com/" class="bare">https://mail.google.com/</a></strong></p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/data_access.png" alt="data access">
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Comptes de service</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>1) Rendez-vous dans IAM et administration → Comptes de service.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/service_accounts.png" alt="service accounts">
-</div>
-</div>
-<div class="paragraph">
-<p>2) Si besoin, créez un compte de service.</p>
-</div>
-<div class="paragraph">
-<p>3) Pour ce compte, générez une clé privée au format JSON (Actions → Gérer les clés → Ajouter une clé → JSON) et conservez le fichier. Ce fichier JSON de
-configuration doit être mentionné dans l&#8217;attribut <strong>confFile</strong> de la balise <strong>oauth</strong>.</p>
-</div>
-<div class="paragraph">
-<p>4) Relevez l’ID client du compte de service pour l’étape suivante.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/04_mail/account_id.png" alt="account id">
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_configuration_dans_la_console_dadministration_google_workspace"><a class="anchor" href="#_configuration_dans_la_console_dadministration_google_workspace"></a>Configuration dans la console d’administration Google Workspace</h6>
-<div class="ulist">
-<ul>
-<li>
-<p>Délégation au niveau du domaine</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>1) Connectez-vous à admin.google.com.</p>
-</div>
-<div class="paragraph">
-<p>2) Allez dans Sécurité → Contrôles d’accès et des données → Commandes des API.</p>
-</div>
-<div class="paragraph">
-<p>3) Ouvrez Délégation au niveau du domaine.</p>
-</div>
-<div class="paragraph">
-<p>4) Si l’ID client du compte de service n’apparaît pas, cliquez sur Ajouter un client API.</p>
-</div>
-<div class="paragraph">
-<p>5) Saisissez l’ID client récupéré précédemment.</p>
-</div>
-<div class="paragraph">
-<p>6) Dans Champs d’application OAuth (virgule‐séparés), entrez : <a href="https://mail.google.com/" class="bare">https://mail.google.com/</a></p>
-</div>
-<div class="paragraph">
-<p>7) Cliquez sur Autoriser.</p>
-</div>
-<div class="paragraph">
-<p>Une fois ces étapes accomplies, l’application pourra utiliser le compte de service pour aspirer les emails des utilisateurs du domaine Google Workspace, sans nécessiter leurs mots de passe individuels.</p>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_configuration_arcade_ged_2"><a class="anchor" href="#_configuration_arcade_ged_2"></a>Configuration <code><span style="color:#448279">Arcade GED</span></code></h6>
-<div class="paragraph">
-<p>Configuration de la balise <strong>oauth</strong> :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="digi-office-gsuite-1a1111111111 1.json"/&gt;</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect4">
-<h5 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>4.2.4.3. Exemples de configuration avec la balise oauth</h5>
-<div class="sect5">
-<h6 id="_office_365_3"><a class="anchor" href="#_office_365_3"></a><span style="color: #a84d58">Office 365</span></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-    &lt;smtp&gt;smtp.office365.com&lt;/smtp&gt;
-    &lt;defaultMailSender&gt;prenom.nom@xxxxx.onmicrosoft.com&lt;/defaultMailSender&gt;
-    &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-    &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-    &lt;SSLPort&gt;-1&lt;/SSLPort&gt;
-    &lt;smtpPort&gt;587&lt;/smtpPort&gt;
-    &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
-    &lt;protocol&gt;smtp&lt;/protocol&gt;
-    &lt;oauth impl="MSOfficeOAuthAccess" scope="https://outlook.office.com/.default" url="https://login.microsoftonline.com/%s/oauth2/v2.0/token"
-           tenantId="tenantId" clientId="clientId" secret="secret"/&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect5">
-<h6 id="_google_workspace_2"><a class="anchor" href="#_google_workspace_2"></a><span style="color: #185abc">Google Workspace</span></h6>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
-    &lt;smtp&gt;smtp.gmail.com&lt;/smtp&gt;
-    &lt;defaultMailSender&gt;prenom.nom@gmail.com&lt;/defaultMailSender&gt;
-    &lt;SSLActivated&gt;false&lt;/SSLActivated&gt;
-    &lt;TLSActivated&gt;true&lt;/TLSActivated&gt;
-    &lt;SSLPort&gt;-1&lt;/SSLPort&gt;
-    &lt;smtpPort&gt;587&lt;/smtpPort&gt;
-    &lt;mailAuthentication&gt;true&lt;/mailAuthentication&gt;
-    &lt;protocol&gt;smtp&lt;/protocol&gt;
-    &lt;oauth impl="GoogleGMailOAuthAccess" scope="https://mail.google.com/" confFile="confFile.json"/&gt;
-&lt;/mailConfig&gt;</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_04_javamelody"><a class="anchor" href="#_04_javamelody"></a>4.3. <code><span style="color:#609dff">Javamelody</span></code></h3>
+<h3 id="_04_javamelody"><a class="anchor" href="#_04_javamelody"></a>5.2. <code><span style="color:#609dff">Javamelody</span></code></h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -8621,7 +8633,7 @@ l&#8217;application, le bon dimensionnement des machines, &#8230;&#8203;</p>
 </table>
 </div>
 <div class="sect3">
-<h4 id="_configuration"><a class="anchor" href="#_configuration"></a>4.3.1. Configuration</h4>
+<h4 id="_configuration"><a class="anchor" href="#_configuration"></a>5.2.1. Configuration</h4>
 <div class="paragraph">
 <p>La page principale de <code><span style="color:#609dff">Javamelody</span></code> est disponible à l&#8217;url <code>http[s]://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/monitoring</code>.</p>
 </div>
@@ -8643,12 +8655,12 @@ l&#8217;application, le bon dimensionnement des machines, &#8230;&#8203;</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/04_javamelody/javamelody.png" alt="javamelody">
+<img src="images/javamelody/javamelody.png" alt="javamelody">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_exploitation"><a class="anchor" href="#_exploitation"></a>4.3.2. Exploitation</h4>
+<h4 id="_exploitation"><a class="anchor" href="#_exploitation"></a>5.2.2. Exploitation</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -8677,8 +8689,30 @@ développement pour une analyse plus poussée.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/04_javamelody/export.png" alt="export">
+<img src="images/javamelody/export.png" alt="export">
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Depuis la version <strong>9.0</strong> d'<code><span style="color:#448279">Arcade GED</span></code>, il est également possible de générer ce rapport via les APIs <code><span style="color:#73A12E">REST</span></code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/javamelody/export_rest.png" alt="export rest">
+</div>
+</div>
+<div class="paragraph">
+<p>Veuillez vous référer au manuel décrivant les APIs <code><span style="color:#73A12E">REST</span></code> pour obtenir toutes les informations sur cette fonctionnalité.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
@@ -8689,12 +8723,12 @@ développement pour une analyse plus poussée.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/04_javamelody/sessions1.png" alt="sessions1">
+<img src="images/javamelody/sessions1.png" alt="sessions1">
 </div>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/04_javamelody/sessions2.png" alt="sessions2">
+<img src="images/javamelody/sessions2.png" alt="sessions2">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -8714,7 +8748,7 @@ développement pour une analyse plus poussée.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_04_temp_folders"><a class="anchor" href="#_04_temp_folders"></a>4.4. Autres données d&#8217;exploitation</h3>
+<h3 id="_04_temp_folders"><a class="anchor" href="#_04_temp_folders"></a>5.3. Autres données d&#8217;exploitation</h3>
 <div class="paragraph">
 <p>Afin d&#8217;optimiser ce fonctionnement, notamment dans ces échanges avec la base de données et le serveur <code><span style="color:#25EF72">Airs</span></code>,
 {arcadegd} met en cache de nombreuses données.</p>
@@ -8869,7 +8903,7 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 </div>
 </div>
 <div class="sect1">
-<h2 id="_20_custom"><a class="anchor" href="#_20_custom"></a>5. Personnalisation de l&#8217;application</h2>
+<h2 id="_20_custom"><a class="anchor" href="#_20_custom"></a>6. Personnalisation de l&#8217;application</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être personnalisée de bien des manières.<br></p>
@@ -8878,9 +8912,9 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 <p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_theme"><a class="anchor" href="#_20_custom_theme"></a>5.1. Thème, personnalisation du look</h3>
+<h3 id="_20_custom_theme"><a class="anchor" href="#_20_custom_theme"></a>6.1. Thème, personnalisation du look</h3>
 <div class="sect3">
-<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>5.1.1. Introduction</h4>
+<h4 id="_introduction"><a class="anchor" href="#_introduction"></a>6.1.1. Introduction</h4>
 <div class="paragraph">
 <p><code><span style="color:#448279">Arcade GED</span></code> est livré avec 3 thèmes :</p>
 </div>
@@ -8893,7 +8927,7 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 </div>
 <div class="paragraph">
 <div class="title">Écran d’accueil, thème <code><span style="color:#FF6C3B">Arcade</span></code></div>
-<p><span class="image"><img src="images/20_custom/theme_arcade.png" alt="theme arcade"></span></p>
+<p><span class="image"><img src="images/custom/theme_arcade.png" alt="theme arcade"></span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -8904,7 +8938,7 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 </div>
 <div class="paragraph">
 <div class="title">Écran d’accueil, thème <strong>AIRS Suite</strong></div>
-<p><span class="image"><img src="images/20_custom/theme_airs_suite.png" alt="theme airs suite"></span></p>
+<p><span class="image"><img src="images/custom/theme_airs_suite.png" alt="theme airs suite"></span></p>
 </div>
 <div class="ulist">
 <ul>
@@ -8915,7 +8949,7 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 </div>
 <div class="paragraph">
 <div class="title">Écran d’accueil, thème <strong>Sombre</strong></div>
-<p><span class="image"><img src="images/20_custom/theme_sombre.png" alt="theme sombre"></span></p>
+<p><span class="image"><img src="images/custom/theme_sombre.png" alt="theme sombre"></span></p>
 </div>
 <div class="paragraph">
 <p>Selon les options activées (cf. <a href="#_03_options_theme">Section 3.22, &#8220;Thème&#8221;</a>), l&#8217;utilisateur peut choisir son thème préférentiel.</p>
@@ -8926,7 +8960,7 @@ indiqué dans les chapitres suivants.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_20_custom_theme_color"><a class="anchor" href="#_20_custom_theme_color"></a>5.1.2. Personnalisation des couleurs</h4>
+<h4 id="_20_custom_theme_color"><a class="anchor" href="#_20_custom_theme_color"></a>6.1.2. Personnalisation des couleurs</h4>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -9008,7 +9042,7 @@ et copiez le résultat dans la variable <strong>--icon-theme-filter</strong>.</p
 <p>Pour un code couleur de ce type</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/20_custom/theme_custom_support1.png" alt="theme custom support1" width="200" height="100"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_support1.png" alt="theme custom support1" width="200" height="100"></span></p>
 </div>
 <div class="paragraph">
 <p>voici les paramètres css associés (via le fichier <strong>custom/ui/css/custom.css</strong>.)</p>
@@ -9029,11 +9063,11 @@ et copiez le résultat dans la variable <strong>--icon-theme-filter</strong>.</p
 </div>
 <div class="paragraph">
 <p>Le rendu est alors le suivant
-<span class="image"><img src="images/20_custom/theme_custom1.png" alt="theme custom1"></span></p>
+<span class="image"><img src="images/custom/theme_custom1.png" alt="theme custom1"></span></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_20_custom_theme_color_flow"><a class="anchor" href="#_20_custom_theme_color_flow"></a>5.1.3. Personnalisation des couleurs <strong><span class="underline">par flux</span></strong></h4>
+<h4 id="_20_custom_theme_color_flow"><a class="anchor" href="#_20_custom_theme_color_flow"></a>6.1.3. Personnalisation des couleurs <strong><span class="underline">par flux</span></strong></h4>
 <div class="paragraph">
 <p>Il est également possible de définir un <strong>code couleurs</strong> <strong><span class="underline">par flux</span></strong>.</p>
 </div>
@@ -9080,7 +9114,7 @@ et copiez le résultat dans la variable <strong>--icon-theme-filter</strong>.</p
 <p>De ce fait, pour le code couleurs suivant</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/20_custom/theme_custom_support2.png" alt="theme custom support2" width="200" height="100"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_support2.png" alt="theme custom support2" width="200" height="100"></span></p>
 </div>
 <div class="paragraph">
 <p>un fichier <strong>custom-CR.css</strong> défini ainsi</p>
@@ -9100,11 +9134,11 @@ et copiez le résultat dans la variable <strong>--icon-theme-filter</strong>.</p
 </div>
 <div class="paragraph">
 <p>donnera le rendu suivant
-<span class="image"><img src="images/20_custom/theme_custom2.png" alt="theme custom2"></span></p>
+<span class="image"><img src="images/custom/theme_custom2.png" alt="theme custom2"></span></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_20_custom_theme_images"><a class="anchor" href="#_20_custom_theme_images"></a>5.1.4. Personnalisation des images</h4>
+<h4 id="_20_custom_theme_images"><a class="anchor" href="#_20_custom_theme_images"></a>6.1.4. Personnalisation des images</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -9156,17 +9190,17 @@ logo_product=./custom/ui/img/custom/olympic_rings_login.svg</code></pre>
 <p>Cela donnera en page de <strong>Login</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/20_custom/theme_custom_image_login.png" alt="theme custom image login"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_image_login.png" alt="theme custom image login"></span></p>
 </div>
 <div class="paragraph">
 <p>et en page d' <strong>Accueil</strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/20_custom/theme_custom_image_home.png" alt="theme custom image home"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_image_home.png" alt="theme custom image home"></span></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_20_custom_theme_images_login"><a class="anchor" href="#_20_custom_theme_images_login"></a>5.1.5. Personnalisation des images sur la page de <strong>Login</strong></h4>
+<h4 id="_20_custom_theme_images_login"><a class="anchor" href="#_20_custom_theme_images_login"></a>6.1.5. Personnalisation des images sur la page de <strong>Login</strong></h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -9232,14 +9266,14 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </div>
 <div class="paragraph">
 <div class="title">Exemple d&#8217;images personnalisées en page de <strong>Login</strong></div>
-<p><span class="image"><img src="images/20_custom/theme_custom_image_login2.png" alt="theme custom image login2"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_image_login2.png" alt="theme custom image login2"></span></p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>5.2. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>6.2. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
 <div class="sect3">
-<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>5.2.1. Introduction</h4>
+<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>6.2.1. Introduction</h4>
 <div class="paragraph">
 <p>Autrement nommée <strong class="yellow"><em>action custom</em></strong>.</p>
 </div>
@@ -9287,12 +9321,12 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </div>
 </div>
 <div class="sect3">
-<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>5.2.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
+<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>6.2.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
 <div class="paragraph">
 <p>Le module <code><span style="color:#25EF72">adminAIRS</span></code> permet de configurer via le paramétrage des vues les <strong class="yellow"><em>action custom</em></strong></p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/20_custom/view_custom_action_01.png" alt="view custom action 01"></span></p>
+<p><span class="image"><img src="images/custom/view_custom_action_01.png" alt="view custom action 01"></span></p>
 </div>
 <div class="paragraph">
 <p>Le chapitre suivant décrit chaque propriété :</p>
@@ -9459,7 +9493,7 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>5.2.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
+<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>6.2.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -9617,7 +9651,7 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>5.2.4. Configuration script + modale</h4>
+<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.2.4. Configuration script + modale</h4>
 <div class="paragraph">
 <p>Le script <strong>modalPanelInitGroovyScriptId</strong> est exécuté avant l&#8217;apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.</p>
 </div>
@@ -9651,7 +9685,7 @@ xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>5.2.5. Quelques modèles/exemples de scripts</h4>
+<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.2.5. Quelques modèles/exemples de scripts</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -9738,9 +9772,9 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>5.3. [Résultats] Personnalisation de la vue</h3>
+<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>6.3. [Résultats] Personnalisation de la vue</h3>
 <div class="sect3">
-<h4 id="_styles"><a class="anchor" href="#_styles"></a>5.3.1. Styles</h4>
+<h4 id="_styles"><a class="anchor" href="#_styles"></a>6.3.1. Styles</h4>
 <div class="paragraph">
 <p>La page de résultats peut être personnalisée via l&#8217;application de <strong>styleClass</strong> sur ses colonnes. Par exemple :</p>
 </div>
@@ -9761,7 +9795,7 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </ul>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/20_custom/result_custom_01.png" alt="result custom 01"></span></p>
+<p><span class="image"><img src="images/custom/result_custom_01.png" alt="result custom 01"></span></p>
 </div>
 <div class="paragraph">
 <p>Dans l&#8217;exemple ci-dessus :</p>
@@ -9835,9 +9869,9 @@ La définition de ces <strong>styles</strong> est soit :</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>5.4. [Cron] ajout d&#8217;une tâche planifiée</h3>
+<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>6.4. [Cron] ajout d&#8217;une tâche planifiée</h3>
 <div class="sect3">
-<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>5.4.1. Introduction</h4>
+<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>6.4.1. Introduction</h4>
 <div class="paragraph">
 <p>Certaines actions sur la base documentaire n&#8217;ont pas besoin d&#8217;être exécutées immédiatement,<br>
 notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em> (conversion de documents, <em>push</em> ou export vers un système externe).</p>
@@ -9861,7 +9895,7 @@ notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>5.4.2. Déclaration</h4>
+<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>6.4.2. Déclaration</h4>
 <div class="paragraph">
 <p>Ces <strong>tâches planifiées</strong> consistent en :</p>
 </div>
@@ -9943,7 +9977,7 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a>5.4.3. Introduction</h4>
+<h4 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a>6.4.3. Introduction</h4>
 <div class="paragraph">
 <p>Selon la configuration, il peut être intéressant d&#8217;appliquer un masque de saisie sur certains champs, dans le but de faciliter l&#8217;expérience utilisateur.</p>
 </div>
@@ -9971,7 +10005,7 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>5.4.4. Déclaration</h4>
+<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.4.4. Déclaration</h4>
 <div class="paragraph">
 <p>La déclaration s&#8217;effectue en 2 actions :</p>
 </div>
