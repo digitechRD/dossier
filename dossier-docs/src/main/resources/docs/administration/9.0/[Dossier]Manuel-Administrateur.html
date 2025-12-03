@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">03/12/2025 07:16:38</span>
+<span id="revdate">03/12/2025 07:32:27</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -99,33 +99,34 @@
 </li>
 <li><a href="#_04_setup">4. Configuration</a>
 <ul class="sectlevel2">
-<li><a href="#_06_mail">4.1. Configuration de l&#8217;envoi de mails</a>
+<li><a href="#_04_setup_full_text">4.1. <span style="color: #46caf6">Full-Text</span></a></li>
+<li><a href="#_04_setup_mail">4.2. Envoi de mails</a>
 <ul class="sectlevel3">
-<li><a href="#_paramètres_additionnels">4.1.1. Paramètres additionnels</a></li>
-<li><a href="#_certificats">4.1.2. Certificats</a></li>
-<li><a href="#_examples">4.1.3. Examples</a>
+<li><a href="#_paramètres_additionnels">4.2.1. Paramètres additionnels</a></li>
+<li><a href="#_certificats">4.2.2. Certificats</a></li>
+<li><a href="#_examples">4.2.3. Examples</a>
 <ul class="sectlevel4">
-<li><a href="#_ovh">4.1.3.1. <span style="color: #46caf6">OVH</span></a></li>
-<li><a href="#_gmail">4.1.3.2. <span style="color: #185abc">gmail</span></a></li>
-<li><a href="#_office_365">4.1.3.3. <span style="color: #a84d58">Office 365</span></a></li>
+<li><a href="#_ovh">4.2.3.1. <span style="color: #46caf6">OVH</span></a></li>
+<li><a href="#_gmail">4.2.3.2. <span style="color: #185abc">gmail</span></a></li>
+<li><a href="#_office_365">4.2.3.3. <span style="color: #a84d58">Office 365</span></a></li>
 </ul>
 </li>
-<li><a href="#_authentification_moderne_oauth">4.1.4. Authentification moderne OAuth</a>
+<li><a href="#_authentification_moderne_oauth">4.2.4. Authentification moderne OAuth</a>
 <ul class="sectlevel4">
-<li><a href="#_office_365_2">4.1.4.1. <span style="color: #a84d58">Office 365</span></a>
+<li><a href="#_office_365_2">4.2.4.1. <span style="color: #a84d58">Office 365</span></a>
 <ul class="sectlevel5">
 <li><a href="#_configuration_microsoft_office_365_azure_ad">Configuration Microsoft Office 365 / Azure AD</a></li>
 <li><a href="#_configuration_arcade_ged">Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
-<li><a href="#_google_workspace">4.1.4.2. <span style="color: #185abc">Google Workspace</span></a>
+<li><a href="#_google_workspace">4.2.4.2. <span style="color: #185abc">Google Workspace</span></a>
 <ul class="sectlevel5">
 <li><a href="#_configuration_dans_google_cloud_console">Configuration dans Google Cloud Console</a></li>
 <li><a href="#_configuration_dans_la_console_dadministration_google_workspace">Configuration dans la console d’administration Google Workspace</a></li>
 <li><a href="#_configuration_arcade_ged_2">Configuration <code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
-<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">4.1.4.3. Exemples de configuration avec la balise oauth</a>
+<li><a href="#_exemples_de_configuration_avec_la_balise_oauth">4.2.4.3. Exemples de configuration avec la balise oauth</a>
 <ul class="sectlevel5">
 <li><a href="#_office_365_3"><span style="color: #a84d58">Office 365</span></a></li>
 <li><a href="#_google_workspace_2"><span style="color: #185abc">Google Workspace</span></a></li>
@@ -6733,7 +6734,180 @@ jointe</p>
 <p>Ce chapitre décrit la configuration de certaines fonctionnalités.</p>
 </div>
 <div class="sect2">
-<h3 id="_06_mail"><a class="anchor" href="#_06_mail"></a>4.1. Configuration de l&#8217;envoi de mails</h3>
+<h3 id="_04_setup_full_text"><a class="anchor" href="#_04_setup_full_text"></a>4.1. <span style="color: #46caf6">Full-Text</span></h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le module <span style="color: #46caf6">Full-Text</span> est une application externe interconnectée avec le server <code><span style="color:#25EF72">Airs</span></code> et <code><span style="color:#448279">Arcade GED</span></code>.<br></p>
+</div>
+<div class="paragraph">
+<p>Elle permet l&#8217;ajout des fonctionnalités de :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="underline">recherches plein-texte</span> (appelées également <em>recherches à la google</em>)</p>
+</li>
+<li>
+<p><span class="underline">rapprochement de documents</span> (_recherche de documents similaires)</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Le paramétrage se fait via l'<code><span style="color:#25EF72">adminAIRS</span></code> ou directement dans le fichier <strong class="green-bg">params.xml</strong>, via le nœud <strong>ftConfig</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ftConfig
+  url="http://10.1.4.116:9933"
+  maxResultsPerPage="20"
+  fragmentLength="250"
+  maxSuggestedTerms="10"
+  maxDocLinks="20"
+  minDocLinksScore="5"
+  automaticallyDisplayPJ="true"
+  suggestionEnabled="true"
+  searchOnAllTextFields="true"/&gt;</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 12.5%;">
+<col style="width: 12.5%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribut</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Obligatoire?</th>
+<th class="tableblock halign-left valign-top">Valeur par défaut</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>url</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Url de connexion/d&#8217;accès au module <span style="color: #46caf6">Full-Text</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">Oui</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>maxResultsPerPage</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre de documents affichés simultanément en page de résultats</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>20</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>fragmentLength</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Longueur du fragment de résultat (<em>prévisualisation</em>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>250</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>automaticallyDisplayPJ</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Afficher automatiquement la pièce jointe en vue résults de <em>recherche plein-texte</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">true</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>suggestionEnabled</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Activer la suggestion des mots dans la <em>recherche plein-texte</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">true</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>searchOnAllTextFields</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Exécuter la <em>recherche plein-texte</em> sur les <span class="underline">champs de type <strong>FULL-TEXT</strong></span> en plus du contenu des pièces jointes</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="green">true</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>maxSuggestedTerms</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre de termes proposés lorsque la suggestion des mots est activée par l&#8217;utilisateur</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>10</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>maxDocLinks</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nombre maximum de résultats remontés lors de la <em>recherche de documents similaires</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>20</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>minDocLinksScore</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Score minimum attendu lors de la <em>recherche de documents similaires</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>5</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_04_setup_mail"><a class="anchor" href="#_04_setup_mail"></a>4.2. Envoi de mails</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -6864,7 +7038,7 @@ fenêtre d&#8217;envoi de mail.</p>
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>4.1.1. Paramètres additionnels</h4>
+<h4 id="_paramètres_additionnels"><a class="anchor" href="#_paramètres_additionnels"></a>4.2.1. Paramètres additionnels</h4>
 <div class="paragraph">
 <p>Si certains paramètres ne sont pas pris en compte dans cette structure, vous pouvez les ajouter via le fichier <strong>WEB-INF/classes/mail/mail-additional
 .properties</strong>.</p>
@@ -6879,7 +7053,7 @@ fenêtre d&#8217;envoi de mail.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_certificats"><a class="anchor" href="#_certificats"></a>4.1.2. Certificats</h4>
+<h4 id="_certificats"><a class="anchor" href="#_certificats"></a>4.2.2. Certificats</h4>
 <div class="paragraph">
 <p>Si vous avez un souci d&#8217;envoi de mail relatif à un certificat (erreur <strong>pkix</strong>, &#8230;&#8203;), veuillez intégrer le certificat dans le magasin de la {jdk}.</p>
 </div>
@@ -6900,9 +7074,9 @@ précédent).</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_examples"><a class="anchor" href="#_examples"></a>4.1.3. Examples</h4>
+<h4 id="_examples"><a class="anchor" href="#_examples"></a>4.2.3. Examples</h4>
 <div class="sect4">
-<h5 id="_ovh"><a class="anchor" href="#_ovh"></a>4.1.3.1. <span style="color: #46caf6">OVH</span></h5>
+<h5 id="_ovh"><a class="anchor" href="#_ovh"></a>4.2.3.1. <span style="color: #46caf6">OVH</span></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -6916,7 +7090,7 @@ précédent).</p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="_gmail"><a class="anchor" href="#_gmail"></a>4.1.3.2. <span style="color: #185abc">gmail</span></h5>
+<h5 id="_gmail"><a class="anchor" href="#_gmail"></a>4.2.3.2. <span style="color: #185abc">gmail</span></h5>
 <div class="listingblock">
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;mailConfig&gt;
@@ -6958,7 +7132,7 @@ l&#8217;authentification à l&#8217;interface <span style="color: #185abc">gmail
 </div>
 </div>
 <div class="sect4">
-<h5 id="_office_365"><a class="anchor" href="#_office_365"></a>4.1.3.3. <span style="color: #a84d58">Office 365</span></h5>
+<h5 id="_office_365"><a class="anchor" href="#_office_365"></a>4.2.3.3. <span style="color: #a84d58">Office 365</span></h5>
 <div class="paragraph">
 <p>Attention, cela ne fonctionne que si <strong>SMTP</strong> est activé sur le compte <strong>Microsoft</strong> associé (cf. procédure <a href="https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission#use-the-microsoft-365-admin-center-to-enable-or-disable-smtp-auth-on-specific-mailboxes">ici</a>)</p>
 </div>
@@ -6991,7 +7165,7 @@ Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>4.1.4. Authentification moderne OAuth</h4>
+<h4 id="_authentification_moderne_oauth"><a class="anchor" href="#_authentification_moderne_oauth"></a>4.2.4. Authentification moderne OAuth</h4>
 <div class="paragraph">
 <p>Pour activer ce mode d&#8217;authentification, il faut ajouter la balise <strong>oauth</strong> à l&#8217;intérieur de la balise <strong>mailConfig</strong>.</p>
 </div>
@@ -7002,7 +7176,7 @@ Une authentification via <strong>OAuth</strong> est alors obligatoire.</p>
 <p>Dans la version actuelle, l&#8217;application implémente l&#8217;authentification moderne pour <span style="color: #a84d58">Office 365</span> et <span style="color: #185abc">Google Workspace</span>.</p>
 </div>
 <div class="sect4">
-<h5 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>4.1.4.1. <span style="color: #a84d58">Office 365</span></h5>
+<h5 id="_office_365_2"><a class="anchor" href="#_office_365_2"></a>4.2.4.1. <span style="color: #a84d58">Office 365</span></h5>
 <div class="sect5">
 <h6 id="_configuration_microsoft_office_365_azure_ad"><a class="anchor" href="#_configuration_microsoft_office_365_azure_ad"></a>Configuration Microsoft Office 365 / Azure AD</h6>
 <div class="paragraph">
@@ -7189,7 +7363,7 @@ Add-MailboxPermission -Identity "prenom.nom@xxxxx.onmicrosoft.com" -User AAAAAAA
 </div>
 </div>
 <div class="sect4">
-<h5 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>4.1.4.2. <span style="color: #185abc">Google Workspace</span></h5>
+<h5 id="_google_workspace"><a class="anchor" href="#_google_workspace"></a>4.2.4.2. <span style="color: #185abc">Google Workspace</span></h5>
 <div class="paragraph">
 <p>Pour permettre à l’application d’aspirer les emails via un compte de service Google, il est nécessaire de configurer à la fois Google Cloud et la console d’administration Google Workspace.</p>
 </div>
@@ -7323,7 +7497,7 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 </div>
 </div>
 <div class="sect4">
-<h5 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>4.1.4.3. Exemples de configuration avec la balise oauth</h5>
+<h5 id="_exemples_de_configuration_avec_la_balise_oauth"><a class="anchor" href="#_exemples_de_configuration_avec_la_balise_oauth"></a>4.2.4.3. Exemples de configuration avec la balise oauth</h5>
 <div class="sect5">
 <h6 id="_office_365_3"><a class="anchor" href="#_office_365_3"></a><span style="color: #a84d58">Office 365</span></h6>
 <div class="listingblock">
