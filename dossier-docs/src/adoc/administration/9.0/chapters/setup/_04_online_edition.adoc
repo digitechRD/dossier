@@ -1,0 +1,77 @@
+[[_04_setup_online_edition]]
+=== {digioffice}
+
+:onlyoffice:  pass:[<span style="color: #ff905e">OnlyOffice</span>]
+:gsuite:  pass:[<span style="color: #185abc">Google Suite</span>]
+:o365:  pass:[<span style="color: #a84d58">Office365</span>]
+:collabora:  pass:[<span style="color: #5eab55">Collabora Online</span>]
+:sharepoint:  pass:[<span style="color: #a84d58">Sharepoint</span>]
+:gdrive:  pass:[<span style="color: #185abc">Google Drive</span>]
+
+[IMPORTANT]
+====
+Le module {digioffice} est une application externe permettant d'interconnecter {arcadeged} avec des éditeurs externes/en ligne d'édition de documents de type
+ *office* (_docs_, xlsx_, ...).
+
+Le module {digioffice} prend en charge :
+
+* le dépôt des fichiers sur le système de partage dédié (_{gdrive}_, _{sharepoint}_, ...)
+* l'ajout de permissions d'édition de document aux personnes accréditées/ciblées
+* le téléchargement des fichiers modifiés une fois les modifications apportées
+
+====
+
+[NOTE]
+====
+Les 4 connecteurs disponibles à ce jour sont :
+
+* {onlyoffice}
+* {gsuite}
+* {o365}
+* {collabora}
+====
+
+Le paramétrage se fait via l'{adminAirs} ou directement dans le fichier {paramsXml}, via les nœuds *onlineEditorConfigs* et *onlineEditorConfig*.
+
+[source,xml]
+----
+ <onlineEditorConfigs collaboration="true">
+  <onlineEditorConfig
+      url="http://localhost:9595/digiOffice"
+      username="<<USERNAME>>"
+      password="<<PASSWORD>>"
+      context="ArcadeGEDInterne"
+      onlineEditorEngine="office365"
+      engineSetup="o365"
+      userShareProperty="ONLINE_EMAIL"
+      authorizedSharePattern=".*@digitech13\.onmicrosoft\.com$"
+      activated="true" />
+</onlineEditorConfigs>
+----
+
+[TIP]
+====
+Comme vous pouvez l'observer, il est possible de définir plusieurs connecteurs {digioffice} pour {arcadeged}, +
+l'utilisateur ayant alors la possibilité de sélectionner son éditeur favori via ses préférences.
+
+Néanmoins, dans la (très) grande majorité des installations, un seul connecteur est paramétré.
+====
+
+[cols="2a,4a,1a,1a",options="header"]
+|===
+|Attribut|Description|Obligatoire?|Valeur par défaut
+4+|*_onlineEditorConfigs_*
+|*collaboration*|le mode *collaboratif* est-il activé ? (modification simultanée d'un document par plusieurs utilisateurs)||[green]#false#
+4+|*_onlineEditorConfig_*
+|*url*|Url de connexion/d'accès au module {digioffice}|[green]#Oui#|
+|*activated*|Connecteur activé ?||
+|*username*|Authentification (_login_) utilisé pour se connecter au service {digioffice}|[green]#Oui#|
+|*password*|Authentification (_password_) utilisé pour se connecter au service {digioffice}|[green]#Oui#|
+|*engineSetup*|Nom du paramétrage spécifique de {digioffice} à utiliser (correspond à la clé *office.connectors.name* dans la configuration {digioffice})
+|[green]#Oui#|
+|*onlineEditorEngine*|Type de fournisseur à utiliser pour l’édition en ligne. (*googleDrive*, *onlyOffice*, *office365* ou *collaboraOnline*)|[green]#Oui#|
+|*context*|Nom du dossier racine qui sera créé sur le serveur du fournisseur d’édition en ligne pour le stockage temporaire des documents|
+[green]#Oui#|
+|*userShareProperty*|code de l'option utilisateur stockant l'email utilisé pour le partage sur le *drive* distant ({o365} et {gsuite} seulement)|[red]#Non#|
+|*authorizedSharePattern*|regex permettant de valider l'email utilisé pour le partage sur le *drive* distant ({o365} et {gsuite} seulement)|[red]#Non#|
+|===
