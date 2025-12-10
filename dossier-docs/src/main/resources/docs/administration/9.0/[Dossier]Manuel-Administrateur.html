@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">03/12/2025 17:46:43</span>
+<span id="revdate">10/12/2025 17:11:24</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -193,8 +193,18 @@
 <ul class="sectlevel3">
 <li><a href="#_introduction_3">6.4.1. Introduction</a></li>
 <li><a href="#_déclaration">6.4.2. Déclaration</a></li>
-<li><a href="#_introduction_4">6.4.3. Introduction</a></li>
-<li><a href="#_déclaration_2">6.4.4. Déclaration</a></li>
+</ul>
+</li>
+<li><a href="#_20_redirect">6.5. [Redirect] Définitions des URLs de redirection</a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_4">6.5.1. Introduction</a></li>
+<li><a href="#_définition">6.5.2. Définition</a></li>
+</ul>
+</li>
+<li><a href="#_20_custom_masks">6.6. Ajout de masques de saisie sur les champs de type <strong>input</strong></a>
+<ul class="sectlevel3">
+<li><a href="#_introduction_5">6.6.1. Introduction</a></li>
+<li><a href="#_déclaration_2">6.6.2. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -257,7 +267,7 @@
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">03/02/2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31/12/2025</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">En cours</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Création</p></td>
@@ -2421,7 +2431,7 @@ recherche plein texte</p>
 </div>
 </div>
 </div>
-<div class="sect1 landscape">
+<div class="sect1">
 <h2 id="_03_options"><a class="anchor" href="#_03_options"></a>3. Options</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -6725,6 +6735,7 @@ jointe</p>
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -7782,6 +7793,7 @@ configuration doit être mentionné dans l&#8217;attribut <strong>confFile</stro
 &lt;/mailConfig&gt;</code></pre>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -9321,6 +9333,7 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 </tr>
 </tbody>
 </table>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -9328,7 +9341,7 @@ Ce répertoire contient des sous-répertoires dont la description est la suivant
 <h2 id="_20_custom"><a class="anchor" href="#_20_custom"></a>6. Personnalisation de l&#8217;application</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être personnalisée de bien des manières.<br></p>
+<p>L&#8217;application <code><span style="color:#448279">Arcade GED</span></code> peut être personnalisée de bien des manières.</p>
 </div>
 <div class="paragraph">
 <p>Ce chapitre indique et décrit certaines des personnalisations possibles.</p>
@@ -10407,14 +10420,83 @@ la définition du cron souhaité.</p>
 <p>toutes les 5 minutes, les lundis, mercredis et vendredis seulement : <code>0 0/5 * ? * MON,WED,FRI *</code></p>
 </li>
 <li>
-<p>À 6h et 21h les jours ouvrés : <code>0 0 6,21 ? * MON-FRI <strong></code>
-=== Ajout de masques de saisie sur les champs de type *input</strong></p>
+<p>à 6h et 21h les jours ouvrés : <code>0 0 6,21 ? * MON-FRI *</code> </p>
 </li>
 </ul>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_20_redirect"><a class="anchor" href="#_20_redirect"></a>6.5. [Redirect] Définitions des URLs de redirection</h3>
 <div class="sect3">
-<h4 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a>6.4.3. Introduction</h4>
+<h4 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a>6.5.1. Introduction</h4>
+<div class="paragraph">
+<p>Il peut être utile d&#8217;accéder directement à l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> dans un <span class="underline"><strong>contexte précis</strong></span> :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Accès direct à un résultat de recherche</p>
+</li>
+<li>
+<p>Accès direct à un document</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Ces accès externes sont fréquemment utilisés, notamment dans les cas suivants :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>hyperlien</strong> défini dans un <strong>mail</strong></p>
+</li>
+<li>
+<p><strong>redirection/hyperlien</strong> défini à partir d&#8217;une autre application <em>métier</em></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Lors de la redirection, si l&#8217;utilisateur n&#8217;est pas connecté, celui-ci sera d&#8217;abord redirigé vers l&#8217;écran de <em>login</em>/<em>connexion</em>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si le <strong>SSO</strong> est activé, l&#8217;opération d&#8217;authentification sera alors transparente pour l&#8217;utilisateur.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_définition"><a class="anchor" href="#_définition"></a>6.5.2. Définition</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_20_custom_masks"><a class="anchor" href="#_20_custom_masks"></a>6.6. Ajout de masques de saisie sur les champs de type <strong>input</strong></h3>
+<div class="sect3">
+<h4 id="_introduction_5"><a class="anchor" href="#_introduction_5"></a>6.6.1. Introduction</h4>
 <div class="paragraph">
 <p>Selon la configuration, il peut être intéressant d&#8217;appliquer un masque de saisie sur certains champs, dans le but de faciliter l&#8217;expérience utilisateur.</p>
 </div>
@@ -10442,7 +10524,7 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.4.4. Déclaration</h4>
+<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.6.2. Déclaration</h4>
 <div class="paragraph">
 <p>La déclaration s&#8217;effectue en 2 actions :</p>
 </div>
