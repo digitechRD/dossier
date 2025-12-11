@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">10/12/2025 17:11:24</span>
+<span id="revdate">11/12/2025 10:49:40</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -175,36 +175,37 @@
 <li><a href="#_20_custom_theme_images_login">6.1.5. Personnalisation des images sur la page de <strong>Login</strong></a></li>
 </ul>
 </li>
-<li><a href="#_20_custom_viewunit">6.2. [ViewUnit] ajout d&#8217;une action personnalisée</a>
+<li><a href="#_20_custom_locale">6.2. Langues disponibles</a></li>
+<li><a href="#_20_custom_viewunit">6.3. [ViewUnit] ajout d&#8217;une action personnalisée</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction_2">6.2.1. Introduction</a></li>
-<li><a href="#_module_adminairs">6.2.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
-<li><a href="#_expert_ajout_manuelle_dune_action_custom">6.2.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
-<li><a href="#_configuration_script_modale">6.2.4. Configuration script + modale</a></li>
-<li><a href="#_quelques_modèlesexemples_de_scripts">6.2.5. Quelques modèles/exemples de scripts</a></li>
+<li><a href="#_introduction_2">6.3.1. Introduction</a></li>
+<li><a href="#_module_adminairs">6.3.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
+<li><a href="#_expert_ajout_manuelle_dune_action_custom">6.3.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
+<li><a href="#_configuration_script_modale">6.3.4. Configuration script + modale</a></li>
+<li><a href="#_quelques_modèlesexemples_de_scripts">6.3.5. Quelques modèles/exemples de scripts</a></li>
 </ul>
 </li>
-<li><a href="#_20_custom_result">6.3. [Résultats] Personnalisation de la vue</a>
+<li><a href="#_20_custom_result">6.4. [Résultats] Personnalisation de la vue</a>
 <ul class="sectlevel3">
-<li><a href="#_styles">6.3.1. Styles</a></li>
+<li><a href="#_styles">6.4.1. Styles</a></li>
 </ul>
 </li>
-<li><a href="#_20_task">6.4. [Cron] ajout d&#8217;une tâche planifiée</a>
+<li><a href="#_20_task">6.5. [Cron] ajout d&#8217;une tâche planifiée</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction_3">6.4.1. Introduction</a></li>
-<li><a href="#_déclaration">6.4.2. Déclaration</a></li>
+<li><a href="#_introduction_3">6.5.1. Introduction</a></li>
+<li><a href="#_déclaration">6.5.2. Déclaration</a></li>
 </ul>
 </li>
-<li><a href="#_20_redirect">6.5. [Redirect] Définitions des URLs de redirection</a>
+<li><a href="#_20_redirect">6.6. [Redirect] Définitions des URLs de redirection</a>
 <ul class="sectlevel3">
-<li><a href="#_introduction_4">6.5.1. Introduction</a></li>
-<li><a href="#_définition">6.5.2. Définition</a></li>
+<li><a href="#_introduction_4">6.6.1. Introduction</a></li>
+<li><a href="#_définition">6.6.2. Définition</a></li>
 </ul>
 </li>
-<li><a href="#_20_custom_masks">6.6. Ajout de masques de saisie sur les champs de type <strong>input</strong></a>
+<li><a href="#_20_custom_masks">6.7. Ajout de masques de saisie sur les champs de type <strong>input</strong></a>
 <ul class="sectlevel3">
-<li><a href="#_introduction_5">6.6.1. Introduction</a></li>
-<li><a href="#_déclaration_2">6.6.2. Déclaration</a></li>
+<li><a href="#_introduction_5">6.7.1. Introduction</a></li>
+<li><a href="#_déclaration_2">6.7.2. Déclaration</a></li>
 </ul>
 </li>
 </ul>
@@ -9477,7 +9478,7 @@ et copiez le résultat dans la variable <strong>--icon-theme-filter</strong>.</p
 <p>Pour un code couleur de ce type</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/custom/theme_custom_support1.png" alt="theme custom support1" width="200" height="100"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_support1.png" alt="theme custom support1" width="200px" height="100px"></span></p>
 </div>
 <div class="paragraph">
 <p>voici les paramètres css associés (via le fichier <strong>custom/ui/css/custom.css</strong>.)</p>
@@ -9549,7 +9550,7 @@ et copiez le résultat dans la variable <strong>--icon-theme-filter</strong>.</p
 <p>De ce fait, pour le code couleurs suivant</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="images/custom/theme_custom_support2.png" alt="theme custom support2" width="200" height="100"></span></p>
+<p><span class="image"><img src="images/custom/theme_custom_support2.png" alt="theme custom support2" width="200px" height="100px"></span></p>
 </div>
 <div class="paragraph">
 <p>un fichier <strong>custom-CR.css</strong> défini ainsi</p>
@@ -9721,9 +9722,116 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>6.2. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
+<h3 id="_20_custom_locale"><a class="anchor" href="#_20_custom_locale"></a>6.2. Langues disponibles</h3>
+<div class="paragraph">
+<p><code><span style="color:#448279">Arcade GED</span></code> est paramétré par défaut en langue <strong>Française</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Cependant, d&#8217;autres langues sont disponibles :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Langue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>fr</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="images/custom/flags/flag_fr.svg" alt="flag fr" width="32px"></span> Français</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>en</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="images/custom/flags/flag_en.svg" alt="flag en" width="32px"></span> Anglais</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>de</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="images/custom/flags/flag_de.svg" alt="flag de" width="32px"></span> Allemand</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>it</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="images/custom/flags/flag_it.svg" alt="flag it" width="32px"></span> Italien</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>es</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="images/custom/flags/flag_es.svg" alt="flag es" width="32px"></span> Espagnol</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ro</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="image"><img src="images/custom/flags/flag_ro.svg" alt="flag ro" width="32px"></span> Roumain</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Comme indiqué dans le <a href="#_03_options_application">chapitre dédié aux options</a>, la clé <strong>misc.localeDefinition</strong> permet d&#8217;indiquer la liste des locales
+(i.e. <strong>langues</strong>) autorisées, séparées par <strong>;</strong>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Attention"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si aucune langue n&#8217;est déclarée, la locale sera déduite du contexte d&#8217;exécution (option <strong>user.language</strong> du <em>runtime</em> <code><span style="color:#F24E52">Java</span></code>).<br>
+Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide par rapport à votre contexte client.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si plusieurs langues sont déclarées, l&#8217;utilisateur peut alors choisir via ses préférences la langue appliquée dans l&#8217;application</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/custom/locales_preferences.png" alt="locales preferences"></span></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_20_custom_viewunit"><a class="anchor" href="#_20_custom_viewunit"></a>6.3. [ViewUnit] ajout d&#8217;une action personnalisée</h3>
 <div class="sect3">
-<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>6.2.1. Introduction</h4>
+<h4 id="_introduction_2"><a class="anchor" href="#_introduction_2"></a>6.3.1. Introduction</h4>
 <div class="paragraph">
 <p>Autrement nommée <strong class="yellow"><em>action custom</em></strong>.</p>
 </div>
@@ -9771,7 +9879,7 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </div>
 </div>
 <div class="sect3">
-<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>6.2.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
+<h4 id="_module_adminairs"><a class="anchor" href="#_module_adminairs"></a>6.3.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></h4>
 <div class="paragraph">
 <p>Le module <code><span style="color:#25EF72">adminAIRS</span></code> permet de configurer via le paramétrage des vues les <strong class="yellow"><em>action custom</em></strong></p>
 </div>
@@ -9943,7 +10051,7 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </table>
 </div>
 <div class="sect3">
-<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>6.2.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
+<h4 id="_expert_ajout_manuelle_dune_action_custom"><a class="anchor" href="#_expert_ajout_manuelle_dune_action_custom"></a>6.3.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></h4>
 <div class="admonitionblock warning">
 <table>
 <tr>
@@ -10101,7 +10209,7 @@ Il est présenté ici la manière la plus simple de faire (<em>selon l&#8217;aut
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.2.4. Configuration script + modale</h4>
+<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.3.4. Configuration script + modale</h4>
 <div class="paragraph">
 <p>Le script <strong>modalPanelInitGroovyScriptId</strong> est exécuté avant l&#8217;apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.</p>
 </div>
@@ -10135,7 +10243,7 @@ xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.2.5. Quelques modèles/exemples de scripts</h4>
+<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.3.5. Quelques modèles/exemples de scripts</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -10222,9 +10330,9 @@ _scriptLogger.debug("&lt;&lt;&lt; signDoc_action")</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>6.3. [Résultats] Personnalisation de la vue</h3>
+<h3 id="_20_custom_result"><a class="anchor" href="#_20_custom_result"></a>6.4. [Résultats] Personnalisation de la vue</h3>
 <div class="sect3">
-<h4 id="_styles"><a class="anchor" href="#_styles"></a>6.3.1. Styles</h4>
+<h4 id="_styles"><a class="anchor" href="#_styles"></a>6.4.1. Styles</h4>
 <div class="paragraph">
 <p>La page de résultats peut être personnalisée via l&#8217;application de <strong>styleClass</strong> sur ses colonnes. Par exemple :</p>
 </div>
@@ -10319,9 +10427,9 @@ La définition de ces <strong>styles</strong> est soit :</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>6.4. [Cron] ajout d&#8217;une tâche planifiée</h3>
+<h3 id="_20_task"><a class="anchor" href="#_20_task"></a>6.5. [Cron] ajout d&#8217;une tâche planifiée</h3>
 <div class="sect3">
-<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>6.4.1. Introduction</h4>
+<h4 id="_introduction_3"><a class="anchor" href="#_introduction_3"></a>6.5.1. Introduction</h4>
 <div class="paragraph">
 <p>Certaines actions sur la base documentaire n&#8217;ont pas besoin d&#8217;être exécutées immédiatement,<br>
 notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em> (conversion de documents, <em>push</em> ou export vers un système externe).</p>
@@ -10345,7 +10453,7 @@ notamment parce que ces opérations peuvent <em>lourdes</em>, <em>coûteuses</em
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>6.4.2. Déclaration</h4>
+<h4 id="_déclaration"><a class="anchor" href="#_déclaration"></a>6.5.2. Déclaration</h4>
 <div class="paragraph">
 <p>Ces <strong>tâches planifiées</strong> consistent en :</p>
 </div>
@@ -10427,9 +10535,9 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_redirect"><a class="anchor" href="#_20_redirect"></a>6.5. [Redirect] Définitions des URLs de redirection</h3>
+<h3 id="_20_redirect"><a class="anchor" href="#_20_redirect"></a>6.6. [Redirect] Définitions des URLs de redirection</h3>
 <div class="sect3">
-<h4 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a>6.5.1. Introduction</h4>
+<h4 id="_introduction_4"><a class="anchor" href="#_introduction_4"></a>6.6.1. Introduction</h4>
 <div class="paragraph">
 <p>Il peut être utile d&#8217;accéder directement à l&#8217;application <code><span style="color:#448279">Arcade GED</span></code> dans un <span class="underline"><strong>contexte précis</strong></span> :</p>
 </div>
@@ -10489,14 +10597,215 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_définition"><a class="anchor" href="#_définition"></a>6.5.2. Définition</h4>
+<h4 id="_définition"><a class="anchor" href="#_définition"></a>6.6.2. Définition</h4>
+<div class="paragraph">
+<p>L&#8217;idée est simplement de définir et appeler l&#8217;URL de redirection avec les paramètres adéquats.</p>
+</div>
+<div class="listingblock">
+<div class="title">L&#8217;URL de redirection est construite ainsi :</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/faces/redirect.jspx?outcome=XXX&amp;param1=value1&amp;param2=value2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>avec les paramètres suivants :</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<colgroup>
+<col style="width: 12.5%;">
+<col style="width: 37.5%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Code</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Valeurs possibles/Remarques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>outcome</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>page cible attendue suite à l&#8217;appel</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>gotoSimpleView</strong> : <em>résultats de recherche</em></p>
+</li>
+<li>
+<p><strong>gotoThreeViews</strong> : <em>résultats de recherche, vue 3-fenêtres</em></p>
+</li>
+<li>
+<p><strong>search</strong>/<strong>gotoSearch</strong> : <em>recherche</em></p>
+</li>
+<li>
+<p><strong>searchAdvanced</strong>/<strong>gotoSearchAdvanced</strong> : <em>recherche avancée</em></p>
+</li>
+<li>
+<p><strong>gotoDocumentUnitaire</strong>/<strong>gotoUnitView</strong> : <em>Vue document</em></p>
+</li>
+<li>
+<p><strong>gotoTreeView</strong> : <em>Vue arborescente</em></p>
+</li>
+<li>
+<p><strong>documentViewer</strong> : <em>Vue Pièce jointe</em>)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>docId</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Identifiant du document dont l&#8217;affichage est souhaité</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="underline"><strong>Obligatoire</strong></span> si <strong>outcome</strong> est parmi (<strong>gotoDocumentUnitaire</strong>, <strong>gotoSimpleView</strong>, <strong>documentViewer</strong>, <strong>gotoTreeView</strong>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>cty</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Content-type cible lors d&#8217;une recherche</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="3"><div class="content"><div class="paragraph">
+<p>Recherche</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>query</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Requête <strong>AIRS</strong> complète</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>ex : <strong>D_CREAT = "01/01/2026" OU STATUS="New"</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Critères de recherche <span class="underline">séparés</span></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top" colspan="2"><div class="content"><div class="paragraph">
+<p>La définition s&#8217;effectue alors pour <strong>10</strong> critères <span class="underline"><strong>maximum</strong></span> <code>fieldX=&lt;CODE&gt;&amp;opeX=&lt;OPE&gt;&amp;valueX=&lt;VALUE&gt;</code></p>
+</div>
+<div class="paragraph">
+<p>X étant l&#8217;index sur l&#8217;intervalle <strong>[1,10]</strong></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>field</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code du champ <strong>AIRS</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>ope</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opérateur de recherche sur ce critère</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p><strong>equal</strong> : <em>valeur <strong>égale à</strong></em></p>
+</li>
+<li>
+<p><strong>greater</strong> : <em>valeur <strong>supérieure à</strong></em></p>
+</li>
+<li>
+<p><strong>less</strong> : <em>valeur <strong>inférieure à</strong></em></p>
+</li>
+<li>
+<p><strong>between</strong> : <em>valeur <strong>comprise entre</strong></em></p>
+</li>
+<li>
+<p><strong>notBetween</strong> : <em>valeur <strong>non comprise entre</strong></em></p>
+</li>
+<li>
+<p><strong>isNotNull</strong> : <em>valeur <strong>non nulle</strong></em> (l&#8217;attribut <strong>valueX</strong> n&#8217;est alors pas nécessaire)</p>
+</li>
+<li>
+<p><strong>isNull</strong> : <em>valeur <strong>nulle</strong></em> (l&#8217;attribut <strong>valueX</strong> n&#8217;est alors pas nécessaire)</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>value</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Valeur du critère recherché</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>opLoc</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opérateur de jonction</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong><em>Optionnel</em></strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ET</strong> : Les éléments recherchés doivent répondre à tous les critères spécifiés (valeur <span class="underline">par défaut</span>)</p>
+</li>
+<li>
+<p><strong>OU</strong> : Les éléments recherchés doivent répondre à l&#8217;un des critères spécifiés</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Les attributs/critères transmis dans l&#8217;URL doivent être encodés !</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Exemples</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/faces/redirect.jspx?outcome=gotoSimpleView&amp;cty=CR&amp;query=D_CREAT&lt;"01/01/2025"
 
+http(s)://&lt;hostname&gt;:&lt;port&gt;/&lt;context&gt;/faces/redirect.jspx?outcome=gotoSimpleView&amp;cty=CR&amp;field1=D_CREAT&amp;ope1=less&amp;value1=01/01/2025</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_20_custom_masks"><a class="anchor" href="#_20_custom_masks"></a>6.6. Ajout de masques de saisie sur les champs de type <strong>input</strong></h3>
+<h3 id="_20_custom_masks"><a class="anchor" href="#_20_custom_masks"></a>6.7. Ajout de masques de saisie sur les champs de type <strong>input</strong></h3>
 <div class="sect3">
-<h4 id="_introduction_5"><a class="anchor" href="#_introduction_5"></a>6.6.1. Introduction</h4>
+<h4 id="_introduction_5"><a class="anchor" href="#_introduction_5"></a>6.7.1. Introduction</h4>
 <div class="paragraph">
 <p>Selon la configuration, il peut être intéressant d&#8217;appliquer un masque de saisie sur certains champs, dans le but de faciliter l&#8217;expérience utilisateur.</p>
 </div>
@@ -10524,7 +10833,7 @@ la définition du cron souhaité.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.6.2. Déclaration</h4>
+<h4 id="_déclaration_2"><a class="anchor" href="#_déclaration_2"></a>6.7.2. Déclaration</h4>
 <div class="paragraph">
 <p>La déclaration s&#8217;effectue en 2 actions :</p>
 </div>
