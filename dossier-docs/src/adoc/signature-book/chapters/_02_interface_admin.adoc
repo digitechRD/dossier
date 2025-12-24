@@ -111,31 +111,31 @@ Tous les paramètres listés ci-dessous ne sont évidemment pas nécessaires à 
 
 
 [[sb_admin_rights]]
-=== Droits complémentaires {dossier}
+=== Droits complémentaires {arcadeged}
 
 Les droits suivants doivent être associés à un profil d'utilisateur afin d'accéder aux actions correspondantes.
 
-.Droits {dossier}
+.Droits {arcadeged}
 [cols="2a,5a",options="header"]
 |===
 |Droit|Description
-|*DOSSIERS_SB_SEND*|{dossier}: Droit d'envoyer des documents vers le parapheur
-|*DOSSIERS_SB_RETRIEVE*|{dossier}: Droit de relever manuellement les documents du parapheur
-|*DOSSIERS_SB_CANCEL*|{dossier}: Droit d'annuler les documents du parapheur
-|*DOSSIERS_SB_SHOW_HISTO*|{dossier}: Droit de consulter l'historique du parapheur
+|*DOSSIERS_SIGN_SEND*|{arcadeged}: Droit d'envoyer des documents vers le parapheur
+|*DOSSIERS_SIGN_RETRIEVE*|{arcadeged}: Droit de relever manuellement les documents du parapheur
+|*DOSSIERS_SIGN_CANCEL*|{arcadeged}: Droit d'annuler les documents du parapheur
+|*DOSSIERS_SIGN_SHOW_HISTORY*|{arcadeged}: Droit de consulter l'historique du parapheur
 |===
 
 
 [[sb_admin_activation]]
-=== Activation de la fonctionnalité {signbook} dans {dossier}
+=== Activation de la fonctionnalité {signbook} dans {arcadeged}
 
 Editer le fichier *config.properties* pour y définir les propriétés suivantes:
 
-.Droits {dossier}
+.Droits {arcadeged}
 [cols="2a,2a,5a",options="header"]
 |===
 |Clé|Valeur|Description
-|*signBook.enabled*|[green]#true#|Activation de la fonctionnalité {signbook}
+|*sign.airs.signature.enabled*|[green]#true#|Activation du module de signature OTP/{signbook}
 |*signBook.autoRetrieve.folder.enabled*|[green]#true#|Activation de la relève automatique des documents
 |*signBook.autoRetrive.folder.JobInterval*|[blue]#1800000# (30 minutes)|Fréquence de la relève des documents dans le {signbook} (en ms, valeur par défaut
 *7200000*, soit [underline]#2 heures#)
@@ -143,5 +143,5 @@ Editer le fichier *config.properties* pour y définir les propriétés suivantes
 
 [NOTE]
 ====
-A partir de la verison *7.2* de {dossier}, ces paramètres peuvent être directement définis via l'application {adminAIRS}
+À partir de la version *7.2* de {arcadeged}, ces paramètres peuvent être directement définis via l'application {adminAIRS}
 ====

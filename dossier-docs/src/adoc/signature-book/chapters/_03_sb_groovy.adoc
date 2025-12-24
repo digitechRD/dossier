@@ -1,7 +1,7 @@
 <<<
 
 [[sb_dossier]]
-== {dossier}
+== {arcadeged}
 
 [[sb_dossier_script]]
 === Scripts Groovy
@@ -19,15 +19,15 @@ Le code de ce script doit [underline]#impérativement# être *SBRuleScript* et d
 
 Les données disponibles en entrée sont :
 
-* *_scriptLogger*: le _logger_ (Classe `org.slf4j.Logger`)
-* *_userContext*: le _user context_ (Classe `com.digitech.dossier.common.model.backend.UserCoreContext`)
-* *_document*: le _document Airs_ qui contient la pièce jointe envoyée vers le {signbook}. (Class `com.digitech.dossier.common.model.backend.airs.IDocument`)
-* *_attachment*: la _pièce jointe_ envoyée vers le {signbook}. (Class `com.digitech.dossier.common.model.backend.airs.IAttachment`)
-* *_flowModel*: le _code du flux_ auquel appartient le document (Class `java.lang.String`)
+* *_scriptLogger*: le logger (Classe `org.slf4j.Logger`)
+* *_userContext*: le user context (Classe `com.digitech.dossier.common.model.backend.UserCoreContext`)
+* *_document*: le document Airs qui contient la pièce jointe envoyée vers le {signbook}. (Class `com.digitech.dossier.common.model.backend.airs.IDocument`)
+* *_attachment*: la pièce jointe envoyée vers le {signbook}. (Class `com.digitech.dossier.common.model.backend.airs.IAttachment`)
+* *_flowModel*: le code du flux auquel appartient le document (Class `java.lang.String`)
 
 Dans ce script, deux _maps_ vont pouvoir être renseignées:
 
-* Une map de propriétés qui vont permettre de modifier les valeurs par défaut de certaines informations utilisées pour l’envoi vers le {signbook}.
+* *propertiesMap* : Map de propriétés qui vont permettre de modifier les valeurs par défaut de certaines informations utilisées pour l’envoi vers le {signbook}.
 ** *DEPTH_0*: Nom du modèle: niveau racine de l'arborescence du {signbook}. (cf 7.1)
 ** *DEPTH_1*: circuit de validation dans le paraheur (cf 7.2)
 ** *external_folder.title*: Titre de l’envoi
@@ -42,7 +42,7 @@ Les données renseignées peuvent être en dur, ou le nom d'un champ du document
 resultValue.getPropertiesMap().put(DossierExternalFolderConstants.EXTERNALFOLDER_TITLE, "%N_CHRONO%")
 ----
 
-* Et une map de *Metadatas*, ces informations sont transmises directement au {signbook}.
+* *metadatasMap* : Map de *Metadatas*, ces informations sont transmises directement au {signbook}.
 
 [source,java]
 ----
