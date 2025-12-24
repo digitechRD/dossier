@@ -1,0 +1,59 @@
+[[_27_SBRuleScript]]
+== {SBRuleScript}
+
+=== Description
+
+Ce type de script est utilisé lors de l'envoi de document(s) à signer en mode Parapheur.
+
+=== Paramètres
+
+cf. <<_01_CommonData,attributs communs>>.
+
+[options="noheader",cols="2a,2a,3a"]
+|===
+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+3+|[.header]
+Entrées
+|*_document*|*com.digitech.dossier.common.model.backend.airs.IDocument* |Document Airs qui contient la pièce jointe (document principal) envoyée vers le
+parapheur
+|*_attachment*| *com.digitech.dossier.common.model.backend.airs.IAttachment*|Pièce jointe envoyée vers le parapheur (document principal)
+|*_flowModel*|*java.lang.String*|Code du flux auquel appartient le document
+
+3+|[.header]
+Entrées/sorties
+|*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultValueConnectorRule*|contient les variables *annexeDocument*, *manageXmlFile*,
+*propertiesMap*, *metadatasMap*
+et *directory*
+|===
+
+=== Exemple
+
+Ajout de toutes les pièces jointes au format PDF (fichiers différents du document principal) en tant qu'annexes lors de l'envoi d'un document en signature.
+
+[source, groovy]
+----
+import com.digitech.dossier.common.model.backend.airs.IAttachment
+import com.digitech.dossier.common.model.backend.airs.IDocument
+import com.digitech.dossier.script.model.impl.result.ScriptResultValueConnectorRule
+import fr.digitech.connector.impl.signatureBook.type.EnumDepth
+import org.apache.commons.io.FilenameUtils
+
+// init the result value
+ScriptResultValueConnectorRule resultValue = new ScriptResultValueConnectorRule()
+
+IDocument document = _document
+IAttachment attachment = _attachment
+String attachmentName = attachment.getFileName()
+List<IAttachment> attachments = document.getAttachments(_userContext)
+List<IAttachment> attachmentsToAdd = attachments.stream()
+    .filter(e -> {
+      "pdf".equals(FilenameUtils.getExtension(e.getFileName())) && e.getFileName() != attachmentName
+    }).collect().toList()
+resultValue.getAnnexeDocument().addAll(attachmentsToAdd)
+
+// put the result in the output model
+output.setValue(resultValue)
+----
