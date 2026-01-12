@@ -32,12 +32,14 @@ Le chapitre suivant décrit chaque propriété :
 .Description des paramètres
 |===
 |Code|Description|Xml|type|Obligatoire?
-|*ID**|Identifiant unique de {customAction}|action#id|String|[green]#true#
-|*Script*|Script associé à l'{customAction}, de type *DocumentInitializer*|action > *groovyScriptId*|String, script pré-défini|[green]#true#
-|*Clé du panneau modal*|Clé du _modalPanel_ si souhaitée|action > *modalPanelPageKey*|String, clé définie dans le fichier *custom/Pages.properties*|
-|*Initialisation du panneau modal*|Clé du _script_ d'initialisation du _modalPanel_ si souhaitée|action > *modalPanelInitGroovyScriptId*|String, script pré-défini|
-|*Script de Modalité d'affichage*|Script associé de type *DisplayRule* gérant l'affichage de l'{customAction}|action#displayRuleScriptId|String, script pré-défini|
-|*IDs à rafraichir*|*reRender* appliqué après avoir joué l'{customAction}|action#reRender|String|
+|*ID**|Identifiant unique de {customAction}|*action#id*|String|[green]#true#
+|*Script*|Script associé à l'{customAction}, de type *DocumentInitializer*|*action* > *groovyScriptId*|String, script pré-défini|[green]#true#
+|*Clé du panneau modal*|Clé du _modalPanel_ si souhaitée|*action* > *modalPanelPageKey*|String, clé définie dans le fichier *custom/Pages.properties*|
+|*Initialisation du panneau modal*|Clé du _script_ d'initialisation du _modalPanel_ si souhaitée|*action* > *modalPanelInitGroovyScriptId*|String, script
+pré-défini|
+|*Script de Modalité d'affichage*|Script associé de type *DisplayRule* gérant l'affichage de l'{customAction}|*action#displayRuleScriptId*  |String, script
+pré-défini|
+|*IDs à rafraichir*|*reRender* appliqué après avoir joué l'{customAction}|*action#reRender*|String|
 |*Désignation*|titre/label de l'{customAction}|*action#resourceKey*|String, clé définie dans le fichier *custom/Messages.properties*|
 |*Classe de style*|*styleClass* l'{customAction}|*action#styleClass*|String|
 |*Icône*|*icône* définissant l'{customAction}|*action#icon*|String, clé définie dans le fichier *custom/Images.properties*|
@@ -130,6 +132,74 @@ Dans le fichier *xml/{updateXml}*, veuillez ajouter le noeud suivant dans le con
     <modalPanelInitGroovyScriptId>signedDoc_panelInit</modalPanelInitGroovyScriptId>
 </action>
 ```
+
+==== Personnalisation de l'image liée à l'action
+
+L'une des personnalisations courantes souhaitées est d'attribuer un icône dédié à cette action.
+
+Pour cela, 2 actions sont possibles (par ordre de préférence):
+
+. définition d'une image _dédiée_
+
+Dans le fichier *custom/images.properties*, veuillez déclarer les images que vous souhaitez utiliser.
+
+Par ex:
+```properties
+valider_icon=./custom/ui/img/WKF/ValiderDoc.png
+```
+
+[NOTE]
+====
+N'oubliez pas, bien évidemment, de déposer également les images dans les répertoires indiqués/spécifiés.
+====
+
+Dans la définition de l'action personnalisée, veuillez indiquer la propriété *icon* avec cette valeur
+
+```xml
+<com:action id="WKFFACT_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKFFACT_ValiderDoc_displayRule"  icon="valider_icon"> <!-- dernier
+attribut ici -->
+   ...
+</com:action>
+```
+
+[start=2]
+. définition d'un *styleClass* _dédiée_
+
+Dans le fichier *custom.css* déclaré, veuillez déclarer les *styleClass* que vous souhaitez utiliser.
+
+[IMPORTANT]
+====
+Le fichier *custom.css* est activé via le fichier *custom/Styles.properties*, non présent par défaut. +
+Des exemples existent cependant pour vous aider lors de votre déclaration.
+====
+
+Par ex:
+```properties
+custom=./custom/ui/css/custom.css
+```
+
+Dans le fichier *custom/ui/css/custom.css*
+
+```css
+.ValiderDoc {
+  background-image: url("../img/WKF/ValiderDoc.png") !important;;
+}
+```
+
+Dans la définition de l'action personnalisée, veuillez indiquer la propriété *styleClass* avec cette valeur
+
+```xml
+<com:action id="WKFFACT_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKFFACT_ValiderDoc_displayRule"  styleClass="ValiderDoc"> <!--
+dernier attribut ici -->
+   ...
+</com:action>
+```
+
+[NOTE]
+====
+Comme indiqué précédemment, préférer l'utilisation de l'attribut *icon* pour modifier l'image de l'action personnalisée. +
+L'attribut *styleClass* permet d'autres personnalisation (par ex, faire _"battre/pulser"_ l'icône *styleClass="icon-pulse"*)
+====
 
 
 ==== Configuration script + modale

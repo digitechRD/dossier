@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">22/12/2025 14:50:24</span>
+<span id="revdate">12/01/2026 17:15:35</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -181,8 +181,9 @@
 <li><a href="#_introduction_2">6.3.1. Introduction</a></li>
 <li><a href="#_module_adminairs">6.3.2. Module <code><span style="color:#25EF72">adminAIRS</span></code></a></li>
 <li><a href="#_expert_ajout_manuelle_dune_action_custom">6.3.3. [Expert] Ajout manuelle d&#8217;une <strong class="yellow"><em>action custom</em></strong></a></li>
-<li><a href="#_configuration_script_modale">6.3.4. Configuration script + modale</a></li>
-<li><a href="#_quelques_modèlesexemples_de_scripts">6.3.5. Quelques modèles/exemples de scripts</a></li>
+<li><a href="#_personnalisation_de_limage_liée_à_laction">6.3.4. Personnalisation de l&#8217;image liée à l&#8217;action</a></li>
+<li><a href="#_configuration_script_modale">6.3.5. Configuration script + modale</a></li>
+<li><a href="#_quelques_modèlesexemples_de_scripts">6.3.6. Quelques modèles/exemples de scripts</a></li>
 </ul>
 </li>
 <li><a href="#_20_custom_result">6.4. [Résultats] Personnalisation de la vue</a>
@@ -241,7 +242,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Copyright (c) 2025 <code>Digitech SA</code>, tous droits réservés.</p>
+<p>Copyright (c) 2026 <code>Digitech SA</code>, tous droits réservés.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -9973,7 +9974,7 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 <p>Identifiant unique de <strong class="yellow"><em>action custom</em></strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>action#id</p>
+<p><strong>action#id</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String</p>
@@ -9990,7 +9991,7 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 <p>Script associé à l'<strong class="yellow"><em>action custom</em></strong>, de type <strong>DocumentInitializer</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>action &gt; <strong>groovyScriptId</strong></p>
+<p><strong>action</strong> &gt; <strong>groovyScriptId</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String, script pré-défini</p>
@@ -10007,7 +10008,7 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 <p>Clé du <em>modalPanel</em> si souhaitée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>action &gt; <strong>modalPanelPageKey</strong></p>
+<p><strong>action</strong> &gt; <strong>modalPanelPageKey</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String, clé définie dans le fichier <strong>custom/Pages.properties</strong></p>
@@ -10022,10 +10023,11 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 <p>Clé du <em>script</em> d&#8217;initialisation du <em>modalPanel</em> si souhaitée</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>action &gt; <strong>modalPanelInitGroovyScriptId</strong></p>
+<p><strong>action</strong> &gt; <strong>modalPanelInitGroovyScriptId</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>String, script pré-défini</p>
+<p>String, script
+pré-défini</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
@@ -10037,10 +10039,11 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 <p>Script associé de type <strong>DisplayRule</strong> gérant l&#8217;affichage de l'<strong class="yellow"><em>action custom</em></strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>action#displayRuleScriptId</p>
+<p><strong>action#displayRuleScriptId</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>String, script pré-défini</p>
+<p>String, script
+pré-défini</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
@@ -10052,7 +10055,7 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 <p><strong>reRender</strong> appliqué après avoir joué l'<strong class="yellow"><em>action custom</em></strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>action#reRender</p>
+<p><strong>action#reRender</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p>String</p>
@@ -10266,7 +10269,128 @@ Veuillez donc vérifier que la locale d&#8217;exécution déclarée est valide p
 </div>
 </div>
 <div class="sect3">
-<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.3.4. Configuration script + modale</h4>
+<h4 id="_personnalisation_de_limage_liée_à_laction"><a class="anchor" href="#_personnalisation_de_limage_liée_à_laction"></a>6.3.4. Personnalisation de l&#8217;image liée à l&#8217;action</h4>
+<div class="paragraph">
+<p>L&#8217;une des personnalisations courantes souhaitées est d&#8217;attribuer un icône dédié à cette action.</p>
+</div>
+<div class="paragraph">
+<p>Pour cela, 2 actions sont possibles (par ordre de préférence):</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>définition d&#8217;une image <em>dédiée</em></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Dans le fichier <strong>custom/images.properties</strong>, veuillez déclarer les images que vous souhaitez utiliser.</p>
+</div>
+<div class="paragraph">
+<p>Par ex:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">valider_icon=./custom/ui/img/WKF/ValiderDoc.png</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>N&#8217;oubliez pas, bien évidemment, de déposer également les images dans les répertoires indiqués/spécifiés.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Dans la définition de l&#8217;action personnalisée, veuillez indiquer la propriété <strong>icon</strong> avec cette valeur</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;com:action id="WKFFACT_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKFFACT_ValiderDoc_displayRule"  icon="valider_icon"&gt; &lt;!-- dernier
+attribut ici --&gt;
+   ...
+&lt;/com:action&gt;</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>définition d&#8217;un <strong>styleClass</strong> <em>dédiée</em></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Dans le fichier <strong>custom.css</strong> déclaré, veuillez déclarer les <strong>styleClass</strong> que vous souhaitez utiliser.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Le fichier <strong>custom.css</strong> est activé via le fichier <strong>custom/Styles.properties</strong>, non présent par défaut.<br>
+Des exemples existent cependant pour vous aider lors de votre déclaration.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Par ex:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">custom=./custom/ui/css/custom.css</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dans le fichier <strong>custom/ui/css/custom.css</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-css hljs" data-lang="css">.ValiderDoc {
+  background-image: url("../img/WKF/ValiderDoc.png") !important;;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Dans la définition de l&#8217;action personnalisée, veuillez indiquer la propriété <strong>styleClass</strong> avec cette valeur</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;com:action id="WKFFACT_ValiderDoc" resourceKey="action_ValiderDoc" displayRuleScriptId="WKFFACT_ValiderDoc_displayRule"  styleClass="ValiderDoc"&gt; &lt;!--
+dernier attribut ici --&gt;
+   ...
+&lt;/com:action&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Comme indiqué précédemment, préférer l&#8217;utilisation de l&#8217;attribut <strong>icon</strong> pour modifier l&#8217;image de l&#8217;action personnalisée.<br>
+L&#8217;attribut <strong>styleClass</strong> permet d&#8217;autres personnalisation (par ex, faire <em>"battre/pulser"</em> l&#8217;icône <strong>styleClass="icon-pulse"</strong>)</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_configuration_script_modale"><a class="anchor" href="#_configuration_script_modale"></a>6.3.5. Configuration script + modale</h4>
 <div class="paragraph">
 <p>Le script <strong>modalPanelInitGroovyScriptId</strong> est exécuté avant l&#8217;apparition de la fenêtre modale et permet de calculer certaines valeurs si nécessaires.</p>
 </div>
@@ -10300,7 +10424,7 @@ xmlns:jsp="http://java.sun.com/JSP/Page"&gt;
 </div>
 </div>
 <div class="sect3">
-<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.3.5. Quelques modèles/exemples de scripts</h4>
+<h4 id="_quelques_modèlesexemples_de_scripts"><a class="anchor" href="#_quelques_modèlesexemples_de_scripts"></a>6.3.6. Quelques modèles/exemples de scripts</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
