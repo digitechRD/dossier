@@ -32,8 +32,8 @@
 <h1>Mise œuvre d&#8217;un <code>Parapheur</code> dans l&#8217;application <code>Dossier</code></h1>
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
-<span id="revnumber">version 1.0,</span>
-<span id="revdate">06/01/2021</span>
+<span id="revnumber">version 1.1,</span>
+<span id="revdate">23/12/2025</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -48,11 +48,11 @@
 <li><a href="#_paramétrage_de_linterface">2.3.1. Paramétrage de l&#8217;interface</a></li>
 </ul>
 </li>
-<li><a href="#sb_admin_rights">2.4. Droits complémentaires <code><span style="color:#D4CE28">AIRS Dossier</span></code></a></li>
-<li><a href="#sb_admin_activation">2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color:#D4CE28">AIRS Dossier</span></code></a></li>
+<li><a href="#sb_admin_rights">2.4. Droits complémentaires <code><span style="color:#448279">Arcade GED</span></code></a></li>
+<li><a href="#sb_admin_activation">2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
 </li>
-<li><a href="#sb_dossier">3. <code><span style="color:#D4CE28">AIRS Dossier</span></code></a>
+<li><a href="#sb_dossier">3. <code><span style="color:#448279">Arcade GED</span></code></a>
 <ul class="sectlevel2">
 <li><a href="#sb_dossier_script">3.1. Scripts Groovy</a>
 <ul class="sectlevel3">
@@ -106,8 +106,16 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock">1.0</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Document</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Frédéric Gadaut</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Nicolas Félix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">f.gadaut</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">n.felix</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23/12/2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">En cours</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mise à jour v9.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">m.rakotomavo</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">n.felix</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -119,7 +127,7 @@
 <h2 id="introduction"><a class="anchor" href="#introduction"></a>1. Introduction</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Ce document décrit comment interconnecter <code><span style="color:#D4CE28">AIRS Dossier</span></code> avec un <code><span style="color: #82E0AA">Parapheur</span></code> externe.</p>
+<p>Ce document décrit comment interconnecter <code><span style="color:#448279">Arcade GED</span></code> avec un <code><span style="color: #82E0AA">Parapheur</span></code> externe.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -547,12 +555,12 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="sb_admin_rights"><a class="anchor" href="#sb_admin_rights"></a>2.4. Droits complémentaires <code><span style="color:#D4CE28">AIRS Dossier</span></code></h3>
+<h3 id="sb_admin_rights"><a class="anchor" href="#sb_admin_rights"></a>2.4. Droits complémentaires <code><span style="color:#448279">Arcade GED</span></code></h3>
 <div class="paragraph">
 <p>Les droits suivants doivent être associés à un profil d&#8217;utilisateur afin d&#8217;accéder aux actions correspondantes.</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 3. Droits <code><span style="color:#D4CE28">AIRS Dossier</span></code></caption>
+<caption class="title">Table 3. Droits <code><span style="color:#448279">Arcade GED</span></code></caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 71.4286%;">
@@ -566,46 +574,46 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>DOSSIERS_SB_SEND</strong></p>
+<p><strong>DOSSIERS_SIGN_SEND</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit d&#8217;envoyer des documents vers le parapheur</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>DOSSIERS_SB_RETRIEVE</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit de relever manuellement les documents du parapheur</p>
+<p><code><span style="color:#448279">Arcade GED</span></code>: Droit d&#8217;envoyer des documents vers le parapheur</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>DOSSIERS_SB_CANCEL</strong></p>
+<p><strong>DOSSIERS_SIGN_RETRIEVE</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit d&#8217;annuler les documents du parapheur</p>
+<p><code><span style="color:#448279">Arcade GED</span></code>: Droit de relever manuellement les documents du parapheur</p>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>DOSSIERS_SB_SHOW_HISTO</strong></p>
+<p><strong>DOSSIERS_SIGN_CANCEL</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><code><span style="color:#D4CE28">AIRS Dossier</span></code>: Droit de consulter l&#8217;historique du parapheur</p>
+<p><code><span style="color:#448279">Arcade GED</span></code>: Droit d&#8217;annuler les documents du parapheur</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>DOSSIERS_SIGN_SHOW_HISTORY</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#448279">Arcade GED</span></code>: Droit de consulter l&#8217;historique du parapheur</p>
 </div></div></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect2">
-<h3 id="sb_admin_activation"><a class="anchor" href="#sb_admin_activation"></a>2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color:#D4CE28">AIRS Dossier</span></code></h3>
+<h3 id="sb_admin_activation"><a class="anchor" href="#sb_admin_activation"></a>2.5. Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code> dans <code><span style="color:#448279">Arcade GED</span></code></h3>
 <div class="paragraph">
 <p>Editer le fichier <strong>config.properties</strong> pour y définir les propriétés suivantes:</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 4. Droits <code><span style="color:#D4CE28">AIRS Dossier</span></code></caption>
+<caption class="title">Table 4. Droits <code><span style="color:#448279">Arcade GED</span></code></caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 22.2222%;">
@@ -621,13 +629,13 @@
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>signBook.enabled</strong></p>
+<p><strong>sign.airs.signature.enabled</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><span class="green">true</span></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Activation de la fonctionnalité <code><span style="color: #82E0AA">Parapheur</span></code></p>
+<p>Activation du module de signature OTP/<code><span style="color: #82E0AA">Parapheur</span></code></p>
 </div></div></td>
 </tr>
 <tr>
@@ -663,7 +671,7 @@
 </td>
 <td class="content">
 <div class="paragraph">
-<p>A partir de la verison <strong>7.2</strong> de <code><span style="color:#D4CE28">AIRS Dossier</span></code>, ces paramètres peuvent être directement définis via l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code></p>
+<p>À partir de la version <strong>7.2</strong> de <code><span style="color:#448279">Arcade GED</span></code>, ces paramètres peuvent être directement définis via l&#8217;application <code><span style="color:#25EF72">adminAIRS</span></code></p>
 </div>
 </td>
 </tr>
@@ -674,7 +682,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="sb_dossier"><a class="anchor" href="#sb_dossier"></a>3. <code><span style="color:#D4CE28">AIRS Dossier</span></code></h2>
+<h2 id="sb_dossier"><a class="anchor" href="#sb_dossier"></a>3. <code><span style="color:#448279">Arcade GED</span></code></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="sb_dossier_script"><a class="anchor" href="#sb_dossier_script"></a>3.1. Scripts Groovy</h3>
@@ -704,19 +712,19 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong><em>scriptLogger</strong>: le _logger</em> (Classe <code>org.slf4j.Logger</code>)</p>
+<p><strong>_scriptLogger</strong>: le logger (Classe <code>org.slf4j.Logger</code>)</p>
 </li>
 <li>
-<p><strong><em>userContext</strong>: le _user context</em> (Classe <code>com.digitech.dossier.common.model.backend.UserCoreContext</code>)</p>
+<p><strong>_userContext</strong>: le user context (Classe <code>com.digitech.dossier.common.model.backend.UserCoreContext</code>)</p>
 </li>
 <li>
-<p><strong><em>document</strong>: le _document Airs</em> qui contient la pièce jointe envoyée vers le <code><span style="color: #82E0AA">Parapheur</span></code>. (Class <code>com.digitech.dossier.common.model.backend.airs.IDocument</code>)</p>
+<p><strong>_document</strong>: le document Airs qui contient la pièce jointe envoyée vers le <code><span style="color: #82E0AA">Parapheur</span></code>. (Class <code>com.digitech.dossier.common.model.backend.airs.IDocument</code>)</p>
 </li>
 <li>
-<p><strong><em>attachment</strong>: la _pièce jointe</em> envoyée vers le <code><span style="color: #82E0AA">Parapheur</span></code>. (Class <code>com.digitech.dossier.common.model.backend.airs.IAttachment</code>)</p>
+<p><strong>_attachment</strong>: la pièce jointe envoyée vers le <code><span style="color: #82E0AA">Parapheur</span></code>. (Class <code>com.digitech.dossier.common.model.backend.airs.IAttachment</code>)</p>
 </li>
 <li>
-<p><strong><em>flowModel</strong>: le _code du flux</em> auquel appartient le document (Class <code>java.lang.String</code>)</p>
+<p><strong>_flowModel</strong>: le code du flux auquel appartient le document (Class <code>java.lang.String</code>)</p>
 </li>
 </ul>
 </div>
@@ -726,7 +734,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Une map de propriétés qui vont permettre de modifier les valeurs par défaut de certaines informations utilisées pour l’envoi vers le <code><span style="color: #82E0AA">Parapheur</span></code>.</p>
+<p><strong>propertiesMap</strong> : Map de propriétés qui vont permettre de modifier les valeurs par défaut de certaines informations utilisées pour l’envoi vers le <code><span style="color: #82E0AA">Parapheur</span></code>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -761,7 +769,7 @@ est renseignée si elle est trouvée dans les paramètres de l’interface</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Et une map de <strong>Metadatas</strong>, ces informations sont transmises directement au <code><span style="color: #82E0AA">Parapheur</span></code>.</p>
+<p><strong>metadatasMap</strong> : Map de <strong>Metadatas</strong>, ces informations sont transmises directement au <code><span style="color: #82E0AA">Parapheur</span></code>.</p>
 </li>
 </ul>
 </div>
@@ -850,7 +858,7 @@ d’autorité qui contient le circuit de validation pour le <code><span style="c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resultValue.getPropertiesMap().put(EnumDepth.DEPTH_1.name(), CIRCUIT_NAME) // here set the nature</code></pre>
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">resultValue.getPropertiesMap().put(EnumDepth.DEPTH_0.name(), CIRCUIT_NAME) // here set the workflow</code></pre>
 </div>
 </div>
 <div class="paragraph">
