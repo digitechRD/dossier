@@ -1,0 +1,31 @@
+[[rest_client]]
+=== Client {rest}
+
+Si vous êtes un intégrateur et que vous réalisez vos développements en {java}, demandez notre librairie *com.digitech
+.airs:dossier-rest-client:{dossier-rest-client-version}* afin de faciliter votre interconnexion.
+
+==== Authentification
+
+Chaque _endpoint_ {rest} nécessite une authentification.
+
+Celle-ci doit être injecté dans le _service_ via les paramètres *username*/*password*
+
+```java
+service.setUsername(<username>);
+service.setPassword(<password>);
+```
+
+==== SSL
+
+Si {arcadeged} est configurée en *https/SSL*, vous devez préciser le *trustStore*.
+
+Plusieurs méthodes sont possibles, celle préconisée est d'indiquer les informations du *trustStore* dans le _service_
+
+```java
+service.setTrustStore(<Path to trustStore>, <trustStore pwd>, <trustStore type>);
+
+// example
+service.setTrustStore("/path/arcade-ged.jks", "<changez-moi>", "JKS");
+```
+
+Cf. le chapitre <<appendix_rest_client_jks,en annexes>> pour un exemple de récupération d'un *trustStore* à partir de l'URL de l'application.

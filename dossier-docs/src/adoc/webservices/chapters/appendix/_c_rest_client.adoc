@@ -1,0 +1,51 @@
+[[appendix_rest_client]]
+=== client {rest}
+
+[[appendix_rest_client_jks]]
+==== Récupération du trustStore de l'application
+
+[IMPORTANT]
+====
+Les applications *openssl* et *keytool* doivent être disponibles sur la machine sur laquelle sont exécutées les commandes.
+
+Le *Keytool* est disponible dans la *jdk*.
+====
+
+. Récupérer le certificat depuis l’URL d'{arcadeged}
+
+[source,sh]
+----
+openssl s_client -connect <url application>:443 -servername <url application> -showcerts
+----
+
+[start=2]
+. Enregistrer le certificat obtenu dans un fichier *arcadeged-ca.pem*.
+
+[NOTE]
+====
+Il s'agit de récupérer le texte compris entre les balises
+
+* */-----BEGIN CERTIFICATE-----/*
+* */-----END CERTIFICATE-----/*
+
+*[underline]#en conservant celles-ci#*
+====
+
+[IMPORTANT]
+====
+Souvent, ce [underline]#n’est pas# le certificat serveur qu’il faut importer, mais la *CA interne* qui l’a signé (*root/intermédiaire*).
+
+Sinon le truststore risque de _"casser"_ dès que le serveur renouvelle son certificat.
+====
+
+[start=3]
+. Convertir le *trustStore* au format *JKS*
+
+```sh
+keytool -importcert -alias arcadeged-ca -file arcadeged-ca.pem -keystore arcadeged-truststore.jks -storepass <changez-moi> -noprompt
+```
+
+[start=4]
+. Récupérer le *jks* généré
+
+Vous pouvez alors le copier à l'endroit souhaité et l'indiquer dans les paramètres du client (sans oublier le mot de passe défini *<changez-moi>*)
