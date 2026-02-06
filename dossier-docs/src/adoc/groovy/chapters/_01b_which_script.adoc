@@ -3,12 +3,46 @@
 
 [TIP]
 ====
-Le nombre de types de scripts étant important, il peut paraître difficile de détecter quel type de script s'applique dans quel cas. +
+Les types de scripts étant importants, il peut paraître difficile de détecter quel type de script s'applique dans quel cas. +
 Ce chapitre permet d'identifier rapidement les cas d'utilisation.
 ====
 
 
 [options="header,autowidth",width=100%]
 |===
-|Action souhaitée|Type de Script|Observation
+|Point de jonction souhaité|Type de Script|Trigger|Observation/Description/Exemple
+|Avant accès à la fiche de création|<<_10_DocCreation, {DocCreation}>>|*BEFORE_CREATE*|Permet d'injecter des données dans la fiche du document. Ce script est
+également déclenché lors de la création de document via _drag-and-drop_ (dépôt de fichier) sur la page d'accueil.
+|Avant sauvegarde (c'est-à-dire que le document {airs} n'a pas encore été créé)|<<_13_DocumentInitializer, {DocumentInitializer}>>|*BEFORE_SAVE*|Permet de
+contrôler les
+données saisies pour la création, et
+éventuellement compléter ou invalider la création
+|Après sauvegarde (c'est-à-dire que le document {airs} a été créé)|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_SAVE*|Permet de déclencher des
+actions complémentaires après la création du document. La création du document peut également être [underline]#annulée# via ce script.
+|Avant suppression|<<_13_DocumentInitializer, {DocumentInitializer}>>|*BEFORE_DELETE*|Contrôle éventuel avant suppression, peut être utilisé pour annuler la
+suppression.
+|Après suppression|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_DELETE*|Action complémentaire après suppression. Exemple, notification par mail
+d'un gestionnaire.
+|Avant verrouillage|<<_13_DocumentInitializer, {DocumentInitializer}>>|*BEFORE_LOCK*|Action complémentaire avant verrouillage d'un document, peut être
+utilisé pour annuler le dépôt de verrou.
+|Après verrouillage|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_LOCK*|Action complémentaire après verrouillage d'un document
+|Avant déverrouillage|<<_13_DocumentInitializer, {DocumentInitializer}>>|*BEFORE_UNLOCK*|Action complémentaire avant déverrouillage d'un document
+|Après déverrouillage|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_UNLOCK*|Action complémentaire après déverrouillage d'un document
+|Avant ajout d'une pièce jointe|<<_05_AttachmentUploaded, {AttachmentUploaded}>>|*BEFORE_ADD_ATTACHMENT*|Action complémentaire avant ajout d'une pièce
+jointe. Peut être utilisé pour prémunir le dépôt d'un fichier non souhaité, extraire des index de ce document, ...
+|Après ajout d'une pièce jointe|<<_05_AttachmentUploaded, {AttachmentUploaded}>>|*AFTER_ADD_ATTACHMENT*|Action complémentaire après dépôt d'un fichier.
+Peut être par exemple utilisé pour vérifier la complétude d'un dossier.
+|Avant suppression d'une pièce jointe|<<_05_AttachmentUploaded, {AttachmentUploaded}>>|*BEFORE_DELETE_ATTACHMENT*|Action complémentaire avant
+suppression d'une pièce jointe.
+|Après suppression d'une pièce jointe|<<_05_AttachmentUploaded, {AttachmentUploaded}>>|*AFTER_DELETE_ATTACHMENT*|Action complémentaire après suppression d'un fichier.
+4+|[.header]
+Signature/Parapheur
+|Avant envoi au parapheur|<<_13_DocumentInitializer, {DocumentInitializer}>>|*BEFORE_SEND_TO_SB*|Permet de préparer/compléter le dossier envoyé au parapheur
+|Après envoi au parapheur|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_SEND_TO_SB*|Permet d'éventuelles actions après dépôt
+|Après récupération d'un dossier [underline]#accepté# dans le parapheur|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_ACCEPTED_BY_SB*|Permet d'éventuelles actions après acceptation (signature) du dossier
+|Après récupération d'un dossier [underline]#rejeté# dans le parapheur|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_REJECTED_BY_SB*|Permet
+d'éventuelles actions après annulation du dossier
+|Après récupération d'un dossier [underline]#annulé# dans le parapheur|<<_13_DocumentInitializer, {DocumentInitializer}>>|*AFTER_CANCEL_TO_SB*|Permet
+d'éventuelles actions après refus du dossier
+
 |===
