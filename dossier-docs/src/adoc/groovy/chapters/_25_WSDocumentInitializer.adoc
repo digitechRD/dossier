@@ -7,7 +7,8 @@ Ce type de script est utilisé lors de l'exécution des webservices sur les docu
 
 [NOTE]
 ====
-À la fois disponible pour le {webservice} *WSDocument* (endpoint */document*)
+La possibilité d'exécuter un script {groovy}, lors de la création ou la mise à jour d'un document via {webservice}, est disponible à la fois pour les
+_endpoints_ de type {rest} et {soap}.
 ====
 
 === Paramètres
@@ -23,6 +24,12 @@ _Description_
 3+|[.header]
 Entrées
 |_docType|*WSDocument*: *com.digitech.dossier.webservices.ws.document.type.WSDocumentType*|
+[NOTE]
+====
+La variable *byte[] data*, stockant le contenu du fichier, n'est valable qu'en mode {soap}. + Dans le cas d'un appel {rest}, les fichiers sont contenus dans
+la variable *_files*
+====
+|_files|*Map<String, Path>*: map des fichiers. La clé contient le nom du fichier, la valeur le chemin vers le fichier uploadé|
 |_mode|ScriptModeRun|Mode (*CREATE* ou *UPDATE*)
 
 3+|[.header]
@@ -30,9 +37,9 @@ Entrées/sorties
 |*_result*|*com.digitech.dossier.script.model.impl.result.ScriptResultWSDocument*|contient les variables *secretLevel*, *codeFieldValues*, *ctxValues* et *document*
 |===
 
-=== Exemple
+=== Exemples
 
-Ajout de commentaire dans le champ *CR_RESUME* si le document est mis à jour.
+. Ajout de commentaire dans le champ *CR_RESUME* si le document est mis à jour.
 
 [source, groovy]
 ----
@@ -53,3 +60,23 @@ if (_mode == ScriptModeRun.UPDATE) {
 
 .Exemple d'ajout de commentaire dans le champ Résumé lors de la mise à jour d'un document
 image:examples/ws_document_initializer_example.png[]
+
+[start=2]
+. Parcours des fichiers uploadés
+
+[source,groovy]
+----
+if(_files?.isEmpty()) {
+  for(Map.Entry<String, Path> set : _files.entrySet()) {
+    String fileName = set.getKey()
+    if("forbidden.txt".equals(fileName)) {
+      continue
+    }
+    Path filePath = set.getValue()
+    if(filePath != null && Files.exists(filePath)) {
+      IAttachment att = AbstractWebServiceDocument.createOrUpdateAttachment(uc, document, fileName, filePath)
+      _scriptLogger.debug("Attachment '{}' created!", att)
+    }
+  }
+}
+----

@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">24/12/2025 11:02:40</span>
+<span id="revdate">06/02/2026 11:26:24</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -204,7 +204,7 @@
 <ul class="sectlevel2">
 <li><a href="#_description_24">27.1. Description</a></li>
 <li><a href="#_paramètres_22">27.2. Paramètres</a></li>
-<li><a href="#_exemple_18">27.3. Exemple</a></li>
+<li><a href="#_exemples_4">27.3. Exemples</a></li>
 </ul>
 </li>
 <li><a href="#_24_WSExtendDocumentInitializer">28. <code><span style="color:#11da73">WSExtendDocumentInitializer</span></code></a>
@@ -217,7 +217,7 @@
 <ul class="sectlevel2">
 <li><a href="#_description_26">29.1. Description</a></li>
 <li><a href="#_paramètres_24">29.2. Paramètres</a></li>
-<li><a href="#_exemple_19">29.3. Exemple</a></li>
+<li><a href="#_exemple_18">29.3. Exemple</a></li>
 </ul>
 </li>
 <li><a href="#_99_appendixes">30. Annexes</a>
@@ -287,7 +287,7 @@
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Copyright (c) 2025 <code>Digitech SA</code>, tous droits réservés.</p>
+<p>Copyright (c) 2026 <code>Digitech SA</code>, tous droits réservés.</p>
 </div></div></td>
 </tr>
 </tbody>
@@ -2921,7 +2921,8 @@ if(att.getLabel() == null) {
 </td>
 <td class="content">
 <div class="paragraph">
-<p>À la fois disponible pour le <code><span style="color:#0099ff">Web Service</span></code> <strong>WSDocument</strong> (endpoint <strong>/document</strong>)</p>
+<p>La possibilité d&#8217;exécuter un script <code><span style="color:#2C8470">Groovy</span></code>, lors de la création ou la mise à jour d&#8217;un document via <code><span style="color:#2C8470">WebService</span></code>, est disponible à la fois pour les
+<em>endpoints</em> de type <code><span style="color:#73A12E">REST</span></code> et <code><span style="color:#6666ff">SOAP</span></code>.</p>
 </div>
 </td>
 </tr>
@@ -2963,6 +2964,29 @@ if(att.getLabel() == null) {
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong>WSDocument</strong>: <strong>com.digitech.dossier.webservices.ws.document.type.WSDocumentType</strong></p>
 </div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>La variable <strong>byte[] data</strong>, stockant le contenu du fichier, n&#8217;est valable qu&#8217;en mode <code><span style="color:#6666ff">SOAP</span></code>. + Dans le cas d&#8217;un appel <code><span style="color:#73A12E">REST</span></code>, les fichiers sont contenus dans
+la variable <strong>_files</strong></p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>_files</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>Map&lt;String, Path&gt;</strong>: map des fichiers. La clé contient le nom du fichier, la valeur le chemin vers le fichier uploadé</p>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"></div></td>
 </tr>
 <tr>
@@ -2996,9 +3020,13 @@ if(att.getLabel() == null) {
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>27.3. Exemple</h3>
-<div class="paragraph">
+<h3 id="_exemples_4"><a class="anchor" href="#_exemples_4"></a>27.3. Exemples</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>Ajout de commentaire dans le champ <strong>CR_RESUME</strong> si le document est mis à jour.</p>
+</li>
+</ol>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3021,6 +3049,30 @@ if (_mode == ScriptModeRun.UPDATE) {
 <div class="title">Exemple d&#8217;ajout de commentaire dans le champ Résumé lors de la mise à jour d&#8217;un document</div>
 <p><span class="image"><img src="images/examples/ws_document_initializer_example.png" alt="ws document initializer example"></span></p>
 </div>
+<div class="olist arabic">
+<ol class="arabic" start="2">
+<li>
+<p>Parcours des fichiers uploadés</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">if(_files?.isEmpty()) {
+  for(Map.Entry&lt;String, Path&gt; set : _files.entrySet()) {
+    String fileName = set.getKey()
+    if("forbidden.txt".equals(fileName)) {
+      continue
+    }
+    Path filePath = set.getValue()
+    if(filePath != null &amp;&amp; Files.exists(filePath)) {
+      IAttachment att = AbstractWebServiceDocument.createOrUpdateAttachment(uc, document, fileName, filePath)
+      _scriptLogger.debug("Attachment '{}' created!", att)
+    }
+  }
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3040,7 +3092,7 @@ if (_mode == ScriptModeRun.UPDATE) {
 </td>
 <td class="content">
 <div class="paragraph">
-<p>À la fois disponible pour le <code><span style="color:#0099ff">Web Service</span></code> (endpoint <strong>/extendDocument</strong>)</p>
+<p>À la fois disponible pour le <code><span style="color:#2C8470">WebService</span></code> (endpoint <strong>/extendDocument</strong>)</p>
 </div>
 </td>
 </tr>
@@ -3223,7 +3275,7 @@ et <strong>directory</strong></p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_exemple_19"><a class="anchor" href="#_exemple_19"></a>29.3. Exemple</h3>
+<h3 id="_exemple_18"><a class="anchor" href="#_exemple_18"></a>29.3. Exemple</h3>
 <div class="paragraph">
 <p>Ajout de toutes les pièces jointes au format PDF (fichiers différents du document principal) en tant qu&#8217;annexes lors de l&#8217;envoi d&#8217;un document en signature.</p>
 </div>
