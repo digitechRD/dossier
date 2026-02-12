@@ -25,4 +25,13 @@ dossier.security.header.csp.safe.urls=http://10.1.4.125:9090;http://localhost:91
 |*dossier.security.kerberos.use.referer.header*|Utiliser la balise *Referer* dans l'entête d'authentification|Boolean|[red]#false#
 |*dossier.security.kerberos.skip.if.already.authenticated*|Ne pas vérifier l'authentification si le le _Principal_ semble déjà connecter|Boolean|[green]#true#
 
+4+|*Redirect*
+|*dossier.security.session.custom.authenticator.filter.enabled*|Autoriser la connexion *basique* (via le paramètre *authentication* d'URL) dans
+les appels via *redirect.jspx*|Boolean|[red]#false#
+
+[NOTE]
+====
+Par mesure de sécurité, cette possibilité est désactivée à partir de la version *8.1* d'{arcadeged}
+====
+
 |===
