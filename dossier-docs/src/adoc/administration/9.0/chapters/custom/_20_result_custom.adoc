@@ -1,9 +1,15 @@
 [[_20_custom_result]]
 === [Résultats] Personnalisation de la vue
 
-==== Styles
+[IMPORTANT]
+====
+L'application de styles {css} personnalisés nécessite une connaissance et expérience dans ce domaine (le _{css}_)
+====
 
-La page de résultats peut être personnalisée via l'application de *styleClass* sur ses colonnes. Par exemple :
+[[_20_custom_result_col]]
+==== Styles _"colonnes"_
+
+La page de résultats peut être personnalisée via l'application de *styleClass* appliqués sur une colonne. Par exemple :
 
 * Modification de la couleur de fond
 * Taille min/max (en pixel)
@@ -37,5 +43,121 @@ La définition de ces *styles* est soit :
 
 [IMPORTANT]
 ====
-L'application de styles {css} personnalisés nécessite une connaissance et expérience dans ce domaine.
+L'application de ce *styleClass* global à la colonne s'effectue via le paramètre *styleClass* dans la définition de la _view_
+
+[source, xml]
+--
+<column main="false" label="Résumé" visible="true" suggestionFilterEnabled="false" autoCompeteEnabled="false" styleClass="multiline">
+  <airsField>CR_RESUME</airsField>
+</column>
+--
 ====
+
+[[_20_custom_result_cell]]
+==== Styles _"valeurs références"_
+
+De manière similaire, un *styleClass* peut être appliqué de manière plus fine sur la valeur d'une cellule.
+
+Notamment pour toutes les colonnes dont le champ est lié à une liste de références (appelée également *liste d'autorité*).
+
+Chaque cellule du tableau de résultat contient alors :
+
+* le *code* de la _liste d'autorité_.
+* le *code* de la valeur de l'*élément* de _liste d'autorité_ affiché.
+
+En combinant l'ajout d'un *styleClass* appliqué à la colonne (comme expliqué dans le <<_20_custom_result_col,chapitre précédent>>) et en définissant des
+règles {css} dédiées via
+le fichier *custom/ui/css/custom.css*, vous pouvez alors personnaliser l'affichage selon les valeurs de la cellule.
+
+[NOTE]
+====
+Les 2 *styleClass* utilisés dans les exemples suivants (*tag* et *note*) sont fournis par défaut dans le livrable d'{arcadeged} (à partir de la version *9.0*).
+====
+
+Voici 2 exemples pour la colonne *Status*, dont les valeurs sont issues de la liste d'autorité *DC_STATUT* (contenant les valeurs *ANNULE*, *DIFFUSION*,
+*CLOTURE*)
+
+
+. Affichage sous forme de *tags*
+
+[source, xml]
+--
+<column main="true" label="Statut" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" styleClass="tag">
+  <airsField>DC_STATUT</airsField>
+</column>
+--
+
+[source,css]
+--
+td.DC_STATUT.tag {
+  &.ANNULE div {
+    border-color: var(--alert-danger-border-color);
+    background-color: var(--alert-danger-bg-color);
+    color: var(--alert-danger-text-color);
+  }
+
+  &.CLOTURE div {
+    border-color: var(--alert-success-border-color);
+    background-color: var(--alert-success-bg-color);
+    color: var(--alert-success-text-color);
+    position: relative;
+    padding-left: 22px;
+  }
+
+  &.CLOTURE div::before {
+    content: '';
+    background: url('../img/checked.svg') no-repeat;
+    background-size: 16px 16px;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    left: 6px;
+  }
+
+  &.DIFFUSION div {
+    border-color: var(--alert-warning-border-color);
+    background-color: var(--alert-warning-bg-color);
+    color: var(--alert-warning-text-color);
+  }
+}
+--
+
+.Affichage sous forme de *tags* de la colonne *status*
+image:custom/result_custom_02.png[]
+
+[start=2]
+. Affichage sous forme de *note*
+
+[source, xml]
+--
+<column main="true" label="Statut" visible="true" suggestionFilterEnabled="true" autoCompeteEnabled="true" styleClass="note">
+  <airsField>DC_STATUT</airsField>
+</column>
+--
+
+[source,css]
+--
+td.DC_STATUT.note {
+  &.ANNULE div {
+    border-left-color: var(--alert-danger-border-color);
+    background-color: var(--alert-danger-bg-color);
+    color: var(--alert-danger-text-color);
+  }
+
+  &.CLOTURE div {
+    border-left-color: var(--alert-success-border-color);
+    background-color: var(--alert-success-bg-color);
+    color: var(--alert-success-text-color);
+  }
+
+  &.DIFFUSION div {
+    border-left-color: var(--alert-warning-border-color);
+    background-color: var(--alert-warning-bg-color);
+    color: var(--alert-warning-text-color);
+  }
+}
+--
+
+.Affichage sous forme de *notes* de la colonne *status*
+image:custom/result_custom_03.png[]
+
