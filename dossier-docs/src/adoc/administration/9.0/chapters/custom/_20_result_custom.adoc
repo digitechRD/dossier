@@ -58,12 +58,24 @@ L'application de ce *styleClass* global à la colonne s'effectue via le paramèt
 
 De manière similaire, un *styleClass* peut être appliqué de manière plus fine sur la valeur d'une cellule.
 
-Notamment pour toutes les colonnes dont le champ est lié à une liste de références (appelée également *liste d'autorité*).
+Notamment pour toutes les colonnes dont le champ est lié à une liste de références (*liste d'autorité*, *organisation*, *utilisateurs*).
 
 Chaque cellule du tableau de résultat contient alors :
 
-* le *code* de la _liste d'autorité_.
-* le *code* de la valeur de l'*élément* de _liste d'autorité_ affiché.
+* Dans le cas d'un *utilisateur *:
+** le *login* de l'utilisateur'
+* Dans le cas d'une *organisation *:
+** le *code* de l'_orgnisation_.
+* Dans le cas d'une *liste d'autorité *:
+** le *code* de la _liste d'autorité_.
+** le *code* de la valeur de l'*élément* de _liste d'autorité_ affiché.
+
+Quel que soit le type de référence, les valeurs insérées sont en *[underline]#majuscules#*, nettoyées de tout caractère non-alphanumérique.
+
+[TIP]
+====
+Par exemple, pour l'utilisateur *Nicolas FÉLIX* dont le login est *n.felix*, le code inséré sera *N_FELIX*
+====
 
 En combinant l'ajout d'un *styleClass* appliqué à la colonne (comme expliqué dans le <<_20_custom_result_col,chapitre précédent>>) et en définissant des
 règles {css} dédiées via

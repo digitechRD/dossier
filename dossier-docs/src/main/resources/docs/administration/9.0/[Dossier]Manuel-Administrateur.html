@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.0,</span>
-<span id="revdate">18/02/2026 09:11:45</span>
+<span id="revdate">19/02/2026 11:39:53</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -10650,11 +10650,35 @@ La définition de ces <strong>styles</strong> est soit :</p>
 <p>De manière similaire, un <strong>styleClass</strong> peut être appliqué de manière plus fine sur la valeur d&#8217;une cellule.</p>
 </div>
 <div class="paragraph">
-<p>Notamment pour toutes les colonnes dont le champ est lié à une liste de références (appelée également <strong>liste d&#8217;autorité</strong>).</p>
+<p>Notamment pour toutes les colonnes dont le champ est lié à une liste de références (<strong>liste d&#8217;autorité</strong>, <strong>organisation</strong>, <strong>utilisateurs</strong>).</p>
 </div>
 <div class="paragraph">
 <p>Chaque cellule du tableau de résultat contient alors :</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Dans le cas d&#8217;un <strong>utilisateur </strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>le <strong>login</strong> de l&#8217;utilisateur'</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Dans le cas d&#8217;une <strong>organisation </strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>le <strong>code</strong> de l'<em>orgnisation</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Dans le cas d&#8217;une <strong>liste d&#8217;autorité </strong>:</p>
 <div class="ulist">
 <ul>
 <li>
@@ -10664,6 +10688,26 @@ La définition de ces <strong>styles</strong> est soit :</p>
 <p>le <strong>code</strong> de la valeur de l'<strong>élément</strong> de <em>liste d&#8217;autorité</em> affiché.</p>
 </li>
 </ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Quel que soit le type de référence, les valeurs insérées sont en <strong><span class="underline">majuscules</span></strong>, nettoyées de tout caractère non-alphanumérique.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Par exemple, pour l&#8217;utilisateur <strong>Nicolas FÉLIX</strong> dont le login est <strong>n.felix</strong>, le code inséré sera <strong>N_FELIX</strong></p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>En combinant l&#8217;ajout d&#8217;un <strong>styleClass</strong> appliqué à la colonne (comme expliqué dans le <a href="#_20_custom_result_col">chapitre précédent</a>) et en définissant des
