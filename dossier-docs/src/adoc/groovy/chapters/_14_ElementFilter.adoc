@@ -18,7 +18,6 @@ _Description_
 3+|[.header]
 Entrées
 |*_document*|*com.digitech.dossier.common.model.backend.airs.IDocument*|Document
-|*_users*|List<?>|Liste des utilisateurs
 |*_elements*|List<?>|Liste des éléments
 3+|[.header]
 Entrées/sorties
@@ -33,8 +32,10 @@ Filtrage sur une liste d'utilisateurs : affichage des personnes dont le nom de f
 ----
 import com.digitech.dossier.common.utils.UserUtils
 import com.digitech.jcorbairs.User
+import com.digitech.dossier.common.service.ServiceUtils
 
-List<User> filteredList = _users.findAll({it.getLastName().startsWith("D")})
+List<User> filteredList = ServiceUtils.getUserService().getAllUsers(u -> u.login().startsWith("D"))
+
 _elements.clear()
 _elements.addAll(filteredList)
 ----

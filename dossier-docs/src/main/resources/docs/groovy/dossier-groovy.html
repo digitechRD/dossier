@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">06/02/2026 12:02:06</span>
+<span id="revdate">16/03/2026 15:38:14</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -1990,17 +1990,6 @@ _customModel.addPanelData("attachments", availableAtts)</code></pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p><strong>_users</strong></p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>List&lt;?&gt;</p>
-</div></div></td>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
-<p>Liste des utilisateurs</p>
-</div></div></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
 <p><strong>_elements</strong></p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
@@ -2038,8 +2027,10 @@ _customModel.addPanelData("attachments", availableAtts)</code></pre>
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">import com.digitech.dossier.common.utils.UserUtils
 import com.digitech.jcorbairs.User
+import com.digitech.dossier.common.service.ServiceUtils
 
-List&lt;User&gt; filteredList = _users.findAll({it.getLastName().startsWith("D")})
+List&lt;User&gt; filteredList = ServiceUtils.getUserService().getAllUsers(u -&gt; u.login().startsWith("D"))
+
 _elements.clear()
 _elements.addAll(filteredList)</code></pre>
 </div>
