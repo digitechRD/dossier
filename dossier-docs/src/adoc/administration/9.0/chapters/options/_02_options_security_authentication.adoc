@@ -20,6 +20,14 @@ Ces options doivent être validées avec l'équipe projet de {digitech}.
 ----
 dossier.security.header.csp.safe.urls=http://10.1.4.125:9090;http://localhost:9190;https://srv-prod-59:9190
 ----
+|*dossier.security.forwarded.filter*|Appliquer le filter de requête vérifiant les attributs *X-Forwarded-XXX*|Boolean|
+* [red]#false#  {8_1}/{9_0}
+* [green]#true# {9_1}
+
+[TIP]
+====
+*Important*, notamment lorsqu'un proxy est en place
+====
 
 4+|*Kerberos*
 |*dossier.security.kerberos.use.referer.header*|Utiliser la balise *Referer* dans l'entête d'authentification|Boolean|[red]#false#
