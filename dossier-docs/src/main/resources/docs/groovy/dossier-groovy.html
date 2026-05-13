@@ -33,7 +33,7 @@
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
 <span id="revnumber">version 1.1,</span>
-<span id="revdate">16/03/2026 15:38:14</span>
+<span id="revdate">13/05/2026 17:36:05</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -151,6 +151,11 @@
 <li><a href="#_description_16">20.1. Description</a></li>
 <li><a href="#_paramètres_15">20.2. Paramètres</a></li>
 <li><a href="#_exemple_11">20.3. Exemple</a></li>
+<li><a href="#_scripts_génériques">20.4. Scripts génériques</a>
+<ul class="sectlevel3">
+<li><a href="#_depend_field_toggle">20.4.1. <strong>DEPEND_FIELD_TOGGLE</strong></a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#_18_FieldInitializer">21. <code><span style="color:#11da73">FieldInitializer</span></code></a>
@@ -243,7 +248,7 @@
 <li><a href="#_99_appendixes_utils_dbpool">31.2.6. Pool de connections à une base de données</a></li>
 <li><a href="#_99_appendixes_utils_sql">31.2.7. Récupération de données en base de données</a></li>
 <li><a href="#_99_appendixes_utils_output_msg">31.2.8. Affichage d&#8217;un message en fin de traitement</a></li>
-<li><a href="#_99_appendixes_utils_search">31.2.9. Construction d&#8217;un recherche / récupération de documents.</a></li>
+<li><a href="#_99_appendixes_utils_search">31.2.9. Construction d&#8217;une recherche / récupération de documents.</a></li>
 <li><a href="#_99_appendixes_utils_document_index">31.2.10. document</a></li>
 <li><a href="#_99_appendixes_utils_services">31.2.11. Accès aux services communs d'<code><span style="color:#448279">Arcade GED</span></code></a></li>
 </ul>
@@ -2362,6 +2367,159 @@ public static IAuthorityList getAuthorityListService() {
 <p><span class="image"><img src="images/examples/field_dependency_example_compta.png" alt="field dependency example compta"></span></p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_scripts_génériques"><a class="anchor" href="#_scripts_génériques"></a>20.4. Scripts génériques</h3>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Par mesure de simplicité, certains scripts sont <span class="underline"><strong>nativement</strong></span> disponibles.<br>
+Utilisez-les ! <span class="image emoji size-20"><img src="images/icons/smile-ok.svg" alt="ok" width="24" height="24"></span></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="_depend_field_toggle"><a class="anchor" href="#_depend_field_toggle"></a>20.4.1. <strong>DEPEND_FIELD_TOGGLE</strong></h4>
+<div class="paragraph">
+<p>Ce script permet de modifier l&#8217;attribut <em><span class="underline">visibilité</span></em> ou <em><span class="underline">lecture seule</span></em>.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 2. Paramètres</caption>
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 28.5714%;">
+<col style="width: 42.8572%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Nom</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Type</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph sub-header">
+<p><em>Description</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>MODE</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>STRING</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mode de recherche parmi <strong>VALUES_OK</strong> ou <strong>VALUES_KO</strong>.  + Valeurs possibles :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>VALUE </strong>: sur <strong>valeur</strong> <span class="underline">directe</span></p>
+</li>
+<li>
+<p><strong>TERM_CODE </strong>: Vérification selon le <span class="underline">CODE</span> du terme de la liste d&#8217;autorité</p>
+</li>
+<li>
+<p><strong>TERM_ID </strong>: Vérification selon l' <span class="underline">ID</span> du terme de la liste d&#8217;autorité</p>
+</li>
+</ul>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>VALUES_OK</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>STRING</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des valeurs pour lesquelles le test renverra <strong>OK</strong> (séparateur <strong>;</strong>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>VALUES_KO</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>STRING</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Liste des valeurs pour lesquelles le test renverra <strong>KO</strong> (séparateur <strong>;</strong>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>DISPLAY</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>BOOLEAN</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si test <strong>OK</strong>, le champ sera <span class="underline">masqué</span> (comportement par défaut)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>READ_ONLY</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>BOOLEAN</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si test <strong>OK</strong>, le champ sera <span class="underline">mis en lecture seule</span></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>AUTHORITY_CODE</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>STRING</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Code de la liste d&#8217;autorité dans laquelle les codes/IDs seront vérifiés.<br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Champ <strong>optionnel</strong>, la liste d&#8217;autorité est déduite du champ déclenchant le script</p>
+</div>
+</td>
+</tr>
+</table>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">Exemple déclaration <strong>update.xml</strong></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;ns2:input readonly="false" required="false" display="true"&gt;
+  &lt;ns2:label&gt;Objet si Congé exceptionnel&lt;/ns2:label&gt;
+  &lt;ns2:airsfield&gt;DC_DETAIL_TYPE&lt;/ns2:airsfield&gt;
+  &lt;dependInput fieldKey="DC_TYPE_CONGE" type="MONO"&gt;
+    &lt;scriptId&gt;DEPEND_FIELD_TOGGLE&lt;/scriptId&gt;
+    &lt;parameter name="MODE" type="STRING" value="TERM_CODE"/&gt;
+    &lt;parameter name="VALUES_OK" type="STRING" value="CE"/&gt;
+  &lt;/dependInput&gt;
+  &lt;ns2:fieldset&gt;Information congé&lt;/ns2:fieldset&gt;
+&lt;/ns2:input&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -3920,7 +4078,7 @@ _result.fillOKResult(BundleUtils.getTranslation("msg_key_OK", new Objevt[]{ _use
 </div>
 </div>
 <div class="sect3">
-<h4 id="_99_appendixes_utils_search"><a class="anchor" href="#_99_appendixes_utils_search"></a>31.2.9. Construction d&#8217;un recherche / récupération de documents.</h4>
+<h4 id="_99_appendixes_utils_search"><a class="anchor" href="#_99_appendixes_utils_search"></a>31.2.9. Construction d&#8217;une recherche / récupération de documents.</h4>
 <div class="paragraph">
 <p>Utilisation des classes <strong>DocumentUtils</strong> et <strong>ISearch</strong></p>
 </div>

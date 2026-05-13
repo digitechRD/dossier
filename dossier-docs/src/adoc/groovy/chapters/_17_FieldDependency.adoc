@@ -91,3 +91,55 @@ image:examples/field_dependency_example_commerce.png[]
 
 .Exemple de choix pour la catégorie Comptabilité
 image:examples/field_dependency_example_compta.png[]
+
+=== Scripts génériques
+
+[TIP]
+====
+Par mesure de simplicité, certains scripts sont [underline]#*nativement*# disponibles. +
+Utilisez-les ! {emoji-ok}
+====
+
+==== *DEPEND_FIELD_TOGGLE*
+
+Ce script permet de modifier l'attribut _[underline]#visibilité#_ ou _[underline]#lecture seule#_.
+
+[options="noheader",cols="2a,2a,3a"]
+.Paramètres
+|===
+|[.sub-header]
+_Nom_|[.sub-header]
+_Type_|[.sub-header]
+_Description_
+|*MODE*|_STRING_|Mode de recherche parmi *VALUES_OK* ou *VALUES_KO*.  + Valeurs possibles :
+
+* *VALUE *: sur *valeur* [underline]#directe#
+* *TERM_CODE *: Vérification selon le [underline]#CODE# du terme de la liste d'autorité
+* *TERM_ID *: Vérification selon l' [underline]#ID# du terme de la liste d'autorité
+|*VALUES_OK*|_STRING_|Liste des valeurs pour lesquelles le test renverra *OK* (séparateur *;*)
+|*VALUES_KO*|_STRING_|Liste des valeurs pour lesquelles le test renverra *KO* (séparateur *;*)
+|*DISPLAY*|_BOOLEAN_|Si test *OK*, le champ sera [underline]#masqué# (comportement par défaut)
+|*READ_ONLY*|_BOOLEAN_|Si test *OK*, le champ sera [underline]#mis en lecture seule#
+|*AUTHORITY_CODE*|_STRING_|Code de la liste d'autorité dans laquelle les codes/IDs seront vérifiés. +
+
+[TIP]
+====
+Champ *optionnel*, la liste d'autorité est déduite du champ déclenchant le script
+====
+
+|===
+
+[source, xml]
+.Exemple déclaration *update.xml*
+----
+<ns2:input readonly="false" required="false" display="true">
+  <ns2:label>Objet si Congé exceptionnel</ns2:label>
+  <ns2:airsfield>DC_DETAIL_TYPE</ns2:airsfield>
+  <dependInput fieldKey="DC_TYPE_CONGE" type="MONO">
+    <scriptId>DEPEND_FIELD_TOGGLE</scriptId>
+    <parameter name="MODE" type="STRING" value="TERM_CODE"/>
+    <parameter name="VALUES_OK" type="STRING" value="CE"/>
+  </dependInput>
+  <ns2:fieldset>Information congé</ns2:fieldset>
+</ns2:input>
+----
