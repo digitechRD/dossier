@@ -548,3 +548,235 @@ curl -X 'DELETE' \
 |[red]*409*|Document déjà verrouillé
 |[red]*500*|Erreur interne au serveur/service
 |===
+
+===== {GET} /document/{docId}/comments
+
+Cette méthode permet de récupérer la liste des commentaires d'un document visibles par l'utilisateur connecté.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIERS_TAB_COMMENTAIRE_READ*.
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/document/4959/comments' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentcommentsjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentcommentsjson_response]]
+[source,json]
+.Structure de retour
+----
+[
+  {
+    "id": 42,
+    "date": "29/05/2026 15:32:47",
+    "comment": "Commentaire de test",
+    "actorId": 1,
+    "actorName": "ADM Dossier",
+    "public": true
+  }
+]
+----
+
+[cols="2a,3a,1a",options="header"]
+.Description d'un commentaire (WSCommentType)
+|===
+|Champ|Description|Type
+|*id*|Identifiant du commentaire|_integer_
+|*date*|Date du commentaire|_string_
+|*comment*|Texte du commentaire|_string_
+|*actorId*|Identifiant de l'utilisateur auteur du commentaire|_integer_
+|*actorName*|Nom de l'utilisateur auteur du commentaire|_string_
+|*public*|`true` si le commentaire est public (visible par tous), `false` s'il est privé/partagé|_boolean_
+|===
+
+===== {POST} /document/{docId}/comments
+
+Cette méthode permet d'ajouter un commentaire à un document.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIERS_TAB_COMMENTAIRE_WRITE*.
+====
+
+[NOTE]
+====
+Seuls les champs *comment* et *public* du corps de la requête sont pris en compte ; les autres champs (`id`, `date`, `actorId`, `actorName`) sont calculés par le serveur. Le texte du commentaire (*comment*) est obligatoire.
+====
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*delegated*|{query}|Login d'un utilisateur délégué. Si renseigné, le commentaire est créé au nom de cet utilisateur.|[green]*Non*|jdupont
+|*comment*|{body}|Données du commentaire (Json)|[red]*Oui*|
+[source,json]
+----
+{
+  "comment": "Commentaire de test",
+  "public": true
+}
+----
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'POST' \
+  '<host>:<port>/<context>/rest/document/4959/comments' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Basic <credencials>' \
+  -d '{
+    "comment": "Commentaire de test",
+    "public": true
+  }'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentaddcommentjson_response>>)
+|[red]*400*|Texte du commentaire manquant
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentaddcommentjson_response]]
+[source,text]
+.Retour, identifiant du commentaire créé
+----
+42
+----
+
+===== {PATCH} /document/{docId}/comments/{commentId}
+
+Cette méthode permet de mettre à jour un commentaire d'un document.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit être l'auteur du commentaire, ou posséder le droit *DOSSIERS_MODIFY_COMMENT_ALL*.
+====
+
+[NOTE]
+====
+Seuls les champs *comment* et *public* du corps de la requête sont pris en compte. Le texte du commentaire (*comment*) est obligatoire.
+====
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*commentId*|{path}|Identifiant du commentaire|[red]*Oui*|42
+|*delegated*|{query}|Login d'un utilisateur délégué. Si renseigné, l'opération est réalisée au nom de cet utilisateur.|[green]*Non*|jdupont
+|*comment*|{body}|Données du commentaire (Json)|[red]*Oui*|
+[source,json]
+----
+{
+  "comment": "Commentaire mis à jour",
+  "public": false
+}
+----
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'PATCH' \
+  '<host>:<port>/<context>/rest/document/4959/comments/42' \
+  -H 'accept: text/plain' \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Basic <credencials>' \
+  -d '{
+    "comment": "Commentaire mis à jour",
+    "public": false
+  }'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentupdatecommentjson_response>>)
+|[red]*400*|Texte du commentaire manquant
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document ou commentaire non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentupdatecommentjson_response]]
+[source,text]
+.Retour, identifiant du commentaire mis à jour
+----
+42
+----
+
+===== {DELETE} /document/{docId}/comments/{commentId}
+
+Cette méthode permet de supprimer un commentaire d'un document.
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit être l'auteur du commentaire, ou posséder le droit *ADMINISTRER*.
+====
+
+[cols="1a,1a,2a,1a,4a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*commentId*|{path}|Identifiant du commentaire|[red]*Oui*|42
+|*delegated*|{query}|Login d'un utilisateur délégué. Si renseigné, l'opération est réalisée au nom de cet utilisateur.|[green]*Non*|jdupont
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  '<host>:<port>/<context>/rest/document/4959/comments/42' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documentdeletecommentjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document ou commentaire non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documentdeletecommentjson_response]]
+[source,text]
+.Retour, identifiant du commentaire supprimé
+----
+42
+----
