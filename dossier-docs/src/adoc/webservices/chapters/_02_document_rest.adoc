@@ -168,6 +168,82 @@ curl -X 'GET' \
 
 cf le chapitre <<appendix_document>> pour une description de la structure de retour.
 
+===== {GET} /document/{docId}/history
+
+Cette méthode permet de récupérer l'historique (liste des événements) d'un document à partir de son identifiant. Les événements sont retournés du plus récent au plus ancien.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*docId*|{path}|Identifiant du document|[red]*Oui*|4959
+|*filter*|{query}|Filtre des événements à remonter (valeur par défaut *NONE*) +
+ +
+ *NONE* : événements du document + événements de dossier externe (signature) +
+ *DOCUMENT* : événements du document uniquement +
+ *DOSSIER_EXTERNE* : événements de dossier externe (signature) uniquement|[green]*Non*|DOCUMENT
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'GET' \
+  '<host>:<port>/<context>/rest/document/4959/history?filter=NONE' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie (cf. <<documenthistoryjson_response>>)
+|[red]*401*|Authentification non fournie
+|[red]*404*|Document non trouvé
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[documenthistoryjson_response]]
+[source,json]
+.Structure de retour
+----
+[
+  {
+    "id": 12045,
+    "date": "12/07/2022 15:32:47",
+    "type": 2,
+    "typeCode": "MODIFICATION",
+    "comment": "Mise à jour des métadonnées",
+    "actorId": 1,
+    "actorName": "ADM Dossier",
+    "dossierExterne": false
+  },
+  {
+    "id": 11873,
+    "date": "24/08/2021 11:02:30",
+    "type": 1,
+    "typeCode": "CREATION",
+    "actorId": 1,
+    "actorName": "ADM Dossier",
+    "dossierExterne": false
+  }
+]
+----
+
+[cols="2a,3a,1a",options="header"]
+.Description d'un événement (WSHistoryEventType)
+|===
+|Champ|Description|Type
+|*id*|Identifiant de l'événement|_integer_
+|*date*|Date de l'événement|_string_
+|*type*|Identifiant numérique du type d'événement|_integer_
+|*typeCode*|Code (clé textuelle) du type d'événement|_string_
+|*comment*|Commentaire associé à l'événement|_string_
+|*actorId*|Identifiant de l'utilisateur à l'origine de l'événement|_integer_
+|*actorName*|Nom de l'utilisateur à l'origine de l'événement|_string_
+|*dossierExterne*|`true` si l'événement provient d'un dossier externe (signature)|_boolean_
+|===
+
 ===== {PATCH} /document/{docId}
 
 Cette méthode permet de mettre à jour les métadonnées d'un document
