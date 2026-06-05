@@ -101,3 +101,80 @@ curl -X 'GET' \
 ----
 
 cf le chapitre <<appendix_authoritylist>> pour une description de la structure de retour.
+
+===== {DELETE} /authorityList/{fieldCode}/cache
+
+Cette méthode permet de vider (et recharger) le cache d'une liste d'autorité à partir de son code (*fieldCode*). Elle est utile pour mettre à jour le cache à
+la suite d'un chargement extérieur (import, tâche planifiée, etc.).
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*fieldCode*|{path}|Code identifiant la liste d'autorité|[red]*Oui*|
+PRO_APP_FLUX_COU
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  'http[s]://<host>:<port>/<context>/rest/authorityList/PRO_APP_FLUX_COU/cache' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie
+^|[red]*401*|Authentification non fournie
+^|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
+^|[red]*404*|Liste d'autorité non trouvée
+^|[red]*500*|Erreur interne au serveur/service
+|===
+
+===== {DELETE} /authorityList/{fieldCode}/cache/{termCode}
+
+Cette méthode permet de vider (et recharger) le cache d'un terme unique d'une liste d'autorité, identifié par le code de sa liste (*fieldCode*) et son propre
+code (*termCode*).
+
+[IMPORTANT]
+====
+L'utilisateur connecté doit posséder le droit *DOSSIER_ADM_AIRS_ADMIN*.
+====
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|*fieldCode*|{path}|Code identifiant la liste d'autorité|[red]*Oui*|
+PRO_APP_FLUX_COU
+|*termCode*|{path}|Code identifiant le terme|[red]*Oui*|YES
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'DELETE' \
+  'http[s]://<host>:<port>/<context>/rest/authorityList/PRO_APP_FLUX_COU/cache/YES' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+^|[lime]*200*|Opération réussie
+^|[red]*401*|Authentification non fournie
+^|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
+^|[red]*404*|Liste d'autorité ou terme non trouvé
+^|[red]*500*|Erreur interne au serveur/service
+|===
