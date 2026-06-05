@@ -78,6 +78,7 @@ curl -X 'GET' \
 |Code Http|Description
 ^|[lime]*200*|Opération réussie (cf. <<authoritylist_gettermsjson_response>>)
 ^|[red]*401*|Authentification non fournie
+^|[red]*404*|*fieldCode* non trouvé
 ^|[red]*404*|Liste d'autorité non trouvée
 ^|[red]*500*|Erreur interne au serveur/service
 |===
@@ -133,7 +134,7 @@ curl -X 'DELETE' \
 .Réponses
 |===
 |Code Http|Description
-^|[lime]*200*|Opération réussie
+^|[lime]*200/204*|Opération réussie
 ^|[red]*401*|Authentification non fournie
 ^|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
 ^|[red]*404*|Liste d'autorité non trouvée
@@ -172,7 +173,7 @@ curl -X 'DELETE' \
 .Réponses
 |===
 |Code Http|Description
-^|[lime]*200*|Opération réussie
+^|[lime]*200/204*|Opération réussie
 ^|[red]*401*|Authentification non fournie
 ^|[red]*403*|L'utilisateur connecté ne possède pas les droits suffisants
 ^|[red]*404*|Liste d'autorité ou terme non trouvé
