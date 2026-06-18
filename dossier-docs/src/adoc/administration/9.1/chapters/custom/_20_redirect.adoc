@@ -1,0 +1,91 @@
+[[_20_redirect]]
+=== [Redirect] Définitions des URLs de redirection
+
+==== Introduction
+
+Il peut être utile d'accéder directement à l'application {arcadeged} dans un [underline]#*contexte précis*# :
+
+* Accès direct à un résultat de recherche
+* Accès direct à un document
+* ...
+
+Ces accès externes sont fréquemment utilisés, notamment dans les cas suivants :
+
+* *hyperlien* défini dans un *mail*
+* *redirection/hyperlien* défini à partir d'une autre application _métier_
+
+[NOTE]
+====
+Lors de la redirection, si l'utilisateur n'est pas connecté, celui-ci sera d'abord redirigé vers l'écran de _login_/_connexion_.
+====
+
+[TIP]
+====
+Si le *SSO* est activé, l'opération d'authentification sera alors transparente pour l'utilisateur.
+====
+
+==== Définition
+
+L'idée est simplement de définir et appeler l'URL de redirection avec les paramètres adéquats.
+
+.L'URL de redirection est construite ainsi :
+[source]
+----
+http(s)://<hostname>:<port>/<context>/faces/redirect.jspx?outcome=XXX&param1=value1&param2=value2
+----
+
+avec les paramètres suivants :
+
+[cols="1a,3a,4a",options="header"]
+|===
+|Code|Description|Valeurs possibles/Remarques
+|*outcome*|page cible attendue suite à l'appel|
+* *gotoSimpleView* : _résultats de recherche_
+* *gotoThreeViews* : _résultats de recherche, vue 3-fenêtres_
+* *search*/*gotoSearch* : _recherche_
+* *searchAdvanced*/*gotoSearchAdvanced* : _recherche avancée_
+* *gotoDocumentUnitaire*/*gotoUnitView* : _Vue document_
+* *gotoTreeView* : _Vue arborescente_
+* *documentViewer* : _Vue Pièce jointe_)
+
+|*docId*|Identifiant du document dont l'affichage est souhaité|[underline]#*Obligatoire*# si *outcome* est parmi (*gotoDocumentUnitaire*, *gotoSimpleView*, *documentViewer*, *gotoTreeView*)
+|*attId*|Identifiant de la pièce jointe dont l'affichage est souhaité|L'attribut *docId* doit également être renseigné dans ce cas
+|*cty*|Content-type cible lors d'une recherche|
+|*orgId*|ID de l'organisation sur laquelle basculer|_optionnel_
+3+|Recherche
+|*query*|Requête *AIRS* complète|ex : *D_CREAT = "01/01/2026" OU STATUS="New"*
+|Critères de recherche [underline]#séparés# 2+|La définition s'effectue alors pour *10* critères [underline]#*maximum*# `fieldX=<CODE>&opeX=<OPE>&valueX=<VALUE>`
+
+X étant l'index sur l'intervalle *[1,10]*
+
+|*field*|Code du champ *AIRS*|
+|*ope*|Opérateur de recherche sur ce critère|
+* *equal* : _valeur **égale à**_
+* *greater* : _valeur **supérieure à**_
+* *less* : _valeur **inférieure à**_
+* *between* : _valeur **comprise entre**_
+* *notBetween* : _valeur **non comprise entre**_
+* *in* : _valeur_ parmi les éléments définis (séparés par *,*, exemple *value1=8479;9999*)
+* *notInt* : _valeur_ non présents dans les éléments définis
+* *isNotNull* : _valeur **non nulle**_ (l'attribut *valueX* n'est alors pas nécessaire)
+* *isNull* : _valeur **nulle**_ (l'attribut *valueX* n'est alors pas nécessaire)
+|*value*|Valeur du critère recherché|
+|*opLoc*|Opérateur de jonction|*_Optionnel_*.
+
+* *ET* : Les éléments recherchés doivent répondre à tous les critères spécifiés (valeur [underline]#par défaut#)
+* *OU* : Les éléments recherchés doivent répondre à l'un des critères spécifiés
+|===
+
+[IMPORTANT]
+====
+Les attributs/critères transmis dans l'URL doivent être encodés !
+====
+
+.Exemples
+```
+http(s)://<hostname>:<port>/<context>/faces/redirect.jspx?outcome=gotoSimpleView&cty=CR&query=D_CREAT<"01/01/2025"
+
+http(s)://<hostname>:<port>/<context>/faces/redirect.jspx?outcome=gotoSimpleView&cty=CR&field1=D_CREAT&ope1=less&value1=01/01/2025
+```
+
+

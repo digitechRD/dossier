@@ -1,0 +1,204 @@
+[[_20_custom_theme]]
+=== Thème, personnalisation du look
+
+==== Introduction
+
+{arcadeged} est livré avec 3 thèmes :
+
+* *ARCADE*: thème {arcadeged} disponible (et activé par défaut) depuis la version *8.1*
+
+.Écran d’accueil, thème {arcade}
+image:custom/theme_arcade.png[]
+
+* *AIRS_SUITE*: thème disponible dans les [underline]#versions antérieures# à la *8.1*
+
+.Écran d’accueil, thème *AIRS Suite*
+image:custom/theme_airs_suite.png[]
+
+* *DARK*: thème *sombre*
+
+.Écran d’accueil, thème *Sombre*
+image:custom/theme_sombre.png[]
+
+Selon les options activées (cf. <<_03_options_theme>>), l'utilisateur peut choisir son thème préférentiel.
+
+Cependant, si vous souhaitez paramétrer l'application pour qu'elle propose un thème couleur plus proche des souhaits du client, vous pouvez agir comme il est
+indiqué dans les chapitres suivants.
+
+[[_20_custom_theme_color]]
+==== Personnalisation des couleurs
+
+[IMPORTANT]
+====
+Les fichiers *css* de l'application ne doivent pas être modifiés, dans aucun cas. +
+En effet, lorsqu'un patch (_correctif_ ou _évolutif_) est appliqué, ces fichiers seront *[underline]#écrasés*#.
+====
+
+[TIP]
+====
+Seuls les fichiers présents dans le répertoire *custom* permettent une personnalisation de l'application au niveau *UI/look*.
+====
+
+La personnalisation des couleurs principales est (_plutôt_) rapide. +
+Elle consiste seulement en redéfinissant certaines clés *css* dans le fichier *custom/ui/css/custom.css*.
+
+Ce fichier est systématiquement inclus dans la page et permet donc de surcharger les propriétés [underline]#ciblées/souhaitées#.
+
+Les clés principales (jeu de couleurs) sont :
+
+* *--theme-main-color* : couleur principale
+* *--theme-main-bg-darker-color* : couleur plus foncée, relativement à la couleur principale, utilisée notamment comme couleur de fond de certains composants.
+* *--theme-main-bg-brighter-color* : idem ci-dessus, mais en teinte plus fade/claire comparativement à la couleur principale
+* *--theme-main-brighter-color* : couleur plus claire comparativement à la couleur principale
+* *--theme-main-color-fade* : idem, peut être identique à la couleur précédente.
+
+[NOTE]
+====
+Concernant les icônes, la plupart peuvent avoir leur couleur automatiquement mise à la couleur principale. +
+Celle-ci est appliquée via un attribut _css_ *filter* sur tous les icônes marqués avec le _styleClass_ *iconTheme*.
+
+Pour générer ce filter, veuillez vous rendre sur un générateur *html* telle https://angel-rs.github.io/css-color-filter-generator/[celui-ci,window="_blank"]
+et copiez le résultat dans la variable *--icon-theme-filter*.
+====
+
+Pour un code couleur de ce type
+
+image:custom/theme_custom_support1.png[pdfwidth=100,width=200px,height=100px]
+
+voici les paramètres css associés (via le fichier *custom/ui/css/custom.css*.)
+
+[source,css]
+----
+:root {
+  --theme-main-color: #C2D72D;
+  --theme-main-bg-darker-color: #30aa49;
+  --theme-main-bg-brighter-color: #6ACD0C;
+  --theme-main-brighter-color: #FAEF55;
+  --theme-main-color-fade: #FAEF55;
+
+  /* filtre appliqué aux icônes */
+  --icon-theme-filter: brightness(0) saturate(100%) invert(80%) sepia(99%) saturate(396%) hue-rotate(8deg) brightness(89%) contrast(87%);
+}
+----
+
+Le rendu est alors le suivant
+image:custom/theme_custom1.png[]
+
+[[_20_custom_theme_color_flow]]
+==== Personnalisation des couleurs *[underline]#par flux#*
+
+Il est également possible de définir un *code couleurs* *[underline]#par flux#*.
+
+Le processus est très similaire. Les actions complémentaires suivantes sont nécessaires :
+
+[TIP]
+====
+Dans l'exemple ci-après, le code du flux est *CR*.
+====
+
+. Création d'un fichier *custom/Styles_CR.properties*
+. Déclaration d'un fichier *custom* dédié à ce flux
+
+[source,properties]
+----
+custom=./custom/ui/css/custom-CR.css
+----
+
+[start=3]
+. Création du fichier */custom/ui/css/custom-CR.css* et ... cf. chapitre précédent.
+
+De ce fait, pour le code couleurs suivant
+
+image:custom/theme_custom_support2.png[pdfwidth=100,width=200px,height=100px]
+
+un fichier *custom-CR.css* défini ainsi
+
+[source,css]
+----
+:root {
+  --theme-main-color: #E56969;
+  --theme-main-bg-darker-color: #8A49A1;
+  --theme-main-bg-brighter-color: #FFC273;
+  --theme-main-brighter-color: #FFDF9E;
+  --theme-main-color-fade: #FFDF9E;
+
+  --icon-theme-filter: brightness(0) saturate(100%) invert(49%) sepia(32%) saturate(966%) hue-rotate(314deg) brightness(101%) contrast(83%);
+}
+----
+
+donnera le rendu suivant
+image:custom/theme_custom2.png[]
+
+[[_20_custom_theme_images]]
+==== Personnalisation des images
+
+[NOTE]
+====
+Toutes les images de l'application {arcadeged} peuvent être surchargées.
+
+La liste de toutes les clés/images est disponible dans le fichier *WEB-INF/classes/com/digitech/dossier/common/resources/themes/airsSuite/Images.properties*.
+
+Cependant, dans la plupart des cas, seuls les logos principaux suffisent à rendre l'application _marque blanche_. C'est pourquoi seuls ces fichiers sont
+indiqués dans ce chapitre.
+====
+
+Voici les clés concernées :
+
+* *logo_customer* : logo du client (par défaut, logo {digitech})
+* *logo_dossier_with_text*: logo de l'application (par défaut {arcadeged}), présent dans l'entête de l'application
+* *logo_product*: logo de l'application sur la page de *login*
+
+[CAUTION]
+====
+Attention, si vous déclarez vos images personnalisées de la page de *login* dans un fichier *_par flux_*, +
+celles-ci ne seront pas détectées (et donc affichées) sur la page de *login,* car [underline]#aucun flux# n'est alors encore appliqué.
+====
+
+Exemple pour un thème _Jeux Olympiques 2024_
+
+[source,properties]
+.Fichier *Images.properties*
+----
+logo_dossier_with_text=./custom/ui/img/custom/olympic_rings.svg
+logo_product=./custom/ui/img/custom/olympic_rings_login.svg
+----
+
+Cela donnera en page de *Login*
+
+image:custom/theme_custom_image_login.png[]
+
+et en page d' *Accueil*
+
+image:custom/theme_custom_image_home.png[]
+
+[[_20_custom_theme_images_login]]
+==== Personnalisation des images sur la page de *Login*
+
+[TIP]
+====
+Il existe plusieurs façons de modifier les images de fond présentées sur la page d'accueil. +
+Il est présenté ici la manière la plus simple de faire (_selon l'auteur de ce document_).
+====
+
+L'idée est simplement de déposer dans la répertoire *_03_options_connexion* la ou les images souhaitées.
+
+[IMPORTANT]
+====
+Comme indiqué dans les <<_03_options_connexion,options>>:
+
+misc.login.load.customer.login.picture* la clé *misc.login.load.customer.login.pictures* doit être active (elle l'est par défaut)
+* les images déposées doivent être au format/extension *jpg*, *png*, *avif* ou *webp*
+====
+
+[WARNING]
+====
+Les images doivent être *légères* (de préférence *< 500ko*) pour éviter un temps de latence au téléchargement.
+
+Pour les mêmes raisons, soyez également vigilant à leur format, préférez :
+
+* un format *paysage* (la plupart des écrans utilisateurs sont *larges/wide* de nos jours)
+* un maximum de *1024px* en largeur.
+====
+
+.Exemple d'images personnalisées en page de *Login*
+image:custom/theme_custom_image_login2.png[]

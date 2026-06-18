@@ -1,0 +1,33 @@
+[[_20_custom_locale]]
+=== Langues disponibles
+
+{arcadeged} est paramétré par défaut en langue *Française*.
+
+Cependant, d'autres langues sont disponibles :
+
+[cols="1a,3a",options="header"]
+|===
+|Code|Langue
+|*fr*|image:custom/flags/flag_fr.svg[pdfwidth=32px,width=32px] Français
+|*en*|image:custom/flags/flag_en.svg[pdfwidth=32px,width=32px] Anglais
+|*de*|image:custom/flags/flag_de.svg[pdfwidth=32px,width=32px] Allemand
+|*it*|image:custom/flags/flag_it.svg[pdfwidth=32px,width=32px] Italien
+|*es*|image:custom/flags/flag_es.svg[pdfwidth=32px,width=32px] Espagnol
+|*ro*|image:custom/flags/flag_ro.svg[pdfwidth=32px,width=32px] Roumain
+|===
+
+Comme indiqué dans le <<_03_options_application,chapitre dédié aux options>>, la clé *misc.localeDefinition* permet d'indiquer la liste des locales
+(i.e. *langues*) autorisées, séparées par *;*.
+
+[CAUTION]
+====
+Si aucune langue n'est déclarée, la locale sera déduite du contexte d'exécution (option *user.language* du _runtime_ {java}). +
+Veuillez donc vérifier que la locale d'exécution déclarée est valide par rapport à votre contexte client.
+====
+
+[TIP]
+====
+Si plusieurs langues sont déclarées, l'utilisateur peut alors choisir via ses préférences la langue appliquée dans l'application
+
+image:custom/locales_preferences.png[]
+====

@@ -1,0 +1,36 @@
+[[_03_options_home]]
+=== Accueil
+
+[cols="4a,3a,1a,2a",options="header"]
+|===
+|Code|Description|Type|Valeur par défaut (et/ou _autres valeurs possibles_)
+|*misc.check.redirect.goto.home.page.if.no.result*|Rediriger les recherches par url infructueuses vers l'accueil|Boolean|[green]#true#
+|*misc.home.allow.baskets.double.display*|Autoriser l'affichage double des corbeilles en page d'accueil (central et gauche)|Boolean|[red]#false#
+|*misc.home.allow.panels.enabled*|Autoriser l'affichage des panneaux sur la page d'accueil|Boolean|[red]#false#
+|*misc.home.allow.panels.hidden*|Autoriser l'utilisateur à masquer les panneaux de la page d'accueil|Boolean|[green]#true#
+|*misc.home.always.default.flow*|Toujours afficher en page d'accueil le flux préféré|Boolean|[red]#false#
+|*misc.user.no.flow.warn*|Afficher une alerte en page d'accueil si l'utilisateur n'est associé à aucun flux|Boolean|[green]#true#
+|*misc.user.no.organization.warn*|Afficher une alerte en page d'accueil si l'utilisateur n'est associé à aucun service/organization|Boolean|[green]#true#
+|*misc.home.display.quick.access*|Afficher en page d'accueil l'accès rapide aux derniers documents consultés|Boolean|[green]#true#
+|*misc.home.drag.drop.creation*|Permettre la création de document par glisser-déposer|Boolean|[green]#true#
+|*misc.home.block.custom.allowed*|Activer les panels de type "Personalisé"|Boolean|[green]#true#
+|*misc.home.block.default.height*|Taille (en pixels) des blocks de la page d'accueil|Integer|*250*
+|*misc.home.block.max.number*|Nombre maximum de panels sur la page d'accueil|Integer|*10*
+|*misc.home.block.report.allowed*|Activer les panels de type "statistique"|Boolean|[green]#true#
+|*misc.home.block.report.lifetime*|xxx|Integer|*60*
+|*misc.home.block.singledoc.allowed*|Activer les panels de type "document"|Boolean|[green]#true#
+|*misc.home.block.singledoc.navigation.allowed*|Autoriser la navigation parmi les PJs sur les panels de type "document"|Boolean|[green]#true#
+|*misc.home.block.search.full.result*|Afficher tous les résultats d'une recherche dans un panel de la page d'accueil|Boolean|[red]#false#
+|*misc.home.block.search.row.prefetched*|Pré-calculer le contenu des cartes des panels type "recherche"|Boolean|[green]#true#
+|*misc.home.block.shortcut.hide.block.allowed*|Autoriser le masquage individuel de bloc de raccourci|Boolean|[green]#true#
+|*misc.home.block.shortcut.alphabetically.sorted*|Trier les raccourcis alphabétiquement|Boolean|[green]#true#
+|*misc.home.block.word.cloud.html*|Afficher le nuage de mots au format HTML|Boolean|[green]#true#
+|*misc.home.list.mode.enabled*|Activer/autoriser le mode 'liste' d'affichage des résultats (blocs)|Boolean|[red]#false#
+|*misc.home.baskets.refresh.on.start*|Rafraichir les banettes à chaque rechargement de la page d'accueil|Boolean|[red]#false#
+
+[WARNING]
+====
+Historiquement, la clé *appConfig/autoReloadBaskets* permet également d'activer ce même comportement. Celle-ci est dépréciée et sera supprimée dans une
+future version.
+====
+|===
