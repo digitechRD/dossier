@@ -1,0 +1,165 @@
+[[admin_config_reload_rest]]
+==== Rechargement de la configuration
+
+[NOTE]
+====
+Ces {webservices} ne sont disponibles qu'à partir de la version {9_1} de {arcadeged}.
+====
+
+Ces {webservices} permettent de recharger *à chaud* les fichiers de configuration de l'application, sans
+redémarrage et sans rechargement du contexte _Spring_.
+
+Le rechargement est appliqué *en place* : le _manager_ propriétaire du fichier relit son contenu et les caches
+qui en dépendent sont invalidés. En cas d'erreur d'analyse/validation, la configuration précédente est conservée
+intacte.
+
+[[admin_config_reload_rest_files]]
+.Fichiers de configuration gérés
+[cols="2a,4a",options="header"]
+|===
+|Fichier|Description
+|_params.xml_|Paramètres généraux
+|_contenttype.xml_|Types de contenu
+|_view.xml_|Vues
+|_update.xml_|Mises à jour
+|_search.xml_|Recherches
+|_recycleSearch.xml_|Recherches de corbeille
+|_baskets.xml_|Paniers
+|_hierarchical.xml_|Hiérarchies
+|_preference.xml_|Préférences
+|_workflow.xml_|Workflows
+|_task.xml_|Tâches
+|_courrier.xml_|Courrier
+|_groovy.xml_|Scripts _Groovy_
+|_config.properties_|Propriétés applicatives
+|===
+
+[TIP]
+.Rechargement automatique
+====
+Un rechargement *automatique* à chaud peut également être activé en surveillant le dossier de configuration : il
+suffit de positionner la propriété *misc.config.folder.watcher* à *true* dans _config.properties_. Le dossier est
+alors scruté périodiquement (toutes les 60 secondes) et tout fichier géré modifié est rechargé selon la même
+logique que celle décrite ci-dessous.
+====
+
+[[admin_config_reload_rest_status]]
+.Statuts de rechargement (_status_)
+[cols="2a,4a",options="header"]
+|===
+|Statut|Description
+|*RELOADED*|Le fichier a été relu et appliqué à l'application en cours d'exécution
+|*UNCHANGED*|Le fichier est géré mais n'a pas changé depuis le dernier chargement
+|*IGNORED*|Le fichier n'est pas un fichier de configuration géré ; aucune action n'est effectuée
+|*FAILED*|Le rechargement a échoué (erreur d'analyse/validation) ; la configuration précédente est conservée
+|*REQUIRES_RESTART*|Le fichier a été relu mais une ou plusieurs valeurs modifiées ne peuvent pas être appliquées à
+chaud et nécessitent un redémarrage (uniquement pour _config.properties_, cf. *requiresRestartKeys*)
+|===
+
+===== Méthodes
+
+====== {POST} /admin/config/reload
+
+Cette méthode permet de recharger à chaud l'*ensemble* des fichiers de configuration gérés.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_withContext_|{query}|Si *true*, effectue en complément un rechargement complet du contexte _Spring_ (caches, services
+et contexte web reconstruits) avant de relire les fichiers — le mode lourd « redémarrage sans reboot ».
+
+Si *false* (valeur par défaut), les changements sont appliqués à chaud sans toucher au contexte _Spring_.|[green]*non*|false
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'POST' \
+  'http[s]://<host>:<port>/<context>/rest/admin/config/reload?withContext=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie, retourne un résultat par fichier (cf. <<admin_config_reload_rest_response_all>>)
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[[admin_config_reload_rest_response_all]]
+[source,json]
+.Retour, un résultat par fichier
+----
+[
+  {
+    "fileName": "params.xml",
+    "status": "RELOADED",
+    "message": null,
+    "requiresRestartKeys": []
+  },
+  {
+    "fileName": "view.xml",
+    "status": "UNCHANGED",
+    "message": null,
+    "requiresRestartKeys": []
+  },
+  {
+    "fileName": "config.properties",
+    "status": "REQUIRES_RESTART",
+    "message": "Some changed properties require a restart to take effect",
+    "requiresRestartKeys": ["misc.config.folder.watcher"]
+  }
+]
+----
+
+====== {POST} /admin/config/reload/{fileName}
+
+Cette méthode permet de recharger à chaud un *seul* fichier de configuration.
+
+[cols="1a,1a,4a,1a,2a",options="header"]
+.Paramètres en entrée
+|===
+|Paramètre|Type|Description|Requis|Exemple
+|_fileName_|{path}|Nom du fichier de configuration à recharger (cf. <<admin_config_reload_rest_files, fichiers gérés>>)|[red]*Oui*|view.xml
+|===
+
+[source]
+.appel _curl_
+----
+curl -X 'POST' \
+  'http[s]://<host>:<port>/<context>/rest/admin/config/reload/view.xml' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic <credencials>'
+----
+
+[cols="^1a,4a",options="header"]
+.Réponses
+|===
+|Code Http|Description
+|[lime]*200*|Opération réussie, retourne le résultat du rechargement (cf. <<admin_config_reload_rest_response_one>>)
+|[red]*401*|Authentification non fournie
+|[red]*403*|Utilisateur non autorisé à effectuer cette action
+|[red]*500*|Erreur interne au serveur/service
+|===
+
+[NOTE]
+====
+Un nom de fichier non géré ne provoque pas d'erreur : la réponse est retournée avec le statut *IGNORED*.
+====
+
+[[admin_config_reload_rest_response_one]]
+[source,json]
+.Retour, résultat du rechargement
+----
+{
+  "fileName": "view.xml",
+  "status": "RELOADED",
+  "message": null,
+  "requiresRestartKeys": []
+}
+----

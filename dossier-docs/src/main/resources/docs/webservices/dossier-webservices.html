@@ -16,8 +16,6 @@
 <meta name="theme-color" content="#872e4e" media="(prefers-color-scheme: dark)">
 -->
 <script src="echarts/echarts.min.js"></script>
-<script src="js/setup.js"></script><script defer src="js/site.js"></script>
-
 </head>
 <body id="Dossier-ws" class="book toc2 toc-left">
 <div id="banner-container" class="container" role="banner">
@@ -32,8 +30,8 @@
 <h1>WebServices <strong><code><span style="color:#448279">Arcade GED</span></code></strong></h1>
 <div class="details">
 <span id="author" class="author">Digitech</span><br>
-<span id="revnumber">version 2.5,</span>
-<span id="revdate">12/09/2025</span>
+<span id="revnumber">version 2.6,</span>
+<span id="revdate">22/06/2026</span>
 </div>
 <div id="toc" class="toc2">
 <div id="toctitle">Sommaire</div>
@@ -254,6 +252,16 @@
 </li>
 </ul>
 </li>
+<li><a href="#admin_config_reload_rest">2.14.5. Rechargement de la configuration</a>
+<ul class="sectlevel4">
+<li><a href="#_méthodes_15">2.14.5.1. Méthodes</a>
+<ul class="sectlevel5">
+<li><a href="#_post_adminconfigreload"><strong class="post">POST</strong> /admin/config/reload</a></li>
+<li><a href="#_post_adminconfigreloadfilename"><strong class="post">POST</strong> /admin/config/reload/{fileName}</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -263,51 +271,51 @@
 <li><a href="#document_soap">3.1. Document</a>
 <ul class="sectlevel3">
 <li><a href="#_client_14">3.1.1. Client</a></li>
-<li><a href="#_méthodes_15">3.1.2. Méthodes</a></li>
+<li><a href="#_méthodes_16">3.1.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#autority_list_soap">3.2. AuthorityList</a>
 <ul class="sectlevel3">
 <li><a href="#_client_15">3.2.1. Client</a></li>
-<li><a href="#_méthodes_16">3.2.2. Méthodes</a></li>
+<li><a href="#_méthodes_17">3.2.2. Méthodes</a></li>
 <li><a href="#_authentification_2">3.2.3. Authentification</a></li>
 </ul>
 </li>
 <li><a href="#baskets_soap">3.3. Baskets</a>
 <ul class="sectlevel3">
 <li><a href="#_client_16">3.3.1. Client</a></li>
-<li><a href="#_méthodes_17">3.3.2. Méthodes</a></li>
+<li><a href="#_méthodes_18">3.3.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#search_soap">3.4. Search</a>
 <ul class="sectlevel3">
 <li><a href="#_client_17">3.4.1. Client</a></li>
-<li><a href="#_méthodes_18">3.4.2. Méthodes</a></li>
+<li><a href="#_méthodes_19">3.4.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#attachment_soap">3.5. Attachment</a>
 <ul class="sectlevel3">
 <li><a href="#_client_18">3.5.1. Client</a></li>
-<li><a href="#_méthodes_19">3.5.2. Méthodes</a></li>
+<li><a href="#_méthodes_20">3.5.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#dossierContext_soap">3.6. DossierContext</a>
 <ul class="sectlevel3">
 <li><a href="#_client_19">3.6.1. Client</a></li>
-<li><a href="#_méthodes_20">3.6.2. Méthodes</a></li>
+<li><a href="#_méthodes_21">3.6.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#extenddocument_soap">3.7. ExtendDocument</a>
 <ul class="sectlevel3">
 <li><a href="#_client_20">3.7.1. Client</a></li>
-<li><a href="#_méthodes_21">3.7.2. Méthodes</a></li>
+<li><a href="#_méthodes_22">3.7.2. Méthodes</a></li>
 </ul>
 </li>
 <li><a href="#extended_search_soap">3.8. ExtendSearch</a>
 <ul class="sectlevel3">
 <li><a href="#_client_21">3.8.1. Client</a></li>
 <li><a href="#_authentification_3">3.8.2. Authentification</a></li>
-<li><a href="#_méthodes_22">3.8.3. Méthodes</a></li>
+<li><a href="#_méthodes_23">3.8.3. Méthodes</a></li>
 </ul>
 </li>
 </ul>
@@ -398,10 +406,18 @@
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22/06/2026</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2.6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ajout rechargement de configuration à chaud (<code><span style="color:#448279">Arcade GED</span></code> <strong class="res">9.1</strong>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">12/09/2025</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2.5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Validé</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ajout <code><span style="color:#448279">Arcade GED</span></code> <strong>9.0</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ajout <code><span style="color:#448279">Arcade GED</span></code> <strong class="res">9.0</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong class="res">NFE</strong></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -524,7 +540,7 @@ ceux-ci sont sujets à disparaitre dans une prochaine version.</p>
 <td class="content">
 <div class="title">breaking changes</div>
 <div class="paragraph">
-<p>À partir de la version <strong>9.0</strong> d'<code><span style="color:#448279">Arcade GED</span></code>, la valeur racine (encapsulant les réponses <code><span style="color:#73A12E">REST</span></code> de type <span class="underline">liste</span>) a été <strong><span class="underline">supprimée</span></strong> (pour
+<p>À partir de la version <strong class="res">9.0</strong> d'<code><span style="color:#448279">Arcade GED</span></code>, la valeur racine (encapsulant les réponses <code><span style="color:#73A12E">REST</span></code> de type <span class="underline">liste</span>) a été <strong><span class="underline">supprimée</span></strong> (pour
 des raisons techniques, logiques et de données transitées).</p>
 </div>
 <div class="paragraph">
@@ -12976,6 +12992,491 @@ l&#8217;utilisation de cette <strong>API</strong> (<code><span style="color:#F24
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="admin_config_reload_rest"><a class="anchor" href="#admin_config_reload_rest"></a>2.14.5. Rechargement de la configuration</h4>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Ces <code><span style="color:#0099ff">Web Services</span></code> ne sont disponibles qu&#8217;à partir de la version <strong class="res">9.1</strong> de <code><span style="color:#448279">Arcade GED</span></code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Ces <code><span style="color:#0099ff">Web Services</span></code> permettent de recharger <strong>à chaud</strong> les fichiers de configuration de l&#8217;application, sans
+redémarrage et sans rechargement du contexte <em>Spring</em>.</p>
+</div>
+<div class="paragraph">
+<p>Le rechargement est appliqué <strong>en place</strong> : le <em>manager</em> propriétaire du fichier relit son contenu et les caches
+qui en dépendent sont invalidés. En cas d&#8217;erreur d&#8217;analyse/validation, la configuration précédente est conservée
+intacte.</p>
+</div>
+<table id="admin_config_reload_rest_files" class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 147. Fichiers de configuration gérés</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Fichier</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>params.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Paramètres généraux</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>contenttype.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Types de contenu</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>view.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Vues</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>update.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Mises à jour</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>search.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recherches</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>recycleSearch.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Recherches de corbeille</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>baskets.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Paniers</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>hierarchical.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Hiérarchies</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>preference.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Préférences</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>workflow.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Workflows</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>task.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Tâches</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>courrier.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Courrier</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>groovy.xml</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Scripts <em>Groovy</em></p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>config.properties</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Propriétés applicatives</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Astuce"></i>
+</td>
+<td class="content">
+<div class="title">Rechargement automatique</div>
+<div class="paragraph">
+<p>Un rechargement <strong>automatique</strong> à chaud peut également être activé en surveillant le dossier de configuration : il
+suffit de positionner la propriété <strong>misc.config.folder.watcher</strong> à <strong>true</strong> dans <em>config.properties</em>. Le dossier est
+alors scruté périodiquement (toutes les 60 secondes) et tout fichier géré modifié est rechargé selon la même
+logique que celle décrite ci-dessous.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table id="admin_config_reload_rest_status" class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 148. Statuts de rechargement (<em>status</em>)</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Statut</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>RELOADED</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Le fichier a été relu et appliqué à l&#8217;application en cours d&#8217;exécution</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>UNCHANGED</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Le fichier est géré mais n&#8217;a pas changé depuis le dernier chargement</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>IGNORED</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Le fichier n&#8217;est pas un fichier de configuration géré ; aucune action n&#8217;est effectuée</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>FAILED</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Le rechargement a échoué (erreur d&#8217;analyse/validation) ; la configuration précédente est conservée</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong>REQUIRES_RESTART</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Le fichier a été relu mais une ou plusieurs valeurs modifiées ne peuvent pas être appliquées à
+chaud et nécessitent un redémarrage (uniquement pour <em>config.properties</em>, cf. <strong>requiresRestartKeys</strong>)</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="sect4">
+<h5 id="_méthodes_15"><a class="anchor" href="#_méthodes_15"></a>2.14.5.1. Méthodes</h5>
+<div class="sect5">
+<h6 id="_post_adminconfigreload"><a class="anchor" href="#_post_adminconfigreload"></a><strong class="post">POST</strong> /admin/config/reload</h6>
+<div class="paragraph">
+<p>Cette méthode permet de recharger à chaud l'<strong>ensemble</strong> des fichiers de configuration gérés.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 149. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>withContext</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#4DEFE9">query</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Si <strong>true</strong>, effectue en complément un rechargement complet du contexte <em>Spring</em> (caches, services
+et contexte web reconstruits) avant de relire les fichiers — le mode lourd « redémarrage sans reboot ».</p>
+</div>
+<div class="paragraph">
+<p>Si <strong>false</strong> (valeur par défaut), les changements sont appliqués à chaud sans toucher au contexte <em>Spring</em>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="green">non</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>false</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'POST' \
+  'http[s]://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/admin/config/reload?withContext=false' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 150. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie, retourne un résultat par fichier (cf. <a href="#admin_config_reload_rest_response_all">Retour, un résultat par fichier</a>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">403</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Utilisateur non autorisé à effectuer cette action</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div id="admin_config_reload_rest_response_all" class="listingblock">
+<div class="title">Retour, un résultat par fichier</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">[
+  {
+    "fileName": "params.xml",
+    "status": "RELOADED",
+    "message": null,
+    "requiresRestartKeys": []
+  },
+  {
+    "fileName": "view.xml",
+    "status": "UNCHANGED",
+    "message": null,
+    "requiresRestartKeys": []
+  },
+  {
+    "fileName": "config.properties",
+    "status": "REQUIRES_RESTART",
+    "message": "Some changed properties require a restart to take effect",
+    "requiresRestartKeys": ["misc.config.folder.watcher"]
+  }
+]</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="_post_adminconfigreloadfilename"><a class="anchor" href="#_post_adminconfigreloadfilename"></a><strong class="post">POST</strong> /admin/config/reload/{fileName}</h6>
+<div class="paragraph">
+<p>Cette méthode permet de recharger à chaud un <strong>seul</strong> fichier de configuration.</p>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 151. Paramètres en entrée</caption>
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 44.4444%;">
+<col style="width: 11.1111%;">
+<col style="width: 22.2223%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Paramètre</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Requis</th>
+<th class="tableblock halign-left valign-top">Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><em>fileName</em></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><code><span style="color:#36D74F">path</span></code></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Nom du fichier de configuration à recharger (cf. <a href="#admin_config_reload_rest_files">fichiers gérés</a>)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">Oui</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>view.xml</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="listingblock">
+<div class="title">appel <em>curl</em></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">curl -X 'POST' \
+  'http[s]://&lt;host&gt;:&lt;port&gt;/&lt;context&gt;/rest/admin/config/reload/view.xml' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Basic &lt;credencials&gt;'</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all stripes-even stretch">
+<caption class="title">Table 152. Réponses</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Code Http</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="lime">200</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Opération réussie, retourne le résultat du rechargement (cf. <a href="#admin_config_reload_rest_response_one">Retour, résultat du rechargement</a>)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">401</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Authentification non fournie</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">403</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Utilisateur non autorisé à effectuer cette action</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><div class="content"><div class="paragraph">
+<p><strong class="red">500</strong></p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Erreur interne au serveur/service</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Information"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Un nom de fichier non géré ne provoque pas d&#8217;erreur : la réponse est retournée avec le statut <strong>IGNORED</strong>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="admin_config_reload_rest_response_one" class="listingblock">
+<div class="title">Retour, résultat du rechargement</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">{
+  "fileName": "view.xml",
+  "status": "RELOADED",
+  "message": null,
+  "requiresRestartKeys": []
+}</code></pre>
+</div>
+</div>
+<div style="page-break-after: always;"></div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -13064,7 +13565,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_15"><a class="anchor" href="#_méthodes_15"></a>3.1.2. Méthodes</h4>
+<h4 id="_méthodes_16"><a class="anchor" href="#_méthodes_16"></a>3.1.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">create</dt>
@@ -13074,7 +13575,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 147. Paramètres en entrée</caption>
+<caption class="title">Table 153. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13205,7 +13706,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 148. Paramètres en entrée</caption>
+<caption class="title">Table 154. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13333,7 +13834,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 149. Paramètres en entrée</caption>
+<caption class="title">Table 155. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13467,7 +13968,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 150. Paramètres en entrée</caption>
+<caption class="title">Table 156. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13559,7 +14060,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 151. Paramètres en entrée</caption>
+<caption class="title">Table 157. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13666,7 +14167,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_16"><a class="anchor" href="#_méthodes_16"></a>3.2.2. Méthodes</h4>
+<h4 id="_méthodes_17"><a class="anchor" href="#_méthodes_17"></a>3.2.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getAuthorityListCodes</dt>
@@ -13735,7 +14236,7 @@ récupérer les différents termes d&#8217;une liste d&#8217;autorité.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 152. Paramètres en entrée</caption>
+<caption class="title">Table 158. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13850,7 +14351,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_17"><a class="anchor" href="#_méthodes_17"></a>3.3.2. Méthodes</h4>
+<h4 id="_méthodes_18"><a class="anchor" href="#_méthodes_18"></a>3.3.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getBasketsList</dt>
@@ -13860,7 +14361,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 153. Paramètres en entrée</caption>
+<caption class="title">Table 159. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -13943,7 +14444,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 154. Paramètres en entrée</caption>
+<caption class="title">Table 160. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14053,7 +14554,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 155. Paramètres en entrée</caption>
+<caption class="title">Table 161. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14147,7 +14648,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 156. Paramètres en entrée</caption>
+<caption class="title">Table 162. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14292,7 +14793,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 157. Paramètres en entrée</caption>
+<caption class="title">Table 163. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14421,7 +14922,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 158. Paramètres en entrée</caption>
+<caption class="title">Table 164. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14547,7 +15048,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 159. Paramètres en entrée</caption>
+<caption class="title">Table 165. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14660,7 +15161,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 160. Paramètres en entrée</caption>
+<caption class="title">Table 166. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14784,7 +15285,7 @@ un jeton (authentication).</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 161. Paramètres en entrée</caption>
+<caption class="title">Table 167. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -14938,7 +15439,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_18"><a class="anchor" href="#_méthodes_18"></a>3.4.2. Méthodes</h4>
+<h4 id="_méthodes_19"><a class="anchor" href="#_méthodes_19"></a>3.4.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getResultNumberFromAirsRequest</dt>
@@ -14948,7 +15449,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 162. Paramètres en entrée</caption>
+<caption class="title">Table 168. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15058,7 +15559,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 163. Paramètres en entrée</caption>
+<caption class="title">Table 169. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15188,7 +15689,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 164. Paramètres en entrée</caption>
+<caption class="title">Table 170. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15407,7 +15908,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_19"><a class="anchor" href="#_méthodes_19"></a>3.5.2. Méthodes</h4>
+<h4 id="_méthodes_20"><a class="anchor" href="#_méthodes_20"></a>3.5.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">addOrUpdate</dt>
@@ -15417,7 +15918,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 165. Paramètres en entrée</caption>
+<caption class="title">Table 171. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15537,7 +16038,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 166. Paramètres en entrée</caption>
+<caption class="title">Table 172. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15650,7 +16151,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 167. Paramètres en entrée</caption>
+<caption class="title">Table 173. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15784,7 +16285,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 168. Paramètres en entrée</caption>
+<caption class="title">Table 174. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -15906,7 +16407,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_20"><a class="anchor" href="#_méthodes_20"></a>3.6.2. Méthodes</h4>
+<h4 id="_méthodes_21"><a class="anchor" href="#_méthodes_21"></a>3.6.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">getFlows</dt>
@@ -16077,7 +16578,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_21"><a class="anchor" href="#_méthodes_21"></a>3.7.2. Méthodes</h4>
+<h4 id="_méthodes_22"><a class="anchor" href="#_méthodes_22"></a>3.7.2. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">deleteDocuments</dt>
@@ -16087,7 +16588,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 169. Paramètres en entrée</caption>
+<caption class="title">Table 175. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -16197,7 +16698,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 170. Paramètres en entrée</caption>
+<caption class="title">Table 176. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -16325,7 +16826,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 171. Paramètres en entrée</caption>
+<caption class="title">Table 177. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -16429,7 +16930,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 172. Paramètres en entrée</caption>
+<caption class="title">Table 178. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -16572,7 +17073,7 @@ DOC_REMOVE_TYPE_FORCE</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 173. Paramètres en entrée</caption>
+<caption class="title">Table 179. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 25%;">
@@ -16730,7 +17231,7 @@ de cette <strong>API</strong>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_méthodes_22"><a class="anchor" href="#_méthodes_22"></a>3.8.3. Méthodes</h4>
+<h4 id="_méthodes_23"><a class="anchor" href="#_méthodes_23"></a>3.8.3. Méthodes</h4>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">search4FieldsAndAttachments</dt>
@@ -16753,7 +17254,7 @@ de cette <strong>API</strong>.</p>
 </dl>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 174. Paramètres en entrée</caption>
+<caption class="title">Table 180. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 12.5%;">
 <col style="width: 50%;">
@@ -16931,7 +17432,7 @@ Si vous souhaitez plus de résultats, le <code><span style="color:#0099ff">Web S
 <p>connectionData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 175. Paramètres en entrée</caption>
+<caption class="title">Table 181. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17001,7 +17502,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 176. Paramètres en sortie</caption>
+<caption class="title">Table 182. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17128,7 +17629,7 @@ Veuillez vous référer aux chapitres correspondants dans la documentation dédi
 <p>WSCommonDocumentType (<code><span style="color:#73A12E">REST</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 177. Paramètres en sortie</caption>
+<caption class="title">Table 183. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17227,7 +17728,7 @@ Veuillez vous référer aux chapitres correspondants dans la documentation dédi
 <p>documentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 178. Paramètres en sortie</caption>
+<caption class="title">Table 184. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17396,7 +17897,7 @@ Integer newDocId = docClientSvc.create(docData, Collections.singletonList(&lt;fi
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 179. Paramètres en entrée</caption>
+<caption class="title">Table 185. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -17540,7 +18041,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSTerm</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 180. Paramètres en sortie</caption>
+<caption class="title">Table 186. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17608,7 +18109,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_search_results_v1"><a class="anchor" href="#appendix_search_results_v1"></a>4.4.1. <strong>WSSearchResultType</strong></h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 181. Paramètres en sortie</caption>
+<caption class="title">Table 187. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17677,7 +18178,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 182. Paramètres en sortie</caption>
+<caption class="title">Table 188. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -17816,7 +18317,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 183. Paramètres en sortie</caption>
+<caption class="title">Table 189. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -18039,7 +18540,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Liste de flux</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 184. Paramètres en sortie</caption>
+<caption class="title">Table 190. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -18085,7 +18586,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfosType"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfosType"></a>4.5.2. <strong>WSContentTypeInfosType</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 185. Paramètres en sortie</caption>
+<caption class="title">Table 191. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -18255,7 +18756,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeInfo"></a>4.5.3. <strong>WSContentTypeInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 186. Paramètres en sortie</caption>
+<caption class="title">Table 192. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -18866,7 +19367,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <div class="sect3">
 <h4 id="appendix_dossiercontext_WSContentTypeLinkInfo"><a class="anchor" href="#appendix_dossiercontext_WSContentTypeLinkInfo"></a>4.5.6. <strong>WSContentTypeLinkInfo</strong> (<code><span style="color:#73A12E">REST</span></code>)</h4>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 187. Paramètres en sortie</caption>
+<caption class="title">Table 193. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19060,7 +19561,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSDeleteReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 188. Paramètres en sortie</caption>
+<caption class="title">Table 194. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19136,7 +19637,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentListType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 189. Paramètres en sortie</caption>
+<caption class="title">Table 195. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19237,7 +19738,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 190. Paramètres en entrée</caption>
+<caption class="title">Table 196. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19547,7 +20048,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSInsertReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 191. Paramètres en sortie</caption>
+<caption class="title">Table 197. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19621,7 +20122,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSExtendDocumentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 192. Paramètres en entrée</caption>
+<caption class="title">Table 198. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19788,7 +20289,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSUpdateReportItemType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 193. Paramètres en sortie</caption>
+<caption class="title">Table 199. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -19863,7 +20364,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 </table>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 194. Paramètres en entrée</caption>
+<caption class="title">Table 200. Paramètres en entrée</caption>
 <colgroup>
 <col style="width: 28.5714%;">
 <col style="width: 28.5714%;">
@@ -20018,7 +20519,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>WSAttachmentType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 195. Paramètres en sortie</caption>
+<caption class="title">Table 201. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -20088,7 +20589,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>attachmentData (<code><span style="color:#6666ff">SOAP</span></code>)</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 196. Paramètres en sortie</caption>
+<caption class="title">Table 202. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -20235,7 +20736,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 197. Paramètres en sortie</caption>
+<caption class="title">Table 203. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -20506,7 +21007,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 198. Paramètres en sortie</caption>
+<caption class="title">Table 204. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -20602,7 +21103,7 @@ au format <code><span style="color:#BF00FF">XML</span></code> (<code><span style
 <p>Celle-ci contient les informations suivantes :</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 199. Paramètres en sortie</caption>
+<caption class="title">Table 205. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -20699,7 +21200,7 @@ au format <code><span style="color:#FF7C29">json</span></code></p>
 <p>WSWorkbookType</p>
 </div>
 <table class="tableblock frame-all grid-all stripes-even stretch">
-<caption class="title">Table 200. Paramètres en sortie</caption>
+<caption class="title">Table 206. Paramètres en sortie</caption>
 <colgroup>
 <col style="width: 22.2222%;">
 <col style="width: 33.3333%;">
@@ -21354,6 +21855,7 @@ if (!hljs.initHighlighting.called) {
 <script type="text/javascript" src="tools/codeTools.js"></script>
 <script type="text/javascript" src="tools/tabs.js"></script>
 <script type="text/javascript" src="tools/switchTheme.js"></script>
+<script type="text/javascript" src="tools/sorttable.js"></script>
 <script type="text/javascript">
 
   function initTabsAndTheme() {
