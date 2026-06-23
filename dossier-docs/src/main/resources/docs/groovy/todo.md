@@ -1,0 +1,1 @@
+[OK] màj DocumentActions (ajout *_document_)
