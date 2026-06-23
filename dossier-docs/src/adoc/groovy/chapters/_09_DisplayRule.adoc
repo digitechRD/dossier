@@ -19,6 +19,14 @@ _Description_
 Entrées
 |*_document*|*com.digitech.dossier.common.model.backend.airs.IDocument*|Document
 |*_attachment*|*com.digitech.dossier.common.model.backend.airs.IAttachment*|Pièce jointe
+|*_context*|*String*|Contexte d'appel depuis lequel la règle est évaluée. +
+Présent uniquement lors d'une évaluation au niveau document (absent dans les autres cas). +
+Valeurs possibles :
+
+* *ViewUnit* : fiche document (vue unitaire)
+* *SearchTab* : résultats de recherche en mode *Tableau*
+* *SearchCard* : résultats de recherche en mode *Vignettes/Cartes*
+* *SearchKanban* : résultats de recherche en mode *Kanban*
 
 3+|[.header]
 Entrées/sorties
@@ -53,3 +61,9 @@ image:examples/display_rule_example_displayed.png[]
 
 .Exemple où l'action est masquée
 image:examples/display_rule_example_hidden.png[]
+
+[source, groovy]
+.Exemple : n'autoriser l'action que dans la fiche document (et la masquer dans les résultats de recherche)
+----
+_result.setValid("ViewUnit" == _context)
+----
